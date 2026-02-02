@@ -41,6 +41,9 @@ app.use((req, res, next) => {
 app.use('/api/kreator', require('./routes/api-kreator'));
 app.use('/api/contact', require('./routes/api-contact'));
 
+// Data
+const voices = require('./data/voices.json');
+
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
@@ -50,11 +53,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/bank-glosow/', (req, res) => {
-  res.render('placeholder', {
+  res.render('bank-glosow', {
     title: 'Bank głosów — powitania.pl',
-    description: 'Ponad 230 profesjonalnych lektorów w 30+ językach.',
-    heading: 'Bank głosów',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Ponad 230 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbki i znajdź idealny głos.',
+    voices: voices
   });
 });
 
