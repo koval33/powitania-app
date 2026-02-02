@@ -98,9 +98,9 @@
 <!-- SIATKA LEKTORÓW -->
 <section class="pb-16">
   <div class="max-w-6xl mx-auto px-4">
-    <div id="voices-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <% voices.forEach(function(v) { %>
-      <div class="voice-card bg-dark-800 rounded-xl border border-white/5 overflow-hidden hover:border-accent/30 transition-all"
+    <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
+      <% voices.forEach(function(v, idx) { %>
+      <div class="voice-card bg-dark-800 rounded-xl border border-white/5 overflow-hidden hover:border-accent/30 transition-all<%= idx >= 20 ? ' hidden' : '' %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
            data-languages="<%= v.languages.join(',') %>"
@@ -110,14 +110,14 @@
            data-name="<%= v.name.toLowerCase() %>">
 
         <!-- Górna część: zdjęcie + info -->
-        <div class="flex items-start gap-4 p-5 pb-3">
+        <div class="flex items-start gap-5 p-6 pb-3">
           <!-- Zdjęcie -->
-          <div class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-dark-700">
+          <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-dark-700">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
               <div class="w-full h-full flex items-center justify-center text-gray-600">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
           </div>
@@ -125,54 +125,52 @@
           <!-- Info -->
           <div class="flex-1 min-w-0">
             <div class="flex items-start justify-between gap-2">
-              <h3 class="text-lg font-bold text-white leading-tight truncate"><%= v.name %></h3>
+              <h3 class="text-xl font-bold text-white leading-tight"><%= v.name %></h3>
               <% if (v.famous) { %>
-                <span class="flex-shrink-0 text-[10px] bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded font-medium whitespace-nowrap">⭐ Znany głos</span>
+                <span class="flex-shrink-0 text-xs bg-yellow-500/10 text-yellow-400 px-2.5 py-1 rounded font-medium whitespace-nowrap">Znany glos</span>
               <% } else if (v.native) { %>
-                <span class="flex-shrink-0 text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-medium whitespace-nowrap">🌍 Native</span>
+                <span class="flex-shrink-0 text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded font-medium whitespace-nowrap">Native</span>
               <% } %>
             </div>
-            <div class="flex items-center gap-1.5 mt-1 flex-wrap">
+            <div class="flex items-center gap-2 mt-1.5 flex-wrap">
               <% if (v.age) { %>
-                <span class="text-xs text-gray-500"><%= v.age %></span>
-                <span class="text-xs text-gray-600">&bull;</span>
+                <span class="text-sm text-gray-500"><%= v.age %></span>
+                <span class="text-sm text-gray-600">&bull;</span>
               <% } %>
               <% v.languages.forEach(function(lang) { %>
-                <span class="text-[11px] bg-dark-600 text-gray-300 px-1.5 py-0.5 rounded"><%= lang %></span>
+                <span class="text-xs bg-dark-600 text-gray-300 px-2 py-0.5 rounded"><%= lang %></span>
               <% }); %>
             </div>
             <% if (v.description) { %>
-              <p class="text-xs text-gray-500 mt-1.5 line-clamp-2"><%= v.description %></p>
+              <p class="text-sm text-gray-400 mt-2 line-clamp-3"><%= v.description %></p>
+            <% } %>
+            <% if (v.turnaround) { %>
+              <p class="text-xs text-gray-500 mt-2">Realizacja: <%= v.turnaround %></p>
             <% } %>
           </div>
         </div>
 
         <!-- Audio player -->
-        <div class="px-5 pb-4">
+        <div class="px-6 pb-4">
           <div class="flex items-center gap-3 bg-dark-900/50 rounded-lg p-3">
-            <button class="play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+            <button class="play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
               <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <div class="flex-1">
-              <div class="audio-progress w-full h-1.5 bg-dark-600 rounded-full overflow-hidden cursor-pointer">
+              <div class="audio-progress w-full h-2 bg-dark-600 rounded-full overflow-hidden cursor-pointer">
                 <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
               </div>
               <div class="flex justify-between mt-1">
-                <span class="audio-time text-[10px] text-gray-500">0:00</span>
-                <span class="audio-duration text-[10px] text-gray-500">--:--</span>
+                <span class="audio-time text-xs text-gray-500">0:00</span>
+                <span class="audio-duration text-xs text-gray-500">--:--</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Footer: cena + link -->
-        <div class="flex items-center justify-between px-5 pb-4">
-          <div class="text-sm">
-            <% if (v.turnaround) { %>
-              <span class="text-gray-500">Realizacja: <%= v.turnaround %></span>
-            <% } %>
-          </div>
+        <!-- Footer -->
+        <div class="flex items-center justify-end px-6 pb-5">
           <a href="<%= v.profileUrl %>" class="text-accent hover:text-accent-light text-sm font-medium transition-colors">
             Więcej &rarr;
           </a>
@@ -181,11 +179,19 @@
       <% }); %>
     </div>
 
+    <!-- Załaduj więcej -->
+    <div id="load-more-wrap" class="text-center mt-10">
+      <button id="load-more-btn" class="bg-dark-700 hover:bg-dark-600 border border-white/10 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+        Załaduj więcej lektorów
+      </button>
+      <p id="load-more-info" class="text-sm text-gray-500 mt-3">Pokazano <span id="shown-count">20</span> z <span id="total-filtered">0</span></p>
+    </div>
+
     <!-- Pusty stan -->
     <div id="no-results" class="hidden text-center py-16">
       <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
       <p class="text-gray-500 text-lg">Nie znaleziono lektorów spełniających kryteria</p>
-      <button onclick="resetFilters()" class="mt-4 text-accent hover:text-accent-light text-sm font-medium">Wyczyść filtry</button>
+      <button onclick="resetFilters()" class="mt-4 text-accent hover:text-accent-light text-sm font-medium">Wyczysc filtry</button>
     </div>
   </div>
 </section>
@@ -201,11 +207,15 @@
 
 <script>
 (function() {
+  var PAGE_SIZE = 20;
   var currentAudio = null;
   var currentBtn = null;
+  var allCards = Array.from(document.querySelectorAll('.voice-card'));
+  var filteredCards = allCards.slice();
+  var shownCount = PAGE_SIZE;
 
-  // Audio player
-  document.querySelectorAll('.play-btn').forEach(function(btn) {
+  // --- Audio player ---
+  function initAudioPlayer(btn) {
     btn.addEventListener('click', function() {
       var src = this.dataset.audio;
       var card = this.closest('.voice-card');
@@ -215,7 +225,6 @@
       var timeEl = card.querySelector('.audio-time');
       var durEl = card.querySelector('.audio-duration');
 
-      // Stop previous
       if (currentAudio && currentBtn !== this) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -238,13 +247,11 @@
         currentAudio.addEventListener('loadedmetadata', function() {
           durEl.textContent = formatTime(currentAudio.duration);
         });
-
         currentAudio.addEventListener('timeupdate', function() {
           var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
           bar.style.width = pct + '%';
           timeEl.textContent = formatTime(currentAudio.currentTime);
         });
-
         currentAudio.addEventListener('ended', function() {
           playIcon.classList.remove('hidden');
           pauseIcon.classList.add('hidden');
@@ -252,7 +259,6 @@
           timeEl.textContent = '0:00';
         });
 
-        // Click on progress bar
         card.querySelector('.audio-progress').addEventListener('click', function(e) {
           if (currentAudio && currentBtn === btn) {
             var rect = this.getBoundingClientRect();
@@ -266,6 +272,10 @@
       playIcon.classList.add('hidden');
       pauseIcon.classList.remove('hidden');
     });
+  }
+
+  allCards.forEach(function(card) {
+    initAudioPlayer(card.querySelector('.play-btn'));
   });
 
   function formatTime(s) {
@@ -274,7 +284,52 @@
     return m + ':' + (sec < 10 ? '0' : '') + sec;
   }
 
-  // Filters
+  // --- Pagination ---
+  function updateVisibility() {
+    var visibleCount = 0;
+    filteredCards.forEach(function(card, i) {
+      if (i < shownCount) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Hide cards not in filtered set
+    allCards.forEach(function(card) {
+      if (filteredCards.indexOf(card) === -1) {
+        card.classList.add('hidden');
+      }
+    });
+
+    var totalFiltered = filteredCards.length;
+    document.getElementById('voice-count').textContent = totalFiltered;
+    document.getElementById('shown-count').textContent = Math.min(shownCount, totalFiltered);
+    document.getElementById('total-filtered').textContent = totalFiltered;
+
+    var loadMoreWrap = document.getElementById('load-more-wrap');
+    var noResults = document.getElementById('no-results');
+
+    if (totalFiltered === 0) {
+      loadMoreWrap.classList.add('hidden');
+      noResults.classList.remove('hidden');
+    } else {
+      noResults.classList.add('hidden');
+      if (shownCount >= totalFiltered) {
+        loadMoreWrap.classList.add('hidden');
+      } else {
+        loadMoreWrap.classList.remove('hidden');
+      }
+    }
+  }
+
+  document.getElementById('load-more-btn').addEventListener('click', function() {
+    shownCount += PAGE_SIZE;
+    updateVisibility();
+  });
+
+  // --- Filters ---
   var activeGender = 'all';
 
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
@@ -300,34 +355,29 @@
     var famous = document.getElementById('filter-famous').checked;
     var native_ = document.getElementById('filter-native').checked;
     var search = document.getElementById('filter-search').value.toLowerCase();
-    var count = 0;
 
-    document.querySelectorAll('.voice-card').forEach(function(card) {
-      var show = true;
-
-      if (activeGender !== 'all' && card.dataset.gender !== activeGender) show = false;
-      if (lang !== 'all' && card.dataset.languages.indexOf(lang) === -1) show = false;
+    filteredCards = allCards.filter(function(card) {
+      if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
+      if (lang !== 'all' && card.dataset.languages.indexOf(lang) === -1) return false;
       if (age !== 'all') {
         var cardAge = card.dataset.age;
         if (age === '50+') {
-          if (cardAge !== '50 lat +' && cardAge !== '50+') show = false;
+          if (cardAge !== '50 lat +' && cardAge !== '50+') return false;
         } else if (age === '20-30') {
-          if (cardAge !== '20-30 lat' && cardAge !== '20-30') show = false;
+          if (cardAge !== '20-30 lat' && cardAge !== '20-30') return false;
         } else if (age === '30-50') {
-          if (cardAge !== '30-50 lat' && cardAge !== '30-50') show = false;
+          if (cardAge !== '30-50 lat' && cardAge !== '30-50') return false;
         }
       }
-      if (app !== 'all' && card.dataset.apps.indexOf(app) === -1) show = false;
-      if (famous && card.dataset.famous !== 'true') show = false;
-      if (native_ && card.dataset.native !== 'true') show = false;
-      if (search && card.dataset.name.indexOf(search) === -1) show = false;
-
-      card.style.display = show ? '' : 'none';
-      if (show) count++;
+      if (app !== 'all' && card.dataset.apps.indexOf(app) === -1) return false;
+      if (famous && card.dataset.famous !== 'true') return false;
+      if (native_ && card.dataset.native !== 'true') return false;
+      if (search && card.dataset.name.indexOf(search) === -1) return false;
+      return true;
     });
 
-    document.getElementById('voice-count').textContent = count;
-    document.getElementById('no-results').classList.toggle('hidden', count > 0);
+    shownCount = PAGE_SIZE;
+    updateVisibility();
   }
 
   window.resetFilters = function() {
@@ -342,6 +392,9 @@
     document.getElementById('filter-search').value = '';
     applyFilters();
   };
+
+  // Init
+  updateVisibility();
 })();
 </script>
 
@@ -349,9 +402,9 @@
 .filter-btn { color: #9ca3af; background: transparent; transition: all 0.2s; }
 .filter-btn:hover { color: #fff; }
 .filter-btn.active { color: #fff; background: #10b981; }
-.line-clamp-2 {
+.line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
