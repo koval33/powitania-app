@@ -30,13 +30,13 @@
 
 <% if (!skipHeader) { %>
 <header class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-white/5">
-  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex flex-col items-start gap-1">
-      <img src="/img/logo-powitania.png" alt="powitania.pl" class="h-8 md:h-9">
-      <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-gray-400">Kreuj tekst i nagranie</span>
+  <nav class="w-full max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+    <a href="/" class="flex flex-col items-start gap-1.5">
+      <img src="/img/logo-powitania.png" alt="powitania.pl" class="h-11 md:h-14">
+      <span class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-gray-400">Kreuj tekst i nagranie</span>
     </a>
 
-    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+    <div class="hidden md:flex items-center gap-7 text-base font-medium">
       <a href="/bank-glosow/" class="hover:text-white transition-colors <%= currentPath === '/bank-glosow/' ? 'text-white' : 'text-gray-400' %>">Bank głosów</a>
       <a href="/nagrania-lektorskie/" class="hover:text-white transition-colors <%= currentPath === '/nagrania-lektorskie/' ? 'text-white' : 'text-gray-400' %>">Nagrania lektorskie</a>
       <a href="/cennik/" class="hover:text-white transition-colors <%= currentPath === '/cennik/' ? 'text-white' : 'text-gray-400' %>">Cennik</a>
