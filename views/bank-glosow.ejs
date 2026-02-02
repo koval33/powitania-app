@@ -63,13 +63,11 @@
         <option value="50+">50+ lat</option>
       </select>
 
-      <!-- Zastosowanie -->
-      <select id="filter-app" class="bg-dark-700 border border-white/10 text-gray-300 text-sm rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
-        <option value="all">Zastosowanie</option>
-        <option value="Powitanie tel.">Powitanie tel.</option>
-        <option value="Reklama">Reklama</option>
-        <option value="Narracja do filmu">Narracja do filmu</option>
-        <option value="Audiobook">Audiobook</option>
+      <!-- Grupa cenowa -->
+      <select id="filter-price" class="bg-dark-700 border border-white/10 text-gray-300 text-sm rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+        <option value="all">Grupa cenowa</option>
+        <option value="Niższa grupa cenowa">Niższa grupa cenowa</option>
+        <option value="Wyższa grupa cenowa">Wyższa grupa cenowa</option>
       </select>
 
       <!-- Specjalne -->
@@ -106,7 +104,7 @@
            data-languages="<%= v.languages.join(',') %>"
            data-famous="<%= v.famous %>"
            data-native="<%= v.native %>"
-           data-apps="<%= v.applications ? v.applications.join(',') : '' %>"
+           data-price="<%= v.priceGroup || '' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
         <!-- Górna część: zdjęcie + info -->
@@ -343,7 +341,7 @@
 
   document.getElementById('filter-lang').addEventListener('change', applyFilters);
   document.getElementById('filter-age').addEventListener('change', applyFilters);
-  document.getElementById('filter-app').addEventListener('change', applyFilters);
+  document.getElementById('filter-price').addEventListener('change', applyFilters);
   document.getElementById('filter-famous').addEventListener('change', applyFilters);
   document.getElementById('filter-native').addEventListener('change', applyFilters);
   document.getElementById('filter-search').addEventListener('input', applyFilters);
@@ -351,7 +349,7 @@
   function applyFilters() {
     var lang = document.getElementById('filter-lang').value;
     var age = document.getElementById('filter-age').value;
-    var app = document.getElementById('filter-app').value;
+    var price = document.getElementById('filter-price').value;
     var famous = document.getElementById('filter-famous').checked;
     var native_ = document.getElementById('filter-native').checked;
     var search = document.getElementById('filter-search').value.toLowerCase();
@@ -369,7 +367,7 @@
           if (cardAge !== '30-50 lat' && cardAge !== '30-50') return false;
         }
       }
-      if (app !== 'all' && card.dataset.apps.indexOf(app) === -1) return false;
+      if (price !== 'all' && card.dataset.price !== price) return false;
       if (famous && card.dataset.famous !== 'true') return false;
       if (native_ && card.dataset.native !== 'true') return false;
       if (search && card.dataset.name.indexOf(search) === -1) return false;
@@ -386,7 +384,7 @@
     document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
     document.getElementById('filter-lang').value = 'all';
     document.getElementById('filter-age').value = 'all';
-    document.getElementById('filter-app').value = 'all';
+    document.getElementById('filter-price').value = 'all';
     document.getElementById('filter-famous').checked = false;
     document.getElementById('filter-native').checked = false;
     document.getElementById('filter-search').value = '';
