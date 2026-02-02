@@ -325,7 +325,7 @@
         '<span class="font-semibold text-sm text-gray-300">Twój tekst:</span>' +
         '<button data-action="copy" class="text-accent text-sm font-medium hover:text-accent-light">Kopiuj</button>' +
       '</div>' +
-      '<div class="whitespace-pre-wrap text-gray-800 leading-relaxed">' + esc(state.result) + '</div>' +
+      '<div class="whitespace-pre-wrap text-gray-300 leading-relaxed">' + esc(state.result) + '</div>' +
     '</div>';
 
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-8 block">&larr; Generuj ponownie</button>';
