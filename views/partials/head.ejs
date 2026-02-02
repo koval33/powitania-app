@@ -9,40 +9,52 @@
   <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : '' %>">
   <meta property="og:type" content="website">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
+            accent: { DEFAULT: '#0693e3', light: '#3aadff', dark: '#0577b8' }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-white text-gray-800 antialiased">
+<body class="bg-dark-900 text-gray-300 antialiased">
 
 <% if (!skipHeader) { %>
-<header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+<header class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-white/5">
   <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2">
-      <span class="text-2xl font-bold text-gray-900">powitania<span class="text-blue-500">.pl</span></span>
+      <span class="text-2xl font-bold text-white">powitania<span class="text-accent">.pl</span></span>
     </a>
 
     <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a href="/bank-glosow/" class="hover:text-blue-500 transition-colors <%= currentPath === '/bank-glosow/' ? 'text-blue-500' : 'text-gray-600' %>">Bank głosów</a>
-      <a href="/nagrania-lektorskie/" class="hover:text-blue-500 transition-colors <%= currentPath === '/nagrania-lektorskie/' ? 'text-blue-500' : 'text-gray-600' %>">Nagrania lektorskie</a>
-      <a href="/cennik/" class="hover:text-blue-500 transition-colors <%= currentPath === '/cennik/' ? 'text-blue-500' : 'text-gray-600' %>">Cennik</a>
-      <a href="/opinie/" class="hover:text-blue-500 transition-colors <%= currentPath === '/opinie/' ? 'text-blue-500' : 'text-gray-600' %>">Opinie</a>
-      <a href="/kontakt/" class="hover:text-blue-500 transition-colors <%= currentPath === '/kontakt/' ? 'text-blue-500' : 'text-gray-600' %>">Kontakt</a>
-      <a href="/#kreator" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg transition-colors font-semibold">Przygotuj tekst</a>
+      <a href="/bank-glosow/" class="hover:text-white transition-colors <%= currentPath === '/bank-glosow/' ? 'text-white' : 'text-gray-400' %>">Bank głosów</a>
+      <a href="/nagrania-lektorskie/" class="hover:text-white transition-colors <%= currentPath === '/nagrania-lektorskie/' ? 'text-white' : 'text-gray-400' %>">Nagrania lektorskie</a>
+      <a href="/cennik/" class="hover:text-white transition-colors <%= currentPath === '/cennik/' ? 'text-white' : 'text-gray-400' %>">Cennik</a>
+      <a href="/opinie/" class="hover:text-white transition-colors <%= currentPath === '/opinie/' ? 'text-white' : 'text-gray-400' %>">Opinie</a>
+      <a href="/kontakt/" class="hover:text-white transition-colors <%= currentPath === '/kontakt/' ? 'text-white' : 'text-gray-400' %>">Kontakt</a>
+      <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg transition-colors font-semibold">Przygotuj tekst</a>
     </div>
 
-    <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-dark-700 text-gray-400">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
   </nav>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4">
-    <a href="/bank-glosow/" class="block py-3 text-gray-600 hover:text-blue-500 border-b border-gray-50">Bank głosów</a>
-    <a href="/nagrania-lektorskie/" class="block py-3 text-gray-600 hover:text-blue-500 border-b border-gray-50">Nagrania lektorskie</a>
-    <a href="/cennik/" class="block py-3 text-gray-600 hover:text-blue-500 border-b border-gray-50">Cennik</a>
-    <a href="/opinie/" class="block py-3 text-gray-600 hover:text-blue-500 border-b border-gray-50">Opinie</a>
-    <a href="/kontakt/" class="block py-3 text-gray-600 hover:text-blue-500 border-b border-gray-50">Kontakt</a>
-    <a href="/#kreator" class="block mt-3 bg-blue-500 text-white text-center px-5 py-3 rounded-lg font-semibold">Przygotuj tekst</a>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-dark-800 px-4 pb-4">
+    <a href="/bank-glosow/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Bank głosów</a>
+    <a href="/nagrania-lektorskie/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Nagrania lektorskie</a>
+    <a href="/cennik/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Cennik</a>
+    <a href="/opinie/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Opinie</a>
+    <a href="/kontakt/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Kontakt</a>
+    <a href="/#kreator" class="block mt-3 bg-accent text-white text-center px-5 py-3 rounded-lg font-semibold">Przygotuj tekst</a>
   </div>
 </header>
 <% } %>

@@ -190,28 +190,28 @@
   }
 
   function renderLoading() {
-    return '<div class="text-center py-12"><div class="kreator-spinner"></div><p class="text-gray-500 mt-4">Przygotowuję tekst...</p></div>';
+    return '<div class="text-center py-12"><div class="kreator-spinner"></div><p class="text-gray-400 mt-4">Przygotowuję tekst...</p></div>';
   }
 
   function renderError() {
     if (!state.error) return '';
-    return '<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-red-700 text-sm">' + esc(state.error) + '</div>';
+    return '<div class="bg-red-900/20 border border-red-800 rounded-lg p-4 mb-4 text-red-400 text-sm">' + esc(state.error) + '</div>';
   }
 
   // STEP: Welcome
   function renderWelcome() {
     return '<div class="grid md:grid-cols-2 gap-6">' +
       '<button data-action="setPath" data-value="creator" class="kreator-card group">' +
-        '<div class="mb-4 text-gray-400 group-hover:text-blue-500 transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
-        '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Potrzebuję tekstu</h3>' +
-        '<p class="text-gray-600 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
-        '<span class="text-sm text-blue-500 font-medium">Rozpocznij &rarr;</span>' +
+        '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
+        '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Potrzebuję tekstu</h3>' +
+        '<p class="text-gray-400 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
+        '<span class="text-sm text-accent font-medium">Rozpocznij &rarr;</span>' +
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
-        '<div class="mb-4 text-gray-400 group-hover:text-blue-500 transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
-        '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Mam tekst</h3>' +
-        '<p class="text-gray-600 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
-        '<span class="text-sm text-blue-500 font-medium">Zoptymalizuj &rarr;</span>' +
+        '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
+        '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Mam tekst</h3>' +
+        '<p class="text-gray-400 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
+        '<span class="text-sm text-accent font-medium">Zoptymalizuj &rarr;</span>' +
       '</button>' +
     '</div>';
   }
@@ -222,7 +222,7 @@
     html += '<div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
     for (var i = 0; i < SERVICE_TYPES.length; i++) {
       var s = SERVICE_TYPES[i];
-      html += '<button data-action="setService" data-value="' + s.v + '" class="p-4 rounded-lg border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-blue-300 hover:bg-blue-50">' +
+      html += '<button data-action="setService" data-value="' + s.v + '" class="p-4 rounded-lg border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
         '<div class="text-gray-400 mb-2">' + s.icon + '</div>' +
         '<div class="font-medium text-sm">' + s.l + '</div>' +
       '</button>';
@@ -265,7 +265,7 @@
         var disabled = !selected && state.form.languages.length >= 2;
         html += '<button data-action="toggleLang" data-value="' + lang.v + '" ' + (disabled ? 'disabled' : '') +
           ' class="p-3 rounded-lg border-2 text-sm ' +
-          (selected ? 'border-blue-500 bg-blue-50' : disabled ? 'border-gray-100 bg-gray-50 opacity-50' : 'border-gray-200 hover:border-blue-300') + '">' +
+          (selected ? 'border-accent bg-accent/10' : disabled ? 'border-white/5 bg-dark-700 opacity-50' : 'border-white/10 hover:border-accent/50') + '">' +
           lang.flag + ' ' + lang.l + (selected ? ' &#10003;' : '') + '</button>';
       }
       html += '</div></div>';
@@ -316,19 +316,19 @@
   // STEP: Preview
   function renderPreview() {
     var html = '<div class="flex items-center gap-3 mb-6">' +
-      '<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">&#10003;</div>' +
-      '<h3 class="text-xl font-bold text-green-700">Tekst gotowy!</h3>' +
+      '<div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center text-green-400">&#10003;</div>' +
+      '<h3 class="text-xl font-bold text-green-400">Tekst gotowy!</h3>' +
     '</div>';
 
-    html += '<div class="bg-gray-50 rounded-xl p-6 mb-6">' +
+    html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
       '<div class="flex justify-between items-center mb-3">' +
-        '<span class="font-semibold text-sm text-gray-700">Twój tekst:</span>' +
-        '<button data-action="copy" class="text-blue-500 text-sm font-medium hover:text-blue-600">Kopiuj</button>' +
+        '<span class="font-semibold text-sm text-gray-300">Twój tekst:</span>' +
+        '<button data-action="copy" class="text-accent text-sm font-medium hover:text-accent-light">Kopiuj</button>' +
       '</div>' +
       '<div class="whitespace-pre-wrap text-gray-800 leading-relaxed">' + esc(state.result) + '</div>' +
     '</div>';
 
-    html += '<button data-action="goTo" data-value="details" class="text-blue-500 text-sm font-medium mb-8 block">&larr; Generuj ponownie</button>';
+    html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-8 block">&larr; Generuj ponownie</button>';
 
     // 3 CTA levels
     html += '<div class="space-y-3">' +
@@ -374,20 +374,20 @@
     var pct = Math.abs(Math.round((diff / target) * 100));
     var ok = pct <= 15;
 
-    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50' : 'bg-orange-50') + '">' +
+    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-900/20' : 'bg-orange-900/20') + '">' +
       '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
       '<div class="grid grid-cols-3 gap-4 text-center">' +
-        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-600">Słów</div></div>' +
-        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-600">Różnica</div></div>' +
-        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-600">Odchylenie</div></div>' +
+        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-400">Słów</div></div>' +
+        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-400">Różnica</div></div>' +
+        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-400">Odchylenie</div></div>' +
       '</div>' +
     '</div>';
 
     if (state.result) {
-      html += '<div class="bg-gray-50 rounded-xl p-6 mb-6">' +
+      html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
         '<div class="flex justify-between items-center mb-3">' +
           '<span class="font-semibold text-sm">Zoptymalizowany tekst:</span>' +
-          '<button data-action="copy" class="text-blue-500 text-sm font-medium">Kopiuj</button>' +
+          '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
         '</div>' +
         '<div class="whitespace-pre-wrap leading-relaxed">' + esc(state.result) + '</div>' +
       '</div>';
@@ -431,7 +431,7 @@
   function renderInquiryForm() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-6">Zapytaj o wycenę</h3>';
-    html += '<p class="text-gray-600 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
+    html += '<p class="text-gray-400 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
     html += renderError();
     html += '<div class="space-y-4">' +
       renderInput('name', 'Imię', 'Jan Kowalski') +
@@ -452,7 +452,7 @@
   function renderSaveText() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-4">Zapisz tekst na email</h3>';
-    html += '<p class="text-gray-600 text-sm mb-6">Wyślemy Ci przygotowany tekst na podany adres.</p>';
+    html += '<p class="text-gray-400 text-sm mb-6">Wyślemy Ci przygotowany tekst na podany adres.</p>';
     html += renderError();
     html += renderInput('email', 'Twój email *', 'jan@firma.pl');
     html += '<div class="flex gap-3 mt-6">' +
@@ -465,9 +465,9 @@
   // STEP: Success
   function renderSuccess() {
     return '<div class="text-center py-8">' +
-      '<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 text-2xl">&#10003;</div>' +
+      '<div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-green-400 text-2xl">&#10003;</div>' +
       '<h3 class="text-xl font-bold mb-2">Dziękujemy!</h3>' +
-      '<p class="text-gray-600 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
+      '<p class="text-gray-400 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
       '<button data-action="reset" class="kreator-btn-primary">Stwórz kolejny tekst</button>' +
     '</div>';
   }
