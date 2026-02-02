@@ -1,5 +1,15 @@
 /* powitania.pl — Dark theme styles */
 
+/* Hero dot grid pattern — Railway style */
+.dot-grid-bg {
+  background-image: radial-gradient(circle, rgba(16, 185, 129, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.hero-dotgrid {
+  background-color: #1a1d23;
+}
+
 /* Kreator widget scoped styles */
 .kreator-widget {
   max-width: 800px;
