@@ -22,9 +22,9 @@
     { v: 'retail', l: 'Handel / Retail' },
     { v: 'telecom', l: 'Telekomunikacja / IT' },
     { v: 'education', l: 'Edukacja' },
-    { v: 'realestate', l: 'Nieruchomosci' },
+    { v: 'realestate', l: 'Nieruchomości' },
     { v: 'law', l: 'Kancelaria prawna' },
-    { v: 'other', l: 'Inna branza' }
+    { v: 'other', l: 'Inna branża' }
   ];
 
   var LANGUAGES = [
@@ -33,7 +33,7 @@
     { v: 'de', l: 'Niemiecki', flag: '\u{1F1E9}\u{1F1EA}' },
     { v: 'fr', l: 'Francuski', flag: '\u{1F1EB}\u{1F1F7}' },
     { v: 'cs', l: 'Czeski', flag: '\u{1F1E8}\u{1F1FF}' },
-    { v: 'uk', l: 'Ukrainski', flag: '\u{1F1FA}\u{1F1E6}' }
+    { v: 'uk', l: 'Ukraiński', flag: '\u{1F1FA}\u{1F1E6}' }
   ];
 
   var TONES = [
@@ -45,14 +45,14 @@
 
   var AUDIENCES = [
     { v: 'b2b', l: 'Kontrahenci B2B' },
-    { v: 'b2c', l: 'Klienci koncowi' },
+    { v: 'b2c', l: 'Klienci końcowi' },
     { v: 'mixed', l: 'Mieszana grupa' }
   ];
 
   var GOALS = [
-    { v: 'awareness', l: 'Swiadomosc marki' },
+    { v: 'awareness', l: 'Świadomość marki' },
     { v: 'promotion', l: 'Promocja produktu' },
-    { v: 'cta', l: 'Wezwanie do dzialania' },
+    { v: 'cta', l: 'Wezwanie do działania' },
     { v: 'info', l: 'Informacja' }
   ];
 
@@ -113,11 +113,11 @@
       if (data.ok) {
         callback(data);
       } else {
-        setState({ loading: false, error: data.error || 'Wystapil blad.' });
+        setState({ loading: false, error: data.error || 'Wystąpił błąd.' });
       }
     })
     .catch(function() {
-      setState({ loading: false, error: 'Blad polaczenia. Sprawdz internet i sprobuj ponownie.' });
+      setState({ loading: false, error: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' });
     });
   }
 
@@ -151,7 +151,7 @@
       }
     })
     .catch(function() {
-      setState({ loading: false, error: 'Blad wysylania.' });
+      setState({ loading: false, error: 'Błąd wysyłania.' });
     });
   }
 
@@ -203,14 +203,14 @@
     return '<div class="grid md:grid-cols-2 gap-6">' +
       '<button data-action="setPath" data-value="creator" class="kreator-card group">' +
         '<div class="text-4xl mb-4">&#x270D;&#xFE0F;</div>' +
-        '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Potrzebuje tekstu</h3>' +
+        '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Potrzebuję tekstu</h3>' +
         '<p class="text-gray-600 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
         '<span class="text-sm text-blue-500 font-medium">Rozpocznij &rarr;</span>' +
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
         '<div class="text-4xl mb-4">&#x2699;&#xFE0F;</div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Mam tekst</h3>' +
-        '<p class="text-gray-600 text-sm mb-3">Zoptymalizuj dlugosc i styl istniejacego tekstu</p>' +
+        '<p class="text-gray-600 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
         '<span class="text-sm text-blue-500 font-medium">Zoptymalizuj &rarr;</span>' +
       '</button>' +
     '</div>';
@@ -218,7 +218,7 @@
 
   // STEP: Service type
   function renderServiceType() {
-    var html = '<h3 class="text-xl font-bold mb-6">Jaki tekst chcesz przygotowac?</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6">Jaki tekst chcesz przygotować?</h3>';
     html += '<div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
     for (var i = 0; i < SERVICE_TYPES.length; i++) {
       var s = SERVICE_TYPES[i];
@@ -242,24 +242,24 @@
     var needsDuration = svc && svc.needsDuration;
     var needsLanguages = svc && svc.needsLanguages;
 
-    var html = '<h3 class="text-xl font-bold mb-6">Szczegoly projektu</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6">Szczegóły projektu</h3>';
     html += renderError();
     html += '<div class="space-y-5">';
 
     // Industry
-    html += renderSelect('industry', 'Branza', INDUSTRIES);
+    html += renderSelect('industry', 'Branża', INDUSTRIES);
 
     // Company
     html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
 
     // Offering (not for IVR)
     if (!isIVR) {
-      html += renderTextarea('offering', 'Oferta / produkt', 'np. Transport miedzynarodowy door-to-door');
+      html += renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door');
     }
 
     // Languages (IVR only)
     if (needsLanguages) {
-      html += '<div><label class="block font-semibold mb-2 text-sm">Jezyki (max 2)</label>';
+      html += '<div><label class="block font-semibold mb-2 text-sm">Języki (max 2)</label>';
       html += '<div class="grid grid-cols-3 gap-2">';
       for (var i = 0; i < LANGUAGES.length; i++) {
         var lang = LANGUAGES[i];
@@ -275,7 +275,7 @@
 
     // Duration
     if (needsDuration) {
-      html += '<div><label class="block font-semibold mb-2 text-sm">Dlugosc nagrania</label>' +
+      html += '<div><label class="block font-semibold mb-2 text-sm">Długość nagrania</label>' +
         '<select data-field="duration" class="kreator-select">' +
         '<option value="15"' + sel('duration', '15') + '>15 sekund</option>' +
         '<option value="20"' + sel('duration', '20') + '>20 sekund</option>' +
@@ -324,7 +324,7 @@
 
     html += '<div class="bg-gray-50 rounded-xl p-6 mb-6">' +
       '<div class="flex justify-between items-center mb-3">' +
-        '<span class="font-semibold text-sm text-gray-700">Twoj tekst:</span>' +
+        '<span class="font-semibold text-sm text-gray-700">Twój tekst:</span>' +
         '<button data-action="copy" class="text-blue-500 text-sm font-medium hover:text-blue-600">Kopiuj</button>' +
       '</div>' +
       '<div class="whitespace-pre-wrap text-gray-800 leading-relaxed">' + esc(state.result) + '</div>' +
@@ -334,9 +334,9 @@
 
     // 3 CTA levels
     html += '<div class="space-y-3">' +
-      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4 text-center">Zamow nagranie tego tekstu</button>' +
+      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4 text-center">Zamów nagranie tego tekstu</button>' +
       '<div class="grid grid-cols-2 gap-3">' +
-        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycene</button>' +
+        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycenę</button>' +
         '<button data-action="goTo" data-value="save-text" class="kreator-btn-secondary w-full text-center">Zapisz tekst na email</button>' +
       '</div>' +
     '</div>';
@@ -361,7 +361,7 @@
 
     html += '<div class="flex gap-3 mt-6">' +
       '<button data-action="goTo" data-value="welcome" class="kreator-btn-secondary">Wstecz</button>' +
-      '<button data-action="optimize" ' + (!state.form.textInput.trim() ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Sprawdz i zoptymalizuj</button>' +
+      '<button data-action="optimize" ' + (!state.form.textInput.trim() ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Sprawdź i zoptymalizuj</button>' +
     '</div>';
 
     return html;
@@ -377,10 +377,10 @@
     var ok = pct <= 15;
 
     var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50' : 'bg-orange-50') + '">' +
-      '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Dlugosc OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za dlugi' : 'Za krotki')) + '</h3>' +
+      '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
       '<div class="grid grid-cols-3 gap-4 text-center">' +
-        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-600">Slow</div></div>' +
-        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-600">Roznica</div></div>' +
+        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-600">Słów</div></div>' +
+        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-600">Różnica</div></div>' +
         '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-600">Odchylenie</div></div>' +
       '</div>' +
     '</div>';
@@ -396,9 +396,9 @@
     }
 
     html += '<div class="space-y-3">' +
-      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4">Zamow nagranie</button>' +
+      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4">Zamów nagranie</button>' +
       '<div class="grid grid-cols-2 gap-3">' +
-        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycene</button>' +
+        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycenę</button>' +
         '<button data-action="goTo" data-value="save-text" class="kreator-btn-secondary w-full text-center">Zapisz na email</button>' +
       '</div>' +
     '</div>';
@@ -409,11 +409,11 @@
   // STEP: Order form
   function renderOrderForm() {
     if (state.loading) return renderLoading();
-    var html = '<h3 class="text-xl font-bold mb-6">Zamow nagranie</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6">Zamów nagranie</h3>';
     html += renderError();
     html += '<div class="space-y-4">' +
       renderInput('firmName', 'Firma *', 'Nazwa firmy') +
-      renderInput('name', 'Imie i nazwisko *', 'Jan Kowalski') +
+      renderInput('name', 'Imię i nazwisko *', 'Jan Kowalski') +
       '<div class="grid grid-cols-2 gap-4">' +
         renderInput('email', 'Email *', 'jan@firma.pl') +
         renderInput('phone', 'Telefon *', '+48 600 000 000') +
@@ -423,7 +423,7 @@
     var canSubmit = state.form.firmName && state.form.name && state.form.email && state.form.phone;
     html += '<div class="flex gap-3 mt-6">' +
       '<button data-action="goTo" data-value="preview" class="kreator-btn-secondary">Wstecz</button>' +
-      '<button data-action="submitOrder" ' + (canSubmit ? '' : 'disabled') + ' class="kreator-btn-primary flex-1">Wyslij zamowienie</button>' +
+      '<button data-action="submitOrder" ' + (canSubmit ? '' : 'disabled') + ' class="kreator-btn-primary flex-1">Wyślij zamówienie</button>' +
     '</div>';
 
     return html;
@@ -432,11 +432,11 @@
   // STEP: Inquiry form
   function renderInquiryForm() {
     if (state.loading) return renderLoading();
-    var html = '<h3 class="text-xl font-bold mb-6">Zapytaj o wycene</h3>';
-    html += '<p class="text-gray-600 text-sm mb-6">Opisz swoj projekt — odpowiemy w ciagu 2 godzin.</p>';
+    var html = '<h3 class="text-xl font-bold mb-6">Zapytaj o wycenę</h3>';
+    html += '<p class="text-gray-600 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
     html += renderError();
     html += '<div class="space-y-4">' +
-      renderInput('name', 'Imie', 'Jan Kowalski') +
+      renderInput('name', 'Imię', 'Jan Kowalski') +
       renderInput('email', 'Email *', 'jan@firma.pl') +
       renderInput('phone', 'Telefon (opcjonalnie)', '+48 600 000 000') +
       renderTextarea('description', 'Opis projektu', 'Opisz czego potrzebujesz...') +
@@ -444,7 +444,7 @@
 
     html += '<div class="flex gap-3 mt-6">' +
       '<button data-action="goBack" class="kreator-btn-secondary">Wstecz</button>' +
-      '<button data-action="submitInquiry" ' + (!state.form.email ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Wyslij zapytanie</button>' +
+      '<button data-action="submitInquiry" ' + (!state.form.email ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Wyślij zapytanie</button>' +
     '</div>';
 
     return html;
@@ -454,12 +454,12 @@
   function renderSaveText() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-4">Zapisz tekst na email</h3>';
-    html += '<p class="text-gray-600 text-sm mb-6">Wyslemy Ci przygotowany tekst na podany adres.</p>';
+    html += '<p class="text-gray-600 text-sm mb-6">Wyślemy Ci przygotowany tekst na podany adres.</p>';
     html += renderError();
-    html += renderInput('email', 'Twoj email *', 'jan@firma.pl');
+    html += renderInput('email', 'Twój email *', 'jan@firma.pl');
     html += '<div class="flex gap-3 mt-6">' +
       '<button data-action="goBack" class="kreator-btn-secondary">Wstecz</button>' +
-      '<button data-action="submitSaveText" ' + (!state.form.email ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Wyslij tekst na email</button>' +
+      '<button data-action="submitSaveText" ' + (!state.form.email ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Wyślij tekst na email</button>' +
     '</div>';
     return html;
   }
@@ -468,9 +468,9 @@
   function renderSuccess() {
     return '<div class="text-center py-8">' +
       '<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 text-2xl">&#10003;</div>' +
-      '<h3 class="text-xl font-bold mb-2">Dziekujemy!</h3>' +
-      '<p class="text-gray-600 mb-6">' + esc(state.toast || 'Odpowiemy w ciagu 2 godzin.') + '</p>' +
-      '<button data-action="reset" class="kreator-btn-primary">Stworz kolejny tekst</button>' +
+      '<h3 class="text-xl font-bold mb-2">Dziękujemy!</h3>' +
+      '<p class="text-gray-600 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
+      '<button data-action="reset" class="kreator-btn-primary">Stwórz kolejny tekst</button>' +
     '</div>';
   }
 
