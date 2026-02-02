@@ -103,6 +103,15 @@ app.get('/opinie/', (req, res) => {
   });
 });
 
+app.get('/nagrania-lektorskie/', (req, res) => {
+  res.render('placeholder', {
+    title: 'Nagrania lektorskie — powitania.pl',
+    description: 'Profesjonalne nagrania lektorskie: IVR, spoty radiowe i TV, e-learning, audiobooki, podcasty.',
+    heading: 'Nagrania lektorskie',
+    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+  });
+});
+
 app.get('/nagranie-ekspresowe/', (req, res) => {
   res.render('placeholder', {
     title: 'Nagranie ekspresowe — powitania.pl',

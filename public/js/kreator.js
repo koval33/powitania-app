@@ -2,14 +2,14 @@
   'use strict';
 
   var SERVICE_TYPES = [
-    { v: 'ivr', l: 'Zapowiedzi telefoniczne (IVR)', icon: '\u{1F4DE}', needsDuration: false, needsLanguages: true },
-    { v: 'radio', l: 'Spot radiowy', icon: '\u{1F4FB}', needsDuration: true },
-    { v: 'tv', l: 'Spot telewizyjny', icon: '\u{1F4FA}', needsDuration: true },
-    { v: 'social', l: 'Social media', icon: '\u{1F4F1}', needsDuration: true },
-    { v: 'elearning', l: 'E-learning / szkolenia', icon: '\u{1F393}', needsDuration: true },
-    { v: 'audiobook', l: 'Audiobook / narracja', icon: '\u{1F4D6}', needsDuration: false },
-    { v: 'film', l: 'Narracja filmowa / dubbing', icon: '\u{1F3AC}', needsDuration: true },
-    { v: 'podcast', l: 'Podcast (intro/outro)', icon: '\u{1F399}\u{FE0F}', needsDuration: true }
+    { v: 'ivr', l: 'Zapowiedzi telefoniczne (IVR)', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>', needsDuration: false, needsLanguages: true },
+    { v: 'radio', l: 'Spot radiowy', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 7.5l16.5-4.125M12 6.75c-2.708 0-5.363.224-7.948.655C2.999 7.58 2.25 8.507 2.25 9.574v9.176A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V9.574c0-1.067-.75-1.994-1.802-2.169A48.329 48.329 0 0012 6.75zm-1.683 6.443a.75.75 0 10-1.218-.874l-1.35 1.88a.75.75 0 001.218.874l1.35-1.88zm5.683-.874a.75.75 0 10-1.218.874l1.35 1.88a.75.75 0 001.218-.874l-1.35-1.88z"/></svg>', needsDuration: true },
+    { v: 'tv', l: 'Spot telewizyjny', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z"/></svg>', needsDuration: true },
+    { v: 'social', l: 'Social media', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>', needsDuration: true },
+    { v: 'elearning', l: 'E-learning / szkolenia', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>', needsDuration: true },
+    { v: 'audiobook', l: 'Audiobook / narracja', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>', needsDuration: false },
+    { v: 'film', l: 'Narracja filmowa / dubbing', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0118 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0118 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 016 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25c0 .621.504 1.125 1.125 1.125M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125M6 13.125C6 12.504 5.496 12 4.875 12m-1.5 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M19.125 12h1.5m0 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5"/></svg>', needsDuration: true },
+    { v: 'podcast', l: 'Podcast (intro/outro)', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>', needsDuration: true }
   ];
 
   var INDUSTRIES = [
@@ -202,13 +202,13 @@
   function renderWelcome() {
     return '<div class="grid md:grid-cols-2 gap-6">' +
       '<button data-action="setPath" data-value="creator" class="kreator-card group">' +
-        '<div class="text-4xl mb-4">&#x270D;&#xFE0F;</div>' +
+        '<div class="mb-4 text-gray-400 group-hover:text-blue-500 transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Potrzebuję tekstu</h3>' +
         '<p class="text-gray-600 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
         '<span class="text-sm text-blue-500 font-medium">Rozpocznij &rarr;</span>' +
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
-        '<div class="text-4xl mb-4">&#x2699;&#xFE0F;</div>' +
+        '<div class="mb-4 text-gray-400 group-hover:text-blue-500 transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-blue-500">Mam tekst</h3>' +
         '<p class="text-gray-600 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
         '<span class="text-sm text-blue-500 font-medium">Zoptymalizuj &rarr;</span>' +
@@ -222,15 +222,13 @@
     html += '<div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
     for (var i = 0; i < SERVICE_TYPES.length; i++) {
       var s = SERVICE_TYPES[i];
-      var active = state.form.serviceType === s.v;
-      html += '<button data-action="setService" data-value="' + s.v + '" class="p-4 rounded-lg border-2 text-left transition-all hover:shadow-md ' +
-        (active ? 'border-blue-500 bg-blue-50 shadow-md' : 'border-gray-200 hover:border-blue-300') + '">' +
-        '<div class="text-2xl mb-2">' + s.icon + '</div>' +
+      html += '<button data-action="setService" data-value="' + s.v + '" class="p-4 rounded-lg border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-blue-300 hover:bg-blue-50">' +
+        '<div class="text-gray-400 mb-2">' + s.icon + '</div>' +
         '<div class="font-medium text-sm">' + s.l + '</div>' +
       '</button>';
     }
     html += '</div>';
-    html += renderNav('welcome', 'details', !state.form.serviceType);
+    html += '<div class="mt-8"><button data-action="goTo" data-value="welcome" class="kreator-btn-secondary">Wstecz</button></div>';
     return html;
   }
 
@@ -544,7 +542,7 @@
       case 'setService':
         state.form.serviceType = value;
         state.form.languages = [];
-        render();
+        setState({ step: 'details' });
         break;
       case 'toggleLang':
         toggleLanguage(value);
