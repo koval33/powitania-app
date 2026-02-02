@@ -1,0 +1,16 @@
+{
+  "name": "powitania-app",
+  "version": "1.0.0",
+  "description": "powitania.pl — Agencja Kreatywna",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "ejs": "^3.1.10",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.15"
+  }
+}
