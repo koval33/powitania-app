@@ -70,11 +70,9 @@ app.get('/lektor/:slug/', (req, res) => {
 });
 
 app.get('/cennik/', (req, res) => {
-  res.render('placeholder', {
+  res.render('cennik', {
     title: 'Cennik — powitania.pl',
-    description: 'Cennik usług nagrań lektorskich.',
-    heading: 'Cennik',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Cennik usług nagrań lektorskich. Przejrzyste ceny dla dwóch grup cenowych.'
   });
 });
 
