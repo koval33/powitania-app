@@ -2,7 +2,7 @@
 
 /* Hero dot grid pattern — Railway style */
 .dot-grid-bg {
-  background-image: radial-gradient(circle, rgba(16, 185, 129, 0.25) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(245, 158, 11, 0.25) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -38,14 +38,14 @@
 }
 
 .kreator-card:hover {
-  border-color: #10b981;
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  border-color: #f59e0b;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15);
   transform: translateY(-2px);
 }
 
 /* Buttons */
 .kreator-btn-primary {
-  background-color: #10b981;
+  background-color: #f59e0b;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -61,8 +61,8 @@
 }
 
 .kreator-btn-primary:hover {
-  background-color: #34d399;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  background-color: #fbbf24;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
 .kreator-btn-primary:disabled {
@@ -85,8 +85,8 @@
 }
 
 .kreator-btn-secondary:hover {
-  border-color: #10b981;
-  color: #10b981;
+  border-color: #f59e0b;
+  color: #f59e0b;
 }
 
 /* Form elements */
@@ -121,8 +121,8 @@
 .kreator-select:focus,
 .kreator-textarea:focus {
   outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
 }
 
 .kreator-textarea {
@@ -135,7 +135,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #10b981;
+  border-top-color: #f59e0b;
   border-radius: 50%;
   animation: kreator-spin 0.8s linear infinite;
   margin: 0 auto;
@@ -151,7 +151,7 @@
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: #10b981;
+  background: #f59e0b;
   color: white;
   padding: 12px 24px;
   border-radius: 10px;
