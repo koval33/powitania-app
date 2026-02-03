@@ -8,9 +8,11 @@
     "dev": "node --watch server.js"
   },
   "dependencies": {
-    "express": "^4.21.0",
-    "ejs": "^3.1.10",
     "dotenv": "^16.4.5",
-    "nodemailer": "^6.9.15"
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^6.9.15",
+    "sharp": "^0.34.5"
   }
 }

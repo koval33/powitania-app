@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
+        accent: { DEFAULT: '#10b981', light: '#34d399', dark: '#059669' }
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-gray-300 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-dark-800 border-b border-white/10 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <a href="/admin/lektorzy/" class="text-gray-400 hover:text-white transition-colors">&larr; Lista</a>
+      <h1 class="text-xl font-bold text-white"><%= editing ? 'Edytuj lektora' : 'Dodaj lektora' %></h1>
+    </div>
+  </header>
+
+  <div class="max-w-3xl mx-auto px-6 py-8">
+    <form method="POST" action="/admin/lektorzy/zapisz/" enctype="multipart/form-data" class="space-y-6">
+      <input type="hidden" name="editing" value="<%= editing %>">
+      <% if (editing && voice) { %>
+        <input type="hidden" name="original_id" value="<%= voice.id %>">
+      <% } %>
+
+      <!-- Nazwa -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Imie i nazwisko *</label>
+        <input type="text" name="name" required value="<%= voice ? voice.name : '' %>" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none" placeholder="np. Jan Kowalski">
+      </div>
+
+      <!-- Plec + Wiek -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1.5">Plec *</label>
+          <select name="gender" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none">
+            <option value="m" <%= voice && voice.gender === 'm' ? 'selected' : '' %>>Mezczyzna</option>
+            <option value="f" <%= voice && voice.gender === 'f' ? 'selected' : '' %>>Kobieta</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1.5">Wiek</label>
+          <select name="age" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none">
+            <option value="">-- nie podano --</option>
+            <option value="20-30 lat" <%= voice && voice.age === '20-30 lat' ? 'selected' : '' %>>20-30 lat</option>
+            <option value="30-50 lat" <%= voice && voice.age === '30-50 lat' ? 'selected' : '' %>>30-50 lat</option>
+            <option value="50 lat +" <%= voice && voice.age === '50 lat +' ? 'selected' : '' %>>50+ lat</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Jezyki -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Jezyki (po przecinku)</label>
+        <input type="text" name="languages" value="<%= voice ? voice.languages.join(', ') : '' %>" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none" placeholder="np. polski, angielski, niemiecki">
+      </div>
+
+      <!-- Opis -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Opis</label>
+        <textarea name="description" rows="3" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none resize-none" placeholder="Krotki opis lektora..."><%= voice && voice.description ? voice.description : '' %></textarea>
+      </div>
+
+      <!-- Zdjecie -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Zdjecie (JPG/PNG/WebP, auto-konwersja do WebP 400px)</label>
+        <% if (voice && voice.photo) { %>
+          <div class="flex items-center gap-3 mb-2">
+            <img src="<%= voice.photo %>" alt="" class="w-16 h-16 rounded-lg object-cover">
+            <span class="text-xs text-gray-500">Aktualne zdjecie. Upload nowego je zastapi.</span>
+          </div>
+        <% } %>
+        <input type="file" name="photo" accept="image/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
+      </div>
+
+      <!-- Audio -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Probka glosu (MP3/WAV)</label>
+        <% if (voice && voice.audio) { %>
+          <div class="flex items-center gap-3 mb-2">
+            <audio controls src="<%= voice.audio %>" class="h-8"></audio>
+            <span class="text-xs text-gray-500">Aktualna probka.</span>
+          </div>
+        <% } %>
+        <input type="file" name="audio" accept="audio/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
+      </div>
+
+      <!-- Realizacja + Grupa cenowa -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1.5">Czas realizacji</label>
+          <select name="turnaround" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none">
+            <option value="">-- brak --</option>
+            <option value="24h" <%= voice && voice.turnaround === '24h' ? 'selected' : '' %>>24h</option>
+            <option value="48h" <%= voice && voice.turnaround === '48h' ? 'selected' : '' %>>48h</option>
+            <option value="72h" <%= voice && voice.turnaround === '72h' ? 'selected' : '' %>>72h</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1.5">Grupa cenowa</label>
+          <select name="priceGroup" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none">
+            <option value="">-- brak --</option>
+            <option value="Niższa grupa cenowa" <%= voice && voice.priceGroup === 'Niższa grupa cenowa' ? 'selected' : '' %>>Nizsza grupa cenowa</option>
+            <option value="Wyższa grupa cenowa" <%= voice && voice.priceGroup === 'Wyższa grupa cenowa' ? 'selected' : '' %>>Wyzsza grupa cenowa</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Zastosowanie -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-2">Zastosowanie</label>
+        <div class="flex flex-wrap gap-4">
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="app_ivr" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.applications && voice.applications.includes('Powitanie tel.') ? 'checked' : '' %>>
+            Powitanie tel.
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="app_reklama" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.applications && voice.applications.includes('Reklama') ? 'checked' : '' %>>
+            Reklama
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="app_narracja" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.applications && voice.applications.includes('Narracja do filmu') ? 'checked' : '' %>>
+            Narracja do filmu
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="app_audiobook" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.applications && voice.applications.includes('Audiobook') ? 'checked' : '' %>>
+            Audiobook
+          </label>
+        </div>
+      </div>
+
+      <!-- Tagi -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-2">Tagi specjalne</label>
+        <div class="flex flex-wrap gap-6">
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="famous" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.famous ? 'checked' : '' %>>
+            Znany i lubiany
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="native" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.native ? 'checked' : '' %>>
+            Native speaker
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="hidePrice" class="w-4 h-4 rounded bg-dark-700 text-accent focus:ring-accent" <%= voice && voice.hidePrice ? 'checked' : '' %>>
+            Ukryj ceny
+          </label>
+        </div>
+      </div>
+
+      <!-- Native language -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Jezyk natywny (jesli Native)</label>
+        <input type="text" name="nativeLanguage" value="<%= voice && voice.nativeLanguage ? voice.nativeLanguage : '' %>" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none" placeholder="np. angielski">
+      </div>
+
+      <!-- Submit -->
+      <div class="flex items-center gap-4 pt-4">
+        <button type="submit" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          <%= editing ? 'Zapisz zmiany' : 'Dodaj lektora' %>
+        </button>
+        <a href="/admin/lektorzy/" class="text-gray-400 hover:text-white transition-colors text-sm">Anuluj</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
