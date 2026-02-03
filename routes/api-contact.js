@@ -40,7 +40,7 @@ router.post('/order', async (req, res) => {
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '—')}</td></tr>
           ${serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(serviceType)}</td></tr>` : ''}
           ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
-          ${totalPrice ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Wycena:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#e8530e;font-weight:bold">${esc(totalPrice)}</td></tr>` : ''}
+          ${totalPrice ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Wycena:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#10b981;font-weight:bold">${esc(totalPrice)}</td></tr>` : ''}
         </table>
         ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
