@@ -69,11 +69,26 @@ app.get('/bank-glosow/', (req, res) => {
 });
 
 app.get('/lektor/:slug/', (req, res) => {
-  res.render('placeholder', {
-    title: 'Lektor — powitania.pl',
-    description: 'Profil lektora',
-    heading: 'Profil lektora',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+  const voices = loadVoices();
+  const lektor = voices.find(v => v.id === req.params.slug);
+  if (!lektor) {
+    return res.status(404).render('placeholder', {
+      title: '404 — powitania.pl',
+      description: 'Nie znaleziono lektora',
+      heading: 'Nie znaleziono lektora',
+      message: 'Lektor o podanym identyfikatorze nie istnieje. <a href="/bank-glosow/" class="text-accent hover:underline">Wróć do banku głosów</a>.'
+    });
+  }
+  // Podobni lektorzy: ta sama płeć, losowo 5
+  const similar = voices
+    .filter(v => v.id !== lektor.id && v.gender === lektor.gender && v.photo)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
+  res.render('lektor', {
+    title: lektor.name + ' — Lektor | powitania.pl',
+    description: lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
+    lektor: lektor,
+    similar: similar
   });
 });
 
