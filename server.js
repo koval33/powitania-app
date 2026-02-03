@@ -55,7 +55,8 @@ function loadVoices() {
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'powitania.pl — Profesjonalne nagrania lektorskie',
-    description: 'Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych lektorów, 30+ języków, 24 lata doświadczenia.'
+    description: 'Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych lektorów, 30+ języków, 24 lata doświadczenia.',
+    voices: loadVoices()
   });
 });
 
@@ -116,6 +117,38 @@ app.get('/nagrania-lektorskie/', (req, res) => {
     description: 'Profesjonalne nagrania lektorskie: IVR, spoty radiowe i TV, e-learning, audiobooki, podcasty.',
     heading: 'Nagrania lektorskie',
     message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+  });
+});
+
+// Service subpages
+app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
+  res.render('uslugi/glos-do-reklamy', {
+    title: 'Głos do reklamy — Spoty reklamowe | powitania.pl',
+    description: 'Profesjonalne spoty reklamowe radiowe, telewizyjne i internetowe. Zatrudnij rozpoznawalne głosy lektorów i stwórz skuteczną reklamę.',
+    voices: loadVoices()
+  });
+});
+
+app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => {
+  res.render('uslugi/lektor-do-filmow', {
+    title: 'Profesjonalny lektor do filmów | powitania.pl',
+    description: 'Narracja lektorska do filmów instruktażowych, korporacyjnych, e-learningowych i promocyjnych. Montaż audio-video w pakiecie.',
+    voices: loadVoices()
+  });
+});
+
+app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
+  res.render('uslugi/zapowiedzi-telefoniczne', {
+    title: 'Zapowiedzi telefoniczne — Nagrania IVR | powitania.pl',
+    description: 'Profesjonalne zapowiedzi telefoniczne i nagrania IVR. Buduj profesjonalny wizerunek firmy już od pierwszego połączenia.',
+    voices: loadVoices()
+  });
+});
+
+app.get('/sesje-zdalne/', (req, res) => {
+  res.render('uslugi/sesje-zdalne', {
+    title: 'Sesje zdalne — Zdalny udział w nagraniu | powitania.pl',
+    description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.'
   });
 });
 
