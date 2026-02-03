@@ -109,7 +109,7 @@
         <% } %>
 
         <!-- CTA -->
-        <div class="flex flex-col gap-3">
+        <div id="lektor-cta-section" class="flex flex-col gap-3">
           <% if (!lektor.hidePrice) { %>
           <button onclick="showOrderModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
@@ -165,14 +165,59 @@
             <div id="wizard-questions"></div>
             <!-- Wycena -->
             <div id="wizard-pricing" class="hidden"></div>
-            <!-- CTA — pojawi się dopiero po wycenie -->
+            <!-- CTA + formularz zamówienia — pojawi się dopiero po wycenie -->
             <div id="wizard-cta" class="hidden mt-5">
-              <button onclick="orderWithContext()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mb-2">
-                Zamów nagranie
-              </button>
-              <button onclick="inquiryWithContext()" class="text-gray-400 hover:text-accent text-sm transition-colors text-center w-full">
-                Zapytaj o szczegóły
-              </button>
+              <div id="wizard-order-form" class="border-t border-white/10 pt-4">
+                <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  Dane do zamówienia
+                </h4>
+                <div class="space-y-3">
+                  <div>
+                    <label class="block text-white text-sm font-medium mb-1">Nazwa firmy *</label>
+                    <input type="text" id="wiz-firmName" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-1">Imię i nazwisko *</label>
+                      <input type="text" id="wiz-name" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                    </div>
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-1">NIP</label>
+                      <input type="text" id="wiz-nip" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-white text-sm font-medium mb-1">Adres *</label>
+                    <input type="text" id="wiz-street" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
+                    <div class="grid grid-cols-3 gap-2">
+                      <input type="text" id="wiz-zipCode" class="bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
+                      <input type="text" id="wiz-city" class="col-span-2 bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
+                    </div>
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-1">Email *</label>
+                      <input type="email" id="wiz-email" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+                    </div>
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-1">Telefon</label>
+                      <input type="tel" id="wiz-phone" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-white text-sm font-medium mb-1">Uwagi</label>
+                    <textarea id="wiz-notes" rows="2" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
+                  </div>
+                </div>
+                <button onclick="submitWizardOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                  Zamów nagranie
+                </button>
+                <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
+                <button onclick="inquiryWithContext()" class="text-gray-400 hover:text-accent text-sm transition-colors text-center w-full mt-2">
+                  Zapytaj o szczegóły
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -504,12 +549,56 @@
           </button>
         </div>
 
-        <!-- CTA po wycenie -->
+        <!-- Formularz zamówienia po wycenie -->
         <div id="modal-order-cta" class="hidden mt-4">
-          <button onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mb-2">
-            Zamów to nagranie
-          </button>
-          <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+          <div class="border-t border-white/10 pt-4">
+            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+              Dane do zamówienia
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-white text-sm font-medium mb-1">Nazwa firmy *</label>
+                <input type="text" id="mod-firmName" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-white text-sm font-medium mb-1">Imię i nazwisko *</label>
+                  <input type="text" id="mod-name" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                </div>
+                <div>
+                  <label class="block text-white text-sm font-medium mb-1">NIP</label>
+                  <input type="text" id="mod-nip" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
+                </div>
+              </div>
+              <div>
+                <label class="block text-white text-sm font-medium mb-1">Adres *</label>
+                <input type="text" id="mod-street" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
+                <div class="grid grid-cols-3 gap-2">
+                  <input type="text" id="mod-zipCode" class="bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
+                  <input type="text" id="mod-city" class="col-span-2 bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-white text-sm font-medium mb-1">Email *</label>
+                  <input type="email" id="mod-email" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+                </div>
+                <div>
+                  <label class="block text-white text-sm font-medium mb-1">Telefon</label>
+                  <input type="tel" id="mod-phone" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
+                </div>
+              </div>
+              <div>
+                <label class="block text-white text-sm font-medium mb-1">Uwagi</label>
+                <textarea id="mod-notes" rows="2" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
+              </div>
+            </div>
+            <button onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+              Zamów nagranie
+            </button>
+            <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+          </div>
         </div>
 
         <div class="mt-4 pt-4 border-t border-white/5 text-center">
@@ -1006,8 +1095,37 @@ function closeOrderModal() {
 }
 
 function onChoiceChange(radio) {
-  // Po wyborze opcji radio/TV/social — oblicz automatycznie
-  modalCalculate();
+  // Rozpoznaj kontekst: wizard vs modal
+  if (radio.closest('#wizard-questions')) {
+    wizardChoiceChanged(radio);
+  } else {
+    modalCalculate();
+  }
+}
+
+function wizardChoiceChanged(radio) {
+  var textPreview = document.getElementById('wizard-text-preview');
+  var pricingEl = document.getElementById('wizard-pricing');
+  var ctaEl = document.getElementById('wizard-cta');
+  if (!textPreview) return;
+
+  var wordCount = countWords(textPreview.textContent);
+  var serviceType = null;
+
+  // Pobierz serviceType z kontekstu lub selecta
+  try {
+    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+    serviceType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
+  } catch(e) {}
+  if (!serviceType) {
+    var sel = document.getElementById('wizard-service-select');
+    if (sel) serviceType = sel.value;
+  }
+  if (!serviceType) return;
+
+  var result = calculatePrice(serviceType, wordCount, { choiceField: radio.value });
+  renderPricing(result, wordCount, pricingEl);
+  ctaEl.classList.remove('hidden');
 }
 
 function modalCalculate() {
@@ -1067,13 +1185,97 @@ function modalCalculate() {
 })();
 
 function submitModalOrder() {
-  try {
-    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
-    ctx.lektorName = LEKTOR_NAME;
-    ctx.lektorId = LEKTOR_ID;
-    sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
-  } catch(e) {}
-  window.location.href = '/?action=order&lektor=' + LEKTOR_ID + '#kreator';
+  var firmName = document.getElementById('mod-firmName').value.trim();
+  var name = document.getElementById('mod-name').value.trim();
+  var email = document.getElementById('mod-email').value.trim();
+  if (!firmName || !name || !email) { alert('Uzupelnij wymagane pola: nazwa firmy, imie i nazwisko, email.'); return; }
+
+  var data = {
+    firmName: firmName,
+    name: name,
+    nip: document.getElementById('mod-nip').value.trim(),
+    street: document.getElementById('mod-street').value.trim(),
+    zipCode: document.getElementById('mod-zipCode').value.trim(),
+    city: document.getElementById('mod-city').value.trim(),
+    email: email,
+    phone: document.getElementById('mod-phone').value.trim(),
+    notes: document.getElementById('mod-notes').value.trim(),
+    lektorName: LEKTOR_NAME,
+    lektorId: LEKTOR_ID,
+    serviceType: document.getElementById('modal-service-select').value,
+    generatedText: document.getElementById('modal-text-input').value.trim()
+  };
+  // Dodaj cene
+  var pricingEl = document.getElementById('modal-pricing');
+  if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
+  var totalEl = document.getElementById('pricing-total');
+  if (totalEl) data.totalPrice = totalEl.textContent;
+
+  submitOrderRequest(data, 'modal-order-msg');
+}
+
+function submitWizardOrder() {
+  var firmName = document.getElementById('wiz-firmName').value.trim();
+  var name = document.getElementById('wiz-name').value.trim();
+  var email = document.getElementById('wiz-email').value.trim();
+  if (!firmName || !name || !email) { alert('Uzupelnij wymagane pola: nazwa firmy, imie i nazwisko, email.'); return; }
+
+  var ctx = {};
+  try { ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); } catch(e) {}
+
+  var data = {
+    firmName: firmName,
+    name: name,
+    nip: document.getElementById('wiz-nip').value.trim(),
+    street: document.getElementById('wiz-street').value.trim(),
+    zipCode: document.getElementById('wiz-zipCode').value.trim(),
+    city: document.getElementById('wiz-city').value.trim(),
+    email: email,
+    phone: document.getElementById('wiz-phone').value.trim(),
+    notes: document.getElementById('wiz-notes').value.trim(),
+    lektorName: LEKTOR_NAME,
+    lektorId: LEKTOR_ID,
+    serviceType: ctx.serviceType || '',
+    generatedText: ctx.text || ''
+  };
+  var pricingEl = document.getElementById('wizard-pricing');
+  if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
+  var totalEl = document.getElementById('pricing-total');
+  if (totalEl) data.totalPrice = totalEl.textContent;
+
+  submitOrderRequest(data, 'wizard-order-msg');
+}
+
+function submitOrderRequest(data, msgElId) {
+  var msgEl = document.getElementById(msgElId);
+  if (msgEl) { msgEl.classList.add('hidden'); }
+
+  fetch('/api/contact/order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    if (msgEl) {
+      msgEl.classList.remove('hidden');
+      if (res.ok) {
+        msgEl.className = 'text-center text-sm mt-2 text-green-400';
+        msgEl.textContent = res.message || 'Zamowienie wyslane. Odpowiemy w ciagu 2 godzin.';
+        try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+      } else {
+        msgEl.className = 'text-center text-sm mt-2 text-red-400';
+        msgEl.textContent = res.error || 'Blad wysylania.';
+      }
+    }
+  })
+  .catch(function() {
+    if (msgEl) {
+      msgEl.className = 'text-center text-sm mt-2 text-red-400';
+      msgEl.textContent = 'Blad polaczenia. Sprobuj ponownie.';
+      msgEl.classList.remove('hidden');
+    }
+  });
 }
 
 function goToKreatorWithLektor() {
@@ -1155,6 +1357,10 @@ function showPricingWizard(ctx) {
   var ctaEl = document.getElementById('wizard-cta');
 
   if (!wizard || !ctx.text) return;
+
+  // Ukryj CTA sekcje — wizard ma wlasne przyciski
+  var ctaSection = document.getElementById('lektor-cta-section');
+  if (ctaSection) ctaSection.classList.add('hidden');
 
   textPreview.textContent = ctx.text;
   var wordCount = countWords(ctx.text);
@@ -1270,6 +1476,9 @@ function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
   var wizard = document.getElementById('pricing-wizard');
   if (wizard) wizard.classList.add('hidden');
+  // Przywroc CTA sekcje
+  var ctaSection = document.getElementById('lektor-cta-section');
+  if (ctaSection) ctaSection.classList.remove('hidden');
 }
 
 // --- Auto-detect context on page load ---
