@@ -109,13 +109,13 @@
         <% } %>
 
         <!-- CTA -->
-        <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex flex-col gap-3">
           <% if (!lektor.hidePrice) { %>
-          <button onclick="showTextInputModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
-            Oblicz koszt
+          <button onclick="showOrderModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+            Zamów nagranie z tym lektorem
           </button>
-          <button onclick="showInquiryModal()" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">
+          <button onclick="showInquiryModal()" class="text-gray-400 hover:text-accent text-sm transition-colors text-center">
             Zapytaj o wycenę
           </button>
           <% } else { %>
@@ -126,29 +126,54 @@
           <% } %>
         </div>
 
-        <!-- KALKULATOR CENOWY (widoczny gdy kontekst z kreatora) -->
-        <div id="kreator-pricing-section" class="mt-6 hidden">
+        <!-- INTELIGENTNY WIZARD WYCENY (widoczny gdy kontekst z kreatora) -->
+        <div id="pricing-wizard" class="mt-6 hidden">
           <div class="bg-dark-800 rounded-2xl border-2 border-accent/30 p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-              <h3 class="text-lg font-bold text-white">Twój tekst</h3>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <h3 class="text-lg font-bold text-white">Wycena nagrania</h3>
+              </div>
+              <button onclick="clearPricingContext()" class="text-gray-500 hover:text-white transition-colors" title="Zamknij">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
             </div>
+            <!-- Podgląd tekstu -->
             <div class="bg-dark-900/50 rounded-lg p-3 mb-4">
-              <div class="text-xs text-gray-500 mb-1">Wygenerowany tekst:</div>
-              <div id="lektor-context-text" class="text-gray-300 text-sm leading-relaxed max-h-28 overflow-y-auto"></div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs text-gray-500">Twój tekst:</span>
+                <span id="wizard-word-count" class="text-xs text-accent font-medium"></span>
+              </div>
+              <div id="wizard-text-preview" class="text-gray-300 text-sm leading-relaxed max-h-24 overflow-y-auto"></div>
             </div>
-            <div id="pricing-calculator"></div>
-            <div class="flex gap-3 mt-5">
-              <button onclick="orderWithContext()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+            <!-- Typ nagrania (jeśli nie przyszedł z kreatora) -->
+            <div id="wizard-service-type" class="hidden mb-4">
+              <label class="block text-white font-semibold mb-2 text-sm">Typ nagrania</label>
+              <select id="wizard-service-select" onchange="updateWizardPricing()" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent focus:outline-none">
+                <option value="">— wybierz typ nagrania —</option>
+                <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
+                <option value="radio">Spot radiowy</option>
+                <option value="tv">Spot telewizyjny</option>
+                <option value="social">Social media</option>
+                <option value="elearning">E-learning / szkolenia</option>
+                <option value="film">Narracja filmowa</option>
+                <option value="audiobook">Audiobook</option>
+                <option value="podcast">Podcast (intro/outro)</option>
+              </select>
+            </div>
+            <!-- Dynamiczne pytania per serviceType -->
+            <div id="wizard-questions"></div>
+            <!-- Wycena -->
+            <div id="wizard-pricing" class="hidden"></div>
+            <!-- CTA — pojawi się dopiero po wycenie -->
+            <div id="wizard-cta" class="hidden mt-5">
+              <button onclick="orderWithContext()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mb-2">
                 Zamów nagranie
               </button>
-              <button onclick="inquiryWithContext()" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+              <button onclick="inquiryWithContext()" class="text-gray-400 hover:text-accent text-sm transition-colors text-center w-full">
                 Zapytaj o szczegóły
               </button>
             </div>
-            <button onclick="clearPricingContext()" class="text-sm text-gray-500 hover:text-accent mt-3 block mx-auto transition-colors">
-              Wyczyść tekst
-            </button>
           </div>
         </div>
 
@@ -436,40 +461,63 @@
 </section>
 
 <% if (!lektor.hidePrice) { %>
-<!-- MODAL: Oblicz koszt -->
-<div id="text-input-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+<!-- MODAL: Zamów nagranie -->
+<div id="order-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
   <div class="bg-dark-800 rounded-2xl border border-white/10 max-w-3xl w-full max-h-[90vh] overflow-y-auto">
     <div class="sticky top-0 bg-dark-800 border-b border-white/10 p-6 flex items-center justify-between rounded-t-2xl">
-      <h3 class="text-2xl font-bold text-white">Oblicz koszt nagrania</h3>
-      <button onclick="closeTextModal()" class="text-gray-400 hover:text-white transition-colors">
+      <h3 class="text-2xl font-bold text-white">Zamów nagranie — <span class="text-accent"><%= lektor.name %></span></h3>
+      <button onclick="closeOrderModal()" class="text-gray-400 hover:text-white transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="p-6">
-      <p class="text-gray-400 mb-6">Wybierz, czy chcesz wkleić gotowy tekst, czy wygenerować nowy w kreatorze.</p>
+      <!-- Krok 1: Tekst -->
+      <div id="modal-step-text">
+        <p class="text-gray-400 mb-4 text-sm">Masz gotowy tekst? Wklej go poniżej. Jeśli nie — skorzystaj z kreatora.</p>
+        <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none resize-y mb-3"></textarea>
 
-      <!-- Opcja 1: Mam tekst -->
-      <div class="bg-dark-700 rounded-xl border border-white/10 p-6 mb-4">
-        <h4 class="text-white font-bold mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          Mam gotowy tekst
-        </h4>
-        <textarea id="modal-text-input" rows="6" placeholder="Wklej tutaj swój tekst..." class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none resize-y mb-3"></textarea>
-        <button onclick="calculateFromText()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors">
-          Oblicz wycenę
-        </button>
-      </div>
+        <!-- Wybór typu nagrania -->
+        <div class="mb-4">
+          <label class="block text-white font-semibold mb-2 text-sm">Typ nagrania *</label>
+          <select id="modal-service-select" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent focus:outline-none">
+            <option value="">— wybierz typ nagrania —</option>
+            <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
+            <option value="radio">Spot radiowy</option>
+            <option value="tv">Spot telewizyjny</option>
+            <option value="social">Social media</option>
+            <option value="elearning">E-learning / szkolenia</option>
+            <option value="film">Narracja filmowa</option>
+            <option value="audiobook">Audiobook</option>
+            <option value="podcast">Podcast (intro/outro)</option>
+          </select>
+        </div>
 
-      <!-- Opcja 2: Nie mam tekstu -->
-      <div class="bg-dark-700 rounded-xl border border-white/10 p-6">
-        <h4 class="text-white font-bold mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-          Nie mam tekstu — wygeneruj w kreatorze
-        </h4>
-        <p class="text-sm text-gray-400 mb-4">Kreator pomoże Ci stworzyć profesjonalny tekst dopasowany do Twojej branży.</p>
-        <button onclick="goToKreatorWithLektor()" class="border-2 border-accent/50 hover:bg-accent/10 text-accent px-6 py-3 rounded-lg font-semibold w-full transition-colors">
-          Przejdź do kreatora
-        </button>
+        <!-- Dynamiczne pytania per serviceType -->
+        <div id="modal-questions"></div>
+
+        <!-- Wycena inline -->
+        <div id="modal-pricing" class="hidden"></div>
+
+        <div class="flex gap-3 mt-4">
+          <button onclick="modalCalculate()" id="modal-calc-btn" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+            Oblicz wycenę
+          </button>
+        </div>
+
+        <!-- CTA po wycenie -->
+        <div id="modal-order-cta" class="hidden mt-4">
+          <button onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mb-2">
+            Zamów to nagranie
+          </button>
+          <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-white/5 text-center">
+          <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light text-sm transition-colors inline-flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+            Nie mam tekstu — wygeneruj w kreatorze
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -666,32 +714,376 @@ var LEKTOR_ID = '<%= lektor.id %>';
 var LEKTOR_PRICES = <%- JSON.stringify(lektor.prices || {}) %>;
 var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
 
-// --- Modal: Oblicz koszt ---
-function showTextInputModal() {
-  var el = document.getElementById('text-input-modal');
+// --- PRICING MAP: mapowanie serviceType → logika wyceny ---
+var PRICING_MAP = {
+  ivr: {
+    label: 'Zapowiedzi telefoniczne (IVR)',
+    method: 'wordcount',
+    tiers: [
+      { max: 100, field: 'ivr_100', label: 'do 100 slow' },
+      { max: 200, field: 'ivr_200', label: '101-200 slow' },
+      { max: Infinity, field: 'ivr_200plus', label: 'pow. 200 slow' }
+    ],
+    addons: [
+      { field: 'ivr_guarantee_100', label: 'Gwarancja modyfikacji', condition: function(w) { return w <= 100; } },
+      { field: 'ivr_guarantee_100plus', label: 'Gwarancja modyfikacji', condition: function(w) { return w > 100; } },
+      { field: 'ivr_melody', label: 'Melodia w tle' },
+      { field: 'ivr_bilingual', label: 'Pakiet dwujezyczny' }
+    ],
+    note: null
+  },
+  radio: {
+    label: 'Spot radiowy',
+    method: 'choice',
+    options: [
+      { field: 'spot_radio_local', label: 'Reklama lokalna' },
+      { field: 'spot_radio_national', label: 'Reklama ogolnokrajowa' }
+    ],
+    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+  },
+  tv: {
+    label: 'Spot telewizyjny',
+    method: 'choice',
+    options: [
+      { field: 'spot_tv_local', label: 'Reklama lokalna' },
+      { field: 'spot_tv_national', label: 'Reklama ogolnokrajowa' }
+    ],
+    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+  },
+  social: {
+    label: 'Social media',
+    method: 'choice',
+    options: [
+      { field: 'spot_social_1min', label: 'Do 1 minuty' },
+      { field: 'spot_social_2min', label: 'Do 2 minut' }
+    ],
+    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+  },
+  elearning: {
+    label: 'E-learning / szkolenia',
+    method: 'pages',
+    tiers: [
+      { max: 1, field: 'narration_1page', label: '1 strona A4' },
+      { max: 2, field: 'narration_2pages', label: '2 strony A4' },
+      { max: 3, field: 'narration_3pages', label: '3 strony A4' },
+      { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ]
+  },
+  film: {
+    label: 'Narracja filmowa',
+    method: 'pages',
+    tiers: [
+      { max: 1, field: 'narration_1page', label: '1 strona A4' },
+      { max: 2, field: 'narration_2pages', label: '2 strony A4' },
+      { max: 3, field: 'narration_3pages', label: '3 strony A4' },
+      { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ]
+  },
+  audiobook: {
+    label: 'Audiobook',
+    method: 'pages',
+    tiers: [
+      { max: 1, field: 'narration_1page', label: '1 strona A4' },
+      { max: 2, field: 'narration_2pages', label: '2 strony A4' },
+      { max: 3, field: 'narration_3pages', label: '3 strony A4' },
+      { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ]
+  },
+  podcast: {
+    label: 'Podcast (intro/outro)',
+    method: 'pages',
+    tiers: [
+      { max: 1, field: 'narration_1page', label: '1 strona A4' },
+      { max: 2, field: 'narration_2pages', label: '2 strony A4' },
+      { max: 3, field: 'narration_3pages', label: '3 strony A4' },
+      { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ]
+  }
+};
+
+// Mapowanie kreator serviceType → PRICING_MAP key
+var SERVICE_TYPE_MAP = {
+  'ivr': 'ivr',
+  'powitania': 'ivr',
+  'radio': 'radio',
+  'tv': 'tv',
+  'social': 'social',
+  'elearning': 'elearning',
+  'film': 'film',
+  'audiobook': 'audiobook',
+  'podcast': 'podcast'
+};
+
+// --- Helpers ---
+function countWords(text) {
+  return text.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+}
+
+function wordsToPages(words) {
+  return Math.ceil(words / 250 * 10) / 10; // ~250 slow = 1 strona A4, zaokr. do 0.1
+}
+
+// --- Inteligentna wycena ---
+function calculatePrice(serviceType, wordCount, options) {
+  var cfg = PRICING_MAP[serviceType];
+  if (!cfg) return null;
+
+  var result = { basePrice: null, label: '', addons: [], note: cfg.note || null, needsCustomQuote: false };
+
+  if (cfg.method === 'wordcount') {
+    // IVR — cena z tieru wg liczby slow
+    for (var i = 0; i < cfg.tiers.length; i++) {
+      var tier = cfg.tiers[i];
+      if (wordCount <= tier.max) {
+        var price = LEKTOR_PRICES[tier.field];
+        if (price && price !== 'wycena') {
+          result.basePrice = parseInt(price);
+          result.label = tier.label;
+        } else {
+          result.needsCustomQuote = true;
+          result.label = tier.label;
+        }
+        break;
+      }
+    }
+    // Addony
+    if (cfg.addons) {
+      cfg.addons.forEach(function(addon) {
+        if (addon.condition && !addon.condition(wordCount)) return;
+        var addonPrice = LEKTOR_PRICES[addon.field];
+        if (addonPrice) {
+          result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice) });
+        }
+      });
+    }
+  } else if (cfg.method === 'choice') {
+    // Radio/TV/Social — klient wybiera opcje
+    if (options && options.choiceField) {
+      var choicePrice = LEKTOR_PRICES[options.choiceField];
+      if (choicePrice) {
+        result.basePrice = parseInt(choicePrice);
+        var chosenOpt = cfg.options.find(function(o) { return o.field === options.choiceField; });
+        result.label = chosenOpt ? chosenOpt.label : '';
+      } else {
+        result.needsCustomQuote = true;
+      }
+    }
+  } else if (cfg.method === 'pages') {
+    // Narracja — cena per strona A4
+    var pages = wordsToPages(wordCount);
+    for (var j = 0; j < cfg.tiers.length; j++) {
+      var pageTier = cfg.tiers[j];
+      if (pages <= pageTier.max) {
+        var pagePrice = LEKTOR_PRICES[pageTier.field];
+        if (pagePrice && pagePrice !== 'wycena') {
+          result.basePrice = parseInt(pagePrice);
+          result.label = pageTier.label + ' (~' + pages.toFixed(1) + ' str.)';
+        } else {
+          result.needsCustomQuote = true;
+          result.label = pageTier.label;
+        }
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
+// --- Renderowanie pytan per serviceType ---
+function renderQuestions(serviceType, targetEl) {
+  var cfg = PRICING_MAP[serviceType];
+  if (!cfg) { targetEl.innerHTML = ''; return; }
+
+  var html = '';
+
+  if (cfg.method === 'choice') {
+    html += '<div class="mb-4">';
+    html += '<label class="block text-white font-semibold mb-3 text-sm">' + getQuestionLabel(serviceType) + '</label>';
+    html += '<div class="space-y-2">';
+    cfg.options.forEach(function(opt) {
+      var price = LEKTOR_PRICES[opt.field];
+      var priceLabel = price ? (' — ' + price + ' zl') : '';
+      html += '<label class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 cursor-pointer hover:bg-dark-600 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-500" onchange="onChoiceChange(this)">' +
+        '<span class="text-gray-300 text-sm">' + opt.label + '<span class="text-accent font-semibold">' + priceLabel + '</span></span>' +
+      '</label>';
+    });
+    html += '</div>';
+    if (cfg.note) {
+      html += '<p class="text-xs text-gray-500 mt-2">' + cfg.note + '</p>';
+    }
+    html += '</div>';
+  }
+
+  targetEl.innerHTML = html;
+}
+
+function getQuestionLabel(serviceType) {
+  switch(serviceType) {
+    case 'radio': return 'Jaki zasieg reklamy radiowej?';
+    case 'tv': return 'Jaki zasieg reklamy telewizyjnej?';
+    case 'social': return 'Czas trwania nagrania:';
+    default: return 'Wybierz opcje:';
+  }
+}
+
+// --- Renderowanie wyceny ---
+function renderPricing(result, wordCount, targetEl) {
+  if (!result) { targetEl.innerHTML = ''; targetEl.classList.add('hidden'); return; }
+
+  var html = '<div class="bg-accent/5 border border-accent/20 rounded-xl p-4 mt-4">';
+
+  if (result.needsCustomQuote) {
+    html += '<div class="text-center">' +
+      '<p class="text-yellow-400 text-sm font-medium">Wycena indywidualna</p>' +
+      '<p class="text-gray-400 text-xs mt-1">Skontaktuj sie, aby uzyskac dokladna wycene.</p>' +
+    '</div>';
+  } else if (result.basePrice) {
+    html += '<div class="flex items-center justify-between mb-2">' +
+      '<span class="text-gray-400 text-sm">' + result.label + '</span>' +
+      '<span class="text-white font-bold">' + result.basePrice + ' zl</span>' +
+    '</div>';
+
+    // Addony (checkboxy IVR)
+    if (result.addons && result.addons.length > 0) {
+      html += '<div class="border-t border-white/5 pt-3 mt-2 space-y-2">';
+      html += '<p class="text-xs text-gray-500 mb-1">Dodatki:</p>';
+      result.addons.forEach(function(addon) {
+        html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
+          '<span class="flex items-center gap-2">' +
+            '<input type="checkbox" class="addon-checkbox accent-emerald-500" data-price="' + addon.price + '" onchange="recalcTotal()">' +
+            '<span class="text-gray-300 text-sm">' + addon.label + '</span>' +
+          '</span>' +
+          '<span class="text-gray-400 text-sm">+' + addon.price + ' zl</span>' +
+        '</label>';
+      });
+      html += '</div>';
+    }
+
+    // Suma
+    html += '<div class="border-t border-accent/20 mt-3 pt-3 flex items-center justify-between">' +
+      '<span class="text-white font-bold">Lacznie:</span>' +
+      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + result.basePrice + ' zl</span>' +
+    '</div>';
+
+    if (result.note) {
+      html += '<p class="text-xs text-gray-500 mt-2">' + result.note + '</p>';
+    }
+  }
+
+  html += '</div>';
+  targetEl.innerHTML = html;
+  targetEl.classList.remove('hidden');
+
+  // Store base price for recalc
+  targetEl.dataset.basePrice = result.basePrice || 0;
+}
+
+function recalcTotal() {
+  // Szukaj basePrice w widocznym kontenerze wyceny
+  var containers = ['wizard-pricing', 'modal-pricing'];
+  var total = 0;
+  for (var i = 0; i < containers.length; i++) {
+    var el = document.getElementById(containers[i]);
+    if (el && el.dataset.basePrice) { total = parseInt(el.dataset.basePrice) || 0; break; }
+  }
+  document.querySelectorAll('.addon-checkbox:checked').forEach(function(cb) {
+    total += parseInt(cb.dataset.price) || 0;
+  });
+  var totalEl = document.getElementById('pricing-total');
+  if (totalEl) totalEl.textContent = total + ' zl';
+}
+
+// --- Modal: Zamow nagranie ---
+function showOrderModal() {
+  var el = document.getElementById('order-modal');
   if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
 }
-function closeTextModal() {
-  var el = document.getElementById('text-input-modal');
+function closeOrderModal() {
+  var el = document.getElementById('order-modal');
   if (el) { el.classList.add('hidden'); document.body.style.overflow = ''; }
 }
 
-function calculateFromText() {
+function onChoiceChange(radio) {
+  // Po wyborze opcji radio/TV/social — oblicz automatycznie
+  modalCalculate();
+}
+
+function modalCalculate() {
   var text = document.getElementById('modal-text-input').value.trim();
-  if (!text) { alert('Proszę wkleić tekst do obliczenia.'); return; }
-  var ctx = { text: text, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
+  var serviceType = document.getElementById('modal-service-select').value;
+  var questionsEl = document.getElementById('modal-questions');
+  var pricingEl = document.getElementById('modal-pricing');
+  var ctaEl = document.getElementById('modal-order-cta');
+
+  if (!text) { alert('Wklej tekst do nagrania.'); return; }
+  if (!serviceType) { alert('Wybierz typ nagrania.'); return; }
+
+  var wordCount = countWords(text);
+  var cfg = PRICING_MAP[serviceType];
+  if (!cfg) return;
+
+  // Dla choice: renderuj pytania jesli nie ma jeszcze
+  if (cfg.method === 'choice') {
+    if (!questionsEl.innerHTML.trim()) {
+      renderQuestions(serviceType, questionsEl);
+      // Nie pokazuj jeszcze wyceny — czekaj na wybor
+      pricingEl.classList.add('hidden');
+      ctaEl.classList.add('hidden');
+      return;
+    }
+    // Sprawdz czy wybrano
+    var chosen = questionsEl.querySelector('input[name="service-choice"]:checked');
+    if (!chosen) { alert('Wybierz opcje z listy.'); return; }
+    var result = calculatePrice(serviceType, wordCount, { choiceField: chosen.value });
+    renderPricing(result, wordCount, pricingEl);
+  } else {
+    // IVR / pages — oblicz od razu
+    var result = calculatePrice(serviceType, wordCount, {});
+    renderPricing(result, wordCount, pricingEl);
+  }
+
+  // Pokaz CTA
+  ctaEl.classList.remove('hidden');
+
+  // Zapisz kontekst
+  var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
-  closeTextModal();
-  showPricingCalculator(ctx);
+}
+
+// Zmiana typu nagrania w modalu — reset pytan
+(function() {
+  var sel = document.getElementById('modal-service-select');
+  if (sel) sel.addEventListener('change', function() {
+    var questionsEl = document.getElementById('modal-questions');
+    var pricingEl = document.getElementById('modal-pricing');
+    var ctaEl = document.getElementById('modal-order-cta');
+    questionsEl.innerHTML = '';
+    pricingEl.innerHTML = '';
+    pricingEl.classList.add('hidden');
+    ctaEl.classList.add('hidden');
+  });
+})();
+
+function submitModalOrder() {
+  try {
+    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+    ctx.lektorName = LEKTOR_NAME;
+    ctx.lektorId = LEKTOR_ID;
+    sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+  } catch(e) {}
+  window.location.href = '/?action=order&lektor=' + LEKTOR_ID + '#kreator';
 }
 
 function goToKreatorWithLektor() {
   var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now() };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
+  closeOrderModal();
   window.location.href = '/#kreator';
 }
 
-// --- Modal: Zapytaj o wycenę ---
+// --- Modal: Zapytaj o wycene ---
 function showInquiryModal() {
   var el = document.getElementById('inquiry-modal');
   if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
@@ -711,7 +1103,6 @@ if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
   fd.forEach(function(v, k) { data[k] = v; });
   data.lektorName = LEKTOR_NAME;
   data.lektorId = LEKTOR_ID;
-  // Include text from context if available
   try {
     var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
     if (ctx.text) data.generatedText = ctx.text;
@@ -719,7 +1110,7 @@ if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
 
   var submitBtn = e.target.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Wysyłanie...';
+  submitBtn.textContent = 'Wysylanie...';
 
   fetch('/api/contact/inquiry', {
     method: 'POST',
@@ -732,70 +1123,127 @@ if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
     msg.classList.remove('hidden');
     if (res.ok) {
       msg.className = 'mt-4 text-center text-sm text-green-400';
-      msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
+      msg.textContent = res.message || 'Dziekujemy! Odpowiemy w ciagu 2 godzin.';
       e.target.reset();
       setTimeout(closeInquiryModal, 2500);
     } else {
       msg.className = 'mt-4 text-center text-sm text-red-400';
-      msg.textContent = res.error || 'Błąd wysyłania.';
+      msg.textContent = res.error || 'Blad wysylania.';
     }
   })
   .catch(function() {
     var msg = document.getElementById('inquiry-modal-msg');
     msg.className = 'mt-4 text-center text-sm text-red-400';
-    msg.textContent = 'Błąd połączenia.';
+    msg.textContent = 'Blad polaczenia.';
     msg.classList.remove('hidden');
   })
   .finally(function() {
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Wyślij zapytanie';
+    submitBtn.textContent = 'Wyslij zapytanie';
   });
 });
 
-// --- Kalkulator cenowy ---
-function showPricingCalculator(ctx) {
-  var section = document.getElementById('kreator-pricing-section');
-  var textDiv = document.getElementById('lektor-context-text');
-  var calc = document.getElementById('pricing-calculator');
-  if (!section || !textDiv || !calc || !ctx.text) return;
+// --- Wizard cenowy (kontekst z kreatora) ---
+function showPricingWizard(ctx) {
+  var wizard = document.getElementById('pricing-wizard');
+  var textPreview = document.getElementById('wizard-text-preview');
+  var wordCountEl = document.getElementById('wizard-word-count');
+  var serviceTypeEl = document.getElementById('wizard-service-type');
+  var serviceSelect = document.getElementById('wizard-service-select');
+  var questionsEl = document.getElementById('wizard-questions');
+  var pricingEl = document.getElementById('wizard-pricing');
+  var ctaEl = document.getElementById('wizard-cta');
 
-  textDiv.textContent = ctx.text;
-  var wordCount = ctx.text.trim().split(/\s+/).length;
+  if (!wizard || !ctx.text) return;
 
-  if (LEKTOR_HIDE_PRICE) {
-    calc.innerHTML = '<div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-center">' +
-      '<p class="text-yellow-400 text-sm">Ten lektor wymaga indywidualnej wyceny</p>' +
-      '<p class="text-gray-400 text-xs mt-1">Wyślij zapytanie poniżej</p>' +
-    '</div>';
-  } else if (LEKTOR_PRICES.ivr_100) {
-    var estimatedPrice = '';
-    if (wordCount <= 100) {
-      estimatedPrice = LEKTOR_PRICES.ivr_100 + ' zł';
-    } else if (wordCount <= 200 && LEKTOR_PRICES.ivr_200) {
-      estimatedPrice = LEKTOR_PRICES.ivr_200 + ' zł';
-    } else if (LEKTOR_PRICES.ivr_200plus && LEKTOR_PRICES.ivr_200plus !== 'wycena') {
-      estimatedPrice = LEKTOR_PRICES.ivr_200plus + ' zł';
+  textPreview.textContent = ctx.text;
+  var wordCount = countWords(ctx.text);
+  wordCountEl.textContent = wordCount + ' slow';
+
+  // Mapuj serviceType z kreatora
+  var mappedType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
+
+  if (mappedType) {
+    // Typ znany z kreatora — nie pokazuj selecta
+    serviceTypeEl.classList.add('hidden');
+    var cfg = PRICING_MAP[mappedType];
+
+    if (cfg.method === 'choice') {
+      // Dopytaj o parametry
+      renderQuestions(mappedType, questionsEl);
+      pricingEl.classList.add('hidden');
+      ctaEl.classList.add('hidden');
+
+      // Listener na wybor
+      questionsEl.addEventListener('change', function(e) {
+        if (e.target.name === 'service-choice') {
+          var result = calculatePrice(mappedType, wordCount, { choiceField: e.target.value });
+          renderPricing(result, wordCount, pricingEl);
+          ctaEl.classList.remove('hidden');
+        }
+      });
     } else {
-      estimatedPrice = 'wycena indyw.';
+      // IVR/pages — oblicz od razu
+      questionsEl.innerHTML = '';
+      var result = calculatePrice(mappedType, wordCount, {});
+      renderPricing(result, wordCount, pricingEl);
+      ctaEl.classList.remove('hidden');
     }
-
-    calc.innerHTML =
-      '<div class="grid grid-cols-2 gap-4">' +
-        '<div class="bg-dark-700 rounded-lg p-4 text-center">' +
-          '<div class="text-3xl font-bold text-white">' + wordCount + '</div>' +
-          '<div class="text-xs text-gray-500 mt-1">Słów w tekście</div>' +
-        '</div>' +
-        '<div class="bg-dark-700 rounded-lg p-4 text-center">' +
-          '<div class="text-3xl font-bold text-accent">' + estimatedPrice + '</div>' +
-          '<div class="text-xs text-gray-500 mt-1">Szacowana cena (IVR)</div>' +
-        '</div>' +
-      '</div>' +
-      '<p class="text-xs text-gray-500 text-center mt-2">Cena orientacyjna — może się różnić w zależności od typu nagrania</p>';
   } else {
-    calc.innerHTML = '<div class="text-center"><p class="text-sm text-gray-400">Skontaktuj się, aby uzyskać wycenę</p></div>';
+    // Typ nieznany — pokaz select
+    serviceTypeEl.classList.remove('hidden');
+    questionsEl.innerHTML = '';
+    pricingEl.classList.add('hidden');
+    ctaEl.classList.add('hidden');
   }
 
-  section.classList.remove('hidden');
+  wizard.classList.remove('hidden');
+  wizard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Wizard select change
+(function() {
+  var sel = document.getElementById('wizard-service-select');
+  if (!sel) return;
+  sel.addEventListener('change', function() {
+    updateWizardPricing();
+  });
+})();
+
+function updateWizardPricing() {
+  var sel = document.getElementById('wizard-service-select');
+  var questionsEl = document.getElementById('wizard-questions');
+  var pricingEl = document.getElementById('wizard-pricing');
+  var ctaEl = document.getElementById('wizard-cta');
+  if (!sel) return;
+
+  var serviceType = sel.value;
+  questionsEl.innerHTML = '';
+  pricingEl.innerHTML = '';
+  pricingEl.classList.add('hidden');
+  ctaEl.classList.add('hidden');
+
+  if (!serviceType) return;
+
+  var textPreview = document.getElementById('wizard-text-preview');
+  var wordCount = countWords(textPreview.textContent);
+  var cfg = PRICING_MAP[serviceType];
+  if (!cfg) return;
+
+  if (cfg.method === 'choice') {
+    renderQuestions(serviceType, questionsEl);
+    questionsEl.addEventListener('change', function handler(e) {
+      if (e.target.name === 'service-choice') {
+        var result = calculatePrice(serviceType, wordCount, { choiceField: e.target.value });
+        renderPricing(result, wordCount, pricingEl);
+        ctaEl.classList.remove('hidden');
+      }
+    });
+  } else {
+    var result = calculatePrice(serviceType, wordCount, {});
+    renderPricing(result, wordCount, pricingEl);
+    ctaEl.classList.remove('hidden');
+  }
 }
 
 function orderWithContext() {
@@ -820,8 +1268,8 @@ function inquiryWithContext() {
 
 function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
-  var section = document.getElementById('kreator-pricing-section');
-  if (section) section.classList.add('hidden');
+  var wizard = document.getElementById('pricing-wizard');
+  if (wizard) wizard.classList.add('hidden');
 }
 
 // --- Auto-detect context on page load ---
@@ -830,7 +1278,9 @@ function clearPricingContext() {
     var ctxStr = sessionStorage.getItem('kreatorContext');
     if (!ctxStr) return;
     var ctx = JSON.parse(ctxStr);
-    if (ctx.text) showPricingCalculator(ctx);
+    if (ctx.text && !LEKTOR_HIDE_PRICE) {
+      showPricingWizard(ctx);
+    }
   } catch(e) {}
 })();
 </script>

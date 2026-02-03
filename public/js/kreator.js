@@ -353,7 +353,7 @@
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
 
     // PRIMARY CTA — Wybierz lektora
-    html += '<div class="mb-5 p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
+    html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
       '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
         '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
@@ -361,13 +361,9 @@
       '</button>' +
     '</div>';
 
-    // 3 CTA levels
-    html += '<div class="space-y-3">' +
-      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4 text-center">Zamów nagranie tego tekstu</button>' +
-      '<div class="grid grid-cols-2 gap-3">' +
-        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycenę</button>' +
-        '<button data-action="goTo" data-value="save-text" class="kreator-btn-secondary w-full text-center">Zapisz tekst na email</button>' +
-      '</div>' +
+    // Lead magnet link
+    html += '<div class="text-center mt-4">' +
+      '<button data-action="goTo" data-value="save-text" class="text-gray-500 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
     '</div>';
 
     return html;
@@ -424,12 +420,17 @@
       '</div>';
     }
 
-    html += '<div class="space-y-3">' +
-      '<button data-action="goTo" data-value="order-form" class="kreator-btn-primary w-full py-4">Zamów nagranie</button>' +
-      '<div class="grid grid-cols-2 gap-3">' +
-        '<button data-action="goTo" data-value="inquiry-form" class="kreator-btn-secondary w-full text-center">Zapytaj o wycenę</button>' +
-        '<button data-action="goTo" data-value="save-text" class="kreator-btn-secondary w-full text-center">Zapisz na email</button>' +
-      '</div>' +
+    // PRIMARY CTA — Wybierz lektora
+    html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
+      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
+        '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
+        'Wybierz lektora' +
+      '</button>' +
+    '</div>';
+
+    html += '<div class="text-center mt-4">' +
+      '<button data-action="goTo" data-value="save-text" class="text-gray-500 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
     '</div>';
 
     return html;
