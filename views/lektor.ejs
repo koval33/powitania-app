@@ -66,16 +66,6 @@
           <% } %>
         </div>
 
-        <!-- Główna próbka audio -->
-        <% if (lektor.audio) { %>
-        <div class="bg-dark-800 rounded-xl p-5 border border-white/5 mb-6">
-          <div class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">Próbka głosowa</div>
-          <audio controls class="w-full audio-player" preload="none" style="height: 40px;">
-            <source src="<%= lektor.audio %>" type="audio/mpeg">
-          </audio>
-        </div>
-        <% } %>
-
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-3">
           <% if (!lektor.hidePrice) { %>
@@ -95,39 +85,62 @@
       </div>
     </div>
 
-    <!-- PRÓBKI AUDIO i VIDEO -->
+    <!-- PRÓBKI GŁOSOWE — jeden blok -->
     <%
-      var audioSamples = (lektor.samples || []).filter(function(s) {
-        return s.url && !s.url.includes('youtu') && !s.url.includes('vimeo');
+      // Zbierz wszystkie audio (main + samples), deduplikacja po URL
+      var allAudio = [];
+      var seenUrls = {};
+      if (lektor.audio) {
+        allAudio.push({ name: 'Próbka główna', url: lektor.audio });
+        seenUrls[lektor.audio] = true;
+      }
+      (lektor.samples || []).forEach(function(s) {
+        if (!s.url) return;
+        var isVideo = s.url.includes('youtu') || s.url.includes('vimeo');
+        if (!isVideo && !seenUrls[s.url]) {
+          allAudio.push(s);
+          seenUrls[s.url] = true;
+        }
       });
       var videoSamples = (lektor.samples || []).filter(function(s) {
         return s.url && (s.url.includes('youtu') || s.url.includes('vimeo'));
       });
     %>
 
-    <% if (audioSamples.length > 0 || videoSamples.length > 0) { %>
+    <% if (allAudio.length > 0 || videoSamples.length > 0) { %>
     <div class="mt-12">
-      <h2 class="text-2xl font-bold text-white mb-6">Wszystkie próbki</h2>
+      <h2 class="text-2xl font-bold text-white mb-6">
+        <span class="inline-flex items-center gap-2">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg>
+          Próbki głosowe
+        </span>
+      </h2>
 
-      <% if (audioSamples.length > 0) { %>
+      <% if (allAudio.length > 0) { %>
       <div class="space-y-3 mb-8">
-        <% audioSamples.forEach(function(sample, idx) { %>
-        <div class="bg-dark-800 rounded-xl border border-white/5 overflow-hidden">
-          <div class="flex items-center gap-4 p-4">
-            <button onclick="toggleSample(this, '<%= sample.url %>')" class="w-10 h-10 bg-accent/10 hover:bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 transition-colors sample-btn">
-              <svg class="w-4 h-4 text-accent play-ico" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="w-4 h-4 text-accent pause-ico hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        <% allAudio.forEach(function(sample, idx) { %>
+        <div class="sample-row bg-dark-800 rounded-xl border border-white/5 overflow-hidden">
+          <div class="flex items-center gap-3 p-4">
+            <!-- Play/Pause -->
+            <button class="sample-play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
+              <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
+            <!-- Progress bar -->
             <div class="flex-1 min-w-0">
-              <div class="text-sm text-white font-medium truncate"><%= sample.name || ('Próbka ' + (idx + 1)) %></div>
+              <div class="text-sm text-white font-medium truncate mb-1.5"><%= sample.name || ('Próbka ' + (idx + 1)) %></div>
+              <div class="audio-progress w-full h-2 bg-dark-600 rounded-full overflow-hidden cursor-pointer">
+                <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+              </div>
+              <div class="flex justify-between mt-1">
+                <span class="audio-time text-xs text-gray-500">0:00</span>
+                <span class="audio-duration text-xs text-gray-500">--:--</span>
+              </div>
             </div>
-            <div class="sample-time text-xs text-gray-600 tabular-nums"></div>
-          </div>
-          <!-- Waveform bar -->
-          <div class="px-4 pb-3 hidden sample-player-wrap">
-            <audio controls class="w-full" preload="none" style="height: 36px;">
-              <source src="<%= sample.url %>" type="audio/mpeg">
-            </audio>
+            <!-- Download -->
+            <a href="<%= sample.url %>" download title="Pobierz MP3" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-dark-600 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </a>
           </div>
         </div>
         <% }); %>
@@ -141,7 +154,6 @@
       </h3>
       <div class="grid sm:grid-cols-2 gap-4">
         <% videoSamples.forEach(function(video) {
-          // Extract YouTube video ID
           var ytId = '';
           var url = video.url || '';
           if (url.includes('youtu.be/')) {
@@ -409,40 +421,82 @@
 </section>
 
 <script>
-// Audio sample player
+// --- Custom audio player (matching bank-glosow style) ---
 var currentAudio = null;
 var currentBtn = null;
 
-function toggleSample(btn, url) {
-  var wrap = btn.closest('.bg-dark-800').querySelector('.sample-player-wrap');
+function initSamplePlayer(btn) {
+  btn.addEventListener('click', function() {
+    var src = this.dataset.audio;
+    var row = this.closest('.sample-row');
+    var playIcon = this.querySelector('.play-icon');
+    var pauseIcon = this.querySelector('.pause-icon');
+    var bar = row.querySelector('.audio-bar');
+    var timeEl = row.querySelector('.audio-time');
+    var durEl = row.querySelector('.audio-duration');
 
-  // Toggle expand
-  if (wrap) wrap.classList.toggle('hidden');
+    // Stop previous if different button
+    if (currentAudio && currentBtn !== this) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentBtn.querySelector('.play-icon').classList.remove('hidden');
+      currentBtn.querySelector('.pause-icon').classList.add('hidden');
+      currentBtn.closest('.sample-row').querySelector('.audio-bar').style.width = '0%';
+    }
 
-  // If different button or no audio
-  if (currentBtn && currentBtn !== btn) {
-    currentBtn.querySelector('.play-ico').classList.remove('hidden');
-    currentBtn.querySelector('.pause-ico').classList.add('hidden');
-  }
+    // Pause if same button playing
+    if (currentAudio && currentBtn === this && !currentAudio.paused) {
+      currentAudio.pause();
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      return;
+    }
 
-  if (currentAudio && !currentAudio.paused && currentBtn === btn) {
-    currentAudio.pause();
-    btn.querySelector('.play-ico').classList.remove('hidden');
-    btn.querySelector('.pause-ico').classList.add('hidden');
-    return;
-  }
+    // Create new audio or reuse
+    if (!currentAudio || currentBtn !== this) {
+      currentAudio = new Audio(src);
+      currentBtn = this;
 
-  if (!currentAudio) currentAudio = new Audio();
-  currentAudio.src = url;
-  currentAudio.play();
-  currentBtn = btn;
-  btn.querySelector('.play-ico').classList.add('hidden');
-  btn.querySelector('.pause-ico').classList.remove('hidden');
+      currentAudio.addEventListener('loadedmetadata', function() {
+        durEl.textContent = formatTime(currentAudio.duration);
+      });
+      currentAudio.addEventListener('timeupdate', function() {
+        var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
+        bar.style.width = pct + '%';
+        timeEl.textContent = formatTime(currentAudio.currentTime);
+      });
+      currentAudio.addEventListener('ended', function() {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        bar.style.width = '0%';
+        timeEl.textContent = '0:00';
+      });
 
-  currentAudio.onended = function() {
-    btn.querySelector('.play-ico').classList.remove('hidden');
-    btn.querySelector('.pause-ico').classList.add('hidden');
-  };
+      // Click-to-seek on progress bar
+      row.querySelector('.audio-progress').addEventListener('click', function(e) {
+        if (currentAudio && currentBtn === btn) {
+          var rect = this.getBoundingClientRect();
+          var pct = (e.clientX - rect.left) / rect.width;
+          currentAudio.currentTime = pct * currentAudio.duration;
+        }
+      });
+    }
+
+    currentAudio.play();
+    playIcon.classList.add('hidden');
+    pauseIcon.classList.remove('hidden');
+  });
+}
+
+// Init all sample players
+document.querySelectorAll('.sample-play-btn').forEach(function(btn) {
+  initSamplePlayer(btn);
+});
+
+function formatTime(s) {
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
 }
 
 // Lazy YouTube embed

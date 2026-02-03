@@ -109,8 +109,8 @@
 
         <!-- Górna część: zdjęcie + info -->
         <div class="flex items-start gap-5 p-6 pb-3">
-          <!-- Zdjęcie -->
-          <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-dark-700">
+          <!-- Zdjęcie (klikalne → profil) -->
+          <a href="<%= v.profileUrl %>" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-dark-700 block hover:ring-2 hover:ring-accent/40 transition-all">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -118,7 +118,7 @@
                 <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
-          </div>
+          </a>
 
           <!-- Info -->
           <div class="flex-1 min-w-0">
@@ -164,6 +164,9 @@
                 <span class="audio-duration text-xs text-gray-500">--:--</span>
               </div>
             </div>
+            <a href="<%= v.audio %>" download title="Pobierz próbkę MP3" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-dark-600 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </a>
           </div>
         </div>
 
