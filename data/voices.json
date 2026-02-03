@@ -7132,7 +7132,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/mikolaj-krawczyk/",
     "prices": {
       "ivr_100": 450,
