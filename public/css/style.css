@@ -7,7 +7,7 @@
 }
 
 .hero-dotgrid {
-  background: #1a1d23 url('/img/hero-lektorzy.jpg') center top / cover no-repeat;
+  background: #1a1d23 url('/img/hero-lektorzy.jpg') center 15% / cover no-repeat;
 }
 
 /* Kreator widget scoped styles */
