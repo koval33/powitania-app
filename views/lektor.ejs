@@ -78,12 +78,19 @@
 
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-3">
+          <% if (!lektor.hidePrice) { %>
           <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">
             Zamów nagranie
           </a>
           <a href="/kontakt/" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">
             Zapytaj o wycenę
           </a>
+          <% } else { %>
+          <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            Zapytaj o wycenę
+          </a>
+          <% } %>
         </div>
       </div>
     </div>
@@ -170,6 +177,56 @@
         <% }); %>
       </div>
       <% } %>
+    </div>
+    <% } %>
+
+    <!-- FORMULARZ ZAPYTANIA (dla lektorów z hidePrice) -->
+    <% if (lektor.hidePrice) { %>
+    <div class="mt-12" id="zapytanie">
+      <div class="max-w-2xl mx-auto bg-dark-800 rounded-2xl border border-white/5 p-8">
+        <p class="text-gray-300 leading-relaxed mb-8">
+          Udział artysty w projekcie jest potwierdzany indywidualnie. Proszę o przesłanie możliwie jak najszerszej informacji na temat projektu (typ nagrania, pole jego eksploatacji, czas na jaki ma zostać udzielona licencja) a my wrócimy z informacją na temat zainteresowania artysty i kosztów.
+        </p>
+        <hr class="border-white/10 mb-8">
+
+        <form id="inquiry-form" enctype="multipart/form-data">
+          <input type="hidden" name="lektorName" value="<%= lektor.name %>">
+          <input type="hidden" name="lektorId" value="<%= lektor.id %>">
+
+          <div class="mb-6">
+            <label class="block text-white font-semibold mb-2">Opis projektu</label>
+            <textarea name="description" rows="5" required
+              class="w-full bg-dark-700 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none resize-y transition-colors"
+              placeholder="Informacje o projekcie: typ nagrania, pole jego eksploatacji, czas na jaki ma zostać udzielona licencja..."></textarea>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-white font-semibold mb-2">Email:</label>
+              <input type="email" name="email" required
+                class="w-full bg-dark-700 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none transition-colors"
+                placeholder="twoj@email.pl">
+            </div>
+            <div>
+              <label class="block text-white font-semibold mb-2">Załącznik do formularza:</label>
+              <label class="flex items-center gap-3 cursor-pointer bg-dark-700 border border-white/10 rounded-xl px-4 py-3 hover:border-white/20 transition-colors">
+                <span class="bg-dark-600 text-gray-300 text-sm px-3 py-1 rounded-lg border border-white/10">Wybierz plik</span>
+                <span class="text-gray-500 text-sm truncate file-label">Brak zaznaczonych plików</span>
+                <input type="file" name="attachment" class="hidden" accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.mp3,.wav,.zip" onchange="updateFileLabel(this)">
+              </label>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" id="inquiry-submit"
+              class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wider transition-colors">
+              Wyślij zapytanie
+            </button>
+          </div>
+
+          <div id="inquiry-msg" class="mt-4 text-center hidden"></div>
+        </form>
+      </div>
     </div>
     <% } %>
 
@@ -392,6 +449,65 @@ function toggleSample(btn, url) {
 function loadYT(el, ytId) {
   el.innerHTML = '<iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
+
+// File upload label
+function updateFileLabel(input) {
+  var label = input.closest('label').querySelector('.file-label');
+  if (input.files.length > 0) {
+    label.textContent = input.files[0].name;
+    label.classList.remove('text-gray-500');
+    label.classList.add('text-white');
+  } else {
+    label.textContent = 'Brak zaznaczonych plików';
+    label.classList.add('text-gray-500');
+    label.classList.remove('text-white');
+  }
+}
+
+// Inquiry form submit
+(function() {
+  var form = document.getElementById('inquiry-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('inquiry-submit');
+    var msg = document.getElementById('inquiry-msg');
+    var origText = btn.textContent;
+
+    btn.disabled = true;
+    btn.textContent = 'Wysyłanie...';
+    msg.className = 'mt-4 text-center hidden';
+
+    var formData = new FormData(form);
+
+    fetch('/api/contact/inquiry-premium', {
+      method: 'POST',
+      body: formData
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        msg.textContent = data.message || 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.';
+        msg.className = 'mt-4 text-center text-accent font-medium';
+        form.reset();
+        var fileLabel = form.querySelector('.file-label');
+        if (fileLabel) { fileLabel.textContent = 'Brak zaznaczonych plików'; fileLabel.className = 'text-gray-500 text-sm truncate file-label'; }
+      } else {
+        msg.textContent = data.error || 'Wystąpił błąd. Spróbuj ponownie.';
+        msg.className = 'mt-4 text-center text-red-400 font-medium';
+      }
+    })
+    .catch(function() {
+      msg.textContent = 'Błąd połączenia. Spróbuj ponownie.';
+      msg.className = 'mt-4 text-center text-red-400 font-medium';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = origText;
+    });
+  });
+})();
 </script>
 
 <%- include('partials/foot') %>
