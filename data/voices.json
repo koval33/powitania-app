@@ -25,7 +25,7 @@
       "Narracja do filmu"
     ],
     "priceGroup": "Niższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/lukasz-nowicki/",
     "prices": {
       "ivr_100": 380,
@@ -144,7 +144,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/wiktor-zborowski/",
     "prices": {
       "ivr_100": 390,
@@ -255,7 +255,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/jacek-rozenek/",
     "prices": {
       "ivr_100": 390,
@@ -840,7 +840,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/katarzyna-skolimowska/",
     "prices": {
       "ivr_100": 390,
@@ -1068,7 +1068,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/pawel-szwajgier/",
     "prices": {
       "ivr_100": 390,
@@ -1295,7 +1295,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/kuba-bielak/",
     "prices": {
       "ivr_100": 390,
@@ -2044,7 +2044,7 @@
       "Narracja do filmu"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/stanislaw-olejniczak/",
     "prices": {
       "ivr_100": 1600,
@@ -5416,7 +5416,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/miroslaw-utta/",
     "prices": {
       "ivr_100": 950,
@@ -6627,7 +6627,7 @@
       "Narracja do filmu"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/bartek-ignacik/",
     "prices": {
       "ivr_100": 850,
@@ -9408,7 +9408,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "hidePrice": false,
+    "hidePrice": true,
     "profileUrl": "/lektor/jacek-kurowski/",
     "prices": {
       "ivr_100": 800,
