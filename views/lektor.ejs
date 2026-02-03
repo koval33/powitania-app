@@ -87,14 +87,18 @@
 
     <!-- PRÓBKI GŁOSOWE — jeden blok -->
     <%
-      // Zbierz wszystkie audio (main + samples), deduplikacja po URL
+      // Zbierz wszystkie audio (main + samples), deduplikacja
       var allAudio = [];
       var seenUrls = {};
+      var samples = lektor.samples || [];
       if (lektor.audio) {
-        allAudio.push({ name: 'Próbka główna', url: lektor.audio });
+        // Użyj lokalnej kopii jako URL, ale nazwę z samples[0] (to ten sam plik)
+        allAudio.push({ name: (samples[0] && samples[0].name) || 'Próbka główna', url: lektor.audio });
         seenUrls[lektor.audio] = true;
+        // Oznacz samples[0] jako widzianą (ten sam plik, inna domena)
+        if (samples.length > 0 && samples[0].url) seenUrls[samples[0].url] = true;
       }
-      (lektor.samples || []).forEach(function(s) {
+      samples.forEach(function(s) {
         if (!s.url) return;
         var isVideo = s.url.includes('youtu') || s.url.includes('vimeo');
         if (!isVideo && !seenUrls[s.url]) {
