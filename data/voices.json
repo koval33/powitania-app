@@ -26,7 +26,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lukasz-nowicki/"
+    "profileUrl": "/lektor/lukasz-nowicki/",
+    "prices": {
+      "ivr_100": 380.0,
+      "ivr_200": 540.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 750.0,
+      "spot_social_2min": 950.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "jon",
@@ -69,7 +90,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jon/"
+    "profileUrl": "/lektor/jon/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1600.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 1200.0,
+      "narration_2pages": 1500.0,
+      "narration_3pages": 1800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "wiktor-zborowski",
@@ -103,7 +145,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/wiktor-zborowski/"
+    "profileUrl": "/lektor/wiktor-zborowski/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 540.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 5000.0,
+      "spot_radio_national": 12000.0,
+      "spot_tv_local": 5000.0,
+      "spot_tv_national": 15000.0,
+      "spot_social_1min": 12000.0,
+      "spot_social_2min": 15000.0,
+      "narration_1page": 8000.0,
+      "narration_2pages": 12000.0,
+      "narration_3pages": 14000.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": "oferta indywidualna"
+    }
   },
   {
     "id": "patryk-2-2",
@@ -142,7 +205,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/patryk-2-2/"
+    "profileUrl": "/lektor/patryk-2-2/",
+    "prices": {
+      "ivr_100": 1100.0,
+      "ivr_200": 1300.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 700.0,
+      "ivr_guarantee_100plus": 900.0,
+      "ivr_bilingual": 700.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 500.0,
+      "narration_2pages": 800.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "jacek-rozenek",
@@ -172,7 +256,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jacek-rozenek/"
+    "profileUrl": "/lektor/jacek-rozenek/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 540.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "andrzej-ferenc",
@@ -210,7 +313,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej-ferenc/"
+    "profileUrl": "/lektor/andrzej-ferenc/",
+    "prices": {
+      "ivr_100": 1400.0,
+      "ivr_200": 1900.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 900.0,
+      "ivr_guarantee_100plus": 1100.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1650.0,
+      "spot_radio_national": 3350.0,
+      "spot_tv_local": 1350.0,
+      "spot_tv_national": 3600.0,
+      "spot_social_1min": 1900.0,
+      "spot_social_2min": 2300.0,
+      "narration_1page": 1600.0,
+      "narration_2pages": 1900.0,
+      "narration_3pages": 2300.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "slawek-2",
@@ -253,7 +377,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/slawek-2/"
+    "profileUrl": "/lektor/slawek-2/",
+    "prices": {
+      "ivr_100": 640.0,
+      "ivr_200": 800.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 250.0,
+      "ivr_guarantee_100plus": 350.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "maciej-3",
@@ -288,7 +433,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-3/"
+    "profileUrl": "/lektor/maciej-3/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 240.0,
+      "ivr_guarantee_100plus": 340.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 350.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 420.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 820.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "maciek",
@@ -327,7 +493,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciek/"
+    "profileUrl": "/lektor/maciek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 580.0,
+      "narration_2pages": 680.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "beata-tadla",
@@ -363,7 +550,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/beata-tadla/"
+    "profileUrl": "/lektor/beata-tadla/",
+    "prices": {
+      "ivr_100": 1200.0,
+      "ivr_200": 1600.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": "wycena",
+      "spot_radio_national": "wycena",
+      "spot_tv_local": "wycena",
+      "spot_tv_national": "wycena",
+      "spot_social_1min": 2500.0,
+      "spot_social_2min": 3500.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1500.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "anna-samusionek",
@@ -399,7 +607,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-samusionek/"
+    "profileUrl": "/lektor/anna-samusionek/",
+    "prices": {
+      "ivr_100": 1500.0,
+      "ivr_200": 2200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 200.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 1800.0,
+      "spot_tv_local": 1500.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 2200.0,
+      "spot_social_2min": 2800.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1400.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 140.0
+    }
   },
   {
     "id": "dorota-3",
@@ -435,7 +664,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota-3/"
+    "profileUrl": "/lektor/dorota-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 1100.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "jacek",
@@ -474,7 +724,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jacek/"
+    "profileUrl": "/lektor/jacek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 350.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2600.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 580.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 840.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "zuzanna",
@@ -510,7 +781,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zuzanna/"
+    "profileUrl": "/lektor/zuzanna/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 350.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 580.0,
+      "narration_2pages": 680.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "katarzyna-skolimowska",
@@ -549,7 +841,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/katarzyna-skolimowska/"
+    "profileUrl": "/lektor/katarzyna-skolimowska/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "carla",
@@ -588,7 +901,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/carla/"
+    "profileUrl": "/lektor/carla/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 450.0,
+      "ivr_guarantee_100plus": 650.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 3000.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 4000.0,
+      "spot_social_1min": 1800.0,
+      "spot_social_2min": 2500.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 150.0
+    }
   },
   {
     "id": "michal-5",
@@ -623,7 +957,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-5/"
+    "profileUrl": "/lektor/michal-5/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "antonis",
@@ -662,7 +1017,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/antonis/"
+    "profileUrl": "/lektor/antonis/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 400.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1600.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1500.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "pawel-szwajgier",
@@ -693,7 +1069,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pawel-szwajgier/"
+    "profileUrl": "/lektor/pawel-szwajgier/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 540.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 2000.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "magdalena",
@@ -728,7 +1125,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/magdalena/"
+    "profileUrl": "/lektor/magdalena/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 580.0,
+      "narration_2pages": 680.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "krzysztof_4",
@@ -764,7 +1182,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof_4/"
+    "profileUrl": "/lektor/krzysztof_4/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 240.0,
+      "ivr_guarantee_100plus": 340.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 350.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2100.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "jacek-brzostynski",
@@ -803,7 +1242,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jacek-brzostynski/"
+    "profileUrl": "/lektor/jacek-brzostynski/",
+    "prices": {
+      "ivr_100": 1400.0,
+      "ivr_200": 1900.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 800.0,
+      "ivr_guarantee_100plus": 1200.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 1800.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 3200.0,
+      "spot_social_1min": 1800.0,
+      "spot_social_2min": 2500.0,
+      "narration_1page": 1200.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 1800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 150.0
+    }
   },
   {
     "id": "kuba-bielak",
@@ -837,7 +1297,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kuba-bielak/"
+    "profileUrl": "/lektor/kuba-bielak/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 540.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "janek",
@@ -872,7 +1353,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/janek/"
+    "profileUrl": "/lektor/janek/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 750.0,
+      "spot_social_2min": 950.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "justyna",
@@ -906,7 +1408,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/justyna/"
+    "profileUrl": "/lektor/justyna/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 740.0,
+      "narration_3pages": 840.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "blazej",
@@ -945,7 +1468,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/blazej/"
+    "profileUrl": "/lektor/blazej/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 580.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "michal-4",
@@ -980,7 +1524,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-4/"
+    "profileUrl": "/lektor/michal-4/",
+    "prices": {
+      "ivr_100": 550.0,
+      "ivr_200": 750.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 700.0,
+      "narration_3pages": 850.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "pavel",
@@ -1011,7 +1576,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pavel/"
+    "profileUrl": "/lektor/pavel/",
+    "prices": {
+      "ivr_100": 600.0,
+      "ivr_200": 800.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 300.0,
+      "ivr_guarantee_100plus": 400.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 650.0,
+      "narration_2pages": 850.0,
+      "narration_3pages": 950.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "krzysztof-2",
@@ -1055,7 +1641,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof-2/"
+    "profileUrl": "/lektor/krzysztof-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "beata",
@@ -1094,7 +1701,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/beata/"
+    "profileUrl": "/lektor/beata/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 750.0,
+      "narration_3pages": 850.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "bartosz",
@@ -1138,7 +1766,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bartosz/"
+    "profileUrl": "/lektor/bartosz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "marcin-5",
@@ -1173,7 +1822,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-5/"
+    "profileUrl": "/lektor/marcin-5/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 190.0,
+      "ivr_guarantee_100plus": 290.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "alicja-2",
@@ -1208,7 +1878,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alicja-2/"
+    "profileUrl": "/lektor/alicja-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "janusz",
@@ -1247,7 +1938,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/janusz/"
+    "profileUrl": "/lektor/janusz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 620.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 850.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "anita",
@@ -1283,7 +1995,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anita/"
+    "profileUrl": "/lektor/anita/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "stanislaw-olejniczak",
@@ -1313,7 +2046,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/stanislaw-olejniczak/"
+    "profileUrl": "/lektor/stanislaw-olejniczak/",
+    "prices": {
+      "ivr_100": 1600.0,
+      "ivr_200": 2800.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1500.0,
+      "spot_radio_national": 2500.0,
+      "spot_tv_local": 1500.0,
+      "spot_tv_national": 5000.0,
+      "spot_social_1min": 2200.0,
+      "spot_social_2min": 2600.0,
+      "narration_1page": 1200.0,
+      "narration_2pages": 1800.0,
+      "narration_3pages": 2400.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": 200.0,
+      "narration_over50pages": "wycena"
+    }
   },
   {
     "id": "mariusz",
@@ -1352,7 +2106,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mariusz/"
+    "profileUrl": "/lektor/mariusz/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2100.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "paulina",
@@ -1391,7 +2166,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/paulina/"
+    "profileUrl": "/lektor/paulina/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "daniel-2",
@@ -1427,7 +2223,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daniel-2/"
+    "profileUrl": "/lektor/daniel-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "konstancja",
@@ -1467,7 +2284,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/konstancja/"
+    "profileUrl": "/lektor/konstancja/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 300.0,
+      "ivr_guarantee_100plus": 400.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1800.0,
+      "spot_social_2min": 2400.0,
+      "narration_1page": 750.0,
+      "narration_2pages": 850.0,
+      "narration_3pages": 950.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 95.0
+    }
   },
   {
     "id": "vasyl",
@@ -1513,7 +2351,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vasyl/"
+    "profileUrl": "/lektor/vasyl/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "kinga",
@@ -1548,7 +2407,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kinga/"
+    "profileUrl": "/lektor/kinga/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "olga",
@@ -1583,7 +2463,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/olga/"
+    "profileUrl": "/lektor/olga/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 950.0,
+      "spot_tv_local": 900.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 620.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 820.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "maciej-jablonski",
@@ -1622,7 +2523,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-jablonski/"
+    "profileUrl": "/lektor/maciej-jablonski/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2600.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "marcin-2",
@@ -1662,7 +2584,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-2/"
+    "profileUrl": "/lektor/marcin-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 920.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "patryk",
@@ -1697,7 +2640,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/patryk/"
+    "profileUrl": "/lektor/patryk/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "aleksander",
@@ -1741,7 +2705,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aleksander/"
+    "profileUrl": "/lektor/aleksander/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "katarzyna",
@@ -1776,7 +2761,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/katarzyna/"
+    "profileUrl": "/lektor/katarzyna/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "rafal",
@@ -1811,7 +2817,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/rafal/"
+    "profileUrl": "/lektor/rafal/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "arek",
@@ -1846,7 +2873,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/arek/"
+    "profileUrl": "/lektor/arek/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "roch",
@@ -1885,7 +2933,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roch/"
+    "profileUrl": "/lektor/roch/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 250.0,
+      "ivr_guarantee_100plus": 350.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "agnieszka-3",
@@ -1920,7 +2989,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka-3/"
+    "profileUrl": "/lektor/agnieszka-3/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 900.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 700.0,
+      "narration_3pages": 850.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "kim-2",
@@ -1956,7 +3046,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kim-2/"
+    "profileUrl": "/lektor/kim-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "zofia",
@@ -1990,7 +3101,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zofia/"
+    "profileUrl": "/lektor/zofia/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "jarek",
@@ -2033,7 +3165,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jarek/"
+    "profileUrl": "/lektor/jarek/",
+    "prices": {
+      "ivr_100": 520.0,
+      "ivr_200": 640.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 280.0,
+      "ivr_guarantee_100plus": 360.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1100.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "marius",
@@ -2072,7 +3225,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marius/"
+    "profileUrl": "/lektor/marius/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 600.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1600.0,
+      "narration_1page": 750.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1050.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "natalia_2",
@@ -2107,7 +3281,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/natalia_2/"
+    "profileUrl": "/lektor/natalia_2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "lucia",
@@ -2148,7 +3343,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lucia/"
+    "profileUrl": "/lektor/lucia/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 2100.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 1200.0,
+      "narration_2pages": 1500.0,
+      "narration_3pages": 1800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "kamila",
@@ -2183,7 +3399,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kamila/"
+    "profileUrl": "/lektor/kamila/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "marek-2",
@@ -2219,7 +3456,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marek-2/"
+    "profileUrl": "/lektor/marek-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "robert",
@@ -2258,7 +3516,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/robert/"
+    "profileUrl": "/lektor/robert/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "przemyslaw",
@@ -2296,7 +3575,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw/"
+    "profileUrl": "/lektor/przemyslaw/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "zbigniew-moskal",
@@ -2335,7 +3635,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zbigniew-moskal/"
+    "profileUrl": "/lektor/zbigniew-moskal/",
+    "prices": {
+      "ivr_100": 550.0,
+      "ivr_200": 700.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 250.0,
+      "ivr_guarantee_100plus": 350.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 600.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 900.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 55.0
+    }
   },
   {
     "id": "lukasz-2",
@@ -2374,7 +3695,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lukasz-2/"
+    "profileUrl": "/lektor/lukasz-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "mateusz-2",
@@ -2409,7 +3751,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz-2/"
+    "profileUrl": "/lektor/mateusz-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "bruno",
@@ -2443,7 +3806,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bruno/"
+    "profileUrl": "/lektor/bruno/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "aleksandra",
@@ -2478,7 +3862,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aleksandra/"
+    "profileUrl": "/lektor/aleksandra/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "anna-2-2",
@@ -2513,7 +3918,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-2-2/"
+    "profileUrl": "/lektor/anna-2-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "franek",
@@ -2543,7 +3969,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/franek/"
+    "profileUrl": "/lektor/franek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "pola",
@@ -2578,7 +4025,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pola/"
+    "profileUrl": "/lektor/pola/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "maciej-2",
@@ -2618,7 +4086,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-2/"
+    "profileUrl": "/lektor/maciej-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "malgorzata",
@@ -2654,7 +4143,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/malgorzata/"
+    "profileUrl": "/lektor/malgorzata/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 350.0,
+      "spot_radio_national": 950.0,
+      "spot_tv_local": 750.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1050.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 100.0
+    }
   },
   {
     "id": "michal-3",
@@ -2689,7 +4199,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-3/"
+    "profileUrl": "/lektor/michal-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "katarzyna-2",
@@ -2724,7 +4255,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/katarzyna-2/"
+    "profileUrl": "/lektor/katarzyna-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "krzysztof-3",
@@ -2759,7 +4311,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof-3/"
+    "profileUrl": "/lektor/krzysztof-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "mateusz-3",
@@ -2803,7 +4376,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz-3/"
+    "profileUrl": "/lektor/mateusz-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "michal",
@@ -2846,7 +4440,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal/"
+    "profileUrl": "/lektor/michal/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "klaudia",
@@ -2881,7 +4496,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/klaudia/"
+    "profileUrl": "/lektor/klaudia/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "jaroslaw",
@@ -2916,7 +4552,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jaroslaw/"
+    "profileUrl": "/lektor/jaroslaw/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 450.0,
+      "narration_2pages": 550.0,
+      "narration_3pages": 650.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "filip",
@@ -2956,7 +4613,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/filip/"
+    "profileUrl": "/lektor/filip/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "daniel",
@@ -2995,7 +4673,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daniel/"
+    "profileUrl": "/lektor/daniel/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "shubham",
@@ -3030,7 +4729,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/shubham/"
+    "profileUrl": "/lektor/shubham/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 600.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1900.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "siddhi",
@@ -3065,7 +4785,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/siddhi/"
+    "profileUrl": "/lektor/siddhi/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1300.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "marcin",
@@ -3099,7 +4840,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin/"
+    "profileUrl": "/lektor/marcin/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 200.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 630.0,
+      "narration_2pages": 750.0,
+      "narration_3pages": 870.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 100.0
+    }
   },
   {
     "id": "uku",
@@ -3134,7 +4896,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/uku/"
+    "profileUrl": "/lektor/uku/",
+    "prices": {
+      "ivr_100": 1100.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 1400.0,
+      "spot_tv_local": 1100.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 750.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1150.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "hasan",
@@ -3169,7 +4952,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hasan/"
+    "profileUrl": "/lektor/hasan/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1050.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1000.0,
+      "spot_radio_national": 3000.0,
+      "spot_tv_local": 2000.0,
+      "spot_tv_national": 4000.0,
+      "spot_social_1min": 1600.0,
+      "spot_social_2min": 2200.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 2000.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 150.0
+    }
   },
   {
     "id": "piotr-2",
@@ -3208,7 +5012,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-2/"
+    "profileUrl": "/lektor/piotr-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2100.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "agnieszka-2",
@@ -3242,7 +5067,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka-2/"
+    "profileUrl": "/lektor/agnieszka-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "anka",
@@ -3277,7 +5123,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anka/"
+    "profileUrl": "/lektor/anka/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "pawel-3",
@@ -3324,7 +5191,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pawel-3/"
+    "profileUrl": "/lektor/pawel-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "przemyslaw-2",
@@ -3358,7 +5246,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw-2/"
+    "profileUrl": "/lektor/przemyslaw-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "tomasz-2",
@@ -3393,7 +5302,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomasz-2/"
+    "profileUrl": "/lektor/tomasz-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "emilia",
@@ -3428,7 +5358,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/emilia/"
+    "profileUrl": "/lektor/emilia/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "miroslaw-utta",
@@ -3467,7 +5418,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/miroslaw-utta/"
+    "profileUrl": "/lektor/miroslaw-utta/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 450.0,
+      "ivr_guarantee_100plus": 900.0,
+      "ivr_bilingual": "wycena",
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 650.0,
+      "narration_2pages": 800.0,
+      "narration_3pages": 1000.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "tomasz",
@@ -3506,7 +5478,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomasz/"
+    "profileUrl": "/lektor/tomasz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "piotr-3",
@@ -3541,7 +5534,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-3/"
+    "profileUrl": "/lektor/piotr-3/",
+    "prices": {
+      "ivr_100": 480.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 450.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 650.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1600.0,
+      "narration_1page": 620.0,
+      "narration_2pages": 930.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "miguel",
@@ -3580,7 +5594,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/miguel/"
+    "profileUrl": "/lektor/miguel/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "aga",
@@ -3614,7 +5649,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aga/"
+    "profileUrl": "/lektor/aga/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": 35.0,
+      "narration_over50pages": "wycena"
+    }
   },
   {
     "id": "iwona",
@@ -3649,7 +5705,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/iwona/"
+    "profileUrl": "/lektor/iwona/",
+    "prices": {
+      "ivr_100": 460.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "catarina",
@@ -3688,7 +5765,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/catarina/"
+    "profileUrl": "/lektor/catarina/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "vishal",
@@ -3723,7 +5821,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vishal/"
+    "profileUrl": "/lektor/vishal/",
+    "prices": {
+      "ivr_100": 900.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1500.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 200.0
+    }
   },
   {
     "id": "sebastian",
@@ -3762,7 +5881,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/sebastian/"
+    "profileUrl": "/lektor/sebastian/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "diana",
@@ -3802,7 +5942,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/diana/"
+    "profileUrl": "/lektor/diana/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "jakub-3",
@@ -3836,7 +5997,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub-3/"
+    "profileUrl": "/lektor/jakub-3/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "lea",
@@ -3878,7 +6060,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lea/"
+    "profileUrl": "/lektor/lea/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 780.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "malgorzata-2",
@@ -3913,7 +6116,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/malgorzata-2/"
+    "profileUrl": "/lektor/malgorzata-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "basia",
@@ -3947,7 +6171,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/basia/"
+    "profileUrl": "/lektor/basia/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "marcin-4",
@@ -3990,7 +6235,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-4/"
+    "profileUrl": "/lektor/marcin-4/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "witalij",
@@ -4022,7 +6288,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/witalij/"
+    "profileUrl": "/lektor/witalij/",
+    "prices": {
+      "ivr_100": 550.0,
+      "ivr_200": 700.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 300.0,
+      "ivr_guarantee_100plus": 450.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 600.0,
+      "narration_2pages": 750.0,
+      "narration_3pages": 900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "eri",
@@ -4056,7 +6343,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/eri/"
+    "profileUrl": "/lektor/eri/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "yurika",
@@ -4092,7 +6398,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/yurika/"
+    "profileUrl": "/lektor/yurika/",
+    "prices": {
+      "ivr_100": 1100.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 1600.0,
+      "spot_tv_local": 1100.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1600.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1150.0,
+      "narration_3pages": 1300.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 100.0
+    }
   },
   {
     "id": "marta-2",
@@ -4135,7 +6462,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marta-2/"
+    "profileUrl": "/lektor/marta-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "marzena-2",
@@ -4170,7 +6518,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marzena-2/"
+    "profileUrl": "/lektor/marzena-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "erwin",
@@ -4205,7 +6574,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/erwin/"
+    "profileUrl": "/lektor/erwin/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 50.0
+    }
   },
   {
     "id": "bartek-ignacik",
@@ -4239,7 +6629,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bartek-ignacik/"
+    "profileUrl": "/lektor/bartek-ignacik/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1050.0,
+      "narration_3pages": 1250.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jaroslav",
@@ -4279,7 +6690,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jaroslav/"
+    "profileUrl": "/lektor/jaroslav/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 500.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 1100.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 130.0
+    }
   },
   {
     "id": "lukasz",
@@ -4307,7 +6739,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lukasz/"
+    "profileUrl": "/lektor/lukasz/",
+    "prices": {
+      "ivr_100": 1200.0,
+      "ivr_200": 2500.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 700.0,
+      "ivr_guarantee_100plus": 1200.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1700.0,
+      "spot_radio_national": 1900.0,
+      "spot_tv_local": 3750.0,
+      "spot_tv_national": 4800.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 2500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1100.0,
+      "narration_3pages": 1200.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 150.0
+    }
   },
   {
     "id": "wiktor",
@@ -4345,7 +6798,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/wiktor/"
+    "profileUrl": "/lektor/wiktor/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 160.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ula",
@@ -4379,7 +6853,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ula/"
+    "profileUrl": "/lektor/ula/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 1100.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 680.0,
+      "narration_3pages": 800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "bartek",
@@ -4413,7 +6908,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bartek/"
+    "profileUrl": "/lektor/bartek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "alan",
@@ -4447,7 +6963,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alan/"
+    "profileUrl": "/lektor/alan/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 550.0,
+      "narration_2pages": 650.0,
+      "narration_3pages": 750.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "arminas",
@@ -4481,7 +7018,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/arminas/"
+    "profileUrl": "/lektor/arminas/",
+    "prices": {
+      "ivr_100": 720.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "vladimir-2",
@@ -4515,7 +7071,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vladimir-2/"
+    "profileUrl": "/lektor/vladimir-2/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 350.0,
+      "ivr_guarantee_100plus": 450.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 750.0,
+      "narration_2pages": 1000.0,
+      "narration_3pages": 1250.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "mikolaj-krawczyk",
@@ -4557,7 +7134,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mikolaj-krawczyk/"
+    "profileUrl": "/lektor/mikolaj-krawczyk/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "daria",
@@ -4591,7 +7189,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daria/"
+    "profileUrl": "/lektor/daria/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "anna-3",
@@ -4627,7 +7246,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-3/"
+    "profileUrl": "/lektor/anna-3/",
+    "prices": {
+      "ivr_100": 480.0,
+      "ivr_200": 720.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 240.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "julien",
@@ -4662,7 +7302,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/julien/"
+    "profileUrl": "/lektor/julien/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 900.0,
+      "spot_radio_national": 1600.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1400.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "krzysiek",
@@ -4697,7 +7356,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysiek/"
+    "profileUrl": "/lektor/krzysiek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "nikolay",
@@ -4733,7 +7413,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nikolay/"
+    "profileUrl": "/lektor/nikolay/",
+    "prices": {
+      "ivr_100": 720.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "maciej",
@@ -4769,7 +7468,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej/"
+    "profileUrl": "/lektor/maciej/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "norbert",
@@ -4806,7 +7526,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/norbert/"
+    "profileUrl": "/lektor/norbert/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ofer",
@@ -4840,7 +7581,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ofer/"
+    "profileUrl": "/lektor/ofer/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "noa",
@@ -4874,7 +7636,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/noa/"
+    "profileUrl": "/lektor/noa/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "eyal",
@@ -4908,7 +7691,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/eyal/"
+    "profileUrl": "/lektor/eyal/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "uriel",
@@ -4942,7 +7744,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/uriel/"
+    "profileUrl": "/lektor/uriel/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "vita",
@@ -4982,7 +7803,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vita/"
+    "profileUrl": "/lektor/vita/",
+    "prices": {
+      "ivr_100": 720.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "goran",
@@ -5026,7 +7866,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/goran/"
+    "profileUrl": "/lektor/goran/",
+    "prices": {
+      "ivr_100": 720.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "mark",
@@ -5061,7 +7920,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mark/"
+    "profileUrl": "/lektor/mark/",
+    "prices": {
+      "ivr_100": 720.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "humberto",
@@ -5114,7 +7992,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/humberto/"
+    "profileUrl": "/lektor/humberto/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "przemyslaw-skowron",
@@ -5147,7 +8044,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw-skowron/"
+    "profileUrl": "/lektor/przemyslaw-skowron/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1250.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 800.0,
+      "spot_radio_national": 1400.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1600.0,
+      "narration_1page": 900.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1400.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "virginie",
@@ -5194,7 +8112,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/virginie/"
+    "profileUrl": "/lektor/virginie/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "tomek",
@@ -5228,7 +8165,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomek/"
+    "profileUrl": "/lektor/tomek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "piotr-4",
@@ -5263,7 +8221,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-4/"
+    "profileUrl": "/lektor/piotr-4/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "edyta",
@@ -5298,7 +8277,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/edyta/"
+    "profileUrl": "/lektor/edyta/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "hubert",
@@ -5333,7 +8333,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hubert/"
+    "profileUrl": "/lektor/hubert/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "dariusz",
@@ -5372,7 +8393,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dariusz/"
+    "profileUrl": "/lektor/dariusz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1200.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "andy",
@@ -5407,7 +8449,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andy/"
+    "profileUrl": "/lektor/andy/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 300.0,
+      "ivr_guarantee_100plus": 450.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 720.0,
+      "narration_2pages": 820.0,
+      "narration_3pages": 920.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "joanna",
@@ -5441,7 +8504,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joanna/"
+    "profileUrl": "/lektor/joanna/",
+    "prices": {
+      "ivr_100": 600.0,
+      "ivr_200": 900.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 300.0,
+      "ivr_guarantee_100plus": 400.0,
+      "ivr_bilingual": 200.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 900.0,
+      "spot_radio_national": 1400.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1800.0,
+      "spot_social_2min": 2400.0,
+      "narration_1page": 800.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1400.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "roy",
@@ -5475,7 +8559,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roy/"
+    "profileUrl": "/lektor/roy/",
+    "prices": {
+      "ivr_100": 1200.0,
+      "ivr_200": 1600.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 600.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 200.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 2000.0,
+      "spot_tv_local": 2000.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 2200.0,
+      "narration_1page": 1500.0,
+      "narration_2pages": 2300.0,
+      "narration_3pages": 3000.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "guntis",
@@ -5510,7 +8615,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/guntis/"
+    "profileUrl": "/lektor/guntis/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1400.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 800.0,
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 1200.0,
+      "spot_radio_national": 1800.0,
+      "spot_tv_local": 1600.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 1100.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 1700.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ada",
@@ -5544,7 +8670,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ada/"
+    "profileUrl": "/lektor/ada/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 1000.0,
+      "spot_tv_local": 700.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 620.0,
+      "narration_2pages": 720.0,
+      "narration_3pages": 820.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "adam",
@@ -5578,7 +8725,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/adam/"
+    "profileUrl": "/lektor/adam/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "silvia",
@@ -5621,7 +8789,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/silvia/"
+    "profileUrl": "/lektor/silvia/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1100.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 1200.0,
+      "spot_tv_national": 3000.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 1250.0,
+      "narration_2pages": 1500.0,
+      "narration_3pages": 1700.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "marta",
@@ -5656,7 +8845,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marta/"
+    "profileUrl": "/lektor/marta/",
+    "prices": {
+      "ivr_100": 1000.0,
+      "ivr_200": 1500.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 500.0,
+      "ivr_guarantee_100plus": 700.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 950.0,
+      "spot_radio_national": 1600.0,
+      "spot_tv_local": 950.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 2200.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 1900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "nina",
@@ -5690,7 +8900,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nina/"
+    "profileUrl": "/lektor/nina/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1200.0,
+      "spot_tv_local": 1500.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 920.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 2100.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": 60.0,
+      "narration_over50pages": "wycena"
+    }
   },
   {
     "id": "ewelina",
@@ -5726,7 +8955,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ewelina/"
+    "profileUrl": "/lektor/ewelina/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "andrzej",
@@ -5778,7 +9028,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej/"
+    "profileUrl": "/lektor/andrzej/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "yonca",
@@ -5809,7 +9080,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/yonca/"
+    "profileUrl": "/lektor/yonca/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 850.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1450.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": 60.0,
+      "narration_over50pages": "wycena"
+    }
   },
   {
     "id": "juliya",
@@ -5844,7 +9134,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/juliya/"
+    "profileUrl": "/lektor/juliya/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "marcin-3",
@@ -5877,7 +9188,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-3/"
+    "profileUrl": "/lektor/marcin-3/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 70.0
+    }
   },
   {
     "id": "klaudiusz",
@@ -5911,7 +9243,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/klaudiusz/"
+    "profileUrl": "/lektor/klaudiusz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 300.0,
+      "ivr_bilingual": 180.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 400.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 120.0
+    }
   },
   {
     "id": "karol",
@@ -5945,7 +9298,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/karol/"
+    "profileUrl": "/lektor/karol/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "andrzej-krusiewicz",
@@ -5980,7 +9354,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej-krusiewicz/"
+    "profileUrl": "/lektor/andrzej-krusiewicz/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jacek-kurowski",
@@ -6015,7 +9410,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jacek-kurowski/"
+    "profileUrl": "/lektor/jacek-kurowski/",
+    "prices": {
+      "ivr_100": 800.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 500.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 500.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1050.0,
+      "narration_3pages": 1200.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "pawel",
@@ -6050,7 +9466,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pawel/"
+    "profileUrl": "/lektor/pawel/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "joachim",
@@ -6082,7 +9517,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joachim/"
+    "profileUrl": "/lektor/joachim/",
+    "prices": {
+      "ivr_100": 750.0,
+      "ivr_200": 950.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 600.0,
+      "spot_radio_national": 950.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1400.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1250.0,
+      "narration_3pages": 1500.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 45.0
+    }
   },
   {
     "id": "dorota-2",
@@ -6112,7 +9568,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota-2/"
+    "profileUrl": "/lektor/dorota-2/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "laura-samojlowicz",
@@ -6147,7 +9624,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/laura-samojlowicz/"
+    "profileUrl": "/lektor/laura-samojlowicz/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1500.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 400.0,
+      "ivr_guarantee_100plus": 600.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1800.0,
+      "spot_tv_local": 950.0,
+      "spot_tv_national": 3200.0,
+      "spot_social_1min": 2350.0,
+      "spot_social_2min": 2550.0,
+      "narration_1page": 1000.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1450.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ioana",
@@ -6182,7 +9680,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ioana/"
+    "profileUrl": "/lektor/ioana/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "alfonso",
@@ -6217,7 +9734,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alfonso/"
+    "profileUrl": "/lektor/alfonso/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "joel",
@@ -6252,7 +9790,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joel/"
+    "profileUrl": "/lektor/joel/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "kornelia",
@@ -6282,7 +9839,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kornelia/"
+    "profileUrl": "/lektor/kornelia/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "mona",
@@ -6317,7 +9893,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mona/"
+    "profileUrl": "/lektor/mona/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "wael",
@@ -6351,7 +9946,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/wael/"
+    "profileUrl": "/lektor/wael/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "luis",
@@ -6386,7 +10000,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/luis/"
+    "profileUrl": "/lektor/luis/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "linda",
@@ -6421,7 +10054,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/linda/"
+    "profileUrl": "/lektor/linda/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "mirek",
@@ -6456,7 +10108,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mirek/"
+    "profileUrl": "/lektor/mirek/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "nanna",
@@ -6486,7 +10159,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nanna/"
+    "profileUrl": "/lektor/nanna/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "liv",
@@ -6516,7 +10208,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/liv/"
+    "profileUrl": "/lektor/liv/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "anna",
@@ -6546,7 +10259,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna/"
+    "profileUrl": "/lektor/anna/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 700.0,
+      "ivr_guarantee_100plus": 900.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 1500.0,
+      "spot_tv_national": 3200.0,
+      "spot_social_1min": 1900.0,
+      "spot_social_2min": 2500.0,
+      "narration_1page": 1100.0,
+      "narration_2pages": 1400.0,
+      "narration_3pages": 1800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "smari",
@@ -6582,7 +10316,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/smari/"
+    "profileUrl": "/lektor/smari/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "gianmarco",
@@ -6613,7 +10366,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/gianmarco/"
+    "profileUrl": "/lektor/gianmarco/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "dorota",
@@ -6647,7 +10419,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota/"
+    "profileUrl": "/lektor/dorota/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 150.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "anne",
@@ -6683,7 +10476,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anne/"
+    "profileUrl": "/lektor/anne/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jenna",
@@ -6718,7 +10530,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jenna/"
+    "profileUrl": "/lektor/jenna/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "roy-2",
@@ -6761,7 +10592,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roy-2/"
+    "profileUrl": "/lektor/roy-2/",
+    "prices": {
+      "ivr_100": 950.0,
+      "ivr_200": 1300.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 450.0,
+      "ivr_guarantee_100plus": 650.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1100.0,
+      "spot_radio_national": 1800.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2800.0,
+      "spot_social_1min": 2400.0,
+      "spot_social_2min": 2800.0,
+      "narration_1page": 1000.0,
+      "narration_2pages": 1500.0,
+      "narration_3pages": 1900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 150.0
+    }
   },
   {
     "id": "jakub",
@@ -6796,7 +10648,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub/"
+    "profileUrl": "/lektor/jakub/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 180.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1200.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "bozena",
@@ -6830,7 +10703,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bozena/"
+    "profileUrl": "/lektor/bozena/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "zuzana",
@@ -6868,7 +10762,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zuzana/"
+    "profileUrl": "/lektor/zuzana/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "zeno",
@@ -6902,7 +10817,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zeno/"
+    "profileUrl": "/lektor/zeno/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "roger",
@@ -6936,7 +10870,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roger/"
+    "profileUrl": "/lektor/roger/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "kristien",
@@ -6971,7 +10924,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kristien/"
+    "profileUrl": "/lektor/kristien/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1150.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "pierre",
@@ -7005,7 +10977,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pierre/"
+    "profileUrl": "/lektor/pierre/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "vladimir",
@@ -7039,7 +11030,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vladimir/"
+    "profileUrl": "/lektor/vladimir/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "lara",
@@ -7073,7 +11083,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lara/"
+    "profileUrl": "/lektor/lara/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "pascale",
@@ -7107,7 +11136,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pascale/"
+    "profileUrl": "/lektor/pascale/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "masha",
@@ -7142,7 +11190,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/masha/"
+    "profileUrl": "/lektor/masha/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "grete",
@@ -7177,7 +11244,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/grete/"
+    "profileUrl": "/lektor/grete/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "natalia-2",
@@ -7211,7 +11297,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/natalia-2/"
+    "profileUrl": "/lektor/natalia-2/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "andrew",
@@ -7246,7 +11351,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrew/"
+    "profileUrl": "/lektor/andrew/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "bill",
@@ -7284,7 +11408,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bill/"
+    "profileUrl": "/lektor/bill/",
+    "prices": {
+      "ivr_100": 1600.0,
+      "ivr_200": 2200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 800.0,
+      "ivr_guarantee_100plus": 1200.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1800.0,
+      "spot_radio_national": 3000.0,
+      "spot_tv_local": 1800.0,
+      "spot_tv_national": 3800.0,
+      "spot_social_1min": 2900.0,
+      "spot_social_2min": 3600.0,
+      "narration_1page": 1800.0,
+      "narration_2pages": 2400.0,
+      "narration_3pages": 2800.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 200.0
+    }
   },
   {
     "id": "david-2",
@@ -7321,7 +11466,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/david-2/"
+    "profileUrl": "/lektor/david-2/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "judit",
@@ -7355,7 +11519,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/judit/"
+    "profileUrl": "/lektor/judit/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "zoltan",
@@ -7388,7 +11571,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zoltan/"
+    "profileUrl": "/lektor/zoltan/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 1100.0,
+      "narration_2pages": 1500.0,
+      "narration_3pages": 1900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "josh",
@@ -7422,7 +11626,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/josh/"
+    "profileUrl": "/lektor/josh/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 350.0,
+      "ivr_guarantee_100plus": 500.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "alison",
@@ -7464,7 +11689,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alison/"
+    "profileUrl": "/lektor/alison/",
+    "prices": {
+      "ivr_100": 860.0,
+      "ivr_200": 1200.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 240.0,
+      "ivr_guarantee_100plus": 340.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1800.0,
+      "narration_1page": 950.0,
+      "narration_2pages": 1600.0,
+      "narration_3pages": 1900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "sandra",
@@ -7498,7 +11744,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/sandra/"
+    "profileUrl": "/lektor/sandra/",
+    "prices": {
+      "ivr_100": 1100.0,
+      "ivr_200": 1450.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1300.0,
+      "spot_radio_national": 1600.0,
+      "spot_tv_local": 1500.0,
+      "spot_tv_national": 2500.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 1900.0,
+      "narration_1page": 1300.0,
+      "narration_2pages": 1600.0,
+      "narration_3pages": 2000.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 200.0
+    }
   },
   {
     "id": "ilja",
@@ -7532,7 +11799,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ilja/"
+    "profileUrl": "/lektor/ilja/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 750.0,
+      "narration_2pages": 950.0,
+      "narration_3pages": 1150.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jeroen",
@@ -7571,7 +11857,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jeroen/"
+    "profileUrl": "/lektor/jeroen/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "edward",
@@ -7602,7 +11907,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/edward/"
+    "profileUrl": "/lektor/edward/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ola",
@@ -7636,7 +11960,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ola/"
+    "profileUrl": "/lektor/ola/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "kim",
@@ -7671,7 +12014,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kim/"
+    "profileUrl": "/lektor/kim/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "david",
@@ -7709,7 +12071,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/david/"
+    "profileUrl": "/lektor/david/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1500.0,
+      "spot_social_2min": 1700.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "helena",
@@ -7743,7 +12124,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/helena/"
+    "profileUrl": "/lektor/helena/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "alicja",
@@ -7777,7 +12177,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alicja/"
+    "profileUrl": "/lektor/alicja/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 340.0,
+      "narration_2pages": 450.0,
+      "narration_3pages": 550.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 60.0
+    }
   },
   {
     "id": "ela",
@@ -7811,7 +12232,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ela/"
+    "profileUrl": "/lektor/ela/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 480.0,
+      "narration_2pages": 580.0,
+      "narration_3pages": 680.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "agnieszka",
@@ -7845,7 +12287,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka/"
+    "profileUrl": "/lektor/agnieszka/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "iza",
@@ -7880,7 +12343,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/iza/"
+    "profileUrl": "/lektor/iza/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "ola-2",
@@ -7915,7 +12399,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ola-2/"
+    "profileUrl": "/lektor/ola-2/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1800.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40.0
+    }
   },
   {
     "id": "luigi",
@@ -7949,7 +12452,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/luigi/"
+    "profileUrl": "/lektor/luigi/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140.0,
+      "ivr_guarantee_100plus": 240.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jessica",
@@ -7985,7 +12509,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jessica/"
+    "profileUrl": "/lektor/jessica/",
+    "prices": {
+      "ivr_100": 1500.0,
+      "ivr_200": 2100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 1500.0,
+      "spot_radio_national": 2500.0,
+      "spot_tv_local": 2000.0,
+      "spot_tv_national": 3500.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 2200.0,
+      "narration_2pages": 3000.0,
+      "narration_3pages": 3900.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 350.0
+    }
   },
   {
     "id": "mateusz",
@@ -8019,7 +12562,28 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz/"
+    "profileUrl": "/lektor/mateusz/",
+    "prices": {
+      "ivr_100": 390.0,
+      "ivr_200": 550.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 160.0,
+      "ivr_guarantee_100plus": 260.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 1900.0,
+      "spot_social_1min": 900.0,
+      "spot_social_2min": 1100.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "minna",
@@ -8049,7 +12613,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/minna/"
+    "profileUrl": "/lektor/minna/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "krzysztof",
@@ -8084,7 +12667,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof/"
+    "profileUrl": "/lektor/krzysztof/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 160.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 1100.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 540.0,
+      "narration_2pages": 640.0,
+      "narration_3pages": 740.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "jakub-2",
@@ -8119,7 +12723,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub-2/"
+    "profileUrl": "/lektor/jakub-2/",
+    "prices": {
+      "ivr_100": 820.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "hoki",
@@ -8153,7 +12776,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hoki/"
+    "profileUrl": "/lektor/hoki/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "june",
@@ -8187,7 +12829,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/june/"
+    "profileUrl": "/lektor/june/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "kritsada",
@@ -8221,7 +12882,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kritsada/"
+    "profileUrl": "/lektor/kritsada/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "peerapon",
@@ -8255,7 +12935,26 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/peerapon/"
+    "profileUrl": "/lektor/peerapon/",
+    "prices": {
+      "ivr_100": 850.0,
+      "ivr_200": 1100.0,
+      "ivr_200plus": "wycena",
+      "ivr_bilingual": 300.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 850.0,
+      "spot_radio_national": 1500.0,
+      "spot_tv_local": 800.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1250.0,
+      "spot_social_2min": 1500.0,
+      "narration_1page": 850.0,
+      "narration_2pages": 1200.0,
+      "narration_3pages": 1600.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   },
   {
     "id": "marek",
@@ -8289,7 +12988,28 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marek/"
+    "profileUrl": "/lektor/marek/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2400.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 90.0
+    }
   },
   {
     "id": "piotr",
@@ -8324,6 +13044,27 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr/"
+    "profileUrl": "/lektor/piotr/",
+    "prices": {
+      "ivr_100": 450.0,
+      "ivr_200": 650.0,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 200.0,
+      "ivr_guarantee_100plus": 280.0,
+      "ivr_bilingual": 150.0,
+      "ivr_melody": 120.0,
+      "spot_radio_local": 300.0,
+      "spot_radio_national": 900.0,
+      "spot_tv_local": 600.0,
+      "spot_tv_national": 2200.0,
+      "spot_social_1min": 1100.0,
+      "spot_social_2min": 1400.0,
+      "narration_1page": 520.0,
+      "narration_2pages": 620.0,
+      "narration_3pages": 720.0,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 80.0
+    }
   }
 ]

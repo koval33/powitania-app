@@ -162,6 +162,156 @@
         <input type="text" name="nativeLanguage" value="<%= voice && voice.nativeLanguage ? voice.nativeLanguage : '' %>" class="w-full bg-dark-800 border border-white/10 text-white rounded-lg px-4 py-3 focus:border-accent focus:outline-none" placeholder="np. angielski">
       </div>
 
+      <!-- ======== CENNIK ======== -->
+      <div class="border-t border-white/10 pt-6 mt-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-white">Cennik indywidualny (netto PLN)</h2>
+          <button type="button" id="fill-defaults-btn" class="text-xs text-accent hover:text-accent-light border border-accent/30 px-3 py-1.5 rounded transition-colors">Wypelnij domyslne wg grupy</button>
+        </div>
+
+        <%
+          var p = (voice && voice.prices) ? voice.prices : {};
+          function pv(key) { return p[key] !== undefined && p[key] !== null ? p[key] : ''; }
+        %>
+
+        <!-- USŁUGA 1: Powitanie / IVR -->
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">1. Powitanie telefoniczne / IVR</h3>
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Do 100 slow</label>
+              <input type="text" name="ivr_100" value="<%= pv('ivr_100') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 390">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">101-200 slow</label>
+              <input type="text" name="ivr_200" value="<%= pv('ivr_200') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 550">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Powyzej 200 slow</label>
+              <input type="text" name="ivr_200plus" value="<%= pv('ivr_200plus') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="wycena">
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Gwarancja modyfikacji (do 100 sl.)</label>
+              <input type="text" name="ivr_guarantee_100" value="<%= pv('ivr_guarantee_100') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 160">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Gwarancja modyfikacji (pow. 100 sl.)</label>
+              <input type="text" name="ivr_guarantee_100plus" value="<%= pv('ivr_guarantee_100plus') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 260">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Melodia / podklad</label>
+              <input type="text" name="ivr_melody" value="<%= pv('ivr_melody') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 120">
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Pakiet dwujezyczny</label>
+              <input type="text" name="ivr_bilingual" value="<%= pv('ivr_bilingual') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 150">
+            </div>
+          </div>
+        </div>
+
+        <!-- USŁUGA 2: Spot reklamowy -->
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-1">2. Spot reklamowy</h3>
+          <p class="text-[11px] text-gray-500 mb-3">Stawka uwzglednia licencje na okres do 12 mies.</p>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Spot radiowy — zasieg lokalny</label>
+              <input type="text" name="spot_radio_local" value="<%= pv('spot_radio_local') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 300">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Spot radiowy — zasieg krajowy</label>
+              <input type="text" name="spot_radio_national" value="<%= pv('spot_radio_national') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 900">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Spot TV — zasieg lokalny</label>
+              <input type="text" name="spot_tv_local" value="<%= pv('spot_tv_local') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 600">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Spot TV — zasieg krajowy</label>
+              <input type="text" name="spot_tv_national" value="<%= pv('spot_tv_national') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 1800">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Social media — do 1 min</label>
+              <input type="text" name="spot_social_1min" value="<%= pv('spot_social_1min') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 900">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">Social media — do 2 min</label>
+              <input type="text" name="spot_social_2min" value="<%= pv('spot_social_2min') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 1100">
+            </div>
+          </div>
+        </div>
+
+        <!-- USŁUGA 3: Narracja do filmu -->
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">3. Narracja do filmu</h3>
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">1 strona A4</label>
+              <input type="text" name="narration_1page" value="<%= pv('narration_1page') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 520">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">2 strony A4</label>
+              <input type="text" name="narration_2pages" value="<%= pv('narration_2pages') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 620">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1">3 strony A4</label>
+              <input type="text" name="narration_3pages" value="<%= pv('narration_3pages') %>" class="price-input w-full bg-dark-800 border border-white/10 text-white rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none" placeholder="np. 720">
+            </div>
+          </div>
+          <p class="text-[11px] text-gray-500 mt-2">Pow. 3 stron A4 = wycena indywidualna (automatycznie)</p>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById('fill-defaults-btn').addEventListener('click', function() {
+          var group = document.querySelector('select[name="priceGroup"]').value;
+          if (!group) {
+            alert('Najpierw wybierz grupe cenowa');
+            return;
+          }
+          var defaults = {
+            'Niższa grupa cenowa': {
+              ivr_100: 390, ivr_200: 550, ivr_200plus: 'wycena',
+              ivr_guarantee_100: 160, ivr_guarantee_100plus: 260,
+              ivr_melody: 120, ivr_bilingual: 150,
+              spot_radio_local: 300, spot_radio_national: 900,
+              spot_tv_local: 600, spot_tv_national: 1900,
+              spot_social_1min: 900, spot_social_2min: 1100,
+              narration_1page: 520, narration_2pages: 620, narration_3pages: 720
+            },
+            'Wyższa grupa cenowa': {
+              ivr_100: 450, ivr_200: 650, ivr_200plus: 'wycena',
+              ivr_guarantee_100: 180, ivr_guarantee_100plus: 280,
+              ivr_melody: 120, ivr_bilingual: 150,
+              spot_radio_local: 850, spot_radio_national: 1500,
+              spot_tv_local: 800, spot_tv_national: 2400,
+              spot_social_1min: 1100, spot_social_2min: 1500,
+              narration_1page: 850, narration_2pages: 1200, narration_3pages: 1600
+            }
+          };
+          var d = defaults[group];
+          if (!d) return;
+
+          var onlyEmpty = confirm('Wypelnic tylko puste pola? (OK = tak, Anuluj = nadpisz wszystko)');
+
+          for (var key in d) {
+            var input = document.querySelector('input[name="' + key + '"]');
+            if (input) {
+              if (onlyEmpty && input.value.trim() !== '') continue;
+              input.value = d[key];
+            }
+          }
+        });
+      </script>
+
       <!-- Submit -->
       <div class="flex items-center gap-4 pt-4">
         <button type="submit" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">

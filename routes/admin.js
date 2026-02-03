@@ -155,6 +155,32 @@ router.post('/zapisz/', upload.fields([
     if (b.app_narracja) applications.push('Narracja do filmu');
     if (b.app_audiobook) applications.push('Audiobook');
 
+    // Parse prices
+    const priceFields = [
+      'ivr_100', 'ivr_200', 'ivr_200plus',
+      'ivr_guarantee_100', 'ivr_guarantee_100plus',
+      'ivr_melody', 'ivr_bilingual',
+      'spot_radio_local', 'spot_radio_national',
+      'spot_tv_local', 'spot_tv_national',
+      'spot_social_1min', 'spot_social_2min',
+      'narration_1page', 'narration_2pages', 'narration_3pages'
+    ];
+    const prices = {};
+    for (const field of priceFields) {
+      const val = (b[field] || '').trim();
+      if (!val) continue;
+      if (val.toLowerCase() === 'wycena') {
+        prices[field] = 'wycena';
+      } else {
+        const num = parseFloat(val);
+        if (!isNaN(num)) prices[field] = num;
+        else prices[field] = val;
+      }
+    }
+    // Auto-set 3plus as wycena
+    prices['narration_3plus'] = 'wycena';
+    prices['ivr_200plus'] = prices['ivr_200plus'] || 'wycena';
+
     const voiceData = {
       id: slug,
       name: b.name,
@@ -172,6 +198,7 @@ router.post('/zapisz/', upload.fields([
       applications,
       priceGroup: b.priceGroup || null,
       hidePrice: b.hidePrice === 'on',
+      prices,
       profileUrl: `/lektor/${slug}/`
     };
 
