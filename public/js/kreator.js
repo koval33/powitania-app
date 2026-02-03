@@ -124,6 +124,18 @@
   function generate() {
     apiCall('generate', state.form, function(data) {
       state.result = data.text;
+      // If coming from lektor page, save text to context and redirect back
+      if (state._returnUrl) {
+        try {
+          var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+          ctx.text = data.text;
+          ctx.serviceType = state.form.serviceType;
+          ctx.industry = state.form.industry;
+          sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+        } catch(e) {}
+        window.location.href = state._returnUrl;
+        return;
+      }
       setState({ step: 'preview', loading: false });
     });
   }
@@ -131,6 +143,16 @@
   function optimize() {
     apiCall('optimize', state.form, function(data) {
       state.result = data.text;
+      // If coming from lektor page, save text to context and redirect back
+      if (state._returnUrl) {
+        try {
+          var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+          ctx.text = data.text;
+          sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+        } catch(e) {}
+        window.location.href = state._returnUrl;
+        return;
+      }
       setState({ step: 'opt-result', loading: false });
     });
   }
@@ -328,7 +350,16 @@
       '<div class="whitespace-pre-wrap text-gray-300 leading-relaxed">' + esc(state.result) + '</div>' +
     '</div>';
 
-    html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-8 block">&larr; Generuj ponownie</button>';
+    html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
+
+    // PRIMARY CTA — Wybierz lektora
+    html += '<div class="mb-5 p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
+      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
+        '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
+        'Wybierz lektora' +
+      '</button>' +
+    '</div>';
 
     // 3 CTA levels
     html += '<div class="space-y-3">' +
@@ -409,6 +440,19 @@
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-6">Zamów nagranie</h3>';
     html += renderError();
+
+    // Show selected lector if available
+    var orderLektorName = '';
+    try { var oc = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); orderLektorName = oc.lektorName || ''; } catch(e) {}
+    if (orderLektorName) {
+      html += '<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-4">' +
+        '<div class="flex items-center gap-2 text-accent font-semibold text-sm">' +
+          '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
+          'Wybrany lektor: ' + esc(orderLektorName) +
+        '</div>' +
+      '</div>';
+    }
+
     html += '<div class="space-y-4">' +
       renderInput('firmName', 'Firma *', 'Nazwa firmy') +
       renderInput('name', 'Imię i nazwisko *', 'Jan Kowalski') +
@@ -567,7 +611,26 @@
       case 'copy':
         copyText();
         break;
+      case 'selectVoice':
+        // Save kreator context to sessionStorage
+        var ctxData = {
+          text: state.result,
+          serviceType: state.form.serviceType,
+          industry: state.form.industry,
+          duration: state.form.duration,
+          company: state.form.company,
+          offering: state.form.offering,
+          tone: state.form.tone,
+          audience: state.form.audience,
+          goal: state.form.goal,
+          timestamp: Date.now()
+        };
+        try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctxData)); } catch(e) {}
+        window.location.href = '/bank-glosow/?from=kreator';
+        break;
       case 'submitOrder':
+        var orderCtx = {};
+        try { orderCtx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); } catch(e) {}
         submitContact('order', {
           firmName: state.form.firmName,
           name: state.form.name,
@@ -575,10 +638,13 @@
           phone: state.form.phone,
           serviceType: state.form.serviceType,
           industry: state.form.industry,
-          generatedText: state.result
+          generatedText: state.result,
+          lektorName: orderCtx.lektorName || ''
         });
         break;
       case 'submitInquiry':
+        var inqCtx = {};
+        try { inqCtx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); } catch(e) {}
         submitContact('inquiry', {
           name: state.form.name,
           email: state.form.email,
@@ -586,7 +652,8 @@
           description: state.form.description,
           serviceType: state.form.serviceType,
           industry: state.form.industry,
-          generatedText: state.result
+          generatedText: state.result,
+          lektorName: inqCtx.lektorName || ''
         });
         break;
       case 'submitSaveText':
@@ -629,6 +696,32 @@
   function init() {
     root = document.getElementById('kreator-root');
     if (!root) return;
+
+    // Check for lector context from sessionStorage (coming from lektor page)
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var action = urlParams.get('action');
+      var ctxStr = sessionStorage.getItem('kreatorContext');
+      if (ctxStr) {
+        var ctx = JSON.parse(ctxStr);
+        if (ctx.returnUrl && ctx.lektorName) {
+          // Coming from lektor page — show lector info banner after text is generated
+          state._returnUrl = ctx.returnUrl;
+          state._lektorName = ctx.lektorName;
+          state._lektorId = ctx.lektorId;
+        }
+        if (action === 'order' && ctx.text && ctx.lektorName) {
+          state.result = ctx.text;
+          setState({ step: 'order-form' });
+          return;
+        } else if (action === 'inquiry' && ctx.text && ctx.lektorName) {
+          state.result = ctx.text;
+          setState({ step: 'inquiry-form' });
+          return;
+        }
+      }
+    } catch(e) {}
+
     render();
   }
 

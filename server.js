@@ -109,11 +109,9 @@ app.get('/faq/', (req, res) => {
 });
 
 app.get('/kontakt/', (req, res) => {
-  res.render('placeholder', {
+  res.render('kontakt', {
     title: 'Kontakt — powitania.pl',
-    description: 'Skontaktuj się z nami.',
-    heading: 'Kontakt',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Skontaktuj się z nami. Odpowiadamy w ciągu 2 godzin.'
   });
 });
 

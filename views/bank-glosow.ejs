@@ -88,6 +88,24 @@
   </div>
 </section>
 
+<!-- KREATOR CONTEXT BANNER -->
+<div id="kreator-context-banner" class="max-w-6xl mx-auto px-4 pt-4 hidden">
+  <div class="bg-accent/10 border-2 border-accent/40 rounded-xl p-5 flex items-start gap-4">
+    <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    <div class="flex-1">
+      <h3 class="text-white font-bold mb-1">Twój tekst jest gotowy</h3>
+      <p class="text-sm text-gray-300 mb-3">Wybierz lektora poniżej, aby zobaczyć wycenę dla tego tekstu</p>
+      <div class="bg-dark-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500 mb-1">Podgląd tekstu:</div>
+        <div id="context-text-preview" class="text-sm text-gray-300 line-clamp-3"></div>
+      </div>
+    </div>
+    <button onclick="clearKreatorContext()" class="text-gray-400 hover:text-white transition-colors flex-shrink-0" title="Zamknij">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
 <!-- LICZNIK -->
 <div class="max-w-6xl mx-auto px-4 py-4">
   <p class="text-sm text-gray-500">Znaleziono: <span id="voice-count" class="text-white font-semibold"><%= voices.length %></span> lektorów</p>
@@ -171,7 +189,14 @@
         </div>
 
         <!-- Footer -->
-        <div class="flex items-center justify-end px-6 pb-5">
+        <div class="flex items-center justify-between px-6 pb-5">
+          <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+            <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
+          <% } else if (v.hidePrice) { %>
+            <span class="text-xs text-yellow-400">wycena indyw.</span>
+          <% } else { %>
+            <span></span>
+          <% } %>
           <a href="<%= v.profileUrl %>" class="text-accent hover:text-accent-light text-sm font-medium transition-colors">
             Więcej &rarr;
           </a>
@@ -203,6 +228,7 @@
     <h2 class="text-2xl font-bold text-white mb-3">Nie możesz się zdecydować?</h2>
     <p class="text-gray-400 mb-6">Opisz swój projekt, a pomożemy dobrać idealny głos.</p>
     <a href="/kontakt/" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zapytaj o lektora</a>
+    <p class="text-gray-500 text-sm mt-3">lub <a href="/#kreator" class="text-accent hover:text-accent-light font-medium">stwórz tekst w kreatorze</a></p>
   </div>
 </section>
 
@@ -397,6 +423,28 @@
   // Init
   updateVisibility();
 })();
+
+// Kreator context detection
+(function() {
+  try {
+    var ctxStr = sessionStorage.getItem('kreatorContext');
+    if (!ctxStr) return;
+    var ctx = JSON.parse(ctxStr);
+    if (!ctx.text) return;
+    var banner = document.getElementById('kreator-context-banner');
+    var preview = document.getElementById('context-text-preview');
+    if (banner && preview) {
+      preview.textContent = ctx.text;
+      banner.classList.remove('hidden');
+    }
+  } catch(e) {}
+})();
+
+function clearKreatorContext() {
+  try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+  var banner = document.getElementById('kreator-context-banner');
+  if (banner) banner.classList.add('hidden');
+}
 </script>
 
 <style>

@@ -111,13 +111,13 @@
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-3">
           <% if (!lektor.hidePrice) { %>
-          <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+          <button onclick="showTextInputModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
             Oblicz koszt
-          </a>
-          <a href="/kontakt/" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">
+          </button>
+          <button onclick="showInquiryModal()" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">
             Zapytaj o wycenę
-          </a>
+          </button>
           <% } else { %>
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
@@ -125,6 +125,33 @@
           </a>
           <% } %>
         </div>
+
+        <!-- KALKULATOR CENOWY (widoczny gdy kontekst z kreatora) -->
+        <div id="kreator-pricing-section" class="mt-6 hidden">
+          <div class="bg-dark-800 rounded-2xl border-2 border-accent/30 p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <h3 class="text-lg font-bold text-white">Twój tekst</h3>
+            </div>
+            <div class="bg-dark-900/50 rounded-lg p-3 mb-4">
+              <div class="text-xs text-gray-500 mb-1">Wygenerowany tekst:</div>
+              <div id="lektor-context-text" class="text-gray-300 text-sm leading-relaxed max-h-28 overflow-y-auto"></div>
+            </div>
+            <div id="pricing-calculator"></div>
+            <div class="flex gap-3 mt-5">
+              <button onclick="orderWithContext()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+                Zamów nagranie
+              </button>
+              <button onclick="inquiryWithContext()" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+                Zapytaj o szczegóły
+              </button>
+            </div>
+            <button onclick="clearPricingContext()" class="text-sm text-gray-500 hover:text-accent mt-3 block mx-auto transition-colors">
+              Wyczyść tekst
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -408,6 +435,88 @@
   </div>
 </section>
 
+<% if (!lektor.hidePrice) { %>
+<!-- MODAL: Oblicz koszt -->
+<div id="text-input-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-dark-800 rounded-2xl border border-white/10 max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="sticky top-0 bg-dark-800 border-b border-white/10 p-6 flex items-center justify-between rounded-t-2xl">
+      <h3 class="text-2xl font-bold text-white">Oblicz koszt nagrania</h3>
+      <button onclick="closeTextModal()" class="text-gray-400 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-6">
+      <p class="text-gray-400 mb-6">Wybierz, czy chcesz wkleić gotowy tekst, czy wygenerować nowy w kreatorze.</p>
+
+      <!-- Opcja 1: Mam tekst -->
+      <div class="bg-dark-700 rounded-xl border border-white/10 p-6 mb-4">
+        <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Mam gotowy tekst
+        </h4>
+        <textarea id="modal-text-input" rows="6" placeholder="Wklej tutaj swój tekst..." class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none resize-y mb-3"></textarea>
+        <button onclick="calculateFromText()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors">
+          Oblicz wycenę
+        </button>
+      </div>
+
+      <!-- Opcja 2: Nie mam tekstu -->
+      <div class="bg-dark-700 rounded-xl border border-white/10 p-6">
+        <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+          Nie mam tekstu — wygeneruj w kreatorze
+        </h4>
+        <p class="text-sm text-gray-400 mb-4">Kreator pomoże Ci stworzyć profesjonalny tekst dopasowany do Twojej branży.</p>
+        <button onclick="goToKreatorWithLektor()" class="border-2 border-accent/50 hover:bg-accent/10 text-accent px-6 py-3 rounded-lg font-semibold w-full transition-colors">
+          Przejdź do kreatora
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Zapytaj o wycenę -->
+<div id="inquiry-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-dark-800 rounded-2xl border border-white/10 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="sticky top-0 bg-dark-800 border-b border-white/10 p-6 flex items-center justify-between rounded-t-2xl">
+      <h3 class="text-2xl font-bold text-white">Zapytaj o wycenę</h3>
+      <button onclick="closeInquiryModal()" class="text-gray-400 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form id="inquiry-modal-form" class="p-6 space-y-4">
+      <div>
+        <label class="block text-white font-semibold mb-2 text-sm">Imię i nazwisko</label>
+        <input type="text" name="name" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none" placeholder="Jan Kowalski">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-white font-semibold mb-2 text-sm">Email *</label>
+          <input type="email" name="email" required class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none" placeholder="jan@firma.pl">
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-2 text-sm">Telefon</label>
+          <input type="tel" name="phone" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none" placeholder="+48 600 000 000">
+        </div>
+      </div>
+      <div>
+        <label class="block text-white font-semibold mb-2 text-sm">Opis projektu</label>
+        <textarea name="description" rows="4" class="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none resize-y" placeholder="Opisz czego potrzebujesz..."></textarea>
+      </div>
+      <div class="flex gap-3 pt-2">
+        <button type="button" onclick="closeInquiryModal()" class="border border-white/20 hover:border-white text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+          Anuluj
+        </button>
+        <button type="submit" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold flex-1 transition-colors">
+          Wyślij zapytanie
+        </button>
+      </div>
+      <div id="inquiry-modal-msg" class="hidden text-center text-sm"></div>
+    </form>
+  </div>
+</div>
+<% } %>
+
 <script>
 // --- Custom audio player (matching bank-glosow style) ---
 var currentAudio = null;
@@ -549,6 +658,180 @@ function updateFileLabel(input) {
       btn.textContent = origText;
     });
   });
+})();
+
+// --- Lektor context data ---
+var LEKTOR_NAME = '<%= lektor.name.replace(/'/g, "\\'") %>';
+var LEKTOR_ID = '<%= lektor.id %>';
+var LEKTOR_PRICES = <%- JSON.stringify(lektor.prices || {}) %>;
+var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
+
+// --- Modal: Oblicz koszt ---
+function showTextInputModal() {
+  var el = document.getElementById('text-input-modal');
+  if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+}
+function closeTextModal() {
+  var el = document.getElementById('text-input-modal');
+  if (el) { el.classList.add('hidden'); document.body.style.overflow = ''; }
+}
+
+function calculateFromText() {
+  var text = document.getElementById('modal-text-input').value.trim();
+  if (!text) { alert('Proszę wkleić tekst do obliczenia.'); return; }
+  var ctx = { text: text, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
+  try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
+  closeTextModal();
+  showPricingCalculator(ctx);
+}
+
+function goToKreatorWithLektor() {
+  var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now() };
+  try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
+  window.location.href = '/#kreator';
+}
+
+// --- Modal: Zapytaj o wycenę ---
+function showInquiryModal() {
+  var el = document.getElementById('inquiry-modal');
+  if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+}
+function closeInquiryModal() {
+  var el = document.getElementById('inquiry-modal');
+  if (el) { el.classList.add('hidden'); document.body.style.overflow = ''; }
+  var msg = document.getElementById('inquiry-modal-msg');
+  if (msg) { msg.classList.add('hidden'); }
+}
+
+var inquiryModalForm = document.getElementById('inquiry-modal-form');
+if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var fd = new FormData(e.target);
+  var data = {};
+  fd.forEach(function(v, k) { data[k] = v; });
+  data.lektorName = LEKTOR_NAME;
+  data.lektorId = LEKTOR_ID;
+  // Include text from context if available
+  try {
+    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+    if (ctx.text) data.generatedText = ctx.text;
+  } catch(ex) {}
+
+  var submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Wysyłanie...';
+
+  fetch('/api/contact/inquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    var msg = document.getElementById('inquiry-modal-msg');
+    msg.classList.remove('hidden');
+    if (res.ok) {
+      msg.className = 'mt-4 text-center text-sm text-green-400';
+      msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
+      e.target.reset();
+      setTimeout(closeInquiryModal, 2500);
+    } else {
+      msg.className = 'mt-4 text-center text-sm text-red-400';
+      msg.textContent = res.error || 'Błąd wysyłania.';
+    }
+  })
+  .catch(function() {
+    var msg = document.getElementById('inquiry-modal-msg');
+    msg.className = 'mt-4 text-center text-sm text-red-400';
+    msg.textContent = 'Błąd połączenia.';
+    msg.classList.remove('hidden');
+  })
+  .finally(function() {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Wyślij zapytanie';
+  });
+});
+
+// --- Kalkulator cenowy ---
+function showPricingCalculator(ctx) {
+  var section = document.getElementById('kreator-pricing-section');
+  var textDiv = document.getElementById('lektor-context-text');
+  var calc = document.getElementById('pricing-calculator');
+  if (!section || !textDiv || !calc || !ctx.text) return;
+
+  textDiv.textContent = ctx.text;
+  var wordCount = ctx.text.trim().split(/\s+/).length;
+
+  if (LEKTOR_HIDE_PRICE) {
+    calc.innerHTML = '<div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-center">' +
+      '<p class="text-yellow-400 text-sm">Ten lektor wymaga indywidualnej wyceny</p>' +
+      '<p class="text-gray-400 text-xs mt-1">Wyślij zapytanie poniżej</p>' +
+    '</div>';
+  } else if (LEKTOR_PRICES.ivr_100) {
+    var estimatedPrice = '';
+    if (wordCount <= 100) {
+      estimatedPrice = LEKTOR_PRICES.ivr_100 + ' zł';
+    } else if (wordCount <= 200 && LEKTOR_PRICES.ivr_200) {
+      estimatedPrice = LEKTOR_PRICES.ivr_200 + ' zł';
+    } else if (LEKTOR_PRICES.ivr_200plus && LEKTOR_PRICES.ivr_200plus !== 'wycena') {
+      estimatedPrice = LEKTOR_PRICES.ivr_200plus + ' zł';
+    } else {
+      estimatedPrice = 'wycena indyw.';
+    }
+
+    calc.innerHTML =
+      '<div class="grid grid-cols-2 gap-4">' +
+        '<div class="bg-dark-700 rounded-lg p-4 text-center">' +
+          '<div class="text-3xl font-bold text-white">' + wordCount + '</div>' +
+          '<div class="text-xs text-gray-500 mt-1">Słów w tekście</div>' +
+        '</div>' +
+        '<div class="bg-dark-700 rounded-lg p-4 text-center">' +
+          '<div class="text-3xl font-bold text-accent">' + estimatedPrice + '</div>' +
+          '<div class="text-xs text-gray-500 mt-1">Szacowana cena (IVR)</div>' +
+        '</div>' +
+      '</div>' +
+      '<p class="text-xs text-gray-500 text-center mt-2">Cena orientacyjna — może się różnić w zależności od typu nagrania</p>';
+  } else {
+    calc.innerHTML = '<div class="text-center"><p class="text-sm text-gray-400">Skontaktuj się, aby uzyskać wycenę</p></div>';
+  }
+
+  section.classList.remove('hidden');
+}
+
+function orderWithContext() {
+  try {
+    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+    ctx.lektorName = LEKTOR_NAME;
+    ctx.lektorId = LEKTOR_ID;
+    sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+  } catch(e) {}
+  window.location.href = '/?action=order&lektor=' + LEKTOR_ID + '#kreator';
+}
+
+function inquiryWithContext() {
+  try {
+    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
+    ctx.lektorName = LEKTOR_NAME;
+    ctx.lektorId = LEKTOR_ID;
+    sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+  } catch(e) {}
+  window.location.href = '/?action=inquiry&lektor=' + LEKTOR_ID + '#kreator';
+}
+
+function clearPricingContext() {
+  try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+  var section = document.getElementById('kreator-pricing-section');
+  if (section) section.classList.add('hidden');
+}
+
+// --- Auto-detect context on page load ---
+(function() {
+  try {
+    var ctxStr = sessionStorage.getItem('kreatorContext');
+    if (!ctxStr) return;
+    var ctx = JSON.parse(ctxStr);
+    if (ctx.text) showPricingCalculator(ctx);
+  } catch(e) {}
 })();
 </script>
 
