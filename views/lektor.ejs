@@ -338,8 +338,8 @@
         <% if (lektor.prices.ivr_100) { %>
         <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
           <div class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 bg-amber-500/10 rounded-lg flex items-center justify-center">
-              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <div class="w-8 h-8 bg-orange-600/10 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
             </div>
             <h3 class="text-white font-bold">Powitanie / IVR</h3>
           </div>
@@ -990,7 +990,7 @@ function renderQuestions(serviceType, targetEl) {
       var price = LEKTOR_PRICES[opt.field];
       var priceLabel = price ? (' — ' + price + ' zl') : '';
       html += '<label class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 cursor-pointer hover:bg-dark-600 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
-        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-amber-500" onchange="onChoiceChange(this)">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-orange-600" onchange="onChoiceChange(this)">' +
         '<span class="text-gray-300 text-sm">' + opt.label + '<span class="text-accent font-semibold">' + priceLabel + '</span></span>' +
       '</label>';
     });
@@ -1037,7 +1037,7 @@ function renderPricing(result, wordCount, targetEl) {
       result.addons.forEach(function(addon) {
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
           '<span class="flex items-center gap-2">' +
-            '<input type="checkbox" class="addon-checkbox accent-amber-500" data-price="' + addon.price + '" onchange="recalcTotal()">' +
+            '<input type="checkbox" class="addon-checkbox accent-orange-600" data-price="' + addon.price + '" onchange="recalcTotal()">' +
             '<span class="text-gray-300 text-sm">' + addon.label + '</span>' +
           '</span>' +
           '<span class="text-gray-400 text-sm">+' + addon.price + ' zl</span>' +
@@ -1287,7 +1287,7 @@ function submitOrderRequest(data, msgElId) {
     if (msgEl) {
       msgEl.classList.remove('hidden');
       if (res.ok) {
-        msgEl.className = 'text-center text-sm mt-2 text-amber-400';
+        msgEl.className = 'text-center text-sm mt-2 text-orange-500';
         msgEl.textContent = res.message || 'Zamowienie wyslane. Odpowiemy w ciagu 2 godzin.';
         try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
       } else {
@@ -1351,7 +1351,7 @@ if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
     var msg = document.getElementById('inquiry-modal-msg');
     msg.classList.remove('hidden');
     if (res.ok) {
-      msg.className = 'mt-4 text-center text-sm text-amber-400';
+      msg.className = 'mt-4 text-center text-sm text-orange-500';
       msg.textContent = res.message || 'Dziekujemy! Odpowiemy w ciagu 2 godzin.';
       e.target.reset();
       setTimeout(closeInquiryModal, 2500);
