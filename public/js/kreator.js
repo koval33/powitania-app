@@ -137,6 +137,7 @@
         return;
       }
       setState({ step: 'preview', loading: false });
+      scrollToKreator();
     });
   }
 
@@ -154,7 +155,15 @@
         return;
       }
       setState({ step: 'opt-result', loading: false });
+      scrollToKreator();
     });
+  }
+
+  function scrollToKreator() {
+    setTimeout(function() {
+      var el = document.getElementById('kreator');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
   function submitContact(endpoint, body) {
@@ -187,13 +196,19 @@
   }
 
   // Render
+  var _frozenHeight = 0;
+
   function render() {
     if (!root) return;
-    // Zamroź wysokość kontenera żeby re-render nie powodował layout shift / scroll
-    var prevHeight = root.offsetHeight;
-    if (prevHeight > 0) {
-      root.style.minHeight = prevHeight + 'px';
+
+    // Przy wejściu w loading — zamroź wysokość kontenera (formularz ~500px)
+    if (state.loading && _frozenHeight === 0) {
+      _frozenHeight = root.offsetHeight;
     }
+    if (_frozenHeight > 0) {
+      root.style.minHeight = _frozenHeight + 'px';
+    }
+
     var renderers = {
       'welcome': renderWelcome,
       'service-type': renderServiceType,
@@ -209,10 +224,11 @@
     var fn = renderers[state.step] || renderWelcome;
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
-    // Podczas loading trzymaj minHeight (spinner jest krótki — bez tego strona skacze)
-    // Po załadowaniu contentu — zwolnij minHeight z krótkim opóźnieniem
-    if (!state.loading) {
-      setTimeout(function() { root.style.minHeight = ''; }, 50);
+
+    // Zwolnij frozen height dopiero gdy loading się skończy
+    if (!state.loading && _frozenHeight > 0) {
+      _frozenHeight = 0;
+      root.style.minHeight = '';
     }
   }
 
@@ -222,7 +238,11 @@
   }
 
   function renderLoading() {
-    return '<div class="text-center py-12"><div class="kreator-spinner"></div><p class="text-gray-400 mt-4">Przygotowuję tekst...</p></div>';
+    return '<div class="flex flex-col items-center justify-center py-20">' +
+      '<div class="kreator-spinner mb-4"></div>' +
+      '<p class="text-gray-300 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
+      '<p class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
+    '</div>';
   }
 
   function renderError() {
