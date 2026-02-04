@@ -419,10 +419,10 @@
 
     html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
       '<div class="flex justify-between items-center mb-3">' +
-        '<span class="font-semibold text-sm text-gray-300">Twój tekst:</span>' +
+        '<span class="font-semibold text-sm text-gray-300">Twój tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
         '<button data-action="copy" class="text-accent text-sm font-medium hover:text-accent-light">Kopiuj</button>' +
       '</div>' +
-      '<div class="whitespace-pre-wrap text-gray-300 leading-relaxed">' + esc(state.result) + '</div>' +
+      '<textarea data-result-edit class="kreator-textarea text-gray-300 leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
     '</div>';
 
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
@@ -488,10 +488,10 @@
     if (state.result) {
       html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
         '<div class="flex justify-between items-center mb-3">' +
-          '<span class="font-semibold text-sm">Zoptymalizowany tekst:</span>' +
+          '<span class="font-semibold text-sm">Zoptymalizowany tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
           '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
         '</div>' +
-        '<div class="whitespace-pre-wrap leading-relaxed">' + esc(state.result) + '</div>' +
+        '<textarea data-result-edit class="kreator-textarea leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
       '</div>';
     }
 
@@ -789,6 +789,10 @@
     if (e.target.dataset.field && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
       state.form[e.target.dataset.field] = e.target.value;
       // Don't re-render on every keystroke — just update state
+    }
+    // Edycja wygenerowanego tekstu
+    if (e.target.hasAttribute('data-result-edit')) {
+      state.result = e.target.value;
     }
   }
 
