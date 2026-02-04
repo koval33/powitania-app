@@ -347,18 +347,18 @@
             <tbody class="divide-y divide-white/5">
               <tr>
                 <td class="py-2 text-gray-400">do 100 słów</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_100 %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_100 %> zł netto</td>
               </tr>
               <% if (lektor.prices.ivr_200) { %>
               <tr>
                 <td class="py-2 text-gray-400">101-200 słów</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_200 %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_200 %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.ivr_200plus && lektor.prices.ivr_200plus !== 'wycena') { %>
               <tr>
                 <td class="py-2 text-gray-400">pow. 200 słów</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_200plus %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.ivr_200plus %> zł netto</td>
               </tr>
               <% } else { %>
               <tr>
@@ -369,25 +369,25 @@
               <% if (lektor.prices.ivr_guarantee_100) { %>
               <tr>
                 <td class="py-2 text-gray-500 text-xs">Gwarancja modyfikacji do 100 słów</td>
-                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_guarantee_100 %> zł</td>
+                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_guarantee_100 %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.ivr_guarantee_100plus) { %>
               <tr>
                 <td class="py-2 text-gray-500 text-xs">Gwarancja modyfikacji pow. 100 słów</td>
-                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_guarantee_100plus %> zł</td>
+                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_guarantee_100plus %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.ivr_melody) { %>
               <tr>
                 <td class="py-2 text-gray-500 text-xs">Melodia w tle</td>
-                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_melody %> zł</td>
+                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_melody %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.ivr_bilingual) { %>
               <tr>
                 <td class="py-2 text-gray-500 text-xs">Pakiet dwujęzyczny</td>
-                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_bilingual %> zł</td>
+                <td class="py-2 text-right text-gray-300 text-xs"><%= lektor.prices.ivr_bilingual %> zł netto</td>
               </tr>
               <% } %>
             </tbody>
@@ -408,36 +408,36 @@
             <tbody class="divide-y divide-white/5">
               <tr>
                 <td class="py-2 text-gray-400">Radio — lokalny</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_radio_local %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_radio_local %> zł netto</td>
               </tr>
               <% if (lektor.prices.spot_radio_national) { %>
               <tr>
                 <td class="py-2 text-gray-400">Radio — ogólnokrajowy</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_radio_national %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_radio_national %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_tv_local) { %>
               <tr>
                 <td class="py-2 text-gray-400">TV — lokalny</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_tv_local %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_tv_local %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_tv_national) { %>
               <tr>
                 <td class="py-2 text-gray-400">TV — ogólnokrajowy</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_tv_national %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_tv_national %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_social_1min) { %>
               <tr>
                 <td class="py-2 text-gray-400">Social media — do 1 min</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_1min %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_1min %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_social_2min) { %>
               <tr>
                 <td class="py-2 text-gray-400">Social media — do 2 min</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_2min %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_2min %> zł netto</td>
               </tr>
               <% } %>
             </tbody>
@@ -459,18 +459,18 @@
             <tbody class="divide-y divide-white/5">
               <tr>
                 <td class="py-2 text-gray-400">1 strona A4</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_1page %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_1page %> zł netto</td>
               </tr>
               <% if (lektor.prices.narration_2pages) { %>
               <tr>
                 <td class="py-2 text-gray-400">2 strony A4</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_2pages %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_2pages %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.narration_3pages) { %>
               <tr>
                 <td class="py-2 text-gray-400">3 strony A4</td>
-                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_3pages %> zł</td>
+                <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.narration_3pages %> zł netto</td>
               </tr>
               <% } %>
               <tr>
@@ -996,7 +996,7 @@ function renderQuestions(serviceType, targetEl) {
     html += '<div class="space-y-2">';
     cfg.options.forEach(function(opt) {
       var price = LEKTOR_PRICES[opt.field];
-      var priceLabel = price ? (' — ' + price + ' zl') : '';
+      var priceLabel = price ? (' — ' + price + ' zł netto') : '';
       html += '<label class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 cursor-pointer hover:bg-dark-600 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
         '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)">' +
         '<span class="text-gray-300 text-sm">' + opt.label + '<span class="text-accent font-semibold">' + priceLabel + '</span></span>' +
@@ -1037,7 +1037,7 @@ function renderPricing(result, wordCount, targetEl) {
 
     html += '<div class="flex items-center justify-between mb-2">' +
       '<span class="text-gray-400 text-sm">' + result.label + '</span>' +
-      '<span class="text-white font-bold">' + result.basePrice + ' zl</span>' +
+      '<span class="text-white font-bold">' + result.basePrice + ' zł netto</span>' +
     '</div>';
 
     // Nagranie dwujezyczne — automatycznie doliczane
@@ -1045,7 +1045,7 @@ function renderPricing(result, wordCount, targetEl) {
       totalBase += result.bilingualPrice;
       html += '<div class="flex items-center justify-between mb-2">' +
         '<span class="text-gray-400 text-sm">Nagranie dwujęzyczne</span>' +
-        '<span class="text-white font-bold">+' + result.bilingualPrice + ' zł</span>' +
+        '<span class="text-white font-bold">+' + result.bilingualPrice + ' zł netto</span>' +
       '</div>';
     }
 
@@ -1060,7 +1060,7 @@ function renderPricing(result, wordCount, targetEl) {
             '<span class="text-gray-300 text-sm">' + addon.label + '</span>' +
             (addon.tooltip ? '<span class="addon-tooltip-trigger text-gray-500 hover:text-gray-300 cursor-help" data-tooltip-idx="' + idx + '" onclick="toggleAddonTooltip(event, ' + idx + ')">&#10067;</span>' : '') +
           '</span>' +
-          '<span class="text-gray-400 text-sm">+' + addon.price + ' zl</span>' +
+          '<span class="text-gray-400 text-sm">+' + addon.price + ' zł netto</span>' +
         '</label>';
         if (addon.tooltip) {
           html += '<div id="addon-tooltip-' + idx + '" class="hidden bg-dark-600 rounded-lg p-3 ml-6 text-xs text-gray-400 border border-white/5">' +
@@ -1074,11 +1074,11 @@ function renderPricing(result, wordCount, targetEl) {
     // Suma
     html += '<div class="border-t border-accent/20 mt-3 pt-3 flex items-center justify-between">' +
       '<span class="text-white font-bold">Łącznie:</span>' +
-      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + totalBase + ' zł</span>' +
+      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + totalBase + ' zł netto</span>' +
     '</div>';
 
     // Ceny netto
-    html += '<p class="text-xs text-gray-500 mt-2">Ceny netto (+ VAT 23%)</p>';
+    html += '<p class="text-xs text-gray-500 mt-2">Do podanych cen należy doliczyć VAT 23%</p>';
 
     if (result.note) {
       html += '<p class="text-xs text-gray-500 mt-1">' + result.note + '</p>';
@@ -1112,7 +1112,7 @@ function recalcTotal() {
     total += parseInt(cb.dataset.price) || 0;
   });
   var totalEl = document.getElementById('pricing-total');
-  if (totalEl) totalEl.textContent = total + ' zl';
+  if (totalEl) totalEl.textContent = total + ' zł netto';
 }
 
 // --- Modal: Zamow nagranie ---
