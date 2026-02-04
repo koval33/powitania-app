@@ -225,6 +225,12 @@
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
 
+    // Podczas loading — scroll do kreator żeby user widział spinner (nie czarne tło)
+    if (state.loading) {
+      var kreatorEl = document.getElementById('kreator');
+      if (kreatorEl) kreatorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     // Zwolnij frozen height dopiero gdy loading się skończy
     if (!state.loading && _frozenHeight > 0) {
       _frozenHeight = 0;
