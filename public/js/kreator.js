@@ -209,10 +209,11 @@
     var fn = renderers[state.step] || renderWelcome;
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
-    // Zwolnij minHeight po renderze (następny frame, po layout)
-    requestAnimationFrame(function() {
-      root.style.minHeight = '';
-    });
+    // Podczas loading trzymaj minHeight (spinner jest krótki — bez tego strona skacze)
+    // Po załadowaniu contentu — zwolnij minHeight z krótkim opóźnieniem
+    if (!state.loading) {
+      setTimeout(function() { root.style.minHeight = ''; }, 50);
+    }
   }
 
   function renderToast() {
