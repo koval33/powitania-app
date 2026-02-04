@@ -189,7 +189,11 @@
   // Render
   function render() {
     if (!root) return;
-    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    // Zamroź wysokość kontenera żeby re-render nie powodował layout shift / scroll
+    var prevHeight = root.offsetHeight;
+    if (prevHeight > 0) {
+      root.style.minHeight = prevHeight + 'px';
+    }
     var renderers = {
       'welcome': renderWelcome,
       'service-type': renderServiceType,
@@ -205,7 +209,10 @@
     var fn = renderers[state.step] || renderWelcome;
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
-    window.scrollTo(0, scrollY);
+    // Zwolnij minHeight po renderze (następny frame, po layout)
+    requestAnimationFrame(function() {
+      root.style.minHeight = '';
+    });
   }
 
   function renderToast() {
