@@ -12,6 +12,13 @@
     { v: 'podcast', l: 'Podcast (intro/outro)', icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>', needsDuration: true }
   ];
 
+  var CATEGORIES = [
+    { id: 'ivr', label: 'Zapowiedzi telefoniczne', icon: SERVICE_TYPES[0].icon, services: ['ivr'] },
+    { id: 'spots', label: 'Spoty reklamowe', icon: SERVICE_TYPES[1].icon, services: ['radio', 'tv', 'social'] },
+    { id: 'narration', label: 'Narracja do filmu, prezentacji', icon: SERVICE_TYPES[6].icon, services: ['film'] },
+    { id: 'podcast', label: 'Podcast (intro/outro)', icon: SERVICE_TYPES[7].icon, services: ['podcast'] }
+  ];
+
   var INDUSTRIES = [
     { v: 'logistics', l: 'Logistyka / Transport' },
     { v: 'automotive', l: 'Motoryzacja' },
@@ -68,7 +75,9 @@
     result: '',
     loading: false,
     error: null,
-    toast: null
+    toast: null,
+    _category: null,
+    _moreOptions: false
   };
 
   var root = null;
@@ -212,6 +221,7 @@
     var renderers = {
       'welcome': renderWelcome,
       'service-type': renderServiceType,
+      'sub-service': renderSubService,
       'details': renderDetails,
       'preview': renderPreview,
       'optimizer': renderOptimizer,
@@ -274,15 +284,15 @@
     '</div>';
   }
 
-  // STEP: Service type
+  // STEP: Service type — 4 category tiles
   function renderServiceType() {
     var html = '<h3 class="text-xl font-bold mb-6">Jaki tekst chcesz przygotować?</h3>';
-    html += '<div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
-    for (var i = 0; i < SERVICE_TYPES.length; i++) {
-      var s = SERVICE_TYPES[i];
-      html += '<button data-action="setService" data-value="' + s.v + '" class="p-4 rounded-lg border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
-        '<div class="text-gray-400 mb-2">' + s.icon + '</div>' +
-        '<div class="font-medium text-sm">' + s.l + '</div>' +
+    html += '<div class="grid grid-cols-2 gap-4">';
+    for (var i = 0; i < CATEGORIES.length; i++) {
+      var c = CATEGORIES[i];
+      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
+        '<div class="text-gray-400 mb-3">' + c.icon + '</div>' +
+        '<div class="font-semibold">' + c.label + '</div>' +
       '</button>';
     }
     html += '</div>';
@@ -290,7 +300,33 @@
     return html;
   }
 
-  // STEP: Details
+  // STEP: Sub-service — spot type selection
+  function renderSubService() {
+    var cat = null;
+    for (var i = 0; i < CATEGORIES.length; i++) {
+      if (CATEGORIES[i].id === state._category) { cat = CATEGORIES[i]; break; }
+    }
+    if (!cat) return renderServiceType();
+
+    var html = '<h3 class="text-xl font-bold mb-6">' + cat.label + ' &mdash; wybierz rodzaj</h3>';
+    html += '<div class="grid grid-cols-1 md:grid-cols-' + cat.services.length + ' gap-3">';
+    for (var j = 0; j < cat.services.length; j++) {
+      var svc = null;
+      for (var k = 0; k < SERVICE_TYPES.length; k++) {
+        if (SERVICE_TYPES[k].v === cat.services[j]) { svc = SERVICE_TYPES[k]; break; }
+      }
+      if (!svc) continue;
+      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
+        '<div class="text-gray-400 mb-2">' + svc.icon + '</div>' +
+        '<div class="font-semibold text-sm">' + svc.l + '</div>' +
+      '</button>';
+    }
+    html += '</div>';
+    html += '<div class="mt-8"><button data-action="goTo" data-value="service-type" class="kreator-btn-secondary">Wstecz</button></div>';
+    return html;
+  }
+
+  // STEP: Details — simplified form with "Więcej opcji" section
   function renderDetails() {
     if (state.loading) return renderLoading();
     var svc = getService();
@@ -302,15 +338,23 @@
     html += renderError();
     html += '<div class="space-y-5">';
 
-    // Industry
+    // Main fields — always visible
     html += renderSelect('industry', 'Branża', INDUSTRIES);
-
-    // Company
     html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
+    html += renderSelect('tone', 'Ton komunikacji', TONES);
 
-    // Offering (not for IVR)
-    if (!isIVR) {
-      html += renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door');
+    // Duration (if applicable)
+    if (needsDuration) {
+      html += '<div><label class="block font-semibold mb-2 text-sm">Długość nagrania</label>' +
+        '<select data-field="duration" class="kreator-select">' +
+        '<option value="15"' + sel('duration', '15') + '>15 sekund</option>' +
+        '<option value="20"' + sel('duration', '20') + '>20 sekund</option>' +
+        '<option value="30"' + sel('duration', '30') + '>30 sekund</option>' +
+        '<option value="45"' + sel('duration', '45') + '>45 sekund</option>' +
+        '<option value="60"' + sel('duration', '60') + '>60 sekund</option>' +
+        '<option value="90"' + sel('duration', '90') + '>90 sekund</option>' +
+        '<option value="120"' + sel('duration', '120') + '>2 minuty</option>' +
+        '</select></div>';
     }
 
     // Languages (IVR only)
@@ -329,39 +373,32 @@
       html += '</div></div>';
     }
 
-    // Duration
-    if (needsDuration) {
-      html += '<div><label class="block font-semibold mb-2 text-sm">Długość nagrania</label>' +
-        '<select data-field="duration" class="kreator-select">' +
-        '<option value="15"' + sel('duration', '15') + '>15 sekund</option>' +
-        '<option value="20"' + sel('duration', '20') + '>20 sekund</option>' +
-        '<option value="30"' + sel('duration', '30') + '>30 sekund</option>' +
-        '<option value="45"' + sel('duration', '45') + '>45 sekund</option>' +
-        '<option value="60"' + sel('duration', '60') + '>60 sekund</option>' +
-        '<option value="90"' + sel('duration', '90') + '>90 sekund</option>' +
-        '<option value="120"' + sel('duration', '120') + '>2 minuty</option>' +
-        '</select></div>';
-    }
-
-    // Audience
-    html += renderSelect('audience', 'Grupa docelowa', AUDIENCES);
-
-    // Tone
-    html += renderSelect('tone', 'Ton komunikacji', TONES);
-
-    // Goal (not for IVR)
-    if (!isIVR) {
-      html += renderSelect('goal', 'Cel komunikacji', GOALS);
-    }
-
     html += '</div>';
 
-    var canProceed = state.form.industry && state.form.company && state.form.audience && state.form.tone;
+    // "Więcej opcji" — collapsed section
+    if (!isIVR) {
+      var moreOpen = state._moreOptions;
+      html += '<div class="mt-4">' +
+        '<button data-action="toggleMore" class="text-sm text-gray-400 hover:text-accent flex items-center gap-1 transition-colors">' +
+          '<svg class="w-4 h-4 transition-transform ' + (moreOpen ? 'rotate-90' : '') + '" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>' +
+          'Więcej opcji' +
+        '</button>';
+      if (moreOpen) {
+        html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-white/5">' +
+          renderSelect('audience', 'Grupa docelowa', AUDIENCES) +
+          renderSelect('goal', 'Cel komunikacji', GOALS) +
+          renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door') +
+        '</div>';
+      }
+      html += '</div>';
+    }
+
+    // Validation — simplified: only industry, company, tone required
+    var canProceed = state.form.industry && state.form.company && state.form.tone;
     if (needsLanguages) canProceed = canProceed && state.form.languages.length > 0;
-    if (!isIVR) canProceed = canProceed && state.form.goal;
 
     html += '<div class="flex gap-3 mt-8">' +
-      '<button data-action="goTo" data-value="service-type" class="kreator-btn-secondary">Wstecz</button>' +
+      '<button data-action="goTo" data-value="' + (state._category && CATEGORIES.some(function(c) { return c.id === state._category && c.services.length > 1; }) ? 'sub-service' : 'service-type') + '" class="kreator-btn-secondary">Wstecz</button>' +
       '<button data-action="generate" ' + (canProceed ? '' : 'disabled') + ' class="kreator-btn-primary flex-1">' +
         '<svg class="w-5 h-5 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' +
         'Przygotuj tekst' +
@@ -620,10 +657,30 @@
         if (value === 'creator') setState({ step: 'service-type' });
         else setState({ step: 'optimizer' });
         break;
+      case 'setCategory':
+        // Find category
+        var cat = null;
+        for (var ci = 0; ci < CATEGORIES.length; ci++) {
+          if (CATEGORIES[ci].id === value) { cat = CATEGORIES[ci]; break; }
+        }
+        if (cat && cat.services.length === 1) {
+          // Single service — go directly to details
+          state.form.serviceType = cat.services[0];
+          state.form.languages = [];
+          setState({ step: 'details', _category: value });
+        } else if (cat) {
+          // Multiple services — show sub-service selection
+          setState({ step: 'sub-service', _category: value });
+        }
+        break;
       case 'setService':
         state.form.serviceType = value;
         state.form.languages = [];
         setState({ step: 'details' });
+        break;
+      case 'toggleMore':
+        state._moreOptions = !state._moreOptions;
+        render();
         break;
       case 'toggleLang':
         toggleLanguage(value);
@@ -711,6 +768,8 @@
         state.result = '';
         state.error = null;
         state.toast = null;
+        state._category = null;
+        state._moreOptions = false;
         render();
         break;
     }
