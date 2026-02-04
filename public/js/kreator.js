@@ -189,6 +189,7 @@
   // Render
   function render() {
     if (!root) return;
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
     var renderers = {
       'welcome': renderWelcome,
       'service-type': renderServiceType,
@@ -204,6 +205,7 @@
     var fn = renderers[state.step] || renderWelcome;
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
+    window.scrollTo(0, scrollY);
   }
 
   function renderToast() {
