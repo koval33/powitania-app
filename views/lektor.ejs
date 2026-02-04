@@ -154,7 +154,7 @@
                 <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
                 <option value="radio">Spot radiowy</option>
                 <option value="tv">Spot telewizyjny</option>
-                <option value="social">Social media</option>
+                <option value="social">Spot kampania social media</option>
                 <option value="elearning">E-learning / szkolenia</option>
                 <option value="film">Narracja filmowa</option>
                 <option value="audiobook">Audiobook</option>
@@ -430,13 +430,13 @@
               <% } %>
               <% if (lektor.prices.spot_social_1min) { %>
               <tr>
-                <td class="py-2 text-gray-400">Social media — do 1 min</td>
+                <td class="py-2 text-gray-400">Spot kampania social media — do 1 min</td>
                 <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_1min %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_social_2min) { %>
               <tr>
-                <td class="py-2 text-gray-400">Social media — do 2 min</td>
+                <td class="py-2 text-gray-400">Spot kampania social media — do 2 min</td>
                 <td class="py-2 text-right text-white font-semibold"><%= lektor.prices.spot_social_2min %> zł netto</td>
               </tr>
               <% } %>
@@ -529,7 +529,7 @@
             <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
             <option value="radio">Spot radiowy</option>
             <option value="tv">Spot telewizyjny</option>
-            <option value="social">Social media</option>
+            <option value="social">Spot kampania social media</option>
             <option value="elearning">E-learning / szkolenia</option>
             <option value="film">Narracja filmowa</option>
             <option value="audiobook">Audiobook</option>
@@ -835,7 +835,7 @@ var PRICING_MAP = {
     note: 'Stawka uwzgl. licencje na okres do 12 mies.'
   },
   social: {
-    label: 'Social media',
+    label: 'Spot kampania social media',
     method: 'choice',
     options: [
       { field: 'spot_social_1min', label: 'Do 1 minuty' },
