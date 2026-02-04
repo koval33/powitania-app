@@ -341,7 +341,9 @@
     // Main fields — always visible
     html += renderSelect('industry', 'Branża', INDUSTRIES);
     html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
-    html += renderSelect('tone', 'Ton komunikacji', TONES);
+    if (!isIVR) {
+      html += renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door');
+    }
 
     // Duration (if applicable)
     if (needsDuration) {
@@ -385,16 +387,16 @@
         '</button>';
       if (moreOpen) {
         html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-white/5">' +
+          renderSelect('tone', 'Ton komunikacji', TONES) +
           renderSelect('audience', 'Grupa docelowa', AUDIENCES) +
           renderSelect('goal', 'Cel komunikacji', GOALS) +
-          renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door') +
         '</div>';
       }
       html += '</div>';
     }
 
     // Validation — simplified: only industry, company, tone required
-    var canProceed = state.form.industry && state.form.company && state.form.tone;
+    var canProceed = state.form.industry && state.form.company;
     if (needsLanguages) canProceed = canProceed && state.form.languages.length > 0;
 
     html += '<div class="flex gap-3 mt-8">' +
