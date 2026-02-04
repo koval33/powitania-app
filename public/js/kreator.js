@@ -689,6 +689,7 @@
         break;
       case 'goTo':
         setState({ step: value, error: null });
+        scrollToKreator();
         break;
       case 'goBack':
         // Smart back — go to preview or opt-result
@@ -697,6 +698,7 @@
         } else {
           setState({ step: 'welcome', error: null });
         }
+        scrollToKreator();
         break;
       case 'generate':
         generate();

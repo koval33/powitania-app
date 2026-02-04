@@ -329,7 +329,7 @@
 
     <!-- CENNIK (jeśli nie ukryty) -->
     <% if (!lektor.hidePrice && lektor.prices) { %>
-    <div class="mt-12">
+    <div class="mt-12" id="lektor-cennik-section">
       <h2 class="text-2xl font-bold text-white mb-6">Cennik</h2>
 
       <div class="grid md:grid-cols-3 gap-6">
@@ -901,7 +901,9 @@ var SERVICE_TYPE_MAP = {
 
 // --- Helpers ---
 function countWords(text) {
-  return text.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+  // Usun oznaczenia sekcji w ** ** (np. **Powitanie:**) — to nie tekst do nagrania
+  var cleaned = text.replace(/\*\*[^*]*\*\*/g, '');
+  return cleaned.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
 }
 
 function wordsToPages(words) {
@@ -1389,6 +1391,10 @@ function showPricingWizard(ctx) {
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.add('hidden');
 
+  // Ukryj cennik — w flow kreatora konczymy na formularzu zamowienia
+  var cennikSection = document.getElementById('lektor-cennik-section');
+  if (cennikSection) cennikSection.classList.add('hidden');
+
   textPreview.textContent = ctx.text;
   var wordCount = countWords(ctx.text);
   wordCountEl.textContent = wordCount + ' slow';
@@ -1503,9 +1509,11 @@ function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
   var wizard = document.getElementById('pricing-wizard');
   if (wizard) wizard.classList.add('hidden');
-  // Przywroc CTA sekcje
+  // Przywroc CTA sekcje i cennik
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.remove('hidden');
+  var cennikSection = document.getElementById('lektor-cennik-section');
+  if (cennikSection) cennikSection.classList.remove('hidden');
 }
 
 // --- Auto-detect context on page load ---
