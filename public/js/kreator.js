@@ -714,6 +714,7 @@
         var ctxData = {
           text: state.result,
           serviceType: state.form.serviceType,
+          languages: state.form.languages,
           industry: state.form.industry,
           duration: state.form.duration,
           company: state.form.company,

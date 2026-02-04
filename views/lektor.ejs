@@ -810,10 +810,9 @@ var PRICING_MAP = {
       { max: Infinity, field: 'ivr_200plus', label: 'pow. 200 slow' }
     ],
     addons: [
-      { field: 'ivr_guarantee_100', label: 'Gwarancja modyfikacji', condition: function(w) { return w <= 100; } },
-      { field: 'ivr_guarantee_100plus', label: 'Gwarancja modyfikacji', condition: function(w) { return w > 100; } },
-      { field: 'ivr_melody', label: 'Melodia w tle' },
-      { field: 'ivr_bilingual', label: 'Pakiet dwujezyczny' }
+      { field: 'ivr_guarantee_100', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w <= 100; } },
+      { field: 'ivr_guarantee_100plus', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w > 100; } },
+      { field: 'ivr_melody', label: 'Melodia w tle' }
     ],
     note: null
   },
@@ -939,9 +938,16 @@ function calculatePrice(serviceType, wordCount, options) {
         if (addon.condition && !addon.condition(wordCount)) return;
         var addonPrice = LEKTOR_PRICES[addon.field];
         if (addonPrice) {
-          result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice) });
+          result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null });
         }
       });
+    }
+    // Pakiet dwujezyczny — automatycznie gdy 2 jezyki
+    if (options && options.bilingual) {
+      var bilingualPrice = LEKTOR_PRICES['ivr_bilingual'];
+      if (bilingualPrice) {
+        result.bilingualPrice = parseInt(bilingualPrice);
+      }
     }
   } else if (cfg.method === 'choice') {
     // Radio/TV/Social — klient wybiera opcje
@@ -1027,35 +1033,55 @@ function renderPricing(result, wordCount, targetEl) {
       '<p class="text-gray-400 text-xs mt-1">Skontaktuj sie, aby uzyskac dokladna wycene.</p>' +
     '</div>';
   } else if (result.basePrice) {
+    var totalBase = result.basePrice;
+
     html += '<div class="flex items-center justify-between mb-2">' +
       '<span class="text-gray-400 text-sm">' + result.label + '</span>' +
       '<span class="text-white font-bold">' + result.basePrice + ' zl</span>' +
     '</div>';
 
+    // Nagranie dwujezyczne — automatycznie doliczane
+    if (result.bilingualPrice) {
+      totalBase += result.bilingualPrice;
+      html += '<div class="flex items-center justify-between mb-2">' +
+        '<span class="text-gray-400 text-sm">Nagranie dwujęzyczne</span>' +
+        '<span class="text-white font-bold">+' + result.bilingualPrice + ' zł</span>' +
+      '</div>';
+    }
+
     // Addony (checkboxy IVR)
     if (result.addons && result.addons.length > 0) {
       html += '<div class="border-t border-white/5 pt-3 mt-2 space-y-2">';
       html += '<p class="text-xs text-gray-500 mb-1">Dodatki:</p>';
-      result.addons.forEach(function(addon) {
+      result.addons.forEach(function(addon, idx) {
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
           '<span class="flex items-center gap-2">' +
             '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" onchange="recalcTotal()">' +
             '<span class="text-gray-300 text-sm">' + addon.label + '</span>' +
+            (addon.tooltip ? '<span class="addon-tooltip-trigger text-gray-500 hover:text-gray-300 cursor-help" data-tooltip-idx="' + idx + '" onclick="toggleAddonTooltip(event, ' + idx + ')">&#10067;</span>' : '') +
           '</span>' +
           '<span class="text-gray-400 text-sm">+' + addon.price + ' zl</span>' +
         '</label>';
+        if (addon.tooltip) {
+          html += '<div id="addon-tooltip-' + idx + '" class="hidden bg-dark-600 rounded-lg p-3 ml-6 text-xs text-gray-400 border border-white/5">' +
+            '<span class="text-gray-500 mr-1">&#9432;</span>' + addon.tooltip +
+          '</div>';
+        }
       });
       html += '</div>';
     }
 
     // Suma
     html += '<div class="border-t border-accent/20 mt-3 pt-3 flex items-center justify-between">' +
-      '<span class="text-white font-bold">Lacznie:</span>' +
-      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + result.basePrice + ' zl</span>' +
+      '<span class="text-white font-bold">Łącznie:</span>' +
+      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + totalBase + ' zł</span>' +
     '</div>';
 
+    // Ceny netto
+    html += '<p class="text-xs text-gray-500 mt-2">Ceny netto (+ VAT 23%)</p>';
+
     if (result.note) {
-      html += '<p class="text-xs text-gray-500 mt-2">' + result.note + '</p>';
+      html += '<p class="text-xs text-gray-500 mt-1">' + result.note + '</p>';
     }
   }
 
@@ -1063,8 +1089,15 @@ function renderPricing(result, wordCount, targetEl) {
   targetEl.innerHTML = html;
   targetEl.classList.remove('hidden');
 
-  // Store base price for recalc
-  targetEl.dataset.basePrice = result.basePrice || 0;
+  // Store base price for recalc (including bilingual)
+  targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
+}
+
+function toggleAddonTooltip(e, idx) {
+  e.preventDefault();
+  e.stopPropagation();
+  var tip = document.getElementById('addon-tooltip-' + idx);
+  if (tip) tip.classList.toggle('hidden');
 }
 
 function recalcTotal() {
@@ -1424,7 +1457,8 @@ function showPricingWizard(ctx) {
     } else {
       // IVR/pages — oblicz od razu
       questionsEl.innerHTML = '';
-      var result = calculatePrice(mappedType, wordCount, {});
+      var isBilingual = ctx.languages && ctx.languages.length >= 2;
+      var result = calculatePrice(mappedType, wordCount, { bilingual: isBilingual });
       renderPricing(result, wordCount, pricingEl);
       ctaEl.classList.remove('hidden');
     }
