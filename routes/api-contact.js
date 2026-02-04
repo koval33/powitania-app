@@ -26,6 +26,7 @@ router.post('/order', async (req, res) => {
   const address = [street, zipCode, city].filter(Boolean).join(', ');
 
   try {
+    // Mail do biura
     await sendMail({
       subject: `[Zamówienie] ${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
       replyTo: email,
@@ -48,6 +49,22 @@ router.post('/order', async (req, res) => {
       `
     });
 
+    // Potwierdzenie do klienta
+    await sendMail({
+      to: email,
+      subject: 'Potwierdzenie zamówienia — Powitania',
+      html: `
+        <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
+        <p>Cześć ${esc(name)},</p>
+        <p>Otrzymaliśmy Twoje zamówienie nagrania${lektorName ? ' u lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        ${totalPrice ? `<p><strong>Wycena:</strong> ${esc(totalPrice)}</p>` : ''}
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      `
+    });
+
     res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
   } catch (err) {
     console.error('[contact] Order error:', err);
@@ -64,6 +81,7 @@ router.post('/inquiry', async (req, res) => {
   }
 
   try {
+    // Mail do biura
     await sendMail({
       subject: `[Zapytanie] ${name || 'Klient'} — ${serviceType || 'wycena'}`,
       replyTo: email,
@@ -80,6 +98,20 @@ router.post('/inquiry', async (req, res) => {
         ${description ? `<h3>Opis projektu:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         ${generatedText ? `<h3>Tekst z kreatora:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
         <p style="color:#999;font-size:12px">Wysłano z powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+      `
+    });
+
+    // Potwierdzenie do klienta
+    await sendMail({
+      to: email,
+      subject: 'Potwierdzenie zapytania — Powitania',
+      html: `
+        <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
+        <p>Cześć${name ? ' ' + esc(name) : ''},</p>
+        <p>Otrzymaliśmy Twoje zapytanie. Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        ${description ? `<h3 style="color:#1a1d23;margin-top:24px">Twoja wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
       `
     });
 
@@ -162,7 +194,21 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
       }];
     }
 
+    // Mail do biura
     await sendMail(mailOptions);
+
+    // Potwierdzenie do klienta
+    await sendMail({
+      to: email,
+      subject: 'Potwierdzenie zapytania — Powitania',
+      html: `
+        <h2 style="color:#1a1d23">Dziękujemy za zapytanie!</h2>
+        <p>Otrzymaliśmy Twoje zapytanie o wycenę${lektorName ? ' lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p>Odpowiemy najszybciej jak to możliwe.</p>
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      `
+    });
 
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
   } catch (err) {
