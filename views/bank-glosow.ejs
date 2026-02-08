@@ -126,7 +126,7 @@
   <div class="max-w-6xl mx-auto px-4">
     <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card bg-dark-800 rounded-xl border border-white/5 overflow-hidden hover:border-accent/30 transition-all<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl border border-white/10 overflow-hidden hover:border-accent/30 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 transition-all<%= idx >= 20 ? ' hidden' : '' %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
            data-languages="<%= v.languages.join(',') %>"
