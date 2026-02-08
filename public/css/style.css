@@ -1,4 +1,14 @@
-/* powitania.pl — Light theme styles */
+/* powitania.pl — Dark theme styles */
+
+/* Hero dot grid pattern — Railway style */
+.dot-grid-bg {
+  background-image: radial-gradient(circle, rgba(16, 185, 129, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.hero-dotgrid {
+  background: #1a1d23;
+}
 
 /* Kreator widget scoped styles */
 .kreator-widget {
@@ -17,15 +27,14 @@
 
 /* Cards */
 .kreator-card {
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
+  background: #22262e;
+  border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 2rem;
   text-align: left;
   transition: all 0.2s ease;
   cursor: pointer;
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .kreator-card:hover {
@@ -52,21 +61,21 @@
 }
 
 .kreator-btn-primary:hover {
-  background-color: #059669;
+  background-color: #34d399;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .kreator-btn-primary:disabled {
-  background-color: #e2e8f0;
-  color: #94a3b8;
+  background-color: #343842;
+  color: #6b7280;
   cursor: not-allowed;
   box-shadow: none;
 }
 
 .kreator-btn-secondary {
   background-color: transparent;
-  color: #475569;
-  border: 2px solid #e2e8f0;
+  color: #d1d5db;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 12px 24px;
   font-weight: 600;
@@ -86,24 +95,24 @@
 .kreator-textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  background: #ffffff;
-  color: #1e293b;
+  transition: border-color 0.2s ease;
+  background: #1a1d23;
+  color: #e5e7eb;
 }
 
 .kreator-input::placeholder,
 .kreator-textarea::placeholder {
-  color: #94a3b8;
+  color: #6b7280;
 }
 
 .kreator-select {
-  color: #1e293b;
+  color: #e5e7eb;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2364748b' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239ca3af' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
@@ -111,8 +120,8 @@
 }
 
 .kreator-select option {
-  background: #ffffff;
-  color: #1e293b;
+  background: #1a1d23;
+  color: #e5e7eb;
 }
 
 .kreator-input:focus,
@@ -132,7 +141,7 @@
 .kreator-spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #e2e8f0;
+  border: 4px solid rgba(255, 255, 255, 0.1);
   border-top-color: #10b981;
   border-radius: 50%;
   animation: kreator-spin 0.8s linear infinite;
@@ -157,87 +166,12 @@
   font-weight: 500;
   z-index: 1000;
   animation: kreator-toast-in 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes kreator-toast-in {
   from { opacity: 0; transform: translateX(-50%) translateY(10px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-/* Bank głosów — filtry */
-.bank-filter-select {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #334155;
-  padding: 8px 36px 8px 14px;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2364748b' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.bank-filter-select:hover {
-  border-color: #cbd5e1;
-}
-
-.bank-filter-select:focus {
-  outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
-}
-
-/* Filter buttons */
-.filter-btn {
-  background: #f8fafc;
-  color: #64748b;
-  transition: all 0.15s ease;
-  border-right: 1px solid #e2e8f0;
-}
-
-.filter-btn:last-child {
-  border-right: none;
-}
-
-.filter-btn:hover {
-  background: #f1f5f9;
-  color: #334155;
-}
-
-.filter-btn.active {
-  background: #10b981;
-  color: #ffffff;
-}
-
-/* Filter pills */
-.filter-pill {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #64748b;
-  padding: 8px 16px;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.filter-pill:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-  color: #334155;
-}
-
-.filter-pill.active {
-  background: #10b981;
-  border-color: #10b981;
-  color: #ffffff;
 }
 
 /* Responsive */

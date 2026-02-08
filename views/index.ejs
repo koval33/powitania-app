@@ -1,17 +1,19 @@
 <%- include('partials/head') %>
 
-<!-- HERO + KREATOR -->
-<section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+<!-- HERO + KREATOR — dot grid pod całą pierwszą sekcją -->
+<section class="relative overflow-hidden hero-dotgrid">
+  <div class="absolute inset-0 dot-grid-bg"></div>
+
   <div class="relative max-w-4xl mx-auto px-4 pt-10 pb-4 md:pt-14 md:pb-6 text-center">
     <h1 class="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight" style="font-family: 'Poppins', sans-serif;">
       Profesjonalne nagrania lektorskie
     </h1>
-    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto">
       Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych głosów w 30+ językach.
     </p>
   </div>
 
-  <!-- KREATOR wewnątrz sekcji -->
+  <!-- KREATOR wewnątrz sekcji z kropkami -->
   <div id="kreator" class="relative pb-10 pt-2 scroll-mt-[8rem]">
     <div class="max-w-4xl mx-auto px-4">
       <div class="text-center mb-5">
@@ -23,60 +25,60 @@
 </section>
 
 <!-- JAK TO DZIAŁA -->
-<section class="py-16 bg-slate-50">
+<section class="py-16 bg-dark-800">
   <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">Jak to działa?</h2>
+    <h2 class="text-3xl font-bold text-center text-white mb-12">Jak to działa?</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Step 1: Przygotuj tekst -->
       <div class="text-center group">
-        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-md">
+        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden">
           <img src="/img/sections/przygotuj-tekst.webp" alt="Przygotuj tekst — edytor tekstów" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
         </div>
-        <h3 class="font-bold text-lg mb-2 text-slate-800">Przygotuj tekst</h3>
-        <p class="text-slate-500 text-sm">Skorzystaj z kreatora lub wklej własny tekst do optymalizacji.</p>
+        <h3 class="font-bold text-lg mb-2 text-white">Przygotuj tekst</h3>
+        <p class="text-gray-400 text-sm">Skorzystaj z kreatora lub wklej własny tekst do optymalizacji.</p>
       </div>
       <!-- Step 2: Wybierz lektora -->
       <div class="text-center group">
-        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-md">
+        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden">
           <img src="/img/sections/wybierz-lektora.webp" alt="Wybierz lektora — studio nagraniowe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
         </div>
-        <h3 class="font-bold text-lg mb-2 text-slate-800">Wybierz lektora</h3>
-        <p class="text-slate-500 text-sm">Przesłuchaj próbki i wybierz głos idealny dla Twojego projektu.</p>
+        <h3 class="font-bold text-lg mb-2 text-white">Wybierz lektora</h3>
+        <p class="text-gray-400 text-sm">Przesłuchaj próbki i wybierz głos idealny dla Twojego projektu.</p>
       </div>
       <!-- Step 3: Zamów nagranie -->
       <div class="text-center group">
-        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-md">
+        <div class="w-full max-w-xs mx-auto mb-5 aspect-[3/2] rounded-xl overflow-hidden">
           <img src="/img/sections/zamow-nagranie.webp" alt="Zamów nagranie — zamówienie online" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
         </div>
-        <h3 class="font-bold text-lg mb-2 text-slate-800">Zamów nagranie</h3>
-        <p class="text-slate-500 text-sm">Profesjonalne nagranie gotowe w 24-48 godzin.</p>
+        <h3 class="font-bold text-lg mb-2 text-white">Zamów nagranie</h3>
+        <p class="text-gray-400 text-sm">Profesjonalne nagranie gotowe w 24-48 godzin.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- NASZE USŁUGI -->
-<section class="py-20 bg-white">
+<section class="py-20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-14">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Nasze usługi</h2>
-      <p class="text-slate-500 max-w-2xl mx-auto">Profesjonalne nagrania lektorskie dla każdej branży. Ponad 24 lata doświadczenia i tysiące zrealizowanych projektów.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nasze usługi</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Profesjonalne nagrania lektorskie dla każdej branży. Ponad 24 lata doświadczenia i tysiące zrealizowanych projektów.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Spoty reklamowe -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group hover:border-emerald-300 hover:shadow-lg transition-all duration-300">
+      <div class="bg-dark-800 rounded-2xl border border-white/5 overflow-hidden group hover:border-accent/20 transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-48">
             <img src="/img/sections/spoty-reklamowe.webp" alt="Spoty reklamowe — ludzie oglądający telewizję" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           </div>
         </div>
         <div class="p-6 pt-2">
-          <h3 class="text-xl font-bold text-slate-800 mb-3">Spoty reklamowe</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+          <h3 class="text-xl font-bold text-white mb-3">Spoty reklamowe</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
             Zatrudnij najbardziej rozpoznawalnych lektorów i stwórz spot reklamowy, który przyciągnie uwagę słuchaczy. Profesjonalny lektor do reklamy i rozpoznawalny głos to lepsza jakość spotu radiowego, telewizyjnego czy internetowego.
           </p>
-          <ul class="text-sm text-slate-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Doświadczeni lektorzy reklamowi
@@ -98,18 +100,18 @@
       </div>
 
       <!-- Multimedia / lektor do filmów -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group hover:border-emerald-300 hover:shadow-lg transition-all duration-300">
+      <div class="bg-dark-800 rounded-2xl border border-white/5 overflow-hidden group hover:border-accent/20 transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-48">
             <img src="/img/sections/multimedia.webp" alt="Multimedia i lektor do filmów" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           </div>
         </div>
         <div class="p-6 pt-2">
-          <h3 class="text-xl font-bold text-slate-800 mb-3">Multimedia i lektor do filmów</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+          <h3 class="text-xl font-bold text-white mb-3">Multimedia i lektor do filmów</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
             Przygotujemy ścieżkę dźwiękową do Twojego filmu, a jeśli trzeba — zamontujemy ją w materiale video. Narracja do filmów instruktażowych, korporacyjnych, e-learningowych i promocyjnych.
           </p>
-          <ul class="text-sm text-slate-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Narrator do dowolnego typu filmu
@@ -131,18 +133,18 @@
       </div>
 
       <!-- Zapowiedzi telefoniczne -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group hover:border-emerald-300 hover:shadow-lg transition-all duration-300">
+      <div class="bg-dark-800 rounded-2xl border border-white/5 overflow-hidden group hover:border-accent/20 transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-48">
             <img src="/img/sections/zapowiedzi-telefoniczne.webp" alt="Zapowiedzi telefoniczne — kobieta rozmawiająca przez telefon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           </div>
         </div>
         <div class="p-6 pt-2">
-          <h3 class="text-xl font-bold text-slate-800 mb-3">Zapowiedzi telefoniczne</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+          <h3 class="text-xl font-bold text-white mb-3">Zapowiedzi telefoniczne</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
             Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym firmy. Starannie przygotowane nagrania IVR zachęcają klientów do kontaktu i budują profesjonalny wizerunek.
           </p>
-          <ul class="text-sm text-slate-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Profesjonalne pierwsze wrażenie
@@ -167,11 +169,11 @@
 </section>
 
 <!-- POPULARNI LEKTORZY -->
-<section class="py-20 bg-slate-50">
+<section class="py-20 bg-dark-800">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Popularni lektorzy</h2>
-      <p class="text-slate-500">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Popularni lektorzy</h2>
+      <p class="text-gray-400">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
@@ -185,7 +187,7 @@
             <img
               src="<%= v.photo %>"
               alt="<%= v.name %>"
-              class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-slate-200 group-hover:border-emerald-400 transition-all shadow-sm"
+              class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-white/10 group-hover:border-accent/50 transition-all"
               loading="lazy"
             >
             <% if (v.audio) { %>
@@ -199,15 +201,15 @@
             </button>
             <% } %>
           </div>
-          <a href="/lektor/<%= v.id %>/" class="text-slate-800 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
-          <div class="text-xs text-slate-500 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
+          <a href="/lektor/<%= v.id %>/" class="text-white font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
+          <div class="text-xs text-gray-500 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
         </div>
         <% } %>
       <% }); %>
     </div>
 
     <div class="text-center mt-10">
-      <a href="/bank-glosow/" class="inline-flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-6 py-3 rounded-lg font-semibold text-sm transition-colors border border-emerald-200">
+      <a href="/bank-glosow/" class="inline-flex items-center gap-2 bg-accent/10 hover:bg-accent/20 text-accent px-6 py-3 rounded-lg font-semibold text-sm transition-colors border border-accent/20">
         Zobacz wszystkich lektorów (230+)
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>
@@ -216,81 +218,81 @@
 </section>
 
 <!-- STATYSTYKI -->
-<section class="py-16 border-y border-slate-200 bg-white">
+<section class="py-16 border-y border-white/5">
   <div class="max-w-5xl mx-auto px-4">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div>
-        <div class="text-4xl font-bold text-emerald-600 mb-1">8600+</div>
-        <div class="text-sm text-slate-500">Zrealizowanych nagrań</div>
+        <div class="text-4xl font-bold text-accent mb-1">8600+</div>
+        <div class="text-sm text-gray-500">Zrealizowanych nagrań</div>
       </div>
       <div>
-        <div class="text-4xl font-bold text-emerald-600 mb-1">2100+</div>
-        <div class="text-sm text-slate-500">Zadowolonych klientów</div>
+        <div class="text-4xl font-bold text-accent mb-1">2100+</div>
+        <div class="text-sm text-gray-500">Zadowolonych klientów</div>
       </div>
       <div>
-        <div class="text-4xl font-bold text-emerald-600 mb-1">230+</div>
-        <div class="text-sm text-slate-500">Profesjonalnych lektorów</div>
+        <div class="text-4xl font-bold text-accent mb-1">230+</div>
+        <div class="text-sm text-gray-500">Profesjonalnych lektorów</div>
       </div>
       <div>
-        <div class="text-4xl font-bold text-emerald-600 mb-1">24</div>
-        <div class="text-sm text-slate-500">Lata doświadczenia</div>
+        <div class="text-4xl font-bold text-accent mb-1">24</div>
+        <div class="text-sm text-gray-500">Lata doświadczenia</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- KLIENCI I REALIZACJE -->
-<section class="py-20 bg-slate-50">
+<section class="py-20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Klienci i realizacje</h2>
-      <p class="text-slate-500">Posłuchaj wybranych nagrań z naszego portfolio</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Klienci i realizacje</h2>
+      <p class="text-gray-400">Posłuchaj wybranych nagrań z naszego portfolio</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-colors">
-        <div class="aspect-video bg-slate-100 relative">
+      <div class="bg-dark-800 rounded-xl overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
+        <div class="aspect-video bg-dark-700 relative">
           <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLexample" title="Narracja do filmu instruktażowego" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:none"></iframe>
-          <div class="absolute inset-0 flex items-center justify-center bg-slate-100">
+          <div class="absolute inset-0 flex items-center justify-center bg-dark-700">
             <div class="text-center">
-              <svg class="w-12 h-12 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+              <svg class="w-12 h-12 text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
               <span class="text-sm text-gray-500">Film instruktażowy</span>
             </div>
           </div>
         </div>
         <div class="p-4">
-          <h3 class="text-slate-800 font-semibold text-sm">Narracja do filmu instruktażowego</h3>
-          <p class="text-xs text-slate-500 mt-1">Lektor Patryk</p>
+          <h3 class="text-white font-semibold text-sm">Narracja do filmu instruktażowego</h3>
+          <p class="text-xs text-gray-500 mt-1">Lektor Patryk</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-colors">
-        <div class="aspect-video bg-slate-100 relative">
+      <div class="bg-dark-800 rounded-xl overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
+        <div class="aspect-video bg-dark-700 relative">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center">
-              <svg class="w-12 h-12 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582"/></svg>
+              <svg class="w-12 h-12 text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582"/></svg>
               <span class="text-sm text-gray-500">Narracja anglojęzyczna</span>
             </div>
           </div>
         </div>
         <div class="p-4">
-          <h3 class="text-slate-800 font-semibold text-sm">Narracja w języku angielskim</h3>
-          <p class="text-xs text-slate-500 mt-1">Lektorka Alison</p>
+          <h3 class="text-white font-semibold text-sm">Narracja w języku angielskim</h3>
+          <p class="text-xs text-gray-500 mt-1">Lektorka Alison</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-colors">
-        <div class="aspect-video bg-slate-100 relative">
+      <div class="bg-dark-800 rounded-xl overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
+        <div class="aspect-video bg-dark-700 relative">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center">
-              <svg class="w-12 h-12 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-2.625 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0 1 18 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0 1 18 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 0 1 6 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125M6 13.125C6 12.504 5.496 12 4.875 12m-1.5 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M19.125 12h1.5m0 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5"/></svg>
+              <svg class="w-12 h-12 text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-2.625 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0 1 18 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0 1 18 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 0 1 6 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125M6 13.125C6 12.504 5.496 12 4.875 12m-1.5 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M19.125 12h1.5m0 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5"/></svg>
               <span class="text-sm text-gray-500">Film korporacyjny</span>
             </div>
           </div>
         </div>
         <div class="p-4">
-          <h3 class="text-slate-800 font-semibold text-sm">Narracja do filmu korporacyjnego</h3>
-          <p class="text-xs text-slate-500 mt-1">Lektor Michał</p>
+          <h3 class="text-white font-semibold text-sm">Narracja do filmu korporacyjnego</h3>
+          <p class="text-xs text-gray-500 mt-1">Lektor Michał</p>
         </div>
       </div>
     </div>
@@ -298,11 +300,11 @@
 </section>
 
 <!-- OPINIE -->
-<section id="opinie" class="py-20 bg-white">
+<section id="opinie" class="py-20 bg-dark-800">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Co mówią nasi klienci</h2>
-      <p class="text-slate-500">Ponad 2100 zadowolonych klientów i 24 lata doświadczenia</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Co mówią nasi klienci</h2>
+      <p class="text-gray-400">Ponad 2100 zadowolonych klientów i 24 lata doświadczenia</p>
     </div>
 
     <!-- Carousel container -->
@@ -312,7 +314,7 @@
 
           <!-- Slide 1 (3 opinie) -->
           <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -320,14 +322,14 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Wszystko zgodnie z opisem, polecam.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Wszystko zgodnie z opisem, polecam.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Sebastian</span>
-                <span class="text-slate-500"> &mdash; Stonebau Sp. z o.o.</span>
+                <span class="font-semibold text-white">Sebastian</span>
+                <span class="text-gray-500"> &mdash; Stonebau Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">15.12.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.12.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -335,14 +337,14 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Serdecznie polecam! Profesjonalnie, bardzo sprawnie i w bardzo miłej atmosferze.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Serdecznie polecam! Profesjonalnie, bardzo sprawnie i w bardzo miłej atmosferze.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Marta</span>
-                <span class="text-slate-500"> &mdash; mediashake</span>
+                <span class="font-semibold text-white">Marta</span>
+                <span class="text-gray-500"> &mdash; mediashake</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">15.12.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.12.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -350,18 +352,18 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Wszystko odbyło się profesjonalnie po raz kolejny, szybko, sprawnie.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Wszystko odbyło się profesjonalnie po raz kolejny, szybko, sprawnie.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Andrzej</span>
-                <span class="text-slate-500"> &mdash; FNC Poland</span>
+                <span class="font-semibold text-white">Andrzej</span>
+                <span class="text-gray-500"> &mdash; FNC Poland</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">05.11.2025</div>
+              <div class="text-xs text-gray-600 mt-1">05.11.2025</div>
             </div>
           </div>
 
           <!-- Slide 2 -->
           <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -369,14 +371,14 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Świetna współpraca — miły kontakt, szybkie odpowiedzi, proklienckie podejście, wysoka jakość i krótki termin realizacji. Polecam!&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Świetna współpraca — miły kontakt, szybkie odpowiedzi, proklienckie podejście, wysoka jakość i krótki termin realizacji. Polecam!&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Kasia Urbańska-Ludwicka</span>
-                <span class="text-slate-500"> &mdash; Płodni Marketing</span>
+                <span class="font-semibold text-white">Kasia Urbańska-Ludwicka</span>
+                <span class="text-gray-500"> &mdash; Płodni Marketing</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">15.10.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.10.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -384,13 +386,13 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Bardzo szybka i sprawna realizacja — zamówienie zgodne z oczekiwaniami.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Bardzo szybka i sprawna realizacja — zamówienie zgodne z oczekiwaniami.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">CU Partner</span>
+                <span class="font-semibold text-white">CU Partner</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">23.09.2025</div>
+              <div class="text-xs text-gray-600 mt-1">23.09.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -398,18 +400,18 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Zawsze szybko, sprawnie i w dobrej atmosferze. Wracamy regularnie.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Zawsze szybko, sprawnie i w dobrej atmosferze. Wracamy regularnie.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Tatiana Maćkowiak</span>
-                <span class="text-slate-500"> &mdash; Blue Baobab Sp. z o.o.</span>
+                <span class="font-semibold text-white">Tatiana Maćkowiak</span>
+                <span class="text-gray-500"> &mdash; Blue Baobab Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">26.08.2025</div>
+              <div class="text-xs text-gray-600 mt-1">26.08.2025</div>
             </div>
           </div>
 
           <!-- Slide 3 -->
           <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -417,14 +419,14 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Bardzo dobry kontakt, szybka realizacja, dużo wariantów do wyboru, bardzo dobra jakość nagrań. Zdecydowanie mogę polecić.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Bardzo dobry kontakt, szybka realizacja, dużo wariantów do wyboru, bardzo dobra jakość nagrań. Zdecydowanie mogę polecić.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Kacper</span>
-                <span class="text-slate-500"> &mdash; Taśma Film</span>
+                <span class="font-semibold text-white">Kacper</span>
+                <span class="text-gray-500"> &mdash; Taśma Film</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">05.08.2025</div>
+              <div class="text-xs text-gray-600 mt-1">05.08.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -432,14 +434,14 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy cyklicznie i za każdym razem jest to wzorowo zrealizowane zlecenie. 10/10.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy cyklicznie i za każdym razem jest to wzorowo zrealizowane zlecenie. 10/10.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Wojtek</span>
-                <span class="text-slate-500"> &mdash; Domesta Sp. z o.o.</span>
+                <span class="font-semibold text-white">Wojtek</span>
+                <span class="text-gray-500"> &mdash; Domesta Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">22.05.2025</div>
+              <div class="text-xs text-gray-600 mt-1">22.05.2025</div>
             </div>
-            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
               <div class="flex gap-1 mb-3 text-yellow-400">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -447,12 +449,12 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy z powitania.pl od wielu lat, jakość nagrań oraz profesjonalna obsługa są na najwyższym poziomie.&rdquo;</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy z powitania.pl od wielu lat, jakość nagrań oraz profesjonalna obsługa są na najwyższym poziomie.&rdquo;</p>
               <div class="text-sm">
-                <span class="font-semibold text-slate-800">Łukasz Piotrowski</span>
-                <span class="text-slate-500"> &mdash; Telestrada S.A.</span>
+                <span class="font-semibold text-white">Łukasz Piotrowski</span>
+                <span class="text-gray-500"> &mdash; Telestrada S.A.</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">10.04.2025</div>
+              <div class="text-xs text-gray-600 mt-1">10.04.2025</div>
             </div>
           </div>
 
@@ -460,18 +462,18 @@
       </div>
 
       <!-- Navigation arrows -->
-      <button onclick="slideReviews(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm rounded-full flex items-center justify-center text-slate-700 transition-colors hidden md:flex">
+      <button onclick="slideReviews(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 bg-dark-700 hover:bg-dark-600 border border-white/10 rounded-full flex items-center justify-center text-white transition-colors hidden md:flex">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
       </button>
-      <button onclick="slideReviews(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm rounded-full flex items-center justify-center text-slate-700 transition-colors hidden md:flex">
+      <button onclick="slideReviews(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 bg-dark-700 hover:bg-dark-600 border border-white/10 rounded-full flex items-center justify-center text-white transition-colors hidden md:flex">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </button>
 
       <!-- Dots -->
       <div class="flex justify-center gap-2 mt-6">
         <button onclick="goToSlide(0)" class="review-dot w-2.5 h-2.5 rounded-full bg-accent transition-colors"></button>
-        <button onclick="goToSlide(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors"></button>
-        <button onclick="goToSlide(2)" class="review-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors"></button>
+        <button onclick="goToSlide(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-600 transition-colors"></button>
+        <button onclick="goToSlide(2)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-600 transition-colors"></button>
       </div>
     </div>
 
@@ -482,52 +484,52 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-16 bg-slate-50">
+<section id="faq" class="py-16">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">Najczęściej zadawane pytania</h2>
+    <h2 class="text-3xl font-bold text-center text-white mb-12">Najczęściej zadawane pytania</h2>
     <div class="space-y-4">
-      <details class="group border border-slate-200 rounded-xl bg-white shadow-sm">
-        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+      <details class="group border border-white/10 rounded-xl bg-dark-800">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-white hover:text-accent transition-colors">
           Jak wygląda proces zamawiania nagrania?
           <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
           Przygotowujesz tekst (lub korzystasz z naszego kreatora), wybierasz lektora z banku głosów, a następnie składasz zamówienie. Nagranie jest gotowe w ciągu 24-48 godzin. Oferujemy także nagrania ekspresowe w trybie pilnym.
         </div>
       </details>
-      <details class="group border border-slate-200 rounded-xl bg-white shadow-sm">
-        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+      <details class="group border border-white/10 rounded-xl bg-dark-800">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-white hover:text-accent transition-colors">
           Ile kosztuje nagranie lektorskie?
           <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
           Cena zależy od rodzaju nagrania, długości tekstu i wybranego lektora. Standardowe nagrania IVR zaczynają się od kilkudziesięciu złotych. Sprawdź nasz <a href="/cennik/" class="text-accent hover:underline">cennik</a> lub <a href="/kontakt/" class="text-accent hover:underline">zapytaj o indywidualną wycenę</a>.
         </div>
       </details>
-      <details class="group border border-slate-200 rounded-xl bg-white shadow-sm">
-        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+      <details class="group border border-white/10 rounded-xl bg-dark-800">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-white hover:text-accent transition-colors">
           W jakich językach realizujecie nagrania?
           <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
           Nasze nagrania są dostępne w ponad 30 językach. Współpracujemy zarówno z polskimi lektorami, jak i native speakerami z całego świata. Najpopularniejsze języki to: polski, angielski, niemiecki, francuski, czeski i ukraiński.
         </div>
       </details>
-      <details class="group border border-slate-200 rounded-xl bg-white shadow-sm">
-        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+      <details class="group border border-white/10 rounded-xl bg-dark-800">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-white hover:text-accent transition-colors">
           Czy mogę odsłuchać próbki głosów przed zamówieniem?
           <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
           Tak! W naszym <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> znajdziesz próbki ponad 230 lektorów. Możesz filtrować głosy według płci, języka i typu nagrania, aby znaleźć idealny głos do swojego projektu.
         </div>
       </details>
-      <details class="group border border-slate-200 rounded-xl bg-white shadow-sm">
-        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+      <details class="group border border-white/10 rounded-xl bg-dark-800">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-white hover:text-accent transition-colors">
           Jak szybko otrzymam gotowe nagranie?
           <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
           Standardowy czas realizacji to 24-48 godzin od zatwierdzenia tekstu. W trybie <a href="/nagranie-ekspresowe/" class="text-accent hover:underline">nagrania ekspresowego</a> realizujemy zlecenia nawet w ciągu kilku godzin.
         </div>
       </details>
@@ -539,15 +541,15 @@
 </section>
 
 <!-- CTA -->
-<section class="py-16 bg-gradient-to-r from-emerald-600 to-teal-600">
+<section class="py-16 bg-dark-800">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold text-white mb-4">Masz pytania?</h2>
-    <p class="text-emerald-100 mb-8">Skontaktuj się z nami — odpowiemy w ciągu 2 godzin.</p>
+    <p class="text-gray-400 mb-8">Skontaktuj się z nami — odpowiemy w ciągu 2 godzin.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:+48605491069" class="bg-white hover:bg-emerald-50 text-emerald-700 px-8 py-3 rounded-lg font-semibold transition-colors">
+      <a href="tel:+48605491069" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">
         +48 605 491 069
       </a>
-      <a href="mailto:biuro@powitania.pl" class="border-2 border-white/80 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+      <a href="mailto:biuro@powitania.pl" class="border border-white/20 hover:border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors">
         biuro@powitania.pl
       </a>
     </div>
@@ -601,7 +603,7 @@ function updateSlider() {
   if (slider) slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
   var dots = document.querySelectorAll('.review-dot');
   dots.forEach(function(dot, i) {
-    dot.className = 'review-dot w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-slate-300');
+    dot.className = 'review-dot w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-gray-600');
   });
 }
 
