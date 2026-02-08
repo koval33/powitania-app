@@ -1,15 +1,15 @@
 <%- include('partials/head') %>
 
-<section class="py-10 md:py-16 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+<section class="py-10 md:py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
   <div class="max-w-5xl mx-auto px-4">
 
     <!-- Breadcrumb -->
     <nav class="text-sm mb-8">
-      <a href="/" class="text-slate-500 hover:text-slate-800 transition-colors">Strona główna</a>
-      <span class="text-slate-400 mx-2">/</span>
-      <a href="/bank-glosow/" class="text-slate-500 hover:text-slate-800 transition-colors">Bank głosów</a>
-      <span class="text-slate-400 mx-2">/</span>
-      <span class="text-slate-700"><%= lektor.name %></span>
+      <a href="/" class="text-slate-400 hover:text-white transition-colors">Strona główna</a>
+      <span class="text-slate-600 mx-2">/</span>
+      <a href="/bank-glosow/" class="text-slate-400 hover:text-white transition-colors">Bank głosów</a>
+      <span class="text-slate-600 mx-2">/</span>
+      <span class="text-white"><%= lektor.name %></span>
     </nav>
 
     <!-- Profil: zdjęcie + info -->
@@ -17,20 +17,20 @@
 
       <!-- Lewa kolumna: zdjęcie + tagi -->
       <div class="flex-shrink-0">
-        <div class="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden border-2 border-slate-200 shadow-lg mx-auto md:mx-0">
+        <div class="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden border-2 border-white/20 shadow-lg mx-auto md:mx-0">
           <img src="<%= lektor.photo %>" alt="<%= lektor.name %>" class="w-full h-full object-cover">
         </div>
         <div class="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
           <% if (lektor.famous) { %>
-            <span class="bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full border border-amber-200">Znani i lubiani</span>
+            <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/30">Znani i lubiani</span>
           <% } %>
           <% if (lektor.native) { %>
-            <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200">Native speaker</span>
+            <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-500/30">Native speaker</span>
           <% } %>
-          <span class="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1 rounded-full border border-slate-200">
+          <span class="bg-white/10 text-slate-300 text-xs font-medium px-3 py-1 rounded-full border border-white/20">
             <%= lektor.gender === 'm' ? 'Mężczyzna' : 'Kobieta' %>
           </span>
-          <span class="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1 rounded-full border border-slate-200">
+          <span class="bg-white/10 text-slate-300 text-xs font-medium px-3 py-1 rounded-full border border-white/20">
             <%= lektor.age %>
           </span>
         </div>
@@ -38,21 +38,21 @@
 
       <!-- Prawa kolumna: dane -->
       <div class="flex-1 min-w-0">
-        <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3"><%= lektor.name %></h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-3"><%= lektor.name %></h1>
 
         <% if (lektor.description) { %>
-          <p class="text-slate-500 leading-relaxed mb-4"><%= lektor.description %></p>
+          <p class="text-slate-400 leading-relaxed mb-4"><%= lektor.description %></p>
         <% } %>
 
         <!-- Meta info — kompaktowo -->
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-500 mb-4">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-400 mb-4">
           <span><%= lektor.languages.join(', ') %></span>
-          <span class="text-slate-400">·</span>
-          <span>Realizacja: <span class="text-slate-700 font-medium"><%= lektor.turnaround || '24-48h' %></span></span>
+          <span class="text-slate-600">·</span>
+          <span>Realizacja: <span class="text-white font-medium"><%= lektor.turnaround || '24-48h' %></span></span>
           <% if (lektor.applications && lektor.applications.length > 0) { %>
-          <span class="text-slate-400">·</span>
+          <span class="text-slate-600">·</span>
           <% lektor.applications.forEach(function(app) { %>
-            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full"><%= app %></span>
+            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full"><%= app %></span>
           <% }); %>
           <% } %>
         </div>
@@ -115,7 +115,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
             Wyceń nagranie z tym lektorem
           </button>
-          <button onclick="showInquiryModal()" class="text-slate-500 hover:text-emerald-600 text-sm transition-colors text-center">
+          <button onclick="showInquiryModal()" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors text-center">
             Zapytaj o wycenę
           </button>
           <% } else { %>
