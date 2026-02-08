@@ -256,8 +256,8 @@
   function renderLoading() {
     return '<div class="flex flex-col items-center justify-center py-20">' +
       '<div class="kreator-spinner mb-4"></div>' +
-      '<p class="text-gray-300 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
-      '<p class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
+      '<p class="text-slate-600 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
+      '<p class="text-slate-400 text-sm mt-2">To potrwa kilka sekund...</p>' +
     '</div>';
   }
 
@@ -270,15 +270,15 @@
   function renderWelcome() {
     return '<div class="grid md:grid-cols-2 gap-6">' +
       '<button data-action="setPath" data-value="creator" class="kreator-card group">' +
-        '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
+        '<div class="mb-4 text-slate-500 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Potrzebuję tekstu</h3>' +
-        '<p class="text-gray-400 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
+        '<p class="text-slate-500 text-sm mb-3">Przygotuj tekst do nagrania od zera</p>' +
         '<span class="text-sm text-accent font-medium">Rozpocznij &rarr;</span>' +
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
-        '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
+        '<div class="mb-4 text-slate-500 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Mam tekst</h3>' +
-        '<p class="text-gray-400 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
+        '<p class="text-slate-500 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
         '<span class="text-sm text-accent font-medium">Zoptymalizuj &rarr;</span>' +
       '</button>' +
     '</div>';
@@ -290,8 +290,8 @@
     html += '<div class="grid grid-cols-2 gap-4">';
     for (var i = 0; i < CATEGORIES.length; i++) {
       var c = CATEGORIES[i];
-      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
-        '<div class="text-gray-400 mb-3">' + c.icon + '</div>' +
+      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-slate-200 hover:border-emerald-400 hover:bg-emerald-50">' +
+        '<div class="text-slate-500 mb-3">' + c.icon + '</div>' +
         '<div class="font-semibold">' + c.label + '</div>' +
       '</button>';
     }
@@ -316,8 +316,8 @@
         if (SERVICE_TYPES[k].v === cat.services[j]) { svc = SERVICE_TYPES[k]; break; }
       }
       if (!svc) continue;
-      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
-        '<div class="text-gray-400 mb-2">' + svc.icon + '</div>' +
+      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-slate-200 hover:border-emerald-400 hover:bg-emerald-50">' +
+        '<div class="text-slate-500 mb-2">' + svc.icon + '</div>' +
         '<div class="font-semibold text-sm">' + svc.l + '</div>' +
       '</button>';
     }
@@ -369,7 +369,7 @@
         var disabled = !selected && state.form.languages.length >= 2;
         html += '<button data-action="toggleLang" data-value="' + lang.v + '" ' + (disabled ? 'disabled' : '') +
           ' class="p-3 rounded-lg border-2 text-sm ' +
-          (selected ? 'border-accent bg-accent/10' : disabled ? 'border-white/5 bg-dark-700 opacity-50' : 'border-white/10 hover:border-accent/50') + '">' +
+          (selected ? 'border-accent bg-emerald-50' : disabled ? 'border-slate-100 bg-slate-50 border border-slate-200 opacity-50' : 'border-slate-200 hover:border-accent/50') + '">' +
           lang.flag + ' ' + lang.l + (selected ? ' &#10003;' : '') + '</button>';
       }
       html += '</div></div>';
@@ -381,12 +381,12 @@
     if (!isIVR) {
       var moreOpen = state._moreOptions;
       html += '<div class="mt-4">' +
-        '<button data-action="toggleMore" class="text-sm text-gray-400 hover:text-accent flex items-center gap-1 transition-colors">' +
+        '<button data-action="toggleMore" class="text-sm text-slate-500 hover:text-accent flex items-center gap-1 transition-colors">' +
           '<svg class="w-4 h-4 transition-transform ' + (moreOpen ? 'rotate-90' : '') + '" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>' +
           'Więcej opcji' +
         '</button>';
       if (moreOpen) {
-        html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-white/5">' +
+        html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-slate-100">' +
           renderSelect('tone', 'Ton komunikacji', TONES) +
           renderSelect('audience', 'Grupa docelowa', AUDIENCES) +
           renderSelect('goal', 'Cel komunikacji', GOALS) +
@@ -417,19 +417,19 @@
       '<h3 class="text-xl font-bold text-green-400">Tekst gotowy!</h3>' +
     '</div>';
 
-    html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
+    html += '<div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">' +
       '<div class="flex justify-between items-center mb-3">' +
-        '<span class="font-semibold text-sm text-gray-300">Twój tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
+        '<span class="font-semibold text-sm text-slate-600">Twój tekst <span class="text-slate-400 font-normal">(możesz edytować)</span>:</span>' +
         '<button data-action="copy" class="text-accent text-sm font-medium hover:text-accent-light">Kopiuj</button>' +
       '</div>' +
-      '<textarea data-result-edit class="kreator-textarea text-gray-300 leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
+      '<textarea data-result-edit class="kreator-textarea text-slate-600 leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
     '</div>';
 
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
 
     // PRIMARY CTA — Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
-      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<p class="text-sm text-slate-600 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
         '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
         'Wybierz lektora' +
@@ -438,7 +438,7 @@
 
     // Lead magnet link
     html += '<div class="text-center mt-4">' +
-      '<button data-action="goTo" data-value="save-text" class="text-gray-500 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
+      '<button data-action="goTo" data-value="save-text" class="text-slate-400 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
     '</div>';
 
     return html;
@@ -479,16 +479,16 @@
     var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-900/20' : 'bg-orange-900/20') + '">' +
       '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
       '<div class="grid grid-cols-3 gap-4 text-center">' +
-        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-400">Słów</div></div>' +
-        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-400">Różnica</div></div>' +
-        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-400">Odchylenie</div></div>' +
+        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-slate-500">Słów</div></div>' +
+        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-slate-500">Różnica</div></div>' +
+        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-slate-500">Odchylenie</div></div>' +
       '</div>' +
     '</div>';
 
     if (state.result) {
-      html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
+      html += '<div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">' +
         '<div class="flex justify-between items-center mb-3">' +
-          '<span class="font-semibold text-sm">Zoptymalizowany tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
+          '<span class="font-semibold text-sm">Zoptymalizowany tekst <span class="text-slate-400 font-normal">(możesz edytować)</span>:</span>' +
           '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
         '</div>' +
         '<textarea data-result-edit class="kreator-textarea leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
@@ -497,7 +497,7 @@
 
     // PRIMARY CTA — Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
-      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<p class="text-sm text-slate-600 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
         '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
         'Wybierz lektora' +
@@ -505,7 +505,7 @@
     '</div>';
 
     html += '<div class="text-center mt-4">' +
-      '<button data-action="goTo" data-value="save-text" class="text-gray-500 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
+      '<button data-action="goTo" data-value="save-text" class="text-slate-400 hover:text-accent text-sm transition-colors">lub zapisz tekst na email</button>' +
     '</div>';
 
     return html;
@@ -521,7 +521,7 @@
     var orderLektorName = '';
     try { var oc = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); orderLektorName = oc.lektorName || ''; } catch(e) {}
     if (orderLektorName) {
-      html += '<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-4">' +
+      html += '<div class="bg-emerald-50 border border-accent/30 rounded-lg p-4 mb-4">' +
         '<div class="flex items-center gap-2 text-accent font-semibold text-sm">' +
           '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
           'Wybrany lektor: ' + esc(orderLektorName) +
@@ -551,7 +551,7 @@
   function renderInquiryForm() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-6">Zapytaj o wycenę</h3>';
-    html += '<p class="text-gray-400 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
+    html += '<p class="text-slate-500 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
     html += renderError();
     html += '<div class="space-y-4">' +
       renderInput('name', 'Imię', 'Jan Kowalski') +
@@ -572,7 +572,7 @@
   function renderSaveText() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-4">Zapisz tekst na email</h3>';
-    html += '<p class="text-gray-400 text-sm mb-6">Wyślemy Ci przygotowany tekst na podany adres.</p>';
+    html += '<p class="text-slate-500 text-sm mb-6">Wyślemy Ci przygotowany tekst na podany adres.</p>';
     html += renderError();
     html += renderInput('email', 'Twój email *', 'jan@firma.pl');
     html += '<div class="flex gap-3 mt-6">' +
@@ -587,7 +587,7 @@
     return '<div class="text-center py-8">' +
       '<div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-green-400 text-2xl">&#10003;</div>' +
       '<h3 class="text-xl font-bold mb-2">Dziękujemy!</h3>' +
-      '<p class="text-gray-400 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
+      '<p class="text-slate-500 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
       '<button data-action="reset" class="kreator-btn-primary">Stwórz kolejny tekst</button>' +
     '</div>';
   }
