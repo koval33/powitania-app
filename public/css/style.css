@@ -7,7 +7,7 @@
 }
 
 .hero-dotgrid {
-  background: #1a1d23;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a);
 }
 
 /* Kreator widget scoped styles */
