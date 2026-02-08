@@ -1,15 +1,15 @@
 <%- include('partials/head') %>
 
-<!-- HERO -->
-<section class="py-12 md:py-16 border-b border-white/5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-  <div class="max-w-6xl mx-auto px-4 text-center">
+<!-- HERO + FILTRY -->
+<section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <!-- Tytuł -->
+  <div class="py-12 md:py-16 max-w-6xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family: 'Poppins', sans-serif;">Bank głosów</h1>
-    <p class="text-lg text-gray-400 max-w-2xl mx-auto">Ponad 230 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbki i znajdź idealny głos.</p>
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto">Ponad 230 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbki i znajdź idealny głos.</p>
   </div>
-</section>
 
-<!-- FILTRY -->
-<section class="py-4 bg-gradient-to-b from-slate-800/95 to-slate-900/95 backdrop-blur-sm sticky top-[73px] z-40 border-b border-white/10">
+  <!-- Filtry (sticky) -->
+  <div class="py-4 sticky top-[73px] z-40 border-t border-white/10 bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-sm">
   <div class="max-w-6xl mx-auto px-4 space-y-3">
 
     <!-- Rząd 1: Główne filtry (zawsze widoczne) -->
@@ -61,7 +61,7 @@
       <div class="ml-auto w-full md:w-auto order-last md:order-none mt-2 md:mt-0">
         <div class="relative">
           <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-          <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-dark-700 border border-white/10 text-gray-300 text-sm rounded-lg pl-9 pr-4 py-2 w-full md:w-52 focus:border-accent focus:outline-none placeholder-gray-500">
+          <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-dark-700 border border-white/10 text-gray-300 text-sm rounded-lg pl-9 pr-4 py-2 w-full md:w-52 focus:border-accent focus:outline-none placeholder-gray-400">
         </div>
       </div>
     </div>
@@ -95,6 +95,7 @@
       <input type="checkbox" id="filter-native" class="hidden">
     </div>
 
+  </div>
   </div>
 </section>
 
@@ -160,8 +161,8 @@
             </div>
             <div class="flex items-center gap-2 mt-1.5 flex-wrap">
               <% if (v.age) { %>
-                <span class="text-sm text-gray-500"><%= v.age %></span>
-                <span class="text-sm text-gray-600">&bull;</span>
+                <span class="text-sm text-gray-400"><%= v.age %></span>
+                <span class="text-sm text-gray-500">&bull;</span>
               <% } %>
               <% v.languages.forEach(function(lang) { %>
                 <span class="text-xs bg-dark-600 text-gray-300 px-2 py-0.5 rounded"><%= lang %></span>
@@ -171,7 +172,7 @@
               <p class="text-sm text-gray-400 mt-2 line-clamp-3"><%= v.description %></p>
             <% } %>
             <% if (v.turnaround) { %>
-              <p class="text-xs text-gray-500 mt-2">Realizacja: <%= v.turnaround %></p>
+              <p class="text-xs text-gray-400 mt-2">Realizacja: <%= v.turnaround %></p>
             <% } %>
           </div>
         </div>
