@@ -68,6 +68,10 @@ function loadVoices() {
 function loadReviews() {
   return JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
 }
+const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
+function loadBlogPosts() {
+  return JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+}
 
 // Page routes
 app.get('/', (req, res) => {
@@ -234,6 +238,119 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
   });
 });
 
+// O firmie
+app.get('/o-firmie/', (req, res) => {
+  res.render('o-firmie', {
+    title: 'O firmie | powitania.pl',
+    description: 'OPTIMUM Paweł Kowalski — studio nagrań lektorskich działające od 2001 roku. Ponad 230 lektorów, 30+ języków.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'O firmie', url: '/o-firmie/' }
+    ]
+  });
+});
+
+// Polityka prywatności
+app.get('/polityka-prywatnosci/', (req, res) => {
+  res.render('polityka-prywatnosci', {
+    title: 'Polityka prywatności | powitania.pl',
+    description: 'Polityka prywatności serwisu internetowego powitania.pl. Informacje o przetwarzaniu danych osobowych.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Polityka prywatności', url: '/polityka-prywatnosci/' }
+    ]
+  });
+});
+
+// Regulamin
+app.get('/regulamin-serwisu/', (req, res) => {
+  res.render('regulamin', {
+    title: 'Regulamin serwisu | powitania.pl',
+    description: 'Regulamin serwisu internetowego powitania.pl. Warunki korzystania z usług nagrań lektorskich.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Regulamin', url: '/regulamin-serwisu/' }
+    ]
+  });
+});
+
+// Blog / Aktualności — lista postów
+app.get('/aktualnosci-pl/', (req, res) => {
+  const posts = loadBlogPosts();
+  const perPage = 10;
+  const currentPage = 1;
+  const totalPages = Math.ceil(posts.length / perPage);
+  const pagePosts = posts.slice(0, perPage);
+  res.render('aktualnosci', {
+    title: 'Aktualności | powitania.pl',
+    description: 'Nowości ze studia nagrań lektorskich, nowi lektorzy, porady i artykuły branżowe.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Aktualności', url: '/aktualnosci-pl/' }
+    ],
+    posts: pagePosts,
+    currentPage,
+    totalPages
+  });
+});
+
+// Blog — paginacja
+app.get('/aktualnosci-pl/strona/:page/', (req, res) => {
+  const posts = loadBlogPosts();
+  const perPage = 10;
+  const currentPage = parseInt(req.params.page) || 1;
+  if (currentPage < 1) return res.redirect('/aktualnosci-pl/');
+  const totalPages = Math.ceil(posts.length / perPage);
+  if (currentPage > totalPages) return res.redirect('/aktualnosci-pl/');
+  const pagePosts = posts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  res.render('aktualnosci', {
+    title: 'Aktualności — strona ' + currentPage + ' | powitania.pl',
+    description: 'Nowości ze studia nagrań lektorskich, nowi lektorzy, porady i artykuły branżowe.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Aktualności', url: '/aktualnosci-pl/' }
+    ],
+    posts: pagePosts,
+    currentPage,
+    totalPages
+  });
+});
+
+// Blog — pojedynczy post
+app.get('/aktualnosci-pl/:slug/', (req, res) => {
+  const posts = loadBlogPosts();
+  const idx = posts.findIndex(p => p.slug === req.params.slug);
+  if (idx === -1) {
+    return res.status(404).render('404', {
+      title: 'Nie znaleziono artykułu | powitania.pl',
+      description: 'Artykuł o podanym adresie nie istnieje.'
+    });
+  }
+  const post = posts[idx];
+  res.render('blog-post', {
+    title: post.title + ' | powitania.pl',
+    description: post.excerpt,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Aktualności', url: '/aktualnosci-pl/' },
+      { name: post.title, url: '/aktualnosci-pl/' + post.slug + '/' }
+    ],
+    post,
+    prevPost: idx > 0 ? posts[idx - 1] : null,
+    nextPost: idx < posts.length - 1 ? posts[idx + 1] : null
+  });
+});
+
+// 301 Redirects — stare URL-e bloga (WordPress category)
+app.get('/category/aktualnosci-pl/', (req, res) => res.redirect(301, '/aktualnosci-pl/'));
+app.get('/category/aktualnosci-pl/page/:page/', (req, res) => res.redirect(301, '/aktualnosci-pl/strona/' + req.params.page + '/'));
+
+// 301 Redirects — portfolio (stare URL-e → nowe podstrony usług)
+app.get('/portfolio/', (req, res) => res.redirect(301, '/nagrania-lektorskie/'));
+app.get('/portfolio/zapowiedzi-telefoniczne/', (req, res) => res.redirect(301, '/nagrania-lektorskie/zapowiedzi-telefoniczne/'));
+app.get('/portfolio/reklama-radiowa/', (req, res) => res.redirect(301, '/nagrania-lektorskie/glos-do-reklamy/'));
+app.get('/portfolio/lektorzy-online/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
+
 // Partner iframe routes (E2 — placeholder)
 app.get('/bank/glosy-meskie/', (req, res) => {
   res.render('placeholder', { title: 'Głosy męskie', description: '', heading: 'Głosy męskie', message: 'W przygotowaniu.' });
@@ -272,6 +389,10 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/kontakt/', priority: '0.7', changefreq: 'monthly' },
     { url: '/opinie/', priority: '0.7', changefreq: 'monthly' },
     { url: '/faq-pl/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/o-firmie/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/aktualnosci-pl/', priority: '0.7', changefreq: 'weekly' },
+    { url: '/polityka-prywatnosci/', priority: '0.3', changefreq: 'yearly' },
+    { url: '/regulamin-serwisu/', priority: '0.3', changefreq: 'yearly' },
     { url: '/bank/glosy-meskie/', priority: '0.6', changefreq: 'weekly' },
     { url: '/bank/glosy-zenskie/', priority: '0.6', changefreq: 'weekly' },
     { url: '/bank/natives/', priority: '0.6', changefreq: 'weekly' },
@@ -287,6 +408,12 @@ app.get('/sitemap.xml', (req, res) => {
 
   voices.forEach(v => {
     xml += `  <url>\n    <loc>${baseUrl}/lektorzy/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n`;
+  });
+
+  // Blog posts
+  const blogPosts = loadBlogPosts();
+  blogPosts.forEach(p => {
+    xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
   });
 
   xml += '</urlset>';

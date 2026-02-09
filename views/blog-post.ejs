@@ -1,0 +1,79 @@
+<%- include('partials/head') %>
+
+<article class="py-16 md:py-24">
+  <div class="max-w-3xl mx-auto px-4">
+
+    <!-- Header -->
+    <header class="mb-10">
+      <time class="text-accent text-sm font-semibold" datetime="<%= post.date %>">
+        <%= new Date(post.date).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+      </time>
+      <h1 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4"><%= post.title %></h1>
+      <p class="text-gray-400 text-lg"><%= post.excerpt %></p>
+    </header>
+
+    <!-- Content -->
+    <% if (post.content) { %>
+    <div class="blog-content space-y-4 text-gray-400 leading-relaxed">
+      <%- post.content %>
+    </div>
+    <% } else { %>
+    <div class="bg-dark-800/50 rounded-xl border border-white/5 p-8 text-center">
+      <p class="text-gray-500">Treść tego artykułu jest w trakcie migracji. Wróć wkrótce!</p>
+      <a href="https://www.powitania.pl/aktualnosci-pl/<%= post.slug %>/" target="_blank" rel="noopener" class="inline-block mt-4 text-accent hover:text-accent-light text-sm">Czytaj na starej stronie →</a>
+    </div>
+    <% } %>
+
+    <!-- Nawigacja -->
+    <div class="flex items-center justify-between mt-12 pt-8 border-t border-white/5">
+      <a href="/aktualnosci-pl/" class="text-gray-400 hover:text-white transition-colors text-sm">← Wszystkie aktualności</a>
+      <div class="flex gap-3">
+        <% if (prevPost) { %>
+          <a href="/aktualnosci-pl/<%= prevPost.slug %>/" class="text-gray-400 hover:text-white transition-colors text-sm" title="<%= prevPost.title %>">← Poprzedni</a>
+        <% } %>
+        <% if (nextPost) { %>
+          <a href="/aktualnosci-pl/<%= nextPost.slug %>/" class="text-gray-400 hover:text-white transition-colors text-sm" title="<%= nextPost.title %>">Następny →</a>
+        <% } %>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<!-- Blog post styles -->
+<style>
+.blog-content h2 { color: white; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+.blog-content h3 { color: white; font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.blog-content p { margin-bottom: 1rem; }
+.blog-content ul, .blog-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+.blog-content ul { list-style-type: disc; }
+.blog-content ol { list-style-type: decimal; }
+.blog-content li { margin-bottom: 0.5rem; }
+.blog-content strong { color: white; }
+.blog-content a { color: #10b981; }
+.blog-content a:hover { color: #34d399; }
+</style>
+
+<!-- JSON-LD: BlogPosting -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "<%= post.title.replace(/"/g, '\\"') %>",
+  "description": "<%= post.excerpt.replace(/"/g, '\\"') %>",
+  "datePublished": "<%= post.date %>",
+  "author": {
+    "@type": "Organization",
+    "name": "Powitania.pl — OPTIMUM Paweł Kowalski"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Powitania.pl",
+    "url": "https://www.powitania.pl",
+    "logo": { "@type": "ImageObject", "url": "https://www.powitania.pl/img/logo-powitania.png" }
+  },
+  "url": "https://www.powitania.pl/aktualnosci-pl/<%= post.slug %>/"
+}
+</script>
+
+<%- include('partials/foot') %>
