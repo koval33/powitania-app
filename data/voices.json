@@ -26,7 +26,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/lukasz-nowicki/",
+    "profileUrl": "/lektorzy/lukasz-nowicki/",
     "prices": {
       "ivr_100": 380,
       "ivr_200": 540,
@@ -90,7 +90,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jon/",
+    "profileUrl": "/lektorzy/jon/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1400,
@@ -145,7 +145,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/wiktor-zborowski/",
+    "profileUrl": "/lektorzy/wiktor-zborowski/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 540,
@@ -205,7 +205,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/patryk-2-2/",
+    "profileUrl": "/lektorzy/patryk-2-2/",
     "prices": {
       "ivr_100": 1100,
       "ivr_200": 1300,
@@ -256,7 +256,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/jacek-rozenek/",
+    "profileUrl": "/lektorzy/jacek-rozenek/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 540,
@@ -313,7 +313,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej-ferenc/",
+    "profileUrl": "/lektorzy/andrzej-ferenc/",
     "prices": {
       "ivr_100": 1400,
       "ivr_200": 1900,
@@ -377,7 +377,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/slawek-2/",
+    "profileUrl": "/lektorzy/slawek-2/",
     "prices": {
       "ivr_100": 640,
       "ivr_200": 800,
@@ -433,7 +433,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-3/",
+    "profileUrl": "/lektorzy/maciej-3/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -493,7 +493,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciek/",
+    "profileUrl": "/lektorzy/maciek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -550,7 +550,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/beata-tadla/",
+    "profileUrl": "/lektorzy/beata-tadla/",
     "prices": {
       "ivr_100": 1200,
       "ivr_200": 1600,
@@ -607,7 +607,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-samusionek/",
+    "profileUrl": "/lektorzy/anna-samusionek/",
     "prices": {
       "ivr_100": 1500,
       "ivr_200": 2200,
@@ -664,7 +664,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota-3/",
+    "profileUrl": "/lektorzy/dorota-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -724,7 +724,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jacek/",
+    "profileUrl": "/lektorzy/jacek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -781,7 +781,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zuzanna/",
+    "profileUrl": "/lektorzy/zuzanna/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -841,7 +841,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/katarzyna-skolimowska/",
+    "profileUrl": "/lektorzy/katarzyna-skolimowska/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -901,7 +901,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/carla/",
+    "profileUrl": "/lektorzy/carla/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -957,7 +957,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-5/",
+    "profileUrl": "/lektorzy/michal-5/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1017,7 +1017,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/antonis/",
+    "profileUrl": "/lektorzy/antonis/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -1069,7 +1069,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/pawel-szwajgier/",
+    "profileUrl": "/lektorzy/pawel-szwajgier/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 540,
@@ -1125,7 +1125,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/magdalena/",
+    "profileUrl": "/lektorzy/magdalena/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1182,7 +1182,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof_4/",
+    "profileUrl": "/lektorzy/krzysztof_4/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1241,7 +1241,7 @@
       "Audiobook"
     ],
     "priceGroup": "Wyższa grupa cenowa",
-    "profileUrl": "/lektor/jacek-brzostynski/",
+    "profileUrl": "/lektorzy/jacek-brzostynski/",
     "prices": {
       "ivr_100": 1400,
       "ivr_200": 1900,
@@ -1296,7 +1296,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/kuba-bielak/",
+    "profileUrl": "/lektorzy/kuba-bielak/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 540,
@@ -1352,7 +1352,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/janek/",
+    "profileUrl": "/lektorzy/janek/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1407,7 +1407,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/justyna/",
+    "profileUrl": "/lektorzy/justyna/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1467,7 +1467,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/blazej/",
+    "profileUrl": "/lektorzy/blazej/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 580,
@@ -1523,7 +1523,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-4/",
+    "profileUrl": "/lektorzy/michal-4/",
     "prices": {
       "ivr_100": 550,
       "ivr_200": 750,
@@ -1575,7 +1575,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pavel/",
+    "profileUrl": "/lektorzy/pavel/",
     "prices": {
       "ivr_100": 600,
       "ivr_200": 800,
@@ -1640,7 +1640,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof-2/",
+    "profileUrl": "/lektorzy/krzysztof-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1700,7 +1700,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/beata/",
+    "profileUrl": "/lektorzy/beata/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1765,7 +1765,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bartosz/",
+    "profileUrl": "/lektorzy/bartosz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1821,7 +1821,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-5/",
+    "profileUrl": "/lektorzy/marcin-5/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1877,7 +1877,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alicja-2/",
+    "profileUrl": "/lektorzy/alicja-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1937,7 +1937,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/janusz/",
+    "profileUrl": "/lektorzy/janusz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1994,7 +1994,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anita/",
+    "profileUrl": "/lektorzy/anita/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2045,7 +2045,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/stanislaw-olejniczak/",
+    "profileUrl": "/lektorzy/stanislaw-olejniczak/",
     "prices": {
       "ivr_100": 1600,
       "ivr_200": 2800,
@@ -2105,7 +2105,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mariusz/",
+    "profileUrl": "/lektorzy/mariusz/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2165,7 +2165,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/paulina/",
+    "profileUrl": "/lektorzy/paulina/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2222,7 +2222,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daniel-2/",
+    "profileUrl": "/lektorzy/daniel-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2283,7 +2283,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/konstancja/",
+    "profileUrl": "/lektorzy/konstancja/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 1100,
@@ -2350,7 +2350,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vasyl/",
+    "profileUrl": "/lektorzy/vasyl/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2406,7 +2406,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kinga/",
+    "profileUrl": "/lektorzy/kinga/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2462,7 +2462,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/olga/",
+    "profileUrl": "/lektorzy/olga/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2522,7 +2522,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-jablonski/",
+    "profileUrl": "/lektorzy/maciej-jablonski/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2583,7 +2583,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-2/",
+    "profileUrl": "/lektorzy/marcin-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2639,7 +2639,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/patryk/",
+    "profileUrl": "/lektorzy/patryk/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2704,7 +2704,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aleksander/",
+    "profileUrl": "/lektorzy/aleksander/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2760,7 +2760,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/katarzyna/",
+    "profileUrl": "/lektorzy/katarzyna/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2816,7 +2816,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/rafal/",
+    "profileUrl": "/lektorzy/rafal/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2872,7 +2872,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/arek/",
+    "profileUrl": "/lektorzy/arek/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2932,7 +2932,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roch/",
+    "profileUrl": "/lektorzy/roch/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2988,7 +2988,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka-3/",
+    "profileUrl": "/lektorzy/agnieszka-3/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3045,7 +3045,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kim-2/",
+    "profileUrl": "/lektorzy/kim-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3100,7 +3100,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zofia/",
+    "profileUrl": "/lektorzy/zofia/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3164,7 +3164,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jarek/",
+    "profileUrl": "/lektorzy/jarek/",
     "prices": {
       "ivr_100": 520,
       "ivr_200": 640,
@@ -3224,7 +3224,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marius/",
+    "profileUrl": "/lektorzy/marius/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 1100,
@@ -3280,7 +3280,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/natalia_2/",
+    "profileUrl": "/lektorzy/natalia_2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3342,7 +3342,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lucia/",
+    "profileUrl": "/lektorzy/lucia/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -3398,7 +3398,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kamila/",
+    "profileUrl": "/lektorzy/kamila/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3455,7 +3455,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marek-2/",
+    "profileUrl": "/lektorzy/marek-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3515,7 +3515,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/robert/",
+    "profileUrl": "/lektorzy/robert/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3574,7 +3574,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw/",
+    "profileUrl": "/lektorzy/przemyslaw/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3634,7 +3634,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zbigniew-moskal/",
+    "profileUrl": "/lektorzy/zbigniew-moskal/",
     "prices": {
       "ivr_100": 550,
       "ivr_200": 700,
@@ -3694,7 +3694,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lukasz-2/",
+    "profileUrl": "/lektorzy/lukasz-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3750,7 +3750,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz-2/",
+    "profileUrl": "/lektorzy/mateusz-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3805,7 +3805,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bruno/",
+    "profileUrl": "/lektorzy/bruno/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3861,7 +3861,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aleksandra/",
+    "profileUrl": "/lektorzy/aleksandra/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3917,7 +3917,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-2-2/",
+    "profileUrl": "/lektorzy/anna-2-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3968,7 +3968,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/franek/",
+    "profileUrl": "/lektorzy/franek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4024,7 +4024,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pola/",
+    "profileUrl": "/lektorzy/pola/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4085,7 +4085,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej-2/",
+    "profileUrl": "/lektorzy/maciej-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4142,7 +4142,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/malgorzata/",
+    "profileUrl": "/lektorzy/malgorzata/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4198,7 +4198,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal-3/",
+    "profileUrl": "/lektorzy/michal-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4254,7 +4254,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/katarzyna-2/",
+    "profileUrl": "/lektorzy/katarzyna-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4310,7 +4310,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof-3/",
+    "profileUrl": "/lektorzy/krzysztof-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4375,7 +4375,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz-3/",
+    "profileUrl": "/lektorzy/mateusz-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4439,7 +4439,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/michal/",
+    "profileUrl": "/lektorzy/michal/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4495,7 +4495,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/klaudia/",
+    "profileUrl": "/lektorzy/klaudia/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4551,7 +4551,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jaroslaw/",
+    "profileUrl": "/lektorzy/jaroslaw/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4612,7 +4612,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/filip/",
+    "profileUrl": "/lektorzy/filip/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4672,7 +4672,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daniel/",
+    "profileUrl": "/lektorzy/daniel/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4728,7 +4728,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/shubham/",
+    "profileUrl": "/lektorzy/shubham/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1400,
@@ -4784,7 +4784,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/siddhi/",
+    "profileUrl": "/lektorzy/siddhi/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1400,
@@ -4839,7 +4839,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin/",
+    "profileUrl": "/lektorzy/marcin/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4895,7 +4895,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/uku/",
+    "profileUrl": "/lektorzy/uku/",
     "prices": {
       "ivr_100": 1100,
       "ivr_200": 1400,
@@ -4951,7 +4951,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hasan/",
+    "profileUrl": "/lektorzy/hasan/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1050,
@@ -5011,7 +5011,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-2/",
+    "profileUrl": "/lektorzy/piotr-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5066,7 +5066,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka-2/",
+    "profileUrl": "/lektorzy/agnieszka-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -5122,7 +5122,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anka/",
+    "profileUrl": "/lektorzy/anka/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5190,7 +5190,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pawel-3/",
+    "profileUrl": "/lektorzy/pawel-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5245,7 +5245,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw-2/",
+    "profileUrl": "/lektorzy/przemyslaw-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5301,7 +5301,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomasz-2/",
+    "profileUrl": "/lektorzy/tomasz-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5357,7 +5357,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/emilia/",
+    "profileUrl": "/lektorzy/emilia/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5417,7 +5417,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/miroslaw-utta/",
+    "profileUrl": "/lektorzy/miroslaw-utta/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1400,
@@ -5477,7 +5477,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomasz/",
+    "profileUrl": "/lektorzy/tomasz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -5533,7 +5533,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-3/",
+    "profileUrl": "/lektorzy/piotr-3/",
     "prices": {
       "ivr_100": 480,
       "ivr_200": 650,
@@ -5593,7 +5593,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/miguel/",
+    "profileUrl": "/lektorzy/miguel/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 950,
@@ -5648,7 +5648,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/aga/",
+    "profileUrl": "/lektorzy/aga/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -5704,7 +5704,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/iwona/",
+    "profileUrl": "/lektorzy/iwona/",
     "prices": {
       "ivr_100": 460,
       "ivr_200": 650,
@@ -5764,7 +5764,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/catarina/",
+    "profileUrl": "/lektorzy/catarina/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 950,
@@ -5820,7 +5820,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vishal/",
+    "profileUrl": "/lektorzy/vishal/",
     "prices": {
       "ivr_100": 900,
       "ivr_200": 1200,
@@ -5880,7 +5880,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/sebastian/",
+    "profileUrl": "/lektorzy/sebastian/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5941,7 +5941,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/diana/",
+    "profileUrl": "/lektorzy/diana/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5996,7 +5996,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub-3/",
+    "profileUrl": "/lektorzy/jakub-3/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 950,
@@ -6059,7 +6059,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lea/",
+    "profileUrl": "/lektorzy/lea/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -6115,7 +6115,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/malgorzata-2/",
+    "profileUrl": "/lektorzy/malgorzata-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6170,7 +6170,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/basia/",
+    "profileUrl": "/lektorzy/basia/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6234,7 +6234,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-4/",
+    "profileUrl": "/lektorzy/marcin-4/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6287,7 +6287,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/witalij/",
+    "profileUrl": "/lektorzy/witalij/",
     "prices": {
       "ivr_100": 550,
       "ivr_200": 700,
@@ -6342,7 +6342,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/eri/",
+    "profileUrl": "/lektorzy/eri/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -6397,7 +6397,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/yurika/",
+    "profileUrl": "/lektorzy/yurika/",
     "prices": {
       "ivr_100": 1100,
       "ivr_200": 1400,
@@ -6461,7 +6461,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marta-2/",
+    "profileUrl": "/lektorzy/marta-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6517,7 +6517,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marzena-2/",
+    "profileUrl": "/lektorzy/marzena-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6573,7 +6573,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/erwin/",
+    "profileUrl": "/lektorzy/erwin/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -6628,7 +6628,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/bartek-ignacik/",
+    "profileUrl": "/lektorzy/bartek-ignacik/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -6689,7 +6689,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jaroslav/",
+    "profileUrl": "/lektorzy/jaroslav/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -6738,7 +6738,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lukasz/",
+    "profileUrl": "/lektorzy/lukasz/",
     "prices": {
       "ivr_100": 1200,
       "ivr_200": 2500,
@@ -6797,7 +6797,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/wiktor/",
+    "profileUrl": "/lektorzy/wiktor/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -6852,7 +6852,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ula/",
+    "profileUrl": "/lektorzy/ula/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -6907,7 +6907,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bartek/",
+    "profileUrl": "/lektorzy/bartek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -6962,7 +6962,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alan/",
+    "profileUrl": "/lektorzy/alan/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7017,7 +7017,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/arminas/",
+    "profileUrl": "/lektorzy/arminas/",
     "prices": {
       "ivr_100": 720,
       "ivr_200": 950,
@@ -7070,7 +7070,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vladimir-2/",
+    "profileUrl": "/lektorzy/vladimir-2/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 950,
@@ -7133,7 +7133,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/mikolaj-krawczyk/",
+    "profileUrl": "/lektorzy/mikolaj-krawczyk/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7188,7 +7188,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/daria/",
+    "profileUrl": "/lektorzy/daria/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -7245,7 +7245,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna-3/",
+    "profileUrl": "/lektorzy/anna-3/",
     "prices": {
       "ivr_100": 480,
       "ivr_200": 720,
@@ -7301,7 +7301,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/julien/",
+    "profileUrl": "/lektorzy/julien/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -7355,7 +7355,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysiek/",
+    "profileUrl": "/lektorzy/krzysiek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7412,7 +7412,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nikolay/",
+    "profileUrl": "/lektorzy/nikolay/",
     "prices": {
       "ivr_100": 720,
       "ivr_200": 950,
@@ -7467,7 +7467,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/maciej/",
+    "profileUrl": "/lektorzy/maciej/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -7525,7 +7525,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/norbert/",
+    "profileUrl": "/lektorzy/norbert/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7580,7 +7580,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ofer/",
+    "profileUrl": "/lektorzy/ofer/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -7635,7 +7635,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/noa/",
+    "profileUrl": "/lektorzy/noa/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -7690,7 +7690,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/eyal/",
+    "profileUrl": "/lektorzy/eyal/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7743,7 +7743,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/uriel/",
+    "profileUrl": "/lektorzy/uriel/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -7802,7 +7802,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vita/",
+    "profileUrl": "/lektorzy/vita/",
     "prices": {
       "ivr_100": 720,
       "ivr_200": 950,
@@ -7865,7 +7865,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/goran/",
+    "profileUrl": "/lektorzy/goran/",
     "prices": {
       "ivr_100": 720,
       "ivr_200": 950,
@@ -7919,7 +7919,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mark/",
+    "profileUrl": "/lektorzy/mark/",
     "prices": {
       "ivr_100": 720,
       "ivr_200": 950,
@@ -7991,7 +7991,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/humberto/",
+    "profileUrl": "/lektorzy/humberto/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 950,
@@ -8043,7 +8043,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/przemyslaw-skowron/",
+    "profileUrl": "/lektorzy/przemyslaw-skowron/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1250,
@@ -8111,7 +8111,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/virginie/",
+    "profileUrl": "/lektorzy/virginie/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -8164,7 +8164,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/tomek/",
+    "profileUrl": "/lektorzy/tomek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -8220,7 +8220,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr-4/",
+    "profileUrl": "/lektorzy/piotr-4/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -8276,7 +8276,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/edyta/",
+    "profileUrl": "/lektorzy/edyta/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -8332,7 +8332,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hubert/",
+    "profileUrl": "/lektorzy/hubert/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -8392,7 +8392,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dariusz/",
+    "profileUrl": "/lektorzy/dariusz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -8448,7 +8448,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andy/",
+    "profileUrl": "/lektorzy/andy/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 1100,
@@ -8503,7 +8503,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joanna/",
+    "profileUrl": "/lektorzy/joanna/",
     "prices": {
       "ivr_100": 600,
       "ivr_200": 900,
@@ -8558,7 +8558,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roy/",
+    "profileUrl": "/lektorzy/roy/",
     "prices": {
       "ivr_100": 1200,
       "ivr_200": 1600,
@@ -8614,7 +8614,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/guntis/",
+    "profileUrl": "/lektorzy/guntis/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1400,
@@ -8669,7 +8669,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ada/",
+    "profileUrl": "/lektorzy/ada/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -8724,7 +8724,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/adam/",
+    "profileUrl": "/lektorzy/adam/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -8788,7 +8788,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/silvia/",
+    "profileUrl": "/lektorzy/silvia/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -8844,7 +8844,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marta/",
+    "profileUrl": "/lektorzy/marta/",
     "prices": {
       "ivr_100": 1000,
       "ivr_200": 1500,
@@ -8899,7 +8899,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nina/",
+    "profileUrl": "/lektorzy/nina/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -8954,7 +8954,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ewelina/",
+    "profileUrl": "/lektorzy/ewelina/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -9027,7 +9027,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej/",
+    "profileUrl": "/lektorzy/andrzej/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -9079,7 +9079,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/yonca/",
+    "profileUrl": "/lektorzy/yonca/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1200,
@@ -9133,7 +9133,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/juliya/",
+    "profileUrl": "/lektorzy/juliya/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9187,7 +9187,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marcin-3/",
+    "profileUrl": "/lektorzy/marcin-3/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -9242,7 +9242,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/klaudiusz/",
+    "profileUrl": "/lektorzy/klaudiusz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -9297,7 +9297,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/karol/",
+    "profileUrl": "/lektorzy/karol/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -9353,7 +9353,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrzej-krusiewicz/",
+    "profileUrl": "/lektorzy/andrzej-krusiewicz/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -9409,7 +9409,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": true,
-    "profileUrl": "/lektor/jacek-kurowski/",
+    "profileUrl": "/lektorzy/jacek-kurowski/",
     "prices": {
       "ivr_100": 800,
       "ivr_200": 1100,
@@ -9465,7 +9465,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pawel/",
+    "profileUrl": "/lektorzy/pawel/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -9516,7 +9516,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joachim/",
+    "profileUrl": "/lektorzy/joachim/",
     "prices": {
       "ivr_100": 750,
       "ivr_200": 950,
@@ -9567,7 +9567,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota-2/",
+    "profileUrl": "/lektorzy/dorota-2/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -9623,7 +9623,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/laura-samojlowicz/",
+    "profileUrl": "/lektorzy/laura-samojlowicz/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1500,
@@ -9679,7 +9679,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ioana/",
+    "profileUrl": "/lektorzy/ioana/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9733,7 +9733,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alfonso/",
+    "profileUrl": "/lektorzy/alfonso/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9789,7 +9789,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/joel/",
+    "profileUrl": "/lektorzy/joel/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9838,7 +9838,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kornelia/",
+    "profileUrl": "/lektorzy/kornelia/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9892,7 +9892,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mona/",
+    "profileUrl": "/lektorzy/mona/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9945,7 +9945,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/wael/",
+    "profileUrl": "/lektorzy/wael/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -9999,7 +9999,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/luis/",
+    "profileUrl": "/lektorzy/luis/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10053,7 +10053,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/linda/",
+    "profileUrl": "/lektorzy/linda/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10107,7 +10107,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mirek/",
+    "profileUrl": "/lektorzy/mirek/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -10158,7 +10158,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/nanna/",
+    "profileUrl": "/lektorzy/nanna/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10207,7 +10207,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/liv/",
+    "profileUrl": "/lektorzy/liv/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10258,7 +10258,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anna/",
+    "profileUrl": "/lektorzy/anna/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1100,
@@ -10315,7 +10315,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/smari/",
+    "profileUrl": "/lektorzy/smari/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10365,7 +10365,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/gianmarco/",
+    "profileUrl": "/lektorzy/gianmarco/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10418,7 +10418,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/dorota/",
+    "profileUrl": "/lektorzy/dorota/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -10475,7 +10475,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/anne/",
+    "profileUrl": "/lektorzy/anne/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10529,7 +10529,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jenna/",
+    "profileUrl": "/lektorzy/jenna/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10591,7 +10591,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roy-2/",
+    "profileUrl": "/lektorzy/roy-2/",
     "prices": {
       "ivr_100": 950,
       "ivr_200": 1300,
@@ -10647,7 +10647,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub/",
+    "profileUrl": "/lektorzy/jakub/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -10702,7 +10702,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bozena/",
+    "profileUrl": "/lektorzy/bozena/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -10761,7 +10761,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zuzana/",
+    "profileUrl": "/lektorzy/zuzana/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10816,7 +10816,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zeno/",
+    "profileUrl": "/lektorzy/zeno/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10869,7 +10869,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/roger/",
+    "profileUrl": "/lektorzy/roger/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -10923,7 +10923,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kristien/",
+    "profileUrl": "/lektorzy/kristien/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1150,
@@ -10976,7 +10976,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pierre/",
+    "profileUrl": "/lektorzy/pierre/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11029,7 +11029,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/vladimir/",
+    "profileUrl": "/lektorzy/vladimir/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11082,7 +11082,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/lara/",
+    "profileUrl": "/lektorzy/lara/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11135,7 +11135,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/pascale/",
+    "profileUrl": "/lektorzy/pascale/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11189,7 +11189,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/masha/",
+    "profileUrl": "/lektorzy/masha/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11243,7 +11243,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/grete/",
+    "profileUrl": "/lektorzy/grete/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11296,7 +11296,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/natalia-2/",
+    "profileUrl": "/lektorzy/natalia-2/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11350,7 +11350,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/andrew/",
+    "profileUrl": "/lektorzy/andrew/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11407,7 +11407,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/bill/",
+    "profileUrl": "/lektorzy/bill/",
     "prices": {
       "ivr_100": 1600,
       "ivr_200": 2200,
@@ -11465,7 +11465,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/david-2/",
+    "profileUrl": "/lektorzy/david-2/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11518,7 +11518,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/judit/",
+    "profileUrl": "/lektorzy/judit/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11570,7 +11570,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/zoltan/",
+    "profileUrl": "/lektorzy/zoltan/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11625,7 +11625,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/josh/",
+    "profileUrl": "/lektorzy/josh/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11688,7 +11688,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alison/",
+    "profileUrl": "/lektorzy/alison/",
     "prices": {
       "ivr_100": 860,
       "ivr_200": 1200,
@@ -11743,7 +11743,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/sandra/",
+    "profileUrl": "/lektorzy/sandra/",
     "prices": {
       "ivr_100": 1100,
       "ivr_200": 1450,
@@ -11798,7 +11798,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ilja/",
+    "profileUrl": "/lektorzy/ilja/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -11856,7 +11856,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jeroen/",
+    "profileUrl": "/lektorzy/jeroen/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11906,7 +11906,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/edward/",
+    "profileUrl": "/lektorzy/edward/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -11959,7 +11959,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ola/",
+    "profileUrl": "/lektorzy/ola/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12013,7 +12013,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kim/",
+    "profileUrl": "/lektorzy/kim/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12070,7 +12070,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/david/",
+    "profileUrl": "/lektorzy/david/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12123,7 +12123,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/helena/",
+    "profileUrl": "/lektorzy/helena/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12176,7 +12176,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/alicja/",
+    "profileUrl": "/lektorzy/alicja/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12231,7 +12231,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ela/",
+    "profileUrl": "/lektorzy/ela/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12286,7 +12286,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/agnieszka/",
+    "profileUrl": "/lektorzy/agnieszka/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12342,7 +12342,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/iza/",
+    "profileUrl": "/lektorzy/iza/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12398,7 +12398,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/ola-2/",
+    "profileUrl": "/lektorzy/ola-2/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12451,7 +12451,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/luigi/",
+    "profileUrl": "/lektorzy/luigi/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12508,7 +12508,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jessica/",
+    "profileUrl": "/lektorzy/jessica/",
     "prices": {
       "ivr_100": 1500,
       "ivr_200": 2100,
@@ -12561,7 +12561,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/mateusz/",
+    "profileUrl": "/lektorzy/mateusz/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -12612,7 +12612,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/minna/",
+    "profileUrl": "/lektorzy/minna/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12666,7 +12666,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/krzysztof/",
+    "profileUrl": "/lektorzy/krzysztof/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -12722,7 +12722,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/jakub-2/",
+    "profileUrl": "/lektorzy/jakub-2/",
     "prices": {
       "ivr_100": 820,
       "ivr_200": 1100,
@@ -12775,7 +12775,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/hoki/",
+    "profileUrl": "/lektorzy/hoki/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -12828,7 +12828,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/june/",
+    "profileUrl": "/lektorzy/june/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -12881,7 +12881,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/kritsada/",
+    "profileUrl": "/lektorzy/kritsada/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -12934,7 +12934,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/peerapon/",
+    "profileUrl": "/lektorzy/peerapon/",
     "prices": {
       "ivr_100": 850,
       "ivr_200": 1100,
@@ -12987,7 +12987,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/marek/",
+    "profileUrl": "/lektorzy/marek/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -13043,7 +13043,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektor/piotr/",
+    "profileUrl": "/lektorzy/piotr/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,

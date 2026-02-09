@@ -5,9 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= typeof title !== 'undefined' ? title : 'powitania.pl' %></title>
   <meta name="description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.powitania.pl<%= currentPath %>">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="<%= typeof title !== 'undefined' ? title : 'powitania.pl' %>">
   <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : '' %>">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.powitania.pl<%= currentPath %>">
+  <meta property="og:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : 'https://www.powitania.pl/img/og-default.jpg' %>">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="powitania.pl">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : 'powitania.pl' %>">
+  <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+  <meta name="twitter:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : 'https://www.powitania.pl/img/og-default.jpg' %>">
+
+  <!-- JSON-LD: Organization + LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    "name": "Powitania.pl — OPTIMUM Paweł Kowalski",
+    "url": "https://www.powitania.pl",
+    "logo": "https://www.powitania.pl/img/logo-powitania.png",
+    "image": "https://www.powitania.pl/img/og-default.jpg",
+    "description": "Profesjonalne studio nagrań lektorskich. Ponad 230 lektorów, 30+ języków, 24 lata doświadczenia.",
+    "telephone": "+48605491069",
+    "email": "biuro@powitania.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Pozytywistów 4/4",
+      "addressLocality": "Lublin",
+      "postalCode": "20-639",
+      "addressCountry": "PL"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/powitania",
+      "https://www.instagram.com/powitania.pl"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "39"
+    },
+    "foundingDate": "2001"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <% if (typeof breadcrumbs !== 'undefined' && breadcrumbs.length > 0) { %>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      <% breadcrumbs.forEach(function(bc, i) { %>
+      {
+        "@type": "ListItem",
+        "position": <%= i + 1 %>,
+        "name": "<%= bc.name %>",
+        "item": "https://www.powitania.pl<%= bc.url %>"
+      }<%= i < breadcrumbs.length - 1 ? ',' : '' %>
+      <% }); %>
+    ]
+  }
+  </script>
+  <% } %>
+
+  <!-- JSON-LD: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "<%= typeof title !== 'undefined' ? title : 'powitania.pl' %>",
+    "description": "<%= typeof description !== 'undefined' ? description : '' %>",
+    "url": "https://www.powitania.pl<%= currentPath %>"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -39,7 +129,7 @@
     <div class="hidden md:flex items-center gap-7 text-base font-medium">
       <a href="/bank-glosow/" class="hover:text-white transition-colors <%= currentPath === '/bank-glosow/' ? 'text-white' : 'text-gray-300' %>">Bank głosów</a>
       <a href="/nagrania-lektorskie/" class="hover:text-white transition-colors <%= currentPath === '/nagrania-lektorskie/' ? 'text-white' : 'text-gray-300' %>">Nagrania lektorskie</a>
-      <a href="/sesje-zdalne/" class="hover:text-white transition-colors <%= currentPath === '/sesje-zdalne/' ? 'text-white' : 'text-gray-300' %>">Sesje zdalne</a>
+      <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="hover:text-white transition-colors <%= currentPath === '/sesje-zdalne-nagrania-lektorskie-online/' ? 'text-white' : 'text-gray-300' %>">Sesje zdalne</a>
       <a href="/cennik/" class="hover:text-white transition-colors <%= currentPath === '/cennik/' ? 'text-white' : 'text-gray-300' %>">Cennik</a>
       <a href="/opinie/" class="hover:text-white transition-colors <%= currentPath === '/opinie/' ? 'text-white' : 'text-gray-300' %>">Opinie</a>
       <a href="/kontakt/" class="hover:text-white transition-colors <%= currentPath === '/kontakt/' ? 'text-white' : 'text-gray-300' %>">Kontakt</a>
@@ -56,7 +146,7 @@
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-dark-800 px-4 pb-4">
     <a href="/bank-glosow/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Bank głosów</a>
     <a href="/nagrania-lektorskie/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Nagrania lektorskie</a>
-    <a href="/sesje-zdalne/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Sesje zdalne</a>
+    <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Sesje zdalne</a>
     <a href="/cennik/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Cennik</a>
     <a href="/opinie/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Opinie</a>
     <a href="/kontakt/" class="block py-3 text-gray-400 hover:text-white border-b border-white/5">Kontakt</a>

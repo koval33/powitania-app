@@ -37,6 +37,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
+app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
+app.get('/faq/', (req, res) => res.redirect(301, '/faq-pl/'));
+app.get('/sesje-zdalne/', (req, res) => res.redirect(301, '/sesje-zdalne-nagrania-lektorskie-online/'));
+app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
+app.get('/lista-lektorow/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/szukaj/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/ceny-lektora/', (req, res) => res.redirect(301, '/cennik/'));
+app.get('/voice-over/', (req, res) => res.redirect(301, '/'));
+app.get('/twoj-bank-glosow/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
+
 // API routes
 app.use('/api/kreator', require('./routes/api-kreator'));
 app.use('/api/contact', require('./routes/api-contact'));
@@ -54,7 +66,7 @@ function loadVoices() {
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'powitania.pl — Profesjonalne nagrania lektorskie',
+    title: 'Studio, usługi lektorskie | Lektor, głos do reklamy | powitania.pl',
     description: 'Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych lektorów, 30+ języków, 24 lata doświadczenia.',
     voices: loadVoices()
   });
@@ -62,18 +74,18 @@ app.get('/', (req, res) => {
 
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Bank głosów — powitania.pl',
+    title: 'Bank głosów lektorskich | Baza lektorów | powitania.pl',
     description: 'Ponad 230 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbki i znajdź idealny głos.',
     voices: loadVoices()
   });
 });
 
-app.get('/lektor/:slug/', (req, res) => {
+app.get('/lektorzy/:slug/', (req, res) => {
   const voices = loadVoices();
   const lektor = voices.find(v => v.id === req.params.slug);
   if (!lektor) {
     return res.status(404).render('placeholder', {
-      title: '404 — powitania.pl',
+      title: '404 | powitania.pl',
       description: 'Nie znaleziono lektora',
       heading: 'Nie znaleziono lektora',
       message: 'Lektor o podanym identyfikatorze nie istnieje. <a href="/bank-glosow/" class="text-accent hover:underline">Wróć do banku głosów</a>.'
@@ -87,6 +99,12 @@ app.get('/lektor/:slug/', (req, res) => {
   res.render('lektor', {
     title: lektor.name + ' — Lektor | powitania.pl',
     description: lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
+    ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Bank głosów', url: '/bank-glosow/' },
+      { name: lektor.name, url: '/lektorzy/' + lektor.id + '/' }
+    ],
     lektor: lektor,
     similar: similar
   });
@@ -94,14 +112,14 @@ app.get('/lektor/:slug/', (req, res) => {
 
 app.get('/cennik/', (req, res) => {
   res.render('cennik', {
-    title: 'Cennik — powitania.pl',
+    title: 'Cennik | Lektor, atrakcyjna cena | powitania.pl',
     description: 'Cennik usług nagrań lektorskich. Przejrzyste ceny dla dwóch grup cenowych.'
   });
 });
 
-app.get('/faq/', (req, res) => {
+app.get('/faq-pl/', (req, res) => {
   res.render('placeholder', {
-    title: 'FAQ — powitania.pl',
+    title: 'FAQ | powitania.pl',
     description: 'Najczęściej zadawane pytania.',
     heading: 'FAQ',
     message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
@@ -110,14 +128,14 @@ app.get('/faq/', (req, res) => {
 
 app.get('/kontakt/', (req, res) => {
   res.render('kontakt', {
-    title: 'Kontakt — powitania.pl',
+    title: 'Kontakt | powitania.pl',
     description: 'Skontaktuj się z nami. Odpowiadamy w ciągu 2 godzin.'
   });
 });
 
 app.get('/opinie/', (req, res) => {
   res.render('placeholder', {
-    title: 'Opinie — powitania.pl',
+    title: 'Opinie | powitania.pl',
     description: 'Co mówią nasi klienci.',
     heading: 'Opinie',
     message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
@@ -126,7 +144,7 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('placeholder', {
-    title: 'Nagrania lektorskie — powitania.pl',
+    title: 'Nagrania lektorskie | Cennik | powitania.pl',
     description: 'Profesjonalne nagrania lektorskie: IVR, spoty radiowe i TV, e-learning, audiobooki, podcasty.',
     heading: 'Nagrania lektorskie',
     message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
@@ -138,14 +156,24 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
     title: 'Głos do reklamy — Spoty reklamowe | powitania.pl',
     description: 'Profesjonalne spoty reklamowe radiowe, telewizyjne i internetowe. Zatrudnij rozpoznawalne głosy lektorów i stwórz skuteczną reklamę.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
+      { name: 'Głos do reklamy', url: '/nagrania-lektorskie/glos-do-reklamy/' }
+    ],
     voices: loadVoices()
   });
 });
 
-app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => {
+app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
   res.render('uslugi/lektor-do-filmow', {
     title: 'Profesjonalny lektor do filmów | powitania.pl',
     description: 'Narracja lektorska do filmów instruktażowych, korporacyjnych, e-learningowych i promocyjnych. Montaż audio-video w pakiecie.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
+      { name: 'Profesjonalny lektor do filmów', url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/' }
+    ],
     voices: loadVoices()
   });
 });
@@ -154,20 +182,29 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
     title: 'Zapowiedzi telefoniczne — Nagrania IVR | powitania.pl',
     description: 'Profesjonalne zapowiedzi telefoniczne i nagrania IVR. Buduj profesjonalny wizerunek firmy już od pierwszego połączenia.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
+      { name: 'Zapowiedzi telefoniczne', url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/' }
+    ],
     voices: loadVoices()
   });
 });
 
-app.get('/sesje-zdalne/', (req, res) => {
+app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
   res.render('uslugi/sesje-zdalne', {
-    title: 'Sesje zdalne — Zdalny udział w nagraniu | powitania.pl',
-    description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.'
+    title: 'Sesje zdalne — Nagrania lektorskie online | powitania.pl',
+    description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Sesje zdalne', url: '/sesje-zdalne-nagrania-lektorskie-online/' }
+    ]
   });
 });
 
 app.get('/nagranie-ekspresowe/', (req, res) => {
   res.render('placeholder', {
-    title: 'Nagranie ekspresowe — powitania.pl',
+    title: 'Nagranie ekspresowe | powitania.pl',
     description: 'Ekspresowe nagrania lektorskie.',
     heading: 'Nagranie ekspresowe',
     message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
@@ -191,6 +228,56 @@ app.get('/bank/znani-i-lubiani/', (req, res) => {
 // EN version placeholder
 app.get('/en/', (req, res) => {
   res.render('placeholder', { title: 'powitania.pl — Professional voiceover recordings', description: '', heading: 'English version', message: 'Coming soon!' });
+});
+
+// Sitemap.xml — dynamiczny
+app.get('/sitemap.xml', (req, res) => {
+  const voices = loadVoices();
+  const baseUrl = 'https://www.powitania.pl';
+  const today = new Date().toISOString().split('T')[0];
+
+  const staticPages = [
+    { url: '/', priority: '1.0', changefreq: 'weekly' },
+    { url: '/bank-glosow/', priority: '0.9', changefreq: 'weekly' },
+    { url: '/nagrania-lektorskie/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagrania-lektorskie/glos-do-reklamy/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/sesje-zdalne-nagrania-lektorskie-online/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagranie-ekspresowe/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/cennik/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/kontakt/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/opinie/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/faq-pl/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/bank/glosy-meskie/', priority: '0.6', changefreq: 'weekly' },
+    { url: '/bank/glosy-zenskie/', priority: '0.6', changefreq: 'weekly' },
+    { url: '/bank/natives/', priority: '0.6', changefreq: 'weekly' },
+    { url: '/bank/znani-i-lubiani/', priority: '0.6', changefreq: 'weekly' },
+  ];
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+  staticPages.forEach(p => {
+    xml += `  <url>\n    <loc>${baseUrl}${p.url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
+  });
+
+  voices.forEach(v => {
+    xml += `  <url>\n    <loc>${baseUrl}/lektorzy/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n`;
+  });
+
+  xml += '</urlset>';
+
+  res.set('Content-Type', 'application/xml');
+  res.send(xml);
+});
+
+// 404 catch-all — MUSI być ostatnim routem
+app.use((req, res) => {
+  res.status(404).render('404', {
+    title: 'Nie znaleziono strony | powitania.pl',
+    description: 'Strona o podanym adresie nie istnieje.'
+  });
 });
 
 app.listen(PORT, () => {

@@ -1,0 +1,12 @@
+User-Agent: *
+Disallow: /*skip_header=*
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: Googlebot-image
+Disallow:
+
+Sitemap: https://www.powitania.pl/sitemap.xml

@@ -84,7 +84,7 @@
       <% recIds.forEach(function(pid) { %>
         <% var v = voices.find(function(x) { return x.id === pid; }); %>
         <% if (v) { %>
-        <a href="/lektor/<%= v.id %>/" class="text-center group">
+        <a href="/lektorzy/<%= v.id %>/" class="text-center group">
           <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-white/10 group-hover:border-accent/50 transition-all mb-2" loading="lazy">
           <div class="text-white font-semibold text-sm group-hover:text-accent transition-colors"><%= v.name %></div>
         </a>

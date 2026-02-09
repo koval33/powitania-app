@@ -1,0 +1,31 @@
+<%- include('partials/head') %>
+
+<section class="min-h-[60vh] flex items-center justify-center px-4">
+  <div class="text-center max-w-lg">
+    <div class="text-8xl font-bold text-accent/20 mb-4">404</div>
+    <h1 class="text-3xl font-bold text-white mb-4">Nie znaleziono strony</h1>
+    <p class="text-gray-400 mb-8 leading-relaxed">
+      Strona o podanym adresie nie istnieje lub została przeniesiona.
+      Sprawdź adres URL lub przejdź do jednej z poniższych sekcji.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+        Strona główna
+      </a>
+      <a href="/bank-glosow/" class="bg-dark-700 hover:bg-dark-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors border border-white/10">
+        Bank głosów
+      </a>
+      <a href="/kontakt/" class="bg-dark-700 hover:bg-dark-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors border border-white/10">
+        Kontakt
+      </a>
+    </div>
+    <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <a href="/nagrania-lektorskie/" class="text-gray-500 hover:text-white transition-colors">Nagrania lektorskie</a>
+      <a href="/cennik/" class="text-gray-500 hover:text-white transition-colors">Cennik</a>
+      <a href="/opinie/" class="text-gray-500 hover:text-white transition-colors">Opinie</a>
+      <a href="/faq-pl/" class="text-gray-500 hover:text-white transition-colors">FAQ</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/foot') %>
