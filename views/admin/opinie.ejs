@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
+        accent: { DEFAULT: '#10b981', light: '#34d399', dark: '#059669' }
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-gray-300 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-dark-800 border-b border-white/10 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <h1 class="text-xl font-bold text-white">Panel Admin</h1>
+      <span class="text-sm text-gray-500">/ Opinie (<%= reviews.length %>)</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/admin/lektorzy/" class="text-gray-400 hover:text-white text-sm transition-colors border border-white/10 px-3 py-1.5 rounded-lg">Lektorzy</a>
+      <a href="/admin/opinie/" class="text-accent text-sm font-semibold border border-accent/30 px-3 py-1.5 rounded-lg">Opinie</a>
+      <a href="/" class="text-gray-400 hover:text-white text-sm transition-colors">Strona główna</a>
+    </div>
+  </header>
+
+  <!-- Message -->
+  <% if (msg) { %>
+    <div class="max-w-7xl mx-auto px-6 mt-4">
+      <div class="bg-accent/10 border border-accent/30 text-accent px-4 py-3 rounded-lg text-sm">
+        <%= msg %>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Tabs -->
+  <div class="max-w-7xl mx-auto px-6 mt-6 flex gap-4">
+    <button onclick="showTab('pending')" id="tab-pending" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg border transition-colors">
+      Oczekujące (<%= pending.length %>)
+    </button>
+    <button onclick="showTab('approved')" id="tab-approved" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg border transition-colors">
+      Zatwierdzone (<%= approved.length %>)
+    </button>
+  </div>
+
+  <!-- Pending reviews -->
+  <div id="section-pending" class="max-w-7xl mx-auto px-6 mt-4 pb-12">
+    <% if (pending.length === 0) { %>
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-8 text-center text-gray-500">
+        Brak opinii oczekujących na akceptację.
+      </div>
+    <% } else { %>
+      <div class="space-y-3">
+        <% pending.forEach(function(r) { %>
+        <div class="bg-dark-800 rounded-xl border border-yellow-500/20 p-5 flex items-start gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-white font-semibold"><%= r.company %></span>
+              <% if (r.author) { %><span class="text-gray-500 text-sm">— <%= r.author %></span><% } %>
+              <span class="text-[10px] bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">Oczekuje</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed"><%= r.text %></p>
+            <% if (r.createdAt) { %>
+              <p class="text-gray-600 text-xs mt-2"><%= new Date(r.createdAt).toLocaleString('pl-PL') %></p>
+            <% } %>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <form method="POST" action="/admin/opinie/zatwierdz/<%= r.id %>/" class="inline">
+              <button type="submit" class="text-xs text-accent hover:text-accent-light transition-colors px-3 py-1.5 rounded border border-accent/30 hover:border-accent/50 font-semibold">Zatwierdź</button>
+            </form>
+            <form method="POST" action="/admin/opinie/usun/<%= r.id %>/" onsubmit="return confirm('Na pewno usunąć tę opinię?')" class="inline">
+              <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-3 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">Usuń</button>
+            </form>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Approved reviews -->
+  <div id="section-approved" class="max-w-7xl mx-auto px-6 mt-4 pb-12 hidden">
+    <% if (approved.length === 0) { %>
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-8 text-center text-gray-500">
+        Brak zatwierdzonych opinii.
+      </div>
+    <% } else { %>
+      <div class="space-y-3">
+        <% approved.forEach(function(r) { %>
+        <div class="bg-dark-800 rounded-xl border border-white/5 p-5 flex items-start gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-white font-semibold"><%= r.company %></span>
+              <% if (r.author) { %><span class="text-gray-500 text-sm">— <%= r.author %></span><% } %>
+              <span class="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Zatwierdzona</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed"><%= r.text %></p>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <form method="POST" action="/admin/opinie/cofnij/<%= r.id %>/" class="inline">
+              <button type="submit" class="text-xs text-yellow-400 hover:text-yellow-300 transition-colors px-3 py-1.5 rounded border border-yellow-500/20 hover:border-yellow-500/40">Cofnij</button>
+            </form>
+            <form method="POST" action="/admin/opinie/usun/<%= r.id %>/" onsubmit="return confirm('Na pewno usunąć tę opinię?')" class="inline">
+              <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-3 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">Usuń</button>
+            </form>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+
+  <script>
+    function showTab(tab) {
+      document.getElementById('section-pending').classList.toggle('hidden', tab !== 'pending');
+      document.getElementById('section-approved').classList.toggle('hidden', tab !== 'approved');
+
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.remove('border-accent', 'text-accent', 'bg-accent/5');
+        btn.classList.add('border-white/10', 'text-gray-400');
+      });
+      var activeBtn = document.getElementById('tab-' + tab);
+      activeBtn.classList.remove('border-white/10', 'text-gray-400');
+      activeBtn.classList.add('border-accent', 'text-accent', 'bg-accent/5');
+    }
+
+    // Default: show pending
+    showTab('pending');
+  </script>
+
+</body>
+</html>

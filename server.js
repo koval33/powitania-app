@@ -52,15 +52,21 @@ app.get('/sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
 // API routes
 app.use('/api/kreator', require('./routes/api-kreator'));
 app.use('/api/contact', require('./routes/api-contact'));
+app.use('/api/reviews', require('./routes/api-reviews'));
 
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
+app.use('/admin/opinie', require('./routes/admin-opinie'));
 
 // Data — dynamiczne ładowanie (admin może edytować)
 const fs = require('fs');
 const voicesPath = path.join(__dirname, 'data', 'voices.json');
+const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 function loadVoices() {
   return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+}
+function loadReviews() {
+  return JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
 }
 
 // Page routes
@@ -118,11 +124,13 @@ app.get('/cennik/', (req, res) => {
 });
 
 app.get('/faq-pl/', (req, res) => {
-  res.render('placeholder', {
+  res.render('faq', {
     title: 'FAQ | powitania.pl',
-    description: 'Najczęściej zadawane pytania.',
-    heading: 'FAQ',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Odpowiedzi na najczęściej zadawane pytania o nagrania lektorskie, formaty plików, instalację w centralach i proces zamawiania.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'FAQ', url: '/faq-pl/' }
+    ]
   });
 });
 
@@ -134,20 +142,27 @@ app.get('/kontakt/', (req, res) => {
 });
 
 app.get('/opinie/', (req, res) => {
-  res.render('placeholder', {
-    title: 'Opinie | powitania.pl',
-    description: 'Co mówią nasi klienci.',
-    heading: 'Opinie',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+  const allReviews = loadReviews();
+  const reviews = allReviews.filter(r => r.approved);
+  res.render('opinie', {
+    title: 'Opinie klientów | powitania.pl',
+    description: 'Przeczytaj opinie naszych klientów. Ponad ' + reviews.length + ' firm i instytucji zaufało naszemu studiu nagrań lektorskich.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Opinie', url: '/opinie/' }
+    ],
+    reviews
   });
 });
 
 app.get('/nagrania-lektorskie/', (req, res) => {
-  res.render('placeholder', {
+  res.render('nagrania-lektorskie', {
     title: 'Nagrania lektorskie | Cennik | powitania.pl',
-    description: 'Profesjonalne nagrania lektorskie: IVR, spoty radiowe i TV, e-learning, audiobooki, podcasty.',
-    heading: 'Nagrania lektorskie',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Najlepsze nagrania lektorskie, znane głosy, doświadczeni lektorzy. Audiobooki, komunikaty lektorskie, spoty reklamowe, zapowiedzi telefoniczne.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
+    ]
   });
 });
 
@@ -203,11 +218,19 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
 });
 
 app.get('/nagranie-ekspresowe/', (req, res) => {
-  res.render('placeholder', {
+  const voices = loadVoices();
+  // Dyżurujący lektorzy — lektorzy z turnaround "24h" i ze zdjęciem
+  const dutyVoices = voices
+    .filter(v => v.turnaround && v.turnaround.includes('24') && v.photo)
+    .slice(0, 6);
+  res.render('nagranie-ekspresowe', {
     title: 'Nagranie ekspresowe | powitania.pl',
-    description: 'Ekspresowe nagrania lektorskie.',
-    heading: 'Nagranie ekspresowe',
-    message: 'Ta sekcja jest w przygotowaniu. Wróć wkrótce!'
+    description: 'Potrzebujesz nagrania lektorskiego jeszcze dziś? Zamów do 14:00, otrzymaj do 18:00. Dyżurujący lektorzy dostępni każdego dnia roboczego.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagranie ekspresowe', url: '/nagranie-ekspresowe/' }
+    ],
+    dutyVoices
   });
 });
 

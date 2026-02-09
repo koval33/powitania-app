@@ -199,7 +199,7 @@ router.post('/zapisz/', upload.fields([
       priceGroup: b.priceGroup || null,
       hidePrice: b.hidePrice === 'on',
       prices,
-      profileUrl: `/lektor/${slug}/`
+      profileUrl: `/lektorzy/${slug}/`
     };
 
     if (isEdit) {

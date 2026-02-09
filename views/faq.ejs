@@ -1,0 +1,157 @@
+<%- include('partials/head') %>
+
+<section class="py-16 md:py-24">
+  <div class="max-w-3xl mx-auto px-4">
+    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center">Najczęściej zadawane pytania</h1>
+    <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">Odpowiedzi na pytania, które najczęściej zadają nasi klienci. Nie znalazłeś odpowiedzi? <a href="/kontakt/" class="text-accent hover:text-accent-light">Napisz do nas</a>.</p>
+
+    <div class="space-y-4">
+
+      <!-- FAQ 1 -->
+      <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-dark-800/50 transition-colors">
+          <span class="text-white font-semibold pr-4">Jak wygląda proces zamawiania nagrań lektorskich?</span>
+          <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-gray-400 leading-relaxed">
+          <ol class="list-decimal list-inside space-y-3 mt-2">
+            <li><strong class="text-gray-300">Wybierz lektora</strong> — przejrzyj profile w <a href="/bank-glosow/" class="text-accent hover:text-accent-light">banku głosów</a>, odsłuchaj próbki i wybierz głos odpowiedni dla Twojego projektu.</li>
+            <li><strong class="text-gray-300">Złóż zamówienie</strong> — skorzystaj z <a href="/#kreator" class="text-accent hover:text-accent-light">kreatora tekstów</a> lub wyślij tekst e-mailem. Otrzymasz natychmiastową wycenę.</li>
+            <li><strong class="text-gray-300">Projekty złożone</strong> — wymagające montażu, synchronizacji z materiałem wideo lub innych usług dodatkowych — skontaktuj się bezpośrednio na <a href="mailto:biuro@powitania.pl" class="text-accent hover:text-accent-light">biuro@powitania.pl</a>.</li>
+            <li><strong class="text-gray-300">Sesja zdalna (opcjonalnie)</strong> — możesz uczestniczyć w nagraniu zdalnie i na bieżąco przekazywać uwagi lektorowi. <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="text-accent hover:text-accent-light">Dowiedz się więcej</a>.</li>
+            <li><strong class="text-gray-300">Dostawa pliku</strong> — gotowe nagranie otrzymasz mailem w wybranym formacie audio.</li>
+            <li><strong class="text-gray-300">Poprawki i finalizacja</strong> — jeśli nagranie wymaga korekt, realizujemy je szybko i bezpłatnie w ramach zamówienia.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-dark-800/50 transition-colors">
+          <span class="text-white font-semibold pr-4">W jaki sposób zainstalować nagrania w centrali telefonicznej?</span>
+          <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-gray-400 leading-relaxed">
+          <p class="mt-2">Nowoczesne centrale telefoniczne z modułami DISA umożliwiają instalację nagrań przez interfejs systemu. Administrator loguje się do panelu centrali i importuje pliki audio. Zaawansowane systemy obsługują wiele nagrań wyzwalanych scenariuszami — np. inne komunikaty w godzinach pracy, a inne po godzinach lub w weekendy.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-dark-800/50 transition-colors">
+          <span class="text-white font-semibold pr-4">Co zrobić jeśli moja centrala nie posiada możliwości zainstalowania nagrań?</span>
+          <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-gray-400 leading-relaxed">
+          <p class="mt-2">Są dwa rozwiązania:</p>
+          <ul class="list-disc list-inside space-y-2 mt-3">
+            <li><strong class="text-gray-300">Starsze systemy</strong> — dostarczamy nagranie na płycie CD. Odtwarzasz je przez profesjonalny sprzęt audio, ustawiając mikrofon centrali ok. 10 cm od głośnika.</li>
+            <li><strong class="text-gray-300">Brak modułu zapowiedzi</strong> — rozważ zakup zewnętrznego modułu DISA lub modernizację centrali.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-dark-800/50 transition-colors">
+          <span class="text-white font-semibold pr-4">Jaki format pliku będzie najlepszy dla mojej centrali?</span>
+          <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-gray-400 leading-relaxed">
+          <p class="mt-2">Sprawdź specyfikację techniczną swojej centrali PABX — najczęściej obsługiwane formaty to:</p>
+          <ul class="list-disc list-inside space-y-1 mt-3">
+            <li><code class="bg-dark-700 px-2 py-0.5 rounded text-sm text-accent">WAV; 8 kHz; 16 bit; mono</code></li>
+            <li><code class="bg-dark-700 px-2 py-0.5 rounded text-sm text-accent">WAV; 11 kHz; 8 bit; mono</code></li>
+          </ul>
+          <p class="mt-3">Jeśli nie jesteś pewien, podaj nam model centrali — przygotujemy nagranie w odpowiednim formacie.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-dark-800/50 transition-colors">
+          <span class="text-white font-semibold pr-4">Czy mogę wgrać nagranie jako powitanie na telefon komórkowy?</span>
+          <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-gray-400 leading-relaxed">
+          <p class="mt-2">Tak! Polscy operatorzy komórkowi oferują usługi odtwarzania muzyki lub komunikatów podczas oczekiwania na połączenie:</p>
+          <ul class="list-disc list-inside space-y-1 mt-3">
+            <li><strong class="text-gray-300">Orange</strong> — Halo Granie</li>
+            <li><strong class="text-gray-300">T-Mobile</strong> — Granie na Czekaniu</li>
+            <li><strong class="text-gray-300">Plus</strong> — Czasoumilacz</li>
+          </ul>
+          <p class="mt-3">Pliki audio dodajesz przez stronę operatora i przypisujesz do wybranych numerów. Przygotujemy nagranie w formacie kompatybilnym z Twoim operatorem.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center p-8 bg-dark-800/50 rounded-2xl border border-white/5">
+      <p class="text-gray-400 mb-4">Masz inne pytanie? Chętnie odpowiemy.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/kontakt/" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Napisz do nas</a>
+        <a href="tel:+48605491069" class="bg-dark-700 hover:bg-dark-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors border border-white/10">+48 605 491 069</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Jak wygląda proces zamawiania nagrań lektorskich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proces składa się z 6 kroków: 1) Wybierz lektora z banku głosów, 2) Złóż zamówienie przez kreator lub e-mail, 3) Dla złożonych projektów skontaktuj się bezpośrednio, 4) Opcjonalnie weź udział w sesji zdalnej, 5) Otrzymaj gotowy plik audio, 6) Zgłoś ewentualne poprawki."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jaki sposób zainstalować nagrania w centrali telefonicznej?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nowoczesne centrale telefoniczne z modułami DISA umożliwiają instalację nagrań przez interfejs systemu. Administrator loguje się do panelu centrali i importuje pliki audio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co zrobić jeśli moja centrala nie posiada możliwości zainstalowania nagrań?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dla starszych systemów dostarczamy nagranie na płycie CD. Alternatywnie można zakupić zewnętrzny moduł DISA lub zmodernizować centralę."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaki format pliku będzie najlepszy dla mojej centrali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Najczęściej obsługiwane formaty to WAV 8 kHz 16 bit mono lub WAV 11 kHz 8 bit mono. Sprawdź specyfikację techniczną swojej centrali PABX."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę wgrać nagranie jako powitanie na telefon komórkowy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Operatorzy komórkowi oferują usługi: Orange (Halo Granie), T-Mobile (Granie na Czekaniu), Plus (Czasoumilacz). Przygotujemy nagranie w kompatybilnym formacie."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  .faq-item .faq-answer { display: none; }
+  .faq-item.open .faq-answer { display: block; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+</style>
+
+<%- include('partials/foot') %>

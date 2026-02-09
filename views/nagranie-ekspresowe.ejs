@@ -1,0 +1,129 @@
+<%- include('partials/head') %>
+
+<section class="py-16 md:py-24">
+  <div class="max-w-4xl mx-auto px-4">
+
+    <!-- Hero -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 bg-yellow-400/10 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
+        Ekspresowa realizacja
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Nagranie ekspresowe</h1>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Potrzebujesz nagrania jeszcze dziś? <strong class="text-white">Dobrze trafiłeś!</strong> Codziennie kilku lektorów dyżuruje, aby realizować nagrania od ręki.</p>
+    </div>
+
+    <!-- Gwarancja -->
+    <div class="bg-gradient-to-br from-yellow-400/10 to-dark-800/50 border border-yellow-400/20 rounded-2xl p-8 mb-12 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-2xl font-bold text-white">Zamów do 14:00 — otrzymaj do 18:00</p>
+      </div>
+      <p class="text-gray-400">Jeśli zamówienie zostanie złożone do godz. 14:00, najpóźniej do godz. 18:00 nagranie będzie w Twojej skrzynce.</p>
+    </div>
+
+    <!-- Proces zamawiania -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-8 text-center">Jak zamówić nagranie ekspresowe?</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="bg-dark-800/60 border border-white/5 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">1</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Przesłuchaj demo</h3>
+          <p class="text-gray-500 text-sm">Odsłuchaj próbki dyżurujących lektorów i&nbsp;wybierz głos.</p>
+        </div>
+
+        <div class="bg-dark-800/60 border border-white/5 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">2</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Dokonaj wyceny</h3>
+          <p class="text-gray-500 text-sm">Użyj <a href="/#kreator" class="text-accent hover:text-accent-light">kreatora tekstów</a> aby otrzymać natychmiastową wycenę.</p>
+        </div>
+
+        <div class="bg-dark-800/60 border border-white/5 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">3</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Potwierdź zamówienie</h3>
+          <p class="text-gray-500 text-sm">Potwierdź zamówienie dokonując przedpłaty na podany numer konta.</p>
+        </div>
+
+        <div class="bg-dark-800/60 border border-white/5 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">4</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Odbierz nagranie</h3>
+          <p class="text-gray-500 text-sm">Gotowe nagranie otrzymasz na e-mail jeszcze tego samego dnia.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dyżurujący lektorzy -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-3 text-center">Dyżurujący lektorzy</h2>
+      <p class="text-gray-500 text-center mb-8">Lektorzy dostępni do realizacji nagrań ekspresowych</p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <% dutyVoices.forEach(function(v) { %>
+        <div class="bg-dark-800/60 border border-white/5 rounded-xl p-6 flex items-center gap-5 hover:border-accent/20 transition-colors">
+          <% if (v.photo) { %>
+            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
+          <% } else { %>
+            <div class="w-16 h-16 rounded-xl bg-dark-700 flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+            </div>
+          <% } %>
+          <div class="flex-1 min-w-0">
+            <p class="text-white font-semibold"><%= v.name %></p>
+            <p class="text-gray-500 text-sm"><%= (v.languages || ['polski']).join(', ') %></p>
+            <% if (v.turnaround) { %>
+              <span class="inline-block mt-1 text-[10px] bg-yellow-400/10 text-yellow-400 px-2 py-0.5 rounded">realizacja: <%= v.turnaround %></span>
+            <% } %>
+          </div>
+          <div class="flex flex-col items-end gap-2 flex-shrink-0">
+            <% if (v.prices && v.prices.ivr_100) { %>
+              <span class="text-accent font-semibold text-sm">od <%= v.prices.ivr_100 %> zł</span>
+            <% } %>
+            <a href="/lektorzy/<%= v.id %>/" class="text-xs text-gray-400 hover:text-white border border-white/10 hover:border-white/20 px-3 py-1 rounded transition-colors">Profil</a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+      <% if (dutyVoices.length === 0) { %>
+      <div class="bg-dark-800/60 border border-white/5 rounded-xl p-8 text-center text-gray-500">
+        <p>Aktualnie brak lektorów z oznaczoną dostępnością ekspresową. Skontaktuj się z nami — dobierzemy lektora.</p>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Cennik ekspresowy -->
+    <div class="bg-dark-800/50 rounded-2xl border border-white/5 p-8 mb-16">
+      <h2 class="text-2xl font-bold text-white mb-6 text-center">Ile kosztuje nagranie ekspresowe?</h2>
+      <div class="space-y-4 text-gray-400 leading-relaxed">
+        <p>Ceny nagrań ekspresowych są takie same jak w standardowym zamówieniu — nie doliczamy dodatkowej opłaty za ekspresową realizację. Jedynym warunkiem jest złożenie zamówienia do godziny 14:00.</p>
+        <p>Orientacyjne ceny zaczynają się od <strong class="text-white">300 zł netto</strong> za krótkie nagranie (do 100 słów). Dokładną wycenę otrzymasz natychmiastowo w <a href="/#kreator" class="text-accent hover:text-accent-light">kreatorze tekstów</a>.</p>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="/cennik/" class="text-accent hover:text-accent-light font-semibold text-sm">Zobacz pełny cennik →</a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center p-8 md:p-12 bg-gradient-to-br from-yellow-400/10 to-dark-800/50 rounded-2xl border border-yellow-400/20">
+      <h2 class="text-2xl font-bold text-white mb-4">Potrzebujesz nagrania na już?</h2>
+      <p class="text-gray-400 mb-6 max-w-xl mx-auto">Złóż zamówienie teraz, a nagranie będzie gotowe jeszcze dziś.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zamów nagranie</a>
+        <a href="tel:+48605491069" class="bg-dark-700 hover:bg-dark-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors border border-white/10">Zadzwoń: 605 491 069</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/foot') %>
