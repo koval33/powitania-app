@@ -120,6 +120,15 @@
     localStorage.setItem('cookie-consent', 'dismissed');
     document.getElementById('cookie-banner').classList.add('hidden');
   }
+
+  // YouTube lazy-load facade (globalnie)
+  function loadYT(el) {
+    var vid = el.getAttribute('data-vid');
+    if (!vid) return;
+    el.innerHTML = '<iframe class="w-full h-full" src="https://www.youtube.com/embed/' + vid + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    el.style.cursor = 'default';
+    el.onclick = null;
+  }
 </script>
 
 </body>

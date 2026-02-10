@@ -133,13 +133,4 @@
   </div>
 </section>
 
-<script>
-function loadYT(el) {
-  var vid = el.getAttribute('data-vid');
-  if (!vid || vid === 'y0Z9_fixDSg') return;
-  el.innerHTML = '<iframe class="w-full h-full" src="https://www.youtube.com/embed/' + vid + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  el.style.cursor = 'default';
-  el.onclick = null;
-}
-</script>
 <%- include('../partials/foot') %>

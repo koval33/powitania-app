@@ -728,14 +728,6 @@ function updateSlider() {
 // Auto-play carousel
 setInterval(function() { slideReviews(1); }, 8000);
 
-// YouTube lazy-load facade
-function loadYT(el) {
-  var vid = el.getAttribute('data-vid');
-  el.innerHTML = '<iframe class="w-full h-full" src="https://www.youtube.com/embed/' + vid + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  el.style.cursor = 'default';
-  el.onclick = null;
-}
-
 // Dynamiczna karuzela YouTube — sprawdza dostępność filmów, buduje slajdy
 (function() {
   var allVideos = [
