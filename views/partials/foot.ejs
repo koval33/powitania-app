@@ -92,15 +92,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Cookie Consent Banner (Google Consent Mode v2) -->
 <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-[9999] hidden" role="dialog" aria-label="Zgoda na cookies" aria-modal="false">
-  <div class="relative bg-dark-800 border-t border-white/10 shadow-2xl shadow-black/60">
+  <div class="relative bg-white border-t border-gray-200 shadow-2xl shadow-gray-300/50">
     <div class="max-w-5xl mx-auto px-4 py-5">
 
       <!-- Widok główny -->
       <div id="consent-main">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div class="flex-1">
-            <p class="text-sm text-white font-semibold mb-1">Ta strona korzysta z plików cookies</p>
-            <p class="text-sm text-gray-400 leading-relaxed">
+            <p class="text-sm text-gray-900 font-semibold mb-1">Ta strona korzysta z plików cookies</p>
+            <p class="text-sm text-gray-500 leading-relaxed">
               Używamy cookies i podobnych technologii w celach analitycznych oraz reklamowych.
               Możesz zaakceptować wszystkie, odrzucić opcjonalne lub
               <button onclick="showConsentSettings()" class="text-accent hover:underline font-medium">dostosować ustawienia</button>.
@@ -109,35 +109,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="flex gap-3 flex-shrink-0">
             <button onclick="consentAcceptAll()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Akceptuję wszystkie</button>
-            <button onclick="consentRejectOptional()" class="border border-white/20 hover:border-white/40 text-gray-400 hover:text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Tylko niezbędne</button>
+            <button onclick="consentRejectOptional()" class="border border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Tylko niezbędne</button>
           </div>
         </div>
       </div>
 
       <!-- Panel ustawień (domyślnie ukryty) -->
       <div id="consent-settings" class="hidden">
-        <p class="text-sm text-white font-semibold mb-4">Ustawienia plików cookies</p>
+        <p class="text-sm text-gray-900 font-semibold mb-4">Ustawienia plików cookies</p>
         <div class="space-y-3 mb-5">
           <!-- Niezbędne (zawsze aktywne) -->
-          <div class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3">
+          <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3">
             <div>
-              <p class="text-sm text-white font-medium">Niezbędne</p>
+              <p class="text-sm text-gray-900 font-medium">Niezbędne</p>
               <p class="text-xs text-gray-500">Wymagane do prawidłowego działania strony</p>
             </div>
             <span class="text-xs text-gray-500 font-medium">Zawsze aktywne</span>
           </div>
           <!-- Analityczne -->
-          <label class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3 cursor-pointer">
+          <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
             <div>
-              <p class="text-sm text-white font-medium">Analityczne</p>
+              <p class="text-sm text-gray-900 font-medium">Analityczne</p>
               <p class="text-xs text-gray-500">Pomagają zrozumieć, jak odwiedzający korzystają ze strony (Google Analytics)</p>
             </div>
             <input type="checkbox" id="consent-analytics" class="w-5 h-5 rounded accent-emerald-500 cursor-pointer">
           </label>
           <!-- Reklamowe -->
-          <label class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3 cursor-pointer">
+          <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
             <div>
-              <p class="text-sm text-white font-medium">Reklamowe</p>
+              <p class="text-sm text-gray-900 font-medium">Reklamowe</p>
               <p class="text-xs text-gray-500">Umożliwiają wyświetlanie spersonalizowanych reklam (Google Ads)</p>
             </div>
             <input type="checkbox" id="consent-marketing" class="w-5 h-5 rounded accent-emerald-500 cursor-pointer">
@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="flex gap-3">
           <button onclick="consentSaveSettings()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Zapisz ustawienia</button>
-          <button onclick="hideConsentSettings()" class="border border-white/20 hover:border-white/40 text-gray-400 hover:text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Wstecz</button>
+          <button onclick="hideConsentSettings()" class="border border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Wstecz</button>
         </div>
       </div>
 
