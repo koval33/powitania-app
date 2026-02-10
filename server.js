@@ -70,6 +70,20 @@ app.use('/api/kreator', require('./routes/api-kreator'));
 app.use('/api/contact', require('./routes/api-contact'));
 app.use('/api/reviews', require('./routes/api-reviews'));
 
+// API: sprawdź dostępność filmów YouTube (proxy oEmbed — CORS)
+app.get('/api/yt-check', async (req, res) => {
+  const ids = (req.query.ids || '').split(',').filter(Boolean);
+  if (!ids.length) return res.json({ results: {} });
+  const results = {};
+  await Promise.all(ids.map(async (id) => {
+    try {
+      const r = await fetch('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + id + '&format=json');
+      results[id] = r.ok;
+    } catch { results[id] = false; }
+  }));
+  res.json({ results });
+});
+
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
 app.use('/admin/opinie', require('./routes/admin-opinie'));
