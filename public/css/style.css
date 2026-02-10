@@ -24,7 +24,7 @@ body {
 }
 
 .hero-dotgrid {
-  background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #faf9f7 100%);
+  /* transparent — body gradient shines through */
 }
 
 /* Kreator widget scoped styles */
