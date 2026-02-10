@@ -14,6 +14,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Data — dynamiczne ładowanie (admin może edytować)
+const fs = require('fs');
+const voicesPath = path.join(__dirname, 'data', 'voices.json');
+const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
+const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
+function loadVoices() {
+  return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+}
+function loadReviews() {
+  return JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
+}
+function loadBlogPosts() {
+  return JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+}
+
 // Trailing slash redirect
 app.use((req, res, next) => {
   if (req.path !== '/' && !req.path.endsWith('/') && !req.path.includes('.') && !req.path.startsWith('/api/')) {
@@ -27,6 +42,7 @@ app.use((req, res, next) => {
   res.locals.skipHeader = req.query.skip_header === '1';
   res.locals.isEmbed = res.locals.skipHeader;
   res.locals.currentPath = req.path;
+  res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
 
   if (res.locals.isEmbed) {
     res.removeHeader('X-Frame-Options');
@@ -58,27 +74,13 @@ app.use('/api/reviews', require('./routes/api-reviews'));
 app.use('/admin/lektorzy', require('./routes/admin'));
 app.use('/admin/opinie', require('./routes/admin-opinie'));
 
-// Data — dynamiczne ładowanie (admin może edytować)
-const fs = require('fs');
-const voicesPath = path.join(__dirname, 'data', 'voices.json');
-const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
-function loadVoices() {
-  return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
-}
-function loadReviews() {
-  return JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
-}
-const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
-function loadBlogPosts() {
-  return JSON.parse(fs.readFileSync(blogPath, 'utf8'));
-}
-
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Studio, usługi lektorskie | Lektor, głos do reklamy | powitania.pl',
     description: 'Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych lektorów, 30+ języków, 24 lata doświadczenia.',
-    voices: loadVoices()
+    voices: loadVoices(),
+    posts: loadBlogPosts().slice(0, 6)
   });
 });
 
