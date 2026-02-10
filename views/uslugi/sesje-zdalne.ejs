@@ -1,84 +1,145 @@
 <%- include('../partials/head') %>
 
-<!-- Hero -->
-<section class="py-16 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <div class="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>
-      Uslugi dodatkowe
-    </div>
-    <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Sesje zdalne</h1>
-    <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-      Wez udzial w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet — dawaj wskazowki lektorowi na zywo.
-    </p>
-  </div>
-</section>
+<section class="py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-4">
 
-<!-- How it works -->
-<section class="py-16">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-white mb-10 text-center">Jak to dziala?</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="text-center">
-        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-purple-400">1</span>
+    <!-- Hero -->
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Nagrania lektorskie online</h1>
+      <div class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed space-y-4">
+        <p>W świecie, gdzie czas i wygoda są na wagę złota, nasza usługa <strong class="text-white">nagrania lektorskie online</strong> to odpowiedź na potrzeby współczesnych klientów. Dzięki możliwości zdalnych sesji lektorskich masz pełną kontrolę nad procesem nagrywania — bez wychodzenia z&nbsp;biura czy domu.</p>
+        <p>Współczesna reklama radiowa, telewizyjna i&nbsp;internetowa stawia przed twórcami wiele wyzwań, a&nbsp;profesjonalny <strong class="text-white">głos lektora</strong> jest kluczowy dla przyciągnięcia uwagi odbiorców.</p>
+        <p>Z naszymi ekspertami dbamy o&nbsp;najwyższą jakość sesji, zapewniając profesjonalne konsultacje i&nbsp;szybką reakcję na zapytania klientów.</p>
+      </div>
+    </div>
+
+    <!-- Zdalne sesje lektorskie -->
+    <div class="bg-dark-800/50 rounded-2xl border border-white/5 p-8 md:p-12 mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Zdalne sesje lektorskie z udziałem klienta</h2>
+      <div class="space-y-4 text-gray-400 leading-relaxed">
+        <p>Nasz system umożliwia Ci bezpośredni udział w&nbsp;każdym etapie nagrania, dzięki czemu końcowy efekt jest dokładnie taki, jakiego oczekujesz. Pozwalamy Ci zaoszczędzić czas i&nbsp;skupić się na tym, co najważniejsze — <strong class="text-white">efekcie końcowym</strong>, który w&nbsp;pełni odda charakter Twojego projektu.</p>
+        <p>Nasze profesjonalne podejście do każdego zadania gwarantuje szybkość reakcji oraz najwyższą jakość usług.</p>
+      </div>
+    </div>
+
+    <!-- Film z sesji zdalnej -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-6 text-center">Poniżej przedstawiamy fragment sesji lektorskiej online</h2>
+      <p class="text-gray-400 text-center mb-6 max-w-2xl mx-auto">W sesji uczestniczą: realizator Paweł, Klientka Elżbieta oraz dwóch lektorów, którzy prowadzą dialog — Maciek i&nbsp;Arek.</p>
+      <div class="max-w-3xl mx-auto">
+        <div id="sesja-video" class="aspect-video bg-dark-700 rounded-2xl overflow-hidden relative cursor-pointer border border-white/10 shadow-xl shadow-black/30" data-vid="SESSION_VIDEO_ID" onclick="loadYT(this)">
+          <img src="https://img.youtube.com/vi/SESSION_VIDEO_ID/hqdefault.jpg" alt="Fragment sesji lektorskiej online — Powitania.pl" class="w-full h-full object-cover">
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+            <svg class="w-16 h-16 md:w-20 md:h-20 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+          </div>
         </div>
-        <h3 class="font-bold text-white mb-2">Umow termin</h3>
-        <p class="text-sm text-gray-400">Ustalamy termin sesji, wybierasz lektora i przesylasz tekst z wyprzedzeniem.</p>
       </div>
-      <div class="text-center">
-        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-purple-400">2</span>
+    </div>
+
+    <!-- Jak to działa -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-10 text-center">Jak to działa?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-xl font-bold text-accent">1</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Umów termin</h3>
+          <p class="text-sm text-gray-400">Ustalamy termin sesji, wybierasz lektora i&nbsp;przesyłasz tekst z&nbsp;wyprzedzeniem.</p>
         </div>
-        <h3 class="font-bold text-white mb-2">Polacz sie online</h3>
-        <p class="text-sm text-gray-400">Laczysz sie z naszym studiem przez internet. Slyszysz lektora w czasie rzeczywistym.</p>
-      </div>
-      <div class="text-center">
-        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-purple-400">3</span>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-xl font-bold text-accent">2</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Połącz się online</h3>
+          <p class="text-sm text-gray-400">Łączysz się z&nbsp;naszym studiem przez internet. Słyszysz lektora w&nbsp;czasie rzeczywistym.</p>
         </div>
-        <h3 class="font-bold text-white mb-2">Kieruj nagraniem</h3>
-        <p class="text-sm text-gray-400">Dawaj wskazowki dotyczace intonacji, tempa i emocji. Zatwierdzaj ujecia na biezaco.</p>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-xl font-bold text-accent">3</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Kieruj nagraniem</h3>
+          <p class="text-sm text-gray-400">Dawaj wskazówki dotyczące intonacji, tempa i&nbsp;emocji. Zatwierdzaj ujęcia na bieżąco.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Nasza platforma pozwala na -->
+    <div class="bg-dark-800/50 rounded-2xl border border-white/5 p-8 md:p-12 mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Dlaczego warto wybrać zdalne sesje lektorskie?</h2>
+      <div class="space-y-4 text-gray-400 leading-relaxed mb-6">
+        <p>Zdalne sesje lektorskie to nowoczesne rozwiązanie dla klientów, którzy szukają profesjonalnych nagrań lektorskich bez konieczności wychodzenia z&nbsp;domu lub biura. Dzięki tej usłudze, możesz mieć pewność, że Twoje nagranie lektorskie będzie wykonane przez <strong class="text-white">profesjonalnego lektora z wieloletnim doświadczeniem</strong>, a&nbsp;końcowy efekt będzie dokładnie taki, jakiego oczekujesz.</p>
+        <p>Nasze studio lektorskie wyposażone jest w&nbsp;nowoczesny sprzęt, co pozwala na uzyskanie wysokiej jakości dźwięku. Zdalne sesje to nie tylko wygoda, ale także <strong class="text-white">gwarancja jakości i&nbsp;profesjonalizmu</strong>, które wyróżniają nas na tle innych.</p>
+      </div>
+      <h3 class="text-lg font-semibold text-white mb-4">Nasza platforma pozwala na:</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <div><strong class="text-white">Współpracę w&nbsp;czasie rzeczywistym</strong> — słyszysz lektora podczas nagrania w&nbsp;czasie rzeczywistym, co daje Ci możliwość natychmiastowego wpływu na interpretację i&nbsp;dostosowanie brzmienia do Twoich oczekiwań.</div>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <div><strong class="text-white">Oszczędność czasu i&nbsp;kosztów</strong> — nie musisz podróżować ani organizować spotkań w&nbsp;studio. Wystarczy komputer lub urządzenie mobilne z&nbsp;dostępem do internetu.</div>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <div><strong class="text-white">Profesjonalne efekty</strong> — pracujesz z&nbsp;doświadczonymi lektorami online, którzy realizują nagrania w&nbsp;najwyższej jakości dźwiękowej.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Zalety — karty -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-8 text-center">Zalety sesji zdalnych</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-dark-800/60 rounded-xl p-6 border border-white/5">
+          <h3 class="font-bold text-white mb-2">Pełna kontrola</h3>
+          <p class="text-sm text-gray-400">Słyszysz każde ujęcie w&nbsp;jakości studyjnej. Możesz poprosić o&nbsp;powtórzenie, zmianę tempa lub intonacji.</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-xl p-6 border border-white/5">
+          <h3 class="font-bold text-white mb-2">Oszczędność czasu</h3>
+          <p class="text-sm text-gray-400">Nie musisz jechać do studia. Dołączasz z&nbsp;dowolnego miejsca — biura, domu, w&nbsp;podróży.</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-xl p-6 border border-white/5">
+          <h3 class="font-bold text-white mb-2">Szybsza realizacja</h3>
+          <p class="text-sm text-gray-400">Nagranie zatwierdzasz od razu — bez rundek poprawek mailowych. Gotowy plik tego samego dnia.</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-xl p-6 border border-white/5">
+          <h3 class="font-bold text-white mb-2">Idealne dla agencji</h3>
+          <p class="text-sm text-gray-400">Połącz wielu uczestników — Ty, Twój klient i&nbsp;lektor w&nbsp;jednej sesji. Zatwierdzenie na miejscu.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="bg-dark-800/50 rounded-2xl border border-white/5 p-8 md:p-12 mb-16">
+      <div class="space-y-4 text-gray-400 leading-relaxed">
+        <p>Odkryj nowoczesne podejście do współpracy z&nbsp;lektorem. Zaufaj naszemu doświadczeniu i&nbsp;elastycznym rozwiązaniom. Wybierz <strong class="text-white">nagrania lektorskie online</strong> i&nbsp;przekonaj się, jak łatwe i&nbsp;efektywne może być tworzenie materiałów audio z&nbsp;udziałem profesjonalistów.</p>
+        <p>Zachęcamy też do zapoznania się z&nbsp;pełną ofertą na stronie internetowej. Wybierz <a href="/bank-glosow/" class="text-accent hover:text-accent-light">głos lektora</a>, przeglądając bank głosów zawierający przykładowe nagrania lektorskie.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center p-8 md:p-12 bg-gradient-to-br from-accent/10 to-dark-800/50 rounded-2xl border border-accent/20">
+      <h2 class="text-2xl font-bold text-white mb-4">Wybierz usługi lektorskie online</h2>
+      <p class="text-gray-400 mb-6 max-w-xl mx-auto">Zarezerwuj swoją zdalną sesję już teraz. Skontaktuj się z&nbsp;nami — umówimy termin i&nbsp;doradzimy w&nbsp;wyborze lektora.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="mailto:biuro@powitania.pl" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">biuro@powitania.pl</a>
+        <a href="tel:+48605491069" class="bg-dark-700 hover:bg-dark-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors border border-white/10">+48 605 491 069</a>
+        <a href="/bank-glosow/" class="bg-dark-700 hover:bg-dark-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors border border-white/10">Bank głosów</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- Benefits -->
-<section class="py-16 bg-dark-800">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-white mb-8 text-center">Zalety sesji zdalnych</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
-        <h3 class="font-bold text-white mb-2">Pelna kontrola</h3>
-        <p class="text-sm text-gray-400">Slyszysz kazde ujecie w jakosci studyjnej. Mozesz poprosic o powtorzenie, zmiane tempa lub intonacji.</p>
-      </div>
-      <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
-        <h3 class="font-bold text-white mb-2">Oszczednosc czasu</h3>
-        <p class="text-sm text-gray-400">Nie musisz jechac do studia. Dolaczasz z dowolnego miejsca — biura, domu, w podrozy.</p>
-      </div>
-      <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
-        <h3 class="font-bold text-white mb-2">Szybsza realizacja</h3>
-        <p class="text-sm text-gray-400">Nagranie zatwierdzasz od razu — bez rundek poprawek mailowych. Gotowy plik tego samego dnia.</p>
-      </div>
-      <div class="bg-dark-700 rounded-xl p-6 border border-white/5">
-        <h3 class="font-bold text-white mb-2">Idealne dla agencji</h3>
-        <p class="text-sm text-gray-400">Polacz wielu uczestnikow — Ty, Twoj klient i lektor w jednej sesji. Zatwierdzenie na miejscu.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="py-16">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold text-white mb-4">Zainteresowany sesja zdalna?</h2>
-    <p class="text-gray-400 mb-8">Skontaktuj sie z nami — umowimy termin i doradzimy w wyborze lektora.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:+48605491069" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">+48 605 491 069</a>
-      <a href="mailto:biuro@powitania.pl" class="border border-white/20 hover:border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors">biuro@powitania.pl</a>
-    </div>
-  </div>
-</section>
-
+<script>
+function loadYT(el) {
+  var vid = el.getAttribute('data-vid');
+  if (!vid || vid === 'SESSION_VIDEO_ID') return;
+  el.innerHTML = '<iframe class="w-full h-full" src="https://www.youtube.com/embed/' + vid + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  el.style.cursor = 'default';
+  el.onclick = null;
+}
+</script>
 <%- include('../partials/foot') %>
