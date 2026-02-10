@@ -252,9 +252,13 @@
   </div>
 </section>
 
-<!-- STATYSTYKI -->
+<!-- NASZE OSIĄGNIĘCIA W LICZBACH -->
 <section class="py-16 border-y border-white/5">
   <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nasze osiągnięcia w liczbach</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Stworzyliśmy nagrania lektorskie dla ponad 2100 Klientów. Większość z nich została z nami na stałe.</p>
+    </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div>
         <div class="text-4xl font-bold text-accent mb-1">8600+</div>
@@ -276,7 +280,7 @@
   </div>
 </section>
 
-<!-- KLIENCI I REALIZACJE -->
+<!-- KLIENCI I REALIZACJE — karuzela YouTube -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
@@ -284,44 +288,128 @@
       <p class="text-gray-400">Posłuchaj wybranych nagrań z naszego portfolio</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all">
-        <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="9lWm6XAbaDg" onclick="loadYT(this)">
-          <img src="https://img.youtube.com/vi/9lWm6XAbaDg/hqdefault.jpg" alt="Narracja do filmu instruktażowego" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
-            <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    <!-- Karuzela -->
+    <div class="relative">
+      <div id="yt-carousel" class="overflow-hidden">
+        <div id="yt-track" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Slide 1 (3 filmy) -->
+          <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="9lWm6XAbaDg">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="9lWm6XAbaDg" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/9lWm6XAbaDg/hqdefault.jpg" alt="Narracja do filmu instruktażowego" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Narracja do filmu instruktażowego</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektor Patryk</p>
+              </div>
+            </div>
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="mZ8mMfeD870">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="mZ8mMfeD870" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/mZ8mMfeD870/hqdefault.jpg" alt="Narracja w języku angielskim" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Narracja w języku angielskim</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektorka Alison</p>
+              </div>
+            </div>
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="cfZ27giVqh8">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="cfZ27giVqh8" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/cfZ27giVqh8/hqdefault.jpg" alt="Wiktor zachęca do monitoringu stron" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Wiktor zachęca do monitoringu stron</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektor Wiktor</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-white font-semibold text-sm">Narracja do filmu instruktażowego</h3>
-          <p class="text-xs text-gray-500 mt-1">Lektor Patryk</p>
+          <!-- Slide 2 (3 filmy) -->
+          <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="6gnEr5UzW2Q">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="6gnEr5UzW2Q" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/6gnEr5UzW2Q/hqdefault.jpg" alt="David w narracji do projektu Ziemianie atakują" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Narracja do projektu &bdquo;Ziemianie atakują&rdquo;</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektor David</p>
+              </div>
+            </div>
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="XQV-8dbWgII">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="XQV-8dbWgII" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/XQV-8dbWgII/hqdefault.jpg" alt="Baeta prezentuje firmę z branży przemysłowej" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Prezentacja firmy z branży przemysłowej</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektorka Baeta</p>
+              </div>
+            </div>
+            <div class="yt-card bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all" data-ytid="YLdaojG1tQw">
+              <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="YLdaojG1tQw" onclick="loadYT(this)">
+                <img src="https://img.youtube.com/vi/YLdaojG1tQw/hqdefault.jpg" alt="Narracja do filmu serwisu Askberry" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
+                  <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold text-sm">Narracja do filmu serwisu Askberry</h3>
+                <p class="text-xs text-gray-500 mt-1">Lektor Michał</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all">
-        <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="mZ8mMfeD870" onclick="loadYT(this)">
-          <img src="https://img.youtube.com/vi/mZ8mMfeD870/hqdefault.jpg" alt="Narracja w języku angielskim" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
-            <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-white font-semibold text-sm">Narracja w języku angielskim</h3>
-          <p class="text-xs text-gray-500 mt-1">Lektorka Alison</p>
-        </div>
-      </div>
+      <!-- Nawigacja karuzeli -->
+      <button id="yt-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-dark-700/90 hover:bg-dark-600 text-white w-10 h-10 rounded-full flex items-center justify-center border border-white/10 shadow-lg transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="yt-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-dark-700/90 hover:bg-dark-600 text-white w-10 h-10 rounded-full flex items-center justify-center border border-white/10 shadow-lg transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
 
-      <div class="bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-white/10 hover:border-white/20 shadow-lg shadow-black/20 transition-all">
-        <div class="aspect-video bg-dark-700 relative cursor-pointer yt-facade" data-vid="YLdaojG1tQw" onclick="loadYT(this)">
-          <img src="https://img.youtube.com/vi/YLdaojG1tQw/hqdefault.jpg" alt="Narracja do filmu korporacyjnego" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
-            <svg class="w-14 h-14 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-white font-semibold text-sm">Narracja do filmu korporacyjnego</h3>
-          <p class="text-xs text-gray-500 mt-1">Lektor Michał</p>
-        </div>
+      <!-- Dots -->
+      <div id="yt-dots" class="flex justify-center gap-2 mt-6">
+        <button class="w-2.5 h-2.5 rounded-full bg-accent" data-slide="0"></button>
+        <button class="w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-colors" data-slide="1"></button>
+      </div>
+    </div>
+
+    <!-- LOGA KLIENTÓW -->
+    <div class="mt-16 pt-12 border-t border-white/5">
+      <h3 class="text-center text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Zaufali nam</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center justify-items-center">
+        <img src="/img/klienci/mswia.png" alt="MSWiA" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/men.png" alt="MEN" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/allegro.png" alt="Allegro" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/dhl.png" alt="DHL" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/axa.png" alt="AXA" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/dpd.png" alt="DPD" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/esky.png" alt="eSky" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/ups.png" alt="UPS" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/tvn.png" alt="TVN" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/volvo.png" alt="Volvo" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/solid-security.png" alt="Solid Security" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/Focus-Hotels.png" alt="Focus Hotels" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/3s.png" alt="3S" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/brw.png" alt="BRW" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/credit-agricole.png" alt="Credit Agricole" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/Koelner-Rawlplug.png" alt="Koelner Rawlplug" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/kazar.png" alt="Kazar" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
+        <img src="/img/klienci/TU-Europa.png" alt="TU Europa" class="h-10 md:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" loading="lazy">
       </div>
     </div>
   </div>
@@ -696,6 +784,64 @@ function loadYT(el) {
   el.style.cursor = 'default';
   el.onclick = null;
 }
+
+// YouTube carousel
+(function() {
+  var track = document.getElementById('yt-track');
+  var prevBtn = document.getElementById('yt-prev');
+  var nextBtn = document.getElementById('yt-next');
+  var dotsWrap = document.getElementById('yt-dots');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  var currentSlide = 0;
+  var totalSlides = track.children.length;
+
+  function goToSlide(n) {
+    currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    // Update dots
+    if (dotsWrap) {
+      var dots = dotsWrap.querySelectorAll('button');
+      dots.forEach(function(d, i) {
+        d.className = 'w-2.5 h-2.5 rounded-full transition-colors ' +
+          (i === currentSlide ? 'bg-accent' : 'bg-white/20 hover:bg-white/40');
+      });
+    }
+  }
+
+  prevBtn.addEventListener('click', function() { goToSlide(currentSlide - 1); });
+  nextBtn.addEventListener('click', function() { goToSlide(currentSlide + 1); });
+  if (dotsWrap) {
+    dotsWrap.querySelectorAll('button').forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(this.getAttribute('data-slide'), 10));
+      });
+    });
+  }
+
+  // Auto-advance co 10s
+  setInterval(function() { goToSlide(currentSlide + 1); }, 10000);
+
+  // Walidacja aktywności filmów YouTube — ukryj karty z nieaktywnymi filmami
+  var cards = document.querySelectorAll('.yt-card');
+  cards.forEach(function(card) {
+    var ytid = card.getAttribute('data-ytid');
+    if (!ytid) return;
+    var img = new Image();
+    img.onload = function() {
+      // YouTube zwraca domyślny placeholder 120x90 jeśli film nie istnieje
+      // hqdefault.jpg ma 480x360 dla aktywnych filmów
+      if (this.width === 120 && this.height === 90) {
+        card.style.display = 'none';
+      }
+    };
+    img.onerror = function() {
+      card.style.display = 'none';
+    };
+    // Sprawdź maxresdefault — dla nieistniejących filmów zwraca 404 lub domyślny obrazek
+    img.src = 'https://img.youtube.com/vi/' + ytid + '/maxresdefault.jpg';
+  });
+})();
 
 // Homepage contact form
 (function() {
