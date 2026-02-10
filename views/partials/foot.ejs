@@ -1,5 +1,11 @@
 </main>
 
+<% if (gtmId) { %>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= gtmId %>"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<% } %>
+
 <% if (!skipHeader) { %>
 <footer class="bg-dark-800 text-gray-500 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-4 py-14">
@@ -48,6 +54,7 @@
           <li><a href="/kontakt/" class="hover:text-white transition-colors">Kontakt</a></li>
           <li><a href="/polityka-prywatnosci/" class="hover:text-white transition-colors text-gray-600">Polityka prywatności</a></li>
           <li><a href="/regulamin-serwisu/" class="hover:text-white transition-colors text-gray-600">Regulamin</a></li>
+          <li><a href="javascript:void(0)" onclick="showConsentBanner()" class="hover:text-white transition-colors text-gray-600">Ustawienia cookies</a></li>
         </ul>
       </div>
 
@@ -83,43 +90,170 @@
 </footer>
 <% } %>
 
-<!-- Cookie Consent Banner -->
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-dark-800 border-t border-white/10 shadow-2xl shadow-black/50 hidden">
-  <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <p class="text-sm text-gray-400 text-center sm:text-left">
-      Używamy plików cookies, aby zapewnić najlepsze doświadczenia na naszej stronie. Kontynuując, zgadzasz się z naszą <a href="/polityka-prywatnosci/" class="text-accent hover:underline">polityką prywatności</a>.
-    </p>
-    <div class="flex gap-3 flex-shrink-0">
-      <button onclick="acceptCookies()" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">Akceptuję</button>
-      <button onclick="closeCookieBanner()" class="border border-white/20 hover:border-white text-gray-400 hover:text-white px-4 py-2 rounded-lg text-sm transition-colors">Zamknij</button>
+<!-- Cookie Consent Banner (Google Consent Mode v2) -->
+<div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-[9999] hidden" role="dialog" aria-label="Zgoda na cookies" aria-modal="false">
+  <div class="relative bg-dark-800 border-t border-white/10 shadow-2xl shadow-black/60">
+    <div class="max-w-5xl mx-auto px-4 py-5">
+
+      <!-- Widok główny -->
+      <div id="consent-main">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex-1">
+            <p class="text-sm text-white font-semibold mb-1">Ta strona korzysta z plików cookies</p>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Używamy cookies i podobnych technologii w celach analitycznych oraz reklamowych.
+              Możesz zaakceptować wszystkie, odrzucić opcjonalne lub
+              <button onclick="showConsentSettings()" class="text-accent hover:underline font-medium">dostosować ustawienia</button>.
+              Szczegóły w <a href="/polityka-prywatnosci/" class="text-accent hover:underline">polityce prywatności</a>.
+            </p>
+          </div>
+          <div class="flex gap-3 flex-shrink-0">
+            <button onclick="consentAcceptAll()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Akceptuję wszystkie</button>
+            <button onclick="consentRejectOptional()" class="border border-white/20 hover:border-white/40 text-gray-400 hover:text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Tylko niezbędne</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel ustawień (domyślnie ukryty) -->
+      <div id="consent-settings" class="hidden">
+        <p class="text-sm text-white font-semibold mb-4">Ustawienia plików cookies</p>
+        <div class="space-y-3 mb-5">
+          <!-- Niezbędne (zawsze aktywne) -->
+          <div class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3">
+            <div>
+              <p class="text-sm text-white font-medium">Niezbędne</p>
+              <p class="text-xs text-gray-500">Wymagane do prawidłowego działania strony</p>
+            </div>
+            <span class="text-xs text-gray-500 font-medium">Zawsze aktywne</span>
+          </div>
+          <!-- Analityczne -->
+          <label class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3 cursor-pointer">
+            <div>
+              <p class="text-sm text-white font-medium">Analityczne</p>
+              <p class="text-xs text-gray-500">Pomagają zrozumieć, jak odwiedzający korzystają ze strony (Google Analytics)</p>
+            </div>
+            <input type="checkbox" id="consent-analytics" class="w-5 h-5 rounded accent-emerald-500 cursor-pointer">
+          </label>
+          <!-- Reklamowe -->
+          <label class="flex items-center justify-between bg-dark-700/50 rounded-lg px-4 py-3 cursor-pointer">
+            <div>
+              <p class="text-sm text-white font-medium">Reklamowe</p>
+              <p class="text-xs text-gray-500">Umożliwiają wyświetlanie spersonalizowanych reklam (Google Ads)</p>
+            </div>
+            <input type="checkbox" id="consent-marketing" class="w-5 h-5 rounded accent-emerald-500 cursor-pointer">
+          </label>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="consentSaveSettings()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Zapisz ustawienia</button>
+          <button onclick="hideConsentSettings()" class="border border-white/20 hover:border-white/40 text-gray-400 hover:text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Wstecz</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <script>
+  // Mobile menu toggle
   var toggle = document.getElementById('menu-toggle');
   var menu = document.getElementById('mobile-menu');
   if (toggle && menu) {
     toggle.addEventListener('click', function() { menu.classList.toggle('hidden'); });
   }
 
-  // Cookie consent
+  // === Cookie Consent — Google Consent Mode v2 ===
   (function() {
-    if (!localStorage.getItem('cookie-consent')) {
-      var banner = document.getElementById('cookie-banner');
-      if (banner) banner.classList.remove('hidden');
+    var STORAGE_KEY = 'cookie-consent-v2';
+    var COOKIE_NAME = 'cookie_consent';
+    var COOKIE_DAYS = 365;
+    var banner = document.getElementById('consent-banner');
+
+    // Pokaż banner jeśli użytkownik nie podjął jeszcze decyzji
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved && banner) {
+      banner.classList.remove('hidden');
     }
+
+    // Helper: ustaw first-party cookie
+    function setConsentCookie(obj) {
+      var val = encodeURIComponent(JSON.stringify(obj));
+      var d = new Date();
+      d.setTime(d.getTime() + COOKIE_DAYS * 86400000);
+      document.cookie = COOKIE_NAME + '=' + val + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
+
+    // Helper: zastosuj consent i ukryj banner
+    function applyConsent(obj) {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', obj);
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+      setConsentCookie(obj);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'consent_update', consent: obj });
+      if (banner) banner.classList.add('hidden');
+    }
+
+    // Akceptuj wszystkie
+    window.consentAcceptAll = function() {
+      applyConsent({
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    };
+
+    // Tylko niezbędne
+    window.consentRejectOptional = function() {
+      applyConsent({
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    };
+
+    // Pokaż panel ustawień
+    window.showConsentSettings = function() {
+      document.getElementById('consent-main').classList.add('hidden');
+      document.getElementById('consent-settings').classList.remove('hidden');
+      if (saved) {
+        try {
+          var prev = JSON.parse(saved);
+          document.getElementById('consent-analytics').checked = (prev.analytics_storage === 'granted');
+          document.getElementById('consent-marketing').checked = (prev.ad_storage === 'granted');
+        } catch(e) {}
+      }
+    };
+
+    // Wróć z panelu ustawień
+    window.hideConsentSettings = function() {
+      document.getElementById('consent-settings').classList.add('hidden');
+      document.getElementById('consent-main').classList.remove('hidden');
+    };
+
+    // Zapisz granularne ustawienia
+    window.consentSaveSettings = function() {
+      var a = document.getElementById('consent-analytics').checked;
+      var m = document.getElementById('consent-marketing').checked;
+      applyConsent({
+        'ad_storage': m ? 'granted' : 'denied',
+        'ad_user_data': m ? 'granted' : 'denied',
+        'ad_personalization': m ? 'granted' : 'denied',
+        'analytics_storage': a ? 'granted' : 'denied'
+      });
+    };
+
+    // Pokaż banner ponownie (link w footerze)
+    window.showConsentBanner = function() {
+      if (banner) {
+        document.getElementById('consent-main').classList.remove('hidden');
+        document.getElementById('consent-settings').classList.add('hidden');
+        banner.classList.remove('hidden');
+      }
+    };
   })();
-
-  function acceptCookies() {
-    localStorage.setItem('cookie-consent', 'accepted');
-    document.getElementById('cookie-banner').classList.add('hidden');
-  }
-
-  function closeCookieBanner() {
-    localStorage.setItem('cookie-consent', 'dismissed');
-    document.getElementById('cookie-banner').classList.add('hidden');
-  }
 
   // YouTube lazy-load facade (globalnie)
   function loadYT(el) {

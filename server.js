@@ -43,6 +43,7 @@ app.use((req, res, next) => {
   res.locals.isEmbed = res.locals.skipHeader;
   res.locals.currentPath = req.path;
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
+  res.locals.gtmId = process.env.GTM_ID || '';
 
   if (res.locals.isEmbed) {
     res.removeHeader('X-Frame-Options');
