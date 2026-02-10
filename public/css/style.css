@@ -1,5 +1,15 @@
 /* powitania.pl — Light theme styles (Fiverr-inspired) */
 
+/* White logos → dark (for light backgrounds) */
+.logo-dark {
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.logo-dark:hover {
+  opacity: 0.8;
+}
+
 /* Hero dot grid pattern */
 .dot-grid-bg {
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
@@ -40,7 +50,7 @@
 
 .kreator-card:hover {
   border-color: #f97316;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(249, 115, 22, 0.15);
   transform: translateY(-2px);
 }
 
@@ -63,7 +73,7 @@
 
 .kreator-btn-primary:hover {
   background-color: #fb923c;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 .kreator-btn-primary:disabled {
@@ -130,7 +140,7 @@
 .kreator-textarea:focus {
   outline: none;
   border-color: #f97316;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
 }
 
 .kreator-textarea {
