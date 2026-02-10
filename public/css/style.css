@@ -2,12 +2,12 @@
 
 /* Hero dot grid pattern */
 .dot-grid-bg {
-  background-image: radial-gradient(circle, rgba(16, 185, 129, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .hero-dotgrid {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdf4 100%);
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%);
 }
 
 /* Kreator widget scoped styles */
@@ -39,14 +39,14 @@
 }
 
 .kreator-card:hover {
-  border-color: #10b981;
+  border-color: #f97316;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(16, 185, 129, 0.15);
   transform: translateY(-2px);
 }
 
 /* Buttons */
 .kreator-btn-primary {
-  background-color: #10b981;
+  background-color: #f97316;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -62,7 +62,7 @@
 }
 
 .kreator-btn-primary:hover {
-  background-color: #34d399;
+  background-color: #fb923c;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
@@ -86,8 +86,8 @@
 }
 
 .kreator-btn-secondary:hover {
-  border-color: #10b981;
-  color: #10b981;
+  border-color: #f97316;
+  color: #f97316;
 }
 
 /* Form elements */
@@ -129,7 +129,7 @@
 .kreator-select:focus,
 .kreator-textarea:focus {
   outline: none;
-  border-color: #10b981;
+  border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
@@ -143,7 +143,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top-color: #10b981;
+  border-top-color: #f97316;
   border-radius: 50%;
   animation: kreator-spin 0.8s linear infinite;
   margin: 0 auto;
@@ -159,7 +159,7 @@
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: #10b981;
+  background: #f97316;
   color: white;
   padding: 12px 24px;
   border-radius: 10px;
