@@ -154,9 +154,9 @@
             <div class="flex items-start justify-between gap-2">
               <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
               <% if (v.famous) { %>
-                <span class="flex-shrink-0 text-xs bg-yellow-500/10 text-yellow-400 px-2.5 py-1 rounded font-medium whitespace-nowrap">Znany glos</span>
+                <span class="flex-shrink-0 text-xs bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-yellow-300">Znany głos</span>
               <% } else if (v.native) { %>
-                <span class="flex-shrink-0 text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded font-medium whitespace-nowrap">Native</span>
+                <span class="flex-shrink-0 text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-blue-300">Native</span>
               <% } %>
             </div>
             <div class="flex items-center gap-2 mt-1.5 flex-wrap">
@@ -204,7 +204,7 @@
           <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
             <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
           <% } else if (v.hidePrice) { %>
-            <span class="text-xs text-yellow-400">wycena indyw.</span>
+            <span class="text-xs text-yellow-600">wycena indyw.</span>
           <% } else { %>
             <span></span>
           <% } %>
