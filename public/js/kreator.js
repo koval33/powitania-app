@@ -256,14 +256,14 @@
   function renderLoading() {
     return '<div class="flex flex-col items-center justify-center py-20">' +
       '<div class="kreator-spinner mb-4"></div>' +
-      '<p class="text-gray-300 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
+      '<p class="text-gray-700 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
       '<p class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
     '</div>';
   }
 
   function renderError() {
     if (!state.error) return '';
-    return '<div class="bg-red-900/20 border border-red-800 rounded-lg p-4 mb-4 text-red-400 text-sm">' + esc(state.error) + '</div>';
+    return '<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-red-600 text-sm">' + esc(state.error) + '</div>';
   }
 
   // STEP: Welcome
@@ -290,7 +290,7 @@
     html += '<div class="grid grid-cols-2 gap-4">';
     for (var i = 0; i < CATEGORIES.length; i++) {
       var c = CATEGORIES[i];
-      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
+      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-accent/50 hover:bg-accent/10">' +
         '<div class="text-gray-400 mb-3">' + c.icon + '</div>' +
         '<div class="font-semibold">' + c.label + '</div>' +
       '</button>';
@@ -316,7 +316,7 @@
         if (SERVICE_TYPES[k].v === cat.services[j]) { svc = SERVICE_TYPES[k]; break; }
       }
       if (!svc) continue;
-      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-white/10 hover:border-accent/50 hover:bg-accent/10">' +
+      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-accent/50 hover:bg-accent/10">' +
         '<div class="text-gray-400 mb-2">' + svc.icon + '</div>' +
         '<div class="font-semibold text-sm">' + svc.l + '</div>' +
       '</button>';
@@ -369,7 +369,7 @@
         var disabled = !selected && state.form.languages.length >= 2;
         html += '<button data-action="toggleLang" data-value="' + lang.v + '" ' + (disabled ? 'disabled' : '') +
           ' class="p-3 rounded-lg border-2 text-sm ' +
-          (selected ? 'border-accent bg-accent/10' : disabled ? 'border-white/5 bg-dark-700 opacity-50' : 'border-white/10 hover:border-accent/50') + '">' +
+          (selected ? 'border-accent bg-accent/10' : disabled ? 'border-gray-200 bg-gray-100 opacity-50' : 'border-gray-200 hover:border-accent/50') + '">' +
           lang.flag + ' ' + lang.l + (selected ? ' &#10003;' : '') + '</button>';
       }
       html += '</div></div>';
@@ -386,7 +386,7 @@
           'Więcej opcji' +
         '</button>';
       if (moreOpen) {
-        html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-white/5">' +
+        html += '<div class="space-y-5 mt-4 pl-2 border-l-2 border-gray-200">' +
           renderSelect('tone', 'Ton komunikacji', TONES) +
           renderSelect('audience', 'Grupa docelowa', AUDIENCES) +
           renderSelect('goal', 'Cel komunikacji', GOALS) +
@@ -413,23 +413,23 @@
   // STEP: Preview
   function renderPreview() {
     var html = '<div class="flex items-center gap-3 mb-6">' +
-      '<div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center text-green-400">&#10003;</div>' +
-      '<h3 class="text-xl font-bold text-green-400">Tekst gotowy!</h3>' +
+      '<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">&#10003;</div>' +
+      '<h3 class="text-xl font-bold text-green-600">Tekst gotowy!</h3>' +
     '</div>';
 
-    html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
+    html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">' +
       '<div class="flex justify-between items-center mb-3">' +
-        '<span class="font-semibold text-sm text-gray-300">Twój tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
+        '<span class="font-semibold text-sm text-gray-700">Twój tekst <span class="text-gray-400 font-normal">(możesz edytować)</span>:</span>' +
         '<button data-action="copy" class="text-accent text-sm font-medium hover:text-accent-light">Kopiuj</button>' +
       '</div>' +
-      '<textarea data-result-edit class="kreator-textarea text-gray-300 leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
+      '<textarea data-result-edit class="kreator-textarea text-gray-700 leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
     '</div>';
 
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
 
     // PRIMARY CTA — Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
-      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<p class="text-sm text-gray-500 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
         '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
         'Wybierz lektora' +
@@ -476,7 +476,7 @@
     var pct = Math.abs(Math.round((diff / target) * 100));
     var ok = pct <= 15;
 
-    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-900/20' : 'bg-orange-900/20') + '">' +
+    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50 border border-green-200' : 'bg-orange-50 border border-orange-200') + '">' +
       '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
       '<div class="grid grid-cols-3 gap-4 text-center">' +
         '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-400">Słów</div></div>' +
@@ -486,7 +486,7 @@
     '</div>';
 
     if (state.result) {
-      html += '<div class="bg-dark-700 rounded-xl p-6 mb-6">' +
+      html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">' +
         '<div class="flex justify-between items-center mb-3">' +
           '<span class="font-semibold text-sm">Zoptymalizowany tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
           '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
@@ -497,7 +497,7 @@
 
     // PRIMARY CTA — Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl border border-accent/20">' +
-      '<p class="text-sm text-gray-300 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
+      '<p class="text-sm text-gray-500 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
         '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>' +
         'Wybierz lektora' +
@@ -585,7 +585,7 @@
   // STEP: Success
   function renderSuccess() {
     return '<div class="text-center py-8">' +
-      '<div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-green-400 text-2xl">&#10003;</div>' +
+      '<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 text-2xl">&#10003;</div>' +
       '<h3 class="text-xl font-bold mb-2">Dziękujemy!</h3>' +
       '<p class="text-gray-400 mb-6">' + esc(state.toast || 'Odpowiemy w ciągu 2 godzin.') + '</p>' +
       '<button data-action="reset" class="kreator-btn-primary">Stwórz kolejny tekst</button>' +
