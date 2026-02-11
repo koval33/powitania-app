@@ -22,7 +22,7 @@ body {
 }
 
 .hero-dotgrid {
-  /* transparent — body gradient shines through */
+  background-color: #faf8f5;
 }
 
 /* Kreator widget scoped styles */
