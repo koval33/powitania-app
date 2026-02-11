@@ -452,8 +452,37 @@
     });
   }
 
-  // Init
-  updateVisibility();
+  // Init: apply URL params as filters (e.g. ?gender=m&native=1&famous=1)
+  (function applyUrlFilters() {
+    var params = new URLSearchParams(window.location.search);
+    var g = params.get('gender');
+    if (g === 'm' || g === 'f') {
+      activeGender = g;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      var btn = document.querySelector('.filter-btn[data-value="' + g + '"]');
+      if (btn) btn.classList.add('active');
+    }
+    if (params.get('native') === '1') {
+      document.getElementById('filter-native').checked = true;
+      var nb = document.getElementById('filter-native-btn');
+      if (nb) nb.classList.add('active');
+      var extra = document.getElementById('extra-filters');
+      if (extra) extra.classList.remove('hidden');
+    }
+    if (params.get('famous') === '1') {
+      document.getElementById('filter-famous').checked = true;
+      var fb = document.getElementById('filter-famous-btn');
+      if (fb) fb.classList.add('active');
+      var extra = document.getElementById('extra-filters');
+      if (extra) extra.classList.remove('hidden');
+    }
+    var lang = params.get('lang');
+    if (lang) {
+      document.getElementById('filter-lang').value = lang;
+    }
+  })();
+
+  applyFilters();
 })();
 
 // Kreator context detection
