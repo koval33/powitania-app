@@ -2,8 +2,10 @@
 
 /* Warm gradient background */
 body {
-  background: linear-gradient(180deg, #faf8f5 0%, #f0ebe4 50%, #faf8f5 100%);
-  background-attachment: fixed;
+  background-color: #f5f0eb;
+  background-image: linear-gradient(180deg, #faf8f5 0%, #ede5db 35%, #f5f0eb 65%, #faf8f5 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   min-height: 100vh;
 }
 
