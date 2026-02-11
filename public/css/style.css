@@ -1,12 +1,8 @@
 /* powitania.pl — Light theme styles (Fiverr-inspired) */
 
-/* Warm gradient background */
+/* Warm background */
 body {
-  background-color: #f5f0eb;
-  background-image: linear-gradient(180deg, #faf8f5 0%, #ede5db 35%, #f5f0eb 65%, #faf8f5 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  min-height: 100vh;
+  background-color: #f7f3ef;
 }
 
 /* White logos → dark (for light backgrounds) */
