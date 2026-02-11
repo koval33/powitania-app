@@ -15,12 +15,7 @@ body {
   opacity: 0.8;
 }
 
-/* Hero dot grid pattern */
-.dot-grid-bg {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
+/* Hero */
 .hero-dotgrid {
   background-color: #faf8f5;
 }
