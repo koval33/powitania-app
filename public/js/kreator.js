@@ -631,14 +631,7 @@
     return d.innerHTML;
   }
 
-  // Event handling
-  function bindEvents() {
-    root.addEventListener('click', handleClick);
-    root.addEventListener('change', handleChange);
-    root.addEventListener('input', handleInput);
-  }
-
-  // Remove old listeners before re-binding
+  // Event handling — delegate all events on root (survives innerHTML rebuilds)
   var bound = false;
   function bindEvents() {
     if (bound) return;
@@ -796,7 +789,15 @@
 
   function handleChange(e) {
     if (e.target.dataset.field) {
-      setField(e.target.dataset.field, e.target.value);
+      // For text inputs/textareas: only update state, don't re-render.
+      // Re-render on blur destroys DOM mid-click and swallows the click event
+      // (user clicks button, blur fires first → re-render → click lost).
+      // For selects: re-render to update dependent UI (e.g. validation state).
+      if (e.target.tagName === 'SELECT') {
+        setField(e.target.dataset.field, e.target.value);
+      } else {
+        state.form[e.target.dataset.field] = e.target.value;
+      }
     }
   }
 
