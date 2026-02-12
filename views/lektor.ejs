@@ -861,7 +861,8 @@ var PRICING_MAP = {
       { max: 2, field: 'narration_2pages', label: '2 strony A4' },
       { max: 3, field: 'narration_3pages', label: '3 strony A4' },
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
-    ]
+    ],
+    note: 'Licencja nie obejmuje płatnych kampanii reklamowych.'
   },
   audiobook: {
     label: 'Audiobook',
@@ -1081,7 +1082,8 @@ function renderPricing(result, wordCount, targetEl) {
     html += '<p class="text-xs text-gray-500 mt-2">Do podanych cen należy doliczyć VAT 23%</p>';
 
     if (result.note) {
-      html += '<p class="text-xs text-gray-500 mt-1">' + result.note + '</p>';
+      html += '<p class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-2">' +
+        '<span class="font-semibold">ℹ️</span> ' + result.note + '</p>';
     }
   }
 

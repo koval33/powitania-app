@@ -650,7 +650,18 @@
 
   function handleClick(e) {
     var btn = e.target.closest('[data-action]');
-    if (!btn || btn.disabled) return;
+    if (!btn) return;
+
+    // Flush pending input values before checking disabled state
+    // (input event updates state but doesn't re-render, so disabled attr may be stale)
+    root.querySelectorAll('[data-field]').forEach(function(el) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        state.form[el.dataset.field] = el.value;
+      } else if (el.tagName === 'SELECT') {
+        state.form[el.dataset.field] = el.value;
+      }
+    });
+
     var action = btn.dataset.action;
     var value = btn.dataset.value;
 
@@ -701,10 +712,13 @@
         scrollToKreator();
         break;
       case 'generate':
-        generate();
+        var svc = getService();
+        var canGen = state.form.industry && state.form.company;
+        if (svc && svc.needsLanguages) canGen = canGen && state.form.languages.length > 0;
+        if (canGen) generate();
         break;
       case 'optimize':
-        optimize();
+        if (state.form.textInput.trim()) optimize();
         break;
       case 'copy':
         copyText();
