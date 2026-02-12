@@ -1441,19 +1441,35 @@ function showPricingWizard(ctx) {
     var cfg = PRICING_MAP[mappedType];
 
     if (cfg.method === 'choice') {
-      // Dopytaj o parametry
-      renderQuestions(mappedType, questionsEl);
-      pricingEl.classList.add('hidden');
-      ctaEl.classList.add('hidden');
+      // Sprawdź czy możemy auto-wyliczyć cenę na podstawie duration z kreatora
+      var autoField = null;
+      if (mappedType === 'social' && ctx.duration) {
+        var dur = parseInt(ctx.duration) || 0;
+        autoField = dur <= 60 ? 'spot_social_1min' : 'spot_social_2min';
+      }
 
-      // Listener na wybor
-      questionsEl.addEventListener('change', function(e) {
-        if (e.target.name === 'service-choice') {
-          var result = calculatePrice(mappedType, wordCount, { choiceField: e.target.value });
-          renderPricing(result, wordCount, pricingEl);
-          ctaEl.classList.remove('hidden');
-        }
-      });
+      if (autoField) {
+        // Duration znany — pokaż wycenę od razu bez dodatkowych pytań
+        var autoOpt = cfg.options.find(function(o) { return o.field === autoField; });
+        questionsEl.innerHTML = '<p class="text-gray-500 text-sm mb-2">Czas trwania nagrania: <strong class="text-gray-900">' + (autoOpt ? autoOpt.label : '') + '</strong></p>';
+        var result = calculatePrice(mappedType, wordCount, { choiceField: autoField });
+        renderPricing(result, wordCount, pricingEl);
+        ctaEl.classList.remove('hidden');
+      } else {
+        // Dopytaj o parametry (radio/tv → zasięg, social bez duration)
+        renderQuestions(mappedType, questionsEl);
+        pricingEl.classList.add('hidden');
+        ctaEl.classList.add('hidden');
+
+        // Listener na wybor
+        questionsEl.addEventListener('change', function(e) {
+          if (e.target.name === 'service-choice') {
+            var result = calculatePrice(mappedType, wordCount, { choiceField: e.target.value });
+            renderPricing(result, wordCount, pricingEl);
+            ctaEl.classList.remove('hidden');
+          }
+        });
+      }
     } else {
       // IVR/pages — oblicz od razu
       questionsEl.innerHTML = '';
