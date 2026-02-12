@@ -518,16 +518,20 @@
       // Activate kreator mode — hides hidePrice voices
       kreatorMode = true;
 
-      // Auto-filter by language if non-Polish languages selected
+      // Auto-filter by language based on kreator context
       var langs = ctx.languages || [];
       var foreignLangs = langs.filter(function(l) { return l !== 'pl'; });
       if (foreignLangs.length > 0) {
-        // Build list of required languages (Polish names)
+        // Foreign or bilingual text — show only lectors speaking those languages
         kreatorLangs = foreignLangs.map(function(code) { return LANG_MAP[code]; }).filter(Boolean);
         // Also set dropdown for UI feedback (single language)
         if (kreatorLangs.length === 1) {
           document.getElementById('filter-lang').value = kreatorLangs[0];
         }
+      } else {
+        // Polish-only text (or no language info) — show only Polish-speaking lectors
+        kreatorLangs = ['polski'];
+        document.getElementById('filter-lang').value = 'polski';
       }
     } catch(e) {}
   })();
