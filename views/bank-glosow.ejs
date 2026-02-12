@@ -134,6 +134,7 @@
            data-famous="<%= v.famous %>"
            data-native="<%= v.native %>"
            data-price="<%= v.priceGroup || '' %>"
+           data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
         <!-- Górna część: zdjęcie + info -->
@@ -367,6 +368,11 @@
     updateVisibility();
   });
 
+  // --- Kreator mode ---
+  var kreatorMode = false;
+  var kreatorLangs = [];  // Polish-name languages to filter by (e.g. ['angielski'])
+  var LANG_MAP = { pl: 'polski', en: 'angielski', de: 'niemiecki', fr: 'francuski', cs: 'czeski', uk: 'ukraiński' };
+
   // --- Filters ---
   var activeGender = 'all';
 
@@ -396,6 +402,12 @@
 
     filteredCards = allCards.filter(function(card) {
       if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
+      if (kreatorMode && card.dataset.hideprice === 'true') return false;
+      if (kreatorMode && kreatorLangs.length > 0) {
+        var cardLangs = card.dataset.languages;
+        var hasAny = kreatorLangs.some(function(kl) { return cardLangs.indexOf(kl) !== -1; });
+        if (!hasAny) return false;
+      }
       if (lang !== 'all' && card.dataset.languages.indexOf(lang) === -1) return false;
       if (age !== 'all') {
         var cardAge = card.dataset.age;
@@ -420,6 +432,8 @@
 
   window.resetFilters = function() {
     activeGender = 'all';
+    kreatorMode = false;
+    kreatorLangs = [];
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
     document.getElementById('filter-lang').value = 'all';
@@ -429,6 +443,9 @@
     document.getElementById('filter-native').checked = false;
     document.getElementById('filter-search').value = '';
     document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+    // Hide kreator banner if visible
+    var banner = document.getElementById('kreator-context-banner');
+    if (banner) banner.classList.add('hidden');
     applyFilters();
   };
 
@@ -482,30 +499,52 @@
     }
   })();
 
+  // Kreator context detection + auto-filtering
+  (function() {
+    try {
+      var ctxStr = sessionStorage.getItem('kreatorContext');
+      if (!ctxStr) return;
+      var ctx = JSON.parse(ctxStr);
+      if (!ctx.text) return;
+
+      // Show text preview banner
+      var banner = document.getElementById('kreator-context-banner');
+      var preview = document.getElementById('context-text-preview');
+      if (banner && preview) {
+        preview.textContent = ctx.text;
+        banner.classList.remove('hidden');
+      }
+
+      // Activate kreator mode — hides hidePrice voices
+      kreatorMode = true;
+
+      // Auto-filter by language if non-Polish languages selected
+      var langs = ctx.languages || [];
+      var foreignLangs = langs.filter(function(l) { return l !== 'pl'; });
+      if (foreignLangs.length > 0) {
+        // Build list of required languages (Polish names)
+        kreatorLangs = foreignLangs.map(function(code) { return LANG_MAP[code]; }).filter(Boolean);
+        // Also set dropdown for UI feedback (single language)
+        if (kreatorLangs.length === 1) {
+          document.getElementById('filter-lang').value = kreatorLangs[0];
+        }
+      }
+    } catch(e) {}
+  })();
+
+  // Global: clear kreator context and restore full list
+  window.clearKreatorContext = function() {
+    try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+    kreatorMode = false;
+    kreatorLangs = [];
+    var banner = document.getElementById('kreator-context-banner');
+    if (banner) banner.classList.add('hidden');
+    document.getElementById('filter-lang').value = 'all';
+    applyFilters();
+  };
+
   applyFilters();
 })();
-
-// Kreator context detection
-(function() {
-  try {
-    var ctxStr = sessionStorage.getItem('kreatorContext');
-    if (!ctxStr) return;
-    var ctx = JSON.parse(ctxStr);
-    if (!ctx.text) return;
-    var banner = document.getElementById('kreator-context-banner');
-    var preview = document.getElementById('context-text-preview');
-    if (banner && preview) {
-      preview.textContent = ctx.text;
-      banner.classList.remove('hidden');
-    }
-  } catch(e) {}
-})();
-
-function clearKreatorContext() {
-  try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
-  var banner = document.getElementById('kreator-context-banner');
-  if (banner) banner.classList.add('hidden');
-}
 </script>
 
 <style>
