@@ -823,7 +823,7 @@ var PRICING_MAP = {
       { field: 'spot_radio_local', label: 'Reklama lokalna' },
       { field: 'spot_radio_national', label: 'Reklama ogolnokrajowa' }
     ],
-    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
   tv: {
     label: 'Spot telewizyjny',
@@ -832,7 +832,7 @@ var PRICING_MAP = {
       { field: 'spot_tv_local', label: 'Reklama lokalna' },
       { field: 'spot_tv_national', label: 'Reklama ogolnokrajowa' }
     ],
-    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
   social: {
     label: 'Spot kampania social media',
@@ -841,7 +841,7 @@ var PRICING_MAP = {
       { field: 'spot_social_1min', label: 'Do 1 minuty' },
       { field: 'spot_social_2min', label: 'Do 2 minut' }
     ],
-    note: 'Stawka uwzgl. licencje na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
   elearning: {
     label: 'E-learning / szkolenia',
@@ -1026,7 +1026,7 @@ function getQuestionLabel(serviceType) {
 function renderPricing(result, wordCount, targetEl) {
   if (!result) { targetEl.innerHTML = ''; targetEl.classList.add('hidden'); return; }
 
-  var html = '<div class="bg-accent/5 border border-accent/20 rounded-xl p-4 mt-4">';
+  var html = '<div class="bg-green-50/50 border border-green-200 rounded-xl p-4 mt-4">';
 
   if (result.needsCustomQuote) {
     html += '<div class="text-center">' +
@@ -1073,9 +1073,9 @@ function renderPricing(result, wordCount, targetEl) {
     }
 
     // Suma
-    html += '<div class="border-t border-accent/20 mt-3 pt-3 flex items-center justify-between">' +
+    html += '<div class="border-t border-green-200 mt-3 pt-3 flex items-center justify-between">' +
       '<span class="text-gray-900 font-bold">Łącznie:</span>' +
-      '<span id="pricing-total" class="text-2xl font-bold text-accent">' + totalBase + ' zł netto</span>' +
+      '<span id="pricing-total" class="text-2xl font-bold text-green-700">' + totalBase + ' zł netto</span>' +
     '</div>';
 
     // Ceny netto
