@@ -19,6 +19,7 @@ const fs = require('fs');
 const voicesPath = path.join(__dirname, 'data', 'voices.json');
 const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
+const partnersPath = path.join(__dirname, 'data', 'partners.json');
 function loadVoices() {
   return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
 }
@@ -27,6 +28,10 @@ function loadReviews() {
 }
 function loadBlogPosts() {
   return JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+}
+function loadPartners() {
+  try { return JSON.parse(fs.readFileSync(partnersPath, 'utf8')); }
+  catch { return []; }
 }
 
 // Trailing slash redirect
@@ -88,6 +93,7 @@ app.get('/api/yt-check', async (req, res) => {
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
 app.use('/admin/opinie', require('./routes/admin-opinie'));
+app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 
 // Page routes
 app.get('/', (req, res) => {
@@ -368,19 +374,40 @@ app.get('/portfolio/zapowiedzi-telefoniczne/', (req, res) => res.redirect(301, '
 app.get('/portfolio/reklama-radiowa/', (req, res) => res.redirect(301, '/nagrania-lektorskie/glos-do-reklamy/'));
 app.get('/portfolio/lektorzy-online/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
 
-// Partner iframe routes (E2 — placeholder)
-app.get('/bank/glosy-meskie/', (req, res) => {
-  res.render('placeholder', { title: 'Głosy męskie', description: '', heading: 'Głosy męskie', message: 'W przygotowaniu.' });
+// Partner pages — /p/:slug/
+app.get('/p/:slug/', (req, res) => {
+  const partners = loadPartners();
+  const partner = partners.find(p => p.slug === req.params.slug && p.active);
+  if (!partner) {
+    return res.status(404).render('placeholder', {
+      title: '404 | powitania.pl',
+      description: '',
+      heading: 'Nie znaleziono',
+      message: 'Strona partnera nie istnieje.'
+    });
+  }
+
+  let voices = loadVoices().filter(v => v.photo && v.audio);
+  // Apply partner filters
+  if (partner.filters.gender) voices = voices.filter(v => v.gender === partner.filters.gender);
+  if (partner.filters.languages && partner.filters.languages.length) {
+    voices = voices.filter(v => v.languages && v.languages.some(l => partner.filters.languages.includes(l)));
+  }
+  if (partner.filters.famous) voices = voices.filter(v => v.famous);
+  if (partner.filters.native) voices = voices.filter(v => v.native);
+  if (partner.filters.hidePrice) voices = voices.filter(v => !v.hidePrice);
+
+  // Remove X-Frame-Options so partner page can be embedded in iframe
+  res.removeHeader('X-Frame-Options');
+
+  res.render('partner-page', { partner, voices });
 });
-app.get('/bank/glosy-zenskie/', (req, res) => {
-  res.render('placeholder', { title: 'Głosy żeńskie', description: '', heading: 'Głosy żeńskie', message: 'W przygotowaniu.' });
-});
-app.get('/bank/natives/', (req, res) => {
-  res.render('placeholder', { title: 'Natives', description: '', heading: 'Native speakers', message: 'W przygotowaniu.' });
-});
-app.get('/bank/znani-i-lubiani/', (req, res) => {
-  res.render('placeholder', { title: 'Znani i lubiani', description: '', heading: 'Znani i lubiani', message: 'W przygotowaniu.' });
-});
+
+// Legacy partner iframe routes → redirect to bank-glosow
+app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/bank/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/bank/natives/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/bank/znani-i-lubiani/', (req, res) => res.redirect(301, '/bank-glosow/'));
 
 // EN version placeholder
 app.get('/en/', (req, res) => {
@@ -410,10 +437,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/aktualnosci-pl/', priority: '0.7', changefreq: 'weekly' },
     { url: '/polityka-prywatnosci/', priority: '0.3', changefreq: 'yearly' },
     { url: '/regulamin-serwisu/', priority: '0.3', changefreq: 'yearly' },
-    { url: '/bank/glosy-meskie/', priority: '0.6', changefreq: 'weekly' },
-    { url: '/bank/glosy-zenskie/', priority: '0.6', changefreq: 'weekly' },
-    { url: '/bank/natives/', priority: '0.6', changefreq: 'weekly' },
-    { url: '/bank/znani-i-lubiani/', priority: '0.6', changefreq: 'weekly' },
+    // /bank/* routes now redirect to /bank-glosow/ — removed from sitemap
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

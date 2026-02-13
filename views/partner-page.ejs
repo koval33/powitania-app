@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= partner.heading || 'Bank głosów' %> — <%= partner.name %></title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        accent: { DEFAULT: '<%= partner.accentColor || "#c2410c" %>', light: '<%= partner.accentColor || "#c2410c" %>cc' }
+      }}}
+    }
+  </script>
+  <style>
+    :root { --partner-accent: <%= partner.accentColor || '#c2410c' %>; }
+    .play-btn { background-color: var(--partner-accent); }
+    .play-btn:hover { opacity: 0.85; }
+    .audio-bar { background-color: var(--partner-accent); }
+    .voice-link { color: var(--partner-accent); }
+    .voice-link:hover { opacity: 0.7; }
+    .cta-btn { background-color: var(--partner-accent); color: white; }
+    .cta-btn:hover { opacity: 0.85; }
+    .partner-badge { background-color: color-mix(in srgb, var(--partner-accent) 10%, white); color: var(--partner-accent); border-color: color-mix(in srgb, var(--partner-accent) 30%, white); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-700 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <% if (partner.logo) { %>
+          <img src="<%= partner.logo %>" alt="<%= partner.name %>" class="h-10 w-auto object-contain">
+        <% } %>
+        <span class="text-lg font-bold text-gray-900"><%= partner.name %></span>
+      </div>
+      <div class="flex items-center gap-2 text-xs text-gray-400">
+        <span>Powered by</span>
+        <a href="https://powitania.pl" target="_blank" class="font-semibold text-gray-500 hover:text-gray-700 transition-colors">powitania.pl</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-10 md:py-14">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3"><%= partner.heading || 'Wybierz lektora' %></h1>
+      <% if (partner.description) { %>
+        <p class="text-gray-500 text-lg max-w-3xl"><%= partner.description %></p>
+      <% } %>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="pb-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Gender -->
+        <div class="flex rounded-lg overflow-hidden border border-gray-200">
+          <button class="filter-btn active px-4 py-2 text-sm font-medium bg-white text-gray-700 transition-colors" data-value="all">Wszyscy</button>
+          <button class="filter-btn px-4 py-2 text-sm font-medium bg-white text-gray-700 transition-colors border-l border-gray-200" data-value="mezczyzna">Mężczyźni</button>
+          <button class="filter-btn px-4 py-2 text-sm font-medium bg-white text-gray-700 transition-colors border-l border-gray-200" data-value="kobieta">Kobiety</button>
+        </div>
+
+        <!-- Search -->
+        <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:border-gray-400 focus:outline-none w-48 placeholder-gray-400">
+
+        <!-- Count -->
+        <span class="text-sm text-gray-500 ml-auto">Znaleziono: <strong id="voice-count"><%= voices.length %></strong> lektorów</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice cards -->
+  <section class="pb-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
+        <% voices.forEach(function(v, idx) { %>
+        <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-all<%= idx >= 20 ? ' hidden' : '' %>"
+             data-gender="<%= v.gender %>"
+             data-name="<%= v.name.toLowerCase() %>">
+
+          <!-- Top: photo + info -->
+          <div class="flex items-start gap-5 p-6 pb-3">
+            <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50">
+              <% if (v.photo) { %>
+                <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
+              <% } else { %>
+                <div class="w-full h-full flex items-center justify-center text-gray-400">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+              <% } %>
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
+                <% if (v.famous) { %>
+                  <span class="flex-shrink-0 text-xs bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-yellow-300">Znany głos</span>
+                <% } else if (v.native) { %>
+                  <span class="flex-shrink-0 text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-blue-300">Native</span>
+                <% } %>
+              </div>
+              <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                <% if (v.age) { %>
+                  <span class="text-sm text-gray-500"><%= v.age %></span>
+                  <span class="text-sm text-gray-500">&bull;</span>
+                <% } %>
+                <% v.languages.forEach(function(lang) { %>
+                  <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><%= lang %></span>
+                <% }); %>
+              </div>
+              <% if (v.description) { %>
+                <p class="text-sm text-gray-500 mt-2 line-clamp-3"><%= v.description %></p>
+              <% } %>
+              <% if (v.turnaround) { %>
+                <p class="text-xs text-gray-500 mt-2">Realizacja: <%= v.turnaround %></p>
+              <% } %>
+            </div>
+          </div>
+
+          <!-- Audio player -->
+          <% if (v.audio) { %>
+          <div class="px-6 pb-4">
+            <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
+              <button class="play-btn w-11 h-11 flex-shrink-0 rounded-full flex items-center justify-center transition-opacity text-white" data-audio="<%= v.audio %>">
+                <svg class="play-icon w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <div class="flex-1">
+                <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                  <div class="audio-bar h-full rounded-full transition-all" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="audio-time text-xs text-gray-500">0:00</span>
+                  <span class="audio-duration text-xs text-gray-500">--:--</span>
+                </div>
+              </div>
+              <a href="<%= v.audio %>" download title="Pobierz próbkę" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              </a>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- Footer -->
+          <div class="flex items-center justify-between px-6 pb-5">
+            <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+              <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
+            <% } else if (v.hidePrice) { %>
+              <span class="text-xs text-yellow-600">wycena indyw.</span>
+            <% } else { %>
+              <span></span>
+            <% } %>
+
+            <% if (partner.orderMode === 'owner') { %>
+              <button class="inquiry-btn voice-link text-sm font-medium transition-opacity cursor-pointer" data-voice="<%= v.name %>">
+                Zapytaj o wycenę &rarr;
+              </button>
+            <% } else { %>
+              <a href="<%= v.profileUrl %>" target="_blank" class="voice-link text-sm font-medium transition-opacity">
+                Więcej &rarr;
+              </a>
+            <% } %>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+      <!-- Load more -->
+      <div id="load-more-wrap" class="text-center mt-10 <%= voices.length <= 20 ? 'hidden' : '' %>">
+        <button id="load-more-btn" class="bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium transition-colors">
+          Załaduj więcej lektorów
+        </button>
+        <p class="text-sm text-gray-500 mt-3">Pokazano <span id="shown-count">20</span> z <span id="total-filtered"><%= voices.length %></span></p>
+      </div>
+
+      <!-- Empty state -->
+      <div id="no-results" class="hidden text-center py-16">
+        <p class="text-gray-500 text-lg">Nie znaleziono lektorów spełniających kryteria</p>
+        <button onclick="resetFilters()" class="mt-4 voice-link text-sm font-medium">Wyczyść filtry</button>
+      </div>
+    </div>
+  </section>
+
+  <% if (partner.orderMode === 'owner') { %>
+  <!-- Contact form (owner mode) -->
+  <section id="contact-form" class="py-12 bg-white border-t border-gray-200 hidden">
+    <div class="max-w-xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">Zapytaj o wycenę</h2>
+      <p class="text-sm text-gray-500 mb-6">Lektor: <strong id="form-voice-name" class="text-gray-900"></strong></p>
+
+      <form id="inquiry-form" class="space-y-4">
+        <input type="hidden" name="partnerId" value="<%= partner.id %>">
+        <input type="hidden" name="voiceName" id="form-voice-input" value="">
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-gray-600 mb-1">Imię i nazwisko *</label>
+            <input type="text" name="name" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:border-gray-400 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600 mb-1">Firma</label>
+            <input type="text" name="company" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:border-gray-400 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-gray-600 mb-1">E-mail *</label>
+            <input type="email" name="email" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:border-gray-400 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600 mb-1">Telefon</label>
+            <input type="tel" name="phone" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:border-gray-400 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">Wiadomość</label>
+          <textarea name="message" rows="3" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:border-gray-400 focus:outline-none resize-y" placeholder="Opisz swój projekt..."></textarea>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button type="submit" class="cta-btn px-6 py-2.5 rounded-lg font-semibold text-sm transition-opacity">Wyślij zapytanie</button>
+          <button type="button" onclick="document.getElementById('contact-form').classList.add('hidden')" class="text-sm text-gray-400 hover:text-gray-600">Anuluj</button>
+        </div>
+
+        <div id="form-message" class="hidden text-sm rounded-lg px-4 py-3"></div>
+      </form>
+    </div>
+  </section>
+  <% } %>
+
+  <% if (partner.orderMode === 'partner') { %>
+  <!-- Partner contact info -->
+  <section class="py-12 bg-white border-t border-gray-200">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">Skontaktuj się</h2>
+      <p class="text-gray-500 mb-6">Aby zamówić nagranie, skontaktuj się bezpośrednio z <%= partner.name %>.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <% if (partner.partnerEmail) { %>
+          <a href="mailto:<%= partner.partnerEmail %>" class="cta-btn px-8 py-3 rounded-lg font-semibold transition-opacity"><%= partner.partnerEmail %></a>
+        <% } %>
+        <% if (partner.partnerPhone) { %>
+          <a href="tel:<%= partner.partnerPhone.replace(/\s/g, '') %>" class="bg-white hover:bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors border border-gray-200"><%= partner.partnerPhone %></a>
+        <% } %>
+      </div>
+    </div>
+  </section>
+  <% } %>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-gray-200 text-center">
+    <p class="text-xs text-gray-400">
+      Bank głosów dostarczony przez <a href="https://powitania.pl" target="_blank" class="font-semibold text-gray-500 hover:text-gray-700 transition-colors">powitania.pl</a>
+      — Studio nagrań lektorskich, od 2001 r.
+    </p>
+  </footer>
+
+  <script>
+  (function() {
+    var PAGE_SIZE = 20;
+    var currentAudio = null;
+    var currentBtn = null;
+    var allCards = Array.from(document.querySelectorAll('.voice-card'));
+    var filteredCards = allCards.slice();
+    var shownCount = PAGE_SIZE;
+    var activeGender = 'all';
+
+    // --- Audio player ---
+    function initAudioPlayer(btn) {
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var src = this.dataset.audio;
+        var card = this.closest('.voice-card');
+        var playIcon = this.querySelector('.play-icon');
+        var pauseIcon = this.querySelector('.pause-icon');
+        var bar = card.querySelector('.audio-bar');
+        var timeEl = card.querySelector('.audio-time');
+        var durEl = card.querySelector('.audio-duration');
+
+        if (currentAudio && currentBtn !== this) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          currentBtn.querySelector('.play-icon').classList.remove('hidden');
+          currentBtn.querySelector('.pause-icon').classList.add('hidden');
+          currentBtn.closest('.voice-card').querySelector('.audio-bar').style.width = '0%';
+        }
+
+        if (currentAudio && currentBtn === this && !currentAudio.paused) {
+          currentAudio.pause();
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+          return;
+        }
+
+        if (!currentAudio || currentBtn !== this) {
+          currentAudio = new Audio(src);
+          currentBtn = this;
+
+          currentAudio.addEventListener('loadedmetadata', function() {
+            durEl.textContent = formatTime(currentAudio.duration);
+          });
+          currentAudio.addEventListener('timeupdate', function() {
+            var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
+            bar.style.width = pct + '%';
+            timeEl.textContent = formatTime(currentAudio.currentTime);
+          });
+          currentAudio.addEventListener('ended', function() {
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            bar.style.width = '0%';
+            timeEl.textContent = '0:00';
+          });
+
+          card.querySelector('.audio-progress').addEventListener('click', function(e) {
+            if (currentAudio && currentBtn === btn) {
+              var rect = this.getBoundingClientRect();
+              var pct = (e.clientX - rect.left) / rect.width;
+              currentAudio.currentTime = pct * currentAudio.duration;
+            }
+          });
+        }
+
+        currentAudio.play();
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      });
+    }
+
+    allCards.forEach(function(card) {
+      initAudioPlayer(card.querySelector('.play-btn'));
+    });
+
+    function formatTime(s) {
+      var m = Math.floor(s / 60);
+      var sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    // --- Pagination ---
+    function updateVisibility() {
+      var visibleCount = 0;
+      filteredCards.forEach(function(card, i) {
+        if (i < shownCount) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      allCards.forEach(function(card) {
+        if (filteredCards.indexOf(card) === -1) {
+          card.classList.add('hidden');
+        }
+      });
+
+      var totalFiltered = filteredCards.length;
+      document.getElementById('voice-count').textContent = totalFiltered;
+      document.getElementById('shown-count').textContent = Math.min(shownCount, totalFiltered);
+      document.getElementById('total-filtered').textContent = totalFiltered;
+
+      var loadMoreWrap = document.getElementById('load-more-wrap');
+      var noResults = document.getElementById('no-results');
+
+      if (totalFiltered === 0) {
+        loadMoreWrap.classList.add('hidden');
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+        if (shownCount >= totalFiltered) {
+          loadMoreWrap.classList.add('hidden');
+        } else {
+          loadMoreWrap.classList.remove('hidden');
+        }
+      }
+    }
+
+    document.getElementById('load-more-btn').addEventListener('click', function() {
+      shownCount += PAGE_SIZE;
+      updateVisibility();
+    });
+
+    // --- Filters ---
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) {
+          b.classList.remove('bg-gray-900', 'text-white');
+          b.classList.add('bg-white', 'text-gray-700');
+        });
+        this.classList.remove('bg-white', 'text-gray-700');
+        this.classList.add('bg-gray-900', 'text-white');
+        activeGender = this.dataset.value;
+        applyFilters();
+      });
+    });
+
+    // Set initial active state
+    document.querySelector('.filter-btn[data-value="all"]').classList.remove('bg-white', 'text-gray-700');
+    document.querySelector('.filter-btn[data-value="all"]').classList.add('bg-gray-900', 'text-white');
+
+    document.getElementById('filter-search').addEventListener('input', applyFilters);
+
+    function applyFilters() {
+      var search = document.getElementById('filter-search').value.toLowerCase();
+
+      filteredCards = allCards.filter(function(card) {
+        if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
+        if (search && card.dataset.name.indexOf(search) === -1) return false;
+        return true;
+      });
+
+      shownCount = PAGE_SIZE;
+      updateVisibility();
+    }
+
+    window.resetFilters = function() {
+      activeGender = 'all';
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('bg-gray-900', 'text-white');
+        b.classList.add('bg-white', 'text-gray-700');
+      });
+      document.querySelector('.filter-btn[data-value="all"]').classList.remove('bg-white', 'text-gray-700');
+      document.querySelector('.filter-btn[data-value="all"]').classList.add('bg-gray-900', 'text-white');
+      document.getElementById('filter-search').value = '';
+      applyFilters();
+    };
+
+    // --- Inquiry buttons (owner mode) ---
+    document.querySelectorAll('.inquiry-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var voiceName = this.dataset.voice;
+        var form = document.getElementById('contact-form');
+        if (!form) return;
+        document.getElementById('form-voice-name').textContent = voiceName;
+        document.getElementById('form-voice-input').value = voiceName;
+        form.classList.remove('hidden');
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // --- Form submit ---
+    var inquiryForm = document.getElementById('inquiry-form');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        var data = {};
+        formData.forEach(function(val, key) { data[key] = val; });
+
+        var msgEl = document.getElementById('form-message');
+        var submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wysyłanie...';
+
+        fetch('/api/contact/partner-inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          msgEl.classList.remove('hidden', 'bg-red-50', 'text-red-700');
+          if (res.ok) {
+            msgEl.className = 'text-sm rounded-lg px-4 py-3 bg-green-50 text-green-700';
+            msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
+            inquiryForm.reset();
+          } else {
+            msgEl.className = 'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700';
+            msgEl.textContent = res.error || 'Błąd wysyłania.';
+          }
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Wyślij zapytanie';
+        })
+        .catch(function() {
+          msgEl.className = 'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700';
+          msgEl.textContent = 'Błąd połączenia. Spróbuj ponownie.';
+          msgEl.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Wyślij zapytanie';
+        });
+      });
+    }
+  })();
+  </script>
+
+</body>
+</html>

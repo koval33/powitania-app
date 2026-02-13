@@ -217,6 +217,69 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
   }
 });
 
+// "Zapytaj o wycenę" — ze strony partnera
+router.post('/partner-inquiry', async (req, res) => {
+  const { name, company, email, phone, message, partnerId, voiceName } = req.body;
+
+  if (!name || !email) {
+    return res.status(400).json({ ok: false, error: 'Podaj imię i adres email.' });
+  }
+
+  // Load partner data to determine recipient
+  const fs = require('fs');
+  const partnersPath = path.join(__dirname, '..', 'data', 'partners.json');
+  let partner = null;
+  try {
+    const partners = JSON.parse(fs.readFileSync(partnersPath, 'utf8'));
+    partner = partners.find(p => p.id === partnerId);
+  } catch { /* ignore */ }
+
+  const partnerName = partner ? partner.name : 'Nieznany partner';
+  const isPartnerMode = partner && partner.orderMode === 'partner' && partner.partnerEmail;
+  const recipientEmail = isPartnerMode ? partner.partnerEmail : undefined; // undefined = default (biuro@)
+
+  try {
+    // Mail do biura (lub do partnera)
+    await sendMail({
+      to: recipientEmail,
+      subject: `[Partner: ${esc(partnerName)}] Zapytanie — ${esc(voiceName || 'wycena')}`,
+      replyTo: email,
+      html: `
+        <h2>Zapytanie ze strony partnera</h2>
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Partner:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(partnerName)}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Imię:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name)}</td></tr>
+          ${company ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(company)}</td></tr>` : ''}
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(email)}</td></tr>
+          ${phone ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone)}</td></tr>` : ''}
+          ${voiceName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(voiceName)}</td></tr>` : ''}
+        </table>
+        ${message ? `<h3>Wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(message)}</p>` : ''}
+        <p style="color:#999;font-size:12px">Wysłano ze strony partnera na powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+      `
+    });
+
+    // Potwierdzenie do klienta
+    await sendMail({
+      to: email,
+      subject: 'Potwierdzenie zapytania — ' + esc(partnerName),
+      html: `
+        <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
+        <p>Cześć ${esc(name)},</p>
+        <p>Otrzymaliśmy Twoje zapytanie${voiceName ? ' dotyczące lektora <strong>' + esc(voiceName) + '</strong>' : ''}.</p>
+        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>${esc(partnerName)}</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">Powered by powitania.pl</p>
+      `
+    });
+
+    res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
+  } catch (err) {
+    console.error('[contact] Partner inquiry error:', err);
+    res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
+  }
+});
+
 function esc(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }

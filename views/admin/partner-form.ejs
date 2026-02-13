@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
+        accent: { DEFAULT: '#10b981', light: '#34d399', dark: '#059669' }
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-gray-300 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-dark-800 border-b border-white/10 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <h1 class="text-xl font-bold text-white">Panel Admin</h1>
+      <span class="text-sm text-gray-500">/ <%= editing ? 'Edytuj partnera' : 'Nowy partner' %></span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/admin/partnerzy/" class="text-gray-400 hover:text-white text-sm transition-colors border border-white/10 px-3 py-1.5 rounded-lg">&larr; Wróć do listy</a>
+      <a href="/" class="text-gray-400 hover:text-white text-sm transition-colors">Strona główna</a>
+    </div>
+  </header>
+
+  <div class="max-w-4xl mx-auto px-6 py-8">
+    <form method="POST" action="/admin/partnerzy/zapisz/" enctype="multipart/form-data" class="space-y-8">
+
+      <% if (editing) { %>
+        <input type="hidden" name="editing" value="true">
+        <input type="hidden" name="original_id" value="<%= partner.id %>">
+      <% } %>
+
+      <!-- Sekcja 1: Dane podstawowe -->
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
+        <h2 class="text-lg font-semibold text-white mb-4">Dane podstawowe</h2>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Nazwa partnera *</label>
+            <input type="text" name="name" value="<%= editing ? partner.name : '' %>" required
+              class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none"
+              oninput="if(!document.getElementById('slug-edited').value) document.getElementById('slug-field').value = this.value.toLowerCase().replace(/ą/g,'a').replace(/ć/g,'c').replace(/ę/g,'e').replace(/ł/g,'l').replace(/ń/g,'n').replace(/ó/g,'o').replace(/ś/g,'s').replace(/ź/g,'z').replace(/ż/g,'z').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Slug (URL)</label>
+            <div class="flex items-center gap-2">
+              <span class="text-gray-500 text-sm">/p/</span>
+              <input type="text" name="slug" id="slug-field" value="<%= editing ? partner.slug : '' %>"
+                class="flex-1 bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none"
+                oninput="document.getElementById('slug-edited').value='1'">
+              <span class="text-gray-500 text-sm">/</span>
+            </div>
+            <input type="hidden" id="slug-edited" value="<%= editing ? '1' : '' %>">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Logo (200×200, opcjonalne)</label>
+            <input type="file" name="logo" accept="image/*"
+              class="w-full bg-dark-700 border border-white/10 text-gray-400 text-sm rounded-lg px-3 py-2 file:mr-3 file:rounded file:border-0 file:bg-accent/20 file:text-accent file:text-xs file:px-3 file:py-1">
+            <% if (editing && partner.logo) { %>
+              <div class="mt-2 flex items-center gap-2">
+                <img src="<%= partner.logo %>" alt="" class="w-10 h-10 rounded bg-white p-0.5 object-contain">
+                <span class="text-xs text-gray-500">Obecne logo</span>
+              </div>
+            <% } %>
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Kolor akcentu</label>
+            <div class="flex items-center gap-3">
+              <input type="color" name="accentColor" id="accent-color" value="<%= editing ? (partner.accentColor || '#c2410c') : '#c2410c' %>"
+                class="w-10 h-10 rounded-lg border border-white/10 cursor-pointer bg-transparent">
+              <input type="text" id="accent-hex" value="<%= editing ? (partner.accentColor || '#c2410c') : '#c2410c' %>"
+                class="bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 w-28 focus:border-accent focus:outline-none font-mono"
+                oninput="document.getElementById('accent-color').value = this.value">
+            </div>
+            <p class="text-xs text-gray-600 mt-1">Domyślnie: #c2410c (pomarańczowy Powitania)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sekcja 2: Treść strony -->
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
+        <h2 class="text-lg font-semibold text-white mb-4">Treść strony partnera</h2>
+
+        <div class="mb-4">
+          <label class="block text-sm text-gray-400 mb-1">Nagłówek</label>
+          <input type="text" name="heading" value="<%= editing ? (partner.heading || '') : 'Wybierz lektora' %>"
+            class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none"
+            placeholder="Wybierz lektora">
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1">Opis (opcjonalny)</label>
+          <textarea name="description" rows="3"
+            class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none resize-y"
+            placeholder="Przeglądaj bazę profesjonalnych lektorów..."><%= editing ? (partner.description || '') : '' %></textarea>
+        </div>
+      </div>
+
+      <!-- Sekcja 3: Filtry głosów -->
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
+        <h2 class="text-lg font-semibold text-white mb-4">Filtry głosów</h2>
+        <p class="text-xs text-gray-500 mb-4">Wybierz, którzy lektorzy będą widoczni na stronie partnera. Pozostaw puste, aby pokazać wszystkich.</p>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Płeć</label>
+            <select name="filter_gender" class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none">
+              <option value="" <%= editing && !partner.filters.gender ? 'selected' : '' %>>Wszystkie</option>
+              <option value="mezczyzna" <%= editing && partner.filters.gender === 'mezczyzna' ? 'selected' : '' %>>Mężczyźni</option>
+              <option value="kobieta" <%= editing && partner.filters.gender === 'kobieta' ? 'selected' : '' %>>Kobiety</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Ukryj ceny indywidualne</label>
+            <select name="filter_hidePrice" class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none">
+              <option value="on" <%= !editing || (editing && partner.filters.hidePrice) ? 'selected' : '' %>>Tak (ukryj lektorów z "wycena indyw.")</option>
+              <option value="off" <%= editing && !partner.filters.hidePrice ? 'selected' : '' %>>Nie (pokaż wszystkich)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm text-gray-400 mb-2">Języki (zaznacz, aby ograniczyć)</label>
+          <div class="flex flex-wrap gap-3">
+            <% var allLanguages = ['polski','angielski','niemiecki','francuski','czeski','ukraiński','rosyjski','hiszpański','włoski','słowacki']; %>
+            <% allLanguages.forEach(function(lang) { %>
+              <label class="flex items-center gap-1.5 text-sm text-gray-400 cursor-pointer">
+                <input type="checkbox" name="filter_languages" value="<%= lang %>"
+                  class="rounded bg-dark-700 border-white/20 text-accent focus:ring-accent"
+                  <%= editing && partner.filters.languages && partner.filters.languages.includes(lang) ? 'checked' : '' %>>
+                <%= lang %>
+              </label>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <label class="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
+            <input type="checkbox" name="filter_famous" class="rounded bg-dark-700 border-white/20 text-accent focus:ring-accent"
+              <%= editing && partner.filters.famous ? 'checked' : '' %>>
+            Tylko znani lektorzy
+          </label>
+          <label class="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
+            <input type="checkbox" name="filter_native" class="rounded bg-dark-700 border-white/20 text-accent focus:ring-accent"
+              <%= editing && partner.filters.native ? 'checked' : '' %>>
+            Tylko native speakers
+          </label>
+        </div>
+      </div>
+
+      <!-- Sekcja 4: Zamówienia -->
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
+        <h2 class="text-lg font-semibold text-white mb-4">Tryb zamówień</h2>
+
+        <div class="mb-4">
+          <label class="block text-sm text-gray-400 mb-2">Gdzie trafiają zamówienia?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 text-sm cursor-pointer px-4 py-3 rounded-lg border transition-colors"
+              id="mode-owner-label">
+              <input type="radio" name="orderMode" value="owner" class="text-accent focus:ring-accent"
+                <%= !editing || partner.orderMode === 'owner' ? 'checked' : '' %>
+                onchange="togglePartnerFields()">
+              <div>
+                <span class="text-white font-medium">Do właściciela (Powitania.pl)</span>
+                <p class="text-xs text-gray-500 mt-0.5">Formularz kontaktowy wysyła maile do biuro@powitania.pl</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 text-sm cursor-pointer px-4 py-3 rounded-lg border transition-colors"
+              id="mode-partner-label">
+              <input type="radio" name="orderMode" value="partner" class="text-accent focus:ring-accent"
+                <%= editing && partner.orderMode === 'partner' ? 'checked' : '' %>
+                onchange="togglePartnerFields()">
+              <div>
+                <span class="text-white font-medium">Do partnera</span>
+                <p class="text-xs text-gray-500 mt-0.5">Strona wyświetla dane kontaktowe partnera</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div id="partner-contact-fields" class="grid grid-cols-2 gap-4 <%= !editing || partner.orderMode !== 'partner' ? 'opacity-40' : '' %>">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">E-mail partnera</label>
+            <input type="email" name="partnerEmail" value="<%= editing ? (partner.partnerEmail || '') : '' %>"
+              class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none"
+              placeholder="kontakt@partner.pl">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1">Telefon partnera</label>
+            <input type="tel" name="partnerPhone" value="<%= editing ? (partner.partnerPhone || '') : '' %>"
+              class="w-full bg-dark-700 border border-white/10 text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-accent focus:outline-none"
+              placeholder="+48 600 000 000">
+          </div>
+        </div>
+      </div>
+
+      <!-- Sekcja 5: Status -->
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-6">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" name="active" class="rounded bg-dark-700 border-white/20 text-accent focus:ring-accent w-5 h-5"
+            <%= !editing || partner.active ? 'checked' : '' %>>
+          <div>
+            <span class="text-white font-medium">Aktywny</span>
+            <p class="text-xs text-gray-500">Strona partnera jest dostępna publicznie pod /p/<span id="slug-preview"><%= editing ? partner.slug : '...' %></span>/</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Zapisz -->
+      <div class="flex items-center gap-4">
+        <button type="submit" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          <%= editing ? 'Zaktualizuj partnera' : 'Dodaj partnera' %>
+        </button>
+        <a href="/admin/partnerzy/" class="text-gray-400 hover:text-white text-sm transition-colors">Anuluj</a>
+
+        <% if (editing) { %>
+          <a href="/p/<%= partner.slug %>/" target="_blank" class="ml-auto text-accent hover:text-accent-light text-sm transition-colors">
+            Podgląd strony partnera &rarr;
+          </a>
+        <% } %>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    // Sync color picker with hex input
+    document.getElementById('accent-color').addEventListener('input', function() {
+      document.getElementById('accent-hex').value = this.value;
+    });
+
+    // Toggle partner contact fields visibility
+    function togglePartnerFields() {
+      var isPartner = document.querySelector('input[name="orderMode"][value="partner"]').checked;
+      document.getElementById('partner-contact-fields').classList.toggle('opacity-40', !isPartner);
+    }
+
+    // Update slug preview
+    var slugField = document.getElementById('slug-field');
+    if (slugField) {
+      slugField.addEventListener('input', function() {
+        document.getElementById('slug-preview').textContent = this.value || '...';
+      });
+    }
+
+    // Init
+    togglePartnerFields();
+  </script>
+
+</body>
+</html>

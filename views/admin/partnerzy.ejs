@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
+        accent: { DEFAULT: '#10b981', light: '#34d399', dark: '#059669' }
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-gray-300 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-dark-800 border-b border-white/10 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <h1 class="text-xl font-bold text-white">Panel Admin</h1>
+      <span class="text-sm text-gray-500">/ Partnerzy (<%= partners.length %>)</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/admin/partnerzy/dodaj/" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
+        + Dodaj partnera
+      </a>
+      <a href="/admin/lektorzy/" class="text-gray-400 hover:text-white text-sm transition-colors border border-white/10 px-3 py-1.5 rounded-lg">Lektorzy</a>
+      <a href="/admin/opinie/" class="text-gray-400 hover:text-white text-sm transition-colors border border-white/10 px-3 py-1.5 rounded-lg">Opinie</a>
+      <a href="/admin/partnerzy/" class="text-accent text-sm font-semibold border border-accent/30 px-3 py-1.5 rounded-lg">Partnerzy</a>
+      <a href="/" class="text-gray-400 hover:text-white text-sm transition-colors">Strona główna</a>
+    </div>
+  </header>
+
+  <!-- Message -->
+  <% if (msg) { %>
+    <div class="max-w-7xl mx-auto px-6 mt-4">
+      <div class="bg-accent/10 border border-accent/30 text-accent px-4 py-3 rounded-lg text-sm">
+        <%= msg %>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Search -->
+  <div class="max-w-7xl mx-auto px-6 mt-6">
+    <input type="text" id="search" placeholder="Szukaj partnera..." class="bg-dark-800 border border-white/10 text-gray-300 text-sm rounded-lg px-4 py-2.5 w-full max-w-md focus:border-accent focus:outline-none placeholder-gray-500">
+  </div>
+
+  <!-- Table -->
+  <div class="max-w-7xl mx-auto px-6 mt-4 pb-12">
+    <% if (partners.length === 0) { %>
+      <div class="bg-dark-800 rounded-xl border border-white/5 p-12 text-center">
+        <p class="text-gray-500 mb-4">Nie masz jeszcze żadnych partnerów.</p>
+        <a href="/admin/partnerzy/dodaj/" class="bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors inline-block">+ Dodaj pierwszego partnera</a>
+      </div>
+    <% } else { %>
+      <div class="bg-dark-800 rounded-xl border border-white/5 overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-white/10 text-left">
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Logo</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Nazwa</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Slug / URL</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Zamówienia</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Filtry</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Status</th>
+              <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase text-right">Akcje</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <% partners.forEach(function(p) { %>
+            <tr class="partner-row hover:bg-white/[0.02] transition-colors" data-name="<%= p.name.toLowerCase() %>">
+              <td class="px-4 py-3">
+                <% if (p.logo) { %>
+                  <img src="<%= p.logo %>" alt="" class="w-10 h-10 rounded-lg object-contain bg-white p-1">
+                <% } else { %>
+                  <div class="w-10 h-10 rounded-lg bg-dark-700 flex items-center justify-center text-gray-600 text-xs">—</div>
+                <% } %>
+              </td>
+              <td class="px-4 py-3">
+                <span class="text-white font-medium"><%= p.name %></span>
+              </td>
+              <td class="px-4 py-3">
+                <a href="/p/<%= p.slug %>/" target="_blank" class="text-accent text-sm hover:text-accent-light">/p/<%= p.slug %>/</a>
+              </td>
+              <td class="px-4 py-3">
+                <span class="text-[10px] px-2 py-0.5 rounded <%= p.orderMode === 'partner' ? 'bg-blue-500/10 text-blue-400' : 'bg-accent/10 text-accent' %>">
+                  <%= p.orderMode === 'partner' ? 'Do partnera' : 'Do właściciela' %>
+                </span>
+              </td>
+              <td class="px-4 py-3">
+                <div class="flex flex-wrap gap-1">
+                  <% if (p.filters.gender) { %>
+                    <span class="text-[10px] bg-dark-600 text-gray-400 px-1.5 py-0.5 rounded"><%= p.filters.gender === 'mezczyzna' ? 'M' : 'K' %></span>
+                  <% } %>
+                  <% if (p.filters.languages && p.filters.languages.length) { %>
+                    <span class="text-[10px] bg-dark-600 text-gray-400 px-1.5 py-0.5 rounded"><%= p.filters.languages.join(', ') %></span>
+                  <% } %>
+                  <% if (p.filters.famous) { %>
+                    <span class="text-[10px] bg-yellow-500/10 text-yellow-400 px-1.5 py-0.5 rounded">Znani</span>
+                  <% } %>
+                  <% if (p.filters.native) { %>
+                    <span class="text-[10px] bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded">Native</span>
+                  <% } %>
+                </div>
+              </td>
+              <td class="px-4 py-3">
+                <% if (p.active) { %>
+                  <span class="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Aktywny</span>
+                <% } else { %>
+                  <span class="text-[10px] bg-red-500/10 text-red-400 px-2 py-0.5 rounded">Nieaktywny</span>
+                <% } %>
+              </td>
+              <td class="px-4 py-3 text-right">
+                <div class="flex items-center justify-end gap-2">
+                  <a href="/admin/partnerzy/edytuj/<%= p.id %>/" class="text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded border border-white/10 hover:border-white/20">Edytuj</a>
+                  <form method="POST" action="/admin/partnerzy/usun/<%= p.id %>/" onsubmit="return confirm('Na pewno usunąć partnera <%= p.name %>?')" class="inline">
+                    <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-2 py-1 rounded border border-red-500/20 hover:border-red-500/40">Usuń</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      var q = this.value.toLowerCase();
+      document.querySelectorAll('.partner-row').forEach(function(row) {
+        row.style.display = row.dataset.name.indexOf(q) !== -1 ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
