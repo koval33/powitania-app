@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { sendMail } = require('../lib/mailer');
+const { sendOrderToCRM } = require('../lib/crm-webhook');
 
 // Multer config for inquiry attachments (max 10MB)
 const upload = multer({
@@ -66,6 +67,10 @@ router.post('/order', async (req, res) => {
     });
 
     res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
+
+    // Send to CRM (non-blocking — after response)
+    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice })
+      .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
@@ -116,6 +121,10 @@ router.post('/inquiry', async (req, res) => {
     });
 
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
+
+    // Send to CRM (non-blocking — after response)
+    sendOrderToCRM({ name, email, phone, serviceType, industry, lektorName, generatedText, notes: description, source: 'powitania.pl (zapytanie)' })
+      .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Inquiry error:', err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
