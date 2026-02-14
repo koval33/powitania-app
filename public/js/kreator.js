@@ -804,11 +804,39 @@
   function handleInput(e) {
     if (e.target.dataset.field && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
       state.form[e.target.dataset.field] = e.target.value;
-      // Don't re-render on every keystroke — just update state
+      // Update disabled state of submit buttons without full re-render
+      updateButtonStates();
     }
     // Edycja wygenerowanego tekstu
     if (e.target.hasAttribute('data-result-edit')) {
       state.result = e.target.value;
+    }
+  }
+
+  function updateButtonStates() {
+    // Find all action buttons and update their disabled state based on current form values
+    var genBtn = root.querySelector('[data-action="generate"]');
+    if (genBtn) {
+      var svc = getService();
+      var canGen = state.form.industry && state.form.company;
+      if (svc && svc.needsLanguages) canGen = canGen && state.form.languages.length > 0;
+      genBtn.disabled = !canGen;
+    }
+    var optBtn = root.querySelector('[data-action="optimize"]');
+    if (optBtn) {
+      optBtn.disabled = !state.form.textInput.trim();
+    }
+    var orderBtn = root.querySelector('[data-action="submitOrder"]');
+    if (orderBtn) {
+      orderBtn.disabled = !(state.form.firmName && state.form.name && state.form.email && state.form.phone);
+    }
+    var inqBtn = root.querySelector('[data-action="submitInquiry"]');
+    if (inqBtn) {
+      inqBtn.disabled = !state.form.email;
+    }
+    var saveBtn = root.querySelector('[data-action="submitSaveText"]');
+    if (saveBtn) {
+      saveBtn.disabled = !state.form.email;
     }
   }
 
