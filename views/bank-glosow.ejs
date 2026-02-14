@@ -9,21 +9,27 @@
   </div>
 
   <!-- Filtry (sticky) -->
-  <div class="py-4 pb-6 sticky top-[73px] z-40 bg-white shadow-md">
-  <div class="max-w-6xl mx-auto px-4 space-y-3">
+  <div class="py-4 pb-5 sticky top-[73px] z-40 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto px-4">
 
-    <!-- Rząd 1: Główne filtry (zawsze widoczne) -->
-    <div class="flex flex-wrap items-center gap-3">
-      <!-- Płeć -->
+    <!-- Rząd 1: Płeć + Szukaj -->
+    <div class="flex items-center gap-3 mb-3">
       <div class="flex rounded-lg overflow-hidden border border-gray-200">
         <button data-filter="gender" data-value="all" class="filter-btn active px-4 py-2 text-sm font-medium">Wszyscy</button>
-        <button data-filter="gender" data-value="m" class="filter-btn px-4 py-2 text-sm font-medium">Mężczyźni</button>
-        <button data-filter="gender" data-value="f" class="filter-btn px-4 py-2 text-sm font-medium">Kobiety</button>
+        <button data-filter="gender" data-value="m" class="filter-btn px-4 py-2 text-sm font-medium border-l border-gray-200">Mężczyźni</button>
+        <button data-filter="gender" data-value="f" class="filter-btn px-4 py-2 text-sm font-medium border-l border-gray-200">Kobiety</button>
       </div>
 
-      <!-- Język -->
+      <div class="ml-auto relative">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-4 py-2 w-52 focus:border-accent focus:outline-none placeholder-gray-400">
+      </div>
+    </div>
+
+    <!-- Rząd 2: Wszystkie filtry szczegółowe -->
+    <div class="flex flex-wrap items-center gap-2">
       <select id="filter-lang" class="bank-filter-select">
-        <option value="all">Wszystkie języki</option>
+        <option value="all">Język</option>
         <option value="polski">Polski</option>
         <option value="angielski">Angielski</option>
         <option value="niemiecki">Niemiecki</option>
@@ -31,53 +37,36 @@
         <option value="hiszpański">Hiszpański</option>
         <option value="francuski">Francuski</option>
         <option value="ukraiński">Ukraiński</option>
-        <option value="portugalski">Portugalski</option>
-        <option value="hebrajski">Hebrajski</option>
         <option value="włoski">Włoski</option>
+        <option value="portugalski">Portugalski</option>
         <option value="czeski">Czeski</option>
         <option value="słowacki">Słowacki</option>
         <option value="węgierski">Węgierski</option>
         <option value="holenderski">Holenderski</option>
         <option value="rumuński">Rumuński</option>
         <option value="turecki">Turecki</option>
-        <option value="chiński">Chiński</option>
-        <option value="japoński">Japoński</option>
-        <option value="koreański">Koreański</option>
-        <option value="arabski">Arabski</option>
-        <option value="hindi">Hindi</option>
-        <option value="szwedzki">Szwedzki</option>
-        <option value="norweski">Norweski</option>
-        <option value="duński">Duński</option>
-        <option value="fiński">Fiński</option>
         <option value="grecki">Grecki</option>
         <option value="chorwacki">Chorwacki</option>
         <option value="serbski">Serbski</option>
         <option value="bułgarski">Bułgarski</option>
         <option value="litewski">Litewski</option>
         <option value="łotewski">Łotewski</option>
+        <option value="szwedzki">Szwedzki</option>
+        <option value="norweski">Norweski</option>
+        <option value="duński">Duński</option>
+        <option value="fiński">Fiński</option>
+        <option value="hebrajski">Hebrajski</option>
+        <option value="arabski">Arabski</option>
+        <option value="chiński">Chiński</option>
+        <option value="japoński">Japoński</option>
+        <option value="koreański">Koreański</option>
+        <option value="hindi">Hindi</option>
       </select>
 
-      <!-- Szukaj -->
-      <div class="ml-auto w-full md:w-auto order-last md:order-none mt-2 md:mt-0">
-        <div class="relative">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-          <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-white border border-gray-300 text-gray-700 text-sm rounded-lg pl-9 pr-4 py-2 w-full md:w-52 focus:border-accent focus:outline-none placeholder-gray-400">
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile: toggle dodatkowych filtrów -->
-    <button id="filters-toggle" class="md:hidden flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors">
-      <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
-      <span>Więcej filtrów</span>
-    </button>
-
-    <!-- Rząd 2: Dodatkowe filtry — ukryte na mobile, widoczne na md+ -->
-    <div id="extra-filters" class="hidden md:flex flex-wrap items-center gap-3">
       <select id="filter-age" class="bank-filter-select">
-        <option value="all">Każdy wiek</option>
-        <option value="20-30">20-30 lat</option>
-        <option value="30-50">30-50 lat</option>
+        <option value="all">Wiek</option>
+        <option value="20-30">20–30 lat</option>
+        <option value="30-50">30–50 lat</option>
         <option value="50+">50+ lat</option>
       </select>
 
@@ -90,7 +79,6 @@
       <button type="button" id="filter-famous-btn" class="filter-pill" onclick="toggleFilterPill(this, 'filter-famous')">Znani i lubiani</button>
       <button type="button" id="filter-native-btn" class="filter-pill" onclick="toggleFilterPill(this, 'filter-native')">Native speaker</button>
 
-      <!-- Ukryte checkboxy — zachowane dla logiki JS -->
       <input type="checkbox" id="filter-famous" class="hidden">
       <input type="checkbox" id="filter-native" class="hidden">
     </div>
@@ -457,18 +445,6 @@
     applyFilters();
   };
 
-  // Mobile: toggle "Więcej filtrów"
-  var filtersToggle = document.getElementById('filters-toggle');
-  if (filtersToggle) {
-    filtersToggle.addEventListener('click', function() {
-      var extra = document.getElementById('extra-filters');
-      extra.classList.toggle('hidden');
-      var isHidden = extra.classList.contains('hidden');
-      this.querySelector('svg').style.transform = isHidden ? '' : 'rotate(180deg)';
-      this.querySelector('span').textContent = isHidden ? 'Więcej filtrów' : 'Mniej filtrów';
-    });
-  }
-
   // Init: apply URL params as filters (e.g. ?gender=m&native=1&famous=1)
   (function applyUrlFilters() {
     var params = new URLSearchParams(window.location.search);
@@ -483,15 +459,11 @@
       document.getElementById('filter-native').checked = true;
       var nb = document.getElementById('filter-native-btn');
       if (nb) nb.classList.add('active');
-      var extra = document.getElementById('extra-filters');
-      if (extra) extra.classList.remove('hidden');
     }
     if (params.get('famous') === '1') {
       document.getElementById('filter-famous').checked = true;
       var fb = document.getElementById('filter-famous-btn');
       if (fb) fb.classList.add('active');
-      var extra = document.getElementById('extra-filters');
-      if (extra) extra.classList.remove('hidden');
     }
     var lang = params.get('lang');
     if (lang) {
