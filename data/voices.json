@@ -2348,7 +2348,7 @@
       "Narracja do filmu",
       "Audiobook"
     ],
-    "priceGroup": "Niższa grupa cenowa",
+    "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
     "profileUrl": "/lektorzy/vasyl/",
     "prices": {
