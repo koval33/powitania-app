@@ -812,7 +812,8 @@ var PRICING_MAP = {
     addons: [
       { field: 'ivr_guarantee_100', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w <= 100; } },
       { field: 'ivr_guarantee_100plus', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w > 100; } },
-      { field: 'ivr_melody', label: 'Melodia w tle' }
+      { field: 'ivr_melody', label: 'Melodia w tle' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: null
   },
@@ -823,6 +824,11 @@ var PRICING_MAP = {
       { field: 'spot_radio_local', label: 'Reklama lokalna' },
       { field: 'spot_radio_national', label: 'Reklama ogolnokrajowa' }
     ],
+    addons: [
+      { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+    ],
     note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
   tv: {
@@ -832,6 +838,11 @@ var PRICING_MAP = {
       { field: 'spot_tv_local', label: 'Reklama lokalna' },
       { field: 'spot_tv_national', label: 'Reklama ogolnokrajowa' }
     ],
+    addons: [
+      { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+    ],
     note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
   social: {
@@ -840,6 +851,11 @@ var PRICING_MAP = {
     options: [
       { field: 'spot_social_1min', label: 'Do 1 minuty' },
       { field: 'spot_social_2min', label: 'Do 2 minut' }
+    ],
+    addons: [
+      { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: 'Stawka uwzgl. licencję na okres do 12 mies.'
   },
@@ -851,6 +867,11 @@ var PRICING_MAP = {
       { max: 2, field: 'narration_2pages', label: '2 strony A4' },
       { max: 3, field: 'narration_3pages', label: '3 strony A4' },
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ],
+    addons: [
+      { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   },
   film: {
@@ -862,6 +883,11 @@ var PRICING_MAP = {
       { max: 3, field: 'narration_3pages', label: '3 strony A4' },
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
     ],
+    addons: [
+      { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+    ],
     note: 'Licencja nie obejmuje płatnych kampanii reklamowych.'
   },
   audiobook: {
@@ -872,6 +898,10 @@ var PRICING_MAP = {
       { max: 2, field: 'narration_2pages', label: '2 strony A4' },
       { max: 3, field: 'narration_3pages', label: '3 strony A4' },
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ],
+    addons: [
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   },
   podcast: {
@@ -882,6 +912,10 @@ var PRICING_MAP = {
       { max: 2, field: 'narration_2pages', label: '2 strony A4' },
       { max: 3, field: 'narration_3pages', label: '3 strony A4' },
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
+    ],
+    addons: [
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.' },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   }
 };
@@ -933,16 +967,6 @@ function calculatePrice(serviceType, wordCount, options) {
         break;
       }
     }
-    // Addony
-    if (cfg.addons) {
-      cfg.addons.forEach(function(addon) {
-        if (addon.condition && !addon.condition(wordCount)) return;
-        var addonPrice = LEKTOR_PRICES[addon.field];
-        if (addonPrice) {
-          result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null });
-        }
-      });
-    }
     // Pakiet dwujezyczny — automatycznie gdy 2 jezyki
     if (options && options.bilingual) {
       var bilingualPrice = LEKTOR_PRICES['ivr_bilingual'];
@@ -979,6 +1003,18 @@ function calculatePrice(serviceType, wordCount, options) {
         break;
       }
     }
+  }
+
+  // Addony — wspolne dla wszystkich metod
+  if (cfg.addons) {
+    cfg.addons.forEach(function(addon) {
+      if (addon.condition && !addon.condition(wordCount)) return;
+      // Stala cena (addon.price) lub cena per lektor (LEKTOR_PRICES)
+      var addonPrice = addon.price || (LEKTOR_PRICES[addon.field] ? parseInt(LEKTOR_PRICES[addon.field]) : null);
+      if (addonPrice) {
+        result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null });
+      }
+    });
   }
 
   return result;
