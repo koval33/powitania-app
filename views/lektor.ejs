@@ -297,21 +297,20 @@
               placeholder="Informacje o projekcie: typ nagrania, pole jego eksploatacji, czas na jaki ma zostać udzielona licencja..."></textarea>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label class="block text-gray-900 font-semibold mb-2">Email:</label>
-              <input type="email" name="email" required
-                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors"
-                placeholder="twoj@email.pl">
-            </div>
-            <div>
-              <label class="block text-gray-900 font-semibold mb-2">Załącznik do formularza:</label>
-              <label class="flex items-center gap-3 cursor-pointer bg-white border border-gray-300 rounded-xl px-4 py-3 hover:border-gray-400 transition-colors">
-                <span class="bg-gray-100 text-gray-600 text-sm px-3 py-1 rounded-lg border border-gray-200">Wybierz plik</span>
-                <span class="text-gray-500 text-sm truncate file-label">Brak zaznaczonych plików</span>
-                <input type="file" name="attachment" class="hidden" accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.mp3,.wav,.zip" onchange="updateFileLabel(this)">
-              </label>
-            </div>
+          <div class="mb-6">
+            <label class="block text-gray-900 font-semibold mb-2">Email:</label>
+            <input type="email" name="email" required
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors"
+              placeholder="twoj@email.pl">
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-gray-500 text-sm mb-2">Załącznik <span class="text-gray-400">(opcjonalnie)</span></label>
+            <label class="flex items-center gap-3 cursor-pointer border border-dashed border-gray-300 rounded-xl px-4 py-3 hover:border-gray-400 hover:bg-gray-50 transition-colors">
+              <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+              <span class="text-gray-400 text-sm truncate file-label">Dołącz plik (PDF, DOC, MP3, WAV, ZIP)</span>
+              <input type="file" name="attachment" class="hidden" accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.mp3,.wav,.zip" onchange="updateFileLabel(this)">
+            </label>
           </div>
 
           <div class="flex justify-end">
@@ -739,11 +738,11 @@ function updateFileLabel(input) {
   var label = input.closest('label').querySelector('.file-label');
   if (input.files.length > 0) {
     label.textContent = input.files[0].name;
-    label.classList.remove('text-gray-500');
+    label.classList.remove('text-gray-400');
     label.classList.add('text-gray-900');
   } else {
-    label.textContent = 'Brak zaznaczonych plików';
-    label.classList.add('text-gray-500');
+    label.textContent = 'Dołącz plik (PDF, DOC, MP3, WAV, ZIP)';
+    label.classList.add('text-gray-400');
     label.classList.remove('text-gray-900');
   }
 }
