@@ -5,7 +5,7 @@
 
     <!-- Hero -->
     <div class="text-center mb-12">
-      <span class="inline-flex items-center gap-2 bg-yellow-400/10 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+      <span class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 border border-yellow-300 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
         Ekspresowa realizacja
       </span>
@@ -84,7 +84,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-start justify-between gap-2">
                 <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
-                <span class="flex-shrink-0 text-[10px] bg-yellow-400/10 text-yellow-400 px-2 py-0.5 rounded font-medium whitespace-nowrap">⚡ <%= v.turnaround %></span>
+                <span class="flex-shrink-0 text-[10px] bg-yellow-100 text-yellow-700 border border-yellow-300 px-2 py-0.5 rounded font-medium whitespace-nowrap">⚡ <%= v.turnaround %></span>
               </div>
               <div class="flex items-center gap-2 mt-1.5 flex-wrap">
                 <% (v.languages || ['polski']).forEach(function(lang) { %>
@@ -144,9 +144,8 @@
     <!-- Cennik ekspresowy -->
     <div class="bg-stone-100/80 rounded-2xl border border-gray-200 p-8 mb-16">
       <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Ile kosztuje nagranie ekspresowe?</h2>
-      <div class="space-y-4 text-gray-600 leading-relaxed">
-        <p>Stawki za nagranie ekspresowe są <strong class="text-gray-900">wyższe o 50%</strong> od stawek standardowych ze względu na priorytetową realizację i gwarantowany czas dostarczenia tego samego dnia.</p>
-        <p>Dokładne ceny znajdziesz przy profilach dyżurujących lektorów powyżej. Ceny standardowe (przed naliczeniem opłaty ekspresowej) dostępne są w <a href="/cennik/" class="text-accent hover:text-accent-light">cenniku</a>.</p>
+      <div class="text-gray-600 leading-relaxed">
+        <p>Stawki za nagranie ekspresowe są <strong class="text-gray-900">wyższe o 50%</strong> od stawek standardowych ze względu na priorytetową realizację i gwarantowany czas dostarczenia tego samego dnia. Dokładne ceny znajdziesz przy profilach dyżurujących lektorów powyżej.</p>
       </div>
     </div>
 
