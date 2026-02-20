@@ -1,7 +1,7 @@
 <%- include('partials/head') %>
 
 <section class="py-16 md:py-24">
-  <div class="max-w-4xl mx-auto px-4">
+  <div class="max-w-6xl mx-auto px-4">
 
     <!-- Hero -->
     <div class="text-center mb-12">
@@ -31,16 +31,16 @@
           <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
             <span class="text-accent font-bold">1</span>
           </div>
-          <h3 class="text-gray-900 font-semibold mb-2">Przesłuchaj demo</h3>
-          <p class="text-gray-500 text-sm">Odsłuchaj próbki dyżurujących lektorów i&nbsp;wybierz głos.</p>
+          <h3 class="text-gray-900 font-semibold mb-2">Przygotuj tekst</h3>
+          <p class="text-gray-500 text-sm">Przygotuj gotowy tekst do nagrania — scenariusz, zapowiedź lub skrypt.</p>
         </div>
 
         <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
           <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
             <span class="text-accent font-bold">2</span>
           </div>
-          <h3 class="text-gray-900 font-semibold mb-2">Dokonaj wyceny</h3>
-          <p class="text-gray-500 text-sm">Użyj <a href="/#kreator" class="text-accent hover:text-accent-light">kreatora tekstów</a> aby otrzymać natychmiastową wycenę.</p>
+          <h3 class="text-gray-900 font-semibold mb-2">Wybierz lektora</h3>
+          <p class="text-gray-500 text-sm">Odsłuchaj próbki dyżurujących lektorów i&nbsp;wybierz głos do nagrania.</p>
         </div>
 
         <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
@@ -63,32 +63,72 @@
     </div>
 
     <!-- Dyżurujący lektorzy -->
-    <div class="mb-16">
+    <div class="mb-16" id="lektorzy">
       <h2 class="text-2xl font-bold text-gray-900 mb-3 text-center">Dyżurujący lektorzy</h2>
       <p class="text-gray-500 text-center mb-8">Lektorzy dostępni do realizacji nagrań ekspresowych</p>
 
-      <div class="grid sm:grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-2 gap-5">
         <% dutyVoices.forEach(function(v) { %>
-        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 flex items-center gap-5 hover:border-accent/20 transition-colors">
-          <% if (v.photo) { %>
-            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
-          <% } else { %>
-            <div class="w-16 h-16 rounded-xl bg-gray-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+        <div class="voice-card bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden hover:border-accent/20 transition-colors">
+          <!-- Górna część: zdjęcie + info -->
+          <div class="flex items-start gap-5 p-6 pb-3">
+            <a href="/lektorzy/<%= v.id %>/?express=1" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50 block hover:ring-2 hover:ring-accent/40 transition-all">
+              <% if (v.photo) { %>
+                <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
+              <% } else { %>
+                <div class="w-full h-full flex items-center justify-center text-gray-600">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+              <% } %>
+            </a>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
+                <span class="flex-shrink-0 text-[10px] bg-yellow-400/10 text-yellow-400 px-2 py-0.5 rounded font-medium whitespace-nowrap">⚡ <%= v.turnaround %></span>
+              </div>
+              <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                <% (v.languages || ['polski']).forEach(function(lang) { %>
+                  <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><%= lang %></span>
+                <% }); %>
+              </div>
+              <% if (v.description) { %>
+                <p class="text-sm text-gray-500 mt-2 line-clamp-2"><%= v.description %></p>
+              <% } %>
             </div>
-          <% } %>
-          <div class="flex-1 min-w-0">
-            <p class="text-gray-900 font-semibold"><%= v.name %></p>
-            <p class="text-gray-500 text-sm"><%= (v.languages || ['polski']).join(', ') %></p>
-            <% if (v.turnaround) { %>
-              <span class="inline-block mt-1 text-[10px] bg-yellow-400/10 text-yellow-400 px-2 py-0.5 rounded">realizacja: <%= v.turnaround %></span>
-            <% } %>
           </div>
-          <div class="flex flex-col items-end gap-2 flex-shrink-0">
+
+          <!-- Audio player -->
+          <% if (v.audio) { %>
+          <div class="px-6 pb-3">
+            <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
+              <button class="play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+                <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <div class="flex-1">
+                <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                  <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="audio-time text-xs text-gray-500">0:00</span>
+                  <span class="audio-duration text-xs text-gray-500">--:--</span>
+                </div>
+              </div>
+              <a href="<%= v.audio %>" download title="Pobierz próbkę MP3" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              </a>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- Footer: cena + przycisk -->
+          <div class="flex items-center justify-between px-6 pb-5">
             <% if (v.prices && v.prices.ivr_100) { %>
-              <span class="text-accent font-semibold text-sm">od <%= v.prices.ivr_100 %> zł</span>
+              <span class="text-accent font-semibold text-sm">od <%= v.prices.ivr_100 %> zł netto</span>
+            <% } else { %>
+              <span></span>
             <% } %>
-            <a href="/lektorzy/<%= v.id %>/" class="text-xs text-gray-500 hover:text-gray-900 border border-gray-200 hover:border-gray-300 px-3 py-1 rounded transition-colors">Profil</a>
+            <a href="/lektorzy/<%= v.id %>/?express=1" class="bg-accent hover:bg-accent-light text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Zamów nagranie</a>
           </div>
         </div>
         <% }); %>
@@ -105,25 +145,101 @@
     <div class="bg-stone-100/80 rounded-2xl border border-gray-200 p-8 mb-16">
       <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Ile kosztuje nagranie ekspresowe?</h2>
       <div class="space-y-4 text-gray-600 leading-relaxed">
-        <p>Ceny nagrań ekspresowych są takie same jak w standardowym zamówieniu — nie doliczamy dodatkowej opłaty za ekspresową realizację. Jedynym warunkiem jest złożenie zamówienia do godziny 14:00.</p>
-        <p>Orientacyjne ceny zaczynają się od <strong class="text-gray-900">300 zł netto</strong> za krótkie nagranie (do 100 słów). Dokładną wycenę otrzymasz natychmiastowo w <a href="/#kreator" class="text-accent hover:text-accent-light">kreatorze tekstów</a>.</p>
-      </div>
-      <div class="mt-6 text-center">
-        <a href="/cennik/" class="text-accent hover:text-accent-light font-semibold text-sm">Zobacz pełny cennik →</a>
+        <p>Stawki za nagranie ekspresowe są <strong class="text-gray-900">wyższe o 50%</strong> od stawek standardowych ze względu na priorytetową realizację i gwarantowany czas dostarczenia tego samego dnia.</p>
+        <p>Dokładne ceny znajdziesz przy profilach dyżurujących lektorów powyżej. Ceny standardowe (przed naliczeniem opłaty ekspresowej) dostępne są w <a href="/cennik/" class="text-accent hover:text-accent-light">cenniku</a>.</p>
       </div>
     </div>
 
     <!-- CTA -->
     <div class="text-center p-8 md:p-12 bg-yellow-50 rounded-2xl border border-yellow-400/20">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">Potrzebujesz nagrania na już?</h2>
-      <p class="text-gray-600 mb-6 max-w-xl mx-auto">Złóż zamówienie teraz, a nagranie będzie gotowe jeszcze dziś.</p>
+      <p class="text-gray-600 mb-6 max-w-xl mx-auto">Wybierz jednego z dyżurujących lektorów i złóż zamówienie — nagranie będzie gotowe jeszcze dziś.</p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zamów nagranie</a>
+        <a href="#lektorzy" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Wybierz lektora</a>
         <a href="tel:+48605491069" class="bg-white hover:bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors border border-gray-300">Zadzwoń: 605 491 069</a>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- Audio player JS -->
+<script>
+(function() {
+  var currentAudio = null;
+  var currentBtn = null;
+  var cards = document.querySelectorAll('.voice-card');
+
+  function initAudioPlayer(btn) {
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var src = this.dataset.audio;
+      var card = this.closest('.voice-card');
+      var playIcon = this.querySelector('.play-icon');
+      var pauseIcon = this.querySelector('.pause-icon');
+      var bar = card.querySelector('.audio-bar');
+      var timeEl = card.querySelector('.audio-time');
+      var durEl = card.querySelector('.audio-duration');
+
+      if (currentAudio && currentBtn !== this) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentBtn.querySelector('.play-icon').classList.remove('hidden');
+        currentBtn.querySelector('.pause-icon').classList.add('hidden');
+        currentBtn.closest('.voice-card').querySelector('.audio-bar').style.width = '0%';
+      }
+
+      if (currentAudio && currentBtn === this && !currentAudio.paused) {
+        currentAudio.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        return;
+      }
+
+      if (!currentAudio || currentBtn !== this) {
+        currentAudio = new Audio(src);
+        currentBtn = this;
+
+        currentAudio.addEventListener('loadedmetadata', function() {
+          durEl.textContent = formatTime(currentAudio.duration);
+        });
+        currentAudio.addEventListener('timeupdate', function() {
+          var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
+          bar.style.width = pct + '%';
+          timeEl.textContent = formatTime(currentAudio.currentTime);
+        });
+        currentAudio.addEventListener('ended', function() {
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+          bar.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+
+        card.querySelector('.audio-progress').addEventListener('click', function(e) {
+          if (currentAudio && currentBtn === btn) {
+            var rect = this.getBoundingClientRect();
+            var pct = (e.clientX - rect.left) / rect.width;
+            currentAudio.currentTime = pct * currentAudio.duration;
+          }
+        });
+      }
+
+      currentAudio.play();
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    });
+  }
+
+  cards.forEach(function(card) {
+    initAudioPlayer(card.querySelector('.play-btn'));
+  });
+
+  function formatTime(s) {
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+})();
+</script>
 
 <%- include('partials/foot') %>

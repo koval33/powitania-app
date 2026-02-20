@@ -18,7 +18,7 @@ const upload = multer({
 
 // "Zamów nagranie" — pełny formularz z danymi firmy
 router.post('/order', async (req, res) => {
-  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice } = req.body;
+  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress } = req.body;
 
   if (!firmName || !name || !email) {
     return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
@@ -29,10 +29,11 @@ router.post('/order', async (req, res) => {
   try {
     // Mail do biura
     await sendMail({
-      subject: `[Zamówienie] ${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
+      subject: `${isExpress ? '⚡ [EKSPRES] ' : '[Zamówienie] '}${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
       replyTo: email,
       html: `
         <h2>Nowe zamówienie nagrania</h2>
+        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE — priorytetowa realizacja tego samego dnia</div>' : ''}
         <table style="border-collapse:collapse;width:100%">
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(firmName)}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Zamawiający:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name)}</td></tr>
@@ -69,7 +70,7 @@ router.post('/order', async (req, res) => {
     res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
-    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice })
+    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress })
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);

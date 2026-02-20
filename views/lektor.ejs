@@ -108,6 +108,14 @@
         </div>
         <% } %>
 
+        <!-- Banner ekspresowy -->
+        <% if (typeof isExpress !== 'undefined' && isExpress) { %>
+        <div class="bg-yellow-50 border border-yellow-400/30 rounded-xl px-4 py-3 mb-3 flex items-center gap-2 text-sm">
+          <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
+          <span class="text-yellow-800"><strong>Nagranie ekspresowe</strong> — stawki uwzględniają priorytetową realizację</span>
+        </div>
+        <% } %>
+
         <!-- CTA -->
         <div id="lektor-cta-section" class="flex flex-col gap-3">
           <% if (!lektor.hidePrice) { %>
@@ -797,6 +805,16 @@ var LEKTOR_NAME = '<%= lektor.name.replace(/'/g, "\\'") %>';
 var LEKTOR_ID = '<%= lektor.id %>';
 var LEKTOR_PRICES = <%- JSON.stringify(lektor.prices || {}) %>;
 var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
+var IS_EXPRESS = <%= typeof isExpress !== 'undefined' && isExpress ? 'true' : 'false' %>;
+
+// Tryb ekspresowy: ceny +50% zaokrąglone do 10 zł
+if (IS_EXPRESS) {
+  for (var key in LEKTOR_PRICES) {
+    if (typeof LEKTOR_PRICES[key] === 'number') {
+      LEKTOR_PRICES[key] = Math.round(LEKTOR_PRICES[key] * 1.5 / 10) * 10;
+    }
+  }
+}
 
 // --- PRICING MAP: mapowanie serviceType → logika wyceny ---
 var PRICING_MAP = {
@@ -1309,6 +1327,7 @@ function submitModalOrder() {
   if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
   var totalEl = document.getElementById('pricing-total');
   if (totalEl) data.totalPrice = totalEl.textContent;
+  if (IS_EXPRESS) data.isExpress = true;
 
   submitOrderRequest(data, 'modal-order-msg');
 }
@@ -1341,6 +1360,7 @@ function submitWizardOrder() {
   if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
   var totalEl = document.getElementById('pricing-total');
   if (totalEl) data.totalPrice = totalEl.textContent;
+  if (IS_EXPRESS) data.isExpress = true;
 
   submitOrderRequest(data, 'wizard-order-msg');
 }

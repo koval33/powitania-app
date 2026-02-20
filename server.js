@@ -139,7 +139,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
       { name: lektor.name, url: '/lektorzy/' + lektor.id + '/' }
     ],
     lektor: lektor,
-    similar: similar
+    similar: similar,
+    isExpress: req.query.express === '1'
   });
 });
 
@@ -246,10 +247,19 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
 
 app.get('/nagranie-ekspresowe/', (req, res) => {
   const voices = loadVoices();
-  // Dyżurujący lektorzy — lektorzy z turnaround "24h" i ze zdjęciem
+  // Dyżurujący lektorzy — lektorzy z turnaround "24h" i ze zdjęciem, ceny +50%
   const dutyVoices = voices
     .filter(v => v.turnaround && v.turnaround.includes('24') && v.photo)
-    .slice(0, 6);
+    .slice(0, 6)
+    .map(v => {
+      const expressPrices = {};
+      if (v.prices) {
+        for (const [key, val] of Object.entries(v.prices)) {
+          expressPrices[key] = typeof val === 'number' ? Math.round(val * 1.5 / 10) * 10 : val;
+        }
+      }
+      return { ...v, prices: expressPrices };
+    });
   res.render('nagranie-ekspresowe', {
     title: 'Nagranie ekspresowe | powitania.pl',
     description: 'Potrzebujesz nagrania lektorskiego jeszcze dziś? Zamów do 14:00, otrzymaj do 18:00. Dyżurujący lektorzy dostępni każdego dnia roboczego.',
