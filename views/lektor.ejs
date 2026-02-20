@@ -806,6 +806,7 @@ var LEKTOR_ID = '<%= lektor.id %>';
 var LEKTOR_PRICES = <%- JSON.stringify(lektor.prices || {}) %>;
 var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
 var IS_EXPRESS = <%= typeof isExpress !== 'undefined' && isExpress ? 'true' : 'false' %>;
+var MELODIES = <%- JSON.stringify(typeof melodies !== 'undefined' ? melodies : []) %>;
 
 // Tryb ekspresowy: ceny +50% zaokrąglone do 10 zł
 if (IS_EXPRESS) {
@@ -829,7 +830,7 @@ var PRICING_MAP = {
     addons: [
       { field: 'ivr_guarantee_100', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w <= 100; } },
       { field: 'ivr_guarantee_100plus', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w > 100; } },
-      { field: 'ivr_melody', label: 'Melodia w tle' },
+      { field: 'ivr_melody', label: 'Melodia w tle', hasMelodySelector: true },
       { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: null
@@ -1107,11 +1108,14 @@ function renderPricing(result, wordCount, targetEl) {
     // Addony (checkboxy IVR)
     if (result.addons && result.addons.length > 0) {
       html += '<div class="border-t border-gray-200 pt-3 mt-2 space-y-2">';
-      html += '<p class="text-xs text-gray-500 mb-1">Dodatki:</p>';
+      html += '<p class="text-xs text-gray-500 mb-1">Usługi dodatkowe:</p>';
       result.addons.forEach(function(addon, idx) {
+        var melodyCheckId = addon.hasMelodySelector ? 'melody-addon-check' : '';
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
           '<span class="flex items-center gap-2">' +
-            '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" onchange="recalcTotal()">' +
+            '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" data-label="' + addon.label + '"' +
+            (melodyCheckId ? ' id="' + melodyCheckId + '"' : '') +
+            ' onchange="recalcTotal();' + (addon.hasMelodySelector ? 'toggleMelodySelector(this)' : '') + '">' +
             '<span class="text-gray-600 text-sm">' + addon.label + '</span>' +
             (addon.tooltip ? '<span class="addon-tooltip-trigger text-gray-500 hover:text-gray-700 cursor-help" data-tooltip-idx="' + idx + '" onclick="toggleAddonTooltip(event, ' + idx + ')">&#10067;</span>' : '') +
           '</span>' +
@@ -1121,6 +1125,23 @@ function renderPricing(result, wordCount, targetEl) {
           html += '<div id="addon-tooltip-' + idx + '" class="hidden bg-gray-100 rounded-lg p-3 ml-6 text-xs text-gray-500 border border-gray-200">' +
             '<span class="text-gray-500 mr-1">&#9432;</span>' + addon.tooltip +
           '</div>';
+        }
+        // Selector melodii — rozwija się po zaznaczeniu checkboxa
+        if (addon.hasMelodySelector && MELODIES.length > 0) {
+          html += '<div id="melody-selector" class="hidden ml-6 mt-2 bg-gray-50 rounded-lg border border-gray-200 p-3 space-y-2">';
+          html += '<p class="text-xs text-gray-500 mb-2">Wybierz melodię:</p>';
+          MELODIES.forEach(function(m, mi) {
+            html += '<div class="flex items-center gap-3 py-1.5' + (mi > 0 ? ' border-t border-gray-100' : '') + '">' +
+              '<input type="radio" name="melody" value="' + m.id + '" id="melody-' + m.id + '" class="accent-emerald-600 flex-shrink-0"' + (mi === 0 ? ' checked' : '') + '>' +
+              '<label for="melody-' + m.id + '" class="text-sm text-gray-700 flex-1 cursor-pointer">' + m.name + '</label>' +
+              '<button type="button" class="melody-play-btn flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 hover:bg-accent/20 flex items-center justify-center transition-colors" data-src="/audio/melodies/' + m.file + '" onclick="playMelody(this)">' +
+                '<svg class="w-3.5 h-3.5 text-accent melody-icon-play" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' +
+                '<svg class="w-3.5 h-3.5 text-accent melody-icon-pause hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>' +
+              '</button>' +
+            '</div>';
+          });
+          html += '<audio id="melody-audio" preload="none"></audio>';
+          html += '</div>';
         }
       });
       html += '</div>';
@@ -1154,6 +1175,82 @@ function toggleAddonTooltip(e, idx) {
   var tip = document.getElementById('addon-tooltip-' + idx);
   if (tip) tip.classList.toggle('hidden');
 }
+
+// Melody selector — show/hide panel when checkbox toggled
+function toggleMelodySelector(checkbox) {
+  var panel = document.getElementById('melody-selector');
+  if (!panel) return;
+  if (checkbox.checked) {
+    panel.classList.remove('hidden');
+  } else {
+    panel.classList.add('hidden');
+    // Stop any playing melody
+    var audio = document.getElementById('melody-audio');
+    if (audio) { audio.pause(); audio.currentTime = 0; }
+    resetMelodyButtons();
+  }
+}
+
+// Melody audio playback
+var currentMelodyBtn = null;
+function playMelody(btn) {
+  var audio = document.getElementById('melody-audio');
+  if (!audio) return;
+  var src = btn.getAttribute('data-src');
+
+  // If same button clicked — toggle pause/play
+  if (currentMelodyBtn === btn && !audio.paused) {
+    audio.pause();
+    showPlayIcon(btn);
+    return;
+  }
+
+  // Stop previous
+  if (currentMelodyBtn && currentMelodyBtn !== btn) {
+    showPlayIcon(currentMelodyBtn);
+  }
+
+  // Play new
+  if (audio.getAttribute('src') !== src) {
+    audio.src = src;
+  }
+  audio.play();
+  showPauseIcon(btn);
+  currentMelodyBtn = btn;
+
+  // Select the corresponding radio
+  var parent = btn.closest('div');
+  var radio = parent ? parent.querySelector('input[type="radio"]') : null;
+  if (radio) radio.checked = true;
+}
+
+function showPlayIcon(btn) {
+  var play = btn.querySelector('.melody-icon-play');
+  var pause = btn.querySelector('.melody-icon-pause');
+  if (play) play.classList.remove('hidden');
+  if (pause) pause.classList.add('hidden');
+}
+
+function showPauseIcon(btn) {
+  var play = btn.querySelector('.melody-icon-play');
+  var pause = btn.querySelector('.melody-icon-pause');
+  if (play) play.classList.add('hidden');
+  if (pause) pause.classList.remove('hidden');
+}
+
+function resetMelodyButtons() {
+  document.querySelectorAll('.melody-play-btn').forEach(function(btn) {
+    showPlayIcon(btn);
+  });
+  currentMelodyBtn = null;
+}
+
+// Auto-reset icons when audio ends
+document.addEventListener('ended', function(e) {
+  if (e.target && e.target.id === 'melody-audio') {
+    resetMelodyButtons();
+  }
+}, true);
 
 function recalcTotal() {
   // Szukaj basePrice w widocznym kontenerze wyceny
@@ -1301,6 +1398,24 @@ function modalCalculate() {
   });
 })();
 
+// Zbierz zaznaczone usługi dodatkowe + wybraną melodię
+function collectAddonsInfo() {
+  var addons = [];
+  document.querySelectorAll('.addon-checkbox:checked').forEach(function(cb) {
+    addons.push(cb.getAttribute('data-label') || '');
+  });
+  var melody = '';
+  var melodyCheck = document.getElementById('melody-addon-check');
+  if (melodyCheck && melodyCheck.checked) {
+    var selected = document.querySelector('input[name="melody"]:checked');
+    if (selected) {
+      var label = document.querySelector('label[for="' + selected.id + '"]');
+      melody = label ? label.textContent.trim() : selected.value;
+    }
+  }
+  return { selectedAddons: addons, selectedMelody: melody };
+}
+
 function submitModalOrder() {
   var firmName = document.getElementById('mod-firmName').value.trim();
   var name = document.getElementById('mod-name').value.trim();
@@ -1328,6 +1443,9 @@ function submitModalOrder() {
   var totalEl = document.getElementById('pricing-total');
   if (totalEl) data.totalPrice = totalEl.textContent;
   if (IS_EXPRESS) data.isExpress = true;
+  var addonsInfo = collectAddonsInfo();
+  data.selectedAddons = addonsInfo.selectedAddons;
+  data.selectedMelody = addonsInfo.selectedMelody;
 
   submitOrderRequest(data, 'modal-order-msg');
 }
@@ -1361,6 +1479,9 @@ function submitWizardOrder() {
   var totalEl = document.getElementById('pricing-total');
   if (totalEl) data.totalPrice = totalEl.textContent;
   if (IS_EXPRESS) data.isExpress = true;
+  var addonsInfo = collectAddonsInfo();
+  data.selectedAddons = addonsInfo.selectedAddons;
+  data.selectedMelody = addonsInfo.selectedMelody;
 
   submitOrderRequest(data, 'wizard-order-msg');
 }

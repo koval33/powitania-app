@@ -18,7 +18,7 @@ const upload = multer({
 
 // "Zamów nagranie" — pełny formularz z danymi firmy
 router.post('/order', async (req, res) => {
-  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress } = req.body;
+  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody } = req.body;
 
   if (!firmName || !name || !email) {
     return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
@@ -44,6 +44,7 @@ router.post('/order', async (req, res) => {
           ${serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(serviceType)}</td></tr>` : ''}
           ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
           ${totalPrice ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Wycena:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#10b981;font-weight:bold">${esc(totalPrice)}</td></tr>` : ''}
+          ${selectedAddons && selectedAddons.length > 0 ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Usługi dodatkowe:</td><td style="padding:8px;border-bottom:1px solid #eee">${selectedAddons.map(a => esc(a)).join(', ')}${selectedMelody ? ' <strong>(melodia: ' + esc(selectedMelody) + ')</strong>' : ''}</td></tr>` : ''}
         </table>
         ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
@@ -70,7 +71,7 @@ router.post('/order', async (req, res) => {
     res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
-    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress })
+    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody })
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);

@@ -20,6 +20,7 @@ const voicesPath = path.join(__dirname, 'data', 'voices.json');
 const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
 const partnersPath = path.join(__dirname, 'data', 'partners.json');
+const melodiesPath = path.join(__dirname, 'data', 'melodies.json');
 function loadVoices() {
   return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
 }
@@ -31,6 +32,10 @@ function loadBlogPosts() {
 }
 function loadPartners() {
   try { return JSON.parse(fs.readFileSync(partnersPath, 'utf8')); }
+  catch { return []; }
+}
+function loadMelodies() {
+  try { return JSON.parse(fs.readFileSync(melodiesPath, 'utf8')); }
   catch { return []; }
 }
 
@@ -140,7 +145,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
     ],
     lektor: lektor,
     similar: similar,
-    isExpress: req.query.express === '1'
+    isExpress: req.query.express === '1',
+    melodies: loadMelodies()
   });
 });
 
