@@ -1031,7 +1031,7 @@ function calculatePrice(serviceType, wordCount, options) {
       // Stala cena (addon.price) lub cena per lektor (LEKTOR_PRICES)
       var addonPrice = addon.price || (LEKTOR_PRICES[addon.field] ? parseInt(LEKTOR_PRICES[addon.field]) : null);
       if (addonPrice) {
-        result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null });
+        result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null, hasMelodySelector: addon.hasMelodySelector || false });
       }
     });
   }
