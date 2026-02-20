@@ -1132,14 +1132,16 @@ function renderPricing(result, wordCount, targetEl) {
           html += '<div id="melody-selector" class="hidden ml-6 mt-1 bg-gray-50 rounded-lg border border-gray-200 px-3 py-2">';
           html += '<div class="flex flex-wrap gap-x-4 gap-y-1">';
           MELODIES.forEach(function(m, mi) {
-            html += '<label class="inline-flex items-center gap-1.5 cursor-pointer py-0.5">' +
-              '<input type="radio" name="melody" value="' + m.id + '" id="melody-' + m.id + '" class="accent-emerald-600 w-3 h-3"' + (mi === 0 ? ' checked' : '') + '>' +
-              '<span class="text-xs text-gray-700">' + m.name + '</span>' +
-              '<button type="button" class="melody-play-btn w-5 h-5 rounded-full bg-accent/10 hover:bg-accent/20 inline-flex items-center justify-center transition-colors" data-src="/audio/melodies/' + m.file + '" onclick="event.preventDefault();playMelody(this)">' +
+            html += '<div class="inline-flex items-center gap-1.5 py-0.5">' +
+              '<label for="melody-' + m.id + '" class="inline-flex items-center gap-1.5 cursor-pointer">' +
+                '<input type="radio" name="melody" value="' + m.id + '" id="melody-' + m.id + '" class="accent-emerald-600 w-3 h-3"' + (mi === 0 ? ' checked' : '') + '>' +
+                '<span class="text-xs text-gray-700">' + m.name + '</span>' +
+              '</label>' +
+              '<button type="button" class="melody-play-btn w-5 h-5 rounded-full bg-accent/10 hover:bg-accent/20 inline-flex items-center justify-center transition-colors" data-src="/audio/melodies/' + m.file + '" data-melody="' + m.id + '" onclick="playMelody(this)">' +
                 '<svg class="w-2.5 h-2.5 text-accent melody-icon-play" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' +
                 '<svg class="w-2.5 h-2.5 text-accent melody-icon-pause hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>' +
               '</button>' +
-            '</label>';
+            '</div>';
           });
           html += '</div>';
           html += '<audio id="melody-audio" preload="none"></audio>';
@@ -1221,8 +1223,8 @@ function playMelody(btn) {
   currentMelodyBtn = btn;
 
   // Select the corresponding radio
-  var parent = btn.closest('div');
-  var radio = parent ? parent.querySelector('input[type="radio"]') : null;
+  var melodyId = btn.getAttribute('data-melody');
+  var radio = melodyId ? document.getElementById('melody-' + melodyId) : null;
   if (radio) radio.checked = true;
 }
 

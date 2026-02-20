@@ -180,7 +180,7 @@ app.get('/opinie/', (req, res) => {
   const reviews = allReviews.filter(r => r.approved);
   res.render('opinie', {
     title: 'Opinie Klientów | powitania.pl',
-    description: 'Przeczytaj opinie naszych Klientów. Ponad ' + reviews.length + ' firm i instytucji zaufało naszemu studiu nagrań lektorskich.',
+    description: 'Przeczytaj opinie naszych Klientów. Ponad ' + reviews.length + ' opinii od Klientów z całej Polski.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Opinie', url: '/opinie/' }
