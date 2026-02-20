@@ -15,10 +15,19 @@ function saveReviews(data) {
 
 // POST /api/reviews/add — klient dodaje opinię (domyślnie approved: false)
 router.post('/add', (req, res) => {
-  const { company, author, text } = req.body;
+  const { company, author, text, link } = req.body;
 
   if (!company || !text) {
     return res.status(400).json({ ok: false, error: 'Nazwa firmy i treść opinii są wymagane.' });
+  }
+
+  // Walidacja linku — tylko http(s)
+  let cleanLink = '';
+  if (link && typeof link === 'string') {
+    cleanLink = link.trim();
+    if (cleanLink && !/^https?:\/\//i.test(cleanLink)) {
+      cleanLink = 'https://' + cleanLink;
+    }
   }
 
   const reviews = loadReviews();
@@ -29,6 +38,7 @@ router.post('/add', (req, res) => {
     company: company.trim(),
     author: (author || '').trim(),
     text: text.trim(),
+    link: cleanLink,
     approved: false,
     createdAt: new Date().toISOString()
   };
