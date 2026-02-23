@@ -85,7 +85,7 @@
         <% var v = voices.find(function(x) { return x.id === pid; }); %>
         <% if (v) { %>
         <a href="/lektorzy/<%= v.id %>/" class="text-center group">
-          <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all mb-2" loading="lazy">
+          <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all mb-2" loading="lazy" width="400" height="400">
           <div class="text-gray-900 font-semibold text-sm group-hover:text-accent transition-colors"><%= v.name %></div>
         </a>
         <% } %>
