@@ -72,9 +72,24 @@ app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => res.redirect(301
 app.get('/lista-lektorow/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/szukaj/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/ceny-lektora/', (req, res) => res.redirect(301, '/cennik/'));
+app.get('/ceny-lektora', (req, res) => res.redirect(301, '/cennik/'));
 app.get('/voice-over/', (req, res) => res.redirect(301, '/'));
 app.get('/twoj-bank-glosow/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
+app.get('/nagranie/', (req, res) => res.redirect(301, '/nagrania-lektorskie/'));
+app.get('/referencje/', (req, res) => res.redirect(301, '/opinie/'));
+app.get('/search/*', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/search/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/uncategorized-pl/*', (req, res) => res.redirect(301, '/aktualnosci-pl/'));
+
+// 301 Redirects — strony systemowe (nie istnieją w nowym serwisie)
+['/podziekowanie-za-zlozenie-zamowienia/', '/podziekowanie-za-opinie/',
+ '/podziekowanie-za-oplacenie-zamowienia/', '/newsletter/',
+ '/newsletter/newsletter-anulowanie/', '/potwierdzenie-dodania-lektora/',
+ '/formularz-lektora/', '/powitanie-na-swieta/',
+ '/cos-poszlo-nie-tak-z-zamowieniem/'].forEach(path => {
+  app.get(path, (req, res) => res.redirect(301, '/'));
+});
 
 // API routes
 app.use('/api/kreator', require('./routes/api-kreator'));
@@ -424,11 +439,14 @@ app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/'))
 app.get('/bank/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/natives/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/znani-i-lubiani/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 
 // EN version placeholder
 app.get('/en/', (req, res) => {
   res.render('placeholder', { title: 'powitania.pl — Professional voiceover recordings', description: '', heading: 'English version', message: 'Coming soon!' });
 });
+// EN — wszystkie stare angielskie podstrony → placeholder
+app.get('/en/*', (req, res) => res.redirect(301, '/en/'));
 
 // Sitemap.xml — dynamiczny
 app.get('/sitemap.xml', (req, res) => {
