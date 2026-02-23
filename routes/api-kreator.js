@@ -1,6 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const { buildPrompt } = require('../lib/prompts');
+const { buildPrompt, calcWords } = require('../lib/prompts');
+
+async function callAnthropic(apiKey, messages, maxTokens = 2048) {
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: maxTokens,
+      messages
+    })
+  });
+  const data = await response.json();
+  if (!response.ok || !data.content || !data.content[0]) {
+    throw new Error(JSON.stringify(data));
+  }
+  return data;
+}
 
 router.post('/generate', async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -9,33 +30,48 @@ router.post('/generate', async (req, res) => {
   }
 
   try {
-    const prompt = buildPrompt({ action: 'generate', ...req.body });
+    const params = { action: 'generate', ...req.body };
+    const prompt = buildPrompt(params);
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2048,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    // First attempt
+    let data = await callAnthropic(apiKey, [{ role: 'user', content: prompt }]);
+    let text = data.content[0].text.trim();
+    let totalUsage = data.usage;
 
-    const data = await response.json();
+    // Word count validation — retry once if text is too short or too long
+    const { serviceType, duration } = req.body;
+    if (duration && serviceType !== 'ivr') {
+      const targetWords = calcWords(parseInt(duration), 'pl', serviceType);
+      const actualWords = text.split(/\s+/).length;
+      const deviation = Math.abs(actualWords - targetWords) / targetWords;
 
-    if (!response.ok || !data.content || !data.content[0]) {
-      console.error('[kreator] API error:', data);
-      return res.status(502).json({ ok: false, error: 'Błąd generowania tekstu. Spróbuj ponownie.' });
+      if (deviation > 0.15) {
+        const diff = targetWords - actualWords;
+        const direction = diff > 0 ? 'za krótki' : 'za długi';
+        const correction = diff > 0
+          ? `Tekst jest ${direction} o ${Math.abs(diff)} słów. Rozbuduj go, dodając więcej szczegółów i treści, aby osiągnąć dokładnie ${targetWords} słów.`
+          : `Tekst jest ${direction} o ${Math.abs(diff)} słów. Skróć go, usuwając zbędne fragmenty, aby osiągnąć dokładnie ${targetWords} słów.`;
+
+        console.log(`[kreator] Word count retry: ${actualWords}/${targetWords} words (${Math.round(deviation*100)}% off)`);
+
+        const retryData = await callAnthropic(apiKey, [
+          { role: 'user', content: prompt },
+          { role: 'assistant', content: text },
+          { role: 'user', content: `${correction} Zwróć TYLKO poprawiony tekst, bez komentarzy. Tekst MUSI mieć ${targetWords} słów (±3 słowa).` }
+        ]);
+        text = retryData.content[0].text.trim();
+        totalUsage = {
+          input_tokens: (totalUsage.input_tokens || 0) + (retryData.usage.input_tokens || 0),
+          output_tokens: (totalUsage.output_tokens || 0) + (retryData.usage.output_tokens || 0)
+        };
+        console.log(`[kreator] After retry: ${text.split(/\s+/).length}/${targetWords} words`);
+      }
     }
 
     res.json({
       ok: true,
-      text: data.content[0].text,
-      usage: data.usage
+      text,
+      usage: totalUsage
     });
   } catch (err) {
     console.error('[kreator] Error:', err);
@@ -52,31 +88,44 @@ router.post('/optimize', async (req, res) => {
   try {
     const prompt = buildPrompt({ action: 'optimize', ...req.body });
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2048,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    // First attempt
+    let data = await callAnthropic(apiKey, [{ role: 'user', content: prompt }]);
+    let text = data.content[0].text.trim();
+    let totalUsage = data.usage;
 
-    const data = await response.json();
+    // Word count validation for optimize too
+    const { targetDur, serviceType } = req.body;
+    if (targetDur) {
+      const targetWords = calcWords(parseInt(targetDur), 'pl', serviceType);
+      const actualWords = text.split(/\s+/).length;
+      const deviation = Math.abs(actualWords - targetWords) / targetWords;
 
-    if (!response.ok || !data.content || !data.content[0]) {
-      console.error('[kreator] Optimize API error:', data);
-      return res.status(502).json({ ok: false, error: 'Błąd optymalizacji tekstu.' });
+      if (deviation > 0.15) {
+        const diff = targetWords - actualWords;
+        const direction = diff > 0 ? 'za krótki' : 'za długi';
+        const correction = diff > 0
+          ? `Tekst jest ${direction} o ${Math.abs(diff)} słów. Rozbuduj go aby osiągnąć dokładnie ${targetWords} słów.`
+          : `Tekst jest ${direction} o ${Math.abs(diff)} słów. Skróć go aby osiągnąć dokładnie ${targetWords} słów.`;
+
+        console.log(`[kreator] Optimize word count retry: ${actualWords}/${targetWords} words`);
+
+        const retryData = await callAnthropic(apiKey, [
+          { role: 'user', content: prompt },
+          { role: 'assistant', content: text },
+          { role: 'user', content: `${correction} Zachowaj jak najwięcej oryginalnych słów. Zwróć TYLKO tekst, bez komentarzy.` }
+        ]);
+        text = retryData.content[0].text.trim();
+        totalUsage = {
+          input_tokens: (totalUsage.input_tokens || 0) + (retryData.usage.input_tokens || 0),
+          output_tokens: (totalUsage.output_tokens || 0) + (retryData.usage.output_tokens || 0)
+        };
+      }
     }
 
     res.json({
       ok: true,
-      text: data.content[0].text,
-      usage: data.usage
+      text,
+      usage: totalUsage
     });
   } catch (err) {
     console.error('[kreator] Optimize error:', err);
