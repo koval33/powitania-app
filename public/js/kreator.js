@@ -470,7 +470,8 @@
   // STEP: Optimize result
   function renderOptResult() {
     var words = state.form.textInput.trim().split(/\s+/).length;
-    var WPM = 130;
+    var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
+    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) === -1) ? 165 : 130;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
     var diff = words - target;
     var pct = Math.abs(Math.round((diff / target) * 100));
