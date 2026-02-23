@@ -77,7 +77,9 @@
     error: null,
     toast: null,
     _category: null,
-    _moreOptions: false
+    _moreOptions: false,
+    _originalText: '',
+    _showDiff: false
   };
 
   var root = null;
@@ -163,6 +165,7 @@
         window.location.href = state._returnUrl;
         return;
       }
+      // _showDiff is set by requestOptimize action before calling optimize()
       setState({ step: 'opt-result', loading: false });
       scrollToKreator();
     });
@@ -225,6 +228,7 @@
       'details': renderDetails,
       'preview': renderPreview,
       'optimizer': renderOptimizer,
+      'opt-check': renderOptCheck,
       'opt-result': renderOptResult,
       'order-form': renderOrderForm,
       'inquiry-form': renderInquiryForm,
@@ -444,6 +448,100 @@
     return html;
   }
 
+  // Word-level diff using LCS algorithm
+  function diffTexts(original, optimized) {
+    var wordsA = original.trim().split(/\s+/);
+    var wordsB = optimized.trim().split(/\s+/);
+    var m = wordsA.length, n = wordsB.length;
+
+    // Build LCS table
+    var dp = [];
+    for (var i = 0; i <= m; i++) {
+      dp[i] = [];
+      for (var j = 0; j <= n; j++) {
+        if (i === 0 || j === 0) { dp[i][j] = 0; }
+        else if (wordsA[i-1] === wordsB[j-1]) { dp[i][j] = dp[i-1][j-1] + 1; }
+        else { dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]); }
+      }
+    }
+
+    // Backtrack to build diff
+    var result = [];
+    var ii = m, jj = n;
+    while (ii > 0 || jj > 0) {
+      if (ii > 0 && jj > 0 && wordsA[ii-1] === wordsB[jj-1]) {
+        result.unshift({ type: 'same', word: wordsA[ii-1] });
+        ii--; jj--;
+      } else if (jj > 0 && (ii === 0 || dp[ii][jj-1] >= dp[ii-1][jj])) {
+        result.unshift({ type: 'add', word: wordsB[jj-1] });
+        jj--;
+      } else {
+        result.unshift({ type: 'del', word: wordsA[ii-1] });
+        ii--;
+      }
+    }
+
+    // Render HTML
+    var html = '';
+    for (var k = 0; k < result.length; k++) {
+      var r = result[k];
+      if (r.type === 'del') {
+        html += '<span class="text-red-500 line-through">' + esc(r.word) + '</span> ';
+      } else if (r.type === 'add') {
+        html += '<span class="text-green-600 font-medium">' + esc(r.word) + '</span> ';
+      } else {
+        html += esc(r.word) + ' ';
+      }
+    }
+    return html;
+  }
+
+  // STEP: Opt-check (local analysis before API call)
+  function renderOptCheck() {
+    if (state.loading) return renderLoading();
+
+    var words = state.form.textInput.trim().split(/\s+/).length;
+    var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
+    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) === -1) ? 165 : 130;
+    var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
+    var diff = words - target;
+    var pct = Math.abs(Math.round((diff / target) * 100));
+    var ok = pct <= 15;
+
+    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50 border border-green-200' : 'bg-orange-50 border border-orange-200') + '">' +
+      '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
+      '<div class="grid grid-cols-3 gap-4 text-center">' +
+        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-400">Słów w tekście</div></div>' +
+        '<div><div class="text-2xl font-bold">' + target + '</div><div class="text-xs text-gray-400">Cel dla ' + state.form.targetDur + 's</div></div>' +
+        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-400">Odchylenie</div></div>' +
+      '</div>' +
+    '</div>';
+
+    if (ok) {
+      html += '<div class="bg-white rounded-xl border border-gray-200 p-5 mb-6 text-center">' +
+        '<p class="text-gray-600 mb-4">Twój tekst ma odpowiednią długość. Chcesz zobaczyć alternatywną propozycję?</p>' +
+        '<div class="flex gap-3 justify-center">' +
+          '<button data-action="requestOptimize" class="kreator-btn-secondary">Tak, pokaż propozycję</button>' +
+          '<button data-action="skipOptimize" class="kreator-btn-primary">Nie, przejdź dalej</button>' +
+        '</div>' +
+      '</div>';
+    } else {
+      html += '<div class="bg-white rounded-xl border border-gray-200 p-5 mb-6 text-center">' +
+        '<p class="text-gray-600 mb-4">Tekst jest ' + (diff > 0 ? 'za długi' : 'za krótki') + ' o ' + Math.abs(diff) + ' słów. Zoptymalizować do ' + state.form.targetDur + ' sekund?</p>' +
+        '<div class="flex gap-3 justify-center">' +
+          '<button data-action="requestOptimize" class="kreator-btn-primary flex-1">Tak, zoptymalizuj</button>' +
+          '<button data-action="skipOptimize" class="kreator-btn-secondary">Zostaw jak jest</button>' +
+        '</div>' +
+      '</div>';
+    }
+
+    html += '<div class="mt-4">' +
+      '<button data-action="goTo" data-value="optimizer" class="text-gray-400 hover:text-accent text-sm transition-colors">&larr; Wróć do edycji tekstu</button>' +
+    '</div>';
+
+    return html;
+  }
+
   // STEP: Optimizer
   function renderOptimizer() {
     if (state.loading) return renderLoading();
@@ -461,40 +559,63 @@
 
     html += '<div class="flex gap-3 mt-6">' +
       '<button data-action="goTo" data-value="welcome" class="kreator-btn-secondary">Wstecz</button>' +
-      '<button data-action="optimize" ' + (!state.form.textInput.trim() ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Sprawdź i zoptymalizuj</button>' +
+      '<button data-action="checkText" ' + (!state.form.textInput.trim() ? 'disabled' : '') + ' class="kreator-btn-primary flex-1">Sprawdź tekst</button>' +
     '</div>';
 
     return html;
   }
 
-  // STEP: Optimize result
+  // STEP: Optimize result — with diff view or plain textarea
   function renderOptResult() {
-    var words = state.form.textInput.trim().split(/\s+/).length;
+    var resultText = state.result || state.form.textInput;
+    var resultWords = resultText.trim().split(/\s+/).length;
     var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
     var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) === -1) ? 165 : 130;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
-    var diff = words - target;
+    var diff = resultWords - target;
     var pct = Math.abs(Math.round((diff / target) * 100));
     var ok = pct <= 15;
 
-    var html = '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50 border border-green-200' : 'bg-orange-50 border border-orange-200') + '">' +
-      '<h3 class="text-lg font-bold mb-4">' + (ok ? '&#10003; Długość OK' : '&#9888;&#65039; ' + (diff > 0 ? 'Za długi' : 'Za krótki')) + '</h3>' +
-      '<div class="grid grid-cols-3 gap-4 text-center">' +
-        '<div><div class="text-2xl font-bold">' + words + '</div><div class="text-xs text-gray-400">Słów</div></div>' +
-        '<div><div class="text-2xl font-bold">' + Math.abs(diff) + '</div><div class="text-xs text-gray-400">Różnica</div></div>' +
-        '<div><div class="text-2xl font-bold">' + pct + '%</div><div class="text-xs text-gray-400">Odchylenie</div></div>' +
-      '</div>' +
+    var html = '';
+
+    // Show diff view if we have optimized text and haven't accepted yet
+    if (state._showDiff && state._originalText && state.result) {
+      var optWords = state.result.trim().split(/\s+/).length;
+      html += '<div class="rounded-xl p-6 mb-6 bg-green-50 border border-green-200">' +
+        '<h3 class="text-lg font-bold mb-2">Propozycja optymalizacji</h3>' +
+        '<p class="text-sm text-gray-500 mb-4">' + optWords + ' słów (cel: ' + target + ' dla ' + state.form.targetDur + 's)</p>' +
+      '</div>';
+
+      // Diff view
+      html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-4">' +
+        '<div class="mb-3 flex items-center gap-4">' +
+          '<span class="text-sm"><span class="text-red-500 line-through">usunięte</span></span>' +
+          '<span class="text-sm"><span class="text-green-600 font-medium">dodane</span></span>' +
+        '</div>' +
+        '<div class="leading-relaxed text-gray-700">' + diffTexts(state._originalText, state.result) + '</div>' +
+      '</div>';
+
+      html += '<div class="flex gap-3 mb-6">' +
+        '<button data-action="goTo" data-value="opt-check" class="kreator-btn-secondary">Wstecz</button>' +
+        '<button data-action="acceptOptimized" class="kreator-btn-primary flex-1">Zaakceptuj propozycję</button>' +
+      '</div>';
+
+      return html;
+    }
+
+    // Standard view — editable textarea (after accepting or when no diff)
+    html += '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50 border border-green-200' : 'bg-orange-50 border border-orange-200') + '">' +
+      '<h3 class="text-lg font-bold mb-2">' + (ok ? '&#10003; Tekst gotowy' : '&#9888;&#65039; Uwaga: ' + (diff > 0 ? 'za długi' : 'za krótki') + ' o ' + Math.abs(diff) + ' słów') + '</h3>' +
+      '<p class="text-sm text-gray-500">' + resultWords + ' słów (cel: ' + target + ' dla ' + state.form.targetDur + 's)</p>' +
     '</div>';
 
-    if (state.result) {
-      html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">' +
-        '<div class="flex justify-between items-center mb-3">' +
-          '<span class="font-semibold text-sm">Zoptymalizowany tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
-          '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
-        '</div>' +
-        '<textarea data-result-edit class="kreator-textarea leading-relaxed" rows="10">' + esc(state.result) + '</textarea>' +
-      '</div>';
-    }
+    html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">' +
+      '<div class="flex justify-between items-center mb-3">' +
+        '<span class="font-semibold text-sm">Twój tekst <span class="text-gray-500 font-normal">(możesz edytować)</span>:</span>' +
+        '<button data-action="copy" class="text-accent text-sm font-medium">Kopiuj</button>' +
+      '</div>' +
+      '<textarea data-result-edit class="kreator-textarea leading-relaxed" rows="10">' + esc(resultText) + '</textarea>' +
+    '</div>';
 
     // PRIMARY CTA — Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-green-50 to-green-50/50 rounded-xl border border-green-200">' +
@@ -697,9 +818,9 @@
         scrollToKreator();
         break;
       case 'goBack':
-        // Smart back — go to preview or opt-result
+        // Smart back — go to preview, opt-result, or opt-check
         if (state.result) {
-          setState({ step: state.form.textInput ? 'opt-result' : 'preview', error: null });
+          setState({ step: state._originalText ? 'opt-result' : (state.form.textInput ? 'opt-result' : 'preview'), error: null });
         } else {
           setState({ step: 'welcome', error: null });
         }
@@ -713,6 +834,29 @@
         break;
       case 'optimize':
         if (state.form.textInput.trim()) optimize();
+        break;
+      case 'checkText':
+        if (state.form.textInput.trim()) {
+          state._originalText = state.form.textInput.trim();
+          state._showDiff = false;
+          setState({ step: 'opt-check', error: null });
+          scrollToKreator();
+        }
+        break;
+      case 'requestOptimize':
+        state._showDiff = true;
+        optimize();
+        break;
+      case 'skipOptimize':
+        state.result = state.form.textInput.trim();
+        state._showDiff = false;
+        setState({ step: 'opt-result', error: null });
+        scrollToKreator();
+        break;
+      case 'acceptOptimized':
+        state._showDiff = false;
+        setState({ step: 'opt-result', error: null });
+        scrollToKreator();
         break;
       case 'copy':
         copyText();
@@ -783,6 +927,8 @@
         state.toast = null;
         state._category = null;
         state._moreOptions = false;
+        state._originalText = '';
+        state._showDiff = false;
         render();
         break;
     }
@@ -823,7 +969,7 @@
       if (svc && svc.needsLanguages) canGen = canGen && state.form.languages.length > 0;
       genBtn.disabled = !canGen;
     }
-    var optBtn = root.querySelector('[data-action="optimize"]');
+    var optBtn = root.querySelector('[data-action="checkText"]');
     if (optBtn) {
       optBtn.disabled = !state.form.textInput.trim();
     }
