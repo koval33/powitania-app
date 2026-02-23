@@ -502,7 +502,7 @@
 
     var words = state.form.textInput.trim().split(/\s+/).length;
     var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
-    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) === -1) ? 165 : 130;
+    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) !== -1) ? 130 : 165;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
     var diff = words - target;
     var pct = Math.abs(Math.round((diff / target) * 100));
@@ -570,7 +570,7 @@
     var resultText = state.result || state.form.textInput;
     var resultWords = resultText.trim().split(/\s+/).length;
     var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
-    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) === -1) ? 165 : 130;
+    var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) !== -1) ? 130 : 165;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
     var diff = resultWords - target;
     var pct = Math.abs(Math.round((diff / target) * 100));
