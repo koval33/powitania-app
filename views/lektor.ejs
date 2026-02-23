@@ -1532,7 +1532,7 @@ function submitOrderRequest(data, msgElId) {
 }
 
 function goToKreatorWithLektor() {
-  var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now() };
+  var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now(), skipWelcome: true };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
   closeOrderModal();
   window.location.href = '/#kreator';

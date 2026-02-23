@@ -866,6 +866,11 @@
           state.result = ctx.text;
           setState({ step: 'inquiry-form' });
           return;
+        } else if (ctx.skipWelcome) {
+          ctx.skipWelcome = false;
+          sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
+          setState({ step: 'service-type' });
+          return;
         }
       }
     } catch(e) {}
