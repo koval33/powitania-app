@@ -83,10 +83,42 @@
   };
 
   var root = null;
+  var _historyManaged = false;
+  var _skipPopState = false;
 
   function setState(partial) {
+    var oldStep = state.step;
     for (var k in partial) { state[k] = partial[k]; }
+    // Push browser history when step changes (so browser back works within kreator)
+    if (partial.step && partial.step !== oldStep && !partial.loading) {
+      pushHistory(partial.step);
+    }
     render();
+  }
+
+  function pushHistory(step) {
+    if (!_historyManaged) return;
+    try {
+      history.pushState({ kreatorStep: step }, '', window.location.pathname + window.location.search + '#kreator');
+    } catch(e) {}
+  }
+
+  function initHistory() {
+    _historyManaged = true;
+    // Replace current state so we have a base entry
+    try {
+      history.replaceState({ kreatorStep: state.step }, '', window.location.pathname + window.location.search + '#kreator');
+    } catch(e) {}
+    window.addEventListener('popstate', function(e) {
+      if (_skipPopState) { _skipPopState = false; return; }
+      if (e.state && e.state.kreatorStep) {
+        // Navigate to the step from history without pushing new history
+        _historyManaged = false;
+        setState({ step: e.state.kreatorStep, error: null });
+        _historyManaged = true;
+        scrollToKreator();
+      }
+    });
   }
 
   function setField(key, value) {
@@ -662,7 +694,7 @@
 
     var canSubmit = state.form.firmName && state.form.name && state.form.email && state.form.phone;
     html += '<div class="flex gap-3 mt-6">' +
-      '<button data-action="goTo" data-value="preview" class="kreator-btn-secondary">Wstecz</button>' +
+      '<button data-action="goBack" class="kreator-btn-secondary">Wstecz</button>' +
       '<button data-action="submitOrder" ' + (canSubmit ? '' : 'disabled') + ' class="kreator-btn-primary flex-1">Wyślij zamówienie</button>' +
     '</div>';
 
@@ -1023,6 +1055,7 @@
     } catch(e) {}
 
     render();
+    initHistory();
   }
 
   if (document.readyState === 'loading') {
