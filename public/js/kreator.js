@@ -313,7 +313,7 @@
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
         '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
-        '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Mam tekst</h3>' +
+        '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Mam tekst, chcę go sprawdzić</h3>' +
         '<p class="text-gray-400 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
         '<span class="text-sm text-accent font-medium">Zoptymalizuj &rarr;</span>' +
       '</button>' +
