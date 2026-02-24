@@ -1439,11 +1439,46 @@ function collectAddonsInfo() {
   return { selectedAddons: addons, selectedMelody: melody };
 }
 
+function validateOrderFields(prefix, msgElId) {
+  var fields = [
+    { id: prefix + '-firmName', label: 'Nazwa firmy' },
+    { id: prefix + '-name', label: 'Imię i nazwisko' },
+    { id: prefix + '-email', label: 'Email' }
+  ];
+  var ok = true;
+  fields.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (!el) return;
+    var val = el.value.trim();
+    var invalid = !val || (f.id.indexOf('email') !== -1 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+    el.classList.toggle('border-red-400', invalid);
+    el.classList.toggle('border-gray-300', !invalid);
+    if (invalid) ok = false;
+  });
+  if (!ok) {
+    var msgEl = document.getElementById(msgElId);
+    if (msgEl) {
+      msgEl.classList.remove('hidden');
+      msgEl.className = 'text-center text-sm mt-2 text-red-400';
+      msgEl.textContent = 'Uzupełnij poprawnie oznaczone pola.';
+    }
+  }
+  return ok;
+}
+
+// Reset podświetlenia przy edycji pola
+document.addEventListener('input', function(e) {
+  if (e.target.tagName === 'INPUT' && e.target.classList.contains('border-red-400')) {
+    e.target.classList.remove('border-red-400');
+    e.target.classList.add('border-gray-300');
+  }
+});
+
 function submitModalOrder() {
+  if (!validateOrderFields('mod', 'modal-order-msg')) return;
   var firmName = document.getElementById('mod-firmName').value.trim();
   var name = document.getElementById('mod-name').value.trim();
   var email = document.getElementById('mod-email').value.trim();
-  if (!firmName || !name || !email) { alert('Uzupelnij wymagane pola: nazwa firmy, imie i nazwisko, email.'); return; }
 
   var data = {
     firmName: firmName,
@@ -1474,10 +1509,10 @@ function submitModalOrder() {
 }
 
 function submitWizardOrder() {
+  if (!validateOrderFields('wiz', 'wizard-order-msg')) return;
   var firmName = document.getElementById('wiz-firmName').value.trim();
   var name = document.getElementById('wiz-name').value.trim();
   var email = document.getElementById('wiz-email').value.trim();
-  if (!firmName || !name || !email) { alert('Uzupelnij wymagane pola: nazwa firmy, imie i nazwisko, email.'); return; }
 
   var ctx = {};
   try { ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); } catch(e) {}
