@@ -94,6 +94,7 @@ app.get('/uncategorized-pl/*', (req, res) => res.redirect(301, '/aktualnosci-pl/
 // API routes
 app.use('/api/kreator', require('./routes/api-kreator'));
 app.use('/api/contact', require('./routes/api-contact'));
+app.use('/api/payment', require('./routes/api-payment'));
 app.use('/api/reviews', require('./routes/api-reviews'));
 
 // API: sprawdź dostępność filmów YouTube (proxy oEmbed — CORS)
@@ -392,6 +393,24 @@ app.get('/aktualnosci-pl/:slug/', (req, res) => {
     post,
     prevPost: idx > 0 ? posts[idx - 1] : null,
     nextPost: idx < posts.length - 1 ? posts[idx + 1] : null
+  });
+});
+
+// Potwierdzenie płatności online
+app.get('/zamowienie-oplacone/', (req, res) => {
+  res.render('payment-success', {
+    title: 'Zamówienie opłacone | powitania.pl',
+    description: '',
+    paid: true
+  });
+});
+
+// Zamówienie przyjęte (płatność w trakcie przetwarzania)
+app.get('/zamowienie-przyjete/', (req, res) => {
+  res.render('payment-success', {
+    title: 'Zamówienie przyjęte | powitania.pl',
+    description: '',
+    paid: false
   });
 });
 

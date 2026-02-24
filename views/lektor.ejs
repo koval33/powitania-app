@@ -218,7 +218,7 @@
                     <textarea id="wiz-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
                   </div>
                 </div>
-                <button onclick="submitWizardOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                <button id="wiz-submit-btn" onclick="submitWizardOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
                   Zamów nagranie
                 </button>
                 <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
@@ -603,7 +603,7 @@
                 <textarea id="mod-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
               </div>
             </div>
-            <button onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+            <button id="mod-submit-btn" onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
               Zamów nagranie
             </button>
             <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
@@ -1151,13 +1151,12 @@ function renderPricing(result, wordCount, targetEl) {
     }
 
     // Suma
+    var brutto = Math.round(totalBase * 1.23 * 100) / 100;
     html += '<div class="border-t border-green-200 mt-3 pt-3 flex items-center justify-between">' +
       '<span class="text-gray-900 font-bold">Łącznie:</span>' +
-      '<span id="pricing-total" class="text-2xl font-bold text-green-700">' + totalBase + ' zł netto</span>' +
+      '<div class="text-right"><span id="pricing-total" class="text-2xl font-bold text-green-700">' + totalBase + ' zł netto</span>' +
+      '<div class="text-sm text-gray-500">' + brutto.toFixed(2) + ' zł brutto (z VAT 23%)</div></div>' +
     '</div>';
-
-    // Ceny netto
-    html += '<p class="text-xs text-gray-500 mt-2">Do podanych cen należy doliczyć VAT 23%</p>';
 
     if (result.note) {
       html += '<p class="text-xs text-gray-500 mt-1">' + result.note + '</p>';
@@ -1170,6 +1169,17 @@ function renderPricing(result, wordCount, targetEl) {
 
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
+
+  // Aktualizuj tekst przycisków zamówienia (Zamów i zapłać / Zamów nagranie)
+  updateOrderButtonLabels(result.basePrice > 0);
+}
+
+function updateOrderButtonLabels(hasPrice) {
+  var label = hasPrice ? 'Zamów i zapłać' : 'Zamów nagranie';
+  var wizBtn = document.getElementById('wiz-submit-btn');
+  if (wizBtn) wizBtn.textContent = label;
+  var modBtn = document.getElementById('mod-submit-btn');
+  if (modBtn) modBtn.textContent = label;
 }
 
 function toggleAddonTooltip(e, idx) {
@@ -1503,13 +1513,30 @@ function submitOrderRequest(data, msgElId) {
   var msgEl = document.getElementById(msgElId);
   if (msgEl) { msgEl.classList.add('hidden'); }
 
-  fetch('/api/contact/order', {
+  // Sprawdź czy mamy numeryczną cenę (> 0) — jeśli tak, kieruj na płatność P24
+  var numericPrice = parseFloat(String(data.totalPrice || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
+  var hasPrice = numericPrice > 0;
+
+  var endpoint = hasPrice ? '/api/payment/register' : '/api/contact/order';
+
+  fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
   .then(function(r) { return r.json(); })
   .then(function(res) {
+    if (res.ok && res.redirectUrl) {
+      // Płatność P24 — przekieruj na stronę płatności
+      if (msgEl) {
+        msgEl.classList.remove('hidden');
+        msgEl.className = 'text-center text-sm mt-2 text-accent';
+        msgEl.textContent = 'Przekierowuję na stronę płatności...';
+      }
+      try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+      window.location.href = res.redirectUrl;
+      return;
+    }
     if (msgEl) {
       msgEl.classList.remove('hidden');
       if (res.ok) {
