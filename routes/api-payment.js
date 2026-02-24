@@ -57,6 +57,11 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
     }
 
+    // Walidacja email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ ok: false, error: 'Podaj poprawny adres email.' });
+    }
+
     // Wyciągnij kwotę netto z totalPrice (może być "150", "150 zł", "150.00")
     const priceStr = String(totalPrice).replace(/[^0-9.,]/g, '').replace(',', '.');
     const priceNetto = parseFloat(priceStr);
@@ -116,8 +121,15 @@ router.post('/register', async (req, res) => {
     });
 
   } catch (err) {
-    console.error('[P24] Register error:', err);
-    res.status(500).json({ ok: false, error: 'Błąd rejestracji płatności. Spróbuj ponownie.' });
+    console.error('[P24] Register error:', err.message || err);
+    if (err.p24Data) console.error('[P24] API response:', JSON.stringify(err.p24Data));
+    let userMsg = 'Błąd rejestracji płatności. Spróbuj ponownie.';
+    if (err.message && err.message.includes('Brak konfiguracji')) {
+      userMsg = 'Płatności online nie są jeszcze skonfigurowane.';
+    } else if (err.p24Data && err.p24Data.error === 'Invalid email') {
+      userMsg = 'Podaj poprawny adres email.';
+    }
+    res.status(500).json({ ok: false, error: userMsg });
   }
 });
 
