@@ -14,7 +14,7 @@
 
     <!-- Filtry: wszystko w jednej linii -->
     <div class="flex flex-wrap items-center gap-2">
-      <div class="flex rounded-lg overflow-hidden border border-gray-200">
+      <div id="gender-group" class="flex rounded-lg overflow-hidden border border-gray-200">
         <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
         <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Mężczyźni</button>
         <button data-filter="gender" data-value="f" class="filter-btn border-l border-gray-200">Kobiety</button>
@@ -76,7 +76,7 @@
 
       <div class="ml-auto relative">
         <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-        <input type="text" id="filter-search" placeholder="Szukaj..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-3 py-2 w-36 focus:border-accent focus:outline-none placeholder-gray-400">
+        <input type="text" id="filter-search" placeholder="Szukaj..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-3 w-36 focus:outline-none placeholder-gray-400" style="height:38px">
       </div>
     </div>
 
@@ -426,6 +426,35 @@
 
     shownCount = PAGE_SIZE;
     updateVisibility();
+    updateFilterHighlights();
+  }
+
+  function updateFilterHighlights() {
+    // Grupa płci — zielona ramka gdy nie "Wszyscy"
+    var genderGroup = document.getElementById('gender-group');
+    if (genderGroup) {
+      if (activeGender !== 'all') {
+        genderGroup.style.borderColor = '#10b981';
+      } else {
+        genderGroup.style.borderColor = '';
+      }
+    }
+    // Selecty — klasa active gdy wartość ≠ domyślna
+    ['filter-lang', 'filter-age', 'filter-price'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el.value !== 'all') {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
+    // Szukajka — zielona ramka gdy coś wpisano
+    var searchEl = document.getElementById('filter-search');
+    if (searchEl.value.length > 0) {
+      searchEl.style.borderColor = '#10b981';
+    } else {
+      searchEl.style.borderColor = '';
+    }
   }
 
   window.resetFilters = function() {
@@ -534,24 +563,32 @@
 </script>
 
 <style>
+/* Wspólna baza dla wszystkich filtrów */
+.filter-btn, .bank-filter-select, .bank-filter-toggle {
+  font-size: 0.875rem;
+  font-family: inherit;
+  height: 38px;
+  transition: all 0.2s;
+}
+
+/* Przyciski płci */
 .filter-btn {
   color: #6b7280;
   background: #fff;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 0 0.75rem;
   font-weight: 500;
-  transition: all 0.2s;
+  border: none;
 }
 .filter-btn:hover { color: #111827; background: #f9fafb; }
-.filter-btn.active { color: #fff; background: #10b981; }
+.filter-btn.active { color: #10b981; font-weight: 600; }
 
+/* Selecty */
 .bank-filter-select {
   background-color: #fff;
   border: 1px solid #d1d5db;
   color: #374151;
-  font-size: 0.875rem;
   border-radius: 0.5rem;
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  padding: 0 2rem 0 0.75rem;
   appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
@@ -560,19 +597,19 @@
   background-size: 14px;
 }
 .bank-filter-select:focus { border-color: #10b981; outline: none; }
+.bank-filter-select.active { border-color: #10b981; color: #10b981; }
 
+/* Toggle buttony (Znani i lubiani, Native) */
 .bank-filter-toggle {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 0 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid #d1d5db;
   color: #6b7280;
   background: #fff;
   cursor: pointer;
-  transition: all 0.2s;
 }
 .bank-filter-toggle:hover { color: #111827; border-color: #9ca3af; }
-.bank-filter-toggle.active { color: #fff; background: #10b981; border-color: #10b981; }
+.bank-filter-toggle.active { color: #10b981; border-color: #10b981; background: #fff; }
 
 .line-clamp-3 {
   display: -webkit-box;
