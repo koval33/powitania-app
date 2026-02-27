@@ -92,9 +92,14 @@ router.post('/register', async (req, res) => {
     };
     saveOrder(sessionId, orderData);
 
-    // Wyślij do CRM (non-blocking)
+    // Wyślij do CRM (non-blocking) — generatedText trafia do orderDetails, nie do description
+    const crmData = { ...req.body };
+    if (crmData.generatedText) {
+      crmData.orderDetails = crmData.generatedText;
+      delete crmData.generatedText;
+    }
     sendOrderToCRM({
-      ...req.body,
+      ...crmData,
       totalPrice: priceNetto + ' zł netto',
       source: 'powitania.pl (płatność online)'
     }).catch(err => console.error('[CRM] payment order webhook error:', err));
@@ -211,15 +216,15 @@ router.post('/notify', async (req, res) => {
     // Potwierdzenie do klienta
     await sendMail({
       to: order.email,
-      subject: 'Potwierdzenie płatności — Powitania',
+      subject: 'Zamówienie przyjęte do realizacji — Powitania.pl',
       html: `
-        <h2 style="color:#1a1d23">Płatność potwierdzona!</h2>
+        <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(order.name)},</p>
-        <p>Dziękujemy za opłacenie zamówienia nagrania${order.lektorName ? ' u lektora <strong>' + esc(order.lektorName) + '</strong>' : ''}.</p>
+        <p>Twoje zamówienie nagrania${order.lektorName ? ' u lektora <strong>' + esc(order.lektorName) + '</strong>' : ''} zostało przyjęte do realizacji.</p>
         <p><strong>Kwota:</strong> ${order.amountBrutto} PLN brutto (${order.priceNetto} zł netto + VAT)</p>
-        <p>Przystępujemy do realizacji. O postępach poinformujemy Cię mailowo.</p>
+        <p>Nasz zespół już pracuje nad Twoim projektem. O postępach poinformujemy Cię mailowo.</p>
         ${order.generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(order.generatedText)}</pre>` : ''}
-        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania.pl</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
       `
     });
