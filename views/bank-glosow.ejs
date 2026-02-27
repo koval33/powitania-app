@@ -12,22 +12,14 @@
   <div class="py-4 pb-5 sticky top-[73px] z-40 bg-white shadow-md">
   <div class="max-w-6xl mx-auto px-4">
 
-    <!-- Rząd 1: Płeć + Szukaj -->
-    <div class="flex items-center gap-3 mb-3">
-      <div class="flex rounded-lg overflow-hidden border border-gray-200">
-        <button data-filter="gender" data-value="all" class="filter-btn active px-4 py-2 text-sm font-medium">Wszyscy</button>
-        <button data-filter="gender" data-value="m" class="filter-btn px-4 py-2 text-sm font-medium border-l border-gray-200">Mężczyźni</button>
-        <button data-filter="gender" data-value="f" class="filter-btn px-4 py-2 text-sm font-medium border-l border-gray-200">Kobiety</button>
-      </div>
-
-      <div class="ml-auto relative">
-        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-        <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-4 py-2 w-52 focus:border-accent focus:outline-none placeholder-gray-400">
-      </div>
-    </div>
-
-    <!-- Rząd 2: Wszystkie filtry szczegółowe -->
+    <!-- Filtry: wszystko w jednej linii -->
     <div class="flex flex-wrap items-center gap-2">
+      <div class="flex rounded-lg overflow-hidden border border-gray-200">
+        <button data-filter="gender" data-value="all" class="filter-btn active px-3 py-2 text-sm font-medium">Wszyscy</button>
+        <button data-filter="gender" data-value="m" class="filter-btn px-3 py-2 text-sm font-medium border-l border-gray-200">Mężczyźni</button>
+        <button data-filter="gender" data-value="f" class="filter-btn px-3 py-2 text-sm font-medium border-l border-gray-200">Kobiety</button>
+      </div>
+
       <select id="filter-lang" class="bank-filter-select">
         <option value="all">Język</option>
         <option value="polski">Polski</option>
@@ -81,6 +73,11 @@
 
       <input type="checkbox" id="filter-famous" class="hidden">
       <input type="checkbox" id="filter-native" class="hidden">
+
+      <div class="ml-auto relative">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input type="text" id="filter-search" placeholder="Szukaj lektora..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-4 py-2 w-52 focus:border-accent focus:outline-none placeholder-gray-400">
+      </div>
     </div>
 
   </div>
