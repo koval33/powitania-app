@@ -105,9 +105,9 @@
 
   function initHistory() {
     _historyManaged = true;
-    // Replace current state so we have a base entry
+    // Replace current state — keep current URL without forcing #kreator
     try {
-      history.replaceState({ kreatorStep: state.step }, '', window.location.pathname + window.location.search + '#kreator');
+      history.replaceState({ kreatorStep: state.step }, '', window.location.pathname + window.location.search + (window.location.hash || ''));
     } catch(e) {}
     window.addEventListener('popstate', function(e) {
       if (_skipPopState) { _skipPopState = false; return; }
