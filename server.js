@@ -5,6 +5,15 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Przekierowanie: powitania.pl → www.powitania.pl (301)
+app.use((req, res, next) => {
+  const host = req.headers.host;
+  if (host === 'powitania.pl' || host === 'powitania-app-production.up.railway.app') {
+    return res.redirect(301, 'https://www.powitania.pl' + req.originalUrl);
+  }
+  next();
+});
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
