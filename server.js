@@ -524,6 +524,17 @@ app.use((req, res) => {
   });
 });
 
+// Tymczasowy endpoint — sprawdzenie outbound IP Railway (do usunięcia po konfiguracji P24)
+app.get('/api/my-ip', async (req, res) => {
+  try {
+    const resp = await fetch('https://api.ipify.org?format=json');
+    const data = await resp.json();
+    res.json({ outboundIp: data.ip });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`powitania.pl running on http://localhost:${PORT}`);
 });
