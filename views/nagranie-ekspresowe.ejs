@@ -72,7 +72,7 @@
         <div class="voice-card bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden hover:border-accent/20 transition-colors">
           <!-- Górna część: zdjęcie + info -->
           <div class="flex items-start gap-5 p-6 pb-3">
-            <a href="/lektorzy/<%= v.id %>/?express=1" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50 block hover:ring-2 hover:ring-accent/40 transition-all">
+            <a href="/lektorzy/<%= v.id %>/?express=1" aria-label="Profil lektora <%= v.name %>" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50 block hover:ring-2 hover:ring-accent/40 transition-all">
               <% if (v.photo) { %>
                 <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
               <% } else { %>
