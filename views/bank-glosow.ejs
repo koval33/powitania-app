@@ -15,9 +15,9 @@
     <!-- Filtry: wszystko w jednej linii -->
     <div class="flex flex-wrap items-center gap-2">
       <div class="flex rounded-lg overflow-hidden border border-gray-200">
-        <button data-filter="gender" data-value="all" class="filter-btn active px-3 py-2 text-sm font-medium">Wszyscy</button>
-        <button data-filter="gender" data-value="m" class="filter-btn px-3 py-2 text-sm font-medium border-l border-gray-200">Mężczyźni</button>
-        <button data-filter="gender" data-value="f" class="filter-btn px-3 py-2 text-sm font-medium border-l border-gray-200">Kobiety</button>
+        <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
+        <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Mężczyźni</button>
+        <button data-filter="gender" data-value="f" class="filter-btn border-l border-gray-200">Kobiety</button>
       </div>
 
       <select id="filter-lang" class="bank-filter-select">
@@ -68,8 +68,8 @@
         <option value="Wyższa grupa cenowa">Wyższa</option>
       </select>
 
-      <button type="button" id="filter-famous-btn" class="filter-pill" onclick="toggleFilterPill(this, 'filter-famous')">Znani i lubiani</button>
-      <button type="button" id="filter-native-btn" class="filter-pill" onclick="toggleFilterPill(this, 'filter-native')">Native speaker</button>
+      <button type="button" id="filter-famous-btn" class="bank-filter-toggle" onclick="toggleFilterPill(this, 'filter-famous')">Znani i lubiani</button>
+      <button type="button" id="filter-native-btn" class="bank-filter-toggle" onclick="toggleFilterPill(this, 'filter-native')">Native speaker</button>
 
       <input type="checkbox" id="filter-famous" class="hidden">
       <input type="checkbox" id="filter-native" class="hidden">
@@ -440,7 +440,7 @@
     document.getElementById('filter-famous').checked = false;
     document.getElementById('filter-native').checked = false;
     document.getElementById('filter-search').value = '';
-    document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.bank-filter-toggle').forEach(function(p) { p.classList.remove('active'); });
     // Hide kreator banner if visible
     var banner = document.getElementById('kreator-context-banner');
     if (banner) banner.classList.add('hidden');
@@ -534,8 +534,15 @@
 </script>
 
 <style>
-.filter-btn { color: #6b7280; background: transparent; transition: all 0.2s; }
-.filter-btn:hover { color: #111827; }
+.filter-btn {
+  color: #6b7280;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.filter-btn:hover { color: #111827; background: #f9fafb; }
 .filter-btn.active { color: #fff; background: #10b981; }
 
 .bank-filter-select {
@@ -554,18 +561,18 @@
 }
 .bank-filter-select:focus { border-color: #10b981; outline: none; }
 
-.filter-pill {
+.bank-filter-toggle {
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  border-radius: 9999px;
+  border-radius: 0.5rem;
   border: 1px solid #d1d5db;
   color: #6b7280;
-  background: transparent;
+  background: #fff;
   cursor: pointer;
   transition: all 0.2s;
 }
-.filter-pill:hover { color: #111827; border-color: #9ca3af; }
-.filter-pill.active { color: #fff; background: rgba(16,185,129,0.15); border-color: #10b981; }
+.bank-filter-toggle:hover { color: #111827; border-color: #9ca3af; }
+.bank-filter-toggle.active { color: #fff; background: #10b981; border-color: #10b981; }
 
 .line-clamp-3 {
   display: -webkit-box;
