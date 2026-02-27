@@ -245,8 +245,8 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
 
 app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
-    title: 'Zapowiedzi telefoniczne — Nagrania IVR | powitania.pl',
-    description: 'Profesjonalne zapowiedzi telefoniczne i nagrania IVR. Buduj profesjonalny wizerunek firmy już od pierwszego połączenia.',
+    title: 'Zapowiedzi telefoniczne | Powitania telefoniczne | Powitania.pl',
+    description: 'Najwyższej jakości zapowiedzi telefoniczne. Realizacja we współpracy z klientem. Pomoc w redagowaniu tekstów. Zachęcamy do realizacji nagrań.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
