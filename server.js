@@ -119,8 +119,8 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Studio, usługi lektorskie | Lektor, głos do reklamy | powitania.pl',
-    description: 'Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 230 profesjonalnych lektorów, 30+ języków, 24 lata doświadczenia.',
+    title: 'Studio lektorskie | Studio nagrań lektorskich | Powitania.pl',
+    description: 'Profesjonalne studio lektorskie. Spoty reklamowe. Wysokiej jakości mikrofony i sprzęt studyjny. Znani i lubiani lektorzy! Zapraszamy.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -128,8 +128,8 @@ app.get('/', (req, res) => {
 
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Bank głosów lektorskich | Baza lektorów | powitania.pl',
-    description: 'Ponad 230 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbki i znajdź idealny głos.',
+    title: 'Bank głosów lektorskich | Baza lektorów | Głosy lektorskie | Powitania.pl',
+    description: 'Profesjonalny bank głosów. Największa baza głosów lektorskich. Przykładowe nagrania lektorskie. Doświadczeni lektorzy. Zachęcamy do realizacji nagrań!',
     voices: loadVoices()
   });
 });
@@ -168,8 +168,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
 
 app.get('/cennik/', (req, res) => {
   res.render('cennik', {
-    title: 'Cennik | Lektor, atrakcyjna cena | powitania.pl',
-    description: 'Cennik usług nagrań lektorskich. Przejrzyste ceny dla dwóch grup cenowych.'
+    title: 'Lektor | Cena | Powitania.pl',
+    description: 'Profesjonalne nagrania lektorskie. Poznaj cennik! Rozbudowana baza, najlepsi lektorzy. Doświadczenie i szybka realizacja. Zapraszamy do zapoznania się z ofertą.'
   });
 });
 
@@ -207,8 +207,8 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie | Cennik | powitania.pl',
-    description: 'Najlepsze nagrania lektorskie, znane głosy, doświadczeni lektorzy. Audiobooki, komunikaty lektorskie, spoty reklamowe, zapowiedzi telefoniczne.',
+    title: 'Nagrania lektorskie | Lektor, głos do reklamy | Powitania.pl',
+    description: 'Najlepsze nagrania lektorskie, znane głosy do reklamy. Audiobooki, komunikaty lektorskie. Zapoznaj się z naszą bazą i wybierz lektora do reklamy. Zapraszamy!',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
@@ -219,8 +219,8 @@ app.get('/nagrania-lektorskie/', (req, res) => {
 // Service subpages
 app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
-    title: 'Głos do reklamy — Spoty reklamowe | powitania.pl',
-    description: 'Profesjonalne spoty reklamowe radiowe, telewizyjne i internetowe. Zatrudnij rozpoznawalne głosy lektorów i stwórz skuteczną reklamę.',
+    title: 'Głos do reklamy | Lektor do reklamy | Powitania.pl',
+    description: 'Przyciągnij uwagę słuchaczy – wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -232,8 +232,8 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
 
 app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
   res.render('uslugi/lektor-do-filmow', {
-    title: 'Profesjonalny lektor do filmów | powitania.pl',
-    description: 'Narracja lektorska do filmów instruktażowych, korporacyjnych, e-learningowych i promocyjnych. Montaż audio-video w pakiecie.',
+    title: 'Profesjonalny lektor do filmów | Powitania.pl',
+    description: 'Profesjonalny lektor do filmów – naturalny głos, wysoka jakość nagrań, szybka realizacja. Idealny wybór do filmów promocyjnych, instruktażowych dokumentalnych.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
