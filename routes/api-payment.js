@@ -101,6 +101,7 @@ router.post('/register', async (req, res) => {
     sendOrderToCRM({
       ...crmData,
       totalPrice: priceNetto + ' zł netto',
+      status: 'Order',
       source: 'powitania.pl (płatność online)'
     }).catch(err => console.error('[CRM] payment order webhook error:', err));
 

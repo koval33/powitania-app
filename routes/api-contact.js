@@ -71,7 +71,7 @@ router.post('/order', async (req, res) => {
     res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
-    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody })
+    sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody, status: 'Order', source: 'powitania.pl (zamówienie)' })
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);
@@ -125,7 +125,7 @@ router.post('/inquiry', async (req, res) => {
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
-    sendOrderToCRM({ name, email, phone, serviceType, industry, lektorName, generatedText, notes: description, source: 'powitania.pl (zapytanie)' })
+    sendOrderToCRM({ name, email, phone, serviceType, industry, lektorName, generatedText, notes: description, status: 'Prospect', source: 'powitania.pl (zapytanie)' })
       .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Inquiry error:', err);
@@ -165,6 +165,10 @@ router.post('/save-text', async (req, res) => {
     });
 
     res.json({ ok: true, message: 'Tekst wysłany na podany adres email.' });
+
+    // Send to CRM (non-blocking — after response)
+    sendOrderToCRM({ email, serviceType, generatedText, status: 'Prospect', source: 'powitania.pl (zapisany tekst)' })
+      .catch(err => console.error('[CRM] save-text webhook error:', err));
   } catch (err) {
     console.error('[contact] Save-text error:', err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania.' });
@@ -222,6 +226,10 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
     });
 
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
+
+    // Send to CRM (non-blocking — after response)
+    sendOrderToCRM({ name: '', email, lektorName, lektorId, description, status: 'Prospect', source: 'powitania.pl (zapytanie premium)' })
+      .catch(err => console.error('[CRM] premium inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Premium inquiry error:', err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
@@ -285,6 +293,10 @@ router.post('/partner-inquiry', async (req, res) => {
     });
 
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
+
+    // Send to CRM (non-blocking — after response)
+    sendOrderToCRM({ name, firmName: company, email, phone, lektorName: voiceName, description: message, status: 'Prospect', source: 'powitania.pl (partner: ' + partnerName + ')' })
+      .catch(err => console.error('[CRM] partner inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Partner inquiry error:', err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
