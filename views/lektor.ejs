@@ -658,9 +658,9 @@
 <% } %>
 
 <script>
-// --- Custom audio player (single reusable Audio object) ---
-var sharedAudio = new Audio();
+// --- Custom audio player ---
 var currentBtn = null;
+var currentAudioSrc = '';
 
 function resetCurrentBtn() {
   if (!currentBtn) return;
@@ -673,55 +673,80 @@ function resetCurrentBtn() {
   }
 }
 
-sharedAudio.addEventListener('timeupdate', function() {
-  if (!currentBtn) return;
-  var row = currentBtn.closest('.sample-row');
-  if (!row) return;
-  var pct = (sharedAudio.currentTime / sharedAudio.duration) * 100;
-  row.querySelector('.audio-bar').style.width = pct + '%';
-  row.querySelector('.audio-time').textContent = formatTime(sharedAudio.currentTime);
-});
+function getAudioEl() {
+  // Zawsze tworzymy nowy element — najprostsza metoda unikania problemów z ponownym użyciem
+  var el = document.getElementById('shared-audio-el');
+  if (el) el.remove();
+  el = document.createElement('audio');
+  el.id = 'shared-audio-el';
+  el.preload = 'auto';
+  el.style.display = 'none';
+  document.body.appendChild(el);
 
-sharedAudio.addEventListener('loadedmetadata', function() {
-  if (!currentBtn) return;
-  var row = currentBtn.closest('.sample-row');
-  if (row) row.querySelector('.audio-duration').textContent = formatTime(sharedAudio.duration);
-});
+  el.addEventListener('timeupdate', function() {
+    if (!currentBtn) return;
+    var row = currentBtn.closest('.sample-row');
+    if (!row) return;
+    var pct = (el.currentTime / el.duration) * 100;
+    row.querySelector('.audio-bar').style.width = pct + '%';
+    row.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+  });
 
-sharedAudio.addEventListener('ended', function() {
-  resetCurrentBtn();
-  currentBtn = null;
-});
+  el.addEventListener('loadedmetadata', function() {
+    if (!currentBtn) return;
+    var row = currentBtn.closest('.sample-row');
+    if (row) row.querySelector('.audio-duration').textContent = formatTime(el.duration);
+  });
+
+  el.addEventListener('ended', function() {
+    resetCurrentBtn();
+    currentBtn = null;
+  });
+
+  return el;
+}
 
 function initSamplePlayer(btn) {
-  btn.addEventListener('click', function() {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
     var src = this.dataset.audio;
     if (!src) return;
     var playIcon = this.querySelector('.play-icon');
     var pauseIcon = this.querySelector('.pause-icon');
 
+    var existing = document.getElementById('shared-audio-el');
+
     // Klik na ten sam przycisk — pauza/wznowienie
-    if (currentBtn === this) {
-      if (sharedAudio.paused) {
-        sharedAudio.play().catch(function() {});
+    if (currentBtn === this && existing) {
+      if (existing.paused) {
+        existing.play();
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
       } else {
-        sharedAudio.pause();
+        existing.pause();
         playIcon.classList.remove('hidden');
         pauseIcon.classList.add('hidden');
       }
       return;
     }
 
-    // Inny przycisk — resetuj poprzedni
+    // Inny przycisk — resetuj poprzedni, stwórz nowy element audio
+    if (existing && !existing.paused) existing.pause();
     resetCurrentBtn();
     currentBtn = this;
 
-    // Ustaw źródło i graj
-    sharedAudio.src = src;
-    sharedAudio.currentTime = 0;
-    sharedAudio.play().catch(function() {});
+    var audio = getAudioEl();
+    audio.src = src;
+    audio.load();
+    audio.play().then(function() {
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    }).catch(function(err) {
+      console.error('[audio] play error:', err);
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+    });
+    // Pokaż stan ładowania od razu
     playIcon.classList.add('hidden');
     pauseIcon.classList.remove('hidden');
   });
@@ -733,10 +758,11 @@ document.querySelectorAll('.sample-play-btn').forEach(function(btn) {
   var row = btn.closest('.sample-row');
   if (row) {
     row.querySelector('.audio-progress').addEventListener('click', function(e) {
-      if (currentBtn === btn && sharedAudio.duration) {
+      var audio = document.getElementById('shared-audio-el');
+      if (audio && currentBtn === btn && audio.duration) {
         var rect = this.getBoundingClientRect();
         var pct = (e.clientX - rect.left) / rect.width;
-        sharedAudio.currentTime = pct * sharedAudio.duration;
+        audio.currentTime = pct * audio.duration;
       }
     });
   }

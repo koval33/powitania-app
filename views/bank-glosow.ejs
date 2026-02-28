@@ -275,15 +275,12 @@
 <script>
 (function() {
   var PAGE_SIZE = 20;
-  var currentAudio = null;
   var currentBtn = null;
   var allCards = Array.from(document.querySelectorAll('.voice-card'));
   var filteredCards = allCards.slice();
   var shownCount = PAGE_SIZE;
 
-  // --- Audio player (single reusable Audio object) ---
-  var sharedAudio = new Audio();
-
+  // --- Audio player ---
   function resetCurrentBtn() {
     if (!currentBtn) return;
     currentBtn.querySelector('.play-icon').classList.remove('hidden');
@@ -295,55 +292,72 @@
     }
   }
 
-  sharedAudio.addEventListener('timeupdate', function() {
-    if (!currentBtn) return;
-    var card = currentBtn.closest('.voice-card');
-    if (!card) return;
-    var pct = (sharedAudio.currentTime / sharedAudio.duration) * 100;
-    card.querySelector('.audio-bar').style.width = pct + '%';
-    card.querySelector('.audio-time').textContent = formatTime(sharedAudio.currentTime);
-  });
+  function getAudioEl() {
+    var el = document.getElementById('shared-audio-el');
+    if (el) el.remove();
+    el = document.createElement('audio');
+    el.id = 'shared-audio-el';
+    el.preload = 'auto';
+    el.style.display = 'none';
+    document.body.appendChild(el);
 
-  sharedAudio.addEventListener('loadedmetadata', function() {
-    if (!currentBtn) return;
-    var card = currentBtn.closest('.voice-card');
-    if (card) card.querySelector('.audio-duration').textContent = formatTime(sharedAudio.duration);
-  });
-
-  sharedAudio.addEventListener('ended', function() {
-    resetCurrentBtn();
-    currentBtn = null;
-  });
+    el.addEventListener('timeupdate', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (!card) return;
+      var pct = (el.currentTime / el.duration) * 100;
+      card.querySelector('.audio-bar').style.width = pct + '%';
+      card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+    });
+    el.addEventListener('loadedmetadata', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (card) card.querySelector('.audio-duration').textContent = formatTime(el.duration);
+    });
+    el.addEventListener('ended', function() {
+      resetCurrentBtn();
+      currentBtn = null;
+    });
+    return el;
+  }
 
   function initAudioPlayer(btn) {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       var src = this.dataset.audio;
       if (!src) return;
       var playIcon = this.querySelector('.play-icon');
       var pauseIcon = this.querySelector('.pause-icon');
+      var existing = document.getElementById('shared-audio-el');
 
-      // Klik na ten sam przycisk — pauza/wznowienie
-      if (currentBtn === this) {
-        if (sharedAudio.paused) {
-          sharedAudio.play().catch(function() {});
+      if (currentBtn === this && existing) {
+        if (existing.paused) {
+          existing.play();
           playIcon.classList.add('hidden');
           pauseIcon.classList.remove('hidden');
         } else {
-          sharedAudio.pause();
+          existing.pause();
           playIcon.classList.remove('hidden');
           pauseIcon.classList.add('hidden');
         }
         return;
       }
 
-      // Inny przycisk — resetuj poprzedni
+      if (existing && !existing.paused) existing.pause();
       resetCurrentBtn();
       currentBtn = this;
 
-      // Ustaw źródło i graj
-      sharedAudio.src = src;
-      sharedAudio.currentTime = 0;
-      sharedAudio.play().catch(function() {});
+      var audio = getAudioEl();
+      audio.src = src;
+      audio.load();
+      audio.play().then(function() {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      }).catch(function(err) {
+        console.error('[audio] play error:', err);
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      });
       playIcon.classList.add('hidden');
       pauseIcon.classList.remove('hidden');
     });
@@ -353,17 +367,16 @@
   allCards.forEach(function(card) {
     initAudioPlayer(card.querySelector('.play-btn'));
     card.querySelector('.audio-progress').addEventListener('click', function(e) {
+      var audio = document.getElementById('shared-audio-el');
       var btn = card.querySelector('.play-btn');
-      if (currentBtn === btn && sharedAudio.duration) {
+      if (audio && currentBtn === btn && audio.duration) {
         var rect = this.getBoundingClientRect();
         var pct = (e.clientX - rect.left) / rect.width;
-        sharedAudio.currentTime = pct * sharedAudio.duration;
+        audio.currentTime = pct * audio.duration;
       }
     });
-    // Klikalna karta — przejście do profilu (pominięcie playera i download)
     card.addEventListener('click', function(e) {
       var target = e.target;
-      // Nie przechwytuj kliknięć w player audio, download link, progress bar
       if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
       var url = card.dataset.url;
       if (url) window.location.href = url;

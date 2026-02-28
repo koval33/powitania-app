@@ -165,7 +165,6 @@
 <!-- Audio player JS -->
 <script>
 (function() {
-  var sharedAudio = new Audio();
   var currentBtn = null;
   var cards = document.querySelectorAll('.voice-card');
 
@@ -180,25 +179,33 @@
     }
   }
 
-  sharedAudio.addEventListener('timeupdate', function() {
-    if (!currentBtn) return;
-    var card = currentBtn.closest('.voice-card');
-    if (!card) return;
-    var pct = (sharedAudio.currentTime / sharedAudio.duration) * 100;
-    card.querySelector('.audio-bar').style.width = pct + '%';
-    card.querySelector('.audio-time').textContent = formatTime(sharedAudio.currentTime);
-  });
-
-  sharedAudio.addEventListener('loadedmetadata', function() {
-    if (!currentBtn) return;
-    var card = currentBtn.closest('.voice-card');
-    if (card) card.querySelector('.audio-duration').textContent = formatTime(sharedAudio.duration);
-  });
-
-  sharedAudio.addEventListener('ended', function() {
-    resetCurrentBtn();
-    currentBtn = null;
-  });
+  function getAudioEl() {
+    var el = document.getElementById('shared-audio-el');
+    if (el) el.remove();
+    el = document.createElement('audio');
+    el.id = 'shared-audio-el';
+    el.preload = 'auto';
+    el.style.display = 'none';
+    document.body.appendChild(el);
+    el.addEventListener('timeupdate', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (!card) return;
+      var pct = (el.currentTime / el.duration) * 100;
+      card.querySelector('.audio-bar').style.width = pct + '%';
+      card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+    });
+    el.addEventListener('loadedmetadata', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (card) card.querySelector('.audio-duration').textContent = formatTime(el.duration);
+    });
+    el.addEventListener('ended', function() {
+      resetCurrentBtn();
+      currentBtn = null;
+    });
+    return el;
+  }
 
   function initAudioPlayer(btn) {
     if (!btn) return;
@@ -207,25 +214,28 @@
       if (!src) return;
       var playIcon = this.querySelector('.play-icon');
       var pauseIcon = this.querySelector('.pause-icon');
+      var existing = document.getElementById('shared-audio-el');
 
-      if (currentBtn === this) {
-        if (sharedAudio.paused) {
-          sharedAudio.play().catch(function() {});
+      if (currentBtn === this && existing) {
+        if (existing.paused) {
+          existing.play();
           playIcon.classList.add('hidden');
           pauseIcon.classList.remove('hidden');
         } else {
-          sharedAudio.pause();
+          existing.pause();
           playIcon.classList.remove('hidden');
           pauseIcon.classList.add('hidden');
         }
         return;
       }
 
+      if (existing && !existing.paused) existing.pause();
       resetCurrentBtn();
       currentBtn = this;
-      sharedAudio.src = src;
-      sharedAudio.currentTime = 0;
-      sharedAudio.play().catch(function() {});
+      var audio = getAudioEl();
+      audio.src = src;
+      audio.load();
+      audio.play().catch(function(err) { console.error('[audio]', err); });
       playIcon.classList.add('hidden');
       pauseIcon.classList.remove('hidden');
     });
@@ -236,11 +246,12 @@
     var progress = card.querySelector('.audio-progress');
     if (progress) {
       progress.addEventListener('click', function(e) {
+        var audio = document.getElementById('shared-audio-el');
         var btn = card.querySelector('.play-btn');
-        if (currentBtn === btn && sharedAudio.duration) {
+        if (audio && currentBtn === btn && audio.duration) {
           var rect = this.getBoundingClientRect();
           var pct = (e.clientX - rect.left) / rect.width;
-          sharedAudio.currentTime = pct * sharedAudio.duration;
+          audio.currentTime = pct * audio.duration;
         }
       });
     }
