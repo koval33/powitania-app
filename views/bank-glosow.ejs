@@ -143,7 +143,8 @@
   <div class="max-w-6xl mx-auto px-4">
     <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-all<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-all cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
+           data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
            data-languages="<%= v.languages.join(',') %>"
@@ -155,8 +156,8 @@
 
         <!-- Górna część: zdjęcie + info -->
         <div class="flex items-start gap-5 p-6 pb-3">
-          <!-- Zdjęcie (klikalne → profil) -->
-          <a href="<%= v.profileUrl %>" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50 block hover:ring-2 hover:ring-accent/40 transition-all">
+          <!-- Zdjęcie -->
+          <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -164,7 +165,7 @@
                 <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
-          </a>
+          </div>
 
           <!-- Info -->
           <div class="flex-1 min-w-0">
@@ -225,9 +226,7 @@
           <% } else { %>
             <span></span>
           <% } %>
-          <a href="<%= v.profileUrl %>" class="text-accent hover:text-accent-light text-sm font-medium transition-colors">
-            Więcej &rarr;
-          </a>
+          <span class="text-accent text-sm font-medium">Więcej &rarr;</span>
         </div>
       </div>
       <% }); %>
@@ -350,7 +349,7 @@
     });
   }
 
-  // Init players + progress bar seek (raz na kartę)
+  // Init players + progress bar seek + card click (raz na kartę)
   allCards.forEach(function(card) {
     initAudioPlayer(card.querySelector('.play-btn'));
     card.querySelector('.audio-progress').addEventListener('click', function(e) {
@@ -360,6 +359,14 @@
         var pct = (e.clientX - rect.left) / rect.width;
         sharedAudio.currentTime = pct * sharedAudio.duration;
       }
+    });
+    // Klikalna karta — przejście do profilu (pominięcie playera i download)
+    card.addEventListener('click', function(e) {
+      var target = e.target;
+      // Nie przechwytuj kliknięć w player audio, download link, progress bar
+      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
+      var url = card.dataset.url;
+      if (url) window.location.href = url;
     });
   });
 
