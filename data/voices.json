@@ -13,7 +13,7 @@
     "samples": [
       {
         "name": "Próbka głosowa Łukasza Nowickiego",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lukasz_Nowicki.mp3"
+        "url": "/audio/samples/Lukasz_Nowicki.mp3"
       }
     ],
     "turnaround": "48h",
@@ -63,19 +63,19 @@
     "samples": [
       {
         "name": "Explainer",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jon-Carter-Explainer-Demo.mp3"
+        "url": "/audio/samples/Jon-Carter-Explainer-Demo.mp3"
       },
       {
         "name": "Narration",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jon-Carter-Narration-Demo.mp3"
+        "url": "/audio/samples/Jon-Carter-Narration-Demo.mp3"
       },
       {
         "name": "TV Promo",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jon-Carter-TV-Promo-Demo.mp3"
+        "url": "/audio/samples/Jon-Carter-TV-Promo-Demo.mp3"
       },
       {
         "name": "Luxury demo",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jon-Carter-Luxury-Demo.mp3"
+        "url": "/audio/samples/Jon-Carter-Luxury-Demo.mp3"
       }
     ],
     "turnaround": "48h",
@@ -127,11 +127,11 @@
     "samples": [
       {
         "name": "Legenda ",
-        "url": "https://www.powitania.pl/wp-content/uploads/nimfy_powitania.mp3"
+        "url": "/audio/samples/nimfy_powitania.mp3"
       },
       {
         "name": "Spot reklamowy producenta stolarki okiennej",
-        "url": "https://www.powitania.pl/wp-content/uploads/wintakt_wiktor_zborowski.mp3"
+        "url": "/audio/samples/wintakt_wiktor_zborowski.mp3"
       }
     ],
     "turnaround": "72h",
@@ -182,15 +182,15 @@
     "samples": [
       {
         "name": "Spokojna narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Patryk_2_1.mp3"
+        "url": "/audio/samples/Patryk_2_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Patryk_2_2.mp3"
+        "url": "/audio/samples/Patryk_2_2.mp3"
       },
       {
         "name": "Dynamiczny spot reklamowy ",
-        "url": "https://www.powitania.pl/wp-content/uploads/Patryk_2_3.mp3"
+        "url": "/audio/samples/Patryk_2_3.mp3"
       }
     ],
     "turnaround": "24h",
@@ -242,7 +242,7 @@
     "samples": [
       {
         "name": "Nagranie audiobooka",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_Rozenek_audiobook.mp3"
+        "url": "/audio/samples/Jacek_Rozenek_audiobook.mp3"
       }
     ],
     "turnaround": "72h",
@@ -291,11 +291,11 @@
     "samples": [
       {
         "name": "Lektor",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ferenc_1.mp3"
+        "url": "/audio/samples/Ferenc_1.mp3"
       },
       {
         "name": "Nagranie demonstracyjne",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ferenc_2.mp3"
+        "url": "/audio/samples/Ferenc_2.mp3"
       },
       {
         "name": "Narracja - Historia narodzin Dzbanka",
@@ -350,19 +350,19 @@
     "samples": [
       {
         "name": "Komunikat firmowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/slawek_2_0.mp3"
+        "url": "/audio/samples/slawek_2_0.mp3"
       },
       {
         "name": "Dubbing bajki",
-        "url": "https://www.powitania.pl/wp-content/uploads/slawek_2_2.mp3"
+        "url": "/audio/samples/slawek_2_2.mp3"
       },
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/slawek_2_audiobook.mp3"
+        "url": "/audio/samples/slawek_2_audiobook.mp3"
       },
       {
         "name": "Powitanie telefoniczne",
-        "url": "https://www.powitania.pl/wp-content/uploads/slawek_2_1.mp3"
+        "url": "/audio/samples/slawek_2_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -414,11 +414,11 @@
     "samples": [
       {
         "name": "Demo audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/maciej_3_1.mp3"
+        "url": "/audio/samples/maciej_3_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/maciej_3_2.mp3"
+        "url": "/audio/samples/maciej_3_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -470,11 +470,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/maciek_1.mp3"
+        "url": "/audio/samples/maciek_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/maciek_2.mp3"
+        "url": "/audio/samples/maciek_2.mp3"
       },
       {
         "name": "Narracja lektorska do filmu dokumentalnego",
@@ -531,11 +531,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Beata_Tadla_1.mp3"
+        "url": "/audio/samples/Beata_Tadla_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Beata_Tadla_2.mp3"
+        "url": "/audio/samples/Beata_Tadla_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -588,11 +588,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anna_Samusionek_1.mp3"
+        "url": "/audio/samples/Anna_Samusionek_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anna_Samusionek_2.mp3"
+        "url": "/audio/samples/Anna_Samusionek_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -645,11 +645,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie w języku polskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Dorota_3_pol.mp3"
+        "url": "/audio/samples/Dorota_3_pol.mp3"
       },
       {
         "name": "Nagranie lektorskie w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Dorota_3_eng.mp3"
+        "url": "/audio/samples/Dorota_3_eng.mp3"
       }
     ],
     "turnaround": "48h",
@@ -701,15 +701,15 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_1.mp3"
+        "url": "/audio/samples/Jacek_1.mp3"
       },
       {
         "name": "Udźwiękowiony spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_2.mp3"
+        "url": "/audio/samples/Jacek_2.mp3"
       },
       {
         "name": "Narracja lektorska z udźwiękowieniem",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_3.mp3"
+        "url": "/audio/samples/Jacek_3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -762,11 +762,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie, spot reklamowy i film przyrodniczy",
-        "url": "https://www.powitania.pl/wp-content/uploads/zuzanna_1.mp3"
+        "url": "/audio/samples/zuzanna_1.mp3"
       },
       {
         "name": "Nagranie lektorskie w języku angielskim - akcent amerykański i brytyjski",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zuzanna_eng.mp3"
+        "url": "/audio/samples/Zuzanna_eng.mp3"
       }
     ],
     "turnaround": "48h",
@@ -818,15 +818,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/katarzyna_skolimowska_1.mp3"
+        "url": "/audio/samples/katarzyna_skolimowska_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/katarzyna_skolimowska_2.mp3"
+        "url": "/audio/samples/katarzyna_skolimowska_2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/katarzyna_skolimowska_3.mp3"
+        "url": "/audio/samples/katarzyna_skolimowska_3.mp3"
       }
     ],
     "turnaround": "76h",
@@ -878,15 +878,15 @@
     "samples": [
       {
         "name": "Commercial VoiceOver",
-        "url": "https://www.powitania.pl/wp-content/uploads/Carla_commercial.mp3"
+        "url": "/audio/samples/Carla_commercial.mp3"
       },
       {
         "name": "Corporate explainer",
-        "url": "https://www.powitania.pl/wp-content/uploads/Carla_corporate_explainer.mp3"
+        "url": "/audio/samples/Carla_corporate_explainer.mp3"
       },
       {
         "name": "Corporate reel",
-        "url": "https://www.powitania.pl/wp-content/uploads/carla_corporate_reel.mp3"
+        "url": "/audio/samples/carla_corporate_reel.mp3"
       }
     ],
     "turnaround": "48h",
@@ -938,11 +938,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/michal_5_1.mp3"
+        "url": "/audio/samples/michal_5_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/michal_5_2.mp3"
+        "url": "/audio/samples/michal_5_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -994,15 +994,15 @@
     "samples": [
       {
         "name": "Spot reklamowy w języku greckim",
-        "url": "https://www.powitania.pl/wp-content/uploads/antonis_1.mp3"
+        "url": "/audio/samples/antonis_1.mp3"
       },
       {
         "name": "Zapowiedź telefon. w jęz. greckim",
-        "url": "https://www.powitania.pl/wp-content/uploads/antonis_2.mp3"
+        "url": "/audio/samples/antonis_2.mp3"
       },
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/antonis_3.mp3"
+        "url": "/audio/samples/antonis_3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1054,7 +1054,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/pawel_szwajgier.mp3"
+        "url": "/audio/samples/pawel_szwajgier.mp3"
       }
     ],
     "turnaround": "96h",
@@ -1106,11 +1106,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Magdalena_1.mp3"
+        "url": "/audio/samples/Magdalena_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Magdalena_2.mp3"
+        "url": "/audio/samples/Magdalena_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1163,11 +1163,11 @@
     "samples": [
       {
         "name": "Nagranie użytkowe dla firmy",
-        "url": "https://www.powitania.pl/wp-content/uploads/krzysztof_4_1.mp3"
+        "url": "/audio/samples/krzysztof_4_1.mp3"
       },
       {
         "name": "Nagranie do spotu reklamowego",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_4_2.mp3"
+        "url": "/audio/samples/Krzysztof_4_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1219,15 +1219,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna - Gwiezdne Wojny",
-        "url": "https://www.powitania.pl/wp-content/uploads/zapowiedź_Jacek_Brzostynski-1.mp3"
+        "url": "/audio/samples/zapowied%C5%BA_Jacek_Brzostynski-1.mp3"
       },
       {
         "name": "Narracja do internetu",
-        "url": "https://www.powitania.pl/wp-content/uploads/Brzostynski_1.mp3"
+        "url": "/audio/samples/Brzostynski_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek-Brzostyński_spot-Nest-Bank.mp3"
+        "url": "/audio/samples/Jacek-Brzosty%C5%84ski_spot-Nest-Bank.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1278,11 +1278,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kuba_Bielak_1.mp3"
+        "url": "/audio/samples/Kuba_Bielak_1.mp3"
       },
       {
         "name": "Fragment programu telewizyjnego",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kuba_Bielak_2_2.mp3"
+        "url": "/audio/samples/Kuba_Bielak_2_2.mp3"
       }
     ],
     "turnaround": "72h",
@@ -1333,11 +1333,11 @@
     "samples": [
       {
         "name": "Powitanie telefoniczne",
-        "url": "https://www.powitania.pl/wp-content/uploads/janek_powitanie.mp3"
+        "url": "/audio/samples/janek_powitanie.mp3"
       },
       {
         "name": "Voice over",
-        "url": "https://www.powitania.pl/wp-content/uploads/janek_dubbing.mp3"
+        "url": "/audio/samples/janek_dubbing.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1389,11 +1389,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Justyna_demo1.mp3"
+        "url": "/audio/samples/Justyna_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Justyna_demo2.mp3"
+        "url": "/audio/samples/Justyna_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1444,15 +1444,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo-1-1.mp3"
+        "url": "/audio/samples/demo-1-1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/4.mp3"
+        "url": "/audio/samples/4.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Blazej2_demo3.mp3"
+        "url": "/audio/samples/Blazej2_demo3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1504,11 +1504,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Michal_4_1.mp3"
+        "url": "/audio/samples/Michal_4_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Michal_4_2.mp3"
+        "url": "/audio/samples/Michal_4_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1560,7 +1560,7 @@
     "samples": [
       {
         "name": "Czech VoiceOver",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pavel_CZ_voiceover.mp3"
+        "url": "/audio/samples/Pavel_CZ_voiceover.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1613,15 +1613,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_2_2.mp3"
+        "url": "/audio/samples/Krzysztof_2_2.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/KS_DEMO.mp3"
+        "url": "/audio/samples/KS_DEMO.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_2_3_PL.mp3"
+        "url": "/audio/samples/Krzysztof_2_3_PL.mp3"
       },
       {
         "name": "Spot reklamowy",
@@ -1677,11 +1677,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Beata_1.mp3"
+        "url": "/audio/samples/Beata_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Beata_2.mp3"
+        "url": "/audio/samples/Beata_2.mp3"
       },
       {
         "name": "Narracja do filmu w wykonaniu Beaty",
@@ -1738,15 +1738,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna w jęz. angielskim i polskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/bartosz_2.mp3"
+        "url": "/audio/samples/bartosz_2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/bartosz_3.mp3"
+        "url": "/audio/samples/bartosz_3.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/bartosz_4.mp3"
+        "url": "/audio/samples/bartosz_4.mp3"
       },
       {
         "name": "Bilboard sponsorski",
@@ -1802,11 +1802,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_5_1.mp3"
+        "url": "/audio/samples/Marcin_5_1.mp3"
       },
       {
         "name": "Opowiadanie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_5_2.mp3"
+        "url": "/audio/samples/Marcin_5_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1858,11 +1858,11 @@
     "samples": [
       {
         "name": "audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alicja_1.mp3"
+        "url": "/audio/samples/Alicja_1.mp3"
       },
       {
         "name": "spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alicja_2.mp3"
+        "url": "/audio/samples/Alicja_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1915,15 +1915,15 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Janusz_demo1.mp3"
+        "url": "/audio/samples/Janusz_demo1.mp3"
       },
       {
         "name": "Radiowy spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Janusz_demo2.mp3"
+        "url": "/audio/samples/Janusz_demo2.mp3"
       },
       {
         "name": "Zapowiedź telefoniczna w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Janusz_ivr_ang_demo.mp3"
+        "url": "/audio/samples/Janusz_ivr_ang_demo.mp3"
       }
     ],
     "turnaround": "24h",
@@ -1975,11 +1975,11 @@
     "samples": [
       {
         "name": "powitanie telefoniczne w języku polskim i angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anita_1.mp3"
+        "url": "/audio/samples/Anita_1.mp3"
       },
       {
         "name": "komunikaty do fotobudki",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anita_2.mp3"
+        "url": "/audio/samples/Anita_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -2031,7 +2031,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/StanislawOlejniczak_21.mp3"
+        "url": "/audio/samples/StanislawOlejniczak_21.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2082,15 +2082,15 @@
     "samples": [
       {
         "name": "Spot głosowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mariusz_1.mp3"
+        "url": "/audio/samples/Mariusz_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mariusz_2.mp3"
+        "url": "/audio/samples/Mariusz_2.mp3"
       },
       {
         "name": "Zapowiedź koncertu",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mariusz_3.mp3"
+        "url": "/audio/samples/Mariusz_3.mp3"
       }
     ],
     "turnaround": "24h",
@@ -2142,15 +2142,15 @@
     "samples": [
       {
         "name": "Opowieść przyrodnicza",
-        "url": "https://www.powitania.pl/wp-content/uploads/Paulina_1.mp3"
+        "url": "/audio/samples/Paulina_1.mp3"
       },
       {
         "name": "Nagranie do filmu instruktażowego",
-        "url": "https://www.powitania.pl/wp-content/uploads/Paulina_2.mp3"
+        "url": "/audio/samples/Paulina_2.mp3"
       },
       {
         "name": "Fragment bajki",
-        "url": "https://www.powitania.pl/wp-content/uploads/Paulina_bajka.mp3"
+        "url": "/audio/samples/Paulina_bajka.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2203,11 +2203,11 @@
     "samples": [
       {
         "name": "Bajka",
-        "url": "https://www.powitania.pl/wp-content/uploads/daniel_2_2.mp3"
+        "url": "/audio/samples/daniel_2_2.mp3"
       },
       {
         "name": "Nagranie w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/daniel_2_1.mp3"
+        "url": "/audio/samples/daniel_2_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2260,15 +2260,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Konstancja_PL_ENG.mp3"
+        "url": "/audio/samples/Konstancja_PL_ENG.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/spot_Konstancja.mp3"
+        "url": "/audio/samples/spot_Konstancja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/spot2_Konstancja.mp3"
+        "url": "/audio/samples/spot2_Konstancja.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2323,19 +2323,19 @@
     "samples": [
       {
         "name": "Nagranie w języku ukraińskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vasyl_UKR.mp3"
+        "url": "/audio/samples/Vasyl_UKR.mp3"
       },
       {
         "name": "Prezentacja korporacyjna w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vasyl_ENG.mp3"
+        "url": "/audio/samples/Vasyl_ENG.mp3"
       },
       {
         "name": "Narracja w języku niemieckim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vasyl_GER.mp3"
+        "url": "/audio/samples/Vasyl_GER.mp3"
       },
       {
         "name": "Nagranie w języku rosyjskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vasyl_RUS.mp3"
+        "url": "/audio/samples/Vasyl_RUS.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2387,11 +2387,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kinga_1.mp3"
+        "url": "/audio/samples/Kinga_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kinga_2.mp3"
+        "url": "/audio/samples/Kinga_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -2443,11 +2443,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Olga_1.mp3"
+        "url": "/audio/samples/Olga_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/olga_film_przyrodniczy.mp3"
+        "url": "/audio/samples/olga_film_przyrodniczy.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2499,11 +2499,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej-Jabłoński_demo1.mp3"
+        "url": "/audio/samples/Maciej-Jab%C5%82o%C5%84ski_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej-Jabłoński_demo2.mp3"
+        "url": "/audio/samples/Maciej-Jab%C5%82o%C5%84ski_demo2.mp3"
       },
       {
         "name": "Demo filmowe",
@@ -2560,15 +2560,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_2.mp3"
+        "url": "/audio/samples/Marcin_2.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/MARCIN_2_ENGLISH.mp3"
+        "url": "/audio/samples/MARCIN_2_ENGLISH.mp3"
       },
       {
         "name": "Specjalność Marcina to szybko mówione spoty reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/Spot_1_final.wav"
+        "url": "/audio/samples/Spot_1_final.mp3"
       }
     ],
     "turnaround": "24h",
@@ -2620,11 +2620,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Patryk_1.mp3"
+        "url": "/audio/samples/Patryk_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Patryk_2.mp3"
+        "url": "/audio/samples/Patryk_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2677,11 +2677,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Aleksander_IVR_PL_EN_reklama.mp3"
+        "url": "/audio/samples/Aleksander_IVR_PL_EN_reklama.mp3"
       },
       {
         "name": "Komunikat głosowy w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Aleksander_demo.mp3"
+        "url": "/audio/samples/Aleksander_demo.mp3"
       },
       {
         "name": "E-learning",
@@ -2741,11 +2741,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Narracja_mr.mp3"
+        "url": "/audio/samples/Narracja_mr.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/hort-cafe-mr.mp3"
+        "url": "/audio/samples/hort-cafe-mr.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2797,11 +2797,11 @@
     "samples": [
       {
         "name": "Przykład zapowiedzi telefonicznej",
-        "url": "https://www.powitania.pl/wp-content/uploads/Rafal_ivr.mp3"
+        "url": "/audio/samples/Rafal_ivr.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Rafał_demo.mp3"
+        "url": "/audio/samples/Rafa%C5%82_demo.mp3"
       }
     ],
     "turnaround": "24h",
@@ -2853,11 +2853,11 @@
     "samples": [
       {
         "name": "Nagranie reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/arek_1.mp3"
+        "url": "/audio/samples/arek_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/arek_2.mp3"
+        "url": "/audio/samples/arek_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -2909,11 +2909,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roch_demo1.mp3"
+        "url": "/audio/samples/Roch_demo1.mp3"
       },
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/6f1d406e91148fd9cc988289357d54dd9fcd5473.mp3"
+        "url": "/audio/samples/6f1d406e91148fd9cc988289357d54dd9fcd5473.mp3"
       },
       {
         "name": "Making of „Wyspy Camino”",
@@ -2969,11 +2969,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka3_demo.mp3"
+        "url": "/audio/samples/Agnieszka3_demo.mp3"
       },
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka3_demo2.mp3"
+        "url": "/audio/samples/Agnieszka3_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3026,11 +3026,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kim_2_1.mp3"
+        "url": "/audio/samples/Kim_2_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kim_2_2.mp3"
+        "url": "/audio/samples/Kim_2_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -3082,11 +3082,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/ZOFIA-Z-DEMO-LEKTORSKIE_MSTRD.mp3"
+        "url": "/audio/samples/ZOFIA-Z-DEMO-LEKTORSKIE_MSTRD.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/ZOFIA-ZON-DEMO-LEKTORSKIE-DLUZSZA-WERSJA.mp3"
+        "url": "/audio/samples/ZOFIA-ZON-DEMO-LEKTORSKIE-DLUZSZA-WERSJA.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3137,19 +3137,19 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarek-IVR.mp3"
+        "url": "/audio/samples/Jarek-IVR.mp3"
       },
       {
         "name": "Google Maps",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarek-Google-Maps.mp3"
+        "url": "/audio/samples/Jarek-Google-Maps.mp3"
       },
       {
         "name": "E-learning",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarek-medical-e-learning.mp3"
+        "url": "/audio/samples/Jarek-medical-e-learning.mp3"
       },
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarek-audiobook.mp3"
+        "url": "/audio/samples/Jarek-audiobook.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3201,15 +3201,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna w języku rumuńskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marius_1.mp3"
+        "url": "/audio/samples/Marius_1.mp3"
       },
       {
         "name": "Spot reklamowy w języku rumuńskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marius_3.mp3"
+        "url": "/audio/samples/Marius_3.mp3"
       },
       {
         "name": "Narracja w języku rumuńskim ",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marius_2.mp3"
+        "url": "/audio/samples/Marius_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3261,11 +3261,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Natalia_2_1.mp3"
+        "url": "/audio/samples/Natalia_2_1.mp3"
       },
       {
         "name": "Spot reklamowy głos kobiecy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Natalia_2_2.mp3"
+        "url": "/audio/samples/Natalia_2_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -3319,15 +3319,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lucia_demo1.mp3"
+        "url": "/audio/samples/Lucia_demo1.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lucia_demo2.mp3"
+        "url": "/audio/samples/Lucia_demo2.mp3"
       },
       {
         "name": "Nagranie lektorskie w języku niemieckim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lucia_demo_niemiecki.mp3"
+        "url": "/audio/samples/Lucia_demo_niemiecki.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3379,11 +3379,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kamila_demo1_narracja.mp3"
+        "url": "/audio/samples/Kamila_demo1_narracja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kamila_demo2_spot-reklamowy.mp3"
+        "url": "/audio/samples/Kamila_demo2_spot-reklamowy.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3436,11 +3436,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Browar.mp3"
+        "url": "/audio/samples/Browar.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marek_tekst_angielski.mp3"
+        "url": "/audio/samples/Marek_tekst_angielski.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3492,15 +3492,15 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Robert_demo1_2.mp3"
+        "url": "/audio/samples/Robert_demo1_2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Robert_demo2.mp3"
+        "url": "/audio/samples/Robert_demo2.mp3"
       },
       {
         "name": "Spot reklamowy - scenka",
-        "url": "https://www.powitania.pl/wp-content/uploads/Robert_demo3.mp3"
+        "url": "/audio/samples/Robert_demo3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3552,15 +3552,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/IVR_3.mp3"
+        "url": "/audio/samples/IVR_3.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/przemek.mp3"
+        "url": "/audio/samples/przemek.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/foodtrack.wav"
+        "url": "/audio/samples/foodtrack.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3611,11 +3611,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zbigniew3_D.mp3"
+        "url": "/audio/samples/Zbigniew3_D.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Demo.mp3"
+        "url": "/audio/samples/Demo.mp3"
       },
       {
         "name": "Reklama 2",
@@ -3671,15 +3671,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lukasz-2_zapowiedz.mp3"
+        "url": "/audio/samples/Lukasz-2_zapowiedz.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lukasz-2_demo2.mp3"
+        "url": "/audio/samples/Lukasz-2_demo2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lukasz-2_demo.mp3"
+        "url": "/audio/samples/Lukasz-2_demo.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3731,11 +3731,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mateusz_2_3-1.mp3"
+        "url": "/audio/samples/Mateusz_2_3-1.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mateusz_2_4.mp3"
+        "url": "/audio/samples/Mateusz_2_4.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3787,7 +3787,7 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/bruno-mix-15-reklam_2.mp3"
+        "url": "/audio/samples/bruno-mix-15-reklam_2.mp3"
       },
       {
         "name": "Reklama TV",
@@ -3842,11 +3842,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_3_1.mp3"
+        "url": "/audio/samples/Ola_3_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_3_2.mp3"
+        "url": "/audio/samples/Ola_3_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3898,11 +3898,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Narracja-Anna2.mp3"
+        "url": "/audio/samples/Narracja-Anna2.mp3"
       },
       {
         "name": "Recytacja",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo-2.wav"
+        "url": "/audio/samples/demo-2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -3954,7 +3954,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/franek_starszy.mp3"
+        "url": "/audio/samples/franek_starszy.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4005,11 +4005,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pola_1.mp3"
+        "url": "/audio/samples/Pola_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pola_2.mp3"
+        "url": "/audio/samples/Pola_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4062,11 +4062,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej_2_1-1.mp3"
+        "url": "/audio/samples/Maciej_2_1-1.mp3"
       },
       {
         "name": "Demo w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej_2_eng.mp3"
+        "url": "/audio/samples/Maciej_2_eng.mp3"
       },
       {
         "name": "Spot reklamowy",
@@ -4123,11 +4123,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Malgorzata_1.mp3"
+        "url": "/audio/samples/Malgorzata_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Gocha_ENG.mp3"
+        "url": "/audio/samples/Gocha_ENG.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4179,11 +4179,11 @@
     "samples": [
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Demo_1-6.mp3"
+        "url": "/audio/samples/Demo_1-6.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Demo_2.mp3"
+        "url": "/audio/samples/Demo_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4235,11 +4235,11 @@
     "samples": [
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/Katarzyna-2_demo1.mp3"
+        "url": "/audio/samples/Katarzyna-2_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Katarzyna-2_demo2_reklama.mp3"
+        "url": "/audio/samples/Katarzyna-2_demo2_reklama.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4291,11 +4291,11 @@
     "samples": [
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_3-audiobook-fragment.mp3"
+        "url": "/audio/samples/Krzysztof_3-audiobook-fragment.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_3_2.mp3"
+        "url": "/audio/samples/Krzysztof_3_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4348,19 +4348,19 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Narracja_Mateusz3.mp3"
+        "url": "/audio/samples/Narracja_Mateusz3.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Spot_Mateusz3.mp3"
+        "url": "/audio/samples/Spot_Mateusz3.mp3"
       },
       {
         "name": "Bajka",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bajka-pl_Mateusz3.mp3"
+        "url": "/audio/samples/Bajka-pl_Mateusz3.mp3"
       },
       {
         "name": "Bajka w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bajka-ang_Mateusz3.mp3"
+        "url": "/audio/samples/Bajka-ang_Mateusz3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4412,11 +4412,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/michal_1.mp3"
+        "url": "/audio/samples/michal_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/michal_2.mp3"
+        "url": "/audio/samples/michal_2.mp3"
       },
       {
         "name": "Instrukcja montażu komina do której głosu użyczył Michał",
@@ -4476,11 +4476,11 @@
     "samples": [
       {
         "name": "Komunikat głosowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/klaudia_1.mp3"
+        "url": "/audio/samples/klaudia_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/klaudia_2.mp3"
+        "url": "/audio/samples/klaudia_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4532,11 +4532,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarosław_demo1.mp3"
+        "url": "/audio/samples/Jaros%C5%82aw_demo1.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jarosław_demo2.mp3"
+        "url": "/audio/samples/Jaros%C5%82aw_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4589,15 +4589,15 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo-filip.mp3"
+        "url": "/audio/samples/demo-filip.mp3"
       },
       {
         "name": "Nagranie lektorskie w języku angielskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Filip_demo2_ENG.mp3"
+        "url": "/audio/samples/Filip_demo2_ENG.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Filip_demo1-1.mp3"
+        "url": "/audio/samples/Filip_demo1-1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4650,11 +4650,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo_1.mp3"
+        "url": "/audio/samples/demo_1.mp3"
       },
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo_2-1.mp3"
+        "url": "/audio/samples/demo_2-1.mp3"
       },
       {
         "name": "Szybko powiedziana zapowiedź festiwalu w Prusicach",
@@ -4709,11 +4709,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/hindi-narration.mp3"
+        "url": "/audio/samples/hindi-narration.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/motivational.mp3"
+        "url": "/audio/samples/motivational.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4765,11 +4765,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hindi-Samsung-IVR.mp3"
+        "url": "/audio/samples/Hindi-Samsung-IVR.mp3"
       },
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/College-Film-Narration.mp3"
+        "url": "/audio/samples/College-Film-Narration.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4821,11 +4821,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_demo1.mp3"
+        "url": "/audio/samples/Marcin_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_demo2.mp3"
+        "url": "/audio/samples/Marcin_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4876,11 +4876,11 @@
     "samples": [
       {
         "name": "Lektor estoński",
-        "url": "https://www.powitania.pl/wp-content/uploads/Estonian_1.mp3"
+        "url": "/audio/samples/Estonian_1.mp3"
       },
       {
         "name": "Nagranie lektorskie w jęz. estońskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Estonian_2.mp3"
+        "url": "/audio/samples/Estonian_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4932,11 +4932,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hasan-demo-1.mp3"
+        "url": "/audio/samples/Hasan-demo-1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hasan-demo-2.mp3"
+        "url": "/audio/samples/Hasan-demo-2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -4988,15 +4988,15 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/probka_3-1.mp3"
+        "url": "/audio/samples/probka_3-1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/probka_2.mp3"
+        "url": "/audio/samples/probka_2.mp3"
       },
       {
         "name": "Zapowiedź telewizyjna",
-        "url": "https://www.powitania.pl/wp-content/uploads/probka_1.mp3"
+        "url": "/audio/samples/probka_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5048,11 +5048,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka_2_1.mp3"
+        "url": "/audio/samples/Agnieszka_2_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka_2-1.mp3"
+        "url": "/audio/samples/Agnieszka_2-1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5103,11 +5103,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/anka_1.mp3"
+        "url": "/audio/samples/anka_1.mp3"
       },
       {
         "name": "Narracja do filmu",
-        "url": "https://www.powitania.pl/wp-content/uploads/anka_2.mp3"
+        "url": "/audio/samples/anka_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5159,19 +5159,19 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pawel-3_demo-narracja.mp3"
+        "url": "/audio/samples/Pawel-3_demo-narracja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pawel-3_demo-reklama.mp3"
+        "url": "/audio/samples/Pawel-3_demo-reklama.mp3"
       },
       {
         "name": "Reklama radiowa",
-        "url": "https://www.powitania.pl/wp-content/uploads/Reklama-Alab.wav"
+        "url": "/audio/samples/Reklama-Alab.mp3"
       },
       {
         "name": "Zapowiedź radiowa",
-        "url": "https://www.powitania.pl/wp-content/uploads/commercial-00.mp3"
+        "url": "/audio/samples/commercial-00.mp3"
       },
       {
         "name": "Narracja lektorska",
@@ -5227,11 +5227,11 @@
     "samples": [
       {
         "name": "Powitanie telefoniczne",
-        "url": "https://www.powitania.pl/wp-content/uploads/Przemyslaw_2_1.mp3"
+        "url": "/audio/samples/Przemyslaw_2_1.mp3"
       },
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Przemyslaw2_2.mp3"
+        "url": "/audio/samples/Przemyslaw2_2.mp3"
       }
     ],
     "turnaround": "24h",
@@ -5282,11 +5282,11 @@
     "samples": [
       {
         "name": "Recytacja",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomasz_2_1.mp3"
+        "url": "/audio/samples/tomasz_2_1.mp3"
       },
       {
         "name": "Bajka",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomasz_2_2.mp3"
+        "url": "/audio/samples/tomasz_2_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5338,11 +5338,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Emilia_1.mp3"
+        "url": "/audio/samples/Emilia_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Emilia_2.mp3"
+        "url": "/audio/samples/Emilia_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5394,7 +5394,7 @@
     "samples": [
       {
         "name": "Spot reklamowy - Renopuren",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mirosław-Utta_demo-1_Reklama-Renopuren.mp3"
+        "url": "/audio/samples/Miros%C5%82aw-Utta_demo-1_Reklama-Renopuren.mp3"
       },
       {
         "name": "Spot reklamowy - Żubr",
@@ -5402,7 +5402,7 @@
       },
       {
         "name": "Lodowisko - mBank",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mirosław-Utta_demo2_reklama-mbank.wav"
+        "url": "/audio/samples/Miros%C5%82aw-Utta_demo2_reklama-mbank.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5454,15 +5454,15 @@
     "samples": [
       {
         "name": "Fragment audiobooka",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomasz_1.mp3"
+        "url": "/audio/samples/tomasz_1.mp3"
       },
       {
         "name": "Udźwiękowiony spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomasz_2.mp3"
+        "url": "/audio/samples/tomasz_2.mp3"
       },
       {
         "name": "Outro podcastu",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomasz_3.mp3"
+        "url": "/audio/samples/tomasz_3.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5514,11 +5514,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr_2_1-1.mp3"
+        "url": "/audio/samples/Piotr_2_1-1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr_2_2-1.mp3"
+        "url": "/audio/samples/Piotr_2_2-1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5570,7 +5570,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Miguel_demo1.mp3"
+        "url": "/audio/samples/Miguel_demo1.mp3"
       },
       {
         "name": "Narracja do filmu",
@@ -5631,11 +5631,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Aga_1.mp3"
+        "url": "/audio/samples/Aga_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Aga_2.mp3"
+        "url": "/audio/samples/Aga_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5685,11 +5685,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Iwona_1.mp3"
+        "url": "/audio/samples/Iwona_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Iwona-demo-lektorskie-2022.mp3"
+        "url": "/audio/samples/Iwona-demo-lektorskie-2022.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5741,7 +5741,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Catarina_demo1.mp3"
+        "url": "/audio/samples/Catarina_demo1.mp3"
       },
       {
         "name": "Nagranie do filmu",
@@ -5801,11 +5801,11 @@
     "samples": [
       {
         "name": "Język włoski voice over",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vishal_1.mp3"
+        "url": "/audio/samples/Vishal_1.mp3"
       },
       {
         "name": "Italian voice over",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vishal_2.mp3"
+        "url": "/audio/samples/Vishal_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5857,15 +5857,15 @@
     "samples": [
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/sebastian_1.mp3"
+        "url": "/audio/samples/sebastian_1.mp3"
       },
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/sebastian_zapow.mp3"
+        "url": "/audio/samples/sebastian_zapow.mp3"
       },
       {
         "name": "e-learning",
-        "url": "https://www.powitania.pl/wp-content/uploads/sebastian_e_learning.mp3"
+        "url": "/audio/samples/sebastian_e_learning.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5918,15 +5918,15 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Diana_1_1.mp3"
+        "url": "/audio/samples/Diana_1_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Diana_1_2.mp3"
+        "url": "/audio/samples/Diana_1_2.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Diana_1.mp3"
+        "url": "/audio/samples/Diana_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -5978,11 +5978,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub-3_demo1_narracja.mp3"
+        "url": "/audio/samples/Jakub-3_demo1_narracja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub-3_demo2_reklama.mp3"
+        "url": "/audio/samples/Jakub-3_demo2_reklama.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6033,11 +6033,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lea-prezentacja.mp3"
+        "url": "/audio/samples/Lea-prezentacja.mp3"
       },
       {
         "name": "Reklama",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lea-reklama.mp3"
+        "url": "/audio/samples/Lea-reklama.mp3"
       },
       {
         "name": "Reklama TV - Biedronka",
@@ -6096,11 +6096,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/prezenetacja.mp3"
+        "url": "/audio/samples/prezenetacja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ikea.mp3"
+        "url": "/audio/samples/Ikea.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6152,11 +6152,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Basia_3.mp3"
+        "url": "/audio/samples/Basia_3.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Basia_1.mp3"
+        "url": "/audio/samples/Basia_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6207,19 +6207,19 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin-4_demo1.mp3"
+        "url": "/audio/samples/Marcin-4_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin-4_demo2_reklama.mp3"
+        "url": "/audio/samples/Marcin-4_demo2_reklama.mp3"
       },
       {
         "name": "E-learning",
-        "url": "https://www.powitania.pl/wp-content/uploads/06.-E-learning-RODO.mp3"
+        "url": "/audio/samples/06.-E-learning-RODO.mp3"
       },
       {
         "name": "Billboard sponsorski",
-        "url": "https://www.powitania.pl/wp-content/uploads/02.-Billboard-sponsorski-solo-VO.mp3"
+        "url": "/audio/samples/02.-Billboard-sponsorski-solo-VO.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6272,7 +6272,7 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Witalij_Demo_Ukr-Rus.mp3"
+        "url": "/audio/samples/Witalij_Demo_Ukr-Rus.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6324,11 +6324,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Eri-Daniel_demo-1.mp3"
+        "url": "/audio/samples/Eri-Daniel_demo-1.mp3"
       },
       {
         "name": "Spot radiowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Eri-Daniel_radio_demo2.mp3"
+        "url": "/audio/samples/Eri-Daniel_radio_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -6378,11 +6378,11 @@
     "samples": [
       {
         "name": "Demo w języku japońskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Yurika_demo-2-japonski.mp3"
+        "url": "/audio/samples/Yurika_demo-2-japonski.mp3"
       },
       {
         "name": "Demo w języku chińskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Yurika_chinski.mp3"
+        "url": "/audio/samples/Yurika_chinski.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6435,19 +6435,19 @@
     "samples": [
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta-2_audiobook.mp3"
+        "url": "/audio/samples/Marta-2_audiobook.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta-2_demo-lektorskie.mp3"
+        "url": "/audio/samples/Marta-2_demo-lektorskie.mp3"
       },
       {
         "name": "Reklama",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta-2_reklama.mp3"
+        "url": "/audio/samples/Marta-2_reklama.mp3"
       },
       {
         "name": "Demo w języku francuskim",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta-2_demo-FR.mp3"
+        "url": "/audio/samples/Marta-2_demo-FR.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6498,11 +6498,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marzena-2_demo1.mp3"
+        "url": "/audio/samples/Marzena-2_demo1.mp3"
       },
       {
         "name": "Portfolio głosowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marzena-2_demo2.mp3"
+        "url": "/audio/samples/Marzena-2_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6554,11 +6554,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Erwin_demo1.mp3"
+        "url": "/audio/samples/Erwin_demo1.mp3"
       },
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Erwin_demo2.mp3"
+        "url": "/audio/samples/Erwin_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6610,7 +6610,7 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bartosz_Ignacik.mp3"
+        "url": "/audio/samples/Bartosz_Ignacik.mp3"
       },
       {
         "name": "Fragment popularnego programu sportowego, którego gospodarzem jest Bartek Ignacik",
@@ -6666,15 +6666,15 @@
     "samples": [
       {
         "name": "Demo lektorskie SK",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jaroslav_demo1.mp3"
+        "url": "/audio/samples/Jaroslav_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jaroslav_demo2.mp3"
+        "url": "/audio/samples/Jaroslav_demo2.mp3"
       },
       {
         "name": "Demo lektorskie CZ",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jaroslav_demo-CZ.mp3"
+        "url": "/audio/samples/Jaroslav_demo-CZ.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6726,7 +6726,7 @@
     "samples": [
       {
         "name": "Spoty reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/Łukasz_demo2.mp3"
+        "url": "/audio/samples/%C5%81ukasz_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6775,15 +6775,15 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Wiktor_1_nowe.mp3"
+        "url": "/audio/samples/Wiktor_1_nowe.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Wiktor_2_nowe.mp3"
+        "url": "/audio/samples/Wiktor_2_nowe.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Wiktor_3_nowe.mp3"
+        "url": "/audio/samples/Wiktor_3_nowe.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6834,11 +6834,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ula.mp3"
+        "url": "/audio/samples/Ula.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ula_call_mix.mp3"
+        "url": "/audio/samples/Ula_call_mix.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6889,11 +6889,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bartek_1.mp3"
+        "url": "/audio/samples/Bartek_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bartek_2.mp3"
+        "url": "/audio/samples/Bartek_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6944,11 +6944,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Rapido-.mp3"
+        "url": "/audio/samples/Rapido-.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alan_demo.mp3"
+        "url": "/audio/samples/Alan_demo.mp3"
       }
     ],
     "turnaround": "48h",
@@ -6999,11 +6999,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Arminas_demo1.mp3"
+        "url": "/audio/samples/Arminas_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Arminas_demo2.mp3"
+        "url": "/audio/samples/Arminas_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7052,11 +7052,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vladimir-2_demo1.mp3"
+        "url": "/audio/samples/Vladimir-2_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vladimir-2_demo2.mp3"
+        "url": "/audio/samples/Vladimir-2_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7107,11 +7107,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/mikolaj_krawczyk_1.mp3"
+        "url": "/audio/samples/mikolaj_krawczyk_1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/mikolaj_krawczyk_2.mp3"
+        "url": "/audio/samples/mikolaj_krawczyk_2.mp3"
       },
       {
         "name": "Wokal",
@@ -7170,11 +7170,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Daria_demo1.mp3"
+        "url": "/audio/samples/Daria_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Daria_demo2.mp3"
+        "url": "/audio/samples/Daria_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7226,11 +7226,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anna_3_demo1.mp3"
+        "url": "/audio/samples/Anna_3_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anna_3_demo2.mp3"
+        "url": "/audio/samples/Anna_3_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7282,11 +7282,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Julien_demo1.mp3"
+        "url": "/audio/samples/Julien_demo1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Julien_demo2.mp3"
+        "url": "/audio/samples/Julien_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7336,11 +7336,11 @@
     "samples": [
       {
         "name": "Powitanie telefoniczne",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysiek_1_demo.mp3"
+        "url": "/audio/samples/Krzysiek_1_demo.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysiek_2_demo.mp3"
+        "url": "/audio/samples/Krzysiek_2_demo.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7393,11 +7393,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Nikolay_demo1.mp3"
+        "url": "/audio/samples/Nikolay_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Nikolay_demo2.mp3"
+        "url": "/audio/samples/Nikolay_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7448,11 +7448,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej_2_1.mp3"
+        "url": "/audio/samples/Maciej_2_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Maciej_2_2.wav"
+        "url": "/audio/samples/Maciej_2_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7506,11 +7506,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Norbert_1.mp3"
+        "url": "/audio/samples/Norbert_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Norbert_2.mp3"
+        "url": "/audio/samples/Norbert_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7562,11 +7562,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ofer_demo.mp3"
+        "url": "/audio/samples/Ofer_demo.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ofer_demo2.mp3"
+        "url": "/audio/samples/Ofer_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7617,11 +7617,11 @@
     "samples": [
       {
         "name": "Krótkie demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Noa_demo.mp3"
+        "url": "/audio/samples/Noa_demo.mp3"
       },
       {
         "name": "Zapowiedź telefoniczna - język hebrajski i angielski",
-        "url": "https://www.powitania.pl/wp-content/uploads/Noa_demo2.mp3"
+        "url": "/audio/samples/Noa_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -7672,11 +7672,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/Eyal_demo1mp3.mp3"
+        "url": "/audio/samples/Eyal_demo1mp3.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Eyal_demo2.mp3"
+        "url": "/audio/samples/Eyal_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7725,11 +7725,11 @@
     "samples": [
       {
         "name": "Demo - język angielski i hebrajski",
-        "url": "https://www.powitania.pl/wp-content/uploads/URIEL_demo.mp3"
+        "url": "/audio/samples/URIEL_demo.mp3"
       },
       {
         "name": "Spoty reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/URIEL_demo2.mp3"
+        "url": "/audio/samples/URIEL_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7779,15 +7779,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vita_demo1.mp3"
+        "url": "/audio/samples/Vita_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vita_demo2.mp3"
+        "url": "/audio/samples/Vita_demo2.mp3"
       },
       {
         "name": "demo - język rosyjski",
-        "url": "https://www.powitania.pl/wp-content/uploads/Vita_VO_RU.mp3"
+        "url": "/audio/samples/Vita_VO_RU.mp3"
       }
     ],
     "turnaround": null,
@@ -7838,11 +7838,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Goran_demo1.mp3"
+        "url": "/audio/samples/Goran_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Goran_demo2.mp3"
+        "url": "/audio/samples/Goran_demo2.mp3"
       },
       {
         "name": "Reklama Lidl",
@@ -7850,7 +7850,7 @@
       },
       {
         "name": "Demo - język angielski (akcent wschodnioeuropejski)",
-        "url": "https://www.powitania.pl/wp-content/uploads/GoranPaleka_GamesCharacterENG_1.mp3"
+        "url": "/audio/samples/GoranPaleka_GamesCharacterENG_1.mp3"
       }
     ],
     "turnaround": null,
@@ -7900,11 +7900,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/mark_demo1.mp3"
+        "url": "/audio/samples/mark_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/mark_demo2.mp3"
+        "url": "/audio/samples/mark_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -7956,19 +7956,19 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Humberto_1.mp3"
+        "url": "/audio/samples/Humberto_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Humberto_2.mp3"
+        "url": "/audio/samples/Humberto_2.mp3"
       },
       {
         "name": "Demo - język hiszpański",
-        "url": "https://www.powitania.pl/wp-content/uploads/Humberto-Franco-Spanish-accented-sample.mp3"
+        "url": "/audio/samples/Humberto-Franco-Spanish-accented-sample.mp3"
       },
       {
         "name": "Demo - język angielski",
-        "url": "https://www.powitania.pl/wp-content/uploads/Humberto-Franco-English-accented-sample.mp3"
+        "url": "/audio/samples/Humberto-Franco-English-accented-sample.mp3"
       },
       {
         "name": "Reklama Bosch",
@@ -8027,7 +8027,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Skowron_1.mp3"
+        "url": "/audio/samples/Skowron_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
@@ -8080,11 +8080,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo_1.wav"
+        "url": "/audio/samples/demo_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo_2.mp3"
+        "url": "/audio/samples/demo_2.mp3"
       },
       {
         "name": "Reklama Lenovo",
@@ -8147,11 +8147,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Tomek_1.mp3"
+        "url": "/audio/samples/Tomek_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/tomek1.mp3"
+        "url": "/audio/samples/tomek1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8201,11 +8201,11 @@
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr4_demo2022.mp3"
+        "url": "/audio/samples/Piotr4_demo2022.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr4_demo2022-spot.mp3"
+        "url": "/audio/samples/Piotr4_demo2022-spot.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8257,11 +8257,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Edyta_1.mp3"
+        "url": "/audio/samples/Edyta_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Edyta_2.mp3"
+        "url": "/audio/samples/Edyta_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8313,11 +8313,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Powitanie_nowe_Hubert.mp3"
+        "url": "/audio/samples/Powitanie_nowe_Hubert.mp3"
       },
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hubert_demo2.mp3"
+        "url": "/audio/samples/Hubert_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8369,11 +8369,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/DOMSENIORA11.mp3"
+        "url": "/audio/samples/DOMSENIORA11.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/JESTESMY2.mp3"
+        "url": "/audio/samples/JESTESMY2.mp3"
       },
       {
         "name": "Dariusz udzielił swojego głosu w reklamie ekskluzywnych zegarków firmy Polpora",
@@ -8429,11 +8429,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andy_1.mp3"
+        "url": "/audio/samples/Andy_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andy_2.mp3"
+        "url": "/audio/samples/Andy_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8485,11 +8485,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Joanna_1.mp3"
+        "url": "/audio/samples/Joanna_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Joanna_2.mp3"
+        "url": "/audio/samples/Joanna_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8540,11 +8540,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roy_German.mp3"
+        "url": "/audio/samples/Roy_German.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roy_Swissgerman.mp3"
+        "url": "/audio/samples/Roy_Swissgerman.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8595,7 +8595,7 @@
     "samples": [
       {
         "name": "Lektor łotewski",
-        "url": "https://www.powitania.pl/wp-content/uploads/Guntis_1.mp3"
+        "url": "/audio/samples/Guntis_1.mp3"
       },
       {
         "name": "Spot social media w języku łotewskim",
@@ -8651,11 +8651,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/ADA1.mp3"
+        "url": "/audio/samples/ADA1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/ada_mix_rock.mp3"
+        "url": "/audio/samples/ada_mix_rock.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8706,11 +8706,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Adam_demo1.mp3"
+        "url": "/audio/samples/Adam_demo1.mp3"
       },
       {
         "name": "Reklama",
-        "url": "https://www.powitania.pl/wp-content/uploads/Adam_demo2.mp3"
+        "url": "/audio/samples/Adam_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8761,11 +8761,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Silvia_demo1.mp3"
+        "url": "/audio/samples/Silvia_demo1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Silvia_demo2.mp3"
+        "url": "/audio/samples/Silvia_demo2.mp3"
       },
       {
         "name": "Spot reklamowy",
@@ -8826,11 +8826,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta_1_2.mp3"
+        "url": "/audio/samples/Marta_1_2.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marta_2.mp3"
+        "url": "/audio/samples/Marta_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8881,7 +8881,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/NIna.mp3"
+        "url": "/audio/samples/NIna.mp3"
       },
       {
         "name": "Bajka dla dzieci - główna rola Sofia",
@@ -8935,11 +8935,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ewelina_1.mp3"
+        "url": "/audio/samples/Ewelina_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ewelina_2.mp3"
+        "url": "/audio/samples/Ewelina_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -8992,15 +8992,15 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andrzej-nowe-demo-1.mp3"
+        "url": "/audio/samples/Andrzej-nowe-demo-1.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andrzej-nowe-demo-2.mp3"
+        "url": "/audio/samples/Andrzej-nowe-demo-2.mp3"
       },
       {
         "name": "Film instruktażowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andrzej-nowe-demo-3.mp3"
+        "url": "/audio/samples/Andrzej-nowe-demo-3.mp3"
       },
       {
         "name": "Spot reklamowy",
@@ -9064,7 +9064,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/yonca-TR-DEMO.mp3"
+        "url": "/audio/samples/yonca-TR-DEMO.mp3"
       }
     ],
     "turnaround": null,
@@ -9115,11 +9115,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Juliya.mp3"
+        "url": "/audio/samples/Juliya.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Juliya_mix.mp3"
+        "url": "/audio/samples/Juliya_mix.mp3"
       }
     ],
     "turnaround": null,
@@ -9170,11 +9170,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_3-1.mp3"
+        "url": "/audio/samples/Marcin_3-1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marcin_3_2.mp3"
+        "url": "/audio/samples/Marcin_3_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9225,11 +9225,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Klaudiusz_1.mp3"
+        "url": "/audio/samples/Klaudiusz_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Klaudiusz_2.mp3"
+        "url": "/audio/samples/Klaudiusz_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9279,11 +9279,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/Karol_demo2.mp3"
+        "url": "/audio/samples/Karol_demo2.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Karol_demo1.mp3"
+        "url": "/audio/samples/Karol_demo1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9334,11 +9334,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andrzej_Krusiewicz_1.mp3"
+        "url": "/audio/samples/Andrzej_Krusiewicz_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Andrzej_Krusiewicz_2.mp3"
+        "url": "/audio/samples/Andrzej_Krusiewicz_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9390,11 +9390,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_Kurowski_1.mp3"
+        "url": "/audio/samples/Jacek_Kurowski_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jacek_Kurowski_2.mp3"
+        "url": "/audio/samples/Jacek_Kurowski_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9446,11 +9446,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zaginione_PL_vo.mp3"
+        "url": "/audio/samples/Zaginione_PL_vo.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Paweł_demo2.mp3"
+        "url": "/audio/samples/Pawe%C5%82_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -9501,7 +9501,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Joachim_1.mp3"
+        "url": "/audio/samples/Joachim_1.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9553,7 +9553,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Dorota-Gorjanow.mp3"
+        "url": "/audio/samples/Dorota-Gorjanow.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9604,11 +9604,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Laura_1-1.mp3"
+        "url": "/audio/samples/Laura_1-1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Laura_2.mp3"
+        "url": "/audio/samples/Laura_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -9660,11 +9660,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ioana_1.mp3"
+        "url": "/audio/samples/Ioana_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ioana_2.mp3"
+        "url": "/audio/samples/Ioana_2.mp3"
       }
     ],
     "turnaround": null,
@@ -9714,11 +9714,11 @@
     "samples": [
       {
         "name": "Audioprzewodnik",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alfonso_demo1.mp3"
+        "url": "/audio/samples/Alfonso_demo1.mp3"
       },
       {
         "name": "Spoty reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alfonso_demo2.mp3"
+        "url": "/audio/samples/Alfonso_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -9770,11 +9770,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Joel_studio_Demo.mp3"
+        "url": "/audio/samples/Joel_studio_Demo.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/PROMO_JOEL_CONTINUIDAD.mp3"
+        "url": "/audio/samples/PROMO_JOEL_CONTINUIDAD.mp3"
       }
     ],
     "turnaround": null,
@@ -9824,7 +9824,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kornelia_1.mp3"
+        "url": "/audio/samples/Kornelia_1.mp3"
       }
     ],
     "turnaround": null,
@@ -9873,11 +9873,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mona_1.mp3"
+        "url": "/audio/samples/Mona_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mona_2.mp3"
+        "url": "/audio/samples/Mona_2.mp3"
       }
     ],
     "turnaround": null,
@@ -9927,11 +9927,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Wael_1.mp3"
+        "url": "/audio/samples/Wael_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Wael_2.mp3"
+        "url": "/audio/samples/Wael_2.mp3"
       }
     ],
     "turnaround": null,
@@ -9980,11 +9980,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Luis_Alberto_Casado_Documentaries_Latino_and_Spanish_EU.mp3"
+        "url": "/audio/samples/Luis_Alberto_Casado_Documentaries_Latino_and_Spanish_EU.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Luis_Alberto_Casado_Spanish_Voz_De_Marca.mp3"
+        "url": "/audio/samples/Luis_Alberto_Casado_Spanish_Voz_De_Marca.mp3"
       }
     ],
     "turnaround": null,
@@ -10035,11 +10035,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Linda_1.mp3"
+        "url": "/audio/samples/Linda_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Linda_2.mp3"
+        "url": "/audio/samples/Linda_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10088,11 +10088,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mirek_1.mp3"
+        "url": "/audio/samples/Mirek_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mirek_2.mp3"
+        "url": "/audio/samples/Mirek_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -10144,7 +10144,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Nanna_ICE.mp3"
+        "url": "/audio/samples/Nanna_ICE.mp3"
       }
     ],
     "turnaround": null,
@@ -10193,7 +10193,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Liv_NO.mp3"
+        "url": "/audio/samples/Liv_NO.mp3"
       }
     ],
     "turnaround": null,
@@ -10244,7 +10244,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anna_Fin_1.mp3"
+        "url": "/audio/samples/Anna_Fin_1.mp3"
       }
     ],
     "turnaround": null,
@@ -10296,11 +10296,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Smari_ICE.mp3"
+        "url": "/audio/samples/Smari_ICE.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Smari_ENG.mp3"
+        "url": "/audio/samples/Smari_ENG.mp3"
       }
     ],
     "turnaround": null,
@@ -10350,7 +10350,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Gianmarco.mp3"
+        "url": "/audio/samples/Gianmarco.mp3"
       }
     ],
     "turnaround": null,
@@ -10400,11 +10400,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Dorota_1.mp3"
+        "url": "/audio/samples/Dorota_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Dorota_2.mp3"
+        "url": "/audio/samples/Dorota_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -10456,11 +10456,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anne_1.mp3"
+        "url": "/audio/samples/Anne_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Anne_2.mp3"
+        "url": "/audio/samples/Anne_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10510,11 +10510,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jenna_1.mp3"
+        "url": "/audio/samples/Jenna_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jenna_2.mp3"
+        "url": "/audio/samples/Jenna_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10564,11 +10564,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roy_2_1.mp3"
+        "url": "/audio/samples/Roy_2_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roy_2_commercials.mp3"
+        "url": "/audio/samples/Roy_2_commercials.mp3"
       },
       {
         "name": "Roy użyczył swojego głosu w reklamie kostek do gry",
@@ -10628,11 +10628,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub_1.mp3"
+        "url": "/audio/samples/Jakub_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub_2.mp3"
+        "url": "/audio/samples/Jakub_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -10684,11 +10684,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bozena_1.mp3"
+        "url": "/audio/samples/Bozena_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Bozena_2.mp3"
+        "url": "/audio/samples/Bozena_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -10739,15 +10739,15 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zuzana_1.mp3"
+        "url": "/audio/samples/Zuzana_1.mp3"
       },
       {
         "name": "Instore add",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zuzana_new_2.mp3"
+        "url": "/audio/samples/Zuzana_new_2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Zuzana_new.mp3"
+        "url": "/audio/samples/Zuzana_new.mp3"
       }
     ],
     "turnaround": "48h",
@@ -10798,11 +10798,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/zgroenewegen_1.wav"
+        "url": "/audio/samples/zgroenewegen_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/zgroenewegen_2.wav"
+        "url": "/audio/samples/zgroenewegen_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10851,11 +10851,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roger_E_1.mp3"
+        "url": "/audio/samples/Roger_E_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Roger_E_2.mp3"
+        "url": "/audio/samples/Roger_E_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10905,11 +10905,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kristien_1.mp3"
+        "url": "/audio/samples/Kristien_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kristien_2.mp3"
+        "url": "/audio/samples/Kristien_2.mp3"
       }
     ],
     "turnaround": null,
@@ -10958,11 +10958,11 @@
     "samples": [
       {
         "name": "Narracja",
-        "url": "https://www.powitania.pl/wp-content/uploads/PIERRE_MAUBOUCHE_DRY_CORPO_REEL.mp3"
+        "url": "/audio/samples/PIERRE_MAUBOUCHE_DRY_CORPO_REEL.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pierre_voice-over-demo.mp3"
+        "url": "/audio/samples/Pierre_voice-over-demo.mp3"
       }
     ],
     "turnaround": null,
@@ -11011,11 +11011,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/1-3-Vladimir-Petrovic-narations.mp3"
+        "url": "/audio/samples/1-3-Vladimir-Petrovic-narations.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/1-2-Vladimir-Petrovic-CommercialMIX-10.mp3"
+        "url": "/audio/samples/1-2-Vladimir-Petrovic-CommercialMIX-10.mp3"
       }
     ],
     "turnaround": null,
@@ -11064,11 +11064,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lara_1.mp3"
+        "url": "/audio/samples/Lara_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Lara_mix.mp3"
+        "url": "/audio/samples/Lara_mix.mp3"
       }
     ],
     "turnaround": null,
@@ -11117,11 +11117,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pascale_1.mp3"
+        "url": "/audio/samples/Pascale_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Pascale_2.mp3"
+        "url": "/audio/samples/Pascale_2.mp3"
       }
     ],
     "turnaround": null,
@@ -11171,11 +11171,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/masha_1.mp3"
+        "url": "/audio/samples/masha_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/masha_2.mp3"
+        "url": "/audio/samples/masha_2.mp3"
       }
     ],
     "turnaround": null,
@@ -11225,11 +11225,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/e-learning.mp3"
+        "url": "/audio/samples/e-learning.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Commercial.mp3"
+        "url": "/audio/samples/Commercial.mp3"
       }
     ],
     "turnaround": null,
@@ -11279,11 +11279,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Natalia-Rosminati_Commercial-demo-2014.mp3"
+        "url": "/audio/samples/Natalia-Rosminati_Commercial-demo-2014.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Natalia-Rosminati-_DEMO-acting-characters.mp3"
+        "url": "/audio/samples/Natalia-Rosminati-_DEMO-acting-characters.mp3"
       }
     ],
     "turnaround": null,
@@ -11332,11 +11332,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/IVR-UKRAINIAN-Andrew-CHernukha.wav"
+        "url": "/audio/samples/IVR-UKRAINIAN-Andrew-CHernukha.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Commercial-Character-RUssian-Soft-ANdrew-CHernukha.wav"
+        "url": "/audio/samples/Commercial-Character-RUssian-Soft-ANdrew-CHernukha.mp3"
       }
     ],
     "turnaround": null,
@@ -11385,11 +11385,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/BillRatner_CommercialVO.mp3"
+        "url": "/audio/samples/BillRatner_CommercialVO.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/BillRatner_Movie_Trailers.mp3"
+        "url": "/audio/samples/BillRatner_Movie_Trailers.mp3"
       },
       {
         "name": "Użycie głosu Billa w firmie to gwarancja sukcesu!",
@@ -11447,11 +11447,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/David_1_Iberian.mp3"
+        "url": "/audio/samples/David_1_Iberian.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/David_2_Brasil.mp3"
+        "url": "/audio/samples/David_2_Brasil.mp3"
       }
     ],
     "turnaround": null,
@@ -11500,11 +11500,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Judit_telephone_system_HUN.mp3"
+        "url": "/audio/samples/Judit_telephone_system_HUN.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/judit-imagefilm-hun.mp3"
+        "url": "/audio/samples/judit-imagefilm-hun.mp3"
       }
     ],
     "turnaround": null,
@@ -11553,11 +11553,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Telefon_Sytems-HU_.mp3"
+        "url": "/audio/samples/Telefon_Sytems-HU_.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/demo_documentary_HUN.mp3"
+        "url": "/audio/samples/demo_documentary_HUN.mp3"
       }
     ],
     "turnaround": "48h",
@@ -11607,11 +11607,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Josh_1.mp3"
+        "url": "/audio/samples/Josh_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Josh_2.mp3"
+        "url": "/audio/samples/Josh_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -11662,11 +11662,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alison.mp3"
+        "url": "/audio/samples/Alison.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alison_mix.mp3"
+        "url": "/audio/samples/Alison_mix.mp3"
       },
       {
         "name": "Film instruktażowy do którego Klient wybrał głos Alison",
@@ -11725,11 +11725,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Sandra_mix.mp3"
+        "url": "/audio/samples/Sandra_mix.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Telephone.mp3"
+        "url": "/audio/samples/Telephone.mp3"
       }
     ],
     "turnaround": "48h",
@@ -11780,11 +11780,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ilja_1.mp3"
+        "url": "/audio/samples/Ilja_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ilja_2.mp3"
+        "url": "/audio/samples/Ilja_2.mp3"
       }
     ],
     "turnaround": null,
@@ -11834,11 +11834,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jeroen_1.mp3"
+        "url": "/audio/samples/Jeroen_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jeroen_3.mp3"
+        "url": "/audio/samples/Jeroen_3.mp3"
       },
       {
         "name": "Nagranie lektorskie Jeroena wykorzystano w filmie instruktażowym firmy GoClever",
@@ -11892,7 +11892,7 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Edward_ang.mp3"
+        "url": "/audio/samples/Edward_ang.mp3"
       }
     ],
     "turnaround": null,
@@ -11941,11 +11941,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_tekst.mp3"
+        "url": "/audio/samples/Ola_tekst.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_reklama.mp3"
+        "url": "/audio/samples/Ola_reklama.mp3"
       }
     ],
     "turnaround": null,
@@ -11995,11 +11995,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kim_1.mp3"
+        "url": "/audio/samples/Kim_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kim_2.mp3"
+        "url": "/audio/samples/Kim_2.mp3"
       }
     ],
     "turnaround": null,
@@ -12048,11 +12048,11 @@
     "samples": [
       {
         "name": "Narracja lektorska",
-        "url": "https://www.powitania.pl/wp-content/uploads/David_narracja.mp3"
+        "url": "/audio/samples/David_narracja.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/David_reklama.mp3"
+        "url": "/audio/samples/David_reklama.mp3"
       },
       {
         "name": "Narracja do filmu",
@@ -12105,11 +12105,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Helena_1.mp3"
+        "url": "/audio/samples/Helena_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Helena_2.mp3"
+        "url": "/audio/samples/Helena_2.mp3"
       }
     ],
     "turnaround": null,
@@ -12158,11 +12158,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alicja.mp3"
+        "url": "/audio/samples/Alicja.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Alicja_piano.mp3"
+        "url": "/audio/samples/Alicja_piano.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12213,11 +12213,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/ABC_Ela.mp3"
+        "url": "/audio/samples/ABC_Ela.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ela_mix_jazz.mp3"
+        "url": "/audio/samples/Ela_mix_jazz.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12268,11 +12268,11 @@
     "samples": [
       {
         "name": "Próbka 1",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka_1.mp3"
+        "url": "/audio/samples/Agnieszka_1.mp3"
       },
       {
         "name": "Próbka 2",
-        "url": "https://www.powitania.pl/wp-content/uploads/Agnieszka_2.mp3"
+        "url": "/audio/samples/Agnieszka_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12324,11 +12324,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/iza_1_2.mp3"
+        "url": "/audio/samples/iza_1_2.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/wetter.mp3"
+        "url": "/audio/samples/wetter.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12380,11 +12380,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_1.mp3"
+        "url": "/audio/samples/Ola_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Ola_eng.mp3"
+        "url": "/audio/samples/Ola_eng.mp3"
       }
     ],
     "turnaround": null,
@@ -12433,11 +12433,11 @@
     "samples": [
       {
         "name": "Audiobook",
-        "url": "https://www.powitania.pl/wp-content/uploads/luigi-audiobook.mp3"
+        "url": "/audio/samples/luigi-audiobook.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/commercial-spot-Luigi.mp3"
+        "url": "/audio/samples/commercial-spot-Luigi.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12490,11 +12490,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/imagefilm_german_Jessica.mp3"
+        "url": "/audio/samples/imagefilm_german_Jessica.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/on-hold_german_Jessica.mp3"
+        "url": "/audio/samples/on-hold_german_Jessica.mp3"
       }
     ],
     "turnaround": null,
@@ -12543,11 +12543,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mateusz_1.mp3"
+        "url": "/audio/samples/Mateusz_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Mateusz_2.mp3"
+        "url": "/audio/samples/Mateusz_2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12598,7 +12598,7 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Minna_1.wav"
+        "url": "/audio/samples/Minna_1.mp3"
       }
     ],
     "turnaround": null,
@@ -12648,11 +12648,11 @@
     "samples": [
       {
         "name": "E-learning",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krysztof_demo1.mp3"
+        "url": "/audio/samples/Krysztof_demo1.mp3"
       },
       {
         "name": "Spoty reklamowe",
-        "url": "https://www.powitania.pl/wp-content/uploads/Krzysztof_demo2.mp3"
+        "url": "/audio/samples/Krzysztof_demo2.mp3"
       }
     ],
     "turnaround": "48h",
@@ -12703,11 +12703,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub_CZ_1.mp3"
+        "url": "/audio/samples/Jakub_CZ_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Jakub_CZ_2.mp3"
+        "url": "/audio/samples/Jakub_CZ_2.mp3"
       }
     ],
     "turnaround": null,
@@ -12757,11 +12757,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hoki_demo.mp3"
+        "url": "/audio/samples/Hoki_demo.mp3"
       },
       {
         "name": "Demo lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Hoki_demo2.mp3"
+        "url": "/audio/samples/Hoki_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -12810,11 +12810,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/June_demo1.mp3"
+        "url": "/audio/samples/June_demo1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/June_demo2.mp3"
+        "url": "/audio/samples/June_demo2.mp3"
       }
     ],
     "turnaround": null,
@@ -12863,11 +12863,11 @@
     "samples": [
       {
         "name": "Zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Kritsada-Onhold.mp3"
+        "url": "/audio/samples/Kritsada-Onhold.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Commercia-Kritsada-BBz10.mp3"
+        "url": "/audio/samples/Commercia-Kritsada-BBz10.mp3"
       }
     ],
     "turnaround": null,
@@ -12916,11 +12916,11 @@
     "samples": [
       {
         "name": "Krótka zapowiedź telefoniczna",
-        "url": "https://www.powitania.pl/wp-content/uploads/Peerapon-THAI-Short-Greeting.mp3"
+        "url": "/audio/samples/Peerapon-THAI-Short-Greeting.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "https://www.powitania.pl/wp-content/uploads/Peerapon-THAI-Adverting-Spot.mp3"
+        "url": "/audio/samples/Peerapon-THAI-Adverting-Spot.mp3"
       }
     ],
     "turnaround": null,
@@ -12969,11 +12969,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Marek.mp3"
+        "url": "/audio/samples/Marek.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/marek_mix_syntezator.mp3"
+        "url": "/audio/samples/marek_mix_syntezator.mp3"
       }
     ],
     "turnaround": "48h",
@@ -13025,11 +13025,11 @@
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr_1.mp3"
+        "url": "/audio/samples/Piotr_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "https://www.powitania.pl/wp-content/uploads/Piotr_miks_syntezator.mp3"
+        "url": "/audio/samples/Piotr_miks_syntezator.mp3"
       }
     ],
     "turnaround": "48h",
@@ -13071,7 +13071,9 @@
     "name": "Test Lektor (DO USUNIĘCIA)",
     "gender": "m",
     "age": "30-50 lat",
-    "languages": ["polski"],
+    "languages": [
+      "polski"
+    ],
     "description": "Lektor testowy — do testowania płatności. Ceny ustawione na 1 zł.",
     "photo": "",
     "audio": "",
@@ -13080,7 +13082,9 @@
     "famous": false,
     "native": false,
     "nativeLanguage": "polski",
-    "applications": ["Reklama"],
+    "applications": [
+      "Reklama"
+    ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
     "profileUrl": "/lektorzy/test-lektor/",
