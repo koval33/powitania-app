@@ -282,68 +282,85 @@
   var filteredCards = allCards.slice();
   var shownCount = PAGE_SIZE;
 
-  // --- Audio player ---
+  // --- Audio player (single reusable Audio object) ---
+  var sharedAudio = new Audio();
+
+  function resetCurrentBtn() {
+    if (!currentBtn) return;
+    currentBtn.querySelector('.play-icon').classList.remove('hidden');
+    currentBtn.querySelector('.pause-icon').classList.add('hidden');
+    var oldCard = currentBtn.closest('.voice-card');
+    if (oldCard) {
+      oldCard.querySelector('.audio-bar').style.width = '0%';
+      oldCard.querySelector('.audio-time').textContent = '0:00';
+    }
+  }
+
+  sharedAudio.addEventListener('timeupdate', function() {
+    if (!currentBtn) return;
+    var card = currentBtn.closest('.voice-card');
+    if (!card) return;
+    var pct = (sharedAudio.currentTime / sharedAudio.duration) * 100;
+    card.querySelector('.audio-bar').style.width = pct + '%';
+    card.querySelector('.audio-time').textContent = formatTime(sharedAudio.currentTime);
+  });
+
+  sharedAudio.addEventListener('loadedmetadata', function() {
+    if (!currentBtn) return;
+    var card = currentBtn.closest('.voice-card');
+    if (card) card.querySelector('.audio-duration').textContent = formatTime(sharedAudio.duration);
+  });
+
+  sharedAudio.addEventListener('ended', function() {
+    resetCurrentBtn();
+    currentBtn = null;
+  });
+
   function initAudioPlayer(btn) {
     btn.addEventListener('click', function() {
       var src = this.dataset.audio;
-      var card = this.closest('.voice-card');
+      if (!src) return;
       var playIcon = this.querySelector('.play-icon');
       var pauseIcon = this.querySelector('.pause-icon');
-      var bar = card.querySelector('.audio-bar');
-      var timeEl = card.querySelector('.audio-time');
-      var durEl = card.querySelector('.audio-duration');
 
-      if (currentAudio && currentBtn !== this) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-        currentBtn.querySelector('.play-icon').classList.remove('hidden');
-        currentBtn.querySelector('.pause-icon').classList.add('hidden');
-        currentBtn.closest('.voice-card').querySelector('.audio-bar').style.width = '0%';
-      }
-
-      if (currentAudio && currentBtn === this && !currentAudio.paused) {
-        currentAudio.pause();
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
+      // Klik na ten sam przycisk — pauza/wznowienie
+      if (currentBtn === this) {
+        if (sharedAudio.paused) {
+          sharedAudio.play().catch(function() {});
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+        } else {
+          sharedAudio.pause();
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+        }
         return;
       }
 
-      if (!currentAudio || currentBtn !== this) {
-        currentAudio = new Audio(src);
-        currentBtn = this;
+      // Inny przycisk — resetuj poprzedni
+      resetCurrentBtn();
+      currentBtn = this;
 
-        currentAudio.addEventListener('loadedmetadata', function() {
-          durEl.textContent = formatTime(currentAudio.duration);
-        });
-        currentAudio.addEventListener('timeupdate', function() {
-          var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
-          bar.style.width = pct + '%';
-          timeEl.textContent = formatTime(currentAudio.currentTime);
-        });
-        currentAudio.addEventListener('ended', function() {
-          playIcon.classList.remove('hidden');
-          pauseIcon.classList.add('hidden');
-          bar.style.width = '0%';
-          timeEl.textContent = '0:00';
-        });
-
-        card.querySelector('.audio-progress').addEventListener('click', function(e) {
-          if (currentAudio && currentBtn === btn) {
-            var rect = this.getBoundingClientRect();
-            var pct = (e.clientX - rect.left) / rect.width;
-            currentAudio.currentTime = pct * currentAudio.duration;
-          }
-        });
-      }
-
-      currentAudio.play();
+      // Ustaw źródło i graj
+      sharedAudio.src = src;
+      sharedAudio.currentTime = 0;
+      sharedAudio.play().catch(function() {});
       playIcon.classList.add('hidden');
       pauseIcon.classList.remove('hidden');
     });
   }
 
+  // Init players + progress bar seek (raz na kartę)
   allCards.forEach(function(card) {
     initAudioPlayer(card.querySelector('.play-btn'));
+    card.querySelector('.audio-progress').addEventListener('click', function(e) {
+      var btn = card.querySelector('.play-btn');
+      if (currentBtn === btn && sharedAudio.duration) {
+        var rect = this.getBoundingClientRect();
+        var pct = (e.clientX - rect.left) / rect.width;
+        sharedAudio.currentTime = pct * sharedAudio.duration;
+      }
+    });
   });
 
   function formatTime(s) {
