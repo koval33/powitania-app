@@ -19,6 +19,16 @@ function esc(str) {
 }
 
 /**
+ * Zamiana polskich znaków diakrytycznych na ASCII
+ * P24 nie renderuje poprawnie UTF-8 w emailach z opisem transakcji
+ */
+function stripDiacritics(str) {
+  const map = { 'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z',
+                'Ą':'A','Ć':'C','Ę':'E','Ł':'L','Ń':'N','Ó':'O','Ś':'S','Ź':'Z','Ż':'Z' };
+  return String(str).replace(/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, ch => map[ch] || ch);
+}
+
+/**
  * Zapis zamówienia do pliku JSON
  */
 function saveOrder(sessionId, data) {
@@ -110,7 +120,7 @@ router.post('/register', async (req, res) => {
     const result = await p24.registerTransaction({
       sessionId,
       amount: amountGrosze,
-      description: 'Nagranie lektorskie' + lektorInfo + ' - powitania.pl',
+      description: stripDiacritics('Nagranie lektorskie' + lektorInfo + ' - powitania.pl'),
       email,
       client: name,
       urlReturn: baseUrl + '/api/payment/return?sid=' + sessionId,
