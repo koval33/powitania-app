@@ -47,9 +47,12 @@ const FIELD_LIMITS = {
 };
 const MAX_TOTAL_INPUT = 5000; // max łączna długość wszystkich pól
 
+const SKIP_FIELDS = new Set(['turnstileToken']);
+
 function validateInput(body) {
   let totalLen = 0;
   for (const [key, val] of Object.entries(body)) {
+    if (SKIP_FIELDS.has(key)) continue;
     if (typeof val === 'string') {
       const limit = FIELD_LIMITS[key] || 500;
       if (val.length > limit) {
