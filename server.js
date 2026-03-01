@@ -15,8 +15,8 @@ app.use((req, res, next) => {
 });
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // EJS
@@ -63,6 +63,7 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
   res.locals.gtmId = process.env.GTM_ID || '';
+  res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
 
   if (res.locals.isEmbed) {
     res.removeHeader('X-Frame-Options');

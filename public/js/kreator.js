@@ -143,13 +143,44 @@
     render();
   }
 
-  // API calls
+  // Turnstile — get verification token before API call
+  function getTurnstileToken() {
+    return new Promise(function(resolve) {
+      var siteKey = window.__TURNSTILE_SITE_KEY;
+      if (!siteKey || typeof turnstile === 'undefined') {
+        resolve(''); // no Turnstile configured — skip
+        return;
+      }
+      // Remove previous widget if exists
+      var container = document.getElementById('turnstile-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'turnstile-container';
+        container.style.display = 'none';
+        document.body.appendChild(container);
+      }
+      container.innerHTML = '';
+      turnstile.render(container, {
+        sitekey: siteKey,
+        callback: function(token) { resolve(token); },
+        'error-callback': function() { resolve(''); },
+        'expired-callback': function() { resolve(''); },
+        size: 'invisible'
+      });
+    });
+  }
+
+  // API calls (with Turnstile protection)
   function apiCall(endpoint, body, callback) {
     setState({ loading: true, error: null });
-    fetch('/api/kreator/' + endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+    getTurnstileToken().then(function(token) {
+      var payload = Object.assign({}, body);
+      if (token) payload.turnstileToken = token;
+      return fetch('/api/kreator/' + endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -167,6 +198,7 @@
   function generate() {
     apiCall('generate', state.form, function(data) {
       state.result = data.text;
+      if (window.trackEvent) trackEvent('kreator_generate', { service_type: state.form.serviceType, industry: state.form.industry });
       // If coming from lektor page, save text to context and redirect back
       if (state._returnUrl) {
         try {
@@ -187,6 +219,7 @@
   function optimize() {
     apiCall('optimize', state.form, function(data) {
       state.result = data.text;
+      if (window.trackEvent) trackEvent('kreator_optimize', { service_type: state.form.serviceType });
       // If coming from lektor page, save text to context and redirect back
       if (state._returnUrl) {
         try {
@@ -212,6 +245,7 @@
 
   function submitContact(endpoint, body) {
     setState({ loading: true });
+    if (window.trackEvent) trackEvent('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' });
     fetch('/api/contact/' + endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

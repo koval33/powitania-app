@@ -810,6 +810,8 @@ function updateFileLabel(input) {
 
     var formData = new FormData(form);
 
+    if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
+
     fetch('/api/contact/inquiry-premium', {
       method: 'POST',
       body: formData
@@ -1591,6 +1593,8 @@ function submitOrderRequest(data, msgElId) {
   var hasPrice = numericPrice > 0;
 
   var endpoint = hasPrice ? '/api/payment/register' : '/api/contact/order';
+  var eventName = hasPrice ? 'form_submit_payment' : 'form_submit_order';
+  if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
 
   fetch(endpoint, {
     method: 'POST',
@@ -1666,6 +1670,8 @@ if (inquiryModalForm) inquiryModalForm.addEventListener('submit', function(e) {
   var submitBtn = e.target.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Wysylanie...';
+
+  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: '<%= lektor.id %>' });
 
   fetch('/api/contact/inquiry', {
     method: 'POST',

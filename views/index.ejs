@@ -846,6 +846,8 @@ setInterval(function() { slideReviews(1); }, 8000);
       source: 'homepage'
     };
 
+    if (window.trackEvent) trackEvent('form_submit_contact', { source: 'homepage' });
+
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

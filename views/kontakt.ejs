@@ -103,6 +103,8 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   var data = {};
   fd.forEach(function(v, k) { data[k] = v; });
 
+  if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
+
   fetch('/api/contact/inquiry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

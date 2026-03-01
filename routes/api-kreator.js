@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { buildPrompt, calcWords } = require('../lib/prompts');
+const RateLimiter = require('../lib/rate-limiter');
+const { verifyTurnstile } = require('../lib/turnstile');
+
+// Rate limit: max 5 wywołań / minutę / IP
+const kreatorLimiter = new RateLimiter({
+  windowMs: 60 * 1000,
+  max: 5,
+  message: 'Zbyt wiele generowań. Poczekaj minutę i spróbuj ponownie.'
+});
 
 async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -23,7 +32,8 @@ async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   return data;
 }
 
-router.post('/generate', async (req, res) => {
+// Obie ścieżki: rate limit → Turnstile → handler
+router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ ok: false, error: 'Brak konfiguracji API' });
@@ -38,7 +48,7 @@ router.post('/generate', async (req, res) => {
     let text = data.content[0].text.trim();
     let totalUsage = data.usage;
 
-    // Word count validation — retry once if text is too short or too long
+    // Word count validation — retry ONCE if text is too short or too long
     const { serviceType, duration } = req.body;
     if (duration && serviceType !== 'ivr') {
       const targetWords = calcWords(parseInt(duration), 'pl', serviceType);
@@ -79,7 +89,7 @@ router.post('/generate', async (req, res) => {
   }
 });
 
-router.post('/optimize', async (req, res) => {
+router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ ok: false, error: 'Brak konfiguracji API' });
@@ -93,7 +103,7 @@ router.post('/optimize', async (req, res) => {
     let text = data.content[0].text.trim();
     let totalUsage = data.usage;
 
-    // Word count validation for optimize too
+    // Word count validation for optimize too — max 1 retry
     const { targetDur, serviceType } = req.body;
     if (targetDur) {
       const targetWords = calcWords(parseInt(targetDur), 'pl', serviceType);

@@ -181,6 +181,8 @@
       link: document.getElementById('review-link').value.trim()
     };
 
+    if (window.trackEvent) trackEvent('form_submit_review');
+
     fetch('/api/reviews/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

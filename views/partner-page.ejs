@@ -481,6 +481,8 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Wysyłanie...';
 
+        if (window.trackEvent) trackEvent('form_submit_partner', { partner: '<%= partner.slug %>' });
+
         fetch('/api/contact/partner-inquiry', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
