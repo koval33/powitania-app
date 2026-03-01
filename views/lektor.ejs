@@ -290,18 +290,18 @@
         %>
         <div class="bg-white shadow-sm rounded-xl border border-gray-200 overflow-hidden group">
           <% if (ytId) { %>
-          <div class="aspect-video relative cursor-pointer" onclick="loadYT(this, '<%= ytId %>')">
-            <img src="https://img.youtube.com/vi/<%= ytId %>/mqdefault.jpg" alt="<%= video.name %>" class="w-full h-full object-cover" loading="lazy">
-            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-              <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden" class="cursor-pointer bg-black" onclick="loadYT(this, '<%= ytId %>')">
+            <img src="https://img.youtube.com/vi/<%= ytId %>/mqdefault.jpg" alt="<%= video.name %>" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+            <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4)">
+              <div style="width:56px;height:56px;background:#dc2626;border-radius:50%;display:flex;align-items:center;justify-content:center">
+                <svg style="width:24px;height:24px;color:#fff;margin-left:3px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </div>
             </div>
           </div>
           <% } else { %>
-          <div class="aspect-video bg-gray-50 flex items-center justify-center">
-            <a href="<%= video.url %>" target="_blank" rel="noopener" class="text-accent hover:text-accent-light">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#f9fafb">
+            <a href="<%= video.url %>" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center" class="text-accent hover:text-accent-light">
+              <svg style="width:48px;height:48px" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
             </a>
           </div>
           <% } %>
@@ -805,7 +805,7 @@ function formatTime(s) {
 
 // Lazy YouTube embed
 function loadYT(el, ytId) {
-  el.innerHTML = '<iframe class="w-full h-full absolute inset-0" src="https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  el.innerHTML = '<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
 
 // File upload label
