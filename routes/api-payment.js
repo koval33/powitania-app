@@ -106,11 +106,11 @@ router.post('/register', async (req, res) => {
     }).catch(err => console.error('[CRM] payment order webhook error:', err));
 
     // Rejestruj transakcję w P24
-    const lektorInfo = req.body.lektorName ? ' — ' + req.body.lektorName : '';
+    const lektorInfo = req.body.lektorName ? ' - ' + req.body.lektorName : '';
     const result = await p24.registerTransaction({
       sessionId,
       amount: amountGrosze,
-      description: 'Nagranie lektorskie' + lektorInfo + ' — powitania.pl',
+      description: 'Nagranie lektorskie' + lektorInfo + ' - powitania.pl',
       email,
       client: name,
       urlReturn: baseUrl + '/api/payment/return?sid=' + sessionId,
