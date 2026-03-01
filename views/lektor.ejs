@@ -201,8 +201,8 @@
                     <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
                     <input type="text" id="wiz-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
                     <div class="grid grid-cols-3 gap-2">
-                      <input type="text" id="wiz-zipCode" class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
-                      <input type="text" id="wiz-city" class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
+                      <input type="text" id="wiz-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
+                      <input type="text" id="wiz-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
                     </div>
                   </div>
                   <div class="grid sm:grid-cols-2 gap-3">
@@ -613,8 +613,8 @@
                 <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
                 <input type="text" id="mod-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
                 <div class="grid grid-cols-3 gap-2">
-                  <input type="text" id="mod-zipCode" class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
-                  <input type="text" id="mod-city" class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
+                  <input type="text" id="mod-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
+                  <input type="text" id="mod-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
                 </div>
               </div>
               <div class="grid sm:grid-cols-2 gap-3">
@@ -1155,7 +1155,7 @@ function renderPricing(result, wordCount, targetEl) {
   if (result.needsCustomQuote) {
     html += '<div class="text-center">' +
       '<p class="text-yellow-400 text-sm font-medium">Wycena indywidualna</p>' +
-      '<p class="text-gray-500 text-xs mt-1">Skontaktuj sie, aby uzyskac dokladna wycene.</p>' +
+      '<p class="text-gray-500 text-xs mt-1">Skontaktuj się, aby uzyskać dokładną wycenę.</p>' +
     '</div>';
   } else if (result.basePrice) {
     var totalBase = result.basePrice;
@@ -1536,6 +1536,9 @@ function validateOrderFields(prefix, msgElId) {
   var fields = [
     { id: prefix + '-firmName', label: 'Nazwa firmy' },
     { id: prefix + '-name', label: 'Imię i nazwisko' },
+    { id: prefix + '-street', label: 'Ulica' },
+    { id: prefix + '-zipCode', label: 'Kod pocztowy' },
+    { id: prefix + '-city', label: 'Miasto' },
     { id: prefix + '-email', label: 'Email' }
   ];
   var ok = true;
