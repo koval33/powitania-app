@@ -175,6 +175,8 @@
             <div id="wizard-pricing" class="hidden"></div>
             <!-- CTA + formularz zamówienia — pojawi się dopiero po wycenie -->
             <div id="wizard-cta" class="hidden mt-5">
+
+              <!-- Formularz PEŁNY (zamówienie — widoczny gdy jest cena) -->
               <div id="wizard-order-form" class="border-t border-gray-200 pt-4">
                 <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
                   <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
@@ -226,6 +228,33 @@
                   Zapytaj o szczegóły
                 </button>
               </div>
+
+              <!-- Formularz PROSTY (kontakt — widoczny przy wycenie indywidualnej) -->
+              <div id="wizard-inquiry-form" class="border-t border-gray-200 pt-4 hidden">
+                <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                  Zapytaj o wycenę
+                </h4>
+                <div class="space-y-3">
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                    <input type="email" id="wiz-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
+                    <input type="text" id="wiz-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
+                    <textarea id="wiz-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
+                  </div>
+                </div>
+                <button id="wiz-inq-submit-btn" onclick="submitWizardInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                  Wyślij zapytanie
+                </button>
+                <div id="wizard-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -1210,8 +1239,26 @@ function renderPricing(result, wordCount, targetEl) {
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
 
+  // Przełączanie formularzy: pełny (zamówienie) vs prosty (zapytanie o wycenę)
+  toggleWizardForms(result.needsCustomQuote);
+
   // Aktualizuj tekst przycisków zamówienia (Zamów i zapłać / Zamów nagranie)
-  updateOrderButtonLabels(result.basePrice > 0);
+  if (!result.needsCustomQuote) {
+    updateOrderButtonLabels(result.basePrice > 0);
+  }
+}
+
+function toggleWizardForms(isCustomQuote) {
+  var orderForm = document.getElementById('wizard-order-form');
+  var inquiryForm = document.getElementById('wizard-inquiry-form');
+  if (!orderForm || !inquiryForm) return;
+  if (isCustomQuote) {
+    orderForm.classList.add('hidden');
+    inquiryForm.classList.remove('hidden');
+  } else {
+    orderForm.classList.remove('hidden');
+    inquiryForm.classList.add('hidden');
+  }
 }
 
 function updateOrderButtonLabels(hasPrice) {
@@ -1582,6 +1629,63 @@ function submitWizardOrder() {
   data.selectedMelody = addonsInfo.selectedMelody;
 
   submitOrderRequest(data, 'wizard-order-msg');
+}
+
+function submitWizardInquiry() {
+  var email = document.getElementById('wiz-inq-email').value.trim();
+  var msgEl = document.getElementById('wizard-inquiry-msg');
+  if (!email) {
+    msgEl.classList.remove('hidden');
+    msgEl.className = 'text-center text-sm mt-2 text-red-500';
+    msgEl.textContent = 'Podaj adres email.';
+    return;
+  }
+
+  var ctx = {};
+  try { ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}'); } catch(e) {}
+
+  var data = {
+    email: email,
+    name: document.getElementById('wiz-inq-name').value.trim(),
+    lektorName: LEKTOR_NAME,
+    lektorId: LEKTOR_ID,
+    serviceType: ctx.serviceType || '',
+    generatedText: ctx.text || '',
+    description: document.getElementById('wiz-inq-message').value.trim()
+  };
+
+  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
+
+  var btn = document.getElementById('wiz-inq-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Wysyłanie...';
+
+  fetch('/api/contact/inquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    msgEl.classList.remove('hidden');
+    if (res.ok) {
+      msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
+      msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
+      try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+    } else {
+      msgEl.className = 'text-center text-sm mt-2 text-red-500';
+      msgEl.textContent = res.error || 'Wystąpił błąd. Spróbuj ponownie.';
+      btn.disabled = false;
+      btn.textContent = 'Wyślij zapytanie';
+    }
+  })
+  .catch(function() {
+    msgEl.classList.remove('hidden');
+    msgEl.className = 'text-center text-sm mt-2 text-red-500';
+    msgEl.textContent = 'Błąd połączenia. Sprawdź internet.';
+    btn.disabled = false;
+    btn.textContent = 'Wyślij zapytanie';
+  });
 }
 
 function submitOrderRequest(data, msgElId) {
