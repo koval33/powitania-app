@@ -32,41 +32,34 @@ async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   return data;
 }
 
-// Walidacja pól wejściowych — max długość per pole i łączna
+// Walidacja pól wejściowych — tylko znane pola, reszta ignorowana
 const FIELD_LIMITS = {
   company: 200,
-  offering: 500,
-  serviceType: 30,
-  industry: 30,
-  audience: 10,
-  tone: 20,
-  goal: 20,
-  duration: 10,
-  textInput: 3000,  // optimize: tekst do optymalizacji
-  targetDur: 10
+  offering: 1000,
+  serviceType: 50,
+  industry: 50,
+  audience: 50,
+  tone: 50,
+  goal: 50,
+  duration: 20,
+  textInput: 5000,  // optimize: tekst do optymalizacji
+  targetDur: 20
 };
-const MAX_TOTAL_INPUT = 5000; // max łączna długość wszystkich pól
-
-const SKIP_FIELDS = new Set(['turnstileToken']);
+const MAX_TOTAL_INPUT = 8000; // max łączna długość wszystkich pól
 
 function validateInput(body) {
   let totalLen = 0;
-  for (const [key, val] of Object.entries(body)) {
-    if (SKIP_FIELDS.has(key)) continue;
+  for (const [key, limit] of Object.entries(FIELD_LIMITS)) {
+    const val = body[key];
     if (typeof val === 'string') {
-      const limit = FIELD_LIMITS[key] || 500;
       if (val.length > limit) {
-        return `Pole "${key}" jest za długie (max ${limit} znaków).`;
+        return `Pole jest za długie (max ${limit} znaków).`;
       }
       totalLen += val.length;
     }
-    if (Array.isArray(val)) {
-      if (val.length > 10) return 'Za dużo elementów w liście.';
-      val.forEach(v => { if (typeof v === 'string') totalLen += v.length; });
-    }
   }
   if (totalLen > MAX_TOTAL_INPUT) {
-    return `Łączna długość danych przekracza limit (max ${MAX_TOTAL_INPUT} znaków).`;
+    return `Łączna długość danych przekracza limit.`;
   }
   return null;
 }
