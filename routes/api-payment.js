@@ -21,11 +21,14 @@ function esc(str) {
 /**
  * Zamiana polskich znaków diakrytycznych na ASCII
  * P24 nie renderuje poprawnie UTF-8 w emailach z opisem transakcji
+ * Używa normalize('NFD') aby rozłożyć znaki na bazę + diakrytyk, potem usuwa diakrytyki
  */
 function stripDiacritics(str) {
-  const map = { 'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z',
-                'Ą':'A','Ć':'C','Ę':'E','Ł':'L','Ń':'N','Ó':'O','Ś':'S','Ź':'Z','Ż':'Z' };
-  return String(str).replace(/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, ch => map[ch] || ch);
+  return String(str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\u0141/g, 'L')
+    .replace(/\u0142/g, 'l');
 }
 
 /**
