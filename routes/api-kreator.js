@@ -32,11 +32,52 @@ async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   return data;
 }
 
-// Obie ścieżki: rate limit → Turnstile → handler
+// Walidacja pól wejściowych — max długość per pole i łączna
+const FIELD_LIMITS = {
+  company: 200,
+  offering: 500,
+  serviceType: 30,
+  industry: 30,
+  audience: 10,
+  tone: 20,
+  goal: 20,
+  duration: 10,
+  textInput: 3000,  // optimize: tekst do optymalizacji
+  targetDur: 10
+};
+const MAX_TOTAL_INPUT = 5000; // max łączna długość wszystkich pól
+
+function validateInput(body) {
+  let totalLen = 0;
+  for (const [key, val] of Object.entries(body)) {
+    if (typeof val === 'string') {
+      const limit = FIELD_LIMITS[key] || 500;
+      if (val.length > limit) {
+        return `Pole "${key}" jest za długie (max ${limit} znaków).`;
+      }
+      totalLen += val.length;
+    }
+    if (Array.isArray(val)) {
+      if (val.length > 10) return 'Za dużo elementów w liście.';
+      val.forEach(v => { if (typeof v === 'string') totalLen += v.length; });
+    }
+  }
+  if (totalLen > MAX_TOTAL_INPUT) {
+    return `Łączna długość danych przekracza limit (max ${MAX_TOTAL_INPUT} znaków).`;
+  }
+  return null;
+}
+
+// Obie ścieżki: rate limit → Turnstile → walidacja → handler
 router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ ok: false, error: 'Brak konfiguracji API' });
+  }
+
+  const validationError = validateInput(req.body);
+  if (validationError) {
+    return res.status(400).json({ ok: false, error: validationError });
   }
 
   try {
@@ -93,6 +134,11 @@ router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (re
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ ok: false, error: 'Brak konfiguracji API' });
+  }
+
+  const validationError = validateInput(req.body);
+  if (validationError) {
+    return res.status(400).json({ ok: false, error: validationError });
   }
 
   try {
