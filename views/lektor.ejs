@@ -1657,12 +1657,16 @@ function submitWizardInquiry() {
     if (res.ok) {
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
+      btn.disabled = false;
+      btn.textContent = 'Wyślij zapytanie';
+      msgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
     } else {
       msgEl.className = 'text-center text-sm mt-2 text-red-500';
       msgEl.textContent = res.error || 'Wystąpił błąd. Spróbuj ponownie.';
       btn.disabled = false;
       btn.textContent = 'Wyślij zapytanie';
+      msgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   })
   .catch(function() {
