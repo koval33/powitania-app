@@ -245,7 +245,7 @@
                   Zamów nagranie
                 </button>
                 <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <button onclick="inquiryWithContext()" class="text-gray-500 hover:text-accent text-sm transition-colors text-center w-full mt-2">
+                <button onclick="showWizardInquiry()" class="text-gray-500 hover:text-accent text-sm transition-colors text-center w-full mt-2">
                   Zapytaj o szczegóły
                 </button>
               </div>
@@ -1942,14 +1942,14 @@ function orderWithContext() {
   window.location.href = '/?action=order&lektor=' + LEKTOR_ID + '#kreator';
 }
 
-function inquiryWithContext() {
-  try {
-    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
-    ctx.lektorName = LEKTOR_NAME;
-    ctx.lektorId = LEKTOR_ID;
-    sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
-  } catch(e) {}
-  window.location.href = '/?action=inquiry&lektor=' + LEKTOR_ID + '#kreator';
+function showWizardInquiry() {
+  var orderForm = document.getElementById('wizard-order-form');
+  var inquiryForm = document.getElementById('wizard-inquiry-form');
+  if (orderForm) orderForm.classList.add('hidden');
+  if (inquiryForm) {
+    inquiryForm.classList.remove('hidden');
+    inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 }
 
 function clearPricingContext() {
