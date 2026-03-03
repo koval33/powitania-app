@@ -161,6 +161,7 @@ router.post('/save-text', async (req, res) => {
     // Notyfikacja do biura
     await sendMail({
       subject: `[Lead] Zapisany tekst — ${email}`,
+      replyTo: email,
       html: `<p>Klient ${esc(email)} zapisał tekst (${esc(serviceType || '—')}).</p><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>`
     });
 

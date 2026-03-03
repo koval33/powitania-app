@@ -202,6 +202,7 @@ router.post('/notify', async (req, res) => {
 
     // Mail do biura
     await sendMail({
+      replyTo: order.email,
       subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}💰 [OPŁACONE] ${order.firmName} — ${order.serviceType || 'nagranie'}${order.lektorName ? ' — ' + order.lektorName : ''}`,
       html: `
         <h2>Nowe zamówienie nagrania — OPŁACONE</h2>
