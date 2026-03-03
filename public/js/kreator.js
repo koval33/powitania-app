@@ -156,7 +156,12 @@
       if (!container) {
         container = document.createElement('div');
         container.id = 'turnstile-container';
-        container.style.display = 'none';
+        container.style.position = 'fixed';
+        container.style.bottom = '-200px';
+        container.style.left = '0';
+        container.style.overflow = 'hidden';
+        container.style.opacity = '0';
+        container.style.pointerEvents = 'none';
         document.body.appendChild(container);
       }
       container.innerHTML = '';
@@ -165,7 +170,7 @@
         callback: function(token) { resolve(token); },
         'error-callback': function() { resolve(''); },
         'expired-callback': function() { resolve(''); },
-        size: 'invisible'
+        size: 'compact'
       });
     });
   }
