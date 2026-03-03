@@ -116,7 +116,9 @@ router.post('/inquiry', async (req, res) => {
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć${name ? ' ' + esc(name) : ''},</p>
         <p>Otrzymaliśmy Twoje zapytanie. Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
-        ${description ? `<h3 style="color:#1a1d23;margin-top:24px">Twoja wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
+        ${lektorName ? `<p style="margin-top:16px">Lektor: <strong>${esc(lektorName)}</strong></p>` : ''}
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Twój tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
+        ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Twoja wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
       `
