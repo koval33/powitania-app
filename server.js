@@ -121,6 +121,48 @@ app.get('/api/yt-check', async (req, res) => {
   res.json({ results });
 });
 
+// Health check — kreator (testuje połączenie z Anthropic API)
+app.get('/api/health/kreator', async (req, res) => {
+  const secret = process.env.HEALTH_SECRET;
+  if (secret && req.query.key !== secret) {
+    return res.status(403).json({ ok: false, error: 'Unauthorized' });
+  }
+
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ ok: false, error: 'ANTHROPIC_API_KEY not set' });
+  }
+
+  try {
+    const start = Date.now();
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 10,
+        messages: [{ role: 'user', content: 'Odpowiedz jednym słowem: OK' }]
+      })
+    });
+    const data = await response.json();
+    const ms = Date.now() - start;
+
+    if (response.ok && data.content && data.content[0]) {
+      res.json({ ok: true, ms, model: 'claude-sonnet-4-20250514' });
+    } else {
+      console.error('[health] Kreator API error:', data);
+      res.status(500).json({ ok: false, error: data.error?.message || 'API error', ms });
+    }
+  } catch (err) {
+    console.error('[health] Kreator check failed:', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
 app.use('/admin/opinie', require('./routes/admin-opinie'));
