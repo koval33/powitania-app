@@ -869,9 +869,9 @@ var PRICING_MAP = {
     label: 'Zapowiedzi telefoniczne (IVR)',
     method: 'wordcount',
     tiers: [
-      { max: 100, field: 'ivr_100', label: 'do 100 slow' },
-      { max: 200, field: 'ivr_200', label: '101-200 slow' },
-      { max: Infinity, field: 'ivr_200plus', label: 'pow. 200 slow' }
+      { max: 100, field: 'ivr_100', label: 'do 100 słów' },
+      { max: 200, field: 'ivr_200', label: '101-200 słów' },
+      { max: Infinity, field: 'ivr_200plus', label: 'pow. 200 słów' }
     ],
     addons: [
       { field: 'ivr_guarantee_100', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w <= 100; } },
@@ -1831,7 +1831,7 @@ function showPricingWizard(ctx) {
 
   textPreview.textContent = ctx.text;
   var wordCount = countWords(ctx.text);
-  wordCountEl.textContent = wordCount + ' slow';
+  wordCountEl.textContent = wordCount + ' słów';
 
   // Mapuj serviceType z kreatora
   var mappedType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
