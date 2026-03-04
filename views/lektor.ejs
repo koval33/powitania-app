@@ -1509,6 +1509,59 @@ function collectAddonsInfo() {
   return { selectedAddons: addons, selectedMelody: melody };
 }
 
+// --- Walidacja pól formularza ---
+var NIP_WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+
+function validateNIP(val) {
+  if (!val) return { ok: true };
+  var clean = val.replace(/[\s\-]/g, '');
+  // Zagraniczny NIP: 2 litery + min 5 cyfr
+  if (/^[A-Z]{2}/i.test(clean)) {
+    var digits = clean.slice(2);
+    if (digits.length < 5 || !/^\d+$/.test(digits)) return { ok: false, msg: 'Niepoprawny format NIP' };
+    return { ok: true };
+  }
+  // Polski NIP: 10 cyfr + suma kontrolna
+  if (!/^\d{10}$/.test(clean)) return { ok: false, msg: 'NIP powinien zawierać 10 cyfr' };
+  var d = clean.split('').map(Number);
+  var sum = 0;
+  for (var i = 0; i < 9; i++) sum += NIP_WEIGHTS[i] * d[i];
+  if (sum % 11 !== d[9]) return { ok: false, msg: 'Niepoprawny numer NIP' };
+  return { ok: true };
+}
+
+function validateZipCode(val) {
+  if (!val) return { ok: true };
+  if (!/^\d{2}-\d{3}$/.test(val.trim())) return { ok: false, msg: 'Format: XX-XXX' };
+  return { ok: true };
+}
+
+function validatePhone(val) {
+  if (!val) return { ok: true };
+  var clean = val.replace(/[\s\-()]/g, '');
+  if (!/^\+?\d{7,15}$/.test(clean)) return { ok: false, msg: 'Min. 7 cyfr' };
+  return { ok: true };
+}
+
+function showFieldError(el, msg) {
+  el.classList.add('border-red-400');
+  el.classList.remove('border-gray-300');
+  var errEl = el.parentNode.querySelector('.field-error');
+  if (!errEl) {
+    errEl = document.createElement('div');
+    errEl.className = 'field-error text-red-500 text-xs mt-1';
+    el.parentNode.appendChild(errEl);
+  }
+  errEl.textContent = msg;
+}
+
+function clearFieldError(el) {
+  el.classList.remove('border-red-400');
+  el.classList.add('border-gray-300');
+  var errEl = el.parentNode.querySelector('.field-error');
+  if (errEl) errEl.remove();
+}
+
 function validateOrderFields(prefix, msgElId) {
   var fields = [
     { id: prefix + '-firmName', label: 'Nazwa firmy' },
@@ -1524,10 +1577,34 @@ function validateOrderFields(prefix, msgElId) {
     if (!el) return;
     var val = el.value.trim();
     var invalid = !val || (f.id.indexOf('email') !== -1 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
-    el.classList.toggle('border-red-400', invalid);
-    el.classList.toggle('border-gray-300', !invalid);
-    if (invalid) ok = false;
+    if (invalid) { showFieldError(el, 'Pole wymagane'); ok = false; }
+    else { clearFieldError(el); }
   });
+
+  // Walidacja formatu NIP (opcjonalne, ale jeśli podane — walidowane)
+  var nipEl = document.getElementById(prefix + '-nip');
+  if (nipEl && nipEl.value.trim()) {
+    var nipCheck = validateNIP(nipEl.value.trim());
+    if (!nipCheck.ok) { showFieldError(nipEl, nipCheck.msg); ok = false; }
+    else { clearFieldError(nipEl); }
+  } else if (nipEl) { clearFieldError(nipEl); }
+
+  // Walidacja formatu kodu pocztowego
+  var zipEl = document.getElementById(prefix + '-zipCode');
+  if (zipEl && zipEl.value.trim()) {
+    var zipCheck = validateZipCode(zipEl.value.trim());
+    if (!zipCheck.ok) { showFieldError(zipEl, zipCheck.msg); ok = false; }
+    else { clearFieldError(zipEl); }
+  }
+
+  // Walidacja formatu telefonu (opcjonalne, ale jeśli podane — walidowane)
+  var phoneEl = document.getElementById(prefix + '-phone');
+  if (phoneEl && phoneEl.value.trim()) {
+    var phoneCheck = validatePhone(phoneEl.value.trim());
+    if (!phoneCheck.ok) { showFieldError(phoneEl, phoneCheck.msg); ok = false; }
+    else { clearFieldError(phoneEl); }
+  } else if (phoneEl) { clearFieldError(phoneEl); }
+
   if (!ok) {
     var msgEl = document.getElementById(msgElId);
     if (msgEl) {
@@ -1542,9 +1619,44 @@ function validateOrderFields(prefix, msgElId) {
 // Reset podświetlenia przy edycji pola
 document.addEventListener('input', function(e) {
   if (e.target.tagName === 'INPUT' && e.target.classList.contains('border-red-400')) {
-    e.target.classList.remove('border-red-400');
-    e.target.classList.add('border-gray-300');
+    clearFieldError(e.target);
   }
+});
+
+// --- Input masks ---
+
+// Kod pocztowy: auto-myślnik, tylko cyfry, max 6 znaków (dd-ddd)
+['wiz-zipCode', 'mod-zipCode'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.setAttribute('maxlength', '6');
+  el.setAttribute('inputmode', 'numeric');
+  el.addEventListener('input', function() {
+    var v = this.value.replace(/[^\d]/g, '');
+    if (v.length > 5) v = v.slice(0, 5);
+    if (v.length > 2) v = v.slice(0, 2) + '-' + v.slice(2);
+    this.value = v;
+  });
+});
+
+// NIP: tylko cyfry, litery (prefix), myślniki
+['wiz-nip', 'mod-nip'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.setAttribute('maxlength', '15');
+  el.addEventListener('input', function() {
+    this.value = this.value.replace(/[^A-Za-z0-9\-]/g, '');
+  });
+});
+
+// Telefon: tylko cyfry, +, spacje, myślniki
+['wiz-phone', 'mod-phone'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.setAttribute('inputmode', 'tel');
+  el.addEventListener('input', function() {
+    this.value = this.value.replace(/[^\d\+\-\s()]/g, '');
+  });
 });
 
 function submitModalOrder() {

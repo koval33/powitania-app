@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { sendMail } = require('../lib/mailer');
+const { validateNIP, validateZipCode, validatePhone } = require('../lib/validate');
 const { sendOrderToCRM } = require('../lib/crm-webhook');
 
 // Multer config for inquiry attachments (max 10MB)
@@ -23,6 +24,14 @@ router.post('/order', async (req, res) => {
   if (!firmName || !name || !email) {
     return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
   }
+
+  // Walidacja formatu pól
+  const nipCheck = validateNIP(nip);
+  if (!nipCheck.ok) return res.status(400).json({ ok: false, error: nipCheck.error });
+  const zipCheck = validateZipCode(zipCode);
+  if (!zipCheck.ok) return res.status(400).json({ ok: false, error: zipCheck.error });
+  const phoneCheck = validatePhone(phone);
+  if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
 
   const address = [street, zipCode, city].filter(Boolean).join(', ');
 
@@ -86,6 +95,8 @@ router.post('/inquiry', async (req, res) => {
   if (!email) {
     return res.status(400).json({ ok: false, error: 'Podaj adres email.' });
   }
+  const phoneCheck = validatePhone(phone);
+  if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
 
   try {
     // Mail do biura
@@ -246,6 +257,8 @@ router.post('/partner-inquiry', async (req, res) => {
   if (!name || !email) {
     return res.status(400).json({ ok: false, error: 'Podaj imię i adres email.' });
   }
+  const phoneCheck = validatePhone(phone);
+  if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
 
   // Load partner data to determine recipient
   const fs = require('fs');

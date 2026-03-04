@@ -467,6 +467,15 @@
       });
     });
 
+    // --- Phone input mask ---
+    var phoneInput = document.querySelector('#inquiry-form input[name="phone"]');
+    if (phoneInput) {
+      phoneInput.setAttribute('inputmode', 'tel');
+      phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^\d\+\-\s()]/g, '');
+      });
+    }
+
     // --- Form submit ---
     var inquiryForm = document.getElementById('inquiry-form');
     if (inquiryForm) {
@@ -475,6 +484,19 @@
         var formData = new FormData(this);
         var data = {};
         formData.forEach(function(val, key) { data[key] = val; });
+
+        // Walidacja telefonu
+        var phoneVal = (data.phone || '').trim();
+        if (phoneVal) {
+          var clean = phoneVal.replace(/[\s\-()]/g, '');
+          if (!/^\+?\d{7,15}$/.test(clean)) {
+            var msgEl = document.getElementById('form-message');
+            msgEl.classList.remove('hidden');
+            msgEl.className = 'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700';
+            msgEl.textContent = 'Podaj poprawny numer telefonu (min. 7 cyfr).';
+            return;
+          }
+        }
 
         var msgEl = document.getElementById('form-message');
         var submitBtn = this.querySelector('button[type="submit"]');

@@ -3,6 +3,7 @@ const router = express.Router();
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { validateNIP, validateZipCode, validatePhone } = require('../lib/validate');
 const p24 = require('../lib/p24');
 const { sendMail } = require('../lib/mailer');
 const { sendOrderToCRM } = require('../lib/crm-webhook');
@@ -69,6 +70,15 @@ router.post('/register', async (req, res) => {
     if (!firmName || !name || !email) {
       return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
     }
+
+    // Walidacja formatu pól
+    const { nip, zipCode, phone } = req.body;
+    const nipCheck = validateNIP(nip);
+    if (!nipCheck.ok) return res.status(400).json({ ok: false, error: nipCheck.error });
+    const zipCheck = validateZipCode(zipCode);
+    if (!zipCheck.ok) return res.status(400).json({ ok: false, error: zipCheck.error });
+    const phoneCheck = validatePhone(phone);
+    if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
 
     // Walidacja email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

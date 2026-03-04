@@ -89,11 +89,34 @@
 </section>
 
 <script>
+// Walidacja telefonu + input mask
+(function() {
+  var phoneEl = document.querySelector('input[name="phone"]');
+  if (phoneEl) {
+    phoneEl.setAttribute('inputmode', 'tel');
+    phoneEl.addEventListener('input', function() {
+      this.value = this.value.replace(/[^\d\+\-\s()]/g, '');
+    });
+  }
+})();
+
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var btn = document.getElementById('contact-submit');
   var msg = document.getElementById('contact-msg');
   var origText = btn.textContent;
+
+  // Walidacja telefonu
+  var phoneVal = (e.target.querySelector('input[name="phone"]').value || '').trim();
+  if (phoneVal) {
+    var clean = phoneVal.replace(/[\s\-()]/g, '');
+    if (!/^\+?\d{7,15}$/.test(clean)) {
+      msg.classList.remove('hidden');
+      msg.className = 'mt-4 text-center text-sm text-red-400';
+      msg.textContent = 'Podaj poprawny numer telefonu (min. 7 cyfr).';
+      return;
+    }
+  }
 
   btn.disabled = true;
   btn.textContent = 'Wysyłanie...';
