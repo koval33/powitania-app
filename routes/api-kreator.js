@@ -77,17 +77,26 @@ router.post('/generate-stream', kreatorLimiter.middleware(), verifyTurnstile, as
     return res.status(400).json({ ok: false, error: validationError });
   }
 
+  // Disable Express/Node buffering entirely
+  req.socket.setNoDelay(true);
+
   // Set up SSE headers
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
-    'Cache-Control': 'no-cache',
+    'Cache-Control': 'no-cache, no-transform',
     'Connection': 'keep-alive',
-    'X-Accel-Buffering': 'no'  // Disable Railway/nginx buffering
+    'X-Accel-Buffering': 'no',     // nginx
+    'X-Content-Type-Options': 'nosniff'
   });
 
-  // Helper to send SSE events
+  // Send padding comment to force proxy buffers to flush (~2KB)
+  res.write(':' + ' '.repeat(2048) + '\n\n');
+  if (typeof res.flush === 'function') res.flush();
+
+  // Helper to send SSE events (with flush)
   function sendEvent(event, data) {
     res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    if (typeof res.flush === 'function') res.flush();
   }
 
   // Handle client disconnect
@@ -126,6 +135,18 @@ router.post('/generate-stream', kreatorLimiter.middleware(), verifyTurnstile, as
     const decoder = new TextDecoder();
     let buffer = '';
 
+    // Accumulate small deltas and flush every ~80ms for efficiency
+    let pendingText = '';
+    let flushTimer = null;
+
+    function flushPending() {
+      if (pendingText && !aborted) {
+        sendEvent('chunk', { text: pendingText });
+        pendingText = '';
+      }
+      flushTimer = null;
+    }
+
     while (true) {
       if (aborted) break;
       const { done, value } = await reader.read();
@@ -145,8 +166,15 @@ router.post('/generate-stream', kreatorLimiter.middleware(), verifyTurnstile, as
 
           if (event.type === 'content_block_delta' && event.delta?.text) {
             fullText += event.delta.text;
-            // Forward text chunk to client
-            sendEvent('chunk', { text: event.delta.text });
+            pendingText += event.delta.text;
+
+            // Flush immediately if we have a decent chunk, otherwise batch
+            if (pendingText.length >= 20 || pendingText.includes('\n')) {
+              if (flushTimer) { clearTimeout(flushTimer); flushTimer = null; }
+              flushPending();
+            } else if (!flushTimer) {
+              flushTimer = setTimeout(flushPending, 80);
+            }
           }
 
           if (event.type === 'message_delta' && event.usage) {
@@ -161,6 +189,10 @@ router.post('/generate-stream', kreatorLimiter.middleware(), verifyTurnstile, as
         }
       }
     }
+
+    // Flush any remaining text
+    if (flushTimer) { clearTimeout(flushTimer); flushTimer = null; }
+    flushPending();
 
     if (aborted) return;
 

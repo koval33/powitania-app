@@ -224,12 +224,42 @@
       var reader = response.body.getReader();
       var decoder = new TextDecoder();
       var buf = '';
+      var currentEvent = '';  // Accumulate current event name across chunks
+      var stopped = false;
+
+      function handleSSEEvent(evtName, evtData) {
+        if (stopped) return;
+        try {
+          var data = JSON.parse(evtData);
+
+          if (evtName === 'chunk') {
+            state.streamText += data.text;
+            renderStreamUpdate();
+          } else if (evtName === 'retry') {
+            state._retrying = true;
+            renderStreamUpdate();
+          } else if (evtName === 'replace') {
+            state.streamText = data.text;
+            state._retrying = false;
+            renderStreamUpdate();
+          } else if (evtName === 'done') {
+            stopped = true;
+            state.result = data.text;
+            state._retrying = false;
+            callback({ text: data.text });
+          } else if (evtName === 'error') {
+            stopped = true;
+            setState({ loading: false, streaming: false, streamText: '', error: data.error });
+          }
+        } catch(e) {}
+      }
 
       function pump() {
         reader.read().then(function(result) {
+          if (stopped) return;
           if (result.done) {
             // Stream ended without done event — use what we have
-            if (state.streaming) {
+            if (state.streaming && !stopped) {
               var finalText = state.streamText.trim();
               if (finalText) {
                 state.result = finalText;
@@ -242,48 +272,33 @@
           }
 
           buf += decoder.decode(result.value, { stream: true });
-          var lines = buf.split('\n');
-          buf = lines.pop();
 
-          for (var i = 0; i < lines.length; i++) {
-            var line = lines[i].trim();
-            if (line.startsWith('event: ')) {
-              var evtName = line.slice(7);
-              // Next line should be data:
-              i++;
-              if (i < lines.length && lines[i].trim().startsWith('data: ')) {
-                try {
-                  var evtData = JSON.parse(lines[i].trim().slice(6));
+          // Process complete lines
+          var nlIdx;
+          while ((nlIdx = buf.indexOf('\n')) !== -1) {
+            var line = buf.substring(0, nlIdx).replace(/\r$/, '');
+            buf = buf.substring(nlIdx + 1);
 
-                  if (evtName === 'chunk') {
-                    state.streamText += evtData.text;
-                    renderStreamUpdate();
-                  } else if (evtName === 'retry') {
-                    // Word count correction happening — show message
-                    state._retrying = true;
-                    renderStreamUpdate();
-                  } else if (evtName === 'replace') {
-                    // Corrected text replaces streamed text
-                    state.streamText = evtData.text;
-                    state._retrying = false;
-                    renderStreamUpdate();
-                  } else if (evtName === 'done') {
-                    state.result = evtData.text;
-                    state._retrying = false;
-                    callback({ text: evtData.text });
-                    return; // Stop pumping
-                  } else if (evtName === 'error') {
-                    setState({ loading: false, streaming: false, streamText: '', error: evtData.error });
-                    return;
-                  }
-                } catch(e) {}
-              }
+            if (line === '') {
+              // Empty line = end of SSE message (reset)
+              currentEvent = '';
+            } else if (line.charAt(0) === ':') {
+              // SSE comment — ignore (used for padding)
+            } else if (line.substring(0, 6) === 'event:') {
+              currentEvent = line.substring(6).trim();
+            } else if (line.substring(0, 5) === 'data:') {
+              var evtData = line.substring(5).trim();
+              var evtName = currentEvent || 'message';
+              handleSSEEvent(evtName, evtData);
+              if (stopped) return;
             }
           }
 
           pump();
         }).catch(function() {
-          setState({ loading: false, streaming: false, error: 'Połączenie przerwane. Spróbuj ponownie.' });
+          if (!stopped) {
+            setState({ loading: false, streaming: false, error: 'Połączenie przerwane. Spróbuj ponownie.' });
+          }
         });
       }
 
