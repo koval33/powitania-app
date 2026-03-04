@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { buildPrompt, calcWords } = require('../lib/prompts');
+const { buildPrompt, calcWords, countSpeakableWords } = require('../lib/prompts');
 const RateLimiter = require('../lib/rate-limiter');
 const { verifyTurnstile } = require('../lib/turnstile');
 
@@ -87,7 +87,7 @@ router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (re
     const { serviceType, duration } = req.body;
     if (duration && serviceType !== 'ivr') {
       const targetWords = calcWords(parseInt(duration), 'pl', serviceType);
-      const actualWords = text.split(/\s+/).length;
+      const actualWords = countSpeakableWords(text);
       console.log(`[kreator] Generated: ${actualWords}/${targetWords} words`);
     }
 
@@ -120,7 +120,7 @@ router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (re
     const { targetDur, serviceType } = req.body;
     if (targetDur) {
       const targetWords = calcWords(parseInt(targetDur), 'pl', serviceType);
-      const actualWords = text.split(/\s+/).length;
+      const actualWords = countSpeakableWords(text);
       console.log(`[kreator] Optimized: ${actualWords}/${targetWords} words`);
     }
 

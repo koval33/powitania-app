@@ -534,6 +534,17 @@
     return html;
   }
 
+  // Strip IVR section labels / formatting before counting speakable words
+  function countSpeakableWords(text) {
+    var cleaned = text
+      .replace(/\[JĘZYK\s+\d+\s*[—–-]\s*[^\]]*\]/gi, '')  // [JĘZYK 1 — polskim]
+      .replace(/^[ \t]*(Powitanie|Menu|Zakończenie|Komunikat[^:\n]*|Informacja[^:\n]*|Oczekiwanie[^:\n]*):/gmi, '') // Section labels
+      .replace(/^[ \t]*\d+\.\s*/gm, '')  // Numbered list markers: "1. "
+      .trim();
+    var words = cleaned.split(/\s+/).filter(function(w) { return w.length > 0; });
+    return words.length;
+  }
+
   // Word-level diff using LCS algorithm
   function diffTexts(original, optimized) {
     var wordsA = original.trim().split(/\s+/);
@@ -586,7 +597,7 @@
   function renderOptCheck() {
     if (state.loading) return renderLoading();
 
-    var words = state.form.textInput.trim().split(/\s+/).length;
+    var words = countSpeakableWords(state.form.textInput);
     var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
     var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) !== -1) ? 130 : 165;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
@@ -654,7 +665,7 @@
   // STEP: Optimize result — with diff view or plain textarea
   function renderOptResult() {
     var resultText = state.result || state.form.textInput;
-    var resultWords = resultText.trim().split(/\s+/).length;
+    var resultWords = countSpeakableWords(resultText);
     var slowTypes = ['ivr', 'elearning', 'audiobook', 'film'];
     var WPM = (state.form.serviceType && slowTypes.indexOf(state.form.serviceType) !== -1) ? 130 : 165;
     var target = Math.round(WPM * (parseInt(state.form.targetDur) / 60));
@@ -666,7 +677,7 @@
 
     // Show diff view if we have optimized text and haven't accepted yet
     if (state._showDiff && state._originalText && state.result) {
-      var optWords = state.result.trim().split(/\s+/).length;
+      var optWords = countSpeakableWords(state.result);
       html += '<div class="rounded-xl p-6 mb-6 bg-green-50 border border-green-200">' +
         '<h3 class="text-lg font-bold mb-2">Propozycja optymalizacji</h3>' +
         '<p class="text-sm text-gray-500 mb-4">' + optWords + ' słów (cel: ' + target + ' dla ' + state.form.targetDur + 's)</p>' +
