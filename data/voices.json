@@ -2504,10 +2504,6 @@
       {
         "name": "Nagranie lektorskie",
         "url": "/audio/samples/Maciej-Jab%C5%82o%C5%84ski_demo2.mp3"
-      },
-      {
-        "name": "Demo filmowe",
-        "url": "https://youtu.be/yZ-CbzaUC7o"
       }
     ],
     "turnaround": "48h",
@@ -3616,10 +3612,6 @@
       {
         "name": "Nagranie lektorskie",
         "url": "/audio/samples/Demo.mp3"
-      },
-      {
-        "name": "Reklama 2",
-        "url": "https://www.youtube.com/watch?v=KCxJzRQICg8"
       }
     ],
     "turnaround": "48h",
