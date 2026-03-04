@@ -163,6 +163,15 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.kreator-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #ea580c;
+  border-radius: 50%;
+  animation: kreator-spin 0.8s linear infinite;
+}
+
 /* Toast */
 .kreator-toast {
   position: fixed;

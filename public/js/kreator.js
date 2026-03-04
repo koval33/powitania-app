@@ -74,6 +74,8 @@
     },
     result: '',
     loading: false,
+    streaming: false,    // true while SSE stream is active
+    streamText: '',      // partial text during streaming
     error: null,
     toast: null,
     _category: null,
@@ -200,8 +202,119 @@
     });
   }
 
+  // Streaming API call for generate endpoint (SSE)
+  function apiCallStream(body, callback) {
+    setState({ loading: true, streaming: true, streamText: '', error: null });
+    getTurnstileToken().then(function(token) {
+      var payload = Object.assign({}, body);
+      if (token) payload.turnstileToken = token;
+      return fetch('/api/kreator/generate-stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    })
+    .then(function(response) {
+      if (!response.ok) {
+        return response.json().then(function(data) {
+          setState({ loading: false, streaming: false, streamText: '', error: data.error || 'Wystąpił błąd.' });
+        });
+      }
+
+      var reader = response.body.getReader();
+      var decoder = new TextDecoder();
+      var buf = '';
+
+      function pump() {
+        reader.read().then(function(result) {
+          if (result.done) {
+            // Stream ended without done event — use what we have
+            if (state.streaming) {
+              var finalText = state.streamText.trim();
+              if (finalText) {
+                state.result = finalText;
+                callback({ text: finalText });
+              } else {
+                setState({ loading: false, streaming: false, error: 'Nie otrzymano odpowiedzi.' });
+              }
+            }
+            return;
+          }
+
+          buf += decoder.decode(result.value, { stream: true });
+          var lines = buf.split('\n');
+          buf = lines.pop();
+
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i].trim();
+            if (line.startsWith('event: ')) {
+              var evtName = line.slice(7);
+              // Next line should be data:
+              i++;
+              if (i < lines.length && lines[i].trim().startsWith('data: ')) {
+                try {
+                  var evtData = JSON.parse(lines[i].trim().slice(6));
+
+                  if (evtName === 'chunk') {
+                    state.streamText += evtData.text;
+                    renderStreamUpdate();
+                  } else if (evtName === 'retry') {
+                    // Word count correction happening — show message
+                    state._retrying = true;
+                    renderStreamUpdate();
+                  } else if (evtName === 'replace') {
+                    // Corrected text replaces streamed text
+                    state.streamText = evtData.text;
+                    state._retrying = false;
+                    renderStreamUpdate();
+                  } else if (evtName === 'done') {
+                    state.result = evtData.text;
+                    state._retrying = false;
+                    callback({ text: evtData.text });
+                    return; // Stop pumping
+                  } else if (evtName === 'error') {
+                    setState({ loading: false, streaming: false, streamText: '', error: evtData.error });
+                    return;
+                  }
+                } catch(e) {}
+              }
+            }
+          }
+
+          pump();
+        }).catch(function() {
+          setState({ loading: false, streaming: false, error: 'Połączenie przerwane. Spróbuj ponownie.' });
+        });
+      }
+
+      pump();
+    })
+    .catch(function() {
+      setState({ loading: false, streaming: false, streamText: '', error: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' });
+    });
+  }
+
+  // Efficient update during streaming — only update text content, no full re-render
+  function renderStreamUpdate() {
+    var streamEl = document.querySelector('[data-stream-output]');
+    if (streamEl) {
+      streamEl.textContent = state.streamText;
+      // Auto-scroll textarea to bottom
+      streamEl.scrollTop = streamEl.scrollHeight;
+
+      // Update retrying indicator
+      var retryEl = document.querySelector('[data-stream-retry]');
+      if (retryEl) {
+        retryEl.style.display = state._retrying ? 'block' : 'none';
+      }
+    } else {
+      // First chunk arrived — switch to streaming preview
+      render();
+    }
+  }
+
   function generate() {
-    apiCall('generate', state.form, function(data) {
+    apiCallStream(state.form, function(data) {
       state.result = data.text;
       if (window.trackEvent) trackEvent('kreator_generate', { service_type: state.form.serviceType, industry: state.form.industry });
       // If coming from lektor page, save text to context and redirect back
@@ -216,7 +329,7 @@
         window.location.href = state._returnUrl;
         return;
       }
-      setState({ step: 'preview', loading: false });
+      setState({ step: 'preview', loading: false, streaming: false, streamText: '' });
       scrollToKreator();
     });
   }
@@ -329,11 +442,33 @@
   }
 
   function renderLoading() {
+    // If streaming and we have text — show live preview
+    if (state.streaming && state.streamText) {
+      return renderStreamPreview();
+    }
     return '<div class="flex flex-col items-center justify-center py-20">' +
       '<div class="kreator-spinner mb-4"></div>' +
       '<p class="text-gray-700 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
       '<p class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
     '</div>';
+  }
+
+  function renderStreamPreview() {
+    var html = '<div class="flex items-center gap-3 mb-4">' +
+      '<div class="kreator-spinner-sm"></div>' +
+      '<h3 class="text-lg font-semibold text-gray-700">Generujemy tekst...</h3>' +
+    '</div>';
+
+    html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-4">' +
+      '<textarea data-stream-output readonly class="kreator-textarea text-gray-700 leading-relaxed" rows="10">' + esc(state.streamText) + '</textarea>' +
+    '</div>';
+
+    html += '<div data-stream-retry class="text-center text-sm text-amber-600" style="display:' + (state._retrying ? 'block' : 'none') + '">' +
+      '<div class="kreator-spinner-sm inline-block mr-2" style="vertical-align: middle"></div>' +
+      'Dopasowujemy długość tekstu...' +
+    '</div>';
+
+    return html;
   }
 
   function renderError() {

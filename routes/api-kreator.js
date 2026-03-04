@@ -11,6 +11,7 @@ const kreatorLimiter = new RateLimiter({
   message: 'Zbyt wiele generowań. Poczekaj minutę i spróbuj ponownie.'
 });
 
+// Non-streaming call (used for optimize + word-count retry)
 async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -64,7 +65,159 @@ function validateInput(body) {
   return null;
 }
 
-// Obie ścieżki: rate limit → Turnstile → walidacja → handler
+// ── Streaming generate (SSE) ────────────────────────────────────────────
+router.post('/generate-stream', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ ok: false, error: 'Brak konfiguracji API' });
+  }
+
+  const validationError = validateInput(req.body);
+  if (validationError) {
+    return res.status(400).json({ ok: false, error: validationError });
+  }
+
+  // Set up SSE headers
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no'  // Disable Railway/nginx buffering
+  });
+
+  // Helper to send SSE events
+  function sendEvent(event, data) {
+    res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+  }
+
+  // Handle client disconnect
+  let aborted = false;
+  req.on('close', () => { aborted = true; });
+
+  try {
+    const params = { action: 'generate', ...req.body };
+    const prompt = buildPrompt(params);
+
+    // ── First attempt: streaming ──
+    const streamResponse = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 2048,
+        stream: true,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!streamResponse.ok) {
+      const errBody = await streamResponse.text();
+      throw new Error(errBody);
+    }
+
+    // Parse SSE stream from Anthropic
+    let fullText = '';
+    let usage = { input_tokens: 0, output_tokens: 0 };
+    const reader = streamResponse.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      if (aborted) break;
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // Keep incomplete line in buffer
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const jsonStr = line.slice(6).trim();
+        if (jsonStr === '[DONE]') continue;
+
+        try {
+          const event = JSON.parse(jsonStr);
+
+          if (event.type === 'content_block_delta' && event.delta?.text) {
+            fullText += event.delta.text;
+            // Forward text chunk to client
+            sendEvent('chunk', { text: event.delta.text });
+          }
+
+          if (event.type === 'message_delta' && event.usage) {
+            usage.output_tokens = event.usage.output_tokens || 0;
+          }
+
+          if (event.type === 'message_start' && event.message?.usage) {
+            usage.input_tokens = event.message.usage.input_tokens || 0;
+          }
+        } catch (e) {
+          // Skip malformed JSON lines
+        }
+      }
+    }
+
+    if (aborted) return;
+
+    fullText = fullText.trim();
+
+    // ── Word count validation — retry ONCE if needed (non-streaming) ──
+    const { serviceType, duration } = req.body;
+    if (duration && serviceType !== 'ivr') {
+      const targetWords = calcWords(parseInt(duration), 'pl', serviceType);
+      const actualWords = fullText.split(/\s+/).length;
+      const deviation = Math.abs(actualWords - targetWords) / targetWords;
+
+      if (deviation > 0.15 && !aborted) {
+        const diff = targetWords - actualWords;
+        const direction = diff > 0 ? 'za krótki' : 'za długi';
+        const correction = diff > 0
+          ? `Tekst jest ${direction} o ${Math.abs(diff)} słów. Rozbuduj go, dodając więcej szczegółów i treści, aby osiągnąć dokładnie ${targetWords} słów.`
+          : `Tekst jest ${direction} o ${Math.abs(diff)} słów. Skróć go, usuwając zbędne fragmenty, aby osiągnąć dokładnie ${targetWords} słów.`;
+
+        console.log(`[kreator] Word count retry: ${actualWords}/${targetWords} words (${Math.round(deviation*100)}% off)`);
+
+        // Notify client that correction is happening
+        sendEvent('retry', { reason: 'word_count', actual: actualWords, target: targetWords });
+
+        const retryData = await callAnthropic(apiKey, [
+          { role: 'user', content: prompt },
+          { role: 'assistant', content: fullText },
+          { role: 'user', content: `${correction} Zwróć TYLKO poprawiony tekst, bez komentarzy. Tekst MUSI mieć ${targetWords} słów (±3 słowa).` }
+        ]);
+
+        fullText = retryData.content[0].text.trim();
+        usage = {
+          input_tokens: (usage.input_tokens || 0) + (retryData.usage.input_tokens || 0),
+          output_tokens: (usage.output_tokens || 0) + (retryData.usage.output_tokens || 0)
+        };
+
+        console.log(`[kreator] After retry: ${fullText.split(/\s+/).length}/${targetWords} words`);
+
+        // Send corrected text as replacement
+        sendEvent('replace', { text: fullText });
+      }
+    }
+
+    // Final done event
+    sendEvent('done', { text: fullText, usage });
+    res.end();
+
+  } catch (err) {
+    console.error('[kreator] Stream error:', err);
+    if (!aborted) {
+      sendEvent('error', { error: 'Wystąpił błąd. Spróbuj ponownie.' });
+      res.end();
+    }
+  }
+});
+
+// ── Non-streaming generate (fallback / compatibility) ───────────────────
 router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
