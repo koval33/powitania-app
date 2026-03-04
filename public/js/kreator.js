@@ -74,8 +74,6 @@
     },
     result: '',
     loading: false,
-    streaming: false,    // true while SSE stream is active
-    streamText: '',      // partial text during streaming
     error: null,
     toast: null,
     _category: null,
@@ -202,134 +200,8 @@
     });
   }
 
-  // Streaming API call for generate endpoint (SSE)
-  function apiCallStream(body, callback) {
-    setState({ loading: true, streaming: true, streamText: '', error: null });
-    getTurnstileToken().then(function(token) {
-      var payload = Object.assign({}, body);
-      if (token) payload.turnstileToken = token;
-      return fetch('/api/kreator/generate-stream', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    })
-    .then(function(response) {
-      if (!response.ok) {
-        return response.json().then(function(data) {
-          setState({ loading: false, streaming: false, streamText: '', error: data.error || 'Wystąpił błąd.' });
-        });
-      }
-
-      var reader = response.body.getReader();
-      var decoder = new TextDecoder();
-      var buf = '';
-      var currentEvent = '';  // Accumulate current event name across chunks
-      var stopped = false;
-
-      function handleSSEEvent(evtName, evtData) {
-        if (stopped) return;
-        try {
-          var data = JSON.parse(evtData);
-
-          if (evtName === 'chunk') {
-            state.streamText += data.text;
-            renderStreamUpdate();
-          } else if (evtName === 'retry') {
-            state._retrying = true;
-            renderStreamUpdate();
-          } else if (evtName === 'replace') {
-            state.streamText = data.text;
-            state._retrying = false;
-            renderStreamUpdate();
-          } else if (evtName === 'done') {
-            stopped = true;
-            state.result = data.text;
-            state._retrying = false;
-            callback({ text: data.text });
-          } else if (evtName === 'error') {
-            stopped = true;
-            setState({ loading: false, streaming: false, streamText: '', error: data.error });
-          }
-        } catch(e) {}
-      }
-
-      function pump() {
-        reader.read().then(function(result) {
-          if (stopped) return;
-          if (result.done) {
-            // Stream ended without done event — use what we have
-            if (state.streaming && !stopped) {
-              var finalText = state.streamText.trim();
-              if (finalText) {
-                state.result = finalText;
-                callback({ text: finalText });
-              } else {
-                setState({ loading: false, streaming: false, error: 'Nie otrzymano odpowiedzi.' });
-              }
-            }
-            return;
-          }
-
-          buf += decoder.decode(result.value, { stream: true });
-
-          // Process complete lines
-          var nlIdx;
-          while ((nlIdx = buf.indexOf('\n')) !== -1) {
-            var line = buf.substring(0, nlIdx).replace(/\r$/, '');
-            buf = buf.substring(nlIdx + 1);
-
-            if (line === '') {
-              // Empty line = end of SSE message (reset)
-              currentEvent = '';
-            } else if (line.charAt(0) === ':') {
-              // SSE comment — ignore (used for padding)
-            } else if (line.substring(0, 6) === 'event:') {
-              currentEvent = line.substring(6).trim();
-            } else if (line.substring(0, 5) === 'data:') {
-              var evtData = line.substring(5).trim();
-              var evtName = currentEvent || 'message';
-              handleSSEEvent(evtName, evtData);
-              if (stopped) return;
-            }
-          }
-
-          pump();
-        }).catch(function() {
-          if (!stopped) {
-            setState({ loading: false, streaming: false, error: 'Połączenie przerwane. Spróbuj ponownie.' });
-          }
-        });
-      }
-
-      pump();
-    })
-    .catch(function() {
-      setState({ loading: false, streaming: false, streamText: '', error: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' });
-    });
-  }
-
-  // Efficient update during streaming — only update text content, no full re-render
-  function renderStreamUpdate() {
-    var streamEl = document.querySelector('[data-stream-output]');
-    if (streamEl) {
-      streamEl.textContent = state.streamText;
-      // Auto-scroll textarea to bottom
-      streamEl.scrollTop = streamEl.scrollHeight;
-
-      // Update retrying indicator
-      var retryEl = document.querySelector('[data-stream-retry]');
-      if (retryEl) {
-        retryEl.style.display = state._retrying ? 'block' : 'none';
-      }
-    } else {
-      // First chunk arrived — switch to streaming preview
-      render();
-    }
-  }
-
   function generate() {
-    apiCallStream(state.form, function(data) {
+    apiCall('generate', state.form, function(data) {
       state.result = data.text;
       if (window.trackEvent) trackEvent('kreator_generate', { service_type: state.form.serviceType, industry: state.form.industry });
       // If coming from lektor page, save text to context and redirect back
@@ -344,7 +216,7 @@
         window.location.href = state._returnUrl;
         return;
       }
-      setState({ step: 'preview', loading: false, streaming: false, streamText: '' });
+      setState({ step: 'preview', loading: false });
       scrollToKreator();
     });
   }
@@ -449,6 +321,11 @@
       _frozenHeight = 0;
       root.style.minHeight = '';
     }
+    // Wyczyść timer loadingu
+    if (!state.loading && _loadingTimer) {
+      clearTimeout(_loadingTimer);
+      _loadingTimer = null;
+    }
   }
 
   function renderToast() {
@@ -456,34 +333,22 @@
     return '<div class="kreator-toast">' + esc(state.toast) + '</div>';
   }
 
+  var _loadingTimer = null;
+
   function renderLoading() {
-    // If streaming and we have text — show live preview
-    if (state.streaming && state.streamText) {
-      return renderStreamPreview();
+    // Start timer to update message after 6s
+    if (!_loadingTimer) {
+      _loadingTimer = setTimeout(function() {
+        _loadingTimer = null;
+        var sub = document.querySelector('[data-loading-sub]');
+        if (sub) sub.textContent = 'Generowanie trwa dłużej niż zwykle — jeszcze chwilę...';
+      }, 6000);
     }
     return '<div class="flex flex-col items-center justify-center py-20">' +
       '<div class="kreator-spinner mb-4"></div>' +
       '<p class="text-gray-700 text-lg font-medium">Przygotowujemy tekst dla Ciebie</p>' +
-      '<p class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
+      '<p data-loading-sub class="text-gray-500 text-sm mt-2">To potrwa kilka sekund...</p>' +
     '</div>';
-  }
-
-  function renderStreamPreview() {
-    var html = '<div class="flex items-center gap-3 mb-4">' +
-      '<div class="kreator-spinner-sm"></div>' +
-      '<h3 class="text-lg font-semibold text-gray-700">Generujemy tekst...</h3>' +
-    '</div>';
-
-    html += '<div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-4">' +
-      '<textarea data-stream-output readonly class="kreator-textarea text-gray-700 leading-relaxed" rows="10">' + esc(state.streamText) + '</textarea>' +
-    '</div>';
-
-    html += '<div data-stream-retry class="text-center text-sm text-amber-600" style="display:' + (state._retrying ? 'block' : 'none') + '">' +
-      '<div class="kreator-spinner-sm inline-block mr-2" style="vertical-align: middle"></div>' +
-      'Dopasowujemy długość tekstu...' +
-    '</div>';
-
-    return html;
   }
 
   function renderError() {
