@@ -131,7 +131,8 @@
   <% } %>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -145,7 +146,35 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="/css/style.css">
+  <%/* style.css inlined to eliminate render-blocking request */%>
+  <style>
+body{background-color:#f7f3ef}
+.logo-dark{filter:brightness(0);opacity:.5;transition:opacity .3s ease,filter .3s ease}
+.logo-dark:hover{opacity:.8}
+.hero-dotgrid{background-color:#faf8f5}
+.kreator-widget{max-width:800px;margin:0 auto}
+.kreator-inner{animation:kreator-fade .3s ease}
+@keyframes kreator-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.kreator-card{background:linear-gradient(to bottom,#fff,#f9fafb);border:2px solid #e5e7eb;border-radius:16px;padding:2rem;text-align:left;transition:all .2s ease;cursor:pointer;width:100%;box-shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05)}
+.kreator-card:hover{border-color:#ea580c;box-shadow:0 10px 25px -5px rgba(0,0,0,.1),0 4px 20px rgba(234,88,12,.15);transform:translateY(-2px)}
+.kreator-btn-primary{background-color:#ea580c;color:#fff;border:none;border-radius:10px;padding:12px 24px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.kreator-btn-primary:hover{background-color:#f97316;box-shadow:0 4px 12px rgba(234,88,12,.3)}
+.kreator-btn-primary:disabled{background-color:#f3f4f6;color:#9ca3af;cursor:not-allowed;box-shadow:none}
+.kreator-btn-secondary{background-color:transparent;color:#374151;border:2px solid #d1d5db;border-radius:10px;padding:12px 24px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s ease}
+.kreator-btn-secondary:hover{border-color:#f97316;color:#f97316}
+.kreator-input,.kreator-select,.kreator-textarea{width:100%;padding:12px 16px;border:2px solid #d1d5db;border-radius:10px;font-size:.95rem;transition:border-color .2s ease;background:#fff;color:#374151}
+.kreator-input::placeholder,.kreator-textarea::placeholder{color:#9ca3af}
+.kreator-select{color:#374151;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:40px}
+.kreator-select option{background:#fff;color:#374151}
+.kreator-input:focus,.kreator-select:focus,.kreator-textarea:focus{outline:none;border-color:#ea580c;box-shadow:0 0 0 3px rgba(234,88,12,.15)}
+.kreator-textarea{resize:vertical;min-height:120px}
+.kreator-spinner{width:40px;height:40px;border:4px solid rgba(0,0,0,.1);border-top-color:#ea580c;border-radius:50%;animation:kreator-spin .8s linear infinite;margin:0 auto}
+@keyframes kreator-spin{to{transform:rotate(360deg)}}
+.kreator-spinner-sm{width:20px;height:20px;border:3px solid rgba(0,0,0,.1);border-top-color:#ea580c;border-radius:50%;animation:kreator-spin .8s linear infinite}
+.kreator-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#ea580c;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:500;z-index:1000;animation:kreator-toast-in .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+@keyframes kreator-toast-in{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@media(max-width:640px){.kreator-card{padding:1.5rem}.kreator-btn-primary,.kreator-btn-secondary{padding:10px 18px;font-size:.9rem}}
+  </style>
 </head>
 <body class="text-gray-700 antialiased">
 
