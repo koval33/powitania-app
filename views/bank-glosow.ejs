@@ -13,7 +13,8 @@
   <div class="max-w-6xl mx-auto px-4">
 
     <!-- Filtry: rząd główny (zawsze widoczny) -->
-    <div class="flex flex-wrap items-center gap-2">
+    <style>.filters-ready{opacity:1!important}</style>
+    <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
       <div id="gender-group" class="flex rounded-lg overflow-hidden border border-gray-200">
         <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
         <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Mężczyźni</button>
@@ -113,6 +114,7 @@
 
   </div>
   </div>
+  <script>document.getElementById('filters-wrap').classList.add('filters-ready')</script>
 </section>
 
 <!-- KREATOR CONTEXT BANNER -->
