@@ -19,13 +19,9 @@
       var s = localStorage.getItem('cookie-consent-v2');
       if (s) { try { gtag('consent', 'update', JSON.parse(s)); } catch(e){} }
     })();
+    /* GTM deferred — ładuje po load+1.5s lub pierwszej interakcji */
+    window.__GTM_ID = '<%= gtmId %>';
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','<%= gtmId %>');</script>
   <% } %>
 
   <meta charset="UTF-8">
@@ -125,10 +121,7 @@
   }
   </script>
 
-  <% if (gtmId) { %>
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <% } %>
+  <%/* GTM preconnect removed — GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">

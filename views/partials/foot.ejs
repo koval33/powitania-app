@@ -265,6 +265,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </script>
 
-<script src="/js/ga-events.js"></script>
+<!-- GTM deferred loader — loads after page load + 1.5s OR first user interaction -->
+<script>
+(function(){
+  var loaded = false;
+  var gtmId = window.__GTM_ID;
+  if (!gtmId) return;
+
+  function loadGTM() {
+    if (loaded) return;
+    loaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var j = document.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+    document.head.appendChild(j);
+    // Load ga-events.js after GTM
+    var g = document.createElement('script');
+    g.src = '/js/ga-events.js';
+    document.head.appendChild(g);
+  }
+
+  // Strategy: load after page is ready + idle, or on first interaction
+  if (document.readyState === 'complete') {
+    setTimeout(loadGTM, 1500);
+  } else {
+    window.addEventListener('load', function() { setTimeout(loadGTM, 1500); });
+  }
+
+  // First user interaction triggers immediate load
+  ['scroll','click','touchstart','keydown','mousemove'].forEach(function(evt) {
+    document.addEventListener(evt, loadGTM, { once: true, passive: true });
+  });
+})();
+</script>
 </body>
 </html>
