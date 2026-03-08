@@ -74,6 +74,22 @@ app.use((req, res, next) => {
   next();
 });
 
+// Auto-redirect non-Polish browsers to English version (only on homepage)
+app.use((req, res, next) => {
+  if (req.method !== 'GET' || req.path !== '/') return next();
+  // Respect explicit language preference
+  if (req.query.lang === 'pl') return next();
+  // Don't redirect bots/crawlers (they should index PL as canonical)
+  const ua = req.headers['user-agent'] || '';
+  if (/bot|crawl|spider|slurp|google|bing|yandex/i.test(ua)) return next();
+  // Check Accept-Language header
+  const lang = req.headers['accept-language'] || '';
+  if (!lang.match(/pl/i)) {
+    return res.redirect(302, '/en/');
+  }
+  next();
+});
+
 // 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
 app.get('/faq/', (req, res) => res.redirect(301, '/faq-pl/'));
@@ -512,12 +528,40 @@ app.get('/bank/natives/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/znani-i-lubiani/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 
-// EN version placeholder
+// === English version (Phase 1) ===
 app.get('/en/', (req, res) => {
-  res.render('placeholder', { title: 'powitania.pl — Professional voiceover recordings', description: '', heading: 'English version', message: 'Coming soon!' });
+  res.render('en/index', {
+    title: 'Professional Voiceover Studio | Powitania.pl',
+    description: 'Professional voiceover recordings. Over 230 voice artists in 30+ languages. Advertising spots, IVR, film narration, e-learning, audiobooks.',
+    voices: loadVoices(),
+    posts: loadBlogPosts().slice(0, 6)
+  });
 });
-// EN — wszystkie stare angielskie podstrony → placeholder
-app.get('/en/*', (req, res) => res.redirect(301, '/en/'));
+
+app.get('/en/voice-bank/', (req, res) => {
+  res.render('en/bank-glosow', {
+    title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
+    description: 'Browse our voice bank with over 230 professional voice artists. Listen to samples, filter by language, gender, and style.',
+    voices: loadVoices()
+  });
+});
+
+app.get('/en/pricing/', (req, res) => {
+  res.render('en/cennik', {
+    title: 'Pricing | Voiceover Recordings | Powitania.pl',
+    description: 'Professional voiceover recording prices. Transparent pricing for advertising spots, IVR, film narration, and more.'
+  });
+});
+
+app.get('/en/contact/', (req, res) => {
+  res.render('en/kontakt', {
+    title: 'Contact | Powitania.pl',
+    description: 'Get in touch with our voiceover studio. We respond within 2 hours.'
+  });
+});
+
+// EN — strony bez dedykowanego tłumaczenia → redirect na główną EN
+app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
 
 // Sitemap.xml — dynamiczny
 app.get('/sitemap.xml', (req, res) => {
@@ -543,6 +587,11 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/polityka-prywatnosci/', priority: '0.3', changefreq: 'yearly' },
     { url: '/regulamin-serwisu/', priority: '0.3', changefreq: 'yearly' },
     // /bank/* routes now redirect to /bank-glosow/ — removed from sitemap
+    // English version
+    { url: '/en/', priority: '0.8', changefreq: 'weekly' },
+    { url: '/en/voice-bank/', priority: '0.7', changefreq: 'weekly' },
+    { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

@@ -31,6 +31,17 @@
 - [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (60 artykułów)
 - [O firmie](https://www.powitania.pl/o-firmie/): Historia i informacje o studiu
 
+## English Version
+
+Powitania.pl is also available in English for international clients:
+
+- [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services for international clients
+- [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples — filter by language, gender, style
+- [Pricing (EN)](https://www.powitania.pl/en/pricing/): Transparent pricing for all voiceover services
+- [Contact (EN)](https://www.powitania.pl/en/contact/): Get in touch — we respond within 2 hours
+
+Non-Polish browsers are automatically redirected to the English version.
+
 ## Kontakt
 
 - Strona: [https://www.powitania.pl](https://www.powitania.pl)

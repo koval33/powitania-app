@@ -1,0 +1,864 @@
+<%- include('../partials/head-en') %>
+
+<!-- HERO + KREATOR -->
+<section class="relative overflow-hidden hero-dotgrid">
+
+  <div class="relative max-w-4xl mx-auto px-4 pt-10 pb-4 md:pt-14 md:pb-6 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight" style="font-family: 'Poppins', sans-serif;">
+      Professional Voiceover Productions
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Prepare your script, choose a voice artist, order your recording. Over 230 professional voices in 30+ languages.
+    </p>
+  </div>
+
+  <!-- KREATOR wewnątrz sekcji z kropkami -->
+  <div id="kreator" class="relative pb-10 pt-2 scroll-mt-[8rem]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-5">
+        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">Voiceover Script Creator</h2>
+      </div>
+      <%- include('../partials/kreator') %>
+    </div>
+  </div>
+</section>
+
+<!-- JAK TO DZIAŁA -->
+<section class="py-16" style="background-color:#efe8df">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <!-- Step 1: Prepare Your Script -->
+      <div class="text-center group">
+        <div class="w-full mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-sm">
+          <img src="/img/sections/przygotuj-tekst.webp" alt="Prepare Your Script — text editor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" fetchpriority="high" width="670" height="449">
+        </div>
+        <h3 class="font-bold text-lg mb-2 text-gray-900">Prepare Your Script</h3>
+        <p class="text-gray-500 text-sm">Use our creator or paste your own text for optimization.</p>
+      </div>
+      <!-- Step 2: Choose a Voice -->
+      <div class="text-center group">
+        <div class="w-full mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-sm">
+          <img src="/img/sections/wybierz-lektora.webp" alt="Choose a Voice — recording studio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="445">
+        </div>
+        <h3 class="font-bold text-lg mb-2 text-gray-900">Choose a Voice</h3>
+        <p class="text-gray-500 text-sm">Listen to samples and choose the voice perfect for your project.</p>
+      </div>
+      <!-- Step 3: Order Recording -->
+      <div class="text-center group">
+        <div class="w-full mb-5 aspect-[3/2] rounded-xl overflow-hidden shadow-sm">
+          <img src="/img/sections/zamow-nagranie.webp" alt="Order Recording — online ordering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="353">
+        </div>
+        <h3 class="font-bold text-lg mb-2 text-gray-900">Order Recording</h3>
+        <p class="text-gray-500 text-sm">Professional recording ready in 24-48 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<% if (typeof posts !== 'undefined' && posts.length > 0) { %>
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">News</h2>
+      <p class="text-gray-500">Updates from the voiceover studio, tips and industry articles</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <% posts.forEach(function(post) { %>
+      <a href="/aktualnosci-pl/<%= post.slug %>/" class="group bg-white rounded-xl border border-gray-200 hover:border-accent overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-6">
+          <div class="text-xs text-gray-500 mb-3"><%= post.date %></div>
+          <h3 class="font-semibold mb-2 text-gray-900 group-hover:text-accent transition-colors line-clamp-2"><%= post.title %></h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3"><%= post.excerpt %></p>
+          <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4">
+            Read more
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </span>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/aktualnosci-pl/" class="text-accent hover:text-accent-light font-medium text-sm">All news &rarr;</a>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- OUR SERVICES — 2×2 grid -->
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">Professional voiceover productions for every industry. Over 28 years of experience and thousands of completed projects.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- 1. Script Creation — NEW -->
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-1.5">
+          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+            <img src="/img/sections/kreacja-tekst.webp" alt="Script Creation — Voiceover Script Creator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="449">
+          </div>
+        </div>
+        <div class="p-6 pt-3">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Script Creation</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            Don't have a script ready? Use our Voiceover Script Creator. Prepare a professional script for recording in seconds — for spots, IVR announcements, film narration or e-learning.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Create a script from scratch
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Optimization for your recording duration
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              IVR scripts, spots, narration, e-learning
+            </li>
+          </ul>
+          <a href="/#kreator" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+            Open Voiceover Script Creator
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Advertising Spots -->
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-1.5">
+          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+            <img src="/img/sections/spoty-reklamowe.webp" alt="Advertising spots — people watching television" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+          </div>
+        </div>
+        <div class="p-6 pt-3">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Advertising Spots</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            Hire the most recognizable voice actors and create an advertising spot that will capture your audience's attention. A professional voiceover and recognizable voice is better quality for radio, television, or online spots.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Experienced advertising voice actors
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Most recognizable voices
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Fast production and sound design
+            </li>
+          </ul>
+          <a href="/en/voice-for-advertising/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+            Learn more
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Multimedia / Voiceover for Films -->
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-1.5">
+          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+            <img src="/img/sections/multimedia.webp" alt="Multimedia and voiceover for films" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+          </div>
+        </div>
+        <div class="p-6 pt-3">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Multimedia and Film Voiceover</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            We'll prepare the soundtrack for your film, and if needed — we'll mix it into your video material. Narration for instructional, corporate, e-learning and promotional films.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Narrator for any type of film
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Translations and multilingual tracks
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Audio-video editing included
+            </li>
+          </ul>
+          <a href="/en/professional-voiceover-for-films/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+            Learn more
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Phone Announcements -->
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-1.5">
+          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+            <img src="/img/sections/zapowiedzi-telefoniczne.webp" alt="Phone announcements — woman talking on the phone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+          </div>
+        </div>
+        <div class="p-6 pt-3">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Phone Announcements</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            Phone system announcements are an important element of your company's image. Carefully prepared IVR recordings encourage customers to contact you and build a professional image.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Professional first impression
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Multilingual IVR recordings
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Direct marketing on your hotline
+            </li>
+          </ul>
+          <a href="/en/phone-announcements/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+            Learn more
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR VOICE ACTORS -->
+<section class="py-20" style="background-color:#e7ded3">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popular Voice Actors</h2>
+      <p class="text-gray-500">Listen to samples and find the ideal voice for your project</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+      <% var popularIds = ['jacek-brzostynski', 'malgorzata', 'janusz', 'anita', 'maciej-jablonski']; %>
+      <% var allVoices = typeof voices !== 'undefined' ? voices : []; %>
+      <% popularIds.forEach(function(pid) { %>
+        <% var v = allVoices.find(function(x) { return x.id === pid; }); %>
+        <% if (v) { %>
+        <div class="text-center group">
+          <div class="relative mb-3">
+            <img
+              src="<%= v.photo %>"
+              alt="<%= v.name %>"
+              class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all"
+              loading="lazy"
+            >
+            <% if (v.audio) { %>
+            <button
+              onclick="playPopular(this, '<%= v.audio %>')"
+              class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/3 w-10 h-10 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+              title="Listen to sample"
+            >
+              <svg class="w-4 h-4 ml-0.5 play-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="w-4 h-4 pause-icon hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
+          </div>
+          <a href="/en/voice-actors/<%= v.id %>/" class="text-gray-900 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
+          <div class="text-xs text-gray-500 mt-0.5"><%= v.gender === 'm' ? 'Voice Actor' : 'Voice Actress' %></div>
+        </div>
+        <% } %>
+      <% }); %>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/en/voice-bank/" class="text-accent hover:text-accent-light font-medium text-sm">See all voice actors (230+) &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR ACHIEVEMENTS IN NUMBERS -->
+<section class="py-16 border-y border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Achievements in Numbers</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">We've created voiceover recordings for over 2,100 clients. Most of them have stayed with us long-term.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-4xl font-bold text-accent mb-1">8600+</div>
+        <div class="text-sm text-gray-500">Recordings Completed</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-accent mb-1">2100+</div>
+        <div class="text-sm text-gray-500">Satisfied Clients</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-accent mb-1">230+</div>
+        <div class="text-sm text-gray-500">Professional Voice Actors</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-accent mb-1">28</div>
+        <div class="text-sm text-gray-500">Years of Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS AND PROJECTS — YouTube carousel -->
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clients and Projects</h2>
+      <p class="text-gray-500">Listen to selected recordings from our portfolio</p>
+    </div>
+
+    <!-- Carousel — built dynamically after checking video availability -->
+    <div class="relative" id="yt-section">
+      <div id="yt-carousel" class="overflow-hidden">
+        <div id="yt-track" class="flex transition-transform duration-500 ease-in-out"></div>
+      </div>
+
+      <!-- Carousel navigation -->
+      <button id="yt-prev" class="hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="yt-next" class="hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Dots -->
+      <div id="yt-dots" class="flex justify-center gap-2 mt-6"></div>
+    </div>
+
+    <!-- SEO SECTION -->
+    <div class="mt-16 pt-12 border-t border-gray-200">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Powitania.pl Voiceover Studio – Why Choose Us?</h2>
+      <div class="text-gray-600 leading-relaxed space-y-4 text-center">
+        <p>Looking for a voice that will effectively capture your customers' attention and build a professional image of your brand? As a voiceover studio with over 28 years of experience, we offer much more than recordings — we deliver emotions that sell.</p>
+        <p>Whether you need a dynamic radio spot, professional IVR announcement, or engaging web message — our recording studio will be your partner in creating communication at the highest level. We approach each project individually, ensuring your message stands out and builds customer trust.</p>
+        <p>Check our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> and discover how professional voiceovers can transform the quality of your brand.</p>
+      </div>
+    </div>
+
+    <!-- CLIENT LOGOS -->
+    <div class="mt-16 pt-12 border-t border-gray-200">
+      <h3 class="text-center text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Trusted By</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center justify-items-center">
+        <img src="/img/klienci/mswia.png" alt="MSWiA" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/men.png" alt="MEN" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/allegro.png" alt="Allegro" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/dhl.png" alt="DHL" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/axa.png" alt="AXA" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/dpd.png" alt="DPD" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/esky.png" alt="eSky" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/ups.png" alt="UPS" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/tvn.png" alt="TVN" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/volvo.png" alt="Volvo" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/solid-security.png" alt="Solid Security" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/Focus-Hotels.png" alt="Focus Hotels" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/3s.png" alt="3S" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/brw.png" alt="BRW" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/credit-agricole.png" alt="Credit Agricole" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/Koelner-Rawlplug.png" alt="Koelner Rawlplug" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/kazar.png" alt="Kazar" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/TU-Europa.png" alt="TU Europa" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="opinie" class="py-20" style="background-color:#dfd4c8">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+      <p class="text-gray-500">Over 2,100 satisfied clients and 28 years of experience</p>
+    </div>
+
+    <!-- Carousel container -->
+    <div class="relative">
+      <div id="reviews-track" class="overflow-hidden">
+        <div id="reviews-slider" class="flex transition-transform duration-500 ease-in-out">
+
+          <!-- Slide 1 (3 testimonials) -->
+          <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Everything as described, I recommend.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Sebastian</span>
+                <span class="text-gray-500"> &mdash; Stonebau Sp. z o.o.</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">15.12.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Warmly recommended! Professional, very efficient and in a very pleasant atmosphere.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Marta</span>
+                <span class="text-gray-500"> &mdash; mediashake</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">15.12.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Everything was handled professionally once again, quickly and efficiently.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Andrzej</span>
+                <span class="text-gray-500"> &mdash; FNC Poland</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">05.11.2025</div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Great cooperation — friendly contact, quick responses, client-focused approach, high quality and short turnaround. I recommend!&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Kasia Urbańska-Ludwicka</span>
+                <span class="text-gray-500"> &mdash; Płodni Marketing</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">15.10.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Very quick and efficient delivery — order met expectations.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">CU Partner</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">23.09.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Always fast, efficient and in a good atmosphere. We come back regularly.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Tatiana Maćkowiak</span>
+                <span class="text-gray-500"> &mdash; Blue Baobab Sp. z o.o.</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">26.08.2025</div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="w-full flex-shrink-0 grid md:grid-cols-3 gap-6 px-1">
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Very good contact, fast delivery, many options to choose from, very good quality recordings. I can definitely recommend.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Kacper</span>
+                <span class="text-gray-500"> &mdash; Taśma Film</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">05.08.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;We work together cyclically and every time it's perfectly executed. 10/10.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Wojtek</span>
+                <span class="text-gray-500"> &mdash; Domesta Sp. z o.o.</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">22.05.2025</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+              <div class="flex gap-1 mb-3 text-yellow-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;We've been working with powitania.pl for many years, the quality of recordings and professional service are at the highest level.&rdquo;</p>
+              <div class="text-sm">
+                <span class="font-semibold text-gray-900">Łukasz Piotrowski</span>
+                <span class="text-gray-500"> &mdash; Telestrada S.A.</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">10.04.2025</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation arrows -->
+      <button onclick="slideReviews(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button onclick="slideReviews(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="flex justify-center gap-2 mt-6">
+        <button onclick="goToSlide(0)" class="review-dot w-2.5 h-2.5 rounded-full bg-accent transition-colors"></button>
+        <button onclick="goToSlide(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></button>
+        <button onclick="goToSlide(2)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></button>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/en/testimonials/" class="text-accent hover:text-accent-light font-medium text-sm">All testimonials &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          What is the recording order process?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+          You prepare your script (or use our creator), choose a voice actor from our voice bank, and then place your order. The recording is ready within 24-48 hours. We also offer express recordings for urgent requests.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          How much does a voiceover recording cost?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+          The price depends on the type of recording, text length, and selected voice actor. Standard IVR recordings start from just a few dozen zlotys. Check our <a href="/en/pricing/" class="text-accent hover:underline">pricing</a> or <a href="/en/contact/" class="text-accent hover:underline">ask for a custom quote</a>.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          What languages do you offer for recordings?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+          Our recordings are available in over 30 languages. We work with both Polish voice actors and native speakers from around the world. The most popular languages are: Polish, English, German, French, Czech and Ukrainian.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          Can I listen to voice samples before ordering?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+          Yes! In our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> you'll find samples of over 230 voice actors. You can filter voices by gender, language and recording type to find the perfect voice for your project.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          How quickly will I get my finished recording?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+          Standard turnaround time is 24-48 hours from script approval. With our <a href="/en/express-recording/" class="text-accent hover:underline">express recording</a> option, we can complete jobs within a few hours.
+        </div>
+      </details>
+    </div>
+    <div class="text-center mt-8">
+      <a href="/en/faq/" class="text-accent hover:text-accent-light font-medium text-sm">More Q&A &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="py-16" style="background-color:#d7cabd" id="kontakt-homepage">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+        <p class="text-gray-500 mb-6">We respond within 2 hours on business days.</p>
+        <div class="space-y-4 text-sm">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <a href="tel:+48605491069" class="text-gray-900 hover:text-accent transition-colors">+48 605 491 069</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <a href="mailto:biuro@powitania.pl" class="text-gray-900 hover:text-accent transition-colors">biuro@powitania.pl</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span class="text-gray-500">OPTIMUM Paweł Kowalski, ul. Pozytywistów 4/4, 20-639 Lublin</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-gray-500">Mon-Fri 08:00-18:00</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="homepage-contact-form" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="hc-name" class="block text-sm text-gray-500 mb-1.5">Full Name</label>
+            <input type="text" id="hc-name" name="name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors" placeholder="John Smith">
+          </div>
+          <div>
+            <label for="hc-email" class="block text-sm text-gray-500 mb-1.5">Email <span class="text-red-400">*</span></label>
+            <input type="email" id="hc-email" name="email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors" placeholder="john@company.com">
+          </div>
+        </div>
+        <div>
+          <label for="hc-message" class="block text-sm text-gray-500 mb-1.5">Message <span class="text-red-400">*</span></label>
+          <textarea id="hc-message" name="message" required rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors resize-none" placeholder="Describe your project or ask a question..."></textarea>
+        </div>
+        <div class="flex items-start gap-2">
+          <input type="checkbox" id="hc-rodo" name="rodo" required class="mt-1 accent-accent">
+          <label for="hc-rodo" class="text-xs text-gray-500">I agree to the processing of my personal data to answer the inquiry, in accordance with the <a href="/en/privacy-policy/" class="text-accent hover:underline">privacy policy</a>. <span class="text-red-400">*</span></label>
+        </div>
+        <button type="submit" id="hc-submit" class="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3 rounded-lg transition-colors">Send Message</button>
+        <div id="hc-msg" class="hidden text-center text-sm py-3 rounded-lg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-2xl mx-auto px-4 text-center">
+    <h2 class="text-xl font-bold text-gray-900 mb-2">Subscribe to Our Newsletter</h2>
+    <p class="text-gray-500 text-sm mb-6">Stay up to date with news, promotions and industry tips.</p>
+    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input type="email" id="nl-email" name="email" required class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors text-sm" placeholder="Your email address">
+      <button type="submit" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap">Subscribe</button>
+    </form>
+    <p class="text-xs text-gray-500 mt-3">By subscribing, you accept the <a href="/en/privacy-policy/" class="text-accent hover:underline">privacy policy</a>. You can unsubscribe at any time.</p>
+    <div id="nl-msg" class="hidden text-center text-sm py-2 mt-2 rounded-lg"></div>
+  </div>
+</section>
+
+<!-- Audio player for popular lectors + Reviews carousel -->
+<script>
+var popularAudio = null;
+var popularBtn = null;
+
+function playPopular(btn, src) {
+  if (popularBtn && popularBtn !== btn) {
+    popularBtn.querySelector('.play-icon').classList.remove('hidden');
+    popularBtn.querySelector('.pause-icon').classList.add('hidden');
+  }
+  if (popularAudio && popularAudio.src.includes(src) && !popularAudio.paused) {
+    popularAudio.pause();
+    btn.querySelector('.play-icon').classList.remove('hidden');
+    btn.querySelector('.pause-icon').classList.add('hidden');
+    return;
+  }
+  if (!popularAudio) popularAudio = new Audio();
+  popularAudio.src = src;
+  popularAudio.play();
+  btn.querySelector('.play-icon').classList.add('hidden');
+  btn.querySelector('.pause-icon').classList.remove('hidden');
+  popularAudio.onended = function() {
+    btn.querySelector('.play-icon').classList.remove('hidden');
+    btn.querySelector('.pause-icon').classList.add('hidden');
+  };
+}
+
+// Reviews carousel
+var currentSlide = 0;
+var totalSlides = 3;
+
+function slideReviews(dir) {
+  currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+  updateSlider();
+}
+
+function goToSlide(n) {
+  currentSlide = n;
+  updateSlider();
+}
+
+function updateSlider() {
+  var slider = document.getElementById('reviews-slider');
+  if (slider) slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+  var dots = document.querySelectorAll('.review-dot');
+  dots.forEach(function(dot, i) {
+    dot.className = 'review-dot w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-gray-600');
+  });
+}
+
+// Auto-play carousel
+setInterval(function() { slideReviews(1); }, 8000);
+
+// Dynamic YouTube carousel — checks video availability, builds slides
+(function() {
+  var allVideos = [
+    { id: '9lWm6XAbaDg', title: 'Instructional Film Narration', narrator: 'Voice Actor Patryk' },
+    { id: 'mZ8mMfeD870', title: 'English Language Narration', narrator: 'Voice Actress Alison' },
+    { id: 'cfZ27giVqh8', title: 'Wiktor Encourages Site Monitoring', narrator: 'Voice Actor Wiktor' },
+    { id: '6gnEr5UzW2Q', title: 'Narration for "Earthmen Attack" Project', narrator: 'Voice Actor David' },
+    { id: 'XQV-8dbWgII', title: 'Industrial Company Presentation', narrator: 'Voice Actress Beata' },
+    { id: 'YLdaojG1tQw', title: 'Askberry Service Film Narration', narrator: 'Voice Actor Michał' }
+  ];
+
+  var track = document.getElementById('yt-track');
+  var prevBtn = document.getElementById('yt-prev');
+  var nextBtn = document.getElementById('yt-next');
+  var dotsWrap = document.getElementById('yt-dots');
+  if (!track) return;
+
+  var activeVideos = [];
+  var currentIndex = 0;
+
+  function buildCarousel() {
+    if (activeVideos.length === 0) return;
+
+    track.innerHTML = '';
+    activeVideos.forEach(function(video) {
+      var item = document.createElement('div');
+      item.className = 'w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3';
+      item.innerHTML = '<div style="aspect-ratio:16/9" class="bg-gray-200 rounded-xl overflow-hidden"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + video.id + '?rel=0" frameborder="0" allowfullscreen></iframe></div><h3 class="text-sm font-semibold text-gray-900 mt-3">' + video.title + '</h3><p class="text-xs text-gray-500">' + video.narrator + '</p>';
+      track.appendChild(item);
+    });
+
+    dotsWrap.innerHTML = '';
+    var dotCount = Math.ceil(activeVideos.length / 3);
+    for (var i = 0; i < dotCount; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'w-2.5 h-2.5 rounded-full ' + (i === 0 ? 'bg-accent' : 'bg-gray-300') + ' transition-colors';
+      dot.onclick = function(idx) { return function() { currentIndex = idx; updateCarousel(); }; }(i);
+      dotsWrap.appendChild(dot);
+    }
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    if (track && activeVideos.length > 0) {
+      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      var dots = document.querySelectorAll('#yt-dots button');
+      dots.forEach(function(d, i) { d.className = 'w-2.5 h-2.5 rounded-full ' + (i === currentIndex ? 'bg-accent' : 'bg-gray-300') + ' transition-colors'; });
+      prevBtn.style.display = currentIndex > 0 ? 'flex' : 'none';
+      nextBtn.style.display = currentIndex < Math.ceil(activeVideos.length / 3) - 1 ? 'flex' : 'none';
+    }
+  }
+
+  if (prevBtn) prevBtn.onclick = function() { if (currentIndex > 0) currentIndex--; updateCarousel(); };
+  if (nextBtn) nextBtn.onclick = function() { if (currentIndex < Math.ceil(activeVideos.length / 3) - 1) currentIndex++; updateCarousel(); };
+
+  activeVideos = allVideos;
+  buildCarousel();
+})();
+
+// Contact form
+(function() {
+  var form = document.getElementById('homepage-contact-form');
+  if (!form) return;
+  var btn = document.getElementById('hc-submit');
+  var msg = document.getElementById('hc-msg');
+  msg.classList.remove('hidden');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!document.getElementById('hc-rodo').checked) {
+      msg.className = 'text-center text-sm py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400';
+      msg.textContent = 'You must accept the privacy policy';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    msg.textContent = '';
+
+    var data = {
+      name: document.getElementById('hc-name').value,
+      email: document.getElementById('hc-email').value,
+      message: document.getElementById('hc-message').value,
+      source: 'homepage'
+    };
+
+    if (window.trackEvent) trackEvent('form_submit_contact', { source: 'homepage' });
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      if (res.ok) {
+        msg.className = 'text-center text-sm py-3 rounded-lg bg-accent/10 border border-accent/30 text-accent';
+        msg.textContent = 'Thank you! We\'ll respond as soon as possible.';
+        form.reset();
+      } else {
+        msg.className = 'text-center text-sm py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400';
+        msg.textContent = res.error || 'An error occurred. Please try again.';
+      }
+    })
+    .catch(function() {
+      msg.className = 'text-center text-sm py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400';
+      msg.textContent = 'Connection error. Please try again.';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+  });
+})();
+
+// Newsletter form (UI - shows confirmation, actual endpoint TBD)
+(function() {
+  var form = document.getElementById('newsletter-form');
+  if (!form) return;
+  var msg = document.getElementById('nl-msg');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('nl-email').value.trim();
+    if (!email) return;
+    msg.className = 'text-center text-sm py-2 mt-2 rounded-lg bg-accent/10 border border-accent/30 text-accent';
+    msg.textContent = 'Thank you for subscribing! Confirmation will be sent to ' + email;
+    form.reset();
+  });
+})();
+</script>
+
+<%- include('../partials/foot-en') %>

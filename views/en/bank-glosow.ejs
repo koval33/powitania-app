@@ -1,0 +1,735 @@
+<%- include('../partials/head-en') %>
+
+<!-- HERO + FILTRY -->
+<section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
+  <!-- Tytuł -->
+  <div class="py-10 md:py-14 max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voice Bank</h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Over 230 professional voice actors in 30+ languages — experienced voice actors, radio presenters, and voices of renowned TV stations. Use the filters, listen to samples, and find the perfect voice for your project.</p>
+  </div>
+
+  <!-- Filtry (sticky) -->
+  <div class="py-4 pb-5 sticky top-[73px] z-40 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Filtry: rząd główny (zawsze widoczny) -->
+    <style>.filters-ready{opacity:1!important}</style>
+    <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
+      <div id="gender-group" class="flex rounded-lg overflow-hidden border border-gray-200">
+        <button data-filter="gender" data-value="all" class="filter-btn active">All</button>
+        <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Male</button>
+        <button data-filter="gender" data-value="f" class="filter-btn border-l border-gray-200">Female</button>
+      </div>
+
+      <select id="filter-lang" class="bank-filter-select">
+        <option value="all">Language</option>
+        <option value="polski">Polish</option>
+        <option value="angielski">English</option>
+        <option value="niemiecki">German</option>
+        <option value="rosyjski">Russian</option>
+        <option value="hiszpański">Spanish</option>
+        <option value="francuski">French</option>
+        <option value="ukraiński">Ukrainian</option>
+        <option value="włoski">Italian</option>
+        <option value="portugalski">Portuguese</option>
+        <option value="czeski">Czech</option>
+        <option value="słowacki">Slovak</option>
+        <option value="węgierski">Hungarian</option>
+        <option value="holenderski">Dutch</option>
+        <option value="rumuński">Romanian</option>
+        <option value="turecki">Turkish</option>
+        <option value="grecki">Greek</option>
+        <option value="chorwacki">Croatian</option>
+        <option value="serbski">Serbian</option>
+        <option value="bułgarski">Bulgarian</option>
+        <option value="litewski">Lithuanian</option>
+        <option value="łotewski">Latvian</option>
+        <option value="szwedzki">Swedish</option>
+        <option value="norweski">Norwegian</option>
+        <option value="duński">Danish</option>
+        <option value="fiński">Finnish</option>
+        <option value="hebrajski">Hebrew</option>
+        <option value="arabski">Arabic</option>
+        <option value="chiński">Chinese</option>
+        <option value="japoński">Japanese</option>
+        <option value="koreański">Korean</option>
+        <option value="hindi">Hindi</option>
+      </select>
+
+      <!-- Desktop: reszta filtrów inline -->
+      <select id="filter-age" class="bank-filter-select hidden md:inline-block">
+        <option value="all">Age</option>
+        <option value="20-30">20–30 years</option>
+        <option value="30-50">30–50 years</option>
+        <option value="50+">50+ years</option>
+      </select>
+
+      <select id="filter-price" class="bank-filter-select hidden md:inline-block">
+        <option value="all">Price group</option>
+        <option value="Niższa grupa cenowa">Lower</option>
+        <option value="Wyższa grupa cenowa">Higher</option>
+      </select>
+
+      <button type="button" id="filter-famous-btn" class="bank-filter-toggle hidden md:inline-block" onclick="toggleFilterPill(this, 'filter-famous')">Famous</button>
+      <button type="button" id="filter-native-btn" class="bank-filter-toggle hidden md:inline-block" onclick="toggleFilterPill(this, 'filter-native')">Native Speakers</button>
+
+      <input type="checkbox" id="filter-famous" class="hidden">
+      <input type="checkbox" id="filter-native" class="hidden">
+
+      <!-- Mobile: przycisk "Więcej filtrów" -->
+      <button type="button" id="more-filters-btn" class="bank-filter-toggle md:hidden" onclick="toggleMoreFilters()">
+        More filters
+        <svg id="more-filters-arrow" class="inline w-3 h-3 ml-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+      </button>
+
+      <div class="ml-auto relative hidden md:block">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input type="text" id="filter-search" placeholder="Search by name..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-3 w-36 focus:outline-none placeholder-gray-400" style="height:38px">
+      </div>
+    </div>
+
+    <!-- Mobile: rozwijane dodatkowe filtry -->
+    <div id="more-filters-panel" class="hidden md:hidden mt-2 flex flex-wrap items-center gap-2">
+      <select id="filter-age-mobile" class="bank-filter-select" onchange="document.getElementById('filter-age').value=this.value;applyFiltersGlobal()">
+        <option value="all">Age</option>
+        <option value="20-30">20–30 years</option>
+        <option value="30-50">30–50 years</option>
+        <option value="50+">50+ years</option>
+      </select>
+
+      <select id="filter-price-mobile" class="bank-filter-select" onchange="document.getElementById('filter-price').value=this.value;applyFiltersGlobal()">
+        <option value="all">Price group</option>
+        <option value="Niższa grupa cenowa">Lower</option>
+        <option value="Wyższa grupa cenowa">Higher</option>
+      </select>
+
+      <button type="button" id="filter-famous-btn-mobile" class="bank-filter-toggle" onclick="toggleFilterPill(document.getElementById('filter-famous-btn'), 'filter-famous');this.classList.toggle('active')">Famous</button>
+      <button type="button" id="filter-native-btn-mobile" class="bank-filter-toggle" onclick="toggleFilterPill(document.getElementById('filter-native-btn'), 'filter-native');this.classList.toggle('active')">Native Speakers</button>
+
+      <div class="relative w-full mt-1">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input type="text" id="filter-search-mobile" placeholder="Search voice actor..." class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg pl-9 pr-3 w-full focus:outline-none placeholder-gray-400" style="height:38px" oninput="document.getElementById('filter-search').value=this.value;applyFiltersGlobal()">
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <script>document.getElementById('filters-wrap').classList.add('filters-ready')</script>
+</section>
+
+<!-- KREATOR CONTEXT BANNER -->
+<div id="kreator-context-banner" class="max-w-6xl mx-auto px-4 pt-4 hidden">
+  <div class="bg-green-50 border-2 border-green-300 rounded-xl p-5 flex items-start gap-4">
+    <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    <div class="flex-1">
+      <h3 class="text-gray-900 font-bold mb-1">Your text is ready</h3>
+      <p class="text-sm text-gray-600 mb-3">Select a voice actor below to see pricing for this text</p>
+      <div class="bg-stone-100/80 rounded-lg p-3">
+        <div class="text-xs text-gray-500 mb-1">Text preview:</div>
+        <div id="context-text-preview" class="text-sm text-gray-600 line-clamp-3"></div>
+      </div>
+    </div>
+    <button onclick="clearKreatorContext()" class="text-gray-500 hover:text-gray-900 transition-colors flex-shrink-0" title="Close">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- LICZNIK -->
+<div class="max-w-6xl mx-auto px-4 py-4">
+  <p class="text-sm text-gray-500">Found: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> voice actors</p>
+</div>
+
+<!-- SIATKA LEKTORÓW -->
+<section class="pb-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
+      <% voices.forEach(function(v, idx) { %>
+      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
+           data-url="<%= v.profileUrl %>"
+           data-gender="<%= v.gender %>"
+           data-age="<%= v.age %>"
+           data-languages="<%= v.languages.join(',') %>"
+           data-famous="<%= v.famous %>"
+           data-native="<%= v.native %>"
+           data-price="<%= v.priceGroup || '' %>"
+           data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
+           data-name="<%= v.name.toLowerCase() %>">
+
+        <!-- Górna część: zdjęcie + info -->
+        <div class="flex items-start gap-5 p-6 pb-3">
+          <!-- Zdjęcie -->
+          <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50">
+            <% if (v.photo) { %>
+              <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
+            <% } else { %>
+              <div class="w-full h-full flex items-center justify-center text-gray-600">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              </div>
+            <% } %>
+          </div>
+
+          <!-- Info -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
+              <% if (v.famous) { %>
+                <span class="flex-shrink-0 text-xs bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-yellow-300">Famous</span>
+              <% } else if (v.native) { %>
+                <span class="flex-shrink-0 text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded font-medium whitespace-nowrap border border-blue-300">Native</span>
+              <% } %>
+            </div>
+            <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+              <% if (v.age) { %>
+                <span class="text-sm text-gray-500"><%= v.age %></span>
+                <span class="text-sm text-gray-500">&bull;</span>
+              <% } %>
+              <% v.languages.forEach(function(lang) { %>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><%= lang %></span>
+              <% }); %>
+            </div>
+            <% if (v.description) { %>
+              <p class="text-sm text-gray-500 mt-2 line-clamp-3"><%= v.description %></p>
+            <% } %>
+            <% if (v.turnaround) { %>
+              <p class="text-xs text-gray-500 mt-2">Turnaround: <%= v.turnaround %></p>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="px-6 pb-4">
+          <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
+            <button class="play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+              <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="flex-1">
+              <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+              </div>
+              <div class="flex justify-between mt-1">
+                <span class="audio-time text-xs text-gray-500">0:00</span>
+                <span class="audio-duration text-xs text-gray-500">--:--</span>
+              </div>
+            </div>
+            <a href="<%= v.audio %>" download title="Download MP3 sample" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between px-6 pb-5">
+          <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+            <span class="text-xs text-gray-500">from <%= v.prices.ivr_100 %> zł</span>
+          <% } else if (v.hidePrice) { %>
+            <span class="text-xs text-yellow-600">custom pricing</span>
+          <% } else { %>
+            <span></span>
+          <% } %>
+          <span class="text-accent text-sm font-medium">More &rarr;</span>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- Załaduj więcej -->
+    <div id="load-more-wrap" class="text-center mt-10">
+      <button id="load-more-btn" class="bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium transition-colors">
+        Load more voice actors
+      </button>
+      <p id="load-more-info" class="text-sm text-gray-500 mt-3">Showing <span id="shown-count">20</span> of <span id="total-filtered">0</span></p>
+    </div>
+
+    <!-- Pusty stan -->
+    <div id="no-results" class="hidden text-center py-16">
+      <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+      <p class="text-gray-500 text-lg">No voice actors found matching your criteria</p>
+      <button onclick="resetFilters()" class="mt-4 text-accent hover:text-accent-light text-sm font-medium">Clear filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- Dodatkowy opis -->
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-6xl mx-auto px-4 text-gray-600 leading-relaxed space-y-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional voice bank — find the voice for your needs</h2>
+    <p>Our voice bank will help you find the right voice for your project. Our voice actors are experienced voice actors who work daily as actors, radio presenters, and as voices for renowned television stations.</p>
+    <p>The voice bank has an advanced filter system, making it easy to find the right voice actor. You can search by entering the voice actor's name, selecting gender, voice age, or price group. A very useful feature of the filter is the ability to search for voice actors recording in specific languages. We work with voice actors from all over the world — you have over 30 languages to choose from. The voice bank is an open catalog — every month, several new voice actor profiles are added to the database.</p>
+    <p>In the basic view of the voice bank, you can listen to a voice sample from each voice actor. By clicking the "More" button, you go to their profile, where you'll find a detailed description of the voice actor and more voice samples. From the voice actor's profile, you can immediately calculate the price of the recording — just paste the text or select the type of production, and the system will automatically provide a quote and allow you to place an order. You can also use the <a href="/#kreator" class="text-accent hover:text-accent-light">Content Creator</a> on the home page, which will help you prepare professional text, and then direct you to the voice bank with a ready-made script.</p>
+    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Famous voices — voice bank Warsaw</h3>
+    <p>If you're looking for the most experienced and recognizable voice actors, we invite you to use the "Famous" filter. At your disposal are voices of voice actors such as Jacek Rozenek, Łukasz Nowicki, Stanisław Olejniczak, Andrzej Ferenc, Jacek Brzostyński, and many other prestigious voices.</p>
+    <p>The voice bank contains sample voice recordings as well as original music soundtracks. We encourage the implementation of all kinds of recordings using our voice recordings. Our database will allow you to match a voice to any project.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 bg-stone-100/80 border-t border-gray-200">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Can't decide?</h2>
+    <p class="text-gray-500 mb-6">Describe your project, and we'll help you find the perfect voice.</p>
+    <a href="/en/contact/" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Ask about a voice actor</a>
+    <p class="text-gray-500 text-sm mt-3">or <a href="/#kreator" class="text-accent hover:text-accent-light font-medium">create text in the creator</a></p>
+  </div>
+</section>
+
+<script>
+(function() {
+  var PAGE_SIZE = 20;
+  var currentBtn = null;
+  var allCards = Array.from(document.querySelectorAll('.voice-card'));
+  var filteredCards = allCards.slice();
+  var shownCount = PAGE_SIZE;
+
+  // --- Audio player ---
+  function resetCurrentBtn() {
+    if (!currentBtn) return;
+    currentBtn.querySelector('.play-icon').classList.remove('hidden');
+    currentBtn.querySelector('.pause-icon').classList.add('hidden');
+    var oldCard = currentBtn.closest('.voice-card');
+    if (oldCard) {
+      oldCard.querySelector('.audio-bar').style.width = '0%';
+      oldCard.querySelector('.audio-time').textContent = '0:00';
+    }
+  }
+
+  function getAudioEl() {
+    var el = document.getElementById('shared-audio-el');
+    if (el) el.remove();
+    el = document.createElement('audio');
+    el.id = 'shared-audio-el';
+    el.preload = 'auto';
+    el.style.display = 'none';
+    document.body.appendChild(el);
+
+    el.addEventListener('timeupdate', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (!card) return;
+      var pct = (el.currentTime / el.duration) * 100;
+      card.querySelector('.audio-bar').style.width = pct + '%';
+      card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+    });
+    el.addEventListener('loadedmetadata', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (card) card.querySelector('.audio-duration').textContent = formatTime(el.duration);
+    });
+    el.addEventListener('ended', function() {
+      resetCurrentBtn();
+      currentBtn = null;
+    });
+    return el;
+  }
+
+  function initAudioPlayer(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var src = this.dataset.audio;
+      if (!src) return;
+      var playIcon = this.querySelector('.play-icon');
+      var pauseIcon = this.querySelector('.pause-icon');
+      var existing = document.getElementById('shared-audio-el');
+
+      if (currentBtn === this && existing) {
+        if (existing.paused) {
+          existing.play();
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+        } else {
+          existing.pause();
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+        }
+        return;
+      }
+
+      if (existing && !existing.paused) existing.pause();
+      resetCurrentBtn();
+      currentBtn = this;
+
+      var audio = getAudioEl();
+      audio.src = src;
+      audio.load();
+      audio.play().then(function() {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      }).catch(function(err) {
+        console.error('[audio] play error:', err);
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      });
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    });
+  }
+
+  // Init players + progress bar seek + card click (raz na kartę)
+  allCards.forEach(function(card) {
+    initAudioPlayer(card.querySelector('.play-btn'));
+    card.querySelector('.audio-progress').addEventListener('click', function(e) {
+      var audio = document.getElementById('shared-audio-el');
+      var btn = card.querySelector('.play-btn');
+      if (audio && currentBtn === btn && audio.duration) {
+        var rect = this.getBoundingClientRect();
+        var pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+      }
+    });
+    card.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
+      var url = card.dataset.url;
+      if (url) window.location.href = url;
+    });
+  });
+
+  function formatTime(s) {
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  // --- Pagination ---
+  function updateVisibility() {
+    var visibleCount = 0;
+    filteredCards.forEach(function(card, i) {
+      if (i < shownCount) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Hide cards not in filtered set
+    allCards.forEach(function(card) {
+      if (filteredCards.indexOf(card) === -1) {
+        card.classList.add('hidden');
+      }
+    });
+
+    var totalFiltered = filteredCards.length;
+    document.getElementById('voice-count').textContent = totalFiltered;
+    document.getElementById('shown-count').textContent = Math.min(shownCount, totalFiltered);
+    document.getElementById('total-filtered').textContent = totalFiltered;
+
+    var loadMoreWrap = document.getElementById('load-more-wrap');
+    var noResults = document.getElementById('no-results');
+
+    if (totalFiltered === 0) {
+      loadMoreWrap.classList.add('hidden');
+      noResults.classList.remove('hidden');
+    } else {
+      noResults.classList.add('hidden');
+      if (shownCount >= totalFiltered) {
+        loadMoreWrap.classList.add('hidden');
+      } else {
+        loadMoreWrap.classList.remove('hidden');
+      }
+    }
+  }
+
+  document.getElementById('load-more-btn').addEventListener('click', function() {
+    shownCount += PAGE_SIZE;
+    updateVisibility();
+  });
+
+  // --- Kreator mode ---
+  var kreatorMode = false;
+  var kreatorLangs = [];  // Polish-name languages to filter by (e.g. ['angielski'])
+  var LANG_MAP = { pl: 'polski', en: 'angielski', de: 'niemiecki', fr: 'francuski', cs: 'czeski', uk: 'ukraiński' };
+
+  // --- Filters ---
+  var activeGender = 'all';
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      activeGender = this.dataset.value;
+      applyFilters();
+    });
+  });
+
+  document.getElementById('filter-lang').addEventListener('change', applyFilters);
+  document.getElementById('filter-age').addEventListener('change', applyFilters);
+  document.getElementById('filter-price').addEventListener('change', applyFilters);
+  document.getElementById('filter-famous').addEventListener('change', applyFilters);
+  document.getElementById('filter-native').addEventListener('change', applyFilters);
+  document.getElementById('filter-search').addEventListener('input', applyFilters);
+
+  function applyFilters() {
+    var lang = document.getElementById('filter-lang').value;
+    var age = document.getElementById('filter-age').value;
+    var price = document.getElementById('filter-price').value;
+    var famous = document.getElementById('filter-famous').checked;
+    var native_ = document.getElementById('filter-native').checked;
+    var search = document.getElementById('filter-search').value.toLowerCase();
+
+    filteredCards = allCards.filter(function(card) {
+      if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
+      if (kreatorMode && card.dataset.hideprice === 'true') return false;
+      if (kreatorMode && kreatorLangs.length > 0) {
+        var cardLangs = card.dataset.languages;
+        var hasAny = kreatorLangs.some(function(kl) { return cardLangs.indexOf(kl) !== -1; });
+        if (!hasAny) return false;
+      }
+      if (lang !== 'all' && card.dataset.languages.indexOf(lang) === -1) return false;
+      if (age !== 'all') {
+        var cardAge = card.dataset.age;
+        if (age === '50+') {
+          if (cardAge !== '50 lat +' && cardAge !== '50+') return false;
+        } else if (age === '20-30') {
+          if (cardAge !== '20-30 lat' && cardAge !== '20-30') return false;
+        } else if (age === '30-50') {
+          if (cardAge !== '30-50 lat' && cardAge !== '30-50') return false;
+        }
+      }
+      if (price !== 'all' && card.dataset.price !== price) return false;
+      if (famous && card.dataset.famous !== 'true') return false;
+      if (native_ && card.dataset.native !== 'true') return false;
+      if (search && card.dataset.name.indexOf(search) === -1) return false;
+      return true;
+    });
+
+    shownCount = PAGE_SIZE;
+    updateVisibility();
+    updateFilterHighlights();
+  }
+
+  function updateFilterHighlights() {
+    // Grupa płci — zielona ramka gdy nie "Wszyscy"
+    var genderGroup = document.getElementById('gender-group');
+    if (genderGroup) {
+      if (activeGender !== 'all') {
+        genderGroup.style.borderColor = '#10b981';
+      } else {
+        genderGroup.style.borderColor = '';
+      }
+    }
+    // Selecty — klasa active gdy wartość ≠ domyślna
+    ['filter-lang', 'filter-age', 'filter-price'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el.value !== 'all') {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
+    // Szukajka — zielona ramka gdy coś wpisano
+    var searchEl = document.getElementById('filter-search');
+    if (searchEl.value.length > 0) {
+      searchEl.style.borderColor = '#10b981';
+    } else {
+      searchEl.style.borderColor = '';
+    }
+  }
+
+  window.resetFilters = function() {
+    activeGender = 'all';
+    kreatorMode = false;
+    kreatorLangs = [];
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
+    document.getElementById('filter-lang').value = 'all';
+    document.getElementById('filter-age').value = 'all';
+    document.getElementById('filter-price').value = 'all';
+    document.getElementById('filter-famous').checked = false;
+    document.getElementById('filter-native').checked = false;
+    document.getElementById('filter-search').value = '';
+    document.querySelectorAll('.bank-filter-toggle').forEach(function(p) { p.classList.remove('active'); });
+    // Hide kreator banner if visible
+    var banner = document.getElementById('kreator-context-banner');
+    if (banner) banner.classList.add('hidden');
+    applyFilters();
+  };
+
+  // Pill toggle (zamiennik checkboxów)
+  window.toggleFilterPill = function(btn, checkboxId) {
+    var cb = document.getElementById(checkboxId);
+    cb.checked = !cb.checked;
+    btn.classList.toggle('active', cb.checked);
+    applyFilters();
+  };
+
+  // Init: apply URL params as filters (e.g. ?gender=m&native=1&famous=1)
+  (function applyUrlFilters() {
+    var params = new URLSearchParams(window.location.search);
+    var g = params.get('gender');
+    if (g === 'm' || g === 'f') {
+      activeGender = g;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      var btn = document.querySelector('.filter-btn[data-value="' + g + '"]');
+      if (btn) btn.classList.add('active');
+    }
+    if (params.get('native') === '1') {
+      document.getElementById('filter-native').checked = true;
+      var nb = document.getElementById('filter-native-btn');
+      if (nb) nb.classList.add('active');
+    }
+    if (params.get('famous') === '1') {
+      document.getElementById('filter-famous').checked = true;
+      var fb = document.getElementById('filter-famous-btn');
+      if (fb) fb.classList.add('active');
+    }
+    var lang = params.get('lang');
+    if (lang) {
+      document.getElementById('filter-lang').value = lang;
+    }
+  })();
+
+  // Kreator context detection + auto-filtering
+  (function() {
+    try {
+      var ctxStr = sessionStorage.getItem('kreatorContext');
+      if (!ctxStr) return;
+      var ctx = JSON.parse(ctxStr);
+      if (!ctx.text) return;
+
+      // Show text preview banner
+      var banner = document.getElementById('kreator-context-banner');
+      var preview = document.getElementById('context-text-preview');
+      if (banner && preview) {
+        preview.textContent = ctx.text;
+        banner.classList.remove('hidden');
+      }
+
+      // Activate kreator mode — hides hidePrice voices
+      kreatorMode = true;
+
+      // Auto-filter by language based on kreator context
+      var langs = ctx.languages || [];
+      var foreignLangs = langs.filter(function(l) { return l !== 'pl'; });
+      if (foreignLangs.length > 0) {
+        // Foreign or bilingual text — show only lectors speaking those languages
+        kreatorLangs = foreignLangs.map(function(code) { return LANG_MAP[code]; }).filter(Boolean);
+        // Also set dropdown for UI feedback (single language)
+        if (kreatorLangs.length === 1) {
+          document.getElementById('filter-lang').value = kreatorLangs[0];
+        }
+      } else {
+        // Polish-only text (or no language info) — show only Polish-speaking lectors
+        kreatorLangs = ['polski'];
+        document.getElementById('filter-lang').value = 'polski';
+      }
+    } catch(e) {}
+  })();
+
+  // Global: clear kreator context and restore full list
+  window.clearKreatorContext = function() {
+    try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
+    kreatorMode = false;
+    kreatorLangs = [];
+    var banner = document.getElementById('kreator-context-banner');
+    if (banner) banner.classList.add('hidden');
+    document.getElementById('filter-lang').value = 'all';
+    applyFilters();
+  };
+
+  // Expose applyFilters globally for mobile filter elements
+  window.applyFiltersGlobal = applyFilters;
+
+  // Toggle "Więcej filtrów" panel on mobile
+  window.toggleMoreFilters = function() {
+    var panel = document.getElementById('more-filters-panel');
+    var arrow = document.getElementById('more-filters-arrow');
+    var btn = document.getElementById('more-filters-btn');
+    if (panel.classList.contains('hidden')) {
+      panel.classList.remove('hidden');
+      arrow.style.transform = 'rotate(180deg)';
+      btn.classList.add('active');
+    } else {
+      panel.classList.add('hidden');
+      arrow.style.transform = '';
+      btn.classList.remove('active');
+    }
+  };
+
+  // Sync mobile filters ← desktop on resetFilters
+  var origReset = window.resetFilters;
+  window.resetFilters = function() {
+    origReset();
+    // Sync mobile selects back to defaults
+    var ageMob = document.getElementById('filter-age-mobile');
+    var priceMob = document.getElementById('filter-price-mobile');
+    var searchMob = document.getElementById('filter-search-mobile');
+    var famousMob = document.getElementById('filter-famous-btn-mobile');
+    var nativeMob = document.getElementById('filter-native-btn-mobile');
+    if (ageMob) ageMob.value = 'all';
+    if (priceMob) priceMob.value = 'all';
+    if (searchMob) searchMob.value = '';
+    if (famousMob) famousMob.classList.remove('active');
+    if (nativeMob) nativeMob.classList.remove('active');
+    // Close the panel
+    var panel = document.getElementById('more-filters-panel');
+    var arrow = document.getElementById('more-filters-arrow');
+    var moreBtn = document.getElementById('more-filters-btn');
+    if (panel) panel.classList.add('hidden');
+    if (arrow) arrow.style.transform = '';
+    if (moreBtn) moreBtn.classList.remove('active');
+  };
+
+  applyFilters();
+})();
+</script>
+
+<style>
+/* Wspólna baza dla wszystkich filtrów */
+.filter-btn, .bank-filter-select, .bank-filter-toggle {
+  font-size: 0.875rem;
+  font-family: inherit;
+  height: 38px;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+/* Przyciski płci */
+.filter-btn {
+  color: #6b7280;
+  background: #fff;
+  padding: 0 0.75rem;
+  font-weight: 500;
+  border: none;
+}
+.filter-btn:hover { color: #111827; background: #f9fafb; }
+.filter-btn.active { color: #10b981; font-weight: 600; }
+
+/* Selecty */
+.bank-filter-select {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  border-radius: 0.5rem;
+  padding: 0 2rem 0 0.75rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+}
+.bank-filter-select:focus { border-color: #10b981; outline: none; }
+.bank-filter-select.active { border-color: #10b981; color: #10b981; }
+
+/* Toggle buttony (Znani i lubiani, Native) */
+.bank-filter-toggle {
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  background: #fff;
+  cursor: pointer;
+}
+.bank-filter-toggle:hover { color: #111827; border-color: #9ca3af; }
+.bank-filter-toggle.active { color: #10b981; border-color: #10b981; background: #fff; }
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
+
+<%- include('../partials/foot-en') %>
