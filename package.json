@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "build:css": "npx tailwindcss -i src/input.css -o public/css/tailwind.css --minify"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
