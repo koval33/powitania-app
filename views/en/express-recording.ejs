@@ -1,0 +1,268 @@
+<%- include('../partials/head-en') %>
+
+<section class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Hero -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 border border-yellow-300 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
+        Express delivery
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Express Recording</h1>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">Need a recording today? <strong class="text-gray-900">You've come to the right place!</strong> Every day, several voice artists are on standby to deliver recordings immediately.</p>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="bg-yellow-50 border border-yellow-400/20 rounded-2xl p-8 mb-12 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-2xl font-bold text-gray-900">Order by 2 PM — receive by 6 PM</p>
+      </div>
+      <p class="text-gray-600">If the order is placed before 2:00 PM (CET), the recording will be in your inbox by 6:00 PM at the latest.</p>
+    </div>
+
+    <!-- Ordering process -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">How to order an express recording</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">1</span>
+          </div>
+          <h3 class="text-gray-900 font-semibold mb-2">Prepare your script</h3>
+          <p class="text-gray-500 text-sm">Have your ready-to-record script — a scenario, greeting or voice prompt.</p>
+        </div>
+
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">2</span>
+          </div>
+          <h3 class="text-gray-900 font-semibold mb-2">Choose a voice artist</h3>
+          <p class="text-gray-500 text-sm">Listen to samples from our on-duty voice artists and pick the voice for your recording.</p>
+        </div>
+
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">3</span>
+          </div>
+          <h3 class="text-gray-900 font-semibold mb-2">Confirm the order</h3>
+          <p class="text-gray-500 text-sm">Confirm your order by making a prepayment to the provided bank account.</p>
+        </div>
+
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 text-center">
+          <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-accent font-bold">4</span>
+          </div>
+          <h3 class="text-gray-900 font-semibold mb-2">Receive your recording</h3>
+          <p class="text-gray-500 text-sm">Your finished recording will be delivered to your email the same day.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- On-duty voice artists -->
+    <div class="mb-16" id="voice-artists">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3 text-center">On-Duty Voice Artists</h2>
+      <p class="text-gray-500 text-center mb-8">Voice artists available for express recordings</p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <% dutyVoices.forEach(function(v) { %>
+        <div class="voice-card bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden hover:border-accent/20 transition-colors">
+          <!-- Top part: photo + info -->
+          <div class="flex items-start gap-5 p-6 pb-3">
+            <a href="/lektorzy/<%= v.id %>/?express=1" class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50 block hover:ring-2 hover:ring-accent/40 transition-all">
+              <% if (v.photo) { %>
+                <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
+              <% } else { %>
+                <div class="w-full h-full flex items-center justify-center text-gray-600">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+              <% } %>
+            </a>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-xl font-bold text-gray-900 leading-tight"><%= v.name %></h3>
+                <span class="flex-shrink-0 text-[10px] bg-yellow-100 text-yellow-700 border border-yellow-300 px-2 py-0.5 rounded font-medium whitespace-nowrap">⚡ <%= v.turnaround %></span>
+              </div>
+              <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                <% (v.languages || ['polski']).forEach(function(lang) { %>
+                  <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><%= lang %></span>
+                <% }); %>
+              </div>
+              <% if (v.description) { %>
+                <p class="text-sm text-gray-500 mt-2 line-clamp-2"><%= v.description %></p>
+              <% } %>
+            </div>
+          </div>
+
+          <!-- Audio player -->
+          <% if (v.audio) { %>
+          <div class="px-6 pb-3">
+            <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
+              <button class="play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+                <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <div class="flex-1">
+                <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                  <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="audio-time text-xs text-gray-500">0:00</span>
+                  <span class="audio-duration text-xs text-gray-500">--:--</span>
+                </div>
+              </div>
+              <a href="<%= v.audio %>" download title="Download MP3 sample" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              </a>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- Footer: price + button -->
+          <div class="flex items-center justify-between px-6 pb-5">
+            <% if (v.prices && v.prices.ivr_100) { %>
+              <span class="text-accent font-semibold text-sm">from <%= v.prices.ivr_100 %> PLN net</span>
+            <% } else { %>
+              <span></span>
+            <% } %>
+            <a href="/lektorzy/<%= v.id %>/?express=1" class="bg-accent hover:bg-accent-light text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Order recording</a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+      <% if (dutyVoices.length === 0) { %>
+      <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-8 text-center text-gray-500">
+        <p>Currently no voice artists have express availability marked. Get in touch — we'll find the right artist for you.</p>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Express pricing -->
+    <div class="bg-stone-100/80 rounded-2xl border border-gray-200 p-8 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">How much does an express recording cost?</h2>
+      <div class="text-gray-600 leading-relaxed">
+        <p>Express recording rates are <strong class="text-gray-900">50% higher</strong> than standard rates due to priority production and guaranteed same-day delivery. Exact prices are shown alongside each on-duty voice artist above.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center p-8 md:p-12 bg-yellow-50 rounded-2xl border border-yellow-400/20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Need a recording right now?</h2>
+      <p class="text-gray-600 mb-6 max-w-xl mx-auto">Pick one of our on-duty voice artists and place your order — the recording will be ready today.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#voice-artists" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Choose a voice artist</a>
+        <a href="tel:+48605491069" class="bg-white hover:bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors border border-gray-300">Call: +48 605 491 069</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Audio player JS -->
+<script>
+(function() {
+  var currentBtn = null;
+  var cards = document.querySelectorAll('.voice-card');
+
+  function resetCurrentBtn() {
+    if (!currentBtn) return;
+    currentBtn.querySelector('.play-icon').classList.remove('hidden');
+    currentBtn.querySelector('.pause-icon').classList.add('hidden');
+    var oldCard = currentBtn.closest('.voice-card');
+    if (oldCard) {
+      oldCard.querySelector('.audio-bar').style.width = '0%';
+      oldCard.querySelector('.audio-time').textContent = '0:00';
+    }
+  }
+
+  function getAudioEl() {
+    var el = document.getElementById('shared-audio-el');
+    if (el) el.remove();
+    el = document.createElement('audio');
+    el.id = 'shared-audio-el';
+    el.preload = 'auto';
+    el.style.display = 'none';
+    document.body.appendChild(el);
+    el.addEventListener('timeupdate', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (!card) return;
+      var pct = (el.currentTime / el.duration) * 100;
+      card.querySelector('.audio-bar').style.width = pct + '%';
+      card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+    });
+    el.addEventListener('loadedmetadata', function() {
+      if (!currentBtn) return;
+      var card = currentBtn.closest('.voice-card');
+      if (card) card.querySelector('.audio-duration').textContent = formatTime(el.duration);
+    });
+    el.addEventListener('ended', function() {
+      resetCurrentBtn();
+      currentBtn = null;
+    });
+    return el;
+  }
+
+  function initAudioPlayer(btn) {
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var src = this.dataset.audio;
+      if (!src) return;
+      var playIcon = this.querySelector('.play-icon');
+      var pauseIcon = this.querySelector('.pause-icon');
+      var existing = document.getElementById('shared-audio-el');
+
+      if (currentBtn === this && existing) {
+        if (existing.paused) {
+          existing.play();
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+        } else {
+          existing.pause();
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+        }
+        return;
+      }
+
+      if (existing && !existing.paused) existing.pause();
+      resetCurrentBtn();
+      currentBtn = this;
+      var audio = getAudioEl();
+      audio.src = src;
+      audio.load();
+      audio.play().catch(function(err) { console.error('[audio]', err); });
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    });
+  }
+
+  cards.forEach(function(card) {
+    initAudioPlayer(card.querySelector('.play-btn'));
+    var progress = card.querySelector('.audio-progress');
+    if (progress) {
+      progress.addEventListener('click', function(e) {
+        var audio = document.getElementById('shared-audio-el');
+        var btn = card.querySelector('.play-btn');
+        if (audio && currentBtn === btn && audio.duration) {
+          var rect = this.getBoundingClientRect();
+          var pct = (e.clientX - rect.left) / rect.width;
+          audio.currentTime = pct * audio.duration;
+        }
+      });
+    }
+  });
+
+  function formatTime(s) {
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+})();
+</script>
+
+<%- include('../partials/foot-en') %>

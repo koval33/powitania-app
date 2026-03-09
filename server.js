@@ -560,6 +560,157 @@ app.get('/en/contact/', (req, res) => {
   });
 });
 
+app.get('/en/voiceover-services/', (req, res) => {
+  res.render('en/voiceover-services', {
+    title: 'Voiceover Recordings | Professional Voice Artists | Powitania.pl',
+    description: 'Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. Over 230 voice artists in 30+ languages.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Services', url: '/en/voiceover-services/' }
+    ]
+  });
+});
+
+app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
+  res.render('en/voice-for-advertising', {
+    title: 'Voice for Advertising | Radio & TV Spots | Powitania.pl',
+    description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media — professional voiceover recordings that sell.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Services', url: '/en/voiceover-services/' },
+      { name: 'Voice for Advertising', url: '/en/voiceover-services/voice-for-advertising/' }
+    ],
+    voices: loadVoices()
+  });
+});
+
+app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
+  res.render('en/film-voiceover', {
+    title: 'Professional Film Voiceover | Narration & Audio-Video | Powitania.pl',
+    description: 'Professional film voiceover — narration for corporate, instructional, e-learning and promotional videos. Audio-video editing included.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Services', url: '/en/voiceover-services/' },
+      { name: 'Film Voiceover', url: '/en/voiceover-services/film-voiceover/' }
+    ],
+    voices: loadVoices()
+  });
+});
+
+app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
+  res.render('en/phone-announcements', {
+    title: 'Phone Announcements | IVR Recordings | Powitania.pl',
+    description: 'Professional IVR recordings and phone announcements. Company greetings, voice menus, after-hours messages. Multilingual support.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Services', url: '/en/voiceover-services/' },
+      { name: 'Phone Announcements', url: '/en/voiceover-services/phone-announcements/' }
+    ],
+    voices: loadVoices()
+  });
+});
+
+app.get('/en/remote-sessions/', (req, res) => {
+  res.render('en/remote-sessions', {
+    title: 'Remote Recording Sessions | Online Voiceover | Powitania.pl',
+    description: 'Join a voiceover recording session remotely. Full real-time control over the process from anywhere in the world.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Remote Sessions', url: '/en/remote-sessions/' }
+    ]
+  });
+});
+
+app.get('/en/express-recording/', (req, res) => {
+  const voices = loadVoices();
+  const dutyVoices = voices
+    .filter(v => v.turnaround && v.turnaround.includes('24') && v.photo)
+    .slice(0, 6)
+    .map(v => {
+      const expressPrices = {};
+      if (v.prices) {
+        for (const [key, val] of Object.entries(v.prices)) {
+          expressPrices[key] = typeof val === 'number' ? Math.round(val * 1.5 / 10) * 10 : val;
+        }
+      }
+      return { ...v, prices: expressPrices };
+    });
+  res.render('en/express-recording', {
+    title: 'Express Recording | Same-Day Voiceover | Powitania.pl',
+    description: 'Need a voiceover recording today? Order by 2 PM and receive by 6 PM. On-duty voice artists available for immediate production.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Express Recording', url: '/en/express-recording/' }
+    ],
+    dutyVoices
+  });
+});
+
+// EN — News / Blog
+app.get('/en/news/', (req, res) => {
+  const posts = loadBlogPosts();
+  const perPage = 10;
+  const currentPage = 1;
+  const totalPages = Math.ceil(posts.length / perPage);
+  const pagePosts = posts.slice(0, perPage);
+  res.render('en/news', {
+    title: 'News | Powitania.pl',
+    description: 'Studio updates, new voice artists, tips and industry articles from our voiceover recording studio.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'News', url: '/en/news/' }
+    ],
+    posts: pagePosts,
+    currentPage,
+    totalPages
+  });
+});
+
+app.get('/en/news/page/:page/', (req, res) => {
+  const posts = loadBlogPosts();
+  const perPage = 10;
+  const currentPage = parseInt(req.params.page) || 1;
+  if (currentPage < 1) return res.redirect('/en/news/');
+  const totalPages = Math.ceil(posts.length / perPage);
+  if (currentPage > totalPages) return res.redirect('/en/news/');
+  const pagePosts = posts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  res.render('en/news', {
+    title: 'News — page ' + currentPage + ' | Powitania.pl',
+    description: 'Studio updates, new voice artists, tips and industry articles.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'News', url: '/en/news/' }
+    ],
+    posts: pagePosts,
+    currentPage,
+    totalPages
+  });
+});
+
+app.get('/en/news/:slug/', (req, res) => {
+  const posts = loadBlogPosts();
+  const idx = posts.findIndex(p => p.slug === req.params.slug);
+  if (idx === -1) {
+    return res.status(404).render('404', {
+      title: 'Article not found | Powitania.pl',
+      description: 'The article at this address does not exist.'
+    });
+  }
+  const post = posts[idx];
+  res.render('en/blog-post', {
+    title: (post.titleEn || post.title) + ' | Powitania.pl',
+    description: post.excerptEn || post.excerpt,
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'News', url: '/en/news/' },
+      { name: post.titleEn || post.title, url: '/en/news/' + post.slug + '/' }
+    ],
+    post,
+    prevPost: idx > 0 ? posts[idx - 1] : null,
+    nextPost: idx < posts.length - 1 ? posts[idx + 1] : null
+  });
+});
+
 // EN — strony bez dedykowanego tłumaczenia → redirect na główną EN
 app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
 
