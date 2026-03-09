@@ -81,7 +81,7 @@ app.use((req, res, next) => {
   if (req.query.lang === 'pl') return next();
   // Don't redirect bots/crawlers (they should index PL as canonical)
   const ua = req.headers['user-agent'] || '';
-  if (/bot|crawl|spider|slurp|google|bing|yandex/i.test(ua)) return next();
+  if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest/i.test(ua)) return next();
   // Check Accept-Language header
   const lang = req.headers['accept-language'] || '';
   if (!lang.match(/pl/i)) {
