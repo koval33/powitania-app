@@ -169,13 +169,12 @@ body{background-color:#f7f3ef}
 
     <div class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
       <a href="/en/voice-bank/" class="hover:text-accent transition-colors <%= currentPath === '/en/voice-bank/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Voice Bank</a>
-      <a href="/en/" class="hover:text-accent transition-colors <%= currentPath === '/en/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Voiceover Services</a>
-      <a href="/en/" class="hover:text-accent transition-colors <%= currentPath === '/en/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Remote Sessions</a>
+      <a href="/en/voiceover-services/" class="hover:text-accent transition-colors <%= currentPath.startsWith('/en/voiceover-services') ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Voiceover Services</a>
+      <a href="/en/remote-sessions/" class="hover:text-accent transition-colors <%= currentPath === '/en/remote-sessions/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Remote Sessions</a>
       <a href="/en/pricing/" class="hover:text-accent transition-colors <%= currentPath === '/en/pricing/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Pricing</a>
-      <a href="/en/" class="hover:text-accent transition-colors <%= currentPath === '/en/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Reviews</a>
+      <a href="/en/news/" class="hover:text-accent transition-colors <%= currentPath.startsWith('/en/news') ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">News</a>
       <a href="/en/contact/" class="hover:text-accent transition-colors <%= currentPath === '/en/contact/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Contact</a>
       <a href="/en/#kreator" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg transition-colors font-semibold">Create</a>
-      <a href="/?lang=pl" class="text-gray-400 hover:text-gray-600 transition-colors text-xs ml-2">PL</a>
     </div>
 
     <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-500">
@@ -187,13 +186,12 @@ body{background-color:#f7f3ef}
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 uppercase tracking-wide text-sm font-semibold">
     <a href="/en/voice-bank/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voice Bank</a>
-    <a href="/en/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voiceover Services</a>
-    <a href="/en/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Remote Sessions</a>
+    <a href="/en/voiceover-services/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voiceover Services</a>
+    <a href="/en/remote-sessions/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Remote Sessions</a>
     <a href="/en/pricing/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Pricing</a>
-    <a href="/en/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Reviews</a>
+    <a href="/en/news/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">News</a>
     <a href="/en/contact/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Contact</a>
     <a href="/en/#kreator" class="block mt-3 bg-accent text-white text-center px-5 py-3 rounded-lg font-semibold">Create</a>
-    <a href="/?lang=pl" class="block text-gray-400 hover:text-gray-600 transition-colors text-xs mt-3">PL</a>
   </div>
 </header>
 <% } %>
