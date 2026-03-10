@@ -65,6 +65,38 @@ app.use((req, res, next) => {
   res.locals.gtmId = process.env.GTM_ID || '';
   res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
 
+  // Hreflang: PL ↔ EN URL mapping for SEO
+  var hreflangMap = {
+    '/': '/en/',
+    '/bank-glosow/': '/en/voice-bank/',
+    '/cennik/': '/en/pricing/',
+    '/kontakt/': '/en/contact/',
+    '/nagrania-lektorskie/': '/en/voiceover-services/',
+    '/uslugi/glos-do-reklamy/': '/en/voiceover-services/voice-for-advertising/',
+    '/uslugi/lektor-do-filmow/': '/en/voiceover-services/film-voiceover/',
+    '/uslugi/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
+    '/uslugi/sesje-zdalne/': '/en/remote-sessions/',
+    '/nagranie-ekspresowe/': '/en/express-recording/',
+    '/aktualnosci/': '/en/news/'
+  };
+  var path = req.path;
+  if (path.startsWith('/en/')) {
+    // EN page → find PL equivalent
+    for (var pl in hreflangMap) {
+      if (hreflangMap[pl] === path) {
+        res.locals.hreflangPL = 'https://www.powitania.pl' + pl;
+        res.locals.hreflangEN = 'https://www.powitania.pl' + path;
+        break;
+      }
+    }
+  } else {
+    // PL page → find EN equivalent
+    if (hreflangMap[path]) {
+      res.locals.hreflangPL = 'https://www.powitania.pl' + path;
+      res.locals.hreflangEN = 'https://www.powitania.pl' + hreflangMap[path];
+    }
+  }
+
   if (res.locals.isEmbed) {
     res.removeHeader('X-Frame-Options');
   } else {
@@ -741,8 +773,15 @@ app.get('/sitemap.xml', (req, res) => {
     // English version
     { url: '/en/', priority: '0.8', changefreq: 'weekly' },
     { url: '/en/voice-bank/', priority: '0.7', changefreq: 'weekly' },
+    { url: '/en/voiceover-services/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/en/voiceover-services/voice-for-advertising/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/voiceover-services/film-voiceover/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/voiceover-services/phone-announcements/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/remote-sessions/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/express-recording/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -760,6 +799,10 @@ app.get('/sitemap.xml', (req, res) => {
   const blogPosts = loadBlogPosts();
   blogPosts.forEach(p => {
     xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
+    // EN blog posts (those with English content)
+    if (p.titleEn) {
+      xml += `  <url>\n    <loc>${baseUrl}/en/news/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
+    }
   });
 
   xml += '</urlset>';

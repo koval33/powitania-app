@@ -31,6 +31,11 @@
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.powitania.pl<%= currentPath %>">
+  <% if (typeof hreflangPL !== 'undefined' && hreflangPL) { %>
+  <link rel="alternate" hreflang="pl" href="<%= hreflangPL %>">
+  <link rel="alternate" hreflang="en" href="<%= hreflangEN %>">
+  <link rel="alternate" hreflang="x-default" href="<%= hreflangPL %>">
+  <% } %>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
