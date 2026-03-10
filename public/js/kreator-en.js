@@ -35,12 +35,12 @@
   ];
 
   var LANGUAGES = [
-    { v: 'pl', l: 'Polish', flag: '\u{1F1F5}\u{1F1F1}' },
     { v: 'en', l: 'English', flag: '\u{1F1EC}\u{1F1E7}' },
     { v: 'de', l: 'German', flag: '\u{1F1E9}\u{1F1EA}' },
     { v: 'fr', l: 'French', flag: '\u{1F1EB}\u{1F1F7}' },
     { v: 'cs', l: 'Czech', flag: '\u{1F1E8}\u{1F1FF}' },
-    { v: 'uk', l: 'Ukrainian', flag: '\u{1F1FA}\u{1F1E6}' }
+    { v: 'uk', l: 'Ukrainian', flag: '\u{1F1FA}\u{1F1E6}' },
+    { v: 'pl', l: 'Polish', flag: '\u{1F1F5}\u{1F1F1}' }
   ];
 
   var TONES = [
@@ -67,6 +67,7 @@
   var state = {
     step: 'welcome',
     form: {
+      lang: 'en',
       serviceType: '', industry: '', duration: '30', languages: [],
       company: '', offering: '', audience: '', tone: '', goal: '',
       textInput: '', targetDur: '30',
@@ -1014,6 +1015,7 @@
       case 'reset':
         state.step = 'welcome';
         state.form = {
+          lang: 'en',
           serviceType: '', industry: '', duration: '30', languages: [],
           company: '', offering: '', audience: '', tone: '', goal: '',
           textInput: '', targetDur: '30',

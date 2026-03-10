@@ -34,6 +34,7 @@ async function callAnthropic(apiKey, messages, maxTokens = 2048) {
 
 // Walidacja pól wejściowych — tylko znane pola, reszta ignorowana
 const FIELD_LIMITS = {
+  lang: 5,
   company: 200,
   offering: 1000,
   serviceType: 50,
@@ -84,9 +85,9 @@ router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (re
     const text = data.content[0].text.trim();
 
     // Log word count for monitoring (no retry)
-    const { serviceType, duration } = req.body;
+    const { serviceType, duration, lang } = req.body;
     if (duration && serviceType !== 'ivr') {
-      const targetWords = calcWords(parseInt(duration), 'pl', serviceType);
+      const targetWords = calcWords(parseInt(duration), lang || 'pl', serviceType);
       const actualWords = countSpeakableWords(text);
       console.log(`[kreator] Generated: ${actualWords}/${targetWords} words`);
     }
@@ -117,9 +118,9 @@ router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (re
     const text = data.content[0].text.trim();
 
     // Log word count for monitoring (no retry)
-    const { targetDur, serviceType } = req.body;
+    const { targetDur, serviceType, lang: optLang } = req.body;
     if (targetDur) {
-      const targetWords = calcWords(parseInt(targetDur), 'pl', serviceType);
+      const targetWords = calcWords(parseInt(targetDur), optLang || 'pl', serviceType);
       const actualWords = countSpeakableWords(text);
       console.log(`[kreator] Optimized: ${actualWords}/${targetWords} words`);
     }
