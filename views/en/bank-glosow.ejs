@@ -154,6 +154,7 @@
            data-native="<%= v.native %>"
            data-price="<%= v.priceGroup || '' %>"
            data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
+           data-nativelanguage="<%= v.nativeLanguage || '' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
         <!-- Górna część: zdjęcie + info -->
@@ -599,20 +600,40 @@
       // Activate kreator mode — hides hidePrice voices
       kreatorMode = true;
 
+      // EN kreator: default to English speakers, sort native EN first
+      var isENKreator = ctx.lang === 'en';
+
       // Auto-filter by language based on kreator context
       var langs = ctx.languages || [];
       var foreignLangs = langs.filter(function(l) { return l !== 'pl'; });
       if (foreignLangs.length > 0) {
-        // Foreign or bilingual text — show only lectors speaking those languages
         kreatorLangs = foreignLangs.map(function(code) { return LANG_MAP[code]; }).filter(Boolean);
-        // Also set dropdown for UI feedback (single language)
         if (kreatorLangs.length === 1) {
           document.getElementById('filter-lang').value = kreatorLangs[0];
         }
+      } else if (isENKreator) {
+        // EN kreator with no specific language (non-IVR) — show English speakers
+        kreatorLangs = ['angielski'];
+        document.getElementById('filter-lang').value = 'angielski';
       } else {
-        // Polish-only text (or no language info) — show only Polish-speaking lectors
         kreatorLangs = ['polski'];
         document.getElementById('filter-lang').value = 'polski';
+      }
+
+      // Sort: EN native speakers first when coming from EN kreator
+      if (isENKreator) {
+        var grid = document.getElementById('voices-grid');
+        var sorted = allCards.slice().sort(function(a, b) {
+          var aNative = a.dataset.nativelanguage === 'angielski' ? 1 : 0;
+          var bNative = b.dataset.nativelanguage === 'angielski' ? 1 : 0;
+          if (bNative !== aNative) return bNative - aNative;
+          // Secondary: any English speaker before non-English
+          var aEN = a.dataset.languages.indexOf('angielski') !== -1 ? 1 : 0;
+          var bEN = b.dataset.languages.indexOf('angielski') !== -1 ? 1 : 0;
+          return bEN - aEN;
+        });
+        sorted.forEach(function(card) { grid.appendChild(card); });
+        allCards = sorted;
       }
     } catch(e) {}
   })();

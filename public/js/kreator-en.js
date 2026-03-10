@@ -962,6 +962,7 @@
       case 'selectVoice':
         // Save kreator context to sessionStorage
         var ctxData = {
+          lang: 'en',
           text: state.result,
           serviceType: state.form.serviceType,
           languages: state.form.languages,
