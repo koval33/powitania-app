@@ -35,9 +35,16 @@
 
 Powitania.pl is also available in English for international clients:
 
-- [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services for international clients
+- [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services with AI Script Creator tool
 - [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples — filter by language, gender, style
-- [Pricing (EN)](https://www.powitania.pl/en/pricing/): Transparent pricing for all voiceover services
+- [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services — commercials, IVR, audiobooks, film, e-learning
+- [Voice for Advertising (EN)](https://www.powitania.pl/en/voiceover-services/voice-for-advertising/): Professional voiceover for radio, TV, and online ads
+- [Film Voiceover (EN)](https://www.powitania.pl/en/voiceover-services/film-voiceover/): Voiceover for corporate, promotional, instructional, and documentary films
+- [Phone Announcements (EN)](https://www.powitania.pl/en/voiceover-services/phone-announcements/): Professional IVR announcements, phone greetings, PBX messages
+- [Remote Sessions (EN)](https://www.powitania.pl/en/remote-sessions/): Live remote recording sessions with real-time client participation
+- [Express Recording (EN)](https://www.powitania.pl/en/express-recording/): Same-day recording delivery
+- [Pricing (EN)](https://www.powitania.pl/en/pricing/): Transparent pricing in EUR for all voiceover services
+- [News (EN)](https://www.powitania.pl/en/news/): Industry blog with articles about voiceover and audio production
 - [Contact (EN)](https://www.powitania.pl/en/contact/): Get in touch — we respond within 2 hours
 
 Non-Polish browsers are automatically redirected to the English version.
