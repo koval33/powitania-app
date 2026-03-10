@@ -815,6 +815,7 @@ function updateFileLabel(input) {
     msg.className = 'mt-4 text-center hidden';
 
     var formData = new FormData(form);
+    formData.append('lang', 'en');
 
     if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
 
@@ -1741,7 +1742,8 @@ function submitWizardInquiry() {
     lektorId: LEKTOR_ID,
     serviceType: ctx.serviceType || '',
     generatedText: ctx.text || '',
-    description: document.getElementById('wiz-inq-message').value.trim()
+    description: document.getElementById('wiz-inq-message').value.trim(),
+    lang: 'en'
   };
 
   if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
@@ -1783,6 +1785,7 @@ function submitWizardInquiry() {
 }
 
 function submitOrderRequest(data, msgElId) {
+  data.lang = 'en';
   var msgEl = document.getElementById(msgElId);
   if (msgEl) { msgEl.classList.add('hidden'); }
 
@@ -1871,6 +1874,7 @@ if (inlineInquiryForm) inlineInquiryForm.addEventListener('submit', function(e) 
   fd.forEach(function(v, k) { data[k] = v; });
   data.lektorName = LEKTOR_NAME;
   data.lektorId = LEKTOR_ID;
+  data.lang = 'en';
   try {
     var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
     if (ctx.text) data.generatedText = ctx.text;

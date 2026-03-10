@@ -239,10 +239,20 @@ router.post('/notify', async (req, res) => {
     });
 
     // Potwierdzenie do klienta
+    const isEN = order.lang === 'en';
     await sendMail({
       to: order.email,
-      subject: 'Zamówienie przyjęte do realizacji — Powitania.pl',
-      html: `
+      subject: isEN ? 'Order confirmed — Powitania.pl' : 'Zamówienie przyjęte do realizacji — Powitania.pl',
+      html: isEN ? `
+        <h2 style="color:#1a1d23">Thank you for your order!</h2>
+        <p>Hi ${esc(order.name)},</p>
+        <p>Your recording order${order.lektorName ? ' with voice artist <strong>' + esc(order.lektorName) + '</strong>' : ''} has been confirmed and is now in production.</p>
+        <p><strong>Amount:</strong> ${order.amountBrutto} PLN gross (${order.priceNetto} PLN net + VAT)</p>
+        <p>Our team is already working on your project. We will keep you updated via email.</p>
+        ${order.generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(order.generatedText)}</pre>` : ''}
+        <p style="margin-top:32px">Best regards,<br><strong>Powitania.pl Team</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(order.name)},</p>
         <p>Twoje zamówienie nagrania${order.lektorName ? ' u lektora <strong>' + esc(order.lektorName) + '</strong>' : ''} zostało przyjęte do realizacji.</p>

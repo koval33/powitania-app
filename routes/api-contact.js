@@ -19,10 +19,11 @@ const upload = multer({
 
 // "Zamów nagranie" — pełny formularz z danymi firmy
 router.post('/order', async (req, res) => {
-  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody } = req.body;
+  const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody, lang } = req.body;
+  const isEN = lang === 'en';
 
   if (!firmName || !name || !email) {
-    return res.status(400).json({ ok: false, error: 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
+    return res.status(400).json({ ok: false, error: isEN ? 'Please fill in the required fields: company name, full name, email.' : 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.' });
   }
 
   // Walidacja formatu pól
@@ -64,8 +65,17 @@ router.post('/order', async (req, res) => {
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: 'Potwierdzenie zamówienia — Powitania',
-      html: `
+      subject: isEN ? 'Order confirmation — Powitania' : 'Potwierdzenie zamówienia — Powitania',
+      html: isEN ? `
+        <h2 style="color:#1a1d23">Thank you for your order!</h2>
+        <p>Hi ${esc(name)},</p>
+        <p>We have received your recording order${lektorName ? ' with voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p>We will respond within 2 hours during business hours (Mon–Fri 8:00 AM – 6:00 PM CET).</p>
+        ${totalPrice ? `<p><strong>Quote:</strong> ${esc(totalPrice)}</p>` : ''}
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
+        <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(name)},</p>
         <p>Otrzymaliśmy Twoje zamówienie nagrania${lektorName ? ' u lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
@@ -77,23 +87,24 @@ router.post('/order', async (req, res) => {
       `
     });
 
-    res.json({ ok: true, message: 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
+    res.json({ ok: true, message: isEN ? 'Order sent. We will respond within 2 hours.' : 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
     sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody, status: 'Order', source: 'powitania.pl (zamówienie)' })
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);
-    res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
+    res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
 
 // "Zapytaj o wycenę" — lekki formularz
 router.post('/inquiry', async (req, res) => {
-  const { name, email, phone, description, generatedText, serviceType, industry, lektorName } = req.body;
+  const { name, email, phone, description, generatedText, serviceType, industry, lektorName, lang } = req.body;
+  const isEN = lang === 'en';
 
   if (!email) {
-    return res.status(400).json({ ok: false, error: 'Podaj adres email.' });
+    return res.status(400).json({ ok: false, error: isEN ? 'Please provide your email address.' : 'Podaj adres email.' });
   }
   const phoneCheck = validatePhone(phone);
   if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
@@ -122,8 +133,17 @@ router.post('/inquiry', async (req, res) => {
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: 'Potwierdzenie zapytania — Powitania',
-      html: `
+      subject: isEN ? 'Inquiry confirmation — Powitania' : 'Potwierdzenie zapytania — Powitania',
+      html: isEN ? `
+        <h2 style="color:#1a1d23">Thank you for your inquiry!</h2>
+        <p>Hi${name ? ' ' + esc(name) : ''},</p>
+        <p>We have received your inquiry. We will respond within 2 hours during business hours (Mon–Fri 8:00 AM – 6:00 PM CET).</p>
+        ${lektorName ? `<p style="margin-top:16px">Voice artist: <strong>${esc(lektorName)}</strong></p>` : ''}
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
+        ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Your message:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
+        <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      ` : `
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć${name ? ' ' + esc(name) : ''},</p>
         <p>Otrzymaliśmy Twoje zapytanie. Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
@@ -135,14 +155,14 @@ router.post('/inquiry', async (req, res) => {
       `
     });
 
-    res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
+    res.json({ ok: true, message: isEN ? 'Thank you! We will respond within 2 hours.' : 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking — after response)
     sendOrderToCRM({ name, email, phone, serviceType, industry, lektorName, generatedText, notes: description, status: 'Prospect', source: 'powitania.pl (zapytanie)' })
       .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Inquiry error:', err);
-    res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
+    res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
 
@@ -191,10 +211,11 @@ router.post('/save-text', async (req, res) => {
 
 // "Zapytaj o wycenę" — lektor premium (z załącznikiem)
 router.post('/inquiry-premium', upload.single('attachment'), async (req, res) => {
-  const { email, description, lektorName, lektorId } = req.body;
+  const { email, description, lektorName, lektorId, lang } = req.body;
+  const isEN = lang === 'en';
 
   if (!email || !description) {
-    return res.status(400).json({ ok: false, error: 'Uzupełnij opis projektu i email.' });
+    return res.status(400).json({ ok: false, error: isEN ? 'Please describe your project and provide your email.' : 'Uzupełnij opis projektu i email.' });
   }
 
   try {
@@ -229,8 +250,14 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: 'Potwierdzenie zapytania — Powitania',
-      html: `
+      subject: isEN ? 'Inquiry confirmation — Powitania' : 'Potwierdzenie zapytania — Powitania',
+      html: isEN ? `
+        <h2 style="color:#1a1d23">Thank you for your inquiry!</h2>
+        <p>We have received your quote request${lektorName ? ' for voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p>We will respond as soon as possible.</p>
+        <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zapytanie!</h2>
         <p>Otrzymaliśmy Twoje zapytanie o wycenę${lektorName ? ' lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
         <p>Odpowiemy najszybciej jak to możliwe.</p>
@@ -239,14 +266,14 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
       `
     });
 
-    res.json({ ok: true, message: 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
+    res.json({ ok: true, message: isEN ? 'Thank you! We will respond as soon as possible.' : 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
 
     // Send to CRM (non-blocking — after response)
     sendOrderToCRM({ name: '', email, lektorName, lektorId, description, status: 'Prospect', source: 'powitania.pl (zapytanie premium)' })
       .catch(err => console.error('[CRM] premium inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Premium inquiry error:', err);
-    res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
+    res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
 
