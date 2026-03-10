@@ -756,6 +756,21 @@ app.get('/en/news/:slug/', (req, res) => {
 });
 
 // EN — Voice artist profile
+var EUR_RATE = 4.25;
+function plnToEur(pln) {
+  if (typeof pln !== 'number') return pln;
+  var eur = pln / EUR_RATE;
+  // Round to nearest 5 for amounts >= 25, otherwise round to nearest integer
+  return eur >= 25 ? Math.round(eur / 5) * 5 : Math.round(eur);
+}
+function convertPricesToEur(prices) {
+  if (!prices) return {};
+  var eurPrices = {};
+  for (var key in prices) {
+    eurPrices[key] = typeof prices[key] === 'number' ? plnToEur(prices[key]) : prices[key];
+  }
+  return eurPrices;
+}
 app.get('/en/voice-artists/:slug/', (req, res) => {
   const voices = loadVoices();
   const lektor = voices.find(v => v.id === req.params.slug);
@@ -767,6 +782,8 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
       message: 'The voice artist you are looking for does not exist. <a href="/en/voice-bank/" class="text-accent hover:underline">Back to Voice Bank</a>.'
     });
   }
+  // Convert prices to EUR for EN version
+  const lektorEn = { ...lektor, prices: convertPricesToEur(lektor.prices) };
   // Similar voice artists: same gender, random 5
   const similar = voices
     .filter(v => v.id !== lektor.id && v.gender === lektor.gender && v.photo)
@@ -774,17 +791,18 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
     .slice(0, 5);
   res.render('en/voice-artist', {
     title: lektor.name + ' — Voice Artist | Powitania.pl',
-    description: lektor.description || ('Voice artist profile: ' + lektor.name + '. Listen to voice samples and order a recording.'),
+    description: lektor.descriptionEn || lektor.description || ('Voice artist profile: ' + lektor.name + '. Listen to voice samples and order a recording.'),
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voice Bank', url: '/en/voice-bank/' },
       { name: lektor.name, url: '/en/voice-artists/' + lektor.id + '/' }
     ],
-    lektor: lektor,
+    lektor: lektorEn,
     similar: similar,
     isExpress: req.query.express === '1',
-    melodies: loadMelodies()
+    melodies: loadMelodies(),
+    eurRate: EUR_RATE
   });
 });
 
