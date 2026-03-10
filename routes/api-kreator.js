@@ -3,6 +3,7 @@ const router = express.Router();
 const { buildPrompt, calcWords, countSpeakableWords } = require('../lib/prompts');
 const RateLimiter = require('../lib/rate-limiter');
 const { verifyTurnstile } = require('../lib/turnstile');
+const { logKreator } = require('../lib/kreator-logger');
 
 // Rate limit: max 5 wywołań / minutę / IP
 const kreatorLimiter = new RateLimiter({
@@ -77,6 +78,9 @@ router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (re
     return res.status(400).json({ ok: false, error: validationError });
   }
 
+  const startTime = Date.now();
+  const { serviceType, duration, lang, industry, company, audience, tone, goal } = req.body;
+
   try {
     const params = { action: 'generate', ...req.body };
     const prompt = buildPrompt(params);
@@ -84,17 +88,29 @@ router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (re
     const data = await callAnthropic(apiKey, [{ role: 'user', content: prompt }]);
     const text = data.content[0].text.trim();
 
-    // Log word count for monitoring (no retry)
-    const { serviceType, duration, lang } = req.body;
-    if (duration && serviceType !== 'ivr') {
-      const targetWords = calcWords(parseInt(duration), lang || 'pl', serviceType);
-      const actualWords = countSpeakableWords(text);
-      console.log(`[kreator] Generated: ${actualWords}/${targetWords} words`);
-    }
+    const targetWords = (duration && serviceType !== 'ivr') ? calcWords(parseInt(duration), lang || 'pl', serviceType) : null;
+    const actualWords = countSpeakableWords(text);
+    if (targetWords) console.log(`[kreator] Generated: ${actualWords}/${targetWords} words`);
+
+    logKreator({
+      action: 'generate', lang: lang || 'pl', serviceType, industry, duration,
+      company, audience, tone, goal,
+      generatedText: text, wordCount: actualWords, targetWords,
+      responseTimeMs: Date.now() - startTime, ok: true,
+      tokensIn: data.usage && data.usage.input_tokens,
+      tokensOut: data.usage && data.usage.output_tokens,
+      ip: req.ip
+    });
 
     res.json({ ok: true, text, usage: data.usage });
   } catch (err) {
     console.error('[kreator] Error:', err);
+    logKreator({
+      action: 'generate', lang: lang || 'pl', serviceType, industry, duration,
+      company, audience, tone, goal,
+      responseTimeMs: Date.now() - startTime, ok: false, error: String(err.message || err),
+      ip: req.ip
+    });
     res.status(500).json({ ok: false, error: 'Wystąpił błąd. Spróbuj ponownie.' });
   }
 });
@@ -111,23 +127,38 @@ router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (re
     return res.status(400).json({ ok: false, error: validationError });
   }
 
+  const startTime = Date.now();
+  const { targetDur, serviceType, lang: optLang, textInput } = req.body;
+
   try {
     const prompt = buildPrompt({ action: 'optimize', ...req.body });
 
     const data = await callAnthropic(apiKey, [{ role: 'user', content: prompt }]);
     const text = data.content[0].text.trim();
 
-    // Log word count for monitoring (no retry)
-    const { targetDur, serviceType, lang: optLang } = req.body;
-    if (targetDur) {
-      const targetWords = calcWords(parseInt(targetDur), optLang || 'pl', serviceType);
-      const actualWords = countSpeakableWords(text);
-      console.log(`[kreator] Optimized: ${actualWords}/${targetWords} words`);
-    }
+    const targetWords = targetDur ? calcWords(parseInt(targetDur), optLang || 'pl', serviceType) : null;
+    const actualWords = countSpeakableWords(text);
+    if (targetWords) console.log(`[kreator] Optimized: ${actualWords}/${targetWords} words`);
+
+    logKreator({
+      action: 'optimize', lang: optLang || 'pl', serviceType, duration: targetDur,
+      inputText: textInput,
+      generatedText: text, wordCount: actualWords, targetWords,
+      responseTimeMs: Date.now() - startTime, ok: true,
+      tokensIn: data.usage && data.usage.input_tokens,
+      tokensOut: data.usage && data.usage.output_tokens,
+      ip: req.ip
+    });
 
     res.json({ ok: true, text, usage: data.usage });
   } catch (err) {
     console.error('[kreator] Optimize error:', err);
+    logKreator({
+      action: 'optimize', lang: optLang || 'pl', serviceType, duration: targetDur,
+      inputText: textInput,
+      responseTimeMs: Date.now() - startTime, ok: false, error: String(err.message || err),
+      ip: req.ip
+    });
     res.status(500).json({ ok: false, error: 'Wystąpił błąd. Spróbuj ponownie.' });
   }
 });
