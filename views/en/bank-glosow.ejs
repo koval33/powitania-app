@@ -623,7 +623,7 @@
       // Sort: EN native speakers first when coming from EN kreator
       if (isENKreator) {
         var grid = document.getElementById('voices-grid');
-        var sorted = allCards.slice().sort(function(a, b) {
+        allCards.sort(function(a, b) {
           var aNative = a.dataset.nativelanguage === 'angielski' ? 1 : 0;
           var bNative = b.dataset.nativelanguage === 'angielski' ? 1 : 0;
           if (bNative !== aNative) return bNative - aNative;
@@ -632,9 +632,11 @@
           var bEN = b.dataset.languages.indexOf('angielski') !== -1 ? 1 : 0;
           return bEN - aEN;
         });
-        sorted.forEach(function(card) { grid.appendChild(card); });
-        allCards = sorted;
+        allCards.forEach(function(card) { grid.appendChild(card); });
       }
+
+      // Apply filters after kreator context is set (rebuilds filteredCards from allCards)
+      applyFilters();
     } catch(e) {}
   })();
 
