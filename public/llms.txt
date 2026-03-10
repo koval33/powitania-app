@@ -37,6 +37,7 @@ Powitania.pl is also available in English for international clients:
 
 - [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services with AI Script Creator tool
 - [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples — filter by language, gender, style
+- [Voice Artist Profiles (EN)](https://www.powitania.pl/en/voice-artists/{slug}/): Individual voice artist profile pages with audio samples, pricing, and order forms — 232 profiles available
 - [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services — commercials, IVR, audiobooks, film, e-learning
 - [Voice for Advertising (EN)](https://www.powitania.pl/en/voiceover-services/voice-for-advertising/): Professional voiceover for radio, TV, and online ads
 - [Film Voiceover (EN)](https://www.powitania.pl/en/voiceover-services/film-voiceover/): Voiceover for corporate, promotional, instructional, and documentary films

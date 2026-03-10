@@ -89,11 +89,23 @@ app.use((req, res, next) => {
         break;
       }
     }
+    // Dynamic: EN voice-artist → PL lektor
+    var vaMatch = path.match(/^\/en\/voice-artists\/([^/]+)\/$/);
+    if (vaMatch) {
+      res.locals.hreflangPL = 'https://www.powitania.pl/lektorzy/' + vaMatch[1] + '/';
+      res.locals.hreflangEN = 'https://www.powitania.pl' + path;
+    }
   } else {
     // PL page → find EN equivalent
     if (hreflangMap[path]) {
       res.locals.hreflangPL = 'https://www.powitania.pl' + path;
       res.locals.hreflangEN = 'https://www.powitania.pl' + hreflangMap[path];
+    }
+    // Dynamic: PL lektor → EN voice-artist
+    var lMatch = path.match(/^\/lektorzy\/([^/]+)\/$/);
+    if (lMatch) {
+      res.locals.hreflangPL = 'https://www.powitania.pl' + path;
+      res.locals.hreflangEN = 'https://www.powitania.pl/en/voice-artists/' + lMatch[1] + '/';
     }
   }
 
@@ -743,6 +755,39 @@ app.get('/en/news/:slug/', (req, res) => {
   });
 });
 
+// EN — Voice artist profile
+app.get('/en/voice-artists/:slug/', (req, res) => {
+  const voices = loadVoices();
+  const lektor = voices.find(v => v.id === req.params.slug);
+  if (!lektor) {
+    return res.status(404).render('placeholder', {
+      title: '404 | powitania.pl',
+      description: 'Voice artist not found',
+      heading: 'Voice artist not found',
+      message: 'The voice artist you are looking for does not exist. <a href="/en/voice-bank/" class="text-accent hover:underline">Back to Voice Bank</a>.'
+    });
+  }
+  // Similar voice artists: same gender, random 5
+  const similar = voices
+    .filter(v => v.id !== lektor.id && v.gender === lektor.gender && v.photo)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
+  res.render('en/voice-artist', {
+    title: lektor.name + ' — Voice Artist | Powitania.pl',
+    description: lektor.description || ('Voice artist profile: ' + lektor.name + '. Listen to voice samples and order a recording.'),
+    ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voice Bank', url: '/en/voice-bank/' },
+      { name: lektor.name, url: '/en/voice-artists/' + lektor.id + '/' }
+    ],
+    lektor: lektor,
+    similar: similar,
+    isExpress: req.query.express === '1',
+    melodies: loadMelodies()
+  });
+});
+
 // EN — strony bez dedykowanego tłumaczenia → redirect na główną EN
 app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
 
@@ -793,6 +838,7 @@ app.get('/sitemap.xml', (req, res) => {
 
   voices.forEach(v => {
     xml += `  <url>\n    <loc>${baseUrl}/lektorzy/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${baseUrl}/en/voice-artists/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
   });
 
   // Blog posts
