@@ -280,7 +280,7 @@ app.get('/lektorzy/:slug/', (req, res) => {
 
 app.get('/cennik/', (req, res) => {
   res.render('cennik', {
-    title: 'Lektor | Cena | Powitania.pl',
+    title: 'Lektor | Cena | Nagrania lektorskie cennik | Powitania.pl',
     description: 'Profesjonalne nagrania lektorskie. Poznaj cennik! Rozbudowana baza, najlepsi lektorzy. Doświadczenie i szybka realizacja. Zapraszamy do zapoznania się z ofertą.'
   });
 });
