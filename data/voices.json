@@ -1,5 +1,37 @@
 [
   {
+    "id": "tomasz-raczek",
+    "name": "Tomasz Raczek",
+    "gender": "m",
+    "age": "50+ lat",
+    "languages": [
+      "polski"
+    ],
+    "description": "Krytyk filmowy, publicysta, głos który rozpozna każdy słuchacz — po prostu Tomasz Raczek. Jeden z najbardziej rozpoznawalnych głosów w polskich mediach, znany z charyzmatycznego, ciepłego i pełnego pasji sposobu mówienia.",
+    "descriptionEn": "Film critic, journalist, a voice recognised by every listener — simply Tomasz Raczek. One of the most recognisable voices in Polish media, known for his charismatic, warm and passionate way of speaking.",
+    "photo": "/img/lektorzy/tomasz-raczek.webp",
+    "audio": "/audio/lektorzy/tomasz-raczek.mp3",
+    "samples": [
+      {
+        "name": "Próbka głosowa Tomasza Raczka",
+        "url": "/audio/lektorzy/tomasz-raczek.mp3"
+      }
+    ],
+    "turnaround": "48h",
+    "famous": true,
+    "native": false,
+    "nativeLanguage": "polski",
+    "applications": [
+      "Reklama",
+      "Narracja do filmu",
+      "Audiobook"
+    ],
+    "priceGroup": "Wyższa grupa cenowa",
+    "hidePrice": true,
+    "profileUrl": "/lektorzy/tomasz-raczek/",
+    "prices": {}
+  },
+  {
     "id": "lukasz-nowicki",
     "name": "Łukasz Nowicki",
     "gender": "m",
