@@ -125,9 +125,9 @@
     <% reviews.slice(0, 10).forEach(function(r, i) { %>
     {
       "@type": "Review",
-      "author": { "@type": "Organization", "name": "<%= r.company.replace(/"/g, '\\"') %>" },
+      "author": { "@type": "Organization", "name": <%- JSON.stringify(r.company) %> },
       "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-      "reviewBody": "<%= r.text.replace(/"/g, '\\"') %>"<% if (r.date) { %>,
+      "reviewBody": <%- JSON.stringify(r.text) %><% if (r.date) { %>,
       "datePublished": "<%= r.date %>"<% } %>
     }<%= i < Math.min(reviews.length, 10) - 1 ? ',' : '' %>
     <% }); %>

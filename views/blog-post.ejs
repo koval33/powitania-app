@@ -59,8 +59,8 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "<%= post.title.replace(/"/g, '\\"') %>",
-  "description": "<%= post.excerpt.replace(/"/g, '\\"') %>",
+  "headline": <%- JSON.stringify(post.title) %>,
+  "description": <%- JSON.stringify(post.excerpt) %>,
   "datePublished": "<%= post.date %>",
   "author": {
     "@type": "Organization",
