@@ -7,14 +7,18 @@
     "languages": [
       "polski"
     ],
-    "description": "Krytyk filmowy, publicysta, głos który rozpozna każdy słuchacz — po prostu Tomasz Raczek. Jeden z najbardziej rozpoznawalnych głosów w polskich mediach, znany z charyzmatycznego, ciepłego i pełnego pasji sposobu mówienia.",
-    "descriptionEn": "Film critic, journalist, a voice recognised by every listener — simply Tomasz Raczek. One of the most recognisable voices in Polish media, known for his charismatic, warm and passionate way of speaking.",
+    "description": "Krytyk filmowy, publicysta, głos który rozpozna każdy słuchacz — po prostu Tomasz Raczek. Idealny wybór do narracji filmowych i dokumentalnych, audiobooków, reklam premium oraz kampanii wizerunkowych, w których liczy się autorytet i rozpoznawalność. Jego charyzmatyczny, ciepły głos pełen pasji nadaje każdemu projektowi wyjątkowy charakter — od zwiastunów filmowych, przez podcasty, po ekskluzywne spoty reklamowe.",
+    "descriptionEn": "Film critic, journalist, a voice recognised by every listener — simply Tomasz Raczek. The perfect choice for film and documentary narration, audiobooks, premium commercials and brand campaigns where authority and recognition matter. His charismatic, warm voice full of passion gives every project a distinctive character — from movie trailers and podcasts to exclusive advertising spots.",
     "photo": "/img/lektorzy/tomasz-raczek.webp",
     "audio": "/audio/lektorzy/tomasz-raczek.mp3",
     "samples": [
       {
-        "name": "Próbka głosowa Tomasza Raczka",
+        "name": "Próbka głosowa 1",
         "url": "/audio/lektorzy/tomasz-raczek.mp3"
+      },
+      {
+        "name": "Próbka głosowa 2",
+        "url": "/audio/lektorzy/tomasz-raczek-2.mp3"
       }
     ],
     "turnaround": "48h",
