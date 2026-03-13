@@ -13,11 +13,11 @@
     "audio": "/audio/lektorzy/tomasz-raczek.mp3",
     "samples": [
       {
-        "name": "Próbka głosowa 1",
+        "name": "Recenzja filmowa",
         "url": "/audio/lektorzy/tomasz-raczek.mp3"
       },
       {
-        "name": "Próbka głosowa 2",
+        "name": "Fragment audiobooka",
         "url": "/audio/lektorzy/tomasz-raczek-2.mp3"
       }
     ],
