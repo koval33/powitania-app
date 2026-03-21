@@ -190,10 +190,22 @@
     getTurnstileToken().then(function(token) {
       var payload = Object.assign({}, body);
       if (token) payload.turnstileToken = token;
+
+      // AbortController timeout — guard against hanging connections (especially Safari)
+      var controller = new AbortController();
+      var timer = setTimeout(function() { controller.abort(); }, 35000);
+
       return fetch('/api/kreator/' + endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      }).then(function(r) {
+        clearTimeout(timer);
+        return r;
+      }, function(err) {
+        clearTimeout(timer);
+        throw err;
       });
     })
     .then(function(r) { return r.json(); })
@@ -204,8 +216,11 @@
         setState({ loading: false, error: data.error || 'An error occurred.' });
       }
     })
-    .catch(function() {
-      setState({ loading: false, error: 'Connection error. Please check your internet and try again.' });
+    .catch(function(err) {
+      var msg = (err && err.name === 'AbortError')
+        ? 'Request timed out. Please try again.'
+        : 'Connection error. Please check your internet and try again.';
+      setState({ loading: false, error: msg });
     });
   }
 

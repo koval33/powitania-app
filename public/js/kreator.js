@@ -189,10 +189,23 @@
     getTurnstileToken().then(function(token) {
       var payload = Object.assign({}, body);
       if (token) payload.turnstileToken = token;
+
+      // AbortController timeout — zabezpieczenie przed zawieszonym połączeniem
+      // (szczególnie Safari z keep-alive lub powolnym Anthropic API)
+      var controller = new AbortController();
+      var timer = setTimeout(function() { controller.abort(); }, 35000);
+
       return fetch('/api/kreator/' + endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      }).then(function(r) {
+        clearTimeout(timer);
+        return r;
+      }, function(err) {
+        clearTimeout(timer);
+        throw err;
       });
     })
     .then(function(r) { return r.json(); })
@@ -203,8 +216,11 @@
         setState({ loading: false, error: data.error || 'Wystąpił błąd.' });
       }
     })
-    .catch(function() {
-      setState({ loading: false, error: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' });
+    .catch(function(err) {
+      var msg = (err && err.name === 'AbortError')
+        ? 'Przekroczono czas oczekiwania. Spróbuj ponownie.'
+        : 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.';
+      setState({ loading: false, error: msg });
     });
   }
 
