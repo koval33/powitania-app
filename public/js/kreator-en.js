@@ -371,7 +371,7 @@
         _loadingTimer = null;
         var sub = document.querySelector('[data-loading-sub]');
         if (sub) sub.textContent = 'Generation is taking longer than usual — please wait...';
-      }, 6000);
+      }, 10000);
     }
     return '<div class="flex flex-col items-center justify-center py-20">' +
       '<div class="kreator-spinner mb-4"></div>' +
