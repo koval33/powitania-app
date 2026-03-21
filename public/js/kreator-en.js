@@ -174,13 +174,18 @@
         document.body.appendChild(container);
       }
       container.innerHTML = '';
-      turnstile.render(container, {
-        sitekey: siteKey,
-        callback: function(token) { clearTimeout(timer); done(token); },
-        'error-callback': function() { clearTimeout(timer); done(''); },
-        'expired-callback': function() { clearTimeout(timer); done(''); },
-        size: 'compact'
-      });
+      try {
+        turnstile.render(container, {
+          sitekey: siteKey,
+          callback: function(token) { clearTimeout(timer); done(token); },
+          'error-callback': function() { clearTimeout(timer); done(''); },
+          'expired-callback': function() { clearTimeout(timer); done(''); },
+          size: 'compact'
+        });
+      } catch(e) {
+        clearTimeout(timer);
+        done('');
+      }
     });
   }
 
