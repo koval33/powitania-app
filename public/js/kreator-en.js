@@ -152,6 +152,14 @@
         resolve(''); // no Turnstile configured — skip
         return;
       }
+      var resolved = false;
+      function done(token) {
+        if (resolved) return;
+        resolved = true;
+        resolve(token);
+      }
+      // Timeout — if widget doesn't respond in 6s (e.g. Safari + "Hide IP"), fail open
+      var timer = setTimeout(function() { done(''); }, 6000);
       // Remove previous widget if exists
       var container = document.getElementById('turnstile-container');
       if (!container) {
@@ -168,9 +176,9 @@
       container.innerHTML = '';
       turnstile.render(container, {
         sitekey: siteKey,
-        callback: function(token) { resolve(token); },
-        'error-callback': function() { resolve(''); },
-        'expired-callback': function() { resolve(''); },
+        callback: function(token) { clearTimeout(timer); done(token); },
+        'error-callback': function() { clearTimeout(timer); done(''); },
+        'expired-callback': function() { clearTimeout(timer); done(''); },
         size: 'compact'
       });
     });
