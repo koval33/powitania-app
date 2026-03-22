@@ -152,6 +152,16 @@ app.get('/search/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/search/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/uncategorized-pl/*', (req, res) => res.redirect(301, '/aktualnosci-pl/'));
 
+// 301 Redirects — WordPress feed/RSS URLs (nie istnieją w nowym serwisie)
+app.get('*/feed/rss2/', (req, res) => res.redirect(301, '/'));
+app.get('*/feed/', (req, res) => res.redirect(301, '/'));
+
+// 301 Redirects — stare WordPress URLs powodujące 5xx w Google Search Console
+app.get('/wp-content/*', (req, res) => res.redirect(301, '/'));
+app.get('/wp-includes/*', (req, res) => res.redirect(301, '/'));
+app.get('/wp-admin/*', (req, res) => res.redirect(301, '/'));
+app.get('/wp-login.php', (req, res) => res.redirect(301, '/'));
+
 // 301 Redirects — strony systemowe (nie istnieją w nowym serwisie)
 ['/podziekowanie-za-zlozenie-zamowienia/', '/podziekowanie-za-opinie/',
  '/podziekowanie-za-oplacenie-zamowienia/', '/newsletter/',
@@ -805,6 +815,13 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
     eurRate: EUR_RATE
   });
 });
+
+// 301 Redirects — stare EN URL-e (WordPress / dev.powitania.pl patterns)
+app.get('/en/lectors/:slug/', (req, res) => res.redirect(301, '/en/voice-artists/' + req.params.slug + '/'));
+app.get('/en/lectors/', (req, res) => res.redirect(301, '/en/voice-bank/'));
+app.get('/en/search/*', (req, res) => res.redirect(301, '/en/'));
+app.get('/en/thank-you/feed/', (req, res) => res.redirect(301, '/en/'));
+app.get('/en/thank-you/', (req, res) => res.redirect(301, '/en/'));
 
 // EN — strony bez dedykowanego tłumaczenia → redirect na główną EN
 app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
