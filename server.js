@@ -545,6 +545,12 @@ app.get('/portfolio/', (req, res) => res.redirect(301, '/nagrania-lektorskie/'))
 app.get('/portfolio/zapowiedzi-telefoniczne/', (req, res) => res.redirect(301, '/nagrania-lektorskie/zapowiedzi-telefoniczne/'));
 app.get('/portfolio/reklama-radiowa/', (req, res) => res.redirect(301, '/nagrania-lektorskie/glos-do-reklamy/'));
 app.get('/portfolio/lektorzy-online/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
+app.get('/portfolio/*', (req, res) => res.redirect(301, '/nagrania-lektorskie/'));
+
+// 301 Redirects — stare WordPress sitemap i inne strony powodujące 404
+app.get('/page-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
+app.get('/post-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
+app.get('/zamowienie-nagrania/', (req, res) => res.redirect(301, '/cennik/'));
 
 // Partner pages — /p/:slug/
 app.get('/p/:slug/', (req, res) => {
@@ -890,6 +896,20 @@ app.get('/sitemap.xml', (req, res) => {
 
   res.set('Content-Type', 'application/xml');
   res.send(xml);
+});
+
+// 301 Redirects — stare WordPress root-level profile lektorów (np. /marcin/ → /lektorzy/marcin/)
+// Dynamiczne sprawdzanie — jeśli slug istnieje w voices.json, przekieruj do /lektorzy/:slug/
+app.get('/:slug/', (req, res, next) => {
+  const slug = req.params.slug;
+  // Nie przechwytuj ścieżek z kropką (pliki statyczne) ani znanych prefixów
+  if (slug.includes('.')) return next();
+  const voices = loadVoices();
+  const voice = voices.find(v => v.id === slug);
+  if (voice) {
+    return res.redirect(301, '/lektorzy/' + slug + '/');
+  }
+  next();
 });
 
 // 404 catch-all — MUSI być ostatnim routem
