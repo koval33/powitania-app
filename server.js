@@ -760,6 +760,7 @@ app.get('/en/news/:slug/', (req, res) => {
   res.render('en/blog-post', {
     title: (post.titleEn || post.title) + ' | Powitania.pl',
     description: post.excerptEn || post.excerpt,
+    noindex: !post.contentEn,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'News', url: '/en/news/' },
@@ -886,8 +887,8 @@ app.get('/sitemap.xml', (req, res) => {
   const blogPosts = loadBlogPosts();
   blogPosts.forEach(p => {
     xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
-    // EN blog posts (those with English content)
-    if (p.titleEn) {
+    // EN blog posts (only those with full English translation)
+    if (p.titleEn && p.contentEn) {
       xml += `  <url>\n    <loc>${baseUrl}/en/news/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
     }
   });

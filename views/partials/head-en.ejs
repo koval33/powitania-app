@@ -28,6 +28,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= typeof title !== 'undefined' ? title : 'powitania.pl' %></title>
   <meta name="description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+  <% if (typeof noindex !== 'undefined' && noindex) { %>
+  <meta name="robots" content="noindex, follow">
+  <% } %>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.powitania.pl<%= currentPath %>">
