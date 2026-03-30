@@ -128,6 +128,62 @@ router.post('/register', async (req, res) => {
       source: 'powitania.pl (płatność online)'
     }).catch(err => console.error('[CRM] payment order webhook error:', err));
 
+    // Wyślij emaile z zamówieniem od razu (non-blocking — nie blokuje przekierowania na P24)
+    const { street, city, serviceType, lektorName, lektorId, generatedText, notes, isExpress, selectedAddons, selectedMelody, lang } = req.body;
+    const isEN = lang === 'en';
+    const address = [street, zipCode, city].filter(Boolean).join(', ');
+
+    // Mail do biura — zamówienie oczekujące na płatność
+    sendMail({
+      subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}🕐 [OCZEKUJE NA PŁATNOŚĆ] ${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
+      replyTo: email,
+      html: `
+        <h2>Nowe zamówienie nagrania</h2>
+        <div style="background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">🕐 Oczekuje na płatność online (${amountBrutto} zł brutto / ${priceNetto} zł netto)</div>
+        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE — priorytetowa realizacja tego samego dnia</div>' : ''}
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(firmName)}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Zamawiający:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name)}</td></tr>
+          ${nip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">NIP:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(nip)}</td></tr>` : ''}
+          ${address ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Adres:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(address)}</td></tr>` : ''}
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(email)}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '—')}</td></tr>
+          ${serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(serviceType)}</td></tr>` : ''}
+          ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Kwota:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#d97706;font-weight:bold">${amountBrutto} zł brutto (${priceNetto} zł netto)</td></tr>
+          ${selectedAddons && selectedAddons.length > 0 ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Usługi dodatkowe:</td><td style="padding:8px;border-bottom:1px solid #eee">${selectedAddons.map(a => esc(a)).join(', ')}${selectedMelody ? ' <strong>(melodia: ' + esc(selectedMelody) + ')</strong>' : ''}</td></tr>` : ''}
+        </table>
+        ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
+        ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+      `
+    }).catch(err => console.error('[Payment] Office email error:', err));
+
+    // Potwierdzenie do klienta
+    sendMail({
+      to: email,
+      subject: isEN ? 'Order confirmation — Powitania' : 'Potwierdzenie zamówienia — Powitania',
+      html: isEN ? `
+        <h2 style="color:#1a1d23">Thank you for your order!</h2>
+        <p>Hi ${esc(name)},</p>
+        <p>We have received your recording order${lektorName ? ' with voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p><strong>Amount:</strong> ${amountBrutto} PLN gross (${priceNetto} PLN net)</p>
+        <p>If the payment was not completed, don't worry — you can contact us and we will help you finalize the order.</p>
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
+        <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      ` : `
+        <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
+        <p>Cześć ${esc(name)},</p>
+        <p>Otrzymaliśmy Twoje zamówienie nagrania${lektorName ? ' u lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
+        <p><strong>Kwota:</strong> ${amountBrutto} zł brutto (${priceNetto} zł netto)</p>
+        <p>Jeśli płatność nie została dokończona — nic się nie stało. Skontaktuj się z nami, a pomożemy sfinalizować zamówienie.</p>
+        ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
+        <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+      `
+    }).catch(err => console.error('[Payment] Customer email error:', err));
+
     // Rejestruj transakcję w P24
     const lektorInfo = req.body.lektorName ? ' - ' + req.body.lektorName : '';
     const result = await p24.registerTransaction({
