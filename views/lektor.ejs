@@ -123,36 +123,12 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
             Wyceń nagranie z tym lektorem
           </button>
-          <button onclick="toggleInquiryForm()" class="text-gray-500 hover:text-accent text-sm transition-colors text-center">
-            Zapytaj o wycenę
-          </button>
           <% } else { %>
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             Zapytaj o wycenę
           </a>
           <% } %>
-        </div>
-
-        <!-- INLINE FORMULARZ ZAPYTANIA -->
-        <div id="inline-inquiry-form" class="mt-4 hidden">
-          <div class="bg-stone-50 rounded-xl border border-gray-200 p-5">
-            <div id="inquiry-text-preview" class="hidden mb-4">
-              <div class="text-xs text-gray-500 mb-1">Twój tekst z kreatora:</div>
-              <div id="inquiry-text-content" class="text-sm text-gray-600 bg-white rounded-lg p-3 border border-gray-200 line-clamp-3"></div>
-            </div>
-            <form id="inline-inquiry-submit-form" class="space-y-3">
-              <input type="hidden" name="lektorName" value="<%= lektor.name %>">
-              <input type="hidden" name="lektorId" value="<%= lektor.id %>">
-              <input type="email" name="email" required placeholder="Email *" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none">
-              <input type="text" name="name" placeholder="Imię (opcjonalnie)" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none">
-              <textarea name="description" rows="3" placeholder="Opisz czego potrzebujesz (opcjonalnie)" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y"></textarea>
-              <button type="submit" class="w-full bg-accent hover:bg-accent-light text-white py-2.5 rounded-lg font-semibold text-sm transition-colors">
-                Wyślij zapytanie
-              </button>
-              <div id="inline-inquiry-msg" class="hidden text-center text-sm"></div>
-            </form>
-          </div>
         </div>
 
         <!-- INTELIGENTNY WIZARD WYCENY (widoczny gdy kontekst z kreatora) -->
@@ -657,6 +633,37 @@
               Zamów nagranie
             </button>
             <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+            <button onclick="showModalInquiry()" class="text-gray-500 hover:text-accent text-sm transition-colors text-center w-full mt-2">
+              Zapytaj o szczegóły
+            </button>
+          </div>
+        </div>
+
+        <!-- Formularz PROSTY (zapytanie w modalu) -->
+        <div id="modal-inquiry-form" class="hidden mt-4">
+          <div class="border-t border-gray-200 pt-4">
+            <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+              Zapytaj o szczegóły
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                <input type="email" id="mod-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+              </div>
+              <div>
+                <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
+                <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+              </div>
+              <div>
+                <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
+                <textarea id="mod-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
+              </div>
+            </div>
+            <button id="mod-inq-submit-btn" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+              Wyślij zapytanie
+            </button>
+            <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
           </div>
         </div>
 
@@ -1693,6 +1700,72 @@ function submitModalOrder() {
   submitOrderRequest(data, 'modal-order-msg');
 }
 
+function showModalInquiry() {
+  var orderForm = document.getElementById('modal-order-cta');
+  var inquiryForm = document.getElementById('modal-inquiry-form');
+  if (orderForm) orderForm.classList.add('hidden');
+  if (inquiryForm) {
+    inquiryForm.classList.remove('hidden');
+    inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function submitModalInquiry() {
+  var email = document.getElementById('mod-inq-email').value.trim();
+  var msgEl = document.getElementById('modal-inquiry-msg');
+  if (!email) {
+    msgEl.classList.remove('hidden');
+    msgEl.className = 'text-center text-sm mt-2 text-red-500';
+    msgEl.textContent = 'Podaj adres email.';
+    return;
+  }
+
+  var data = {
+    email: email,
+    name: document.getElementById('mod-inq-name').value.trim(),
+    lektorName: LEKTOR_NAME,
+    lektorId: LEKTOR_ID,
+    serviceType: document.getElementById('modal-service-select').value,
+    generatedText: document.getElementById('modal-text-input').value.trim(),
+    description: document.getElementById('mod-inq-message').value.trim()
+  };
+
+  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
+
+  var btn = document.getElementById('mod-inq-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Wysyłanie...';
+
+  fetch('/api/contact/inquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    msgEl.classList.remove('hidden');
+    if (res.ok) {
+      msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
+      msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
+      btn.disabled = false;
+      btn.textContent = 'Wyślij zapytanie';
+      msgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      msgEl.className = 'text-center text-sm mt-2 text-red-500';
+      msgEl.textContent = res.error || 'Wystąpił błąd. Spróbuj ponownie.';
+      btn.disabled = false;
+      btn.textContent = 'Wyślij zapytanie';
+    }
+  })
+  .catch(function() {
+    msgEl.classList.remove('hidden');
+    msgEl.className = 'text-center text-sm mt-2 text-red-500';
+    msgEl.textContent = 'Błąd połączenia. Sprawdź internet.';
+    btn.disabled = false;
+    btn.textContent = 'Wyślij zapytanie';
+  });
+}
+
 function submitWizardOrder() {
   if (!validateOrderFields('wiz', 'wizard-order-msg')) return;
   var firmName = document.getElementById('wiz-firmName').value.trim();
@@ -1847,78 +1920,6 @@ function goToKreatorWithLektor() {
   closeOrderModal();
   window.location.href = '/#kreator';
 }
-
-// --- Inline: Zapytaj o wycene ---
-function toggleInquiryForm() {
-  var el = document.getElementById('inline-inquiry-form');
-  if (!el) return;
-  var isHidden = el.classList.contains('hidden');
-  el.classList.toggle('hidden');
-  if (isHidden) {
-    // Pokaż podgląd tekstu z kreatora jeśli jest
-    try {
-      var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
-      if (ctx.text) {
-        var preview = document.getElementById('inquiry-text-preview');
-        var content = document.getElementById('inquiry-text-content');
-        if (preview && content) {
-          content.textContent = ctx.text;
-          preview.classList.remove('hidden');
-        }
-      }
-    } catch(ex) {}
-    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-}
-
-var inlineInquiryForm = document.getElementById('inline-inquiry-submit-form');
-if (inlineInquiryForm) inlineInquiryForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  var fd = new FormData(e.target);
-  var data = {};
-  fd.forEach(function(v, k) { data[k] = v; });
-  data.lektorName = LEKTOR_NAME;
-  data.lektorId = LEKTOR_ID;
-  try {
-    var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
-    if (ctx.text) data.generatedText = ctx.text;
-  } catch(ex) {}
-
-  var submitBtn = e.target.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Wysyłanie...';
-
-  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: '<%= lektor.id %>' });
-
-  fetch('/api/contact/inquiry', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(res) {
-    var msg = document.getElementById('inline-inquiry-msg');
-    msg.classList.remove('hidden');
-    if (res.ok) {
-      msg.className = 'mt-3 text-center text-sm text-emerald-500';
-      msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
-      e.target.reset();
-    } else {
-      msg.className = 'mt-3 text-center text-sm text-red-400';
-      msg.textContent = res.error || 'Błąd wysyłania.';
-    }
-  })
-  .catch(function() {
-    var msg = document.getElementById('inline-inquiry-msg');
-    msg.className = 'mt-3 text-center text-sm text-red-400';
-    msg.textContent = 'Błąd połączenia.';
-    msg.classList.remove('hidden');
-  })
-  .finally(function() {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Wyślij zapytanie';
-  });
-});
 
 // --- Wizard cenowy (kontekst z kreatora) ---
 function showPricingWizard(ctx) {
