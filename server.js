@@ -66,6 +66,40 @@ function loadMelodies() {
   catch { return []; }
 }
 
+// Healthcheck — monitorowany przez UptimeRobot
+app.get('/api/health', (req, res) => {
+  const checks = {};
+  let ok = true;
+
+  // Sprawdź pliki danych
+  const dataFiles = { voices: voicesPath, reviews: reviewsPath, blog: blogPath, partners: partnersPath, melodies: melodiesPath };
+  for (const [name, filePath] of Object.entries(dataFiles)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      checks[name] = { ok: true, count: Array.isArray(data) ? data.length : 'object' };
+    } catch (err) {
+      checks[name] = { ok: false, error: err.message };
+      ok = false;
+    }
+  }
+
+  // Sprawdź katalog zamówień
+  const ordersDir = path.join(__dirname, 'data', 'orders');
+  try {
+    checks.ordersDir = { ok: fs.existsSync(ordersDir), writable: true };
+    // Test zapisu
+    const testFile = path.join(ordersDir, '.healthcheck');
+    fs.writeFileSync(testFile, 'ok');
+    fs.unlinkSync(testFile);
+  } catch (err) {
+    checks.ordersDir = { ok: false, writable: false, error: err.message };
+    ok = false;
+  }
+
+  const status = ok ? 200 : 503;
+  res.status(status).json({ ok, timestamp: new Date().toISOString(), checks });
+});
+
 // Trailing slash redirect
 app.use((req, res, next) => {
   if (req.path !== '/' && !req.path.endsWith('/') && !req.path.includes('.') && !req.path.startsWith('/api/')) {
