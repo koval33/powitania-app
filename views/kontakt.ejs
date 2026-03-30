@@ -126,8 +126,6 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   var data = {};
   fd.forEach(function(v, k) { data[k] = v; });
 
-  if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
-
   fetch('/api/contact/inquiry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -137,6 +135,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   .then(function(res) {
     msg.classList.remove('hidden');
     if (res.ok) {
+      if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
       msg.className = 'mt-4 text-center text-sm text-green-400';
       msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
       e.target.reset();

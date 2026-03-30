@@ -815,8 +815,6 @@ setInterval(function() { slideReviews(1); }, 8000);
       source: 'homepage'
     };
 
-    if (window.trackEvent) trackEvent('form_submit_contact', { source: 'homepage' });
-
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -825,6 +823,7 @@ setInterval(function() { slideReviews(1); }, 8000);
     .then(function(r) { return r.json(); })
     .then(function(res) {
       if (res.ok) {
+        if (window.trackEvent) trackEvent('form_submit_contact', { source: 'homepage' });
         msg.className = 'text-center text-sm py-3 rounded-lg bg-accent/10 border border-accent/30 text-accent';
         msg.textContent = 'Thank you! We\'ll respond as soon as possible.';
         form.reset();

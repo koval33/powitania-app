@@ -279,7 +279,6 @@
 
   function submitContact(endpoint, body) {
     setState({ loading: true });
-    if (window.trackEvent) trackEvent('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' });
     fetch('/api/contact/' + endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -288,6 +287,7 @@
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.ok) {
+        if (window.trackEvent) trackEvent('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' });
         setState({ step: 'success', loading: false, toast: data.message });
       } else {
         setState({ loading: false, error: data.error });

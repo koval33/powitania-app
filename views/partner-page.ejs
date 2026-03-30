@@ -503,8 +503,6 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Wysyłanie...';
 
-        if (window.trackEvent) trackEvent('form_submit_partner', { partner: '<%= partner.slug %>' });
-
         fetch('/api/contact/partner-inquiry', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -514,6 +512,7 @@
         .then(function(res) {
           msgEl.classList.remove('hidden', 'bg-red-50', 'text-red-700');
           if (res.ok) {
+            if (window.trackEvent) trackEvent('form_submit_partner', { partner: '<%= partner.slug %>' });
             msgEl.className = 'text-sm rounded-lg px-4 py-3 bg-green-50 text-green-700';
             msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
             inquiryForm.reset();

@@ -824,8 +824,6 @@ function updateFileLabel(input) {
     var formData = new FormData(form);
     formData.append('lang', 'en');
 
-    if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
-
     fetch('/api/contact/inquiry-premium', {
       method: 'POST',
       body: formData
@@ -833,6 +831,7 @@ function updateFileLabel(input) {
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.ok) {
+        if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
         msg.textContent = data.message || 'Thank you! We will respond as soon as possible.';
         msg.className = 'mt-4 text-center text-accent font-medium';
         form.reset();
@@ -1724,8 +1723,6 @@ function submitModalInquiry() {
     lang: 'en'
   };
 
-  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
-
   var btn = document.getElementById('mod-inq-submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
@@ -1739,6 +1736,7 @@ function submitModalInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
+      if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Thank you! We will reply with a quote within 2 hours.';
       btn.disabled = false;
@@ -1820,8 +1818,6 @@ function submitWizardInquiry() {
     lang: 'en'
   };
 
-  if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
-
   var btn = document.getElementById('wiz-inq-submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
@@ -1835,6 +1831,7 @@ function submitWizardInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
+      if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Thank you! We will respond with a quote within 2 hours.';
       btn.disabled = false;
@@ -1869,7 +1866,6 @@ function submitOrderRequest(data, msgElId) {
 
   var endpoint = hasPrice ? '/api/payment/register' : '/api/contact/order';
   var eventName = hasPrice ? 'form_submit_payment' : 'form_submit_order';
-  if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
 
   fetch(endpoint, {
     method: 'POST',
@@ -1879,7 +1875,7 @@ function submitOrderRequest(data, msgElId) {
   .then(function(r) { return r.json(); })
   .then(function(res) {
     if (res.ok && res.redirectUrl) {
-      // Płatność P24 — przekieruj na stronę płatności
+      if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
       if (msgEl) {
         msgEl.classList.remove('hidden');
         msgEl.className = 'text-center text-sm mt-2 text-accent';
@@ -1892,6 +1888,7 @@ function submitOrderRequest(data, msgElId) {
     if (msgEl) {
       msgEl.classList.remove('hidden');
       if (res.ok) {
+        if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
         msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
         msgEl.textContent = res.message || 'Order submitted. We will respond within 2 hours.';
         try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
