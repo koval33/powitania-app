@@ -3692,19 +3692,19 @@
     ],
     "description": "Lektor od 2012 roku. Mocny i dynamiczny tembr głosu z pewnością nada charakter Twojemu nagraniu. Specjalizuje się w czytaniu reklam, filmów reklamowych, filmów korporacyjnych/branżowych, a także zapowiedzi telefonicznych. Nagrywał dla takich firm jak IKEA, Wyższa Szkoła Bankowa, czy Coca-Cola. Jest głosem neoBank.",
     "photo": "/img/lektorzy/lukasz-2.webp",
-    "audio": "/audio/lektorzy/lukasz-2.mp3",
+    "audio": "/audio/lektorzy/Lukasz_2.mp3",
     "samples": [
       {
-        "name": "Zapowiedź telefoniczna",
-        "url": "/audio/samples/Lukasz-2_zapowiedz.mp3"
+        "name": "Spot reklamowy",
+        "url": "/audio/lektorzy/Lukasz_2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "/audio/samples/Lukasz-2_demo2.mp3"
+        "url": "/audio/lektorzy/Lukasz_2_2.mp3"
       },
       {
-        "name": "Spot reklamowy",
-        "url": "/audio/samples/Lukasz-2_demo.mp3"
+        "name": "Baner sponsorski",
+        "url": "/audio/lektorzy/Lukasz_2_3.mp3"
       }
     ],
     "turnaround": "48h",
