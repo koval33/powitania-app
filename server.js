@@ -25,6 +25,24 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Data — dynamiczne ładowanie (admin może edytować)
 const fs = require('fs');
+
+// Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
+const dataDir = path.join(__dirname, 'data');
+const seedDir = path.join(__dirname, 'data-seed');
+if (fs.existsSync(seedDir)) {
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+  fs.readdirSync(seedDir).forEach(file => {
+    const dest = path.join(dataDir, file);
+    if (!fs.existsSync(dest)) {
+      fs.copyFileSync(path.join(seedDir, file), dest);
+      console.log('[init] Seeded', file, 'from data-seed/');
+    }
+  });
+  // Upewnij się że katalog orders istnieje
+  const ordersDir = path.join(dataDir, 'orders');
+  if (!fs.existsSync(ordersDir)) fs.mkdirSync(ordersDir, { recursive: true });
+}
+
 const voicesPath = path.join(__dirname, 'data', 'voices.json');
 const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');

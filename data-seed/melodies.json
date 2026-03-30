@@ -1,0 +1,9 @@
+[
+  { "id": "syntezator", "name": "Syntezator", "file": "syntezator.mp3" },
+  { "id": "slow-rock", "name": "Slow rock", "file": "slow_rock.mp3" },
+  { "id": "piano", "name": "Piano", "file": "piano.mp3" },
+  { "id": "jazz", "name": "Jazz", "file": "jazz.mp3" },
+  { "id": "country", "name": "Country", "file": "country.mp3" },
+  { "id": "call-mix", "name": "Call mix", "file": "call_mix.mp3" },
+  { "id": "acustic", "name": "Acustic", "file": "acustic.mp3" }
+]
