@@ -131,6 +131,13 @@
   }
   </script>
 
+  <% if (typeof serviceSchema !== 'undefined') { %>
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  <%- JSON.stringify(serviceSchema) %>
+  </script>
+  <% } %>
+
   <%/* GTM preconnect removed — GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

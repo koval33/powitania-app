@@ -401,7 +401,17 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
       { name: 'Głos do reklamy', url: '/nagrania-lektorskie/glos-do-reklamy/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Głos do reklamy — nagrania lektorskie',
+      'description': 'Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. Ponad 230 lektorów, realizacja w 24-48h.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'PL',
+      'url': 'https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/',
+      'serviceType': 'Nagrania lektorskie do reklam'
+    }
   });
 });
 
@@ -414,7 +424,17 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
       { name: 'Profesjonalny lektor do filmów', url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Lektor do filmów — narracje filmowe i korporacyjne',
+      'description': 'Profesjonalne nagrania lektorskie do filmów promocyjnych, instruktażowych, korporacyjnych i dokumentalnych. Naturalny głos, szybka realizacja.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'PL',
+      'url': 'https://www.powitania.pl/nagrania-lektorskie/profesjonalny-lektor-do-filmow/',
+      'serviceType': 'Nagrania lektorskie do filmów i narracji'
+    }
   });
 });
 
@@ -427,7 +447,17 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
       { name: 'Zapowiedzi telefoniczne', url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Zapowiedzi telefoniczne IVR',
+      'description': 'Profesjonalne zapowiedzi telefoniczne IVR: powitania firmowe, menu głosowe, komunikaty poza godzinami pracy. Realizacja w 24-48h, 30+ języków.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'PL',
+      'url': 'https://www.powitania.pl/nagrania-lektorskie/zapowiedzi-telefoniczne/',
+      'serviceType': 'Zapowiedzi telefoniczne IVR'
+    }
   });
 });
 
@@ -438,7 +468,17 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Sesje zdalne', url: '/sesje-zdalne-nagrania-lektorskie-online/' }
-    ]
+    ],
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Sesje zdalne — nagrania lektorskie online',
+      'description': 'Zdalne sesje nagraniowe przez Zoom, Teams lub Source-Connect. Klient kieruje lektorem na żywo w czasie rzeczywistym. Idealne dla projektów wymagających precyzyjnej reżyserii.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/sesje-zdalne-nagrania-lektorskie-online/',
+      'serviceType': 'Zdalne sesje nagraniowe'
+    }
   });
 });
 
@@ -464,7 +504,17 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
       { name: 'Strona główna', url: '/' },
       { name: 'Nagranie ekspresowe', url: '/nagranie-ekspresowe/' }
     ],
-    dutyVoices
+    dutyVoices,
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Nagranie ekspresowe — realizacja tego samego dnia',
+      'description': 'Nagrania lektorskie ekspresowe: zamów do 14:00, otrzymaj do 18:00. Dostępne również w weekendy i święta. Dopłata ekspresowa 50%.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'PL',
+      'url': 'https://www.powitania.pl/nagranie-ekspresowe/',
+      'serviceType': 'Nagrania ekspresowe'
+    }
   });
 });
 
@@ -693,7 +743,17 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
       { name: 'Voice for Advertising', url: '/en/voiceover-services/voice-for-advertising/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Voice for Advertising — Radio & TV Voiceover',
+      'description': 'Professional voiceover recordings for radio, TV and online advertising spots. 230+ voice artists, 30+ languages, 24-48h turnaround.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/voiceover-services/voice-for-advertising/',
+      'serviceType': 'Advertising Voiceover'
+    }
   });
 });
 
@@ -706,7 +766,17 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
       { name: 'Film Voiceover', url: '/en/voiceover-services/film-voiceover/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Film Voiceover & Narration',
+      'description': 'Professional voiceover narration for corporate, instructional, e-learning, documentary and promotional films. Natural voice, fast turnaround.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/voiceover-services/film-voiceover/',
+      'serviceType': 'Film Voiceover and Narration'
+    }
   });
 });
 
@@ -719,7 +789,17 @@ app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
       { name: 'Phone Announcements', url: '/en/voiceover-services/phone-announcements/' }
     ],
-    voices: loadVoices()
+    voices: loadVoices(),
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'IVR Phone Announcements & On-Hold Messages',
+      'description': 'Professional IVR recordings and phone announcements: company greetings, voice menus, after-hours messages, on-hold music. Multilingual support, 30+ languages.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/voiceover-services/phone-announcements/',
+      'serviceType': 'IVR Phone Announcements'
+    }
   });
 });
 
@@ -730,7 +810,17 @@ app.get('/en/remote-sessions/', (req, res) => {
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Remote Sessions', url: '/en/remote-sessions/' }
-    ]
+    ],
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Remote Voiceover Recording Sessions',
+      'description': 'Remote recording sessions via Zoom, Teams or Source-Connect. Direct the voice artist live in real time from anywhere in the world.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/remote-sessions/',
+      'serviceType': 'Remote Recording Sessions'
+    }
   });
 });
 
@@ -755,7 +845,17 @@ app.get('/en/express-recording/', (req, res) => {
       { name: 'Home', url: '/en/' },
       { name: 'Express Recording', url: '/en/express-recording/' }
     ],
-    dutyVoices
+    dutyVoices,
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Express Voiceover Recording — Same-Day Delivery',
+      'description': 'Same-day voiceover recordings: order by 2 PM, receive by 6 PM. Available on weekends and public holidays. Express surcharge applies.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/express-recording/',
+      'serviceType': 'Express Voiceover Recording'
+    }
   });
 });
 
