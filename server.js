@@ -644,8 +644,8 @@ app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 // === English version (Phase 1) ===
 app.get('/en/', (req, res) => {
   res.render('en/index', {
-    title: 'Professional Voiceover Studio | Powitania.pl',
-    description: 'Professional voiceover recordings. Over 230 voice artists in 30+ languages. Advertising spots, IVR, film narration, e-learning, audiobooks.',
+    title: 'Professional Voiceover Studio Powitania.pl — since 2001 | 230+ voice artists',
+    description: 'Powitania.pl voiceover studio — 230+ professional voice artists in 30+ languages. Advertising spots, IVR phone announcements, audiobooks, film narration. 8600+ projects completed. Clients: Allegro, DHL, TVN, Volvo.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
