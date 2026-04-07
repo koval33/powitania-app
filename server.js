@@ -27,8 +27,11 @@ app.set('views', path.join(__dirname, 'views'));
 const fs = require('fs');
 
 // Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
+// Pliki użytkownika (reviews, voices, partners) — kopiowane tylko jeśli nie istnieją
+// Pliki deweloperskie (blog-posts, melodies) — zawsze nadpisywane z repo
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
+const alwaysOverwrite = ['blog-posts.json', 'melodies.json'];
 if (fs.existsSync(seedDir)) {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
   fs.readdirSync(seedDir).forEach(file => {
@@ -36,6 +39,9 @@ if (fs.existsSync(seedDir)) {
     if (!fs.existsSync(dest)) {
       fs.copyFileSync(path.join(seedDir, file), dest);
       console.log('[init] Seeded', file, 'from data-seed/');
+    } else if (alwaysOverwrite.includes(file)) {
+      fs.copyFileSync(path.join(seedDir, file), dest);
+      console.log('[init] Overwritten', file, 'from data-seed/ (developer content)');
     }
   });
   // Upewnij się że katalog orders istnieje
