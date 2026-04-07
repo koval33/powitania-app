@@ -176,8 +176,9 @@ app.use((req, res, next) => {
   // Respect explicit language preference
   if (req.query.lang === 'pl') return next();
   // Don't redirect bots/crawlers (they should index PL as canonical)
+  // Includes AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Bytespider, Google-Extended
   const ua = req.headers['user-agent'] || '';
-  if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest/i.test(ua)) return next();
+  if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest|GPTBot|ChatGPT|ClaudeBot|Claude-Web|PerplexityBot|Bytespider|CCBot|Google-Extended/i.test(ua)) return next();
   // Check Accept-Language header
   const lang = req.headers['accept-language'] || '';
   if (!lang.match(/pl/i)) {
@@ -293,8 +294,8 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Studio lektorskie | Studio nagrań lektorskich | Powitania.pl',
-    description: 'Profesjonalne studio lektorskie. Spoty reklamowe. Wysokiej jakości mikrofony i sprzęt studyjny. Znani i lubiani lektorzy! Zapraszamy.',
+    title: 'Profesjonalne Studio Lektorskie Powitania.pl — od 2001 roku | 230+ lektorów',
+    description: 'Studio lektorskie Powitania.pl — 230+ profesjonalnych lektorów w 30+ językach. Spoty reklamowe, zapowiedzi telefoniczne IVR, audiobooki, narracje filmowe. 8600+ zrealizowanych nagrań. Klienci: Allegro, DHL, TVN, Volvo.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
