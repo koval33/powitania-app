@@ -116,20 +116,15 @@
         </div>
         <% } %>
 
-        <!-- CTA -->
+        <!-- CTA (tylko dla hidePrice — kieruje do formularza zapytania) -->
+        <% if (lektor.hidePrice) { %>
         <div id="lektor-cta-section" class="flex flex-col gap-3">
-          <% if (!lektor.hidePrice) { %>
-          <a href="#wycena" onclick="scrollToCalc(event)" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
-            Wyceń nagranie z tym lektorem
-          </a>
-          <% } else { %>
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             Zapytaj o wycenę
           </a>
-          <% } %>
         </div>
+        <% } %>
 
         <!-- INTELIGENTNY WIZARD WYCENY (widoczny gdy kontekst z kreatora) -->
         <div id="pricing-wizard" class="mt-6 hidden">
@@ -259,10 +254,10 @@
       </div>
     </div>
 
-    <!-- INLINE: Wyceń nagranie (przeniesione wyżej — zaraz po CTA) -->
+    <!-- INLINE: Wyceń nagranie (zaraz po CTA, wyrównane do lewej z resztą) -->
     <% if (!lektor.hidePrice) { %>
     <div id="wycena" class="mt-10">
-      <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
+      <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-1 flex items-center gap-3">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
           Wyceń nagranie — <%= lektor.name %>
