@@ -259,6 +259,139 @@
       </div>
     </div>
 
+    <!-- INLINE: Wyceń nagranie (przeniesione wyżej — zaraz po CTA) -->
+    <% if (!lektor.hidePrice) { %>
+    <div id="wycena" class="mt-10">
+      <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-1 flex items-center gap-3">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
+          Wyceń nagranie — <%= lektor.name %>
+        </h2>
+        <p class="text-sm text-gray-500 mb-6">Wklej tekst, wybierz typ nagrania — cena wyliczy się automatycznie.</p>
+
+        <div>
+          <!-- Krok 1: Tekst -->
+          <div id="modal-step-text">
+            <p class="text-gray-500 mb-4 text-sm">Masz gotowy tekst? Wklej go poniżej.
+              <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+                Nie mam tekstu — wygeneruj w kreatorze
+              </button>
+            </p>
+            <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
+            <p id="modal-word-count" class="text-xs text-gray-400 mb-3 text-right"></p>
+
+            <!-- Wybór typu nagrania -->
+            <div class="mb-4">
+              <label class="block text-gray-900 font-semibold mb-2 text-sm">Typ nagrania *</label>
+              <select id="modal-service-select" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
+                <option value="">— wybierz typ nagrania —</option>
+                <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
+                <option value="radio">Spot radiowy</option>
+                <option value="tv">Spot telewizyjny</option>
+                <option value="social">Spot kampania social media</option>
+                <option value="elearning">E-learning / szkolenia</option>
+                <option value="film">Narracja filmowa</option>
+                <option value="audiobook">Audiobook</option>
+                <option value="podcast">Podcast (intro/outro)</option>
+              </select>
+            </div>
+
+            <!-- Dynamiczne pytania per serviceType -->
+            <div id="modal-questions"></div>
+
+            <!-- Wycena inline -->
+            <div id="modal-pricing" class="hidden"></div>
+
+            <!-- Formularz zamówienia po wycenie -->
+            <div id="modal-order-cta" class="hidden mt-4">
+              <div class="border-t border-gray-200 pt-4">
+                <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  Dane do zamówienia
+                </h4>
+                <div class="space-y-3">
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
+                    <input type="text" id="mod-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
+                      <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                    </div>
+                    <div>
+                      <label class="block text-gray-900 text-sm font-medium mb-1">NIP</label>
+                      <input type="text" id="mod-nip" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
+                    <input type="text" id="mod-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
+                    <div class="grid grid-cols-3 gap-2">
+                      <input type="text" id="mod-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
+                      <input type="text" id="mod-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
+                    </div>
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                      <input type="email" id="mod-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+                    </div>
+                    <div>
+                      <label class="block text-gray-900 text-sm font-medium mb-1">Telefon</label>
+                      <input type="tel" id="mod-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Uwagi</label>
+                    <textarea id="mod-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
+                  </div>
+                </div>
+                <button id="mod-submit-btn" onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                  Zamów nagranie
+                </button>
+                <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+                <button onclick="showModalInquiry()" class="w-full mt-2 px-6 py-2.5 rounded-lg border border-gray-300 hover:border-accent text-gray-600 hover:text-accent text-sm font-medium transition-colors text-center">
+                  Zapytaj o szczegóły
+                </button>
+              </div>
+            </div>
+
+            <!-- Formularz PROSTY (zapytanie) -->
+            <div id="modal-inquiry-form" class="hidden mt-4">
+              <div class="border-t border-gray-200 pt-4">
+                <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                  Zapytaj o szczegóły
+                </h4>
+                <div class="space-y-3">
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                    <input type="email" id="mod-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
+                    <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
+                    <textarea id="mod-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
+                  </div>
+                </div>
+                <button id="mod-inq-submit-btn" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                  Wyślij zapytanie
+                </button>
+                <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
     <!-- VIDEO (pełna szerokość, pod profilem) -->
     <%
       var videoSamples = (lektor.samples || []).filter(function(s) {
@@ -537,143 +670,6 @@
 
   </div>
 </section>
-
-<% if (!lektor.hidePrice) { %>
-<!-- INLINE: Wyceń nagranie -->
-<div id="wycena" class="mt-12">
-  <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
-    <h2 class="text-2xl font-bold text-gray-900 mb-1 flex items-center gap-3">
-      <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
-      Wyceń nagranie — <%= lektor.name %>
-    </h2>
-    <p class="text-sm text-gray-500 mb-6">Wklej tekst, wybierz typ nagrania — cena wyliczy się automatycznie.</p>
-
-    <div>
-      <!-- Krok 1: Tekst -->
-      <div id="modal-step-text">
-        <p class="text-gray-500 mb-4 text-sm">Masz gotowy tekst? Wklej go poniżej.
-          <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-            Nie mam tekstu — wygeneruj w kreatorze
-          </button>
-        </p>
-        <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
-        <p id="modal-word-count" class="text-xs text-gray-400 mb-3 text-right"></p>
-
-        <!-- Wybór typu nagrania -->
-        <div class="mb-4">
-          <label class="block text-gray-900 font-semibold mb-2 text-sm">Typ nagrania *</label>
-          <select id="modal-service-select" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
-            <option value="">— wybierz typ nagrania —</option>
-            <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
-            <option value="radio">Spot radiowy</option>
-            <option value="tv">Spot telewizyjny</option>
-            <option value="social">Spot kampania social media</option>
-            <option value="elearning">E-learning / szkolenia</option>
-            <option value="film">Narracja filmowa</option>
-            <option value="audiobook">Audiobook</option>
-            <option value="podcast">Podcast (intro/outro)</option>
-          </select>
-        </div>
-
-        <!-- Dynamiczne pytania per serviceType -->
-        <div id="modal-questions"></div>
-
-        <!-- Wycena inline -->
-        <div id="modal-pricing" class="hidden"></div>
-
-        <!-- Wycena oblicza się automatycznie po wpisaniu tekstu i wyborze typu -->
-
-        <!-- Formularz zamówienia po wycenie -->
-        <div id="modal-order-cta" class="hidden mt-4">
-          <div class="border-t border-gray-200 pt-4">
-            <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
-              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-              Dane do zamówienia
-            </h4>
-            <div class="space-y-3">
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
-                <input type="text" id="mod-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
-              </div>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
-                  <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
-                </div>
-                <div>
-                  <label class="block text-gray-900 text-sm font-medium mb-1">NIP</label>
-                  <input type="text" id="mod-nip" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
-                </div>
-              </div>
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
-                <input type="text" id="mod-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
-                <div class="grid grid-cols-3 gap-2">
-                  <input type="text" id="mod-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
-                  <input type="text" id="mod-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
-                </div>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
-                  <input type="email" id="mod-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
-                </div>
-                <div>
-                  <label class="block text-gray-900 text-sm font-medium mb-1">Telefon</label>
-                  <input type="tel" id="mod-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
-                </div>
-              </div>
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Uwagi</label>
-                <textarea id="mod-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
-              </div>
-            </div>
-            <button id="mod-submit-btn" onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
-              Zamów nagranie
-            </button>
-            <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
-            <button onclick="showModalInquiry()" class="w-full mt-2 px-6 py-2.5 rounded-lg border border-gray-300 hover:border-accent text-gray-600 hover:text-accent text-sm font-medium transition-colors text-center">
-              Zapytaj o szczegóły
-            </button>
-          </div>
-        </div>
-
-        <!-- Formularz PROSTY (zapytanie w modalu) -->
-        <div id="modal-inquiry-form" class="hidden mt-4">
-          <div class="border-t border-gray-200 pt-4">
-            <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
-              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-              Zapytaj o szczegóły
-            </h4>
-            <div class="space-y-3">
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
-                <input type="email" id="mod-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
-              </div>
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
-                <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
-              </div>
-              <div>
-                <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
-                <textarea id="mod-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
-              </div>
-            </div>
-            <button id="mod-inq-submit-btn" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
-              Wyślij zapytanie
-            </button>
-            <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<% } %>
-<!-- /INLINE wycena -->
 
 <script>
 // --- Custom audio player ---
