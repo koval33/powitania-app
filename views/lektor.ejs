@@ -2097,6 +2097,16 @@ function clearPricingContext() {
     }
   } catch(e) {}
 })();
+
+// --- Auto-scroll to calculator when ?calc=1 ---
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('calc') === '1' && !LEKTOR_HIDE_PRICE) {
+    setTimeout(function() {
+      scrollToCalc();
+    }, 300);
+  }
+})();
 </script>
 
 <%- include('partials/foot') %>

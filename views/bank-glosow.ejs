@@ -229,7 +229,7 @@
             <% } %>
           </div>
           <div class="flex items-center gap-2">
-            <a href="<%= v.profileUrl %>" class="cta-calc inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors" onclick="event.stopPropagation()">
+            <a href="<%= v.profileUrl %>?calc=1#wycena" class="cta-calc inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors" onclick="event.stopPropagation()">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zm-2.25-4.5h.008v.008H12.75V7.5zm0-2.25h.008v.008H12.75V5.25zm0 0V3m2.25 2.25h.008v.008H15V5.25zM6.75 3v2.25"/></svg>
               Oblicz koszt
             </a>
@@ -857,7 +857,7 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
   })
   .then(function(res) { return res.json(); })
   .then(function(result) {
-    if (result.success) {
+    if (result.ok || result.success) {
       document.getElementById('qi-form').classList.add('hidden');
       document.getElementById('qi-success').classList.remove('hidden');
       // Track conversion
