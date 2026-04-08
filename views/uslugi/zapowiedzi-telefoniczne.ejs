@@ -11,6 +11,7 @@
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
       Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym i komunikacyjnym dla firmy. Starannie przygotowane nagrania IVR zachęcają Klientów do kontaktu.
     </p>
+    <p class="text-accent font-bold text-xl mt-4">od 380 zł netto</p>
   </div>
 </section>
 
@@ -68,13 +69,263 @@
           <p>Podkład muzyczny (melodia w tle) dostępny jako dodatek do nagrania.</p>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="/#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Przygotuj tekst powitania</a>
-          <a href="/cennik/" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center transition-colors">Zobacz cennik</a>
+          <a href="#zamow" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Zamów zapowiedź</a>
+          <a href="/bank-glosow/" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center transition-colors">Wybierz lektora</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Próbki audio IVR -->
+<%
+  // Wybierz do 4 lektorów z próbkami audio i cenami IVR
+  var ivrSamples = (voices || []).filter(function(v) {
+    return v.audio && !v.hidePrice && v.prices && v.prices.ivr_100 && v.languages.indexOf('polski') !== -1;
+  }).slice(0, 4);
+%>
+<% if (ivrSamples.length > 0) { %>
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Posłuchaj przykładowych głosów</h2>
+    <p class="text-gray-500 text-center mb-8">Odsłuchaj próbki naszych lektorów — wybierz głos dopasowany do Twojej firmy</p>
+    <div class="space-y-4">
+      <% ivrSamples.forEach(function(v) { %>
+      <div class="ivr-sample-row bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-center gap-4">
+        <% if (v.photo) { %>
+        <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+        <% } %>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-2">
+            <a href="<%= v.profileUrl %>" class="font-semibold text-gray-900 hover:text-accent transition-colors"><%= v.name %></a>
+            <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="ivr-play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="flex-1">
+              <div class="ivr-audio-progress w-full h-1.5 bg-gray-100 rounded-full overflow-hidden cursor-pointer">
+                <div class="ivr-audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <p class="text-center mt-6">
+      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium">Zobacz wszystkich lektorów &rarr;</a>
+    </p>
+  </div>
+</section>
+<% } %>
+
+<!-- Cena + co zawiera -->
+<section class="py-12 border-t border-gray-200 bg-stone-50">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Cennik zapowiedzi IVR</h2>
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="py-3 text-gray-600">do 100 słów</td>
+                <td class="py-3 text-right text-gray-900 font-bold">od 380 zł netto</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-gray-600">101-200 słów</td>
+                <td class="py-3 text-right text-gray-900 font-bold">od 480 zł netto</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-gray-600">powyżej 200 słów</td>
+                <td class="py-3 text-right text-accent font-medium">wycena indyw.</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-gray-600">Melodia w tle</td>
+                <td class="py-3 text-right text-gray-900 font-bold">od 50 zł netto</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-gray-600">Gwarancja modyfikacji 12 mies.</td>
+                <td class="py-3 text-right text-gray-900 font-bold">od 60 zł netto</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-3">Ceny różnią się w zależności od wybranego lektora.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Co zawiera usługa?</h2>
+        <ul class="space-y-3 text-sm text-gray-600">
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Nagranie z wybranym lektorem w studiu</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Pliki w formacie dopasowanym do centrali</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Pomoc w przygotowaniu tekstu</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Realizacja w 2 dni robocze</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Faktura VAT</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Opcjonalnie: melodia w tle, gwarancja poprawek</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formularz zamówienia zapowiedzi -->
+<section class="py-12 border-t border-gray-200" id="zamow">
+  <div class="max-w-xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Zamów zapowiedź telefoniczną</h2>
+    <p class="text-gray-500 text-center mb-8">Opisz swój projekt — przygotujemy wycenę i odezwiemy się w ciągu 2 godzin.</p>
+    <form id="ivr-inquiry-form" class="space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Imię / Firma</label>
+          <input type="text" id="ivr-name" name="name" placeholder="Jan Kowalski" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">E-mail <span class="text-red-500">*</span></label>
+          <input type="email" id="ivr-email" name="email" required placeholder="jan@firma.pl" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+        <input type="tel" id="ivr-phone" name="phone" placeholder="+48 600 000 000" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Opis projektu</label>
+        <textarea id="ivr-description" name="description" rows="4" placeholder="Np. Potrzebujemy nagranie powitania głównego i menu IVR dla 3 działów. Centrala Panasonic." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent resize-none"></textarea>
+      </div>
+      <button type="submit" id="ivr-submit-btn" class="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3 rounded-lg transition-colors">
+        Wyślij zapytanie
+      </button>
+      <p class="text-xs text-gray-400 text-center">Odpowiemy w ciągu 1-2 godzin roboczych</p>
+    </form>
+    <div id="ivr-form-success" class="hidden text-center py-8">
+      <svg class="w-16 h-16 text-green-500 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <h3 class="text-lg font-bold text-gray-900 mb-1">Zapytanie wysłane!</h3>
+      <p class="text-sm text-gray-500">Odezwiemy się najszybciej jak to możliwe.</p>
+    </div>
+    <div id="ivr-form-error" class="hidden mt-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3"></div>
+  </div>
+</section>
+
+<script>
+// Audio player for IVR samples
+(function() {
+  var currentBtn = null;
+  var audioEl = null;
+
+  function getAudio() {
+    if (audioEl) audioEl.remove();
+    audioEl = document.createElement('audio');
+    audioEl.preload = 'auto';
+    audioEl.style.display = 'none';
+    document.body.appendChild(audioEl);
+    audioEl.addEventListener('timeupdate', function() {
+      if (!currentBtn) return;
+      var row = currentBtn.closest('.ivr-sample-row');
+      if (!row || !audioEl.duration) return;
+      row.querySelector('.ivr-audio-bar').style.width = (audioEl.currentTime / audioEl.duration * 100) + '%';
+    });
+    audioEl.addEventListener('ended', function() {
+      if (currentBtn) {
+        currentBtn.querySelector('.play-icon').classList.remove('hidden');
+        currentBtn.querySelector('.pause-icon').classList.add('hidden');
+        var row = currentBtn.closest('.ivr-sample-row');
+        if (row) row.querySelector('.ivr-audio-bar').style.width = '0%';
+      }
+      currentBtn = null;
+    });
+    return audioEl;
+  }
+
+  document.querySelectorAll('.ivr-play-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var src = this.dataset.audio;
+      if (!src) return;
+      var existing = audioEl;
+
+      if (currentBtn === this && existing && !existing.paused) {
+        existing.pause();
+        this.querySelector('.play-icon').classList.remove('hidden');
+        this.querySelector('.pause-icon').classList.add('hidden');
+        return;
+      }
+      if (currentBtn === this && existing && existing.paused) {
+        existing.play();
+        this.querySelector('.play-icon').classList.add('hidden');
+        this.querySelector('.pause-icon').classList.remove('hidden');
+        return;
+      }
+
+      if (currentBtn && currentBtn !== this) {
+        if (existing) existing.pause();
+        currentBtn.querySelector('.play-icon').classList.remove('hidden');
+        currentBtn.querySelector('.pause-icon').classList.add('hidden');
+        var oldRow = currentBtn.closest('.ivr-sample-row');
+        if (oldRow) oldRow.querySelector('.ivr-audio-bar').style.width = '0%';
+      }
+
+      currentBtn = this;
+      var audio = getAudio();
+      audio.src = src;
+      audio.play();
+      this.querySelector('.play-icon').classList.add('hidden');
+      this.querySelector('.pause-icon').classList.remove('hidden');
+    });
+  });
+
+  document.querySelectorAll('.ivr-audio-progress').forEach(function(bar) {
+    bar.addEventListener('click', function(e) {
+      if (!audioEl || !audioEl.duration) return;
+      var rect = this.getBoundingClientRect();
+      audioEl.currentTime = ((e.clientX - rect.left) / rect.width) * audioEl.duration;
+    });
+  });
+})();
+
+// IVR inquiry form
+document.getElementById('ivr-inquiry-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('ivr-submit-btn');
+  var errorEl = document.getElementById('ivr-form-error');
+  errorEl.classList.add('hidden');
+  btn.disabled = true;
+  btn.textContent = 'Wysyłanie...';
+
+  var data = {
+    email: document.getElementById('ivr-email').value.trim(),
+    name: document.getElementById('ivr-name').value.trim(),
+    phone: document.getElementById('ivr-phone').value.trim(),
+    description: document.getElementById('ivr-description').value.trim(),
+    serviceType: 'ivr',
+  };
+
+  fetch('/api/contact/inquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(result) {
+    if (result.success || result.ok) {
+      document.getElementById('ivr-inquiry-form').classList.add('hidden');
+      document.getElementById('ivr-form-success').classList.remove('hidden');
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: 'ivr' });
+      }
+    } else {
+      throw new Error(result.error || 'Wystąpił błąd');
+    }
+  })
+  .catch(function(err) {
+    errorEl.textContent = err.message || 'Nie udało się wysłać. Spróbuj ponownie.';
+    errorEl.classList.remove('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Wyślij zapytanie';
+  });
+});
+</script>
 
 <!-- Treści SEO -->
 <section class="py-16 border-t border-gray-200">
@@ -147,10 +398,10 @@
 <section class="py-16" style="background-color:#efe8df">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">Potrzebujesz zapowiedzi telefonicznej?</h2>
-    <p class="text-gray-500 mb-8">Zadzwoń lub napisz — przygotujemy nagranie w 24 godziny.</p>
+    <p class="text-gray-500 mb-8">Opisz swój projekt — przygotujemy wycenę i nagranie w 2 dni robocze.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:+48605491069" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">+48 605 491 069</a>
-      <a href="mailto:biuro@powitania.pl" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors">biuro@powitania.pl</a>
+      <a href="#zamow" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zamów zapowiedź</a>
+      <a href="tel:+48605491069" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors">+48 605 491 069</a>
     </div>
   </div>
 </section>

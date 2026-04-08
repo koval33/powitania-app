@@ -143,9 +143,9 @@
 <!-- SIATKA LEKTORÓW -->
 <section class="pb-16">
   <div class="max-w-6xl mx-auto px-4">
-    <div id="voices-grid" class="grid md:grid-cols-2 gap-6">
+    <div id="voices-grid" class="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -159,7 +159,7 @@
         <!-- Górna część: zdjęcie + info -->
         <div class="flex items-start gap-5 p-6 pb-3">
           <!-- Zdjęcie -->
-          <div class="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-gray-50">
+          <div class="flex-shrink-0 w-36 h-36 md:w-40 md:h-40 rounded-xl overflow-hidden bg-gray-50">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -219,16 +219,25 @@
           </div>
         </div>
 
-        <!-- Footer -->
-        <div class="flex items-center justify-between px-6 pb-5">
-          <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-            <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
-          <% } else if (v.hidePrice) { %>
-            <span class="text-xs text-yellow-600">wycena indyw.</span>
-          <% } else { %>
-            <span></span>
-          <% } %>
-          <span class="text-accent text-sm font-medium">Więcej &rarr;</span>
+        <!-- Footer: cena + 2 CTA -->
+        <div class="flex items-center justify-between px-6 pb-5 gap-3">
+          <div class="flex-shrink-0">
+            <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+              <span class="text-sm text-gray-500">od <span class="font-semibold text-gray-700"><%= v.prices.ivr_100 %> zł</span></span>
+            <% } else if (v.hidePrice) { %>
+              <span class="text-sm text-yellow-600">wycena indyw.</span>
+            <% } %>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="<%= v.profileUrl %>" class="cta-calc inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors" onclick="event.stopPropagation()">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zm-2.25-4.5h.008v.008H12.75V7.5zm0-2.25h.008v.008H12.75V5.25zm0 0V3m2.25 2.25h.008v.008H15V5.25zM6.75 3v2.25"/></svg>
+              Oblicz koszt
+            </a>
+            <button type="button" class="cta-inquiry inline-flex items-center gap-1.5 border border-accent text-accent hover:bg-accent hover:text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+              Zapytaj
+            </button>
+          </div>
         </div>
       </div>
       <% }); %>
@@ -259,7 +268,7 @@
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Szukasz lektora? Sprawdź, jakie masz możliwości!</h3>
     <p>Bank głosów lektorskich posiada rozbudowany filtr, co ułatwia wyszukanie właściwego lektora i&nbsp;odsłuchanie jego głosu. Możecie Państwo wyszukiwać wpisując imię lektora, wybierając płeć, wiek głosu lub grupę cenową. Bardzo przydatną funkcją filtra jest możliwość wyszukiwania lektorów nagrywających w&nbsp;określonych językach. Współpracujemy z&nbsp;lektorami z&nbsp;całego świata, którzy posiadają ogromne doświadczenie — do wyboru mają Państwo ponad 30 języków. Bank lektorów jest katalogiem otwartym, w&nbsp;każdym miesiącu baza głosów jest poszerzana o&nbsp;kilka nowych profili lektorskich.</p>
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Wysłuchaj próbek w banku głosów lektorskich</h3>
-    <p>W podstawowym widoku banku głosów można odsłuchać charakterystyczną próbkę głosową każdego lektora. Po kliknięciu przycisku „Więcej" przechodzimy do jego profilu, gdzie dostępna jest charakterystyka opisowa lektora oraz więcej próbek nagraniowych. Z&nbsp;poziomu profilu lektora można od razu wyliczyć cenę nagrania — wystarczy wkleić tekst lub wybrać rodzaj produkcji, a&nbsp;system automatycznie przedstawi wycenę i&nbsp;umożliwi złożenie zamówienia. Można również skorzystać z&nbsp;<a href="/#kreator" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a> na stronie głównej, który pomoże przygotować profesjonalny tekst, który idealnie pasuje do Twojego nagrania, a&nbsp;następnie przekieruje do banku głosów z&nbsp;gotowym scenariuszem.</p>
+    <p>W podstawowym widoku banku głosów można odsłuchać charakterystyczną próbkę głosową każdego lektora. Klikając „Oblicz koszt" przechodzimy do profilu lektora, gdzie dostępna jest charakterystyka opisowa, więcej próbek nagraniowych oraz kalkulator wyceny — wystarczy wkleić tekst lub wybrać rodzaj produkcji, a&nbsp;system automatycznie przedstawi cenę i&nbsp;umożliwi złożenie zamówienia. Przycisk „Zapytaj" pozwala od razu wysłać zapytanie dotyczące wybranego lektora. Można również skorzystać z&nbsp;<a href="/#kreator" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a> na stronie głównej, który pomoże przygotować profesjonalny tekst, a&nbsp;następnie przekieruje do banku głosów z&nbsp;gotowym scenariuszem.</p>
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Baza lektorów: znani i lubiani — bank głosów Warszawa</h3>
     <p>Jeśli poszukują Państwo najbardziej doświadczonych i&nbsp;rozpoznawalnych głosów lektorskich, zapraszamy do skorzystania z&nbsp;filtra „Znani i&nbsp;lubiani". Do Państwa dyspozycji są głosy lektorów takich jak Jacek Rozenek, Łukasz Nowicki, Stanisław Olejniczak, Andrzej Ferenc, Jacek Brzostyński i&nbsp;wiele innych prestiżowych głosów.</p>
     <p>Bank głosów lektorskich zawiera przykładowe nagrania lektorskie jak również autorskie podkłady muzyczne. Zachęcamy do realizacji wszelkiego rodzaju nagrań, w&nbsp;których wykorzystane będą nasze nagrania lektorskie. Nasza baza pozwoli Państwu dobrać głos lektorski do każdego projektu.</p>
@@ -397,9 +406,10 @@
         audio.currentTime = pct * audio.duration;
       }
     });
+    // Card click — navigate to profile only if clicking outside buttons/player
     card.addEventListener('click', function(e) {
       var target = e.target;
-      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
+      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]') || target.closest('.cta-calc') || target.closest('.cta-inquiry')) return;
       var url = card.dataset.url;
       if (url) window.location.href = url;
     });
@@ -751,5 +761,120 @@
   overflow: hidden;
 }
 </style>
+
+<!-- MODAL: Szybkie zapytanie -->
+<div id="quick-inquiry-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/50" onclick="closeInquiryModal()"></div>
+  <!-- Content -->
+  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 z-10">
+    <button type="button" onclick="closeInquiryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <h3 class="text-xl font-bold text-gray-900 mb-1">Zapytaj o lektora</h3>
+    <p class="text-sm text-gray-500 mb-5">Lektor: <span id="qi-lektor-display" class="font-medium text-gray-700"></span></p>
+    <form id="qi-form" class="space-y-4">
+      <input type="hidden" id="qi-lektor-name" name="lektorName" value="">
+      <div>
+        <label for="qi-email" class="block text-sm font-medium text-gray-700 mb-1">E-mail <span class="text-red-500">*</span></label>
+        <input type="email" id="qi-email" name="email" required placeholder="jan@firma.pl" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+      </div>
+      <div>
+        <label for="qi-name" class="block text-sm font-medium text-gray-700 mb-1">Imię / Firma</label>
+        <input type="text" id="qi-name" name="name" placeholder="Jan Kowalski" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+      </div>
+      <div>
+        <label for="qi-phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+        <input type="tel" id="qi-phone" name="phone" placeholder="+48 600 000 000" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+      </div>
+      <div>
+        <label for="qi-message" class="block text-sm font-medium text-gray-700 mb-1">Wiadomość</label>
+        <textarea id="qi-message" name="description" rows="3" placeholder="W czym możemy pomóc? Opisz projekt, a przygotujemy wycenę." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent resize-none"></textarea>
+      </div>
+      <button type="submit" id="qi-submit-btn" class="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3 rounded-lg transition-colors">
+        Wyślij zapytanie
+      </button>
+      <p class="text-xs text-gray-400 text-center">Odpowiemy w ciągu 1-2 godzin roboczych</p>
+    </form>
+    <!-- Sukces -->
+    <div id="qi-success" class="hidden text-center py-6">
+      <svg class="w-16 h-16 text-green-500 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <h4 class="text-lg font-bold text-gray-900 mb-1">Zapytanie wysłane!</h4>
+      <p class="text-sm text-gray-500">Odezwiemy się najszybciej jak to możliwe.</p>
+      <button type="button" onclick="closeInquiryModal()" class="mt-4 text-accent hover:text-accent-light text-sm font-medium">Zamknij</button>
+    </div>
+    <!-- Błąd -->
+    <div id="qi-error" class="hidden mt-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3"></div>
+  </div>
+</div>
+
+<script>
+// --- Inquiry modal ---
+function openInquiryModal(lektorName) {
+  document.getElementById('qi-lektor-name').value = lektorName;
+  document.getElementById('qi-lektor-display').textContent = lektorName;
+  document.getElementById('qi-form').classList.remove('hidden');
+  document.getElementById('qi-success').classList.add('hidden');
+  document.getElementById('qi-error').classList.add('hidden');
+  document.getElementById('qi-submit-btn').disabled = false;
+  document.getElementById('qi-submit-btn').textContent = 'Wyślij zapytanie';
+  document.getElementById('quick-inquiry-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() { document.getElementById('qi-email').focus(); }, 100);
+}
+
+function closeInquiryModal() {
+  document.getElementById('quick-inquiry-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeInquiryModal();
+});
+
+document.getElementById('qi-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('qi-submit-btn');
+  var errorEl = document.getElementById('qi-error');
+  errorEl.classList.add('hidden');
+  btn.disabled = true;
+  btn.textContent = 'Wysyłanie...';
+
+  var data = {
+    email: document.getElementById('qi-email').value.trim(),
+    name: document.getElementById('qi-name').value.trim(),
+    phone: document.getElementById('qi-phone').value.trim(),
+    description: document.getElementById('qi-message').value.trim(),
+    lektorName: document.getElementById('qi-lektor-name').value,
+    serviceType: 'voiceover',
+  };
+
+  fetch('/api/contact/inquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(result) {
+    if (result.success) {
+      document.getElementById('qi-form').classList.add('hidden');
+      document.getElementById('qi-success').classList.remove('hidden');
+      // Track conversion
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: data.lektorName });
+      }
+    } else {
+      throw new Error(result.error || 'Wystąpił błąd');
+    }
+  })
+  .catch(function(err) {
+    errorEl.textContent = err.message || 'Nie udało się wysłać. Spróbuj ponownie.';
+    errorEl.classList.remove('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Wyślij zapytanie';
+  });
+});
+</script>
 
 <%- include('partials/foot') %>

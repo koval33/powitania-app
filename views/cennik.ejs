@@ -207,13 +207,6 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="py-12 bg-stone-100/80 border-t border-gray-200">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <h2 class="text-2xl font-bold text-gray-900 mb-3">Potrzebujesz indywidualnie wycenić nagrania?</h2>
-    <p class="text-gray-500 mb-6">Opisz swój projekt — przygotujemy ofertę szytą na miarę.</p>
-    <a href="/kontakt/" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zapytaj o wycenę</a>
-  </div>
-</section>
+<%- include('partials/inquiry-form', { formId: 'cennik', serviceType: 'general', heading: 'Potrzebujesz indywidualnej wyceny?', subtitle: 'Opisz swój projekt — przygotujemy ofertę szytą na miarę.' }) %>
 
 <%- include('partials/foot') %>

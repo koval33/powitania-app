@@ -119,10 +119,10 @@
         <!-- CTA -->
         <div id="lektor-cta-section" class="flex flex-col gap-3">
           <% if (!lektor.hidePrice) { %>
-          <button onclick="showOrderModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+          <a href="#wycena" onclick="scrollToCalc(event)" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
             Wyceń nagranie z tym lektorem
-          </button>
+          </a>
           <% } else { %>
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
@@ -539,16 +539,16 @@
 </section>
 
 <% if (!lektor.hidePrice) { %>
-<!-- MODAL: Zamów nagranie -->
-<div id="order-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-  <div class="bg-white rounded-2xl border border-gray-200 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-md">
-    <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl">
-      <h3 class="text-2xl font-bold text-gray-900">Zamów nagranie — <span class="text-accent"><%= lektor.name %></span></h3>
-      <button onclick="closeOrderModal()" class="text-gray-500 hover:text-gray-900 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="p-6">
+<!-- INLINE: Wyceń nagranie -->
+<div id="wycena" class="mt-12">
+  <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-1 flex items-center gap-3">
+      <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.25-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H12.75v-.008zm0 2.25h.008v.008H12.75v-.008zm2.25-4.5h.008v.008H15v-.008zm0 2.25h.008v.008H15v-.008zM6.75 3v2.25"/></svg>
+      Wyceń nagranie — <%= lektor.name %>
+    </h2>
+    <p class="text-sm text-gray-500 mb-6">Wklej tekst, wybierz typ nagrania — cena wyliczy się automatycznie.</p>
+
+    <div>
       <!-- Krok 1: Tekst -->
       <div id="modal-step-text">
         <p class="text-gray-500 mb-4 text-sm">Masz gotowy tekst? Wklej go poniżej.
@@ -673,6 +673,7 @@
 </div>
 
 <% } %>
+<!-- /INLINE wycena -->
 
 <script>
 // --- Custom audio player ---
@@ -1356,15 +1357,22 @@ function recalcTotal() {
   }
 }
 
-// --- Modal: Zamow nagranie ---
-function showOrderModal() {
-  var el = document.getElementById('order-modal');
-  if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+// --- Inline calculator: scroll to #wycena ---
+function scrollToCalc(e) {
+  if (e) e.preventDefault();
+  var el = document.getElementById('wycena');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Focus textarea after scroll
+    setTimeout(function() {
+      var textarea = document.getElementById('modal-text-input');
+      if (textarea) textarea.focus();
+    }, 500);
+  }
 }
-function closeOrderModal() {
-  var el = document.getElementById('order-modal');
-  if (el) { el.classList.add('hidden'); document.body.style.overflow = ''; }
-}
+// Legacy aliases
+function showOrderModal() { scrollToCalc(); }
+function closeOrderModal() { /* no-op — inline now */ }
 
 function onChoiceChange(radio) {
   // Rozpoznaj kontekst: wizard vs modal
@@ -1916,7 +1924,6 @@ function submitOrderRequest(data, msgElId) {
 function goToKreatorWithLektor() {
   var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now(), skipWelcome: true };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
-  closeOrderModal();
   window.location.href = '/#kreator';
 }
 
