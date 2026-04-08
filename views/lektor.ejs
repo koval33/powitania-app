@@ -216,35 +216,7 @@
                   Zamów nagranie
                 </button>
                 <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <button onclick="showWizardInquiry()" class="w-full mt-2 px-6 py-2.5 rounded-lg border border-gray-300 hover:border-accent text-gray-600 hover:text-accent text-sm font-medium transition-colors text-center">
-                  Zapytaj o szczegóły
-                </button>
-              </div>
-
-              <!-- Formularz PROSTY (kontakt — widoczny przy wycenie indywidualnej) -->
-              <div id="wizard-inquiry-form" class="border-t border-gray-200 pt-4 hidden">
-                <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
-                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-                  Zapytaj o wycenę
-                </h4>
-                <div class="space-y-3">
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
-                    <input type="email" id="wiz-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
-                    <input type="text" id="wiz-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
-                    <textarea id="wiz-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
-                  </div>
-                </div>
-                <button id="wiz-inq-submit-btn" onclick="submitWizardInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
-                  Wyślij zapytanie
-                </button>
-                <div id="wizard-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
+                <p class="text-center text-sm text-gray-500 mt-3">Masz pytania? <a href="/kontakt/" class="text-accent hover:text-accent-light font-medium">Napisz do nas</a> lub zadzwoń: <a href="tel:+48605491069" class="text-accent hover:text-accent-light font-medium">605 491 069</a></p>
               </div>
 
             </div>
@@ -347,37 +319,7 @@
                   Zamów nagranie
                 </button>
                 <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <button onclick="showModalInquiry()" class="w-full mt-2 px-6 py-2.5 rounded-lg border border-gray-300 hover:border-accent text-gray-600 hover:text-accent text-sm font-medium transition-colors text-center">
-                  Zapytaj o szczegóły
-                </button>
-              </div>
-            </div>
-
-            <!-- Formularz PROSTY (zapytanie) -->
-            <div id="modal-inquiry-form" class="hidden mt-4">
-              <div class="border-t border-gray-200 pt-4">
-                <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
-                  <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-                  Zapytaj o szczegóły
-                </h4>
-                <div class="space-y-3">
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
-                    <input type="email" id="mod-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="jan@firma.pl">
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
-                    <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
-                    <textarea id="mod-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje, pytania..."></textarea>
-                  </div>
-                </div>
-                <button id="mod-inq-submit-btn" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
-                  Wyślij zapytanie
-                </button>
-                <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
+                <p class="text-center text-sm text-gray-500 mt-3">Masz pytania? <a href="/kontakt/" class="text-accent hover:text-accent-light font-medium">Napisz do nas</a> lub zadzwoń: <a href="tel:+48605491069" class="text-accent hover:text-accent-light font-medium">605 491 069</a></p>
               </div>
             </div>
 

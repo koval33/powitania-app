@@ -211,25 +211,34 @@
           </div>
         </div>
 
-        <!-- Audio player -->
+        <!-- Audio players (max 2, obok siebie) -->
         <div class="px-6 pb-4">
-          <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
-            <button class="play-btn w-11 h-11 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
-              <svg class="play-icon w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-            </button>
-            <div class="flex-1">
-              <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
-                <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
-              </div>
-              <div class="flex justify-between mt-1">
-                <span class="audio-time text-xs text-gray-500">0:00</span>
-                <span class="audio-duration text-xs text-gray-500">--:--</span>
+          <%
+            var displaySamples = (v.samples && v.samples.length > 0)
+              ? v.samples.filter(function(s) { return s.url && !s.url.includes('youtu'); }).slice(0, 2)
+              : [{ name: 'Próbka', url: v.audio }];
+          %>
+          <div class="grid <%= displaySamples.length > 1 ? 'grid-cols-2' : 'grid-cols-1' %> gap-3">
+            <% displaySamples.forEach(function(sample) { %>
+            <div class="bg-gray-50 rounded-lg p-2.5">
+              <div class="text-xs text-gray-500 font-medium mb-1.5 truncate" title="<%= sample.name %>"><%= sample.name %></div>
+              <div class="flex items-center gap-2">
+                <button class="play-btn w-9 h-9 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
+                  <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <div class="flex-1 min-w-0">
+                  <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                    <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+                  </div>
+                  <div class="flex justify-between mt-0.5">
+                    <span class="audio-time text-[10px] text-gray-400">0:00</span>
+                    <span class="audio-duration text-[10px] text-gray-400">--:--</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <a href="<%= v.audio %>" download title="Pobierz próbkę MP3" class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-            </a>
+            <% }); %>
           </div>
         </div>
 
@@ -326,10 +335,10 @@
     if (!currentBtn) return;
     currentBtn.querySelector('.play-icon').classList.remove('hidden');
     currentBtn.querySelector('.pause-icon').classList.add('hidden');
-    var oldCard = currentBtn.closest('.voice-card');
-    if (oldCard) {
-      oldCard.querySelector('.audio-bar').style.width = '0%';
-      oldCard.querySelector('.audio-time').textContent = '0:00';
+    var oldRow = currentBtn.closest('.bg-gray-50');
+    if (oldRow) {
+      oldRow.querySelector('.audio-bar').style.width = '0%';
+      oldRow.querySelector('.audio-time').textContent = '0:00';
     }
   }
 
@@ -344,16 +353,16 @@
 
     el.addEventListener('timeupdate', function() {
       if (!currentBtn) return;
-      var card = currentBtn.closest('.voice-card');
-      if (!card) return;
+      var row = currentBtn.closest('.bg-gray-50');
+      if (!row) return;
       var pct = (el.currentTime / el.duration) * 100;
-      card.querySelector('.audio-bar').style.width = pct + '%';
-      card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
+      row.querySelector('.audio-bar').style.width = pct + '%';
+      row.querySelector('.audio-time').textContent = formatTime(el.currentTime);
     });
     el.addEventListener('loadedmetadata', function() {
       if (!currentBtn) return;
-      var card = currentBtn.closest('.voice-card');
-      if (card) card.querySelector('.audio-duration').textContent = formatTime(el.duration);
+      var row = currentBtn.closest('.bg-gray-50');
+      if (row) row.querySelector('.audio-duration').textContent = formatTime(el.duration);
     });
     el.addEventListener('ended', function() {
       resetCurrentBtn();
@@ -406,20 +415,26 @@
 
   // Init players + progress bar seek + card click (raz na kartę)
   allCards.forEach(function(card) {
-    initAudioPlayer(card.querySelector('.play-btn'));
-    card.querySelector('.audio-progress').addEventListener('click', function(e) {
-      var audio = document.getElementById('shared-audio-el');
-      var btn = card.querySelector('.play-btn');
-      if (audio && currentBtn === btn && audio.duration) {
-        var rect = this.getBoundingClientRect();
-        var pct = (e.clientX - rect.left) / rect.width;
-        audio.currentTime = pct * audio.duration;
-      }
+    // Init ALL play buttons per card (may be 1 or 2)
+    card.querySelectorAll('.play-btn').forEach(function(btn) {
+      initAudioPlayer(btn);
+    });
+    card.querySelectorAll('.audio-progress').forEach(function(prog) {
+      prog.addEventListener('click', function(e) {
+        var audio = document.getElementById('shared-audio-el');
+        var parentRow = this.closest('.bg-gray-50');
+        var btn = parentRow ? parentRow.querySelector('.play-btn') : null;
+        if (audio && btn && currentBtn === btn && audio.duration) {
+          var rect = this.getBoundingClientRect();
+          var pct = (e.clientX - rect.left) / rect.width;
+          audio.currentTime = pct * audio.duration;
+        }
+      });
     });
     // Card click — navigate to profile only if clicking outside buttons/player
     card.addEventListener('click', function(e) {
       var target = e.target;
-      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]') || target.closest('.cta-calc') || target.closest('.cta-inquiry')) return;
+      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('.cta-inquiry')) return;
       var url = card.dataset.url;
       if (url) window.location.href = url;
     });
