@@ -35,8 +35,8 @@
             <% if (r.author) { %>
               <p class="text-gray-500 text-sm"><%= r.author %></p>
             <% } %>
-            <% if (r.date) { %>
-              <p class="text-gray-600 text-xs mt-1"><%= new Date(r.date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+            <% if (r.date || r.createdAt) { %>
+              <p class="text-gray-600 text-xs mt-1"><%= new Date(r.date || r.createdAt).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
             <% } %>
           </div>
           <div class="flex text-yellow-400 flex-shrink-0 ml-4">
