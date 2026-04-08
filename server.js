@@ -31,7 +31,7 @@ const fs = require('fs');
 // Pliki deweloperskie (blog-posts, melodies) — zawsze nadpisywane z repo
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
-const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'voices.json'];
+const alwaysOverwrite = ['blog-posts.json', 'melodies.json'];
 if (fs.existsSync(seedDir)) {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
   fs.readdirSync(seedDir).forEach(file => {
