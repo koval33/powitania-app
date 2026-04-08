@@ -7,9 +7,10 @@
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Bank głosów</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Ponad 230 profesjonalnych lektorów w&nbsp;30+ językach — doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
   </div>
+</section>
 
-  <!-- Filtry (sticky) -->
-  <div class="py-4 pb-5 sticky top-[73px] z-40 bg-white shadow-md">
+<!-- Filtry (sticky — poza sekcją hero, żeby sticky działał poprawnie) -->
+<div class="py-4 pb-5 sticky top-[73px] z-40 bg-white shadow-md">
   <div class="max-w-6xl mx-auto px-4">
 
     <!-- Filtry: rząd główny (zawsze widoczny) -->
@@ -115,7 +116,7 @@
   </div>
   </div>
   <script>document.getElementById('filters-wrap').classList.add('filters-ready')</script>
-</section>
+</div>
 
 <!-- KREATOR CONTEXT BANNER -->
 <div id="kreator-context-banner" class="max-w-6xl mx-auto px-4 pt-4 hidden">
@@ -145,7 +146,7 @@
   <div class="max-w-6xl mx-auto px-4">
     <div id="voices-grid" class="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -767,9 +768,9 @@
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black/50" onclick="closeInquiryModal()"></div>
   <!-- Content -->
-  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 z-10">
-    <button type="button" onclick="closeInquiryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 pt-8 z-10">
+    <button type="button" onclick="closeInquiryModal()" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
     <h3 class="text-xl font-bold text-gray-900 mb-1">Zapytaj o lektora</h3>
     <p class="text-sm text-gray-500 mb-5">Lektor: <span id="qi-lektor-display" class="font-medium text-gray-700"></span></p>
