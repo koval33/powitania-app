@@ -220,20 +220,20 @@
           %>
           <div class="grid <%= displaySamples.length > 1 ? 'grid-cols-2' : 'grid-cols-1' %> gap-3">
             <% displaySamples.forEach(function(sample) { %>
-            <div class="bg-gray-50 rounded-lg p-2.5">
-              <div class="text-xs text-gray-500 font-medium mb-1.5 truncate" title="<%= sample.name %>"><%= sample.name %></div>
-              <div class="flex items-center gap-2">
+            <div class="bg-gray-50 rounded-lg px-4 py-3">
+              <div class="text-xs text-gray-500 font-medium mb-2 truncate" title="<%= sample.name %>"><%= sample.name %></div>
+              <div class="flex items-center gap-3">
                 <button class="play-btn w-9 h-9 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
                   <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                   <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
                 <div class="flex-1 min-w-0">
-                  <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                  <div class="audio-progress w-full h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
                     <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
                   </div>
-                  <div class="flex justify-between mt-0.5">
-                    <span class="audio-time text-[10px] text-gray-400">0:00</span>
-                    <span class="audio-duration text-[10px] text-gray-400">--:--</span>
+                  <div class="flex justify-between mt-1">
+                    <span class="audio-time text-[11px] text-gray-400">0:00</span>
+                    <span class="audio-duration text-[11px] text-gray-400">--:--</span>
                   </div>
                 </div>
               </div>
