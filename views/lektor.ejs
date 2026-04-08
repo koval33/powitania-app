@@ -823,6 +823,7 @@ function updateFileLabel(input) {
     .then(function(data) {
       if (data.ok) {
         if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry_premium', event_label: '<%= lektor.name %>' });
         msg.textContent = data.message || 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.';
         msg.className = 'mt-4 text-center text-accent font-medium';
         form.reset();
@@ -1742,6 +1743,7 @@ function submitModalInquiry() {
     msgEl.classList.remove('hidden');
     if (res.ok) {
       if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: LEKTOR_NAME });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
@@ -1836,6 +1838,7 @@ function submitWizardInquiry() {
     msgEl.classList.remove('hidden');
     if (res.ok) {
       if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: LEKTOR_NAME });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
@@ -1880,6 +1883,7 @@ function submitOrderRequest(data, msgElId) {
     if (res.ok && res.redirectUrl) {
       // Event dopiero po potwierdzeniu serwera
       if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'order', event_label: '<%= lektor.name %>', value: numericPrice });
       if (msgEl) {
         msgEl.classList.remove('hidden');
         msgEl.className = 'text-center text-sm mt-2 text-accent';
@@ -1894,6 +1898,7 @@ function submitOrderRequest(data, msgElId) {
       if (res.ok) {
         // Event dopiero po potwierdzeniu serwera
         if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'order', event_label: '<%= lektor.name %>', value: numericPrice });
         msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
         msgEl.textContent = res.message || 'Zamowienie wyslane. Odpowiemy w ciagu 2 godzin.';
         try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
