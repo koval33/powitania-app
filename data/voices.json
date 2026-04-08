@@ -36,6 +36,52 @@
     "prices": {}
   },
   {
+    "id": "tomasz-bednarek",
+    "name": "Tomasz Bednarek",
+    "gender": "m",
+    "age": "50 lat +",
+    "languages": [
+      "polski"
+    ],
+    "description": "Aktor teatralny, filmowy i jeden z najbardziej rozpoznawalnych głosów polskiego dubbingu. Absolwent wrocławskiej PWST (1992), od lat związany z teatrem i telewizją, szerokiej publiczności znany m.in. z roli Jacka Boreckiego w serialu „Klan”. Jako lektor i aktor dubbingowy użyczył głosu setkom postaci w filmach, serialach i animacjach. Widzowie pokochali go m.in. jako Ciastka w serii „Shrek”, a także za role w produkcjach takich jak „Tabaluga”, „Świat Elmo”, „Gwiezdne wojny” czy „Madagaskar”. Łączy wieloletnie doświadczenie sceniczne i radiowe z doskonałą techniką pracy z mikrofonem, oferując charakterystyczną barwę głosu, precyzję interpretacyjną i szeroką skalę emocjonalną.",
+    "descriptionEn": "Theatre, film and voice actor, one of the most recognisable voices in Polish dubbing. Graduate of the Wrocław Theatre Academy (PWST, 1992), known to wide audiences for his role as Jacek Borecki in the TV series 'Klan'. He has voiced hundreds of characters in films, series and animations, most notably Donkey in the 'Shrek' franchise, as well as roles in 'Tabaluga', 'Elmo's World', 'Star Wars' and 'Madagascar'. He combines decades of stage and radio experience with outstanding microphone technique, a distinctive voice timbre, interpretive precision and a wide emotional range.",
+    "photo": "/img/lektorzy/tomasz_bednarek.webp",
+    "audio": "/audio/lektorzy/tomasz_bednarek.mp3",
+    "samples": [],
+    "turnaround": "72h",
+    "famous": true,
+    "native": false,
+    "nativeLanguage": "polski",
+    "applications": [
+      "Reklama",
+      "Narracja do filmu",
+      "Audiobook",
+      "Dubbing"
+    ],
+    "priceGroup": "Wyższa grupa cenowa",
+    "hidePrice": true,
+    "profileUrl": "/lektorzy/tomasz-bednarek/",
+    "prices": {
+      "ivr_100": 390,
+      "ivr_200": 540,
+      "ivr_200plus": "wycena",
+      "ivr_guarantee_100": 140,
+      "ivr_guarantee_100plus": 240,
+      "ivr_bilingual": 150,
+      "ivr_melody": 150,
+      "spot_radio_local": 300,
+      "spot_radio_national": 900,
+      "spot_tv_local": 600,
+      "spot_tv_national": 1800,
+      "narration_1page": 480,
+      "narration_2pages": 580,
+      "narration_3pages": 680,
+      "narration_3plus": "wycena",
+      "narration_under50pages": "wycena",
+      "narration_over50pages": 40
+    }
+  },
+  {
     "id": "lukasz-nowicki",
     "name": "Łukasz Nowicki",
     "gender": "m",
