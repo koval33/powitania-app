@@ -73,6 +73,14 @@ router.post('/cofnij/:id/', (req, res) => {
   res.redirect('/admin/opinie/?msg=Cofnięto+zatwierdzenie+opinii+od+' + encodeURIComponent(review.company));
 });
 
+// --- Pobierz backup reviews.json ---
+router.get('/backup/', (req, res) => {
+  const date = new Date().toISOString().slice(0, 10);
+  res.setHeader('Content-Disposition', `attachment; filename="reviews-${date}.json"`);
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(REVIEWS_PATH);
+});
+
 // --- Usuń opinię ---
 router.post('/usun/:id/', (req, res) => {
   const reviews = loadReviews();
