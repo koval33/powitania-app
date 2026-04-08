@@ -220,7 +220,7 @@
           %>
           <div class="grid <%= displaySamples.length > 1 ? 'grid-cols-2' : 'grid-cols-1' %> gap-3">
             <% displaySamples.forEach(function(sample) { %>
-            <div class="bg-gray-50 rounded-lg px-4 py-3">
+            <div class="bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
               <div class="text-xs text-gray-500 font-medium mb-2 truncate" title="<%= sample.name %>"><%= sample.name %></div>
               <div class="flex items-center gap-3">
                 <button class="play-btn w-9 h-9 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
@@ -419,22 +419,33 @@
     card.querySelectorAll('.play-btn').forEach(function(btn) {
       initAudioPlayer(btn);
     });
-    card.querySelectorAll('.audio-progress').forEach(function(prog) {
-      prog.addEventListener('click', function(e) {
-        var audio = document.getElementById('shared-audio-el');
-        var parentRow = this.closest('.bg-gray-50');
-        var btn = parentRow ? parentRow.querySelector('.play-btn') : null;
-        if (audio && btn && currentBtn === btn && audio.duration) {
-          var rect = this.getBoundingClientRect();
-          var pct = (e.clientX - rect.left) / rect.width;
-          audio.currentTime = pct * audio.duration;
+    // Klik w cały player box → play/pause (seek jeśli na progress bar)
+    card.querySelectorAll('.bg-gray-50').forEach(function(playerBox) {
+      playerBox.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var btn = playerBox.querySelector('.play-btn');
+        if (!btn) return;
+        // Klik na progress bar → seek
+        var prog = e.target.closest('.audio-progress');
+        if (prog) {
+          var audio = document.getElementById('shared-audio-el');
+          if (audio && currentBtn === btn && audio.duration) {
+            var rect = prog.getBoundingClientRect();
+            var pct = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = pct * audio.duration;
+          }
+          return;
+        }
+        // Klik gdziekolwiek indziej w playerze → toggle play
+        if (!e.target.closest('.play-btn')) {
+          btn.click();
         }
       });
     });
     // Card click — navigate to profile only if clicking outside buttons/player
     card.addEventListener('click', function(e) {
       var target = e.target;
-      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('.cta-inquiry')) return;
+      if (target.closest('.bg-gray-50') || target.closest('.cta-inquiry')) return;
       var url = card.dataset.url;
       if (url) window.location.href = url;
     });
