@@ -226,7 +226,7 @@
     <!-- Siatka lektorów -->
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card relative bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -237,11 +237,10 @@
            data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
-        <a href="<%= v.profileUrl %>" class="absolute inset-0 z-10" tabindex="-1"></a>
-        <div class="relative z-0 flex items-center gap-4 px-5 py-4">
+        <div class="flex items-center gap-4 px-5 py-4">
 
-          <!-- Zdjęcie (zaokrąglone rogi) -->
-          <div class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
+          <!-- Zdjęcie (link do profilu) -->
+          <a href="<%= v.profileUrl %>" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -249,10 +248,10 @@
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
-          </div>
+          </a>
 
-          <!-- Imię + meta -->
-          <div class="w-44 flex-shrink-0 min-w-0">
+          <!-- Imię + meta (link do profilu) -->
+          <a href="<%= v.profileUrl %>" class="w-44 flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
             <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
             <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
               <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
@@ -276,7 +275,7 @@
             <% } else if (v.native) { %>
               <div class="mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
             <% } %>
-          </div>
+          </a>
 
           <!-- Player -->
           <%
@@ -285,7 +284,7 @@
               : null;
             var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
           %>
-          <div class="player-box relative z-20 flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
+          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
             <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
             <div class="flex items-center gap-2">
               <button class="play-btn w-8 h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
@@ -308,7 +307,7 @@
           </div>
 
           <!-- Akcje (stała szerokość, żeby player nie zmieniał rozmiaru) -->
-          <div class="relative z-20 flex-shrink-0 flex flex-col items-end justify-center gap-2">
+          <div class="flex-shrink-0 flex flex-col items-end justify-center gap-2">
             <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
             <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
@@ -513,13 +512,7 @@
         }
       });
     });
-    // Card click — navigate to profile only if clicking outside buttons/player
-    card.addEventListener('click', function(e) {
-      var target = e.target;
-      if (target.closest('.player-box') || target.closest('.cta-inquiry')) return;
-      var url = card.dataset.url;
-      if (url) window.location.href = url;
-    });
+    // Nawigacja do profilu przez <a> na zdjęciu i nazwisku — brak JS click handler
   });
 
   function formatTime(s) {
