@@ -250,7 +250,7 @@
           </div>
 
           <!-- Imię + meta + badge -->
-          <div class="w-72 flex-shrink-0 min-w-0">
+          <div class="flex-1 min-w-0">
             <h3 class="font-bold text-gray-900 text-base truncate leading-snug"><%= v.name %></h3>
             <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500 mt-1">
               <% if (v.age) { %><span><%= v.age %></span><% } %>
@@ -273,6 +273,8 @@
                 <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300 cursor-pointer hover:bg-yellow-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('famous')" title="Pokaż wszystkich znanych lektorów">Znany głos</span>
               <% } else if (v.native) { %>
                 <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300 cursor-pointer hover:bg-blue-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('native')" title="Pokaż wszystkich native speakerów">Native</span>
+              <% } else { %>
+                <span class="invisible text-[10px] px-2 py-0.5">—</span>
               <% } %>
             </div>
           </div>
@@ -284,7 +286,7 @@
               : null;
             var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
           %>
-          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer" style="max-width:360px">
+          <div class="player-box w-72 flex-shrink-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
             <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
             <div class="flex items-center gap-2">
               <button class="play-btn w-8 h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
