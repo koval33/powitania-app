@@ -237,82 +237,89 @@
            data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
-        <div class="flex items-center gap-4 px-5 py-4">
+        <div class="flex items-center gap-3 px-4 py-3 md:gap-4 md:px-5 md:py-4">
 
           <!-- Zdjęcie (link do profilu) -->
-          <a href="<%= v.profileUrl %>" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
+          <a href="<%= v.profileUrl %>" class="flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
               <div class="w-full h-full flex items-center justify-center text-gray-400">
-                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <svg class="w-6 h-6 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
           </a>
 
-          <!-- Imię + meta (link do profilu) -->
-          <a href="<%= v.profileUrl %>" class="w-44 flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
-            <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
-            <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
-              <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
-              <% v.languages.slice(0,1).forEach(function(lang) { %>
-                <span class="text-xs text-gray-400">&bull;</span>
-                <span class="text-xs text-gray-500"><%= lang %></span>
-              <% }); %>
-            </div>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
-              <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
-              <% } else if (v.hidePrice) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-yellow-600">wycena indyw.</span>
+          <!-- Prawa strona: na mobile kolumna (imię nad playerem), na desktop wiersz -->
+          <div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center md:gap-4">
+
+            <!-- Imię + meta (link do profilu) -->
+            <a href="<%= v.profileUrl %>" class="block min-w-0 md:w-44 md:flex-shrink-0 hover:text-accent transition-colors">
+              <h3 class="font-bold text-gray-900 text-sm md:text-base truncate leading-tight"><%= v.name %></h3>
+              <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
+                <% v.languages.slice(0,1).forEach(function(lang) { %>
+                  <span class="text-xs text-gray-400">&bull;</span>
+                  <span class="text-xs text-gray-500"><%= lang %></span>
+                <% }); %>
+              </div>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
+                <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+                  <span class="text-xs text-gray-300">&bull;</span>
+                  <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
+                <% } else if (v.hidePrice) { %>
+                  <span class="text-xs text-gray-300">&bull;</span>
+                  <span class="text-xs text-yellow-600">wycena indyw.</span>
+                <% } %>
+              </div>
+              <% if (v.famous) { %>
+                <div class="mt-1"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
+              <% } else if (v.native) { %>
+                <div class="mt-1"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
               <% } %>
-            </div>
-            <% if (v.famous) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
-            <% } else if (v.native) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
-            <% } %>
-          </a>
+            </a>
 
-          <!-- Player -->
-          <%
-            var firstSample = (v.samples && v.samples.length > 0)
-              ? v.samples.filter(function(s) { return s.url && !s.url.includes('youtu'); })[0]
-              : null;
-            var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
-          %>
-          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
-            <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
-            <div class="flex items-center gap-2">
-              <button class="play-btn w-8 h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
-                <svg class="play-icon w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="pause-icon w-3.5 h-3.5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-              </button>
-              <div class="flex-1 min-w-0">
-                <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
-                  <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
-                </div>
-                <div class="flex justify-between mt-0.5">
-                  <span class="audio-time text-[10px] text-gray-400">0:00</span>
-                  <span class="audio-duration text-[10px] text-gray-400">--:--</span>
+            <!-- Player + przyciski (na mobile: wiersz pod nazwiskiem) -->
+            <%
+              var firstSample = (v.samples && v.samples.length > 0)
+                ? v.samples.filter(function(s) { return s.url && !s.url.includes('youtu'); })[0]
+                : null;
+              var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
+            %>
+            <div class="flex items-center gap-2 mt-2 md:mt-0 md:flex-1 md:min-w-0">
+              <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
+                <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
+                <div class="flex items-center gap-2">
+                  <button class="play-btn w-7 h-7 md:w-8 md:h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
+                    <svg class="play-icon w-3 h-3 md:w-3.5 md:h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="pause-icon w-3 h-3 md:w-3.5 md:h-3.5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  </button>
+                  <div class="flex-1 min-w-0">
+                    <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
+                      <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-0.5">
+                      <span class="audio-time text-[10px] text-gray-400">0:00</span>
+                      <span class="audio-duration text-[10px] text-gray-400">--:--</span>
+                    </div>
+                  </div>
+                  <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-6 h-6 md:w-7 md:h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
+                    <svg class="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                  </a>
                 </div>
               </div>
-              <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-              </a>
-            </div>
-          </div>
 
-          <!-- Akcje (stała szerokość, żeby player nie zmieniał rozmiaru) -->
-          <div class="flex-shrink-0 flex flex-col items-end justify-center gap-2">
-            <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
-            <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-              Zapytaj
-            </button>
+              <!-- Akcje -->
+              <div class="flex-shrink-0 flex flex-col items-end justify-center gap-1.5">
+                <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
+                <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+                  <svg class="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                  Zapytaj
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
