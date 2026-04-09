@@ -250,32 +250,31 @@
           </div>
 
           <!-- Imię + meta + badge (badge na dole) -->
-          <div class="w-64 flex-shrink-0 min-w-0 self-stretch flex flex-col">
-            <div>
-              <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
-              <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
-                <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
-                <% v.languages.slice(0,1).forEach(function(lang) { %>
-                  <span class="text-xs text-gray-400">&bull;</span>
-                  <span class="text-xs text-gray-500"><%= lang %></span>
+          <div class="w-72 flex-shrink-0 min-w-0 self-stretch flex flex-col">
+            <div class="space-y-1.5">
+              <h3 class="font-bold text-gray-900 text-base truncate leading-snug"><%= v.name %></h3>
+              <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500">
+                <% if (v.age) { %><span><%= v.age %></span><% } %>
+                <% v.languages.slice(0,2).forEach(function(lang) { %>
+                  <span class="text-gray-300">·</span><span><%= lang %></span>
                 <% }); %>
               </div>
-              <div class="flex items-center gap-1.5 mt-0.5">
-                <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
+              <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500">
+                <% if (v.turnaround) { %><span class="text-gray-400"><%= v.turnaround %></span><% } %>
                 <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                  <span class="text-xs text-gray-300">&bull;</span>
-                  <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
+                  <span class="text-gray-300">·</span>
+                  <span>od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
                 <% } else if (v.hidePrice) { %>
-                  <span class="text-xs text-gray-300">&bull;</span>
-                  <span class="text-xs text-yellow-600">wycena indyw.</span>
+                  <span class="text-gray-300">·</span>
+                  <span class="text-yellow-600 font-medium">wycena indyw.</span>
                 <% } %>
               </div>
             </div>
-            <div class="mt-auto pt-1.5">
+            <div class="mt-auto pt-2">
               <% if (v.famous) { %>
-                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span>
+                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300 cursor-pointer hover:bg-yellow-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('famous')" title="Pokaż wszystkich znanych lektorów">Znany głos</span>
               <% } else if (v.native) { %>
-                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span>
+                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300 cursor-pointer hover:bg-blue-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('native')" title="Pokaż wszystkich native speakerów">Native</span>
               <% } %>
             </div>
           </div>
@@ -287,7 +286,7 @@
               : null;
             var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
           %>
-          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
+          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer" style="max-width:360px">
             <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
             <div class="flex items-center gap-2">
               <button class="play-btn w-8 h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
@@ -770,6 +769,19 @@
 
   // Expose applyFilters globally for mobile filter elements
   window.applyFiltersGlobal = applyFilters;
+
+  // Klik w badge → aktywuje filtr
+  window.activateBadgeFilter = function(type) {
+    var btnId = type === 'famous' ? 'filter-famous-btn' : 'filter-native-btn';
+    var cbId  = type === 'famous' ? 'filter-famous' : 'filter-native';
+    var cb = document.getElementById(cbId);
+    if (cb && !cb.checked) {
+      toggleFilterPill(document.getElementById(btnId), cbId);
+    }
+    // scroll to top of list
+    var grid = document.getElementById('voices-grid');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   // Gender select (sidebar)
   window.setGenderFilter = function(val) {
