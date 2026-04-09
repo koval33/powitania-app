@@ -249,28 +249,26 @@
             <% } %>
           </div>
 
-          <!-- Imię + meta + badge (badge na dole) -->
-          <div class="w-72 flex-shrink-0 min-w-0 self-stretch flex flex-col">
-            <div class="space-y-1.5">
-              <h3 class="font-bold text-gray-900 text-base truncate leading-snug"><%= v.name %></h3>
-              <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500">
-                <% if (v.age) { %><span><%= v.age %></span><% } %>
-                <% v.languages.slice(0,2).forEach(function(lang) { %>
-                  <span class="text-gray-300">·</span><span><%= lang %></span>
-                <% }); %>
-              </div>
-              <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500">
-                <% if (v.turnaround) { %><span class="text-gray-400"><%= v.turnaround %></span><% } %>
-                <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                  <span class="text-gray-300">·</span>
-                  <span>od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
-                <% } else if (v.hidePrice) { %>
-                  <span class="text-gray-300">·</span>
-                  <span class="text-yellow-600 font-medium">wycena indyw.</span>
-                <% } %>
-              </div>
+          <!-- Imię + meta + badge -->
+          <div class="w-72 flex-shrink-0 min-w-0">
+            <h3 class="font-bold text-gray-900 text-base truncate leading-snug"><%= v.name %></h3>
+            <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500 mt-1">
+              <% if (v.age) { %><span><%= v.age %></span><% } %>
+              <% v.languages.slice(0,2).forEach(function(lang) { %>
+                <span class="text-gray-300">·</span><span><%= lang %></span>
+              <% }); %>
             </div>
-            <div class="mt-auto pt-2">
+            <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500 mt-1">
+              <% if (v.turnaround) { %><span class="text-gray-400"><%= v.turnaround %></span><% } %>
+              <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+                <span class="text-gray-300">·</span>
+                <span>od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
+              <% } else if (v.hidePrice) { %>
+                <span class="text-gray-300">·</span>
+                <span class="text-yellow-600 font-medium">wycena indyw.</span>
+              <% } %>
+            </div>
+            <div class="mt-2">
               <% if (v.famous) { %>
                 <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300 cursor-pointer hover:bg-yellow-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('famous')" title="Pokaż wszystkich znanych lektorów">Znany głos</span>
               <% } else if (v.native) { %>
