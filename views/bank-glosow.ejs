@@ -3,9 +3,9 @@
 <!-- HERO + FILTRY -->
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <!-- Tytuł -->
-  <div class="py-7 md:py-10 max-w-4xl mx-auto px-4 text-center">
+  <div class="pt-10 pb-9 md:pt-14 md:pb-12 max-w-5xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">Bank głosów</h1>
-    <p class="text-base text-gray-500 max-w-3xl mx-auto leading-snug">Ponad 230 profesjonalnych lektorów w&nbsp;30+ językach — doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <p class="text-sm text-gray-500 mx-auto leading-snug">Ponad 230 profesjonalnych lektorów w&nbsp;30+ językach — doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
   </div>
 </section>
 
@@ -226,7 +226,7 @@
     <!-- Siatka lektorów -->
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
       <% voices.forEach(function(v, idx) { %>
-      <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
+      <div class="voice-card relative bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow cursor-pointer<%= idx >= 20 ? ' hidden' : '' %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -237,7 +237,8 @@
            data-hideprice="<%= v.hidePrice ? 'true' : 'false' %>"
            data-name="<%= v.name.toLowerCase() %>">
 
-        <div class="flex items-center gap-4 px-5 py-4">
+        <a href="<%= v.profileUrl %>" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+        <div class="relative z-10 flex items-center gap-4 px-5 py-4">
 
           <!-- Zdjęcie (zaokrąglone rogi) -->
           <div class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
