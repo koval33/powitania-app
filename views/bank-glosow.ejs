@@ -111,10 +111,15 @@
     <!-- Płeć -->
     <div>
       <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Płeć</div>
-      <div id="gender-group" class="flex flex-col rounded-lg overflow-hidden border border-gray-200 divide-y divide-gray-200">
-        <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
-        <button data-filter="gender" data-value="m" class="filter-btn">Mężczyźni</button>
-        <button data-filter="gender" data-value="f" class="filter-btn">Kobiety</button>
+      <select id="filter-gender-select" class="bank-filter-select w-full" onchange="setGenderFilter(this.value)">
+        <option value="all">Wszyscy</option>
+        <option value="m">Mężczyźni</option>
+        <option value="f">Kobiety</option>
+      </select>
+      <div id="gender-group" class="hidden">
+        <button data-filter="gender" data-value="all" class="filter-btn active"></button>
+        <button data-filter="gender" data-value="m" class="filter-btn"></button>
+        <button data-filter="gender" data-value="f" class="filter-btn"></button>
       </div>
     </div>
 
@@ -170,7 +175,7 @@
 
     <!-- Cena -->
     <div>
-      <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Cena</div>
+      <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Grupa Cenowa</div>
       <select id="filter-price" class="bank-filter-select w-full">
         <option value="all">Każda</option>
         <option value="Niższa grupa cenowa">Niższa</option>
@@ -696,6 +701,8 @@
       activeGender = g;
       document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
       document.querySelectorAll('.filter-btn[data-value="' + g + '"]').forEach(function(b) { b.classList.add('active'); });
+      var gSel = document.getElementById('filter-gender-select');
+      if (gSel) gSel.value = g;
     }
     if (params.get('native') === '1') {
       document.getElementById('filter-native').checked = true;
@@ -764,6 +771,19 @@
   // Expose applyFilters globally for mobile filter elements
   window.applyFiltersGlobal = applyFilters;
 
+  // Gender select (sidebar)
+  window.setGenderFilter = function(val) {
+    activeGender = val;
+    applyFilters();
+    // Keep hidden buttons in sync for resetFilters/URL-params logic
+    document.querySelectorAll('#gender-group .filter-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.value === val);
+    });
+    // Update gender highlight on gender-group border (updateFilterHighlights uses gender-group)
+    var gg = document.getElementById('gender-group');
+    if (gg) gg.style.borderColor = val !== 'all' ? '#10b981' : '';
+  };
+
   // Toggle "Więcej filtrów" panel on mobile
   window.toggleMoreFilters = function() {
     var panel = document.getElementById('more-filters-panel');
@@ -784,10 +804,9 @@
   var origReset = window.resetFilters;
   window.resetFilters = function() {
     origReset();
-    // origReset activates first .filter-btn[data-value="all"] found (mobile bar)
-    // Also activate sidebar Wszyscy button
-    var sbAll = document.querySelector('#filters-sidebar .filter-btn[data-value="all"]');
-    if (sbAll) sbAll.classList.add('active');
+    // Reset sidebar gender select
+    var genderSel = document.getElementById('filter-gender-select');
+    if (genderSel) genderSel.value = 'all';
     // Reset mobile selects
     var langMob = document.getElementById('filter-lang-mobile');
     var ageMob = document.getElementById('filter-age-mobile');
