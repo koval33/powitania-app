@@ -1228,6 +1228,10 @@ function toggleWizardForms(isCustomQuote) {
   if (isCustomQuote) {
     orderForm.classList.add('hidden');
     inquiryForm.classList.remove('hidden');
+    setTimeout(function() {
+      var top = inquiryForm.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 50);
   } else {
     orderForm.classList.remove('hidden');
     inquiryForm.classList.add('hidden');
@@ -1702,7 +1706,10 @@ function showModalInquiry() {
   if (orderForm) orderForm.classList.add('hidden');
   if (inquiryForm) {
     inquiryForm.classList.remove('hidden');
-    inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(function() {
+      var top = inquiryForm.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 50);
   }
 }
 
