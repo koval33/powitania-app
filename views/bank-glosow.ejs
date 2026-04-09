@@ -111,15 +111,10 @@
     <!-- Płeć -->
     <div>
       <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Płeć</div>
-      <select id="filter-gender-select" class="bank-filter-select w-full" onchange="setGenderFilter(this.value)">
-        <option value="all">Wszyscy</option>
-        <option value="m">Mężczyźni</option>
-        <option value="f">Kobiety</option>
-      </select>
-      <div id="gender-group" class="hidden">
-        <button data-filter="gender" data-value="all" class="filter-btn active"></button>
-        <button data-filter="gender" data-value="m" class="filter-btn"></button>
-        <button data-filter="gender" data-value="f" class="filter-btn"></button>
+      <div id="gender-group" class="flex flex-col rounded-lg overflow-hidden border border-gray-200 divide-y divide-gray-200">
+        <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
+        <button data-filter="gender" data-value="m" class="filter-btn">Mężczyźni</button>
+        <button data-filter="gender" data-value="f" class="filter-btn">Kobiety</button>
       </div>
     </div>
 
@@ -175,7 +170,7 @@
 
     <!-- Cena -->
     <div>
-      <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Grupa Cenowa</div>
+      <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Cena</div>
       <select id="filter-price" class="bank-filter-select w-full">
         <option value="all">Każda</option>
         <option value="Niższa grupa cenowa">Niższa</option>
@@ -249,32 +244,24 @@
             <% } %>
           </div>
 
-          <!-- Imię + meta + badge -->
-          <div class="flex-1 min-w-0">
-            <h3 class="font-bold text-gray-900 text-base truncate leading-snug"><%= v.name %></h3>
-            <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500 mt-1">
-              <% if (v.age) { %><span><%= v.age %></span><% } %>
-              <% v.languages.slice(0,2).forEach(function(lang) { %>
-                <span class="text-gray-300">·</span><span><%= lang %></span>
+          <!-- Imię + meta -->
+          <div class="w-44 flex-shrink-0 min-w-0">
+            <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
+            <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+              <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
+              <% v.languages.slice(0,1).forEach(function(lang) { %>
+                <span class="text-xs text-gray-400">&bull;</span>
+                <span class="text-xs text-gray-500"><%= lang %></span>
               <% }); %>
             </div>
-            <div class="flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-500 mt-1">
-              <% if (v.turnaround) { %><span class="text-gray-400"><%= v.turnaround %></span><% } %>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
               <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <span class="text-gray-300">·</span>
-                <span>od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
+                <span class="text-xs text-gray-300">&bull;</span>
+                <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
               <% } else if (v.hidePrice) { %>
-                <span class="text-gray-300">·</span>
-                <span class="text-yellow-600 font-medium">wycena indyw.</span>
-              <% } %>
-            </div>
-            <div class="mt-2">
-              <% if (v.famous) { %>
-                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300 cursor-pointer hover:bg-yellow-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('famous')" title="Pokaż wszystkich znanych lektorów">Znany głos</span>
-              <% } else if (v.native) { %>
-                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300 cursor-pointer hover:bg-blue-100 transition-colors" onclick="event.stopPropagation(); activateBadgeFilter('native')" title="Pokaż wszystkich native speakerów">Native</span>
-              <% } else { %>
-                <span class="invisible text-[10px] px-2 py-0.5">—</span>
+                <span class="text-xs text-gray-300">&bull;</span>
+                <span class="text-xs text-yellow-600">wycena indyw.</span>
               <% } %>
             </div>
           </div>
@@ -286,7 +273,7 @@
               : null;
             var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
           %>
-          <div class="player-box w-72 flex-shrink-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
+          <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
             <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
             <div class="flex items-center gap-2">
               <button class="play-btn w-8 h-8 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
@@ -308,13 +295,24 @@
             </div>
           </div>
 
-          <!-- Akcje: jedno pod drugim -->
-          <div class="flex-shrink-0 flex flex-col items-end gap-2">
-            <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
-            <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-              Zapytaj
-            </button>
+          <!-- Odznaka + akcje (stała szerokość, żeby player nie zmieniał rozmiaru) -->
+          <div class="flex-shrink-0 w-44">
+            <div class="flex justify-end mb-1.5">
+              <% if (v.famous) { %>
+                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span>
+              <% } else if (v.native) { %>
+                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span>
+              <% } else { %>
+                <span class="invisible text-[10px] px-2 py-0.5">—</span>
+              <% } %>
+            </div>
+            <div class="flex items-center justify-end gap-2">
+              <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
+              <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                Zapytaj
+              </button>
+            </div>
           </div>
 
         </div>
@@ -700,8 +698,6 @@
       activeGender = g;
       document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
       document.querySelectorAll('.filter-btn[data-value="' + g + '"]').forEach(function(b) { b.classList.add('active'); });
-      var gSel = document.getElementById('filter-gender-select');
-      if (gSel) gSel.value = g;
     }
     if (params.get('native') === '1') {
       document.getElementById('filter-native').checked = true;
@@ -770,32 +766,6 @@
   // Expose applyFilters globally for mobile filter elements
   window.applyFiltersGlobal = applyFilters;
 
-  // Klik w badge → aktywuje filtr
-  window.activateBadgeFilter = function(type) {
-    var btnId = type === 'famous' ? 'filter-famous-btn' : 'filter-native-btn';
-    var cbId  = type === 'famous' ? 'filter-famous' : 'filter-native';
-    var cb = document.getElementById(cbId);
-    if (cb && !cb.checked) {
-      toggleFilterPill(document.getElementById(btnId), cbId);
-    }
-    // scroll to top of list
-    var grid = document.getElementById('voices-grid');
-    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  // Gender select (sidebar)
-  window.setGenderFilter = function(val) {
-    activeGender = val;
-    applyFilters();
-    // Keep hidden buttons in sync for resetFilters/URL-params logic
-    document.querySelectorAll('#gender-group .filter-btn').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.value === val);
-    });
-    // Update gender highlight on gender-group border (updateFilterHighlights uses gender-group)
-    var gg = document.getElementById('gender-group');
-    if (gg) gg.style.borderColor = val !== 'all' ? '#10b981' : '';
-  };
-
   // Toggle "Więcej filtrów" panel on mobile
   window.toggleMoreFilters = function() {
     var panel = document.getElementById('more-filters-panel');
@@ -816,9 +786,10 @@
   var origReset = window.resetFilters;
   window.resetFilters = function() {
     origReset();
-    // Reset sidebar gender select
-    var genderSel = document.getElementById('filter-gender-select');
-    if (genderSel) genderSel.value = 'all';
+    // origReset activates first .filter-btn[data-value="all"] found (mobile bar)
+    // Also activate sidebar Wszyscy button
+    var sbAll = document.querySelector('#filters-sidebar .filter-btn[data-value="all"]');
+    if (sbAll) sbAll.classList.add('active');
     // Reset mobile selects
     var langMob = document.getElementById('filter-lang-mobile');
     var ageMob = document.getElementById('filter-age-mobile');
