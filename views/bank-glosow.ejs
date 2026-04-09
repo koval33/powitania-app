@@ -244,24 +244,33 @@
             <% } %>
           </div>
 
-          <!-- Imię + meta -->
-          <div class="w-44 flex-shrink-0 min-w-0">
-            <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
-            <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
-              <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
-              <% v.languages.slice(0,1).forEach(function(lang) { %>
-                <span class="text-xs text-gray-400">&bull;</span>
-                <span class="text-xs text-gray-500"><%= lang %></span>
-              <% }); %>
+          <!-- Imię + meta + badge (badge na dole) -->
+          <div class="w-64 flex-shrink-0 min-w-0 self-stretch flex flex-col">
+            <div>
+              <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
+              <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
+                <% v.languages.slice(0,1).forEach(function(lang) { %>
+                  <span class="text-xs text-gray-400">&bull;</span>
+                  <span class="text-xs text-gray-500"><%= lang %></span>
+                <% }); %>
+              </div>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
+                <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+                  <span class="text-xs text-gray-300">&bull;</span>
+                  <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
+                <% } else if (v.hidePrice) { %>
+                  <span class="text-xs text-gray-300">&bull;</span>
+                  <span class="text-xs text-yellow-600">wycena indyw.</span>
+                <% } %>
+              </div>
             </div>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
-              <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
-              <% } else if (v.hidePrice) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-yellow-600">wycena indyw.</span>
+            <div class="mt-auto pt-1.5">
+              <% if (v.famous) { %>
+                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span>
+              <% } else if (v.native) { %>
+                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span>
               <% } %>
             </div>
           </div>
@@ -295,24 +304,13 @@
             </div>
           </div>
 
-          <!-- Odznaka + akcje (stała szerokość, żeby player nie zmieniał rozmiaru) -->
-          <div class="flex-shrink-0 w-44">
-            <div class="flex justify-end mb-1.5">
-              <% if (v.famous) { %>
-                <span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span>
-              <% } else if (v.native) { %>
-                <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span>
-              <% } else { %>
-                <span class="invisible text-[10px] px-2 py-0.5">—</span>
-              <% } %>
-            </div>
-            <div class="flex items-center justify-end gap-2">
-              <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
-              <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-                Zapytaj
-              </button>
-            </div>
+          <!-- Akcje: jedno pod drugim -->
+          <div class="flex-shrink-0 flex flex-col items-end gap-2">
+            <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
+            <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+              Zapytaj
+            </button>
           </div>
 
         </div>
