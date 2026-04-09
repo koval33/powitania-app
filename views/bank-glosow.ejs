@@ -1013,6 +1013,7 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
       document.getElementById('qi-form').classList.add('hidden');
       document.getElementById('qi-success').classList.remove('hidden');
       // Track conversion
+      if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: data.lektorName, source: 'bank_glosow' });
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: data.lektorName });
       }
