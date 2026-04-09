@@ -11,6 +11,7 @@
  *   form_submit_order     — złożenie zamówienia (z ceną / bez płatności online)
  *   form_submit_payment   — przejście do płatności P24
  *   form_submit_inquiry   — zapytanie o lektora
+ *   form_submit_inquiry_bank — zapytanie z banku głosów (popup "Zapytaj")
  *   form_submit_inquiry_premium — zapytanie premium (ze strony lektora)
  *   form_submit_contact   — formularz kontaktowy (strona główna)
  *   form_submit_partner   — zapytanie ze strony partnera
