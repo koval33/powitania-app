@@ -202,9 +202,6 @@
                 <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><%= lang %></span>
               <% }); %>
             </div>
-            <% if (v.description) { %>
-              <p class="text-sm text-gray-500 mt-2 line-clamp-3"><%= v.description %></p>
-            <% } %>
             <div class="flex items-center gap-3 mt-2">
               <% if (v.turnaround) { %>
                 <p class="text-xs text-gray-500">Realizacja: <%= v.turnaround %></p>
@@ -245,6 +242,9 @@
                     <span class="audio-duration text-[11px] text-gray-400">--:--</span>
                   </div>
                 </div>
+                <a href="<%= sample.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                </a>
               </div>
             </div>
             <% }); %>
