@@ -175,14 +175,10 @@
                   Dane do zamówienia
                 </h4>
                 <div class="space-y-3">
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
-                    <input type="text" id="wiz-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
-                  </div>
                   <div class="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
-                      <input type="text" id="wiz-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                      <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
+                      <input type="text" id="wiz-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
                     </div>
                     <div>
                       <label class="block text-gray-900 text-sm font-medium mb-1">NIP</label>
@@ -190,12 +186,8 @@
                     </div>
                   </div>
                   <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
-                    <input type="text" id="wiz-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
-                    <div class="grid grid-cols-3 gap-2">
-                      <input type="text" id="wiz-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
-                      <input type="text" id="wiz-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
-                    </div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
+                    <input type="text" id="wiz-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
                   </div>
                   <div class="grid sm:grid-cols-2 gap-3">
                     <div>
@@ -206,10 +198,6 @@
                       <label class="block text-gray-900 text-sm font-medium mb-1">Telefon</label>
                       <input type="tel" id="wiz-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
                     </div>
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Uwagi</label>
-                    <textarea id="wiz-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
                   </div>
                 </div>
                 <button id="wiz-submit-btn" onclick="submitWizardOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
@@ -304,14 +292,10 @@
                   Dane do zamówienia
                 </h4>
                 <div class="space-y-3">
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
-                    <input type="text" id="mod-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
-                  </div>
                   <div class="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
-                      <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
+                      <label class="block text-gray-900 text-sm font-medium mb-1">Nazwa firmy *</label>
+                      <input type="text" id="mod-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Firma Sp. z o.o.">
                     </div>
                     <div>
                       <label class="block text-gray-900 text-sm font-medium mb-1">NIP</label>
@@ -319,12 +303,8 @@
                     </div>
                   </div>
                   <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Adres *</label>
-                    <input type="text" id="mod-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="ul. Przykładowa 10/2">
-                    <div class="grid grid-cols-3 gap-2">
-                      <input type="text" id="mod-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="00-000">
-                      <input type="text" id="mod-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Warszawa">
-                    </div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
+                    <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
                   </div>
                   <div class="grid sm:grid-cols-2 gap-3">
                     <div>
@@ -335,10 +315,6 @@
                       <label class="block text-gray-900 text-sm font-medium mb-1">Telefon</label>
                       <input type="tel" id="mod-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
                     </div>
-                  </div>
-                  <div>
-                    <label class="block text-gray-900 text-sm font-medium mb-1">Uwagi</label>
-                    <textarea id="mod-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Dodatkowe informacje..."></textarea>
                   </div>
                 </div>
                 <button id="mod-submit-btn" onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
@@ -1573,9 +1549,6 @@ function validateOrderFields(prefix, msgElId) {
   var fields = [
     { id: prefix + '-firmName', label: 'Nazwa firmy' },
     { id: prefix + '-name', label: 'Imię i nazwisko' },
-    { id: prefix + '-street', label: 'Ulica' },
-    { id: prefix + '-zipCode', label: 'Kod pocztowy' },
-    { id: prefix + '-city', label: 'Miasto' },
     { id: prefix + '-email', label: 'Email' }
   ];
   var ok = true;
@@ -1595,14 +1568,6 @@ function validateOrderFields(prefix, msgElId) {
     if (!nipCheck.ok) { showFieldError(nipEl, nipCheck.msg); ok = false; }
     else { clearFieldError(nipEl); }
   } else if (nipEl) { clearFieldError(nipEl); }
-
-  // Walidacja formatu kodu pocztowego
-  var zipEl = document.getElementById(prefix + '-zipCode');
-  if (zipEl && zipEl.value.trim()) {
-    var zipCheck = validateZipCode(zipEl.value.trim());
-    if (!zipCheck.ok) { showFieldError(zipEl, zipCheck.msg); ok = false; }
-    else { clearFieldError(zipEl); }
-  }
 
   // Walidacja formatu telefonu (opcjonalne, ale jeśli podane — walidowane)
   var phoneEl = document.getElementById(prefix + '-phone');
@@ -1631,20 +1596,6 @@ document.addEventListener('input', function(e) {
 });
 
 // --- Input masks ---
-
-// Kod pocztowy: auto-myślnik, tylko cyfry, max 6 znaków (dd-ddd)
-['wiz-zipCode', 'mod-zipCode'].forEach(function(id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  el.setAttribute('maxlength', '6');
-  el.setAttribute('inputmode', 'numeric');
-  el.addEventListener('input', function() {
-    var v = this.value.replace(/[^\d]/g, '');
-    if (v.length > 5) v = v.slice(0, 5);
-    if (v.length > 2) v = v.slice(0, 2) + '-' + v.slice(2);
-    this.value = v;
-  });
-});
 
 // NIP: tylko cyfry, litery (prefix), myślniki
 ['wiz-nip', 'mod-nip'].forEach(function(id) {
@@ -1676,12 +1627,8 @@ function submitModalOrder() {
     firmName: firmName,
     name: name,
     nip: document.getElementById('mod-nip').value.trim(),
-    street: document.getElementById('mod-street').value.trim(),
-    zipCode: document.getElementById('mod-zipCode').value.trim(),
-    city: document.getElementById('mod-city').value.trim(),
     email: email,
     phone: document.getElementById('mod-phone').value.trim(),
-    notes: document.getElementById('mod-notes').value.trim(),
     lektorName: LEKTOR_NAME,
     lektorId: LEKTOR_ID,
     serviceType: document.getElementById('modal-service-select').value,
@@ -1789,12 +1736,8 @@ function submitWizardOrder() {
     firmName: firmName,
     name: name,
     nip: document.getElementById('wiz-nip').value.trim(),
-    street: document.getElementById('wiz-street').value.trim(),
-    zipCode: document.getElementById('wiz-zipCode').value.trim(),
-    city: document.getElementById('wiz-city').value.trim(),
     email: email,
     phone: document.getElementById('wiz-phone').value.trim(),
-    notes: document.getElementById('wiz-notes').value.trim(),
     lektorName: LEKTOR_NAME,
     lektorId: LEKTOR_ID,
     serviceType: ctx.serviceType || '',
