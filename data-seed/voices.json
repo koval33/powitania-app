@@ -1485,14 +1485,6 @@
     "audio": "/audio/lektorzy/blazej.mp3",
     "samples": [
       {
-        "name": "Nagranie lektorskie",
-        "url": "/audio/samples/demo-1-1.mp3"
-      },
-      {
-        "name": "Spot reklamowy",
-        "url": "/audio/samples/4.mp3"
-      },
-      {
         "name": "Spot reklamowy",
         "url": "/audio/samples/Blazej2_demo3.mp3"
       }
