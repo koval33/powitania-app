@@ -1955,6 +1955,10 @@ function showPricingWizard(ctx) {
   var cennikSection = document.getElementById('lektor-cennik-section');
   if (cennikSection) cennikSection.classList.add('hidden');
 
+  // Ukryj inline kalkulator — wizard zastępuje go całkowicie
+  var wycenaSection = document.getElementById('wycena');
+  if (wycenaSection) wycenaSection.classList.add('hidden');
+
   textPreview.textContent = ctx.text;
   var wordCount = countWords(ctx.text);
   wordCountEl.textContent = wordCount + ' słów';
