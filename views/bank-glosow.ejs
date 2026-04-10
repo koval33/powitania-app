@@ -321,7 +321,7 @@
 
             <!-- Akcje -->
             <div class="flex-shrink-0 flex flex-col items-end justify-center gap-2">
-              <a href="<%= v.profileUrl %>" class="text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
+              <a href="<%= v.profileUrl %>" class="btn-more text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
               <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                 Zapytaj
@@ -753,6 +753,14 @@
 
       // Activate kreator mode — hides hidePrice voices
       kreatorMode = true;
+
+      // Zmień CTA: "Więcej" → "Wyceń", ukryj "Zapytaj"
+      document.querySelectorAll('.voice-card').forEach(function(card) {
+        var moreLink = card.querySelector('.btn-more');
+        if (moreLink) moreLink.textContent = 'Wyceń \u2192';
+        var inquiryBtn = card.querySelector('.cta-inquiry');
+        if (inquiryBtn) inquiryBtn.style.display = 'none';
+      });
 
       // Auto-filter by language based on kreator context
       var langs = ctx.languages || [];
