@@ -238,13 +238,10 @@
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- INLINE: Wyceń nagranie (zaraz po CTA, wyrównane do lewej z resztą) -->
-    <% if (!lektor.hidePrice) { %>
-    <div id="wycena" class="mt-10">
-      <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6 md:p-8">
+        <!-- INLINE: Wyceń nagranie (zaraz po CTA, wyrównane do lewej z resztą) -->
+        <% if (!lektor.hidePrice) { %>
+        <div id="wycena" class="mt-6">
+          <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
           Wyceń nagranie — <%= lektor.name %>
         </h2>
@@ -357,8 +354,11 @@
           </div>
         </div>
       </div>
+        </div>
+        <% } %>
+
+      </div>
     </div>
-    <% } %>
 
     <!-- VIDEO (pełna szerokość, pod profilem) -->
     <%
@@ -1126,9 +1126,9 @@ function renderPricing(result, wordCount, targetEl) {
     // Addony (checkboxy) — sekcja zwijalna
     if (result.addons && result.addons.length > 0) {
       html += '<div class="border-t border-gray-200 pt-2 mt-2">';
-      html += '<button type="button" onclick="toggleAddonsSection(this)" class="w-full flex items-center justify-between text-left py-1 group">' +
+      html += '<button type="button" onclick="toggleAddonsSection(this)" class="inline-flex items-center gap-1.5 text-left py-1 group">' +
         '<span class="text-xs font-medium text-gray-500 group-hover:text-gray-700 transition-colors">Usługi dodatkowe (' + result.addons.length + ')</span>' +
-        '<span class="text-gray-400 group-hover:text-gray-600 transition-colors text-xs flex items-center gap-1">' +
+        '<span class="text-gray-400 group-hover:text-gray-600 transition-colors text-xs flex items-center gap-0.5">' +
           '<span class="addons-toggle-label">rozwiń</span>' +
           '<svg class="addons-toggle-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>' +
         '</span>' +
