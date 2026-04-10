@@ -226,6 +226,8 @@
     <style>
       /* Desktop: wrapper niewidoczny — player i przyciski są bezpośrednimi dziećmi flex */
       .vc-player-wrap { display: contents; }
+      /* Stała szerokość kolumny z imieniem — zapewnia jednolitą szerokość playerów */
+      .vc-info { width: 220px !important; flex-shrink: 0; }
       /* Mobile: wrapper staje się wierszem pod nazwiskiem */
       @media (max-width: 767px) {
         .vc-inner { flex-wrap: wrap; padding: 12px 14px !important; gap: 8px 10px !important; }
@@ -263,7 +265,7 @@
           </a>
 
           <!-- Imię + meta (link do profilu) -->
-          <a href="<%= v.profileUrl %>" class="vc-info w-44 flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
+          <a href="<%= v.profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
             <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
             <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
               <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
@@ -317,13 +319,13 @@
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
                 </a>
               </div>
+              <a href="<%= v.profileUrl %>" onclick="event.stopPropagation()" class="block text-[10px] text-gray-400 hover:text-accent mt-1.5 transition-colors">&bull;&bull;&bull;&nbsp;pełny profil lektora</a>
             </div>
 
             <!-- Akcje -->
-            <div class="flex-shrink-0 flex flex-col items-end justify-center gap-2">
-              <a href="<%= v.profileUrl %>" class="btn-more text-xs text-accent hover:text-accent-light font-medium transition-colors whitespace-nowrap" onclick="event.stopPropagation()">Więcej &rarr;</a>
-              <button type="button" class="cta-inquiry inline-flex items-center gap-1 bg-accent hover:bg-accent-light text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <div class="flex-shrink-0 flex items-center justify-center">
+              <button type="button" class="cta-inquiry inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                 Zapytaj
               </button>
             </div>
@@ -754,12 +756,16 @@
       // Activate kreator mode — hides hidePrice voices
       kreatorMode = true;
 
-      // Zmień CTA: "Więcej" → "Wyceń", ukryj "Zapytaj"
+      // Zmień CTA: "Zapytaj" → "Wyceń →" (prowadzi do profilu gdzie wizard się aktywuje)
       document.querySelectorAll('.voice-card').forEach(function(card) {
-        var moreLink = card.querySelector('.btn-more');
-        if (moreLink) moreLink.textContent = 'Wyceń \u2192';
         var inquiryBtn = card.querySelector('.cta-inquiry');
-        if (inquiryBtn) inquiryBtn.style.display = 'none';
+        if (inquiryBtn) {
+          inquiryBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg> Wyceń';
+          inquiryBtn.onclick = function(e) {
+            e.stopPropagation();
+            window.location.href = card.dataset.url;
+          };
+        }
       });
 
       // Auto-filter by language based on kreator context
