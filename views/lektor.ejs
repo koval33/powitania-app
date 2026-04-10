@@ -1123,21 +1123,31 @@ function renderPricing(result, wordCount, targetEl) {
       '</div>';
     }
 
-    // Addony (checkboxy IVR)
+    // Addony (checkboxy) — sekcja zwijalna
     if (result.addons && result.addons.length > 0) {
-      html += '<div class="border-t border-gray-200 pt-3 mt-2 space-y-2">';
-      html += '<p class="text-xs text-gray-500 mb-1">Usługi dodatkowe:</p>';
+      html += '<div class="border-t border-gray-200 pt-2 mt-2">';
+      html += '<button type="button" onclick="toggleAddonsSection(this)" class="w-full flex items-center justify-between text-left py-1 group">' +
+        '<span class="text-xs font-medium text-gray-500 group-hover:text-gray-700 transition-colors">Usługi dodatkowe (' + result.addons.length + ')</span>' +
+        '<span class="text-gray-400 group-hover:text-gray-600 transition-colors text-xs flex items-center gap-1">' +
+          '<span class="addons-toggle-label">rozwiń</span>' +
+          '<svg class="addons-toggle-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>' +
+        '</span>' +
+      '</button>';
+      html += '<div class="addons-body hidden space-y-2 mt-2">';
       result.addons.forEach(function(addon, idx) {
         var melodyCheckId = addon.hasMelodySelector ? 'melody-addon-check' : '';
+        var addonLabel = addon.hasMelodySelector
+          ? addon.label + ' <span class="text-gray-400 text-xs melody-hint">(zaznacz aby wybrać i odsłuchać ▾)</span>'
+          : addon.label;
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
           '<span class="flex items-center gap-2">' +
             '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" data-label="' + addon.label + '"' +
             (melodyCheckId ? ' id="' + melodyCheckId + '"' : '') +
             ' onchange="recalcTotal();' + (addon.hasMelodySelector ? 'toggleMelodySelector(this)' : '') + '">' +
-            '<span class="text-gray-600 text-sm">' + addon.label + '</span>' +
+            '<span class="text-gray-600 text-sm">' + addonLabel + '</span>' +
             (addon.tooltip ? '<span class="addon-tooltip-trigger text-gray-500 hover:text-gray-700 cursor-help" data-tooltip-idx="' + idx + '" onclick="toggleAddonTooltip(event, ' + idx + ')">&#10067;</span>' : '') +
           '</span>' +
-          '<span class="text-gray-500 text-sm">+' + addon.price + ' zł netto</span>' +
+          '<span class="text-gray-500 text-sm whitespace-nowrap">+' + addon.price + ' zł</span>' +
         '</label>';
         if (addon.tooltip) {
           html += '<div id="addon-tooltip-' + idx + '" class="hidden bg-gray-100 rounded-lg p-3 ml-6 text-xs text-gray-500 border border-gray-200">' +
@@ -1147,6 +1157,7 @@ function renderPricing(result, wordCount, targetEl) {
         // Selector melodii — kompaktowa lista z przyciskami play
         if (addon.hasMelodySelector && MELODIES.length > 0) {
           html += '<div id="melody-selector" class="hidden ml-6 mt-1 bg-gray-50 rounded-lg border border-gray-200 px-3 py-2">';
+          html += '<p class="text-xs text-gray-500 mb-1.5">Wybierz melodię i odsłuchaj:</p>';
           html += '<div class="flex flex-wrap gap-x-4 gap-y-1">';
           MELODIES.forEach(function(m, mi) {
             html += '<div class="inline-flex items-center gap-1.5 py-0.5">' +
@@ -1165,7 +1176,8 @@ function renderPricing(result, wordCount, targetEl) {
           html += '</div>';
         }
       });
-      html += '</div>';
+      html += '</div>'; // addons-body
+      html += '</div>'; // border-t wrapper
     }
 
     // Suma
@@ -1220,6 +1232,17 @@ function updateOrderButtonLabels(hasPrice) {
   if (wizBtn) wizBtn.textContent = label;
   var modBtn = document.getElementById('mod-submit-btn');
   if (modBtn) modBtn.textContent = label;
+}
+
+function toggleAddonsSection(btn) {
+  var body = btn.nextElementSibling;
+  if (!body) return;
+  var isOpen = !body.classList.contains('hidden');
+  body.classList.toggle('hidden', isOpen);
+  var label = btn.querySelector('.addons-toggle-label');
+  var icon = btn.querySelector('.addons-toggle-icon');
+  if (label) label.textContent = isOpen ? 'rozwiń' : 'zwiń';
+  if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
 function toggleAddonTooltip(e, idx) {
