@@ -228,6 +228,9 @@
       .vc-player-wrap { display: contents; }
       /* Stała szerokość kolumny z imieniem — zapewnia jednolitą szerokość playerów */
       .vc-info { width: 220px !important; flex-shrink: 0; }
+      /* Większe zdjęcie i większy odstęp między elementami */
+      .vc-photo { width: 92px !important; height: 92px !important; }
+      .vc-inner { gap: 20px !important; }
       /* Mobile: wrapper staje się wierszem pod nazwiskiem */
       @media (max-width: 767px) {
         .vc-inner { flex-wrap: wrap; padding: 12px 14px !important; gap: 8px 10px !important; }
@@ -267,7 +270,7 @@
           <!-- Imię + meta (link do profilu) -->
           <a href="<%= v.profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
             <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
-            <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+            <div class="flex items-center gap-1.5 mt-2 flex-wrap">
               <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
               <% v.languages.slice(0,1).forEach(function(lang) { %>
                 <span class="text-xs text-gray-400">&bull;</span>
