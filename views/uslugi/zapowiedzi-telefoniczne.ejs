@@ -79,27 +79,55 @@
 
 <!-- Próbki audio IVR -->
 <%
-  // Wybierz do 4 lektorów z próbkami audio i cenami IVR
-  var ivrSamples = (voices || []).filter(function(v) {
-    return v.audio && !v.hidePrice && v.prices && v.prices.ivr_100 && v.languages.indexOf('polski') !== -1;
-  }).slice(0, 4);
+  var ivrSamples = [
+    {
+      name: "Jacek Brzostyński",
+      photo: "/img/lektorzy/jacek-brzostynski.webp",
+      profileUrl: "/lektorzy/jacek-brzostynski/",
+      sampleName: "Zapowiedź telefoniczna — Gwiezdne Wojny",
+      audio: "/audio/samples/zapowied%C5%BA_Jacek_Brzostynski-1.mp3",
+      ivrPrice: 1400
+    },
+    {
+      name: "Jarek",
+      photo: "/img/lektorzy/jarek.webp",
+      profileUrl: "/lektorzy/jarek/",
+      sampleName: "Zapowiedź telefoniczna",
+      audio: "/audio/samples/Jarek-IVR.mp3",
+      ivrPrice: 520
+    },
+    {
+      name: "Marzena 2",
+      photo: "/img/lektorzy/marzena-2.webp",
+      profileUrl: "/lektorzy/marzena-2/",
+      sampleName: "Zapowiedź telefoniczna",
+      audio: "/audio/samples/Marzena-2_demo1.mp3",
+      ivrPrice: 390
+    },
+    {
+      name: "Rafał",
+      photo: "/img/lektorzy/rafal.webp",
+      profileUrl: "/lektorzy/rafal/",
+      sampleName: "Przykład zapowiedzi telefonicznej",
+      audio: "/audio/samples/Rafal_ivr.mp3",
+      ivrPrice: 450
+    }
+  ];
 %>
-<% if (ivrSamples.length > 0) { %>
 <section class="py-12 border-t border-gray-200">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Posłuchaj przykładowych głosów</h2>
-    <p class="text-gray-500 text-center mb-8">Odsłuchaj próbki naszych lektorów — wybierz głos dopasowany do Twojej firmy</p>
+    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Posłuchaj zapowiedzi telefonicznych dla firmy</h2>
+    <p class="text-gray-500 text-center mb-8">Poniżej znajdziesz przykładowe nagrania na centralę telefoniczną, jakie zrealizowaliśmy dla naszych Klientów.</p>
     <div class="space-y-4">
       <% ivrSamples.forEach(function(v) { %>
       <div class="ivr-sample-row bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-center gap-4">
-        <% if (v.photo) { %>
         <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-14 h-14 rounded-full object-cover flex-shrink-0">
-        <% } %>
         <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-2">
+          <div class="flex items-center gap-2 mb-1">
             <a href="<%= v.profileUrl %>" class="font-semibold text-gray-900 hover:text-accent transition-colors"><%= v.name %></a>
-            <span class="text-xs text-gray-500">od <%= v.prices.ivr_100 %> zł</span>
+            <span class="text-xs text-gray-500">od <%= v.ivrPrice %> zł</span>
           </div>
+          <div class="text-xs text-gray-400 mb-2"><%= v.sampleName %></div>
           <div class="flex items-center gap-3">
             <button class="ivr-play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
               <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -120,7 +148,6 @@
     </p>
   </div>
 </section>
-<% } %>
 
 <!-- Cena + co zawiera -->
 <section class="py-12 border-t border-gray-200 bg-stone-50">
