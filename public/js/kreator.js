@@ -472,7 +472,7 @@
     html += renderSelect('industry', 'Branża', INDUSTRIES);
     html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
     if (!isIVR) {
-      html += renderTextarea('offering', 'Oferta / produkt', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wystarczy kilka haseł lub korzyści do zaakcentowania — gotowy tekst wygenerujemy za Ciebie.');
+      html += renderTextarea('offering', 'Co chcesz podkreślić', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wpisz hasłowo, co ma wybrzmieć — wystarczy kilka słów o cechach, korzyściach lub przewagach.');
     }
 
     // Duration (if applicable)
