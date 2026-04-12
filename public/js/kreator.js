@@ -1122,6 +1122,11 @@
     try {
       var urlParams = new URLSearchParams(window.location.search);
       var action = urlParams.get('action');
+      var start = urlParams.get('start');
+      if (start === 'creator') {
+        setState({ step: 'service-type' });
+        return;
+      }
       var ctxStr = sessionStorage.getItem('kreatorContext');
       if (ctxStr) {
         var ctx = JSON.parse(ctxStr);
