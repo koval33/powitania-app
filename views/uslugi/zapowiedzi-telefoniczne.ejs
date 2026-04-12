@@ -15,68 +15,6 @@
   </div>
 </section>
 
-<!-- Features -->
-<section class="py-16">
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="grid md:grid-cols-2 gap-12">
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Rodzaje nagrań IVR</h2>
-        <div class="space-y-4">
-          <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900">Powitanie główne</h3>
-              <p class="text-sm text-gray-500">Profesjonalne powitanie firmy — pierwsze wrażenie, które buduje zaufanie Klientów.</p>
-            </div>
-          </div>
-          <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900">Menu IVR</h3>
-              <p class="text-sm text-gray-500">Wielopoziomowe menu głosowe kierujące Klientów do odpowiednich działów.</p>
-            </div>
-          </div>
-          <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900">Wiadomości po godzinach</h3>
-              <p class="text-sm text-gray-500">Informacje o godzinach pracy, zaproszenie do pozostawienia wiadomości.</p>
-            </div>
-          </div>
-          <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <div>
-              <h3 class="font-semibold text-gray-900">Nagrania wielojęzyczne</h3>
-              <p class="text-sm text-gray-500">Zapowiedzi IVR w wielu językach dla międzynarodowych korporacji.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Dlaczego warto?</h2>
-        <div class="space-y-4 text-gray-500 text-sm leading-relaxed">
-          <p>Profesjonalne zapowiedzi telefoniczne budują wizerunek firmy i sprawiają, że Klienci czują się obsłużeni od pierwszej sekundy połączenia.</p>
-          <p>Zapowiedzi IVR to też doskonałe narzędzie marketingu bezpośredniego — promuj nowe produkty i usługi podczas oczekiwania na połączenie.</p>
-          <p>Oferujemy gwarancję modyfikacji — jeśli tekst wymaga drobnych zmian, poprawimy nagranie bez dodatkowych kosztów (do ustalonego limitu słów).</p>
-          <p>Podkład muzyczny (melodia w tle) dostępny jako dodatek do nagrania.</p>
-        </div>
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="#zamow" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Zamów zapowiedź</a>
-          <a href="/bank-glosow/" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center transition-colors">Wybierz lektora</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Próbki audio IVR -->
 <%
   var ivrSamples = [
@@ -144,8 +82,69 @@
       <% }); %>
     </div>
     <p class="text-center mt-6">
-      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium">Zobacz wszystkich lektorów &rarr;</a>
+      <a href="/bank-glosow/?filter=ivr" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Wybierz lektora &rarr;</a>
     </p>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Rodzaje nagrań IVR</h2>
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Powitanie główne</h3>
+              <p class="text-sm text-gray-500">Profesjonalne powitanie firmy — pierwsze wrażenie, które buduje zaufanie Klientów.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Menu IVR</h3>
+              <p class="text-sm text-gray-500">Wielopoziomowe menu głosowe kierujące Klientów do odpowiednich działów.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Wiadomości po godzinach</h3>
+              <p class="text-sm text-gray-500">Informacje o godzinach pracy, zaproszenie do pozostawienia wiadomości.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Nagrania wielojęzyczne</h3>
+              <p class="text-sm text-gray-500">Zapowiedzi IVR w wielu językach dla międzynarodowych korporacji.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Dlaczego warto?</h2>
+        <div class="space-y-4 text-gray-500 text-sm leading-relaxed">
+          <p>Profesjonalne zapowiedzi telefoniczne budują wizerunek firmy i sprawiają, że Klienci czują się obsłużeni od pierwszej sekundy połączenia.</p>
+          <p>Zapowiedzi IVR to też doskonałe narzędzie marketingu bezpośredniego — promuj nowe produkty i usługi podczas oczekiwania na połączenie.</p>
+          <p>Oferujemy gwarancję modyfikacji — jeśli tekst wymaga drobnych zmian, poprawimy nagranie bez dodatkowych kosztów (do ustalonego limitu słów).</p>
+          <p>Podkład muzyczny (melodia w tle) dostępny jako dodatek do nagrania.</p>
+        </div>
+        <div class="mt-6">
+          <a href="/bank-glosow/?filter=ivr" class="inline-block bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Wybierz lektora</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -427,7 +426,7 @@ document.getElementById('ivr-inquiry-form').addEventListener('submit', function(
     <h2 class="text-3xl font-bold text-gray-900 mb-4">Potrzebujesz zapowiedzi telefonicznej?</h2>
     <p class="text-gray-500 mb-8">Opisz swój projekt — przygotujemy wycenę i nagranie w 2 dni robocze.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#zamow" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zamów zapowiedź</a>
+      <a href="/bank-glosow/?filter=ivr" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Wybierz lektora</a>
       <a href="tel:+48605491069" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors">+48 605 491 069</a>
     </div>
   </div>

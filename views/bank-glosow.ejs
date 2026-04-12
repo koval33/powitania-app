@@ -592,6 +592,7 @@
 
   // --- Filters ---
   var activeGender = 'all';
+  var ivrMode = false;
 
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -619,7 +620,7 @@
 
     filteredCards = allCards.filter(function(card) {
       if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
-      if (kreatorMode && card.dataset.hideprice === 'true') return false;
+      if ((kreatorMode || ivrMode) && card.dataset.hideprice === 'true') return false;
       if (kreatorMode && kreatorLangs.length > 0) {
         var cardLangs = card.dataset.languages;
         var hasAny = kreatorLangs.some(function(kl) { return cardLangs.indexOf(kl) !== -1; });
@@ -680,6 +681,7 @@
     activeGender = 'all';
     kreatorMode = false;
     kreatorLangs = [];
+    ivrMode = false;
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
     var genderSel = document.getElementById('filter-gender-select');
@@ -737,6 +739,9 @@
     var lang = params.get('lang');
     if (lang) {
       document.getElementById('filter-lang').value = lang;
+    }
+    if (params.get('filter') === 'ivr') {
+      ivrMode = true;
     }
   })();
 
