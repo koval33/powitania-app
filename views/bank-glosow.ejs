@@ -647,6 +647,12 @@
     shownCount = PAGE_SIZE;
     updateVisibility();
     updateFilterHighlights();
+    // Jeśli siatka lektorów zjechała powyżej viewportu (strona skróciła się po filtrze),
+    // przewiń do jej początku żeby nie lądować na stopce/treściach SEO
+    var grid = document.getElementById('voices-grid');
+    if (grid && grid.getBoundingClientRect().top < 0) {
+      window.scrollTo(0, window.scrollY + grid.getBoundingClientRect().top - 80);
+    }
   }
 
   function updateFilterHighlights() {
