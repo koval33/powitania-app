@@ -1126,6 +1126,20 @@
       if (start === 'creator') {
         setState({ step: 'service-type' });
         return;
+      } else if (start) {
+        var startCat = null;
+        for (var si = 0; si < CATEGORIES.length; si++) {
+          if (CATEGORIES[si].id === start) { startCat = CATEGORIES[si]; break; }
+        }
+        if (startCat) {
+          if (startCat.services.length === 1) {
+            state.form.serviceType = startCat.services[0];
+            setState({ step: 'details', _category: start });
+          } else {
+            setState({ step: 'sub-service', _category: start });
+          }
+          return;
+        }
       }
       var ctxStr = sessionStorage.getItem('kreatorContext');
       if (ctxStr) {
