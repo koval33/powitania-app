@@ -1,5 +1,16 @@
 <%- include('partials/head') %>
 
+<style>
+.order-fields-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .order-fields-3col { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+
 <section class="py-10 md:py-16 bg-stone-100/80">
   <div class="max-w-5xl mx-auto px-4">
 
@@ -185,7 +196,7 @@
                       <input type="text" id="wiz-nip" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
                     </div>
                   </div>
-                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+                  <div class="order-fields-3col">
                     <div>
                       <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
                       <input type="text" id="wiz-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
@@ -299,7 +310,7 @@
                       <input type="text" id="mod-nip" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="123-456-78-90">
                     </div>
                   </div>
-                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+                  <div class="order-fields-3col">
                     <div>
                       <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko *</label>
                       <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
