@@ -453,7 +453,18 @@
     var needsDuration = svc && svc.needsDuration;
     var needsLanguages = svc && svc.needsLanguages;
 
-    var html = '<h3 class="text-xl font-bold mb-6">Szczegóły projektu</h3>';
+    var detailsHeadings = {
+      'ivr':       'Kreator zapowiedzi telefonicznych',
+      'radio':     'Kreator spotu radiowego',
+      'tv':        'Kreator spotu telewizyjnego',
+      'social':    'Kreator treści na social media',
+      'elearning': 'Kreator treści e-learningowych',
+      'audiobook': 'Kreator tekstu do audiobooka',
+      'film':      'Kreator narracji filmowej',
+      'podcast':   'Kreator intro/outro podcastu'
+    };
+    var detailsHeading = (state.form.serviceType && detailsHeadings[state.form.serviceType]) || 'Szczegóły projektu';
+    var html = '<h3 class="text-xl font-bold mb-6">' + detailsHeading + '</h3>';
     html += renderError();
     html += '<div class="space-y-5">';
 
