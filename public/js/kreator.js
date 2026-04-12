@@ -472,7 +472,7 @@
     html += renderSelect('industry', 'Branża', INDUSTRIES);
     html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
     if (!isIVR) {
-      html += renderTextarea('offering', 'Oferta / produkt', 'np. Transport międzynarodowy door-to-door');
+      html += renderTextarea('offering', 'Oferta / produkt', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wystarczy kilka haseł lub korzyści do zaakcentowania — gotowy tekst wygenerujemy za Ciebie.');
     }
 
     // Duration (if applicable)
@@ -875,8 +875,9 @@
       '<input type="text" data-field="' + field + '" placeholder="' + (placeholder || '') + '" value="' + esc(state.form[field] || '') + '" class="kreator-input"></div>';
   }
 
-  function renderTextarea(field, label, placeholder) {
+  function renderTextarea(field, label, placeholder, hint) {
     return '<div><label class="block font-semibold mb-2 text-sm">' + label + '</label>' +
+      (hint ? '<p class="text-xs text-gray-500 mb-2 -mt-1">' + hint + '</p>' : '') +
       '<textarea data-field="' + field + '" placeholder="' + (placeholder || '') + '" rows="4" class="kreator-textarea">' + esc(state.form[field] || '') + '</textarea></div>';
   }
 
