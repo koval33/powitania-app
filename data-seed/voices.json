@@ -13263,15 +13263,15 @@
     ],
     "description": "Aktorka teatralna (PWST 1994), prowadzi audycję w Radiu Wnet. Nagrywa audiobooki dla Audioteki i kanału Ku Bogu oraz legendy, poezje i książki dla Studia LudHauza.",
     "photo": "/img/lektorzy/magda.webp",
-    "audio": "/audio/samples/Magda_1.mp3",
+    "audio": "/audio/lektorzy/Magda_1.mp3",
     "samples": [
       {
         "name": "Nagranie lektorskie",
-        "url": "/audio/samples/Magda_1.mp3"
+        "url": "/audio/lektorzy/Magda_1.mp3"
       },
       {
         "name": "Nagranie lektorskie",
-        "url": "/audio/samples/Magda_2.mp3"
+        "url": "/audio/lektorzy/Magda_2.mp3"
       }
     ],
     "turnaround": "48h",
