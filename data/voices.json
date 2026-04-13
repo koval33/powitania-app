@@ -13266,11 +13266,11 @@
     "audio": "/audio/lektorzy/Magda_1.mp3",
     "samples": [
       {
-        "name": "Nagranie lektorskie",
+        "name": "Słuchowisko",
         "url": "/audio/lektorzy/Magda_1.mp3"
       },
       {
-        "name": "Nagranie lektorskie",
+        "name": "Spot reklamowy",
         "url": "/audio/lektorzy/Magda_2.mp3"
       }
     ],
