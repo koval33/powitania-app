@@ -94,34 +94,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <% } %>
 
 <!-- Cookie Consent Banner (Google Consent Mode v2) -->
-<div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-[9999] hidden" role="dialog" aria-label="Cookie consent" aria-modal="false">
-  <div class="relative bg-white border-t border-gray-200 shadow-2xl shadow-gray-300/50">
-    <div class="max-w-5xl mx-auto px-4 py-5">
+<!-- Cookie Consent Modal (Google Consent Mode v2) -->
+<div id="consent-banner" class="hidden" role="dialog" aria-label="Cookie consent" aria-modal="true">
+  <!-- Overlay -->
+  <div class="fixed inset-0 bg-black/50 z-[998]"></div>
+  <!-- Modal -->
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[999] w-full max-w-lg px-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-6">
 
       <!-- Main view -->
       <div id="consent-main">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex-1">
-            <p class="text-sm text-gray-900 font-semibold mb-1">This website uses cookies</p>
-            <p class="text-sm text-gray-500 leading-relaxed">
-              We use cookies and similar technologies for analytics and advertising purposes.
-              You can accept all, reject optional, or
-              <button onclick="showConsentSettings()" class="text-accent hover:underline font-medium">customize settings</button>.
-              Details in <a href="/en/" class="text-accent hover:underline">privacy policy</a>.
-            </p>
-          </div>
-          <div class="flex gap-3 flex-shrink-0">
-            <button onclick="consentAcceptAll()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Accept All</button>
-            <button onclick="consentRejectOptional()" class="border border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Essential Only</button>
-          </div>
+        <div class="mb-1">
+          <svg class="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+          <p class="text-base text-gray-900 font-bold mb-2">This website uses cookies</p>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            We use cookies and similar technologies for analytics and advertising purposes.
+            Details in our <a href="/en/privacy-policy/" class="text-accent hover:underline">privacy policy</a>.
+          </p>
+        </div>
+        <div class="mt-5 space-y-3">
+          <button onclick="consentAcceptAll()" class="w-full bg-accent hover:bg-accent-light text-white py-3 rounded-xl text-sm font-bold transition-colors">Accept All</button>
+          <button onclick="consentRejectOptional()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl text-sm font-medium transition-colors">Essential Only</button>
+          <button onclick="showConsentSettings()" class="w-full text-gray-400 hover:text-gray-600 text-xs py-1 transition-colors">Cookie Settings</button>
         </div>
       </div>
 
       <!-- Settings panel (hidden by default) -->
       <div id="consent-settings" class="hidden">
-        <p class="text-sm text-gray-900 font-semibold mb-4">Cookie Settings</p>
+        <p class="text-base text-gray-900 font-bold mb-4">Cookie Settings</p>
         <div class="space-y-3 mb-5">
-          <!-- Essential (always active) -->
           <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3">
             <div>
               <p class="text-sm text-gray-900 font-medium">Essential</p>
@@ -129,7 +130,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <span class="text-xs text-gray-500 font-medium">Always active</span>
           </div>
-          <!-- Analytics -->
           <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
             <div>
               <p class="text-sm text-gray-900 font-medium">Analytics</p>
@@ -137,7 +137,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <input type="checkbox" id="consent-analytics" class="w-5 h-5 rounded accent-orange-500 cursor-pointer">
           </label>
-          <!-- Advertising -->
           <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
             <div>
               <p class="text-sm text-gray-900 font-medium">Advertising</p>
@@ -147,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </label>
         </div>
         <div class="flex gap-3">
-          <button onclick="consentSaveSettings()" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Save Settings</button>
+          <button onclick="consentSaveSettings()" class="flex-1 bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Save Settings</button>
           <button onclick="hideConsentSettings()" class="border border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Back</button>
         </div>
       </div>
@@ -268,40 +267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </script>
 
-<!-- GTM deferred loader — loads after page load + 1.5s OR first user interaction -->
-<script>
-(function(){
-  var loaded = false;
-  var gtmId = window.__GTM_ID;
-  if (!gtmId) return;
-
-  function loadGTM() {
-    if (loaded) return;
-    loaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var j = document.createElement('script');
-    j.async = true;
-    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
-    document.head.appendChild(j);
-    // Load ga-events.js after GTM
-    var g = document.createElement('script');
-    g.src = '/js/ga-events.js';
-    document.head.appendChild(g);
-  }
-
-  // Strategy: load after page is ready + idle, or on first interaction
-  if (document.readyState === 'complete') {
-    setTimeout(loadGTM, 1500);
-  } else {
-    window.addEventListener('load', function() { setTimeout(loadGTM, 1500); });
-  }
-
-  // First user interaction triggers immediate load
-  ['scroll','click','touchstart','keydown','mousemove'].forEach(function(evt) {
-    document.addEventListener(evt, loadGTM, { once: true, passive: true });
-  });
-})();
-</script>
+<script src="/js/ga-events.js" defer></script>
 </body>
 </html>
