@@ -361,7 +361,7 @@ app.get('/bank-glosow/', (req, res) => {
 app.get('/bank-glosow/meskie/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Głosy męskie — 143 lektorów do nagrań | powitania.pl',
-    description: 'Bank głosów męskich. 143 profesjonalnych lektorów — dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001.',
+    description: 'Bank głosów męskich. 143 profesjonalnych lektorów — dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'm'),
     genderSegment: 'm',
     pageH1: 'Głosy męskie do nagrań'
@@ -370,7 +370,7 @@ app.get('/bank-glosow/meskie/', (req, res) => {
 app.get('/bank-glosow/zenskie/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Głosy żeńskie — 91 lektorek do nagrań | powitania.pl',
-    description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek — ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001.',
+    description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek — ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'f'),
     genderSegment: 'f',
     pageH1: 'Głosy żeńskie do nagrań'
