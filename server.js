@@ -195,6 +195,19 @@ app.use((req, res, next) => {
 
 // 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
+
+// 1.1 Zombie URLs — stare WordPress attachment paths indeksowane przez Google
+app.get('/lektorzy/kuba-bielak.webp',        (req, res) => res.redirect(301, '/lektorzy/kuba-bielak/'));
+app.get('/lektorzy/lukasz-nowicki.webp',      (req, res) => res.redirect(301, '/lektorzy/lukasz-nowicki/'));
+app.get('/lektorzy/przemyslaw-skowron.webp',  (req, res) => res.redirect(301, '/lektorzy/przemyslaw-skowron/'));
+app.get('/lektorzy/maciej-jablonski.webp',    (req, res) => res.redirect(301, '/lektorzy/maciej-jablonski/'));
+app.get('/lektorzy/jacek-brzostynski.webp',   (req, res) => res.redirect(301, '/lektorzy/jacek-brzostynski/'));
+app.get('/lektorzy/stanislaw-olejniczak.webp',(req, res) => res.redirect(301, '/lektorzy/stanislaw-olejniczak/'));
+// Usunięci lektorzy — 410 Gone (Google usuwa z indeksu)
+app.get('/lektorzy/slawek-2/', (req, res) => res.status(410).end());
+app.get('/lektorzy/zosia/',    (req, res) => res.status(410).end());
+app.get('/lektorzy/barbara/',  (req, res) => res.status(410).end());
+app.get('/lektorzy/mikolaj/',  (req, res) => res.status(410).end());
 app.get('/faq/', (req, res) => res.redirect(301, '/faq-pl/'));
 app.get('/sesje-zdalne/', (req, res) => res.redirect(301, '/sesje-zdalne-nagrania-lektorskie-online/'));
 app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
