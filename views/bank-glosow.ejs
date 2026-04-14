@@ -4,21 +4,50 @@
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <!-- Tytuł -->
   <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Bank głosów</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
+    <% if (typeof genderSegment === 'undefined') { %>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Ponad 230 profesjonalnych lektorów w&nbsp;30+ językach — doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <% } else { %>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> — doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <% } %>
   </div>
 </section>
+
+<% if (typeof genderSegment !== 'undefined') { %>
+<!-- SEO TEKST — unikalna treść dla stron segmentowych -->
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <% if (genderSegment === 'm') { %>
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8 prose prose-gray max-w-none">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Kiedy wybrać głos męski do nagrania?</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">Głos męski to jeden z najczęściej wybieranych głosów w produkcjach reklamowych, dokumentalnych i&nbsp;korporacyjnych. Niska barwa i&nbsp;naturalna pewność brzmienia budują autorytet i&nbsp;zaufanie — cechy kluczowe w przekazach B2B, finansowych i&nbsp;technologicznych.</p>
+    <p class="text-gray-600 leading-relaxed mb-4">W naszym banku głosów znajdziesz <strong>143 lektorów</strong> o różnych typach głosu: od ciepłego i&nbsp;narracyjnego (ideального do audiobooków i&nbsp;dokumentów) przez dynamiczny i&nbsp;sprzedażowy (spoty radiowe i&nbsp;TV) po spokojny i&nbsp;profesjonalny (zapowiedzi IVR, e-learning). Każdy lektor to doświadczony aktor głosowy lub prezenter z&nbsp;udokumentowanym dorobkiem.</p>
+    <p class="text-gray-600 leading-relaxed mb-4">Głosy męskie sprawdzają się szczególnie dobrze w: <strong>reklamach samochodowych</strong>, narracjach dokumentalnych, zapowiedziach telefonicznych IVR, lektoratach filmów korporacyjnych oraz materiałach e-learningowych wymagających tonu eksperta.</p>
+    <p class="text-gray-600 leading-relaxed">Skorzystaj z&nbsp;filtrów poniżej, aby zawęzić wybór według wieku, języka lub grupy cenowej. Każdy profil zawiera próbki audio — możesz odsłuchać przed podjęciem decyzji. Realizujemy nagrania w&nbsp;ciągu 24–48h. <a href="/kontakt/" class="text-accent hover:underline">Zapytaj o wycenę</a>.</p>
+  </div>
+  <% } else { %>
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8 prose prose-gray max-w-none">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Kiedy wybrać głos żeński do nagrania?</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">Głos żeński jest postrzegany jako cieplejszy, bardziej przystępny i&nbsp;empatyczny — to dlatego dominuje w&nbsp;komunikacji z&nbsp;klientem, reklamach skierowanych do kobiet oraz w&nbsp;e-learningu nastawionym na zaangażowanie słuchacza.</p>
+    <p class="text-gray-600 leading-relaxed mb-4">W naszym banku głosów znajdziesz <strong>91 lektorek</strong> o różnych charakterach brzmienia: od eleganckiego i&nbsp;prestiżowego (kosmetyki, moda, finanse) przez energiczny i&nbsp;sprzedażowy (promocje, eventy) po spokojny i&nbsp;kompetentny (zapowiedzi IVR, szkolenia e-learningowe). Wiele z&nbsp;nich to aktorki teatralne i&nbsp;filmowe z&nbsp;wieloletnim doświadczeniem w&nbsp;studiu.</p>
+    <p class="text-gray-600 leading-relaxed mb-4">Głosy żeńskie sprawdzają się szczególnie dobrze w: <strong>reklamach FMCG i&nbsp;kosmetycznych</strong>, obsłudze telefonicznej IVR, lektoratach materiałów medycznych i&nbsp;farmaceutycznych, audiobookach oraz kampaniach digitalowych nastawionych na storytelling.</p>
+    <p class="text-gray-600 leading-relaxed">Skorzystaj z&nbsp;filtrów poniżej, aby zawęzić wybór według wieku, języka lub grupy cenowej. Każdy profil zawiera próbki audio — możesz odsłuchać przed podjęciem decyzji. Realizujemy nagrania w&nbsp;ciągu 24–48h. <a href="/kontakt/" class="text-accent hover:underline">Zapytaj o wycenę</a>.</p>
+  </div>
+  <% } %>
+</section>
+<% } %>
 
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
 <div id="filters-bar" class="py-3 pb-4 sticky top-0 z-40 bg-white shadow-md md:hidden">
   <div class="max-w-7xl mx-auto px-4">
     <style>.filters-ready{opacity:1!important}</style>
     <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
+      <% if (typeof genderSegment === 'undefined') { %>
       <div class="flex rounded-lg overflow-hidden border border-gray-200">
         <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
         <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Mężczyźni</button>
         <button data-filter="gender" data-value="f" class="filter-btn border-l border-gray-200">Kobiety</button>
       </div>
+      <% } %>
       <select id="filter-lang-mobile" class="bank-filter-select" onchange="document.getElementById('filter-lang').value=this.value;applyFiltersGlobal()">
         <option value="all">Język</option>
         <option value="polski">Polski</option>
@@ -118,7 +147,8 @@
       </select>
     </div>
 
-    <!-- Płeć -->
+    <!-- Płeć (ukryte na stronach segmentowych /meskie/ /zenskie/) -->
+    <% if (typeof genderSegment === 'undefined') { %>
     <div>
       <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Płeć</div>
       <select id="filter-gender-select" class="bank-filter-select w-full" onchange="setGenderFilter(this.value)">
@@ -133,6 +163,7 @@
         <button data-filter="gender" data-value="f" class="filter-btn"></button>
       </div>
     </div>
+    <% } %>
 
     <!-- Język -->
     <div>

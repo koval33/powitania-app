@@ -328,6 +328,28 @@ app.get('/bank-glosow/', (req, res) => {
   });
 });
 
+// 1.2 Gender-specific URLs
+app.get('/bank-glosow/meskie/', (req, res) => {
+  res.render('bank-glosow', {
+    title: 'Głosy męskie — 143 lektorów do nagrań | powitania.pl',
+    description: 'Bank głosów męskich. 143 profesjonalnych lektorów — dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001.',
+    voices: loadVoices().filter(v => v.gender === 'm'),
+    genderSegment: 'm',
+    pageH1: 'Głosy męskie do nagrań'
+  });
+});
+app.get('/bank-glosow/zenskie/', (req, res) => {
+  res.render('bank-glosow', {
+    title: 'Głosy żeńskie — 91 lektorek do nagrań | powitania.pl',
+    description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek — ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001.',
+    voices: loadVoices().filter(v => v.gender === 'f'),
+    genderSegment: 'f',
+    pageH1: 'Głosy żeńskie do nagrań'
+  });
+});
+app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/meskie/'));
+app.get('/bank/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-glosow/zenskie/'));
+
 app.get('/lektorzy/:slug/', (req, res) => {
   const voices = loadVoices();
   const lektor = voices.find(v => v.id === req.params.slug);
@@ -1014,6 +1036,8 @@ app.get('/sitemap.xml', (req, res) => {
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/bank-glosow/', priority: '0.9', changefreq: 'weekly' },
+    { url: '/bank-glosow/meskie/', priority: '0.8', changefreq: 'weekly' },
+    { url: '/bank-glosow/zenskie/', priority: '0.8', changefreq: 'weekly' },
     { url: '/nagrania-lektorskie/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/glos-do-reklamy/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', priority: '0.8', changefreq: 'monthly' },
