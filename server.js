@@ -217,6 +217,13 @@ app.get('/lektorzy/natalia_2/',        (req, res) => res.redirect(301, '/lektorz
 app.get('/lektorzy/marek-2/',          (req, res) => res.redirect(301, '/lektorzy/marek-pl-en/'));
 app.get('/lektorzy/lukasz-2/',         (req, res) => res.redirect(301, '/lektorzy/lukasz-reklamy/'));
 app.get('/lektorzy/mateusz-2/',        (req, res) => res.redirect(301, '/lektorzy/mateusz-mlody/'));
+app.get('/lektorzy/maciej-2/',         (req, res) => res.redirect(301, '/lektorzy/maciej-spiker/'));
+app.get('/lektorzy/michal-3/',         (req, res) => res.redirect(301, '/lektorzy/michal-dj/'));
+app.get('/lektorzy/katarzyna-2/',      (req, res) => res.redirect(301, '/lektorzy/katarzyna-tv/'));
+app.get('/lektorzy/krzysztof-3/',      (req, res) => res.redirect(301, '/lektorzy/krzysztof-ekspresowy/'));
+app.get('/lektorzy/mateusz-3/',        (req, res) => res.redirect(301, '/lektorzy/mateusz-wszechstronny/'));
+app.get('/lektorzy/piotr-2/',          (req, res) => res.redirect(301, '/lektorzy/piotr-niski/'));
+app.get('/lektorzy/agnieszka-2/',      (req, res) => res.redirect(301, '/lektorzy/agnieszka-dubbing/'));
 
 // 1.1 Zombie URLs — stare WordPress attachment paths indeksowane przez Google
 app.get('/lektorzy/kuba-bielak.webp',        (req, res) => res.redirect(301, '/lektorzy/kuba-bielak/'));

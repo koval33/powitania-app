@@ -4254,7 +4254,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "Advertising voice artist. A child's voice with enormous potential and many years of experience. You can hear him on radio, TV, internet and in toys! And also in theatre! Gaining experience for 8 years. That is almost half his life...."
+    "descriptionEn": "Advertising voice artist. A child's voice with enormous potential and many years of experience. You can hear him on radio, TV, internet and in toys! And also in theatre! Gaining experience for 8 years. That is almost half his life....",
+    "seoTitle": "Franek — dziecięcy głos lektorski, radio i TV | powitania.pl",
+    "seoDescription": "Franek — do 20 lat, dziecięcy głos z wieloletnim doświadczeniem, słyszany w radiu i TV. Reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "pola",
@@ -4311,11 +4313,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 45
     },
-    "descriptionEn": "Voice artist with a child's voice and considerable recording experience."
+    "descriptionEn": "Voice artist with a child's voice and considerable recording experience.",
+    "seoTitle": "Pola — dziecięcy głos lektorski, doświadczona | powitania.pl",
+    "seoDescription": "Pola — do 20 lat, dziecięcy głos z dużym doświadczeniem w nagraniach. Reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "maciej-2",
-    "name": "Maciej 2",
+    "id": "maciej-spiker",
+    "name": "Maciej",
     "gender": "m",
     "age": "20-30 lat",
     "languages": [
@@ -4351,7 +4355,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/maciej-2/",
+    "profileUrl": "/lektorzy/maciej-spiker/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4373,7 +4377,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist, sports announcer with PZPN credentials, and a voice heard at the biggest events in Poland. Has been gaining experience for over 10 years at major cultural and sports events (Poland National Team matches, concerts including Madonna, Coldplay, Roger Waters, Paul McCartney, Rihanna, Orange Warsaw Festival; ongoing collaboration with Warsaw volleyball club Projekt Warszawa)."
+    "descriptionEn": "Voice artist, sports announcer with PZPN credentials, and a voice heard at the biggest events in Poland. Has been gaining experience for over 10 years at major cultural and sports events (Poland National Team matches, concerts including Madonna, Coldplay, Roger Waters, Paul McCartney, Rihanna, Orange Warsaw Festival; ongoing collaboration with Warsaw volleyball club Projekt Warszawa).",
+    "seoTitle": "Maciej — spiker sportowy PZPN, lektor PL i EN | powitania.pl",
+    "seoDescription": "Maciej — 20–30 lat, spiker zawodów sportowych z licencją PZPN, lektor PL i EN. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "malgorzata",
@@ -4431,11 +4437,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 100
     },
-    "descriptionEn": "Voice known from commercials and radio broadcasts for 29 years. 10 years at RMF FM, and for several years at Zet Gold and Meloradio."
+    "descriptionEn": "Voice known from commercials and radio broadcasts for 29 years. 10 years at RMF FM, and for several years at Zet Gold and Meloradio.",
+    "seoTitle": "Małgorzata — 29 lat w radiu, RMF FM i Meloradio | powitania.pl",
+    "seoDescription": "Małgorzata — 30–50 lat, 29 lat w radiu, m.in. 10 lat RMF FM, Zet Gold, Meloradio. Reklama, IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "michal-3",
-    "name": "Michał 3",
+    "id": "michal-dj",
+    "name": "Michał",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -4466,7 +4474,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/michal-3/",
+    "profileUrl": "/lektorzy/michal-dj/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4488,11 +4496,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist, DJ and producer. Feels most comfortable with advertising spots and teasers."
+    "descriptionEn": "Voice artist, DJ and producer. Feels most comfortable with advertising spots and teasers.",
+    "seoTitle": "Michał — lektor, DJ i producent, spoty i zajawki | powitania.pl",
+    "seoDescription": "Michał — 30–50 lat, lektor, DJ i producent, specjalność spoty reklamowe i zajawki. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "katarzyna-2",
-    "name": "Katarzyna 2",
+    "id": "katarzyna-tv",
+    "name": "Katarzyna",
     "gender": "f",
     "age": "20-30 lat",
     "languages": [
@@ -4523,7 +4533,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/katarzyna-2/",
+    "profileUrl": "/lektorzy/katarzyna-tv/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4545,11 +4555,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 45
     },
-    "descriptionEn": "TV journalist gifted with a warm voice timbre and impeccable diction. Can sing when needed."
+    "descriptionEn": "TV journalist gifted with a warm voice timbre and impeccable diction. Can sing when needed.",
+    "seoTitle": "Katarzyna — dziennikarka TV, ciepła barwa, dykcja | powitania.pl",
+    "seoDescription": "Katarzyna — 20–30 lat, dziennikarka telewizyjna z ciepłą barwą i nienagannan dykcją. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "krzysztof-3",
-    "name": "Krzysztof 3",
+    "id": "krzysztof-ekspresowy",
+    "name": "Krzysztof",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -4580,7 +4592,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/krzysztof-3/",
+    "profileUrl": "/lektorzy/krzysztof-ekspresowy/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4602,11 +4614,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Experienced voice artist, fast recording delivery."
+    "descriptionEn": "Experienced voice artist, fast recording delivery.",
+    "seoTitle": "Krzysztof — doświadczony lektor, szybka realizacja | powitania.pl",
+    "seoDescription": "Krzysztof — 30–50 lat, doświadczony lektor, szybka realizacja nagrań. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "mateusz-3",
-    "name": "Mateusz 3",
+    "id": "mateusz-wszechstronny",
+    "name": "Mateusz",
     "gender": "m",
     "age": "20-30 lat",
     "languages": [
@@ -4646,7 +4660,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/mateusz-3/",
+    "profileUrl": "/lektorzy/mateusz-wszechstronny/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -4668,7 +4682,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "A versatile, unique voice with an exceptionally wide dynamic range. From intimate whispers, through professionalism, to emotional shouts and vivid characters. In practice — a voice for advertising spots, audiobooks, narrations, as well as acting sketches and children's recordings."
+    "descriptionEn": "A versatile, unique voice with an exceptionally wide dynamic range. From intimate whispers, through professionalism, to emotional shouts and vivid characters. In practice — a voice for advertising spots, audiobooks, narrations, as well as acting sketches and children's recordings.",
+    "seoTitle": "Mateusz — wszechstronny głos, ogromna dynamika | powitania.pl",
+    "seoDescription": "Mateusz — 20–30 lat, wszechstronny głos z ogromną dynamiką: od szeptów po profesjonalizm. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "michal",
@@ -4733,7 +4749,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Very clear voice in mid-range registers."
+    "descriptionEn": "Very clear voice in mid-range registers.",
+    "seoTitle": "Michał — czytelny głos w środkowych rejestrach | powitania.pl",
+    "seoDescription": "Michał — 30–50 lat, bardzo czytelny głos w środkowych rejestrach. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "klaudia",
@@ -4790,7 +4808,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Warm, deep, expressive voice. Experience in spots, sponsorship billboards, stories, audio description and animations. Also sings. Great interpretive abilities (certified actress)."
+    "descriptionEn": "Warm, deep, expressive voice. Experience in spots, sponsorship billboards, stories, audio description and animations. Also sings. Great interpretive abilities (certified actress).",
+    "seoTitle": "Klaudia — ciepły, głęboki i ekspresyjny głos | powitania.pl",
+    "seoDescription": "Klaudia — 20–30 lat, ciepły głęboki ekspresyjny głos. Spoty, opowiadania, narracja, audiodeskrypcja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "jaroslaw",
@@ -4847,7 +4867,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "An experienced voice artist in many recording formats — flexible, warm timbre with theatrical interpretation — advertising, promotion, dubbing, audiobooks."
+    "descriptionEn": "An experienced voice artist in many recording formats — flexible, warm timbre with theatrical interpretation — advertising, promotion, dubbing, audiobooks.",
+    "seoTitle": "Jarosław — lektor z aktorską interpretacją, 50+ lat | powitania.pl",
+    "seoDescription": "Jarosław — 50+ lat, doświadczony aktor i lektor, plastyczny ciepły tembr z interpretacją aktorską. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "filip",
@@ -4909,7 +4931,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Voice artist and radio presenter/DJ; radio experience since early 2010, currently at Radio Freee and Radio Lublin; Master's degree in English philology."
+    "descriptionEn": "Voice artist and radio presenter/DJ; radio experience since early 2010, currently at Radio Freee and Radio Lublin; Master's degree in English philology.",
+    "seoTitle": "Filip — lektor i DJ radiowy od 2010, Radio Lublin | powitania.pl",
+    "seoDescription": "Filip — 20–30 lat, lektor i DJ radiowy od 2010, Radio Freee i Radio Lublin. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "daniel",
@@ -4970,7 +4994,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "One of the most recognizable advertising voices."
+    "descriptionEn": "One of the most recognizable advertising voices.",
+    "seoTitle": "Daniel — rozpoznawalny głos reklamowy, PL i EN | powitania.pl",
+    "seoDescription": "Daniel — 30–50 lat, jeden z bardziej rozpoznawalnych głosów reklamowych. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "shubham",
@@ -5026,7 +5052,9 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
-    }
+    },
+    "seoTitle": "Shubham — native speaker (hindi), lektor | powitania.pl",
+    "seoDescription": "Shubham — 30–50 lat, hindi native speaker. Nagrania po hindi w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "siddhi",
@@ -5082,7 +5110,9 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
-    }
+    },
+    "seoTitle": "Siddhi — native speaker (hindi), lektorka | powitania.pl",
+    "seoDescription": "Siddhi — 20–30 lat, hindi native speaker (kobieta). Nagrania po hindi w 48h. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "marcin",
@@ -5138,7 +5168,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 100
     },
-    "descriptionEn": "Voice artist recording in a distinctive whisper style, with over 20 years of experience in the voiceover industry."
+    "descriptionEn": "Voice artist recording in a distinctive whisper style, with over 20 years of experience in the voiceover industry.",
+    "seoTitle": "Marcin — lektor szeptany, 20 lat doświadczenia | powitania.pl",
+    "seoDescription": "Marcin — 30–50 lat, lektor nagrywający w charakterystycznym szeptanym stylu. 20+ lat w branży. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "uku",
@@ -5194,7 +5226,9 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
-    }
+    },
+    "seoTitle": "Uku — native speaker (estoński), lektor | powitania.pl",
+    "seoDescription": "Uku — 30–50 lat, estoński native speaker. Nagrania po estońsku w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "hasan",
@@ -5250,11 +5284,13 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 150
-    }
+    },
+    "seoTitle": "Hasan — native speaker (turecki), lektor | powitania.pl",
+    "seoDescription": "Hasan — 30–50 lat, turecki native speaker. Nagrania po turecku w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "piotr-2",
-    "name": "Piotr 2",
+    "id": "piotr-niski",
+    "name": "Piotr",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -5289,7 +5325,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/piotr-2/",
+    "profileUrl": "/lektorzy/piotr-niski/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -5311,11 +5347,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Voice artist with a low timbre and solid technique."
+    "descriptionEn": "Voice artist with a low timbre and solid technique.",
+    "seoTitle": "Piotr — lektor, niski głos i dobry warsztat | powitania.pl",
+    "seoDescription": "Piotr — 30–50 lat, niski głos i solidny warsztat lektorski. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "agnieszka-2",
-    "name": "Agnieszka 2",
+    "id": "agnieszka-dubbing",
+    "name": "Agnieszka",
     "gender": "f",
     "age": "30-50 lat",
     "languages": [
@@ -5345,7 +5383,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/agnieszka-2/",
+    "profileUrl": "/lektorzy/agnieszka-dubbing/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -5367,7 +5405,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Actress and voice artist. Records advertising spots, audiobooks, whisper-style voiceovers, and also works in dubbing."
+    "descriptionEn": "Actress and voice artist. Records advertising spots, audiobooks, whisper-style voiceovers, and also works in dubbing.",
+    "seoTitle": "Agnieszka — aktorka, lektorka, szeptanki i dubbing | powitania.pl",
+    "seoDescription": "Agnieszka — 30–50 lat, aktorka i lektorka: spoty, audiobooki, szeptanki, dubbing. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "anka",
