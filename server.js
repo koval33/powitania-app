@@ -367,8 +367,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
     .sort(() => Math.random() - 0.5)
     .slice(0, 5);
   res.render('lektor', {
-    title: lektor.name + ' — Lektor | powitania.pl',
-    description: lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
+    title: lektor.seoTitle || (lektor.name + ' — Lektor | powitania.pl'),
+    description: lektor.seoDescription || lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
