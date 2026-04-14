@@ -480,16 +480,18 @@
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Najczęściej zadawane pytania</h2>
       <div class="space-y-3 max-w-3xl">
 
-        <% if (lektor.turnaround) { %>
+        <% var _faqTurnaround = lektor.turnaround || (lektor.hidePrice ? '4 dni robocze' : null); %>
+        <% if (_faqTurnaround) { %>
         <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
             <span>Jak szybko <%= lektor.name %> zrealizuje nagranie?</span>
             <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
           </summary>
-          <div class="px-6 pb-5 text-gray-600 leading-relaxed">Standardowy czas realizacji to <strong><%= lektor.turnaround %></strong>. Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia.</div>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed">Standardowy czas realizacji to <strong><%= _faqTurnaround %></strong>. Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia.</div>
         </details>
         <% } %>
 
+        <% if (!lektor.hidePrice) { %>
         <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
             <span>Jak zamówić nagranie lektorskie?</span>
@@ -505,6 +507,7 @@
           </summary>
           <div class="px-6 pb-5 text-gray-600 leading-relaxed">Na życzenie Klienta przesyłamy bezpłatną dedykowaną próbkę nagrania. Na profilu dostępne są też gotowe próbki audio do odsłuchania.</div>
         </details>
+        <% } %>
 
         <% if (lektor.languages && lektor.languages.length > 0) { %>
         <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
@@ -2205,11 +2208,14 @@ var _serviceSchemaLektor = {
   "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/"
 };
 var _faqItems = [];
-if (lektor.turnaround) {
-  _faqItems.push({ "@type": "Question", "name": "Jak szybko " + lektor.name + " zrealizuje nagranie?", "acceptedAnswer": { "@type": "Answer", "text": "Standardowy czas realizacji to " + lektor.turnaround + ". Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia." } });
+var _faqTurnaroundSchema = lektor.turnaround || (lektor.hidePrice ? '4 dni robocze' : null);
+if (_faqTurnaroundSchema) {
+  _faqItems.push({ "@type": "Question", "name": "Jak szybko " + lektor.name + " zrealizuje nagranie?", "acceptedAnswer": { "@type": "Answer", "text": "Standardowy czas realizacji to " + _faqTurnaroundSchema + ". Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia." } });
 }
-_faqItems.push({ "@type": "Question", "name": "Jak zamówić nagranie lektorskie?", "acceptedAnswer": { "@type": "Answer", "text": "Możesz w prosty sposób dokonać wyceny i zamówić nagranie w powyższym formularzu. Jeśli masz jakieś wątpliwości, zadzwoń do nas: 605 491 069 lub napisz na biuro@powitania.pl." } });
-_faqItems.push({ "@type": "Question", "name": "Czy dostępna jest bezpłatna próbka nagrania?", "acceptedAnswer": { "@type": "Answer", "text": "Na życzenie Klienta przesyłamy bezpłatną dedykowaną próbkę nagrania. Na profilu dostępne są też gotowe próbki audio do odsłuchania." } });
+if (!lektor.hidePrice) {
+  _faqItems.push({ "@type": "Question", "name": "Jak zamówić nagranie lektorskie?", "acceptedAnswer": { "@type": "Answer", "text": "Możesz w prosty sposób dokonać wyceny i zamówić nagranie w powyższym formularzu. Jeśli masz jakieś wątpliwości, zadzwoń do nas: 605 491 069 lub napisz na biuro@powitania.pl." } });
+  _faqItems.push({ "@type": "Question", "name": "Czy dostępna jest bezpłatna próbka nagrania?", "acceptedAnswer": { "@type": "Answer", "text": "Na życzenie Klienta przesyłamy bezpłatną dedykowaną próbkę nagrania. Na profilu dostępne są też gotowe próbki audio do odsłuchania." } });
+}
 if (lektor.languages && lektor.languages.length > 0) {
   _faqItems.push({ "@type": "Question", "name": "W jakich językach nagrywa " + lektor.name + "?", "acceptedAnswer": { "@type": "Answer", "text": lektor.name + " nagrywa w języku " + lektor.languages.join(', ') + ". Język natywny: " + (lektor.native ? lektor.nativeLanguage : 'polski') + "." } });
 }
