@@ -618,7 +618,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 120
     },
-    "descriptionEn": "Radio and TV journalist, voice artist, host, speech trainer and voice and speech specialist."
+    "descriptionEn": "Radio and TV journalist, voice artist, host, speech trainer and voice and speech specialist.",
+    "seoTitle": "Beata Tadla — dziennikarka telewizyjna, lektorka | powitania.pl",
+    "seoDescription": "Beata Tadla — 30–50 lat, znana dziennikarka radiowa i TV, trenerka mówców. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "anna-samusionek",
@@ -676,10 +678,12 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 140
     },
-    "descriptionEn": "Actress gifted with a low, velvety voice timbre and great interpretive skills."
+    "descriptionEn": "Actress gifted with a low, velvety voice timbre and great interpretive skills.",
+    "seoTitle": "Anna Samusionek — aktorka, niski aksamitny głos | powitania.pl",
+    "seoDescription": "Anna Samusionek — 30–50 lat, aktorka o niskiej, aksamitnej barwie głosu. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "dorota-3",
+    "id": "dorota-radio",
     "name": "Dorota 3",
     "gender": "f",
     "age": "30-50 lat",
@@ -712,7 +716,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/dorota-3/",
+    "profileUrl": "/lektorzy/dorota-radio/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -734,7 +738,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Actress with over 30 years of experience, including collaboration with Radio Polonia in Montreal and the British Isles."
+    "descriptionEn": "Actress with over 30 years of experience, including collaboration with Radio Polonia in Montreal and the British Isles.",
+    "seoTitle": "Dorota — aktorka, lektorka radiowa | powitania.pl",
+    "seoDescription": "Dorota — 30–50 lat, aktorka z 30+ latami doświadczenia, lektorka radiowa. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "jacek",
@@ -795,7 +801,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "Voice artist with rich experience in radio, production and producing. A voice you know from commercials."
+    "descriptionEn": "Voice artist with rich experience in radio, production and producing. A voice you know from commercials.",
+    "seoTitle": "Jacek — lektor radiowy, głos z reklam TV | powitania.pl",
+    "seoDescription": "Jacek — 30–50 lat, bogate doświadczenie radiowe i producenckie. Reklama, IVR, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "zuzanna",
@@ -853,7 +861,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "Voice artist with a warm voice that sounds excellent in mid-range registers. Records professional English voiceovers with both American and British accents."
+    "descriptionEn": "Voice artist with a warm voice that sounds excellent in mid-range registers. Records professional English voiceovers with both American and British accents.",
+    "seoTitle": "Zuzanna — lektorka o ciepłym, melodyjnym głosie | powitania.pl",
+    "seoDescription": "Zuzanna — 30–50 lat, ciepły głos o doskonałym brzmieniu w średnich rejestrach. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "katarzyna-skolimowska",
@@ -914,7 +924,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Actress who graduated from Warsaw PWST. Frequently lends her voice to radio shows, dubbing and commercials."
+    "descriptionEn": "Actress who graduated from Warsaw PWST. Frequently lends her voice to radio shows, dubbing and commercials.",
+    "seoTitle": "Katarzyna Skolimowska — aktorka PWST, lektorka | powitania.pl",
+    "seoDescription": "Katarzyna Skolimowska — 50+ lat, aktorka PWST Warszawa, dubbing i reklamy. IVR, narracja, audiobook. Próbka + wycena w 76h. powitania.pl od 2001."
   },
   {
     "id": "carla",
@@ -975,10 +987,12 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 150
     },
-    "descriptionEn": "Carla is an award-winning British female voiceover artist dedicated to helping brands of all sizes connect meaningfully with their audiences."
+    "descriptionEn": "Carla is an award-winning British female voiceover artist dedicated to helping brands of all sizes connect meaningfully with their audiences.",
+    "seoTitle": "Carla — native speaker (angielski), nagradzana lektorka | powitania.pl",
+    "seoDescription": "Carla — native speaker (British English), nagradzana artystka głosowa. Reklama, IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "michal-5",
+    "id": "michal-wszechstronny",
     "name": "Michał 5",
     "gender": "m",
     "age": "30-50 lat",
@@ -1010,7 +1024,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/michal-5/",
+    "profileUrl": "/lektorzy/michal-wszechstronny/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1032,7 +1046,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist with a full, communicative voice timbre suitable for all types of productions."
+    "descriptionEn": "Voice artist with a full, communicative voice timbre suitable for all types of productions.",
+    "seoTitle": "Michał — wszechstronny lektor, pełna barwa głosu | powitania.pl",
+    "seoDescription": "Michał — 30–50 lat, pełna komunikatywna barwa głosu. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "antonis",
@@ -1093,7 +1109,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Greek voice artist with a low, warm voice."
+    "descriptionEn": "Greek voice artist with a low, warm voice.",
+    "seoTitle": "Antonis — native speaker (grecki), lektor | powitania.pl",
+    "seoDescription": "Antonis — 30–50 lat, native speaker (grecki), niski ciepły głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "magda",
@@ -1149,7 +1167,9 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
-    }
+    },
+    "seoTitle": "Magda — aktorka teatralna, lektorka audiobooków | powitania.pl",
+    "seoDescription": "Magda — 50+ lat, aktorka PWST, prowadzi audycję w Radiu Wnet. Audiobooki, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "pawel-szwajgier",

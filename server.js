@@ -197,6 +197,8 @@ app.use((req, res, next) => {
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
 
 // Slug cleanup — 301 ze starych slugów z cyframi na czyste
+app.get('/lektorzy/dorota-3/',         (req, res) => res.redirect(301, '/lektorzy/dorota-radio/'));
+app.get('/lektorzy/michal-5/',         (req, res) => res.redirect(301, '/lektorzy/michal-wszechstronny/'));
 app.get('/lektorzy/patryk-2-2/',       (req, res) => res.redirect(301, '/lektorzy/patryk-baryton/'));
 app.get('/lektorzy/patryk-2/',         (req, res) => res.redirect(301, '/lektorzy/patryk-baryton/'));
 app.get('/lektorzy/anna-2-2/',         (req, res) => res.redirect(301, '/lektorzy/anna-narracja/'));
