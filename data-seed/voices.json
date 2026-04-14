@@ -264,7 +264,7 @@
     "seoDescription": "Wiktor Zborowski — 50+ lat, legendarny aktor teatralny i filmowy. Reklama, narracja, audiobook. Próbka + wycena w 72h. powitania.pl od 2001."
   },
   {
-    "id": "patryk-2-2",
+    "id": "patryk-baryton",
     "name": "Patryk 2",
     "gender": "m",
     "age": "30-50 lat",
@@ -300,7 +300,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/patryk-2-2/",
+    "profileUrl": "/lektorzy/patryk-baryton/",
     "prices": {
       "ivr_100": 1100,
       "ivr_200": 1300,
@@ -441,7 +441,7 @@
     "seoDescription": "Andrzej Ferenc — 30–50 lat, lektor wiodących stacji telewizyjnych. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "maciej-3",
+    "id": "maciej-szeptanka",
     "name": "Maciej 3",
     "gender": "m",
     "age": "30-50 lat",
@@ -473,7 +473,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/maciej-3/",
+    "profileUrl": "/lektorzy/maciej-szeptanka/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1712,7 +1712,7 @@
     "descriptionEn": "Czech voice artist who excels in advertising and narrations."
   },
   {
-    "id": "krzysztof-2",
+    "id": "krzysztof-niski-glos",
     "name": "Krzysztof 2",
     "gender": "m",
     "age": "30-50 lat",
@@ -1753,7 +1753,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/krzysztof-2/",
+    "profileUrl": "/lektorzy/krzysztof-niski-glos/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2671,7 +2671,7 @@
     "descriptionEn": "Journalist and TVP presenter, voice emission trainer."
   },
   {
-    "id": "marcin-2",
+    "id": "marcin-dubbing",
     "name": "Marcin 2",
     "gender": "m",
     "age": "30-50 lat",
@@ -2708,7 +2708,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/marcin-2/",
+    "profileUrl": "/lektorzy/marcin-dubbing/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -4028,7 +4028,7 @@
     "descriptionEn": "Voice artist and radio journalist with over 20 years of experience. A voice that can comfort, seduce, reliably inform, and also transport you to a fairy-tale land."
   },
   {
-    "id": "anna-2-2",
+    "id": "anna-narracja",
     "name": "Anna 2",
     "gender": "f",
     "age": "30-50 lat",
@@ -4060,7 +4060,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/anna-2-2/",
+    "profileUrl": "/lektorzy/anna-narracja/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,

@@ -196,6 +196,15 @@ app.use((req, res, next) => {
 // 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
 
+// Slug cleanup — 301 ze starych slugów z cyframi na czyste
+app.get('/lektorzy/patryk-2-2/',       (req, res) => res.redirect(301, '/lektorzy/patryk-baryton/'));
+app.get('/lektorzy/patryk-2/',         (req, res) => res.redirect(301, '/lektorzy/patryk-baryton/'));
+app.get('/lektorzy/anna-2-2/',         (req, res) => res.redirect(301, '/lektorzy/anna-narracja/'));
+app.get('/lektorzy/anna-2/',           (req, res) => res.redirect(301, '/lektorzy/anna-narracja/'));
+app.get('/lektorzy/marcin-2/',         (req, res) => res.redirect(301, '/lektorzy/marcin-dubbing/'));
+app.get('/lektorzy/krzysztof-2/',      (req, res) => res.redirect(301, '/lektorzy/krzysztof-niski-glos/'));
+app.get('/lektorzy/maciej-3/',         (req, res) => res.redirect(301, '/lektorzy/maciej-szeptanka/'));
+
 // 1.1 Zombie URLs — stare WordPress attachment paths indeksowane przez Google
 app.get('/lektorzy/kuba-bielak.webp',        (req, res) => res.redirect(301, '/lektorzy/kuba-bielak/'));
 app.get('/lektorzy/lukasz-nowicki.webp',      (req, res) => res.redirect(301, '/lektorzy/lukasz-nowicki/'));
