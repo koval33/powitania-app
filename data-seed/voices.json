@@ -3046,7 +3046,9 @@
       "narration_3plus": "wycena",
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
-    }
+    },
+    "seoTitle": "Rafał — lektor, szybka realizacja 24h | powitania.pl",
+    "seoDescription": "Rafał — 30–50 lat, lektor polski. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "arek",
@@ -3103,7 +3105,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist and radio DJ, half a lifetime behind the microphone with a voice older than his age suggests."
+    "descriptionEn": "Voice artist and radio DJ, half a lifetime behind the microphone with a voice older than his age suggests.",
+    "seoTitle": "Arek — lektor i DJ radiowy, doświadczony głos | powitania.pl",
+    "seoDescription": "Arek — 30–50 lat, lektor i DJ radiowy, pół życia przed mikrofonem. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "roch",
@@ -3164,11 +3168,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Experienced actor and voice artist, most often heard in various audiobooks, video games and advertising spots."
+    "descriptionEn": "Experienced actor and voice artist, most often heard in various audiobooks, video games and advertising spots.",
+    "seoTitle": "Roch — doświadczony aktor, audiobooki i gry | powitania.pl",
+    "seoDescription": "Roch — 50+ lat, doświadczony aktor i lektor, specjalista od audiobooków. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "agnieszka-3",
-    "name": "Agnieszka 3",
+    "id": "agnieszka-dzieci",
+    "name": "Agnieszka",
     "gender": "f",
     "age": "30-50 lat",
     "languages": [
@@ -3199,7 +3205,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/agnieszka-3/",
+    "profileUrl": "/lektorzy/agnieszka-dzieci/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3221,11 +3227,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Experienced actress and voice artist with a gentle voice suitable for children's recordings and health and beauty content."
+    "descriptionEn": "Experienced actress and voice artist with a gentle voice suitable for children's recordings and health and beauty content.",
+    "seoTitle": "Agnieszka — delikatny głos, dzieci i beauty | powitania.pl",
+    "seoDescription": "Agnieszka — 30–50 lat, aktorka i lektorka o delikatnym głosie. Nagrania dla dzieci i branży beauty. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "kim-2",
-    "name": "Kim 2",
+    "id": "kim-dubbing",
+    "name": "Kim",
     "gender": "f",
     "age": "20-30 lat",
     "languages": [
@@ -3257,7 +3265,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/kim-2/",
+    "profileUrl": "/lektorzy/kim-dubbing/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3279,7 +3287,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Certified actress who has completed many dubbing projects. Records audiobooks, audio dramas and advertising spots."
+    "descriptionEn": "Certified actress who has completed many dubbing projects. Records audiobooks, audio dramas and advertising spots.",
+    "seoTitle": "Kim — aktorka i lektorka, dubbing i audiobooki | powitania.pl",
+    "seoDescription": "Kim — 20–30 lat, dyplomowana aktorka, wiele projektów dubbingowych. IVR, reklama, audiobook. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "zofia",
@@ -3335,7 +3345,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 45
     },
-    "descriptionEn": "Graduate of the acting department at PWSFTViT in Lodz under Janusz Gajos. Voice artist who lends her voice to commercials and audiobooks."
+    "descriptionEn": "Graduate of the acting department at PWSFTViT in Lodz under Janusz Gajos. Voice artist who lends her voice to commercials and audiobooks.",
+    "seoTitle": "Zofia — aktorka PWSF Łódź, wychowanka Janusza Gajosa | powitania.pl",
+    "seoDescription": "Zofia — 30–50 lat, absolwentka PWSF Łódź, wychowanka Janusza Gajosa. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "jarek",
@@ -3400,7 +3412,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Radio journalist, presenter and producer. Voice artist since 2007. He is the Polish voice of Google Maps. Sounds excellent as a narrator, in telecom systems and e-learning courses. Does not record radio commercials."
+    "descriptionEn": "Radio journalist, presenter and producer. Voice artist since 2007. He is the Polish voice of Google Maps. Sounds excellent as a narrator, in telecom systems and e-learning courses. Does not record radio commercials.",
+    "seoTitle": "Jarek — dziennikarz radiowy, głos Google Maps | powitania.pl",
+    "seoDescription": "Jarek — 30–50 lat, dziennikarz radiowy i producent, głos Google Maps. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "marius",
@@ -3461,11 +3475,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Native voice artist speaking Romanian."
+    "descriptionEn": "Native voice artist speaking Romanian.",
+    "seoTitle": "Marius — native speaker (rumuński), lektor | powitania.pl",
+    "seoDescription": "Marius — 30–50 lat, rumuński native speaker. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "natalia_2",
-    "name": "Natalia_2",
+    "id": "natalia-wszechstronna",
+    "name": "Natalia",
     "gender": "f",
     "age": "20-30 lat",
     "languages": [
@@ -3496,7 +3512,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/natalia_2/",
+    "profileUrl": "/lektorzy/natalia-wszechstronna/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3518,7 +3534,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "The voice artist's portfolio includes advertising spots, audiobooks, event voiceovers, trailers, IVR and animatics. Recommended!"
+    "descriptionEn": "The voice artist's portfolio includes advertising spots, audiobooks, event voiceovers, trailers, IVR and animatics. Recommended!",
+    "seoTitle": "Natalia — lektorka, spoty, eventy, trailery, IVR | powitania.pl",
+    "seoDescription": "Natalia — 20–30 lat, wszechstronna lektorka: spoty, audiobooki, eventy, trailery, IVR. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "lucia",
@@ -3581,7 +3599,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "Her voice is clear and pleasant. An experienced voice artist who can record: fascinating corporate narration, effective voiceovers for TV and radio ads, video games, cartoon and animation sites, and e-learning."
+    "descriptionEn": "Her voice is clear and pleasant. An experienced voice artist who can record: fascinating corporate narration, effective voiceovers for TV and radio ads, video games, cartoon and animation sites, and e-learning.",
+    "seoTitle": "Lucia — lektorka EN, ES, DE, wielojęzyczna | powitania.pl",
+    "seoDescription": "Lucia — 30–50 lat, wielojęzyczna lektorka: angielski, hiszpański, niemiecki. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "kamila",
@@ -3638,11 +3658,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "From an energetic and cheerful girl, through a cool professional, to a seductive femme fatale. Voice heard on the morning show on Eska Radio. Experienced in recording commercials and promotional films."
+    "descriptionEn": "From an energetic and cheerful girl, through a cool professional, to a seductive femme fatale. Voice heard on the morning show on Eska Radio. Experienced in recording commercials and promotional films.",
+    "seoTitle": "Kamila — wszechstronny głos, energia i femme fatale | powitania.pl",
+    "seoDescription": "Kamila — 30–50 lat, wszechstronny głos: energiczna, profesjonalna, uwodzicielska. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "marek-2",
-    "name": "Marek 2",
+    "id": "marek-pl-en",
+    "name": "Marek",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -3674,7 +3696,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/marek-2/",
+    "profileUrl": "/lektorzy/marek-pl-en/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -3696,7 +3718,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Experienced voice artist with a versatile voice timbre."
+    "descriptionEn": "Experienced voice artist with a versatile voice timbre.",
+    "seoTitle": "Marek — doświadczony lektor, głos PL i EN | powitania.pl",
+    "seoDescription": "Marek — 30–50 lat, doświadczony lektor o uniwersalnej barwie, nagrania PL i EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "robert",
@@ -3757,7 +3781,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Started working behind the radio microphone in 2007. The adventure with broadcasting continues to this day, hosting shows daily. First voiceover assignments appeared in 2012. Currently records about 2,500 announcements per year for retail chains. Also reads commercials, e-learning and corporate films."
+    "descriptionEn": "Started working behind the radio microphone in 2007. The adventure with broadcasting continues to this day, hosting shows daily. First voiceover assignments appeared in 2012. Currently records about 2,500 announcements per year for retail chains. Also reads commercials, e-learning and corporate films.",
+    "seoTitle": "Robert — lektor radiowy od 2007, dynamiczny głos | powitania.pl",
+    "seoDescription": "Robert — 30–50 lat, lektor radiowy od 2007. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "przemyslaw",
@@ -3817,7 +3843,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "A voice for dynamic productions. Records radio commercials, sketches, IVR announcements, multimedia presentations and more."
+    "descriptionEn": "A voice for dynamic productions. Records radio commercials, sketches, IVR announcements, multimedia presentations and more.",
+    "seoTitle": "Przemysław — dynamiczny głos do reklam i produkcji | powitania.pl",
+    "seoDescription": "Przemysław — 20–30 lat, energiczny głos do reklam, IVR i scenek. Reklama, narracja, prezentacje. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "zbigniew-moskal",
@@ -3874,11 +3902,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 55
     },
-    "descriptionEn": "Warm and deep voice known from radio and TV commercials."
+    "descriptionEn": "Warm and deep voice known from radio and TV commercials.",
+    "seoTitle": "Zbigniew Moskal — ciepły niski głos, znany z reklam | powitania.pl",
+    "seoDescription": "Zbigniew Moskal — 50+ lat, ciepły niski głos znany z reklam radiowych i TV. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "lukasz-2",
-    "name": "Łukasz 2",
+    "id": "lukasz-reklamy",
+    "name": "Łukasz",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -3913,7 +3943,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/lukasz-2/",
+    "profileUrl": "/lektorzy/lukasz-reklamy/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3935,11 +3965,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist since 2012. Strong and dynamic voice timbre that will give character to your recording. Specializes in commercials, promotional films, corporate/industry films and phone announcements. Has recorded for IKEA, WSB University and Coca-Cola. Is the voice of neoBank."
+    "descriptionEn": "Voice artist since 2012. Strong and dynamic voice timbre that will give character to your recording. Specializes in commercials, promotional films, corporate/industry films and phone announcements. Has recorded for IKEA, WSB University and Coca-Cola. Is the voice of neoBank.",
+    "seoTitle": "Łukasz — lektor od 2012, głos IKEA i Coca-Cola | powitania.pl",
+    "seoDescription": "Łukasz — 30–50 lat, mocny dynamiczny głos, nagrywał dla IKEA i Coca-Cola. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "mateusz-2",
-    "name": "Mateusz 2",
+    "id": "mateusz-mlody",
+    "name": "Mateusz",
     "gender": "m",
     "age": "20-30 lat",
     "languages": [
@@ -3970,7 +4002,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/mateusz-2/",
+    "profileUrl": "/lektorzy/mateusz-mlody/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -3992,7 +4024,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Young-sounding, pleasant male voice."
+    "descriptionEn": "Young-sounding, pleasant male voice.",
+    "seoTitle": "Mateusz — młody, przyjemny głos lektorski | powitania.pl",
+    "seoDescription": "Mateusz — 20–30 lat, młodo brzmiący, przyjemny głos. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "bruno",
@@ -4048,7 +4082,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "Despite his young age, an experienced voice artist in advertising spots. Records under the watchful eye of his parents, who are voice artists with many years of experience."
+    "descriptionEn": "Despite his young age, an experienced voice artist in advertising spots. Records under the watchful eye of his parents, who are voice artists with many years of experience.",
+    "seoTitle": "Bruno — młody doświadczony głos, spoty reklamowe | powitania.pl",
+    "seoDescription": "Bruno — do 20 lat, doświadczony lektor w spotach reklamowych. Reklama. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "aleksandra",
@@ -4105,11 +4141,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Voice artist and radio journalist with over 20 years of experience. A voice that can comfort, seduce, reliably inform, and also transport you to a fairy-tale land."
+    "descriptionEn": "Voice artist and radio journalist with over 20 years of experience. A voice that can comfort, seduce, reliably inform, and also transport you to a fairy-tale land.",
+    "seoTitle": "Aleksandra — lektorka, dziennikarka radiowa 20 lat | powitania.pl",
+    "seoDescription": "Aleksandra — 30–50 lat, lektorka i dziennikarka radiowa z 20+ latami doświadczenia. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "anna-narracja",
-    "name": "Anna 2",
+    "name": "Anna",
     "gender": "f",
     "age": "30-50 lat",
     "languages": [
@@ -4162,7 +4200,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Mature, warm voice, excellent for stories, narration, commercials and nature films."
+    "descriptionEn": "Mature, warm voice, excellent for stories, narration, commercials and nature films.",
+    "seoTitle": "Anna — dojrzały ciepły głos, narracje i reklamy | powitania.pl",
+    "seoDescription": "Anna — 30–50 lat, dojrzały ciepły głos, specjalistka od narracji i filmów przyrodniczych. Reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "franek",
