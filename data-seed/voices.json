@@ -1222,7 +1222,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Known from cabaret stages and roles such as Merlin and Pan Stanislaw. Gifted with a very distinctive voice, perfect for sketches, fairy tales and stories. Client smiles guaranteed!"
+    "descriptionEn": "Known from cabaret stages and roles such as Merlin and Pan Stanislaw. Gifted with a very distinctive voice, perfect for sketches, fairy tales and stories. Client smiles guaranteed!",
+    "seoTitle": "Paweł Szwajgier — głos kabaretowy, charakterystyczna barwa | powitania.pl",
+    "seoDescription": "Paweł Szwajgier – kabaret, bajki, filmowe scenki i reklamy. Głos znany z kabaretów Merlin i Pan Stanisław. Zamów nagranie lektorskie na powitania.pl."
   },
   {
     "id": "magdalena",
@@ -1279,11 +1281,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "Fast and communicative reading with a voice characterized as a warm alto."
+    "descriptionEn": "Fast and communicative reading with a voice characterized as a warm alto.",
+    "seoTitle": "Magdalena — lektorka, ciepły alt, ekspresowa realizacja | powitania.pl",
+    "seoDescription": "Magdalena – lektorka o ciepłym alcie, błyskawiczna realizacja 24h. Idealna do IVR, reklam i audiobooków. Zamów nagranie na powitania.pl."
   },
   {
-    "id": "krzysztof_4",
-    "name": "Krzysztof_4",
+    "id": "krzysztof-studio",
+    "name": "Krzysztof",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -1315,7 +1319,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/krzysztof_4/",
+    "profileUrl": "/lektorzy/krzysztof-studio/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -1337,7 +1341,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Voice artist who sounds excellent in mid-range registers, working from his own studio, ensuring fast delivery for clients."
+    "descriptionEn": "Voice artist who sounds excellent in mid-range registers, working from his own studio, ensuring fast delivery for clients.",
+    "seoTitle": "Krzysztof — lektor z własnym studiem, błyskawiczna realizacja | powitania.pl",
+    "seoDescription": "Krzysztof – lektor z własnym studiem nagraniowym, ekspresowa realizacja 24h. Głos do reklam, narracji i IVR. Zamów na powitania.pl."
   },
   {
     "id": "jacek-brzostynski",
@@ -1397,7 +1403,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 150
     },
-    "descriptionEn": "Film and commercial voice artist whose voice you can hear daily on radio and TV."
+    "descriptionEn": "Film and commercial voice artist whose voice you can hear daily on radio and TV.",
+    "seoTitle": "Jacek Brzostyński — lektor filmowy i reklamowy | powitania.pl",
+    "seoDescription": "Jacek Brzostyński – lektor filmowy i reklamowy słyszany codziennie w radio i TV. Spoty, narracje, audiobooki. Zamów nagranie na powitania.pl."
   },
   {
     "id": "kuba-bielak",
@@ -1453,7 +1461,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "15 years of experience hosting radio and TV shows, mainly TVN Turbo programs. Advertising campaigns for Aviva, Navitel (car navigation voice), numerous radio shows about driving safety."
+    "descriptionEn": "15 years of experience hosting radio and TV shows, mainly TVN Turbo programs. Advertising campaigns for Aviva, Navitel (car navigation voice), numerous radio shows about driving safety.",
+    "seoTitle": "Kuba Bielak — lektor TVN Turbo, 15 lat w radiu i TV | powitania.pl",
+    "seoDescription": "Kuba Bielak – 15 lat w radiu i TV, głos programów TVN Turbo. Reklamy, narracje do filmów i audiobooki. Zamów na powitania.pl."
   },
   {
     "id": "janek",
@@ -1510,7 +1520,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "Calls himself a 'radio guy.' Host and voice artist. Excels in commercial spots, corporate narrations and phone greetings. Loves whisper-style voiceovers for films and series. Adores audiobooks... and can be your voice."
+    "descriptionEn": "Calls himself a 'radio guy.' Host and voice artist. Excels in commercial spots, corporate narrations and phone greetings. Loves whisper-style voiceovers for films and series. Adores audiobooks... and can be your voice.",
+    "seoTitle": "Janek — lektor radiowy, konferansjer, głos spotów | powitania.pl",
+    "seoDescription": "Janek – lektor radiowy, konferansjer, głos spotów reklamowych. Powitania telefoniczne, reklamy, szeptanki i audiobooki. Zamów nagranie na powitania.pl."
   },
   {
     "id": "justyna",
@@ -1566,7 +1578,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Her microphone adventure is a life passion, which you can sense. A journalist and actress by education, she started working behind the mic while still at university. If you need a young, energetic voice that can also be serious, sensual or witty — you are in the right place! Justyna also excels in sketches. Records in her own studio."
+    "descriptionEn": "Her microphone adventure is a life passion, which you can sense. A journalist and actress by education, she started working behind the mic while still at university. If you need a young, energetic voice that can also be serious, sensual or witty — you are in the right place! Justyna also excels in sketches. Records in her own studio.",
+    "seoTitle": "Justyna — lektorka, dziennikarka i aktorka | powitania.pl",
+    "seoDescription": "Justyna – lektorka, dziennikarka i aktorka. Młody energiczny głos do reklam, narracji i scenek. Nagrywa we własnym studiu. Zamów na powitania.pl."
   },
   {
     "id": "blazej",
@@ -1619,11 +1633,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Radio voice artist with extensive experience and a dynamic, fresh voice. An excellent choice when you need an energetic, convincing recording. Experienced in: advertising, promotional films, phone systems."
+    "descriptionEn": "Radio voice artist with extensive experience and a dynamic, fresh voice. An excellent choice when you need an energetic, convincing recording. Experienced in: advertising, promotional films, phone systems.",
+    "seoTitle": "Błażej — lektor radiowy, dynamiczny i świeży głos | powitania.pl",
+    "seoDescription": "Błażej – lektor radiowy, dynamiczny i świeży głos. Idealna barwa do reklam, IVR i narracji. Zamów nagranie lektorskie na powitania.pl."
   },
   {
-    "id": "michal-4",
-    "name": "Michał 4",
+    "id": "michal-reklamowy",
+    "name": "Michał",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -1654,7 +1670,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/michal-4/",
+    "profileUrl": "/lektorzy/michal-reklamowy/",
     "prices": {
       "ivr_100": 550,
       "ivr_200": 750,
@@ -1676,7 +1692,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Voice artist with over 20 years of experience, specializing in advertising spots."
+    "descriptionEn": "Voice artist with over 20 years of experience, specializing in advertising spots.",
+    "seoTitle": "Michał — lektor reklamowy z 20-letnim doświadczeniem | powitania.pl",
+    "seoDescription": "Michał – lektor reklamowy z ponad 20-letnim doświadczeniem. Specjalista od spotów reklamowych. Realizacja 24h. Zamów nagranie na powitania.pl."
   },
   {
     "id": "pavel",
@@ -1729,7 +1747,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "Czech voice artist who excels in advertising and narrations."
+    "descriptionEn": "Czech voice artist who excels in advertising and narrations.",
+    "seoTitle": "Pavel — native speaker (czeski), lektor | powitania.pl",
+    "seoDescription": "Pavel – czeski native speaker, lektor reklamowy i narracyjny. Nagrania po czesku zrealizowane w 48h. Zamów na powitania.pl."
   },
   {
     "id": "krzysztof-niski-glos",
