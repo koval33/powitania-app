@@ -174,6 +174,7 @@ body{background-color:#f7f3ef}
 .kreator-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#ea580c;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:500;z-index:1000;animation:kreator-toast-in .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 @keyframes kreator-toast-in{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @media(max-width:640px){.kreator-card{padding:1.5rem}.kreator-btn-primary,.kreator-btn-secondary{padding:10px 18px;font-size:.9rem}}
+<% if (currentPath.indexOf('/lektorzy/') === -1 && currentPath.indexOf('/bank-glosow/') === -1) { %>@media(max-width:767px){body{padding-bottom:72px}}<% } %>
   </style>
 </head>
 <body class="text-gray-700 antialiased">
