@@ -1753,7 +1753,7 @@
   },
   {
     "id": "krzysztof-niski-glos",
-    "name": "Krzysztof 2",
+    "name": "Krzysztof",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -1815,7 +1815,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Low voiceover voice with a subtle rasp. Also records effectively in English."
+    "descriptionEn": "Low voiceover voice with a subtle rasp. Also records effectively in English.",
+    "seoTitle": "Krzysztof — niski głos z chrypką, PL i EN | powitania.pl",
+    "seoDescription": "Krzysztof — 30–50 lat, niski głos z delikatną chrypką, nagrania PL i EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "beata",
@@ -1876,7 +1878,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Experienced voice artist with a warm, round voice timbre that inspires listener trust."
+    "descriptionEn": "Experienced voice artist with a warm, round voice timbre that inspires listener trust.",
+    "seoTitle": "Beata — lektorka, ciepła barwa wzbudzająca zaufanie | powitania.pl",
+    "seoDescription": "Beata — 30–50 lat, ciepła okrągła barwa wzbudzająca zaufanie słuchaczy. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "bartosz",
@@ -1942,11 +1946,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Solid, strong voiceover voice with over 10 years of studio experience."
+    "descriptionEn": "Solid, strong voiceover voice with over 10 years of studio experience.",
+    "seoTitle": "Bartosz — mocny głos lektorski, 10 lat doświadczenia | powitania.pl",
+    "seoDescription": "Bartosz — 30–50 lat, solidny mocny głos z 10+ latami pracy studyjnej. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
-    "id": "marcin-5",
-    "name": "Marcin 5",
+    "id": "marcin-weteran",
+    "name": "Marcin",
     "gender": "m",
     "age": "50 lat +",
     "languages": [
@@ -1977,7 +1983,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/marcin-5/",
+    "profileUrl": "/lektorzy/marcin-weteran/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -1999,11 +2005,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "30 years of experience, an interesting voice and wide interpretive abilities make Marcin tell your story in a unique way."
+    "descriptionEn": "30 years of experience, an interesting voice and wide interpretive abilities make Marcin tell your story in a unique way.",
+    "seoTitle": "Marcin — lektor, 30 lat doświadczenia, wszechstronny | powitania.pl",
+    "seoDescription": "Marcin — 50+ lat, 30 lat doświadczenia, szerokie zdolności interpretacyjne. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
-    "id": "alicja-2",
-    "name": "Alicja 2",
+    "id": "alicja-wszechstronna",
+    "name": "Alicja",
     "gender": "f",
     "age": "30-50 lat",
     "languages": [
@@ -2034,7 +2042,7 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/alicja-2/",
+    "profileUrl": "/lektorzy/alicja-wszechstronna/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
@@ -2056,7 +2064,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Alicja's voice is warm and calm, can be instructive, sensual, funny and feisty."
+    "descriptionEn": "Alicja's voice is warm and calm, can be instructive, sensual, funny and feisty.",
+    "seoTitle": "Alicja — ciepły głos, zmysłowy, zabawny i zadziorny | powitania.pl",
+    "seoDescription": "Alicja — 30–50 lat, wszechstronny głos: ciepły, zmysłowy, zabawny i zadziorny. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "janusz",
@@ -2117,7 +2127,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Experienced dubbing voice artist. Commercials, video games — that is where you will hear his voice! Actor collaborating with the Powszechny Theatre in Lodz. Golf enthusiast."
+    "descriptionEn": "Experienced dubbing voice artist. Commercials, video games — that is where you will hear his voice! Actor collaborating with the Powszechny Theatre in Lodz. Golf enthusiast.",
+    "seoTitle": "Janusz — lektor dubbingowy, reklamy i gry | powitania.pl",
+    "seoDescription": "Janusz — 30–50 lat, doświadczony lektor dubbingowy. Reklamy, gry komputerowe, IVR. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "anita",
@@ -2175,7 +2187,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 90
     },
-    "descriptionEn": "One of the most experienced female voice artists in the industry, with a clear, soft and pleasant voice."
+    "descriptionEn": "One of the most experienced female voice artists in the industry, with a clear, soft and pleasant voice.",
+    "seoTitle": "Anita — doświadczona lektorka, miękki jasny głos | powitania.pl",
+    "seoDescription": "Anita — 30–50 lat, jedna z najbardziej doświadczonych lektorek. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "stanislaw-olejniczak",
@@ -2227,7 +2241,9 @@
       "narration_under50pages": 200,
       "narration_over50pages": "wycena"
     },
-    "descriptionEn": "Voice artist — one of the most recognizable Polish film voices. Collaborates with major TV broadcasters in Poland (TVP, Polsat, TVN, HBO, Canal+). Voice of radio and TV commercials. In January 2001, nominated by TVP as the official candidate in the first edition of 'Master of Polish Speech.'"
+    "descriptionEn": "Voice artist — one of the most recognizable Polish film voices. Collaborates with major TV broadcasters in Poland (TVP, Polsat, TVN, HBO, Canal+). Voice of radio and TV commercials. In January 2001, nominated by TVP as the official candidate in the first edition of 'Master of Polish Speech.'",
+    "seoTitle": "Stanisław Olejniczak — rozpoznawalny głos filmowy | powitania.pl",
+    "seoDescription": "Stanisław Olejniczak — 30–50 lat, jeden z najbardziej rozpoznawalnych głosów filmowych. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "mariusz",
@@ -2288,7 +2304,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Mariusz's young tenor voice cuts through the airwaves. His recordings are delivered within one business day."
+    "descriptionEn": "Mariusz's young tenor voice cuts through the airwaves. His recordings are delivered within one business day.",
+    "seoTitle": "Mariusz — młody tenorowy głos, realizacja 24h | powitania.pl",
+    "seoDescription": "Mariusz — 30–50 lat, energiczny tenorowy głos, ekspresowa realizacja 24h. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "paulina",
@@ -2349,11 +2367,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Paulina's young, vital voice is perfect for games, fairy tales and advertising spots."
+    "descriptionEn": "Paulina's young, vital voice is perfect for games, fairy tales and advertising spots.",
+    "seoTitle": "Paulina — młody witalny głos, bajki i gry | powitania.pl",
+    "seoDescription": "Paulina — do 20 lat, energiczny witalny głos do bajek, gier i reklam. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
-    "id": "daniel-2",
-    "name": "Daniel 2",
+    "id": "daniel-radiowy",
+    "name": "Daniel",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -2385,7 +2405,7 @@
     ],
     "priceGroup": "Wyższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/daniel-2/",
+    "profileUrl": "/lektorzy/daniel-radiowy/",
     "prices": {
       "ivr_100": 450,
       "ivr_200": 650,
@@ -2407,7 +2427,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "Polish voice artist fluent in English. A radio voice for many years, sound designer for software instruments, author of many compositions."
+    "descriptionEn": "Polish voice artist fluent in English. A radio voice for many years, sound designer for software instruments, author of many compositions.",
+    "seoTitle": "Daniel — lektor PL+EN, głos radiowy | powitania.pl",
+    "seoDescription": "Daniel — 30–50 lat, lektor PL i EN, wieloletni głos radiowy. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "konstancja",
@@ -2469,7 +2491,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 95
     },
-    "descriptionEn": "Native British, Standard American and Polish are the languages Konstancja fluently uses."
+    "descriptionEn": "Native British, Standard American and Polish are the languages Konstancja fluently uses.",
+    "seoTitle": "Konstancja — native British, American EN, lektor | powitania.pl",
+    "seoDescription": "Konstancja — 30–50 lat, native speaker (British EN, American EN) i lektor PL. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "vasyl",
@@ -2537,7 +2561,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Multilingual voice artist whose second native language is American English. Also excels in Russian and German recordings."
+    "descriptionEn": "Multilingual voice artist whose second native language is American English. Also excels in Russian and German recordings.",
+    "seoTitle": "Vasyl — lektor wielojęzyczny, native EN (US) | powitania.pl",
+    "seoDescription": "Vasyl — 30–50 lat, wielojęzyczny lektor, angielski (akcent US) jako drugi ojczysty. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "kinga",
@@ -2594,7 +2620,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Voice artist and singer with a young, cheerful voice that encourages action."
+    "descriptionEn": "Voice artist and singer with a young, cheerful voice that encourages action.",
+    "seoTitle": "Kinga — lektorka i wokalistka, młody wesoły głos | powitania.pl",
+    "seoDescription": "Kinga — 20–30 lat, lektorka i wokalistka, młody wesoły głos. IVR, reklama. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "olga",
@@ -2651,7 +2679,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 50
     },
-    "descriptionEn": "Great interpretive abilities, versatile voice artist."
+    "descriptionEn": "Great interpretive abilities, versatile voice artist.",
+    "seoTitle": "Olga — lektorka, duże zdolności interpretacyjne | powitania.pl",
+    "seoDescription": "Olga — 30–50 lat, duże zdolności interpretacyjne, wszechstronny głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "maciej-jablonski",
@@ -2708,11 +2738,13 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "Journalist and TVP presenter, voice emission trainer."
+    "descriptionEn": "Journalist and TVP presenter, voice emission trainer.",
+    "seoTitle": "Maciej Jabłoński — prezenter TVP, trener emisji głosu | powitania.pl",
+    "seoDescription": "Maciej Jabłoński — 30–50 lat, dziennikarz i prezenter TVP, trener głosu. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "marcin-dubbing",
-    "name": "Marcin 2",
+    "name": "Marcin",
     "gender": "m",
     "age": "30-50 lat",
     "languages": [
@@ -2770,7 +2802,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 80
     },
-    "descriptionEn": "A voice for many applications: dubbing, advertising, IVR."
+    "descriptionEn": "A voice for many applications: dubbing, advertising, IVR.",
+    "seoTitle": "Marcin — lektor dubbingowy, reklama i IVR | powitania.pl",
+    "seoDescription": "Marcin — 30–50 lat, wszechstronny głos: dubbing, reklama, IVR. Nagrania PL i EN. Próbka + wycena w 24h. powitania.pl od 2001."
   },
   {
     "id": "patryk",
@@ -2827,7 +2861,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 70
     },
-    "descriptionEn": "Pleasant young male voice."
+    "descriptionEn": "Pleasant young male voice.",
+    "seoTitle": "Patryk — przyjemny młody głos lektorski | powitania.pl",
+    "seoDescription": "Patryk — 30–50 lat, przyjemny komunikatywny głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "aleksander",
@@ -2893,7 +2929,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 60
     },
-    "descriptionEn": "Voice artist and musician, an interesting new voice on the market."
+    "descriptionEn": "Voice artist and musician, an interesting new voice on the market.",
+    "seoTitle": "Aleksander — lektor i muzyk, charakterystyczny głos | powitania.pl",
+    "seoDescription": "Aleksander — 30–50 lat, lektor i muzyk, charakterystyczny nowy głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "katarzyna",
@@ -2950,7 +2988,9 @@
       "narration_under50pages": "wycena",
       "narration_over50pages": 40
     },
-    "descriptionEn": "Voice artist who has worked in radio for 8 years as a weekend program presenter and music journalist. Her voice can be heard on many Polish radio stations."
+    "descriptionEn": "Voice artist who has worked in radio for 8 years as a weekend program presenter and music journalist. Her voice can be heard on many Polish radio stations.",
+    "seoTitle": "Katarzyna — lektorka, 8 lat w radiu, dziennikarka | powitania.pl",
+    "seoDescription": "Katarzyna — 20–30 lat, 8 lat w radiu jako prezenter i dziennikarz muzyczny. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001."
   },
   {
     "id": "rafal",
