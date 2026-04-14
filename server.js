@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 // Middleware
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
 
 // EJS
 app.set('view engine', 'ejs');
