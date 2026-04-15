@@ -185,6 +185,8 @@ app.use((req, res, next) => {
   // Includes AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Bytespider, Google-Extended
   const ua = req.headers['user-agent'] || '';
   if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest|GPTBot|ChatGPT|ClaudeBot|Claude-Web|PerplexityBot|Bytespider|CCBot|Google-Extended/i.test(ua)) return next();
+  // Inform caches that response varies by language
+  res.setHeader('Vary', 'Accept-Language');
   // Check Accept-Language header
   const lang = req.headers['accept-language'] || '';
   if (!lang.match(/pl/i)) {
