@@ -1031,9 +1031,36 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
     .filter(v => v.id !== lektor.id && v.gender === lektor.gender && v.photo)
     .sort(() => Math.random() - 0.5)
     .slice(0, 5);
+  // Auto-generate EN title & description from lektor data
+  const enGender = lektor.gender === 'm' ? 'Male' : 'Female';
+  const enLangs = (lektor.languages || []).join(', ');
+  let enTitle;
+  if (lektor.native && lektor.nativeLanguage) {
+    enTitle = `${lektor.name} — Native ${lektor.nativeLanguage} Voice Artist | Powitania.pl`;
+  } else if (lektor.native && lektor.languages && lektor.languages.length) {
+    enTitle = `${lektor.name} — Native ${lektor.languages[0]} Voice Artist | Powitania.pl`;
+  } else if (lektor.famous) {
+    enTitle = `${lektor.name} — Celebrity Voice Artist | Powitania.pl`;
+  } else {
+    enTitle = `${lektor.name} — ${enGender} Voice Artist${enLangs ? ', ' + enLangs : ''} | Powitania.pl`;
+  }
+  const enPrices = lektorEn.prices || {};
+  const enPriceParts = [];
+  if (enPrices.ivr_100) enPriceParts.push(`IVR from ${enPrices.ivr_100} EUR`);
+  if (enPrices.spot_radio_local) enPriceParts.push(`ad spots from ${enPrices.spot_radio_local} EUR`);
+  if (enPrices.narration_1page) enPriceParts.push(`narration from ${enPrices.narration_1page} EUR`);
+  const enApps = (lektor.applications || []).join(', ');
+  const enDesc = [
+    lektor.name + (lektor.native ? ` — native ${enLangs} voice artist` : ` — ${enGender.toLowerCase()} voice artist`) + (lektor.age ? `, ${lektor.age}` : '') + '.',
+    enApps ? enApps + '.' : '',
+    enPriceParts.length ? enPriceParts.join(', ') + '.' : '',
+    `Listen to samples and order online. Delivery: ${lektor.turnaround || '24-48h'}.`
+  ].filter(Boolean).join(' ');
+  const finalTitle = lektor.seoTitleEn || enTitle;
+  const finalDesc = lektor.seoDescriptionEn || enDesc;
   res.render('en/voice-artist', {
-    title: lektor.name + ' — Voice Artist | Powitania.pl',
-    description: lektor.descriptionEn || lektor.description || ('Voice artist profile: ' + lektor.name + '. Listen to voice samples and order a recording.'),
+    title: finalTitle,
+    description: finalDesc,
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
