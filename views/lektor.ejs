@@ -1612,7 +1612,7 @@ function modalCalculate() {
 
   ctaEl.classList.remove('hidden');
 
-  var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
+  var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now(), fromInlineForm: true };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
 }
 
@@ -1652,7 +1652,7 @@ function modalCalculate() {
     }
 
     ctaEl.classList.remove('hidden');
-    var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
+    var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now(), fromInlineForm: true };
     try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
   }
 
@@ -2300,7 +2300,7 @@ function clearPricingContext() {
     var ctxStr = sessionStorage.getItem('kreatorContext');
     if (!ctxStr) return;
     var ctx = JSON.parse(ctxStr);
-    if (ctx.text && !LEKTOR_HIDE_PRICE) {
+    if (ctx.text && !LEKTOR_HIDE_PRICE && !ctx.fromInlineForm) {
       showPricingWizard(ctx);
     }
   } catch(e) {}
