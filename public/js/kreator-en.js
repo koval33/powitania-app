@@ -240,6 +240,7 @@
           ctx.text = data.text;
           ctx.serviceType = state.form.serviceType;
           ctx.industry = state.form.industry;
+          delete ctx.returnUrl; // clear so next kreator visit won't redirect again
           sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
         } catch(e) {}
         window.location.href = state._returnUrl;
@@ -259,6 +260,7 @@
         try {
           var ctx = JSON.parse(sessionStorage.getItem('kreatorContext') || '{}');
           ctx.text = data.text;
+          delete ctx.returnUrl; // clear so next kreator visit won't redirect again
           sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
         } catch(e) {}
         window.location.href = state._returnUrl;
@@ -1129,10 +1131,13 @@
       if (ctxStr) {
         var ctx = JSON.parse(ctxStr);
         if (ctx.returnUrl && ctx.lektorName) {
-          // Coming from lektor page — show lector info banner after text is generated
+          // Coming from lektor page — redirect back after text is generated
           state._returnUrl = ctx.returnUrl;
           state._lektorName = ctx.lektorName;
           state._lektorId = ctx.lektorId;
+          // Consume returnUrl immediately (one-shot) so stale data won't redirect on next visit
+          delete ctx.returnUrl;
+          sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
         }
         if (action === 'order' && ctx.text && ctx.lektorName) {
           state.result = ctx.text;

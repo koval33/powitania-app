@@ -83,13 +83,19 @@
     (function() {
       var header = document.querySelector('header');
       var bar = document.getElementById('filters-bar');
-      var sidebar = document.getElementById('filters-sidebar');
       function setTops() {
+        var sidebar = document.getElementById('filters-sidebar');
         var h = header ? header.offsetHeight : 0;
         if (bar) bar.style.top = h + 'px';
         if (sidebar) sidebar.style.top = (h + 16) + 'px';
       }
+      // Run immediately for the bar, and after DOM is ready for the sidebar
       setTops();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setTops);
+      } else {
+        setTops();
+      }
       window.addEventListener('resize', setTops);
     })();
   </script>
