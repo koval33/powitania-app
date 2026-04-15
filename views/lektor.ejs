@@ -1612,8 +1612,6 @@ function modalCalculate() {
 
   ctaEl.classList.remove('hidden');
 
-  var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now(), fromInlineForm: true };
-  try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
 }
 
 // Auto-kalkulacja w modalu — po wpisaniu tekstu i wyborze typu
@@ -1652,8 +1650,6 @@ function modalCalculate() {
     }
 
     ctaEl.classList.remove('hidden');
-    var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now(), fromInlineForm: true };
-    try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
   }
 
   if (sel) sel.addEventListener('change', function() {
