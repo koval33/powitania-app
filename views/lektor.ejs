@@ -45,6 +45,20 @@
             <%= lektor.age %>
           </span>
         </div>
+
+        <% if (!lektor.hidePrice && lektor.prices) { %>
+        <div class="mt-5 space-y-1.5 text-xs text-gray-500">
+          <% if (lektor.prices.ivr_100) { %>
+          <div class="flex justify-between"><span>Zapowiedź / IVR</span><span class="font-semibold text-gray-800">od <%= lektor.prices.ivr_100 %> zł</span></div>
+          <% } %>
+          <% if (lektor.prices.spot_radio_local) { %>
+          <div class="flex justify-between"><span>Spot reklamowy</span><span class="font-semibold text-gray-800">od <%= lektor.prices.spot_radio_local %> zł</span></div>
+          <% } %>
+          <% if (lektor.prices.narration_1page) { %>
+          <div class="flex justify-between"><span>Narracja / film</span><span class="font-semibold text-gray-800">od <%= lektor.prices.narration_1page %> zł</span></div>
+          <% } %>
+        </div>
+        <% } %>
       </div>
 
       <!-- Prawa kolumna: dane -->
@@ -163,17 +177,31 @@
             <!-- Typ nagrania (jeśli nie przyszedł z kreatora) -->
             <div id="wizard-service-type" class="hidden mb-4">
               <label class="block text-gray-900 font-semibold mb-2 text-sm">Typ nagrania</label>
-              <select id="wizard-service-select" onchange="updateWizardPricing()" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
+              <select id="wizard-service-select" class="hidden" onchange="updateWizardPricing()">
                 <option value="">— wybierz typ nagrania —</option>
-                <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
-                <option value="radio">Spot radiowy</option>
-                <option value="tv">Spot telewizyjny</option>
-                <option value="social">Spot kampania social media</option>
-                <option value="elearning">E-learning / szkolenia</option>
-                <option value="film">Narracja filmowa</option>
-                <option value="audiobook">Audiobook</option>
-                <option value="podcast">Podcast (intro/outro)</option>
+                <option value="ivr">Zapowiedź telefoniczna</option>
+                <option value="social">Social Media</option>
+                <option value="spot">Spot reklamowy</option>
+                <option value="film">Narracja</option>
               </select>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="ivr" onclick="pickService(this)">
+                  <span class="block text-sm font-semibold text-gray-800 leading-tight">Zapowiedź tel.</span>
+                  <span class="block text-xs text-gray-400 mt-1">IVR / centrala</span>
+                </button>
+                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="social" onclick="pickService(this)">
+                  <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
+                  <span class="block text-xs text-gray-400 mt-1">online / digital</span>
+                </button>
+                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="spot" onclick="pickService(this)">
+                  <span class="block text-sm font-semibold text-gray-800 leading-tight">Spot reklamowy</span>
+                  <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
+                </button>
+                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="film" onclick="pickService(this)">
+                  <span class="block text-sm font-semibold text-gray-800 leading-tight">Narracja</span>
+                  <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
+                </button>
+              </div>
             </div>
             <!-- Dynamiczne pytania per serviceType -->
             <div id="wizard-questions"></div>
@@ -259,34 +287,44 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
           Wyceń nagranie — <%= lektor.name %>
         </h2>
-        <p class="text-sm text-gray-500 mb-6">Wklej tekst, wybierz typ nagrania — cena wyliczy się automatycznie.</p>
+        <p class="text-sm text-gray-500 mb-4">Wybierz typ nagrania — cena wyliczy się automatycznie.</p>
+
+        <!-- Wybór typu nagrania — nad formularzem -->
+        <select id="modal-service-select" class="hidden">
+          <option value="">— wybierz typ nagrania —</option>
+          <option value="ivr">Zapowiedź telefoniczna</option>
+          <option value="social">Social Media</option>
+          <option value="spot">Spot reklamowy</option>
+          <option value="film">Narracja</option>
+        </select>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
+            <span class="block text-sm font-semibold text-gray-800 leading-tight">Zapowiedź tel.</span>
+            <span class="block text-xs text-gray-400 mt-1">IVR / centrala</span>
+          </button>
+          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
+            <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
+            <span class="block text-xs text-gray-400 mt-1">online / digital</span>
+          </button>
+          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="spot" onclick="pickService(this)">
+            <span class="block text-sm font-semibold text-gray-800 leading-tight">Spot reklamowy</span>
+            <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
+          </button>
+          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
+            <span class="block text-sm font-semibold text-gray-800 leading-tight">Narracja</span>
+            <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
+          </button>
+        </div>
 
         <div>
           <!-- Krok 1: Tekst -->
           <div id="modal-step-text">
-            <p class="text-gray-500 mb-4 text-sm">Masz gotowy tekst? Wklej go poniżej.
-              <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+            <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
+            <div class="flex items-center justify-between mb-3">
+              <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1 text-sm">
                 Nie mam tekstu — wygeneruj w kreatorze
               </button>
-            </p>
-            <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
-            <p id="modal-word-count" class="text-xs text-gray-400 mb-3 text-right"></p>
-
-            <!-- Wybór typu nagrania -->
-            <div class="mb-4">
-              <label class="block text-gray-900 font-semibold mb-2 text-sm">Typ nagrania *</label>
-              <select id="modal-service-select" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
-                <option value="">— wybierz typ nagrania —</option>
-                <option value="ivr">Zapowiedzi telefoniczne (IVR)</option>
-                <option value="radio">Spot radiowy</option>
-                <option value="tv">Spot telewizyjny</option>
-                <option value="social">Spot kampania social media</option>
-                <option value="elearning">E-learning / szkolenia</option>
-                <option value="film">Narracja filmowa</option>
-                <option value="audiobook">Audiobook</option>
-                <option value="podcast">Podcast (intro/outro)</option>
-              </select>
+              <p id="modal-word-count" class="text-xs text-gray-400"></p>
             </div>
 
             <!-- Dynamiczne pytania per serviceType -->
@@ -366,7 +404,7 @@
             </div>
 
           </div>
-        </div>
+        </div><!-- /#wycena -->
       </div>
         </div>
         <% } %>
@@ -533,8 +571,8 @@
       </div>
     </div>
 
-    <!-- CENNIK (jeśli nie ukryty) -->
-    <% if (!lektor.hidePrice && lektor.prices) { %>
+    <!-- CENNIK usunięty — ceny w sidebarze przy formularzu wyceny -->
+    <% if (false && !lektor.hidePrice && lektor.prices) { %>
     <div class="mt-12" id="lektor-cennik-section">
       <details>
       <summary class="flex items-center gap-2 cursor-pointer select-none mb-6" style="list-style:none">
@@ -957,29 +995,29 @@ var PRICING_MAP = {
     label: 'Spot radiowy',
     method: 'choice',
     options: [
-      { field: 'spot_radio_local', label: 'Reklama lokalna' },
-      { field: 'spot_radio_national', label: 'Reklama ogolnokrajowa' }
+      { field: 'spot_radio_local', label: 'Lokalne' },
+      { field: 'spot_radio_national', label: 'Krajowe' }
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
       { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
       { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
-    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
   tv: {
     label: 'Spot telewizyjny',
     method: 'choice',
     options: [
-      { field: 'spot_tv_local', label: 'Reklama lokalna' },
-      { field: 'spot_tv_national', label: 'Reklama ogolnokrajowa' }
+      { field: 'spot_tv_local', label: 'Lokalna' },
+      { field: 'spot_tv_national', label: 'Krajowa' }
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
       { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
       { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
-    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
   social: {
     label: 'Spot kampania social media',
@@ -993,7 +1031,7 @@ var PRICING_MAP = {
       { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
       { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
-    note: 'Stawka uwzgl. licencję na okres do 12 mies.'
+    note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
   elearning: {
     label: 'E-learning / szkolenia',
@@ -1057,16 +1095,31 @@ var PRICING_MAP = {
 };
 
 // Mapowanie kreator serviceType → PRICING_MAP key
+// spot = radio + TV połączone w jeden kafelek
+PRICING_MAP['spot'] = {
+  label: 'Spot reklamowy',
+  method: 'choice',
+  options: [
+    { field: 'spot_radio_local', label: 'Radio — lokalne' },
+    { field: 'spot_radio_national', label: 'Radio — krajowe' },
+    { field: 'spot_tv_local', label: 'TV — lokalna' },
+    { field: 'spot_tv_national', label: 'TV — krajowa' }
+  ],
+  addons: PRICING_MAP['radio'].addons,
+  note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
+};
+
 var SERVICE_TYPE_MAP = {
   'ivr': 'ivr',
   'powitania': 'ivr',
-  'radio': 'radio',
-  'tv': 'tv',
+  'radio': 'spot',
+  'tv': 'spot',
+  'spot': 'spot',
   'social': 'social',
-  'elearning': 'elearning',
+  'elearning': 'film',
   'film': 'film',
-  'audiobook': 'audiobook',
-  'podcast': 'podcast'
+  'audiobook': 'film',
+  'podcast': 'film'
 };
 
 // --- Helpers ---
@@ -1159,6 +1212,36 @@ function calculatePrice(serviceType, wordCount, options) {
 
 // --- Renderowanie pytan per serviceType ---
 function renderQuestions(serviceType, targetEl) {
+  // Spot reklamowy — dwie kolumny: Radio (lewo) + TV (prawo)
+  if (serviceType === 'spot') {
+    var radioOpts = PRICING_MAP['radio'].options;
+    var tvOpts = PRICING_MAP['tv'].options;
+    function spotOptionHtml(opt) {
+      var price = LEKTOR_PRICES[opt.field];
+      var priceLabel = price ? ('<span class="text-accent font-semibold"> — ' + price + ' zł netto</span>') : '';
+      return '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)">' +
+        '<span class="text-gray-600 text-sm">' + opt.label + priceLabel + '</span>' +
+        '</label>';
+    }
+    var html = '<div class="mb-4">';
+    html += '<label class="block text-gray-900 font-semibold mb-3 text-sm">Wybierz medium i zasięg:</label>';
+    html += '<div class="grid grid-cols-2 gap-x-4">';
+    html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Radio</p><div class="space-y-2">';
+    radioOpts.forEach(function(opt) { html += spotOptionHtml(opt); });
+    html += '</div></div>';
+    html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">TV</p><div class="space-y-2">';
+    tvOpts.forEach(function(opt) { html += spotOptionHtml(opt); });
+    html += '</div></div>';
+    html += '</div>';
+    if (PRICING_MAP['spot'].note) {
+      html += '<p class="text-xs text-gray-500 mt-2">' + PRICING_MAP['spot'].note + '</p>';
+    }
+    html += '</div>';
+    targetEl.innerHTML = html;
+    return;
+  }
+
   var cfg = PRICING_MAP[serviceType];
   if (!cfg) { targetEl.innerHTML = ''; return; }
 
@@ -1595,6 +1678,15 @@ function modalCalculate() {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(autoCalc, 500);
   });
+
+  // Kliknięcie w pole usuwa przykładowy tekst
+  if (textarea) textarea.addEventListener('focus', function() {
+    if (textarea.classList.contains('text-gray-400')) {
+      textarea.value = '';
+      textarea.classList.remove('text-gray-400');
+      updateWordCount();
+    }
+  });
 })();
 
 // Zbierz zaznaczone usługi dodatkowe + wybraną melodię
@@ -2018,8 +2110,7 @@ function showPricingWizard(ctx) {
   if (ctaSection) ctaSection.classList.add('hidden');
 
   // Ukryj cennik — w flow kreatora konczymy na formularzu zamowienia
-  var cennikSection = document.getElementById('lektor-cennik-section');
-  if (cennikSection) cennikSection.classList.add('hidden');
+  // (cennik usunięty — sekcja już nie istnieje)
 
   // Ukryj inline kalkulator — wizard zastępuje go całkowicie
   var wycenaSection = document.getElementById('wycena');
@@ -2096,6 +2187,44 @@ function showPricingWizard(ctx) {
   });
 })();
 
+var EXAMPLE_TEXTS = {
+  ivr: '[ Przykładowy tekst — zastąp własnym ]\n\nDziękujemy za kontakt z firmą Kowalski. Witamy w systemie obsługi klienta.\nAby połączyć się z działem sprzedaży, naciśnij 1.\nAby skontaktować się z działem serwisu, naciśnij 2.\nJeśli chcesz porozmawiać z recepcją, naciśnij 0.\nW przypadku spraw pilnych prosimy o e-mail na adres biuro@kowalski.pl.\nCzas pracy biura: poniedziałek–piątek, godziny 8:00–17:00.\nDziękujemy i zapraszamy do rozmowy z naszymi konsultantami.',
+  social: '[ Przykładowy tekst — zastąp własnym ]\n\nHej! Szukasz sprawdzonego sposobu na szybką dostawę? Z naszą aplikacją zamówisz jedzenie, zakupy i kuriera w jednym miejscu. Ponad milion zadowolonych użytkowników w całej Polsce. Pierwsze zamówienie z rabatem 20% — wpisz kod NOWY20 przy kasie. Pobierz aplikację już teraz i odkryj wygodę, której szukałeś. Dostępna w App Store i Google Play. Dostawa nawet w 30 minut.',
+  spot: '[ Przykładowy tekst — zastąp własnym ]\n\nTylko dziś w MediaExpert wyjątkowa okazja! Telewizory 4K, laptopy, lodówki i pralki — wszystko do 40% taniej niż w standardowej cenie. Oferta ograniczona czasowo, tylko w ten weekend. Odwiedź najbliższy salon MediaExpert lub zamów online na mediaexpert.pl. Szybka dostawa do domu już od 0 złotych. MediaExpert — tu kupują mądrzy.',
+  film: '[ Przykładowy tekst — zastąp własnym, ok. 1 strona A4 ]\n\nModuł pierwszy: Bezpieczeństwo i higiena pracy na stanowiskach biurowych.\n\nPraca przy komputerze przez wiele godzin dziennie może prowadzić do przeciążeń układu mięśniowo-szkieletowego, problemów ze wzrokiem i przewlekłego zmęczenia. Nawet kilka prostych zasad ergonomii może zapobiec poważnym dolegliwościom w przyszłości. Właściwe zorganizowanie stanowiska pracy chroni zdrowie i zwiększa efektywność od pierwszego dnia zatrudnienia.\n\nFotel powinien być regulowany w zakresie wysokości siedziska i podparcia lędźwiowego. Prawidłowa pozycja zakłada, że stopy spoczywają płasko na podłodze, uda ułożone są poziomo, a kąt w stawach kolanowych wynosi około 90 stopni. Plecy powinny być lekko odchylone do tyłu i podparte przez oparcie fotela.\n\nMonitor ustawiamy w odległości 50–70 cm od oczu. Górna krawędź ekranu powinna znajdować się na poziomie oczu lub nieco poniżej. Unikaj refleksów świetlnych — jeśli to możliwe, ustaw monitor prostopadle do okna.\n\nKlawiatura i mysz powinny leżeć na tej samej powierzchni, w odległości umożliwiającej pracę ze zgiętymi łokciami pod kątem 90 stopni. Nadgarstki utrzymuj w pozycji neutralnej — nie opieraj ich o blat podczas pisania. Unikaj długotrwałego napinania mięśni przedramion.\n\nPamiętaj o regularnych przerwach. Co 45–60 minut pracy wstań, pospaceruj i wykonaj kilka ćwiczeń rozciągających. Stosuj zasadę 20-20-20: co 20 minut patrz przez 20 sekund na obiekt oddalony o ok. 6 metrów. Pozwoli to odpocząć mięśniom odpowiedzialnym za akomodację wzroku.\n\nW kolejnym module omówimy zasady ergonomicznego korzystania z urządzeń mobilnych w miejscu pracy.'
+};
+
+function pickService(btn) {
+  var sel = document.getElementById(btn.dataset.select);
+  if (!sel) return;
+  // Active state na przycisku
+  btn.closest('.grid').querySelectorAll('.svc-btn').forEach(function(b) {
+    b.classList.remove('border-accent', 'bg-accent/10', 'font-semibold');
+    b.classList.add('border-gray-200');
+    b.querySelectorAll('span').forEach(function(s) {
+      s.classList.remove('text-accent');
+      if (s.classList.contains('text-gray-400')) return;
+      s.classList.add('text-gray-800');
+    });
+  });
+  btn.classList.remove('border-gray-200');
+  btn.classList.add('border-accent', 'bg-accent/10', 'font-semibold');
+  btn.querySelectorAll('span:first-child').forEach(function(s) {
+    s.classList.remove('text-gray-800');
+    s.classList.add('text-accent');
+  });
+  // Sync hidden select + trigger change
+  sel.value = btn.dataset.value;
+  sel.dispatchEvent(new Event('change'));
+  // Wypełnij przykładowy tekst jeśli pole puste lub pokazuje inny przykład
+  var ta = document.getElementById('modal-text-input');
+  if (ta && (!ta.value.trim() || ta.classList.contains('text-gray-400')) && EXAMPLE_TEXTS[btn.dataset.value]) {
+    ta.value = EXAMPLE_TEXTS[btn.dataset.value];
+    ta.classList.add('text-gray-400');
+    ta.dispatchEvent(new Event('input'));
+  }
+}
+
 function updateWizardPricing() {
   var sel = document.getElementById('wizard-service-select');
   var questionsEl = document.getElementById('wizard-questions');
@@ -2159,8 +2288,7 @@ function clearPricingContext() {
   // Przywroc CTA sekcje i cennik
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.remove('hidden');
-  var cennikSection = document.getElementById('lektor-cennik-section');
-  if (cennikSection) cennikSection.classList.remove('hidden');
+  // cennik usunięty — nie ma czego przywracać
 }
 
 // --- Auto-detect context on page load ---
