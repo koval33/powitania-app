@@ -34,6 +34,23 @@
             <%= lektor.age %>
           </span>
         </div>
+
+        <% if (!lektor.hidePrice && lektor.prices) { %>
+        <div class="mt-5 space-y-1.5 text-xs text-gray-500">
+          <% if (lektor.prices.ivr_100) { %>
+          <div class="flex justify-between"><span>Phone Announcement</span><span class="font-semibold text-gray-800">from <%= lektor.prices.ivr_100 %> EUR</span></div>
+          <% } %>
+          <% if (lektor.prices.spot_social_1min) { %>
+          <div class="flex justify-between"><span>Social Media</span><span class="font-semibold text-gray-800">from <%= lektor.prices.spot_social_1min %> EUR</span></div>
+          <% } %>
+          <% if (lektor.prices.spot_radio_local) { %>
+          <div class="flex justify-between"><span>Ad Spot</span><span class="font-semibold text-gray-800">from <%= lektor.prices.spot_radio_local %> EUR</span></div>
+          <% } %>
+          <% if (lektor.prices.narration_1page) { %>
+          <div class="flex justify-between"><span>Narration / film</span><span class="font-semibold text-gray-800">from <%= lektor.prices.narration_1page %> EUR</span></div>
+          <% } %>
+        </div>
+        <% } %>
       </div>
 
       <!-- Prawa kolumna: dane -->
@@ -116,20 +133,15 @@
         </div>
         <% } %>
 
-        <!-- CTA -->
+        <!-- CTA (only for hidePrice — links to inquiry form) -->
+        <% if (lektor.hidePrice) { %>
         <div id="lektor-cta-section" class="flex flex-col gap-3">
-          <% if (!lektor.hidePrice) { %>
-          <button onclick="showOrderModal()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
-            Get a quote for this voice artist
-          </button>
-          <% } else { %>
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             Request a quote
           </a>
-          <% } %>
         </div>
+        <% } %>
 
         <!-- INTELIGENTNY WIZARD WYCENY (widoczny gdy kontekst z kreatora) -->
         <div id="pricing-wizard" class="mt-6 hidden">
@@ -256,6 +268,148 @@
           </div>
         </div>
 
+        <!-- INLINE: Quote for recording -->
+        <% if (!lektor.hidePrice) { %>
+        <div id="wycena" class="mt-6">
+          <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">
+              Get a quote — <%= lektor.name %>
+            </h2>
+            <p class="text-sm text-gray-500 mb-4">Select the recording type — the price will be calculated automatically.</p>
+
+            <!-- Hidden service select -->
+            <select id="modal-service-select" class="hidden">
+              <option value="">— select recording type —</option>
+              <option value="ivr">Phone Announcement (IVR)</option>
+              <option value="social">Social Media</option>
+              <option value="radio">Ad Spot</option>
+              <option value="film">Narration</option>
+            </select>
+
+            <!-- 4 tile buttons -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
+                <span class="block text-sm font-semibold text-gray-800 leading-tight">Phone Ann.</span>
+                <span class="block text-xs text-gray-400 mt-1">IVR / phone system</span>
+              </button>
+              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
+                <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
+                <span class="block text-xs text-gray-400 mt-1">online / digital</span>
+              </button>
+              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="radio" onclick="pickService(this)">
+                <span class="block text-sm font-semibold text-gray-800 leading-tight">Ad Spot</span>
+                <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
+              </button>
+              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
+                <span class="block text-sm font-semibold text-gray-800 leading-tight">Narration</span>
+                <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
+              </button>
+            </div>
+
+            <div>
+              <div id="modal-step-text">
+                <textarea id="modal-text-input" rows="5" placeholder="Paste your recording script here..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
+                <div class="flex items-center justify-between mb-3">
+                  <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1 text-sm">
+                    I need a script — generate with AI Creator
+                  </button>
+                  <p id="modal-word-count" class="text-xs text-gray-400"></p>
+                </div>
+
+                <!-- Dynamic questions per serviceType -->
+                <div id="modal-questions"></div>
+
+                <!-- Inline pricing -->
+                <div id="modal-pricing" class="hidden"></div>
+
+                <!-- Order form after pricing -->
+                <div id="modal-order-cta" class="hidden mt-4">
+                  <div class="border-t border-gray-200 pt-4">
+                    <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                      <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                      Order Details
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Company Name *</label>
+                        <input type="text" id="mod-firmName" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Company Ltd.">
+                      </div>
+                      <div class="grid sm:grid-cols-2 gap-3">
+                        <div>
+                          <label class="block text-gray-900 text-sm font-medium mb-1">Full Name *</label>
+                          <input type="text" id="mod-name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="John Smith">
+                        </div>
+                        <div>
+                          <label class="block text-gray-900 text-sm font-medium mb-1">Tax ID</label>
+                          <input type="text" id="mod-nip" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Tax ID number">
+                        </div>
+                      </div>
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Address *</label>
+                        <input type="text" id="mod-street" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm mb-2" placeholder="123 Main Street">
+                        <div class="grid grid-cols-3 gap-2">
+                          <input type="text" id="mod-zipCode" required class="bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Zip">
+                          <input type="text" id="mod-city" required class="col-span-2 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="City">
+                        </div>
+                      </div>
+                      <div class="grid sm:grid-cols-2 gap-3">
+                        <div>
+                          <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                          <input type="email" id="mod-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="john@company.com">
+                        </div>
+                        <div>
+                          <label class="block text-gray-900 text-sm font-medium mb-1">Phone</label>
+                          <input type="tel" id="mod-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="+48 600 000 000">
+                        </div>
+                      </div>
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Notes</label>
+                        <textarea id="mod-notes" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Additional information..."></textarea>
+                      </div>
+                    </div>
+                    <button id="mod-submit-btn" onclick="submitModalOrder()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                      Order Recording
+                    </button>
+                    <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
+                    <p class="text-center text-sm text-gray-500 mt-3">Have questions? <button type="button" onclick="showModalInquiry()" class="text-accent hover:text-accent-light font-medium">Ask for details</button></p>
+                  </div>
+                </div>
+
+                <!-- Inquiry form inside #wycena -->
+                <div id="modal-inquiry-form" class="hidden mt-4">
+                  <div class="border-t border-gray-200 pt-4">
+                    <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                      <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                      Ask for details
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+                        <input type="email" id="mod-inq-email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="john@company.com">
+                      </div>
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Full Name</label>
+                        <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="John Smith">
+                      </div>
+                      <div>
+                        <label class="block text-gray-900 text-sm font-medium mb-1">Message</label>
+                        <textarea id="mod-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Additional information, questions..."></textarea>
+                      </div>
+                    </div>
+                    <button id="mod-inq-submit-btn" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">
+                      Send Inquiry
+                    </button>
+                    <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
+                    <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="showModalOrder()" class="text-accent hover:text-accent-light font-medium">← Back to order</button></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- /#wycena -->
+        <% } %>
+
       </div>
     </div>
 
@@ -360,8 +514,8 @@
     </div>
     <% } %>
 
-    <!-- CENNIK (jeśli nie ukryty) -->
-    <% if (!lektor.hidePrice && lektor.prices) { %>
+    <!-- CENNIK usunięty — ceny pod zdjęciem i w formularzu wyceny -->
+    <% if (false && !lektor.hidePrice && lektor.prices) { %>
     <div class="mt-12" id="lektor-cennik-section">
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Pricing</h2>
 
@@ -538,16 +692,11 @@
   </div>
 </section>
 
-<% if (!lektor.hidePrice) { %>
-<!-- MODAL: Zamów nagranie -->
-<div id="order-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-  <div class="bg-white rounded-2xl border border-gray-200 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-md">
-    <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl">
-      <h3 class="text-2xl font-bold text-gray-900">Order Recording — <span class="text-accent"><%= lektor.name %></span></h3>
-      <button onclick="closeOrderModal()" class="text-gray-500 hover:text-gray-900 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
+<% if (false) { %>
+<!-- MODAL usunięty — formularz jest teraz inline w #wycena -->
+<div id="order-modal" class="hidden">
+  <div>
+    <div>
     <div class="p-6">
       <!-- Krok 1: Tekst -->
       <div id="modal-step-text">
@@ -995,6 +1144,7 @@ var PRICING_MAP = {
 var SERVICE_TYPE_MAP = {
   'ivr': 'ivr',
   'powitania': 'ivr',
+  'spot': 'radio',
   'radio': 'radio',
   'tv': 'tv',
   'social': 'social',
@@ -1356,15 +1506,21 @@ function recalcTotal() {
   }
 }
 
-// --- Modal: Zamow nagranie ---
-function showOrderModal() {
-  var el = document.getElementById('order-modal');
-  if (el) { el.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+// --- Scroll to inline quote form (legacy: was modal) ---
+function scrollToWycena(e) {
+  if (e) e.preventDefault();
+  var el = document.getElementById('wycena');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function() {
+      var textarea = document.getElementById('modal-text-input');
+      if (textarea) textarea.focus();
+    }, 500);
+  }
 }
-function closeOrderModal() {
-  var el = document.getElementById('order-modal');
-  if (el) { el.classList.add('hidden'); document.body.style.overflow = ''; }
-}
+// Legacy aliases
+function showOrderModal() { scrollToWycena(); }
+function closeOrderModal() { /* no-op — inline now */ }
 
 function onChoiceChange(radio) {
   // Rozpoznaj kontekst: wizard vs modal
@@ -1425,9 +1581,6 @@ function modalCalculate() {
   }
 
   ctaEl.classList.remove('hidden');
-
-  var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
-  try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
 }
 
 // Auto-kalkulacja w modalu — po wpisaniu tekstu i wyborze typu
@@ -1466,8 +1619,6 @@ function modalCalculate() {
     }
 
     ctaEl.classList.remove('hidden');
-    var ctx = { text: text, serviceType: serviceType, lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, timestamp: Date.now() };
-    try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
   }
 
   if (sel) sel.addEventListener('change', function() {
@@ -2006,6 +2157,51 @@ function showPricingWizard(ctx) {
   });
 })();
 
+var EXAMPLE_TEXTS = {
+  ivr: '[ Sample text — replace with your own ]\n\nThank you for calling Smith & Associates. Welcome to our customer service system.\nTo reach the sales department, press 1.\nTo contact technical support, press 2.\nFor billing and invoices, press 3.\nTo speak with our receptionist, press 0.\nFor urgent matters, please email us at hello@smithassociates.com.\nOffice hours: Monday to Friday, 8:00 AM to 5:00 PM.\nThank you for your patience. We look forward to speaking with you.',
+  social: '[ Sample text — replace with your own ]\n\nLooking for a smarter way to get things done? Our app brings everything you need into one place — deliveries, bookings, and more. Over a million happy users across Europe. Get 20% off your first order — use code NEW20 at checkout. Download now and discover the convenience you\'ve been waiting for. Available on the App Store and Google Play. Delivery in as little as 30 minutes.',
+  radio: '[ Sample text — replace with your own ]\n\nOnly this weekend at TechZone — incredible deals! 4K TVs, laptops, home appliances — all up to 40% off the regular price. Limited time offer, this weekend only. Visit your nearest TechZone store or order online at techzone.com. Free delivery on orders over €50. TechZone — shop smart.',
+  film: '[ Sample text — replace with your own, approx. 1 A4 page ]\n\nModule One: Workplace Safety and Ergonomics.\n\nSpending long hours at a computer can lead to musculoskeletal strain, eye fatigue, and chronic tiredness. A few simple ergonomic principles can prevent serious issues down the road. Properly setting up your workstation protects your health and boosts productivity from day one.\n\nYour chair should be adjustable in seat height and lumbar support. The correct posture means feet flat on the floor, thighs horizontal, and knees bent at approximately 90 degrees. Your back should be slightly reclined and fully supported.\n\nPosition your monitor 20 to 28 inches from your eyes. The top of the screen should be at or slightly below eye level. Avoid glare — if possible, place the monitor perpendicular to windows.\n\nKeep your keyboard and mouse on the same surface, close enough to work with elbows bent at 90 degrees. Keep wrists in a neutral position — do not rest them on the desk while typing.\n\nRemember to take regular breaks. Every 45 to 60 minutes, stand up, walk around, and do a few stretches. Use the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds.\n\nIn the next module, we will cover ergonomic use of mobile devices in the workplace.'
+};
+
+function pickService(btn) {
+  var sel = document.getElementById(btn.dataset.select);
+  if (!sel) return;
+  // Active state on button
+  btn.closest('.grid').querySelectorAll('.svc-btn').forEach(function(b) {
+    b.classList.remove('border-accent', 'bg-accent/10', 'font-semibold');
+    b.classList.add('border-gray-200');
+    b.querySelectorAll('span').forEach(function(s) {
+      s.classList.remove('text-accent');
+      if (s.classList.contains('text-gray-400')) return;
+      s.classList.add('text-gray-800');
+    });
+  });
+  btn.classList.remove('border-gray-200');
+  btn.classList.add('border-accent', 'bg-accent/10', 'font-semibold');
+  btn.querySelectorAll('span:first-child').forEach(function(s) {
+    s.classList.remove('text-gray-800');
+    s.classList.add('text-accent');
+  });
+  // Sync hidden select + trigger change
+  sel.value = btn.dataset.value;
+  sel.dispatchEvent(new Event('change'));
+  // Fill example text if textarea is empty or showing another example
+  var ta = document.getElementById('modal-text-input');
+  if (ta && (!ta.value.trim() || ta.classList.contains('text-gray-400')) && EXAMPLE_TEXTS[btn.dataset.value]) {
+    ta.value = EXAMPLE_TEXTS[btn.dataset.value];
+    ta.classList.add('text-gray-400');
+    ta.dispatchEvent(new Event('input'));
+  }
+}
+
+function showModalOrder() {
+  var orderForm = document.getElementById('modal-order-cta');
+  var inquiryForm = document.getElementById('modal-inquiry-form');
+  if (inquiryForm) inquiryForm.classList.add('hidden');
+  if (orderForm) orderForm.classList.remove('hidden');
+}
+
 function updateWizardPricing() {
   var sel = document.getElementById('wizard-service-select');
   var questionsEl = document.getElementById('wizard-questions');
@@ -2066,11 +2262,7 @@ function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
   var wizard = document.getElementById('pricing-wizard');
   if (wizard) wizard.classList.add('hidden');
-  // Przywroc CTA sekcje i cennik
-  var ctaSection = document.getElementById('lektor-cta-section');
-  if (ctaSection) ctaSection.classList.remove('hidden');
-  var cennikSection = document.getElementById('lektor-cennik-section');
-  if (cennikSection) cennikSection.classList.remove('hidden');
+  // Cennik usunięty — nie ma czego przywracać
 }
 
 // --- Auto-detect context on page load ---
@@ -2079,7 +2271,7 @@ function clearPricingContext() {
     var ctxStr = sessionStorage.getItem('kreatorContext');
     if (!ctxStr) return;
     var ctx = JSON.parse(ctxStr);
-    if (ctx.text && !LEKTOR_HIDE_PRICE) {
+    if (ctx.text && !LEKTOR_HIDE_PRICE && !ctx.fromInlineForm) {
       showPricingWizard(ctx);
     }
   } catch(e) {}
