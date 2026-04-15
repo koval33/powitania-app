@@ -1310,8 +1310,15 @@ function renderPricing(result, wordCount, targetEl) {
 
     // Addony (checkboxy IVR)
     if (result.addons && result.addons.length > 0) {
-      html += '<div class="border-t border-gray-200 pt-3 mt-2 space-y-2">';
-      html += '<p class="text-xs text-gray-500 mb-1">Additional services:</p>';
+      html += '<div class="border-t border-gray-200 pt-2 mt-2">';
+      html += '<button type="button" onclick="toggleAddonsSection(this)" class="inline-flex items-center gap-1.5 text-left py-1 group">' +
+        '<span class="text-xs font-medium text-gray-500 group-hover:text-gray-700 transition-colors">Additional services (' + result.addons.length + ')</span>' +
+        '<span class="text-gray-400 group-hover:text-gray-600 transition-colors text-xs flex items-center gap-0.5">' +
+          '<span class="addons-toggle-label">expand</span>' +
+          '<svg class="addons-toggle-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>' +
+        '</span>' +
+      '</button>';
+      html += '<div class="addons-body hidden space-y-2 mt-2">';
       result.addons.forEach(function(addon, idx) {
         var melodyCheckId = addon.hasMelodySelector ? 'melody-addon-check' : '';
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
@@ -1350,7 +1357,8 @@ function renderPricing(result, wordCount, targetEl) {
           html += '</div>';
         }
       });
-      html += '</div>';
+      html += '</div>'; // addons-body
+      html += '</div>'; // border-t wrapper
     }
 
     // Suma
@@ -1401,6 +1409,17 @@ function updateOrderButtonLabels(hasPrice) {
   if (wizBtn) wizBtn.textContent = label;
   var modBtn = document.getElementById('mod-submit-btn');
   if (modBtn) modBtn.textContent = label;
+}
+
+function toggleAddonsSection(btn) {
+  var body = btn.nextElementSibling;
+  if (!body) return;
+  var isOpen = !body.classList.contains('hidden');
+  body.classList.toggle('hidden', isOpen);
+  var label = btn.querySelector('.addons-toggle-label');
+  var icon = btn.querySelector('.addons-toggle-icon');
+  if (label) label.textContent = isOpen ? 'expand' : 'collapse';
+  if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
 function toggleAddonTooltip(e, idx) {
