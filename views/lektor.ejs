@@ -49,7 +49,10 @@
         <% if (!lektor.hidePrice && lektor.prices) { %>
         <div class="mt-5 space-y-1.5 text-xs text-gray-500">
           <% if (lektor.prices.ivr_100) { %>
-          <div class="flex justify-between"><span>Zapowiedź / IVR</span><span class="font-semibold text-gray-800">od <%= lektor.prices.ivr_100 %> zł</span></div>
+          <div class="flex justify-between"><span>Zapowiedź tel.</span><span class="font-semibold text-gray-800">od <%= lektor.prices.ivr_100 %> zł</span></div>
+          <% } %>
+          <% if (lektor.prices.spot_social_1min) { %>
+          <div class="flex justify-between"><span>Social Media</span><span class="font-semibold text-gray-800">od <%= lektor.prices.spot_social_1min %> zł</span></div>
           <% } %>
           <% if (lektor.prices.spot_radio_local) { %>
           <div class="flex justify-between"><span>Spot reklamowy</span><span class="font-semibold text-gray-800">od <%= lektor.prices.spot_radio_local %> zł</span></div>
