@@ -354,7 +354,7 @@ app.get('/', (req, res) => {
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Bank głosów lektorskich | Baza lektorów | Głosy lektorskie | Powitania.pl',
-    description: 'Profesjonalny bank głosów. Największa baza głosów lektorskich. Przykładowe nagrania lektorskie. Doświadczeni lektorzy. Zachęcamy do realizacji nagrań!',
+    description: 'Bank głosów lektorskich Powitania.pl — 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
     voices: loadVoices()
   });
 });
@@ -776,7 +776,7 @@ app.get('/en/', (req, res) => {
 app.get('/en/voice-bank/', (req, res) => {
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
-    description: 'Browse our voice bank with 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style.',
+    description: 'Voice bank Powitania.pl — 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.',
     voices: loadVoices()
   });
 });
