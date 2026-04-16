@@ -2314,14 +2314,77 @@ function clearPricingContext() {
 </script>
 
 <%
+// Mapowanie języków PL → ISO 639-1 dla schema.org knowsLanguage
+var _langMap = {
+  'polski': 'pl', 'angielski': 'en', 'niemiecki': 'de', 'hiszpański': 'es',
+  'francuski': 'fr', 'włoski': 'it', 'rosyjski': 'ru', 'ukraiński': 'uk',
+  'czeski': 'cs', 'słowacki': 'sk', 'portugalski': 'pt', 'arabski': 'ar',
+  'chiński': 'zh', 'japoński': 'ja', 'koreański': 'ko', 'hindi': 'hi',
+  'turecki': 'tr', 'fiński': 'fi', 'norweski': 'no', 'duński': 'da',
+  'szwedzki': 'sv', 'islandzki': 'is', 'estoński': 'et', 'litewski': 'lt',
+  'łotewski': 'lv', 'węgierski': 'hu', 'bułgarski': 'bg', 'słoweński': 'sl',
+  'holenderski': 'nl', 'flamandzki': 'nl-BE', 'tajski': 'th', 'hebrajski': 'he',
+  'rumuński': 'ro', 'grecki': 'el', 'wietnamski': 'vi'
+};
+
+// Dane biograficzne dla 22 famous lektorów (research SEO/GEO)
+var KNOWN_BIOS = {
+  'tomasz-raczek':         { alma: 'AT Warszawa', knownFor: ['Perły z lamusa (TVP)', 'redaktor naczelny „Film"', 'Magazyn Filmowy SFP', 'krytyk Canal+/Kino Polska'] },
+  'tomasz-bednarek':       { alma: 'PWST Wrocław', knownFor: ['Klan (Jacek Borecki)', 'Shrek (Ciastek)', 'Madagaskar (Mort)', 'Gwiezdne wojny: Wojny klonów (Anakin)'] },
+  'lukasz-nowicki':        { alma: 'AST Kraków', knownFor: ['Pytanie na śniadanie (TVP2)', 'Postaw na milion (TVP2)', 'Teatr Ateneum Warszawa', 'Niania'] },
+  'wiktor-zborowski':      { alma: 'AT Warszawa', knownFor: ['Ogniem i mieczem (Longinus Podbipięta)', 'Kogel-mogel', 'Asterix i Obelix (Obelix — dubbing)', 'Król Lew (Mufasa — dubbing)'] },
+  'jacek-rozenek':         { alma: 'AT Warszawa', knownFor: ['Wiedźmin (Geralt — gry)', 'Klan (Rafał Kozień)', 'Barwy szczęścia (Artur Chowański)'] },
+  'andrzej-ferenc':        { alma: 'AT Warszawa', knownFor: ['lektor programowy TVN (1997-2024)', 'pierwszy polski głos Batmana (dubbing)', 'Na Wspólnej', 'narrator słuchowisk radiowych'] },
+  'beata-tadla':           { alma: 'UAM Poznań (kulturoznawstwo)', knownFor: ['Wiadomości TVP1', 'Fakty po południu (TVN24)', 'Pytanie na śniadanie (TVP2)', 'Taniec z gwiazdami (zwyciężczyni 8. edycji)'] },
+  'anna-samusionek':       { alma: 'AT Warszawa', knownFor: ['Na dobre i na złe (Lucyna Sikorka)', 'Na Wspólnej (Ilona Zdybicka)', 'Złotopolscy', 'Darmozjad polski (Złoty Lew)'] },
+  'katarzyna-skolimowska': { alma: 'AT Warszawa', knownFor: ['Teatr Rozmaitości Warszawa', 'Teatr Komedia', 'aktorka dubbingowa'] },
+  'pawel-szwajgier':       { alma: null, knownFor: ['Kabaret Smile', 'skecz „Pan Stanisław — kierowca TIR-a"', 'skecz „Merlin"'] },
+  'jacek-brzostynski':     { alma: 'AST Kraków', knownFor: ['lektor Canal+/Polsat/TVN', 'Telewizyjny Koncert Życzeń (TVP)', 'Kill Bill / Wściekłe psy', 'Gwiezdne wojny IV-VI (lektor)'] },
+  'kuba-bielak':           { alma: 'AWF Warszawa', knownFor: ['TVN Turbo („Jazda polska", „K2", „Wypad z kraju")', 'Akademia Bezpiecznej Jazdy', 'Radio Yanosik'] },
+  'stanislaw-olejniczak':  { alma: null, knownFor: ['Moda na sukces (lektor TVP1, 1994-2014)', 'Wiadomości 19:30 TVP1 (1989-1992)', 'Titanic', 'Terminator'] },
+  'maciej-jablonski':      { alma: 'Akademia Muzyczna Warszawa', knownFor: ['Wiadomości Sportowe TVP1', 'Sportowy Wieczór (TVP Sport)', 'studio olimpijskie Pekin/Londyn/Soczi', 'serwisy TVP Info'] },
+  'zbigniew-moskal':       { alma: null, knownFor: ['głos autopromocji Programu 1 Polskiego Radia', 'reklamy Danone / Audi / Meridol', 'dramat „Czas na pogodę"'] },
+  'miroslaw-utta':         { alma: 'filologia romańska', knownFor: ['lektor telenowel TVN (Esmeralda, Camila)', 'S.T.A.L.K.E.R. (narrator)', 'Stary Testament (Biblia Tysiąclecia — audiobook)'] },
+  'bartek-ignacik':        { alma: 'UG (prawo)', knownFor: ['TURBOKOZAK (nc+/Canal+)', 'komentator tenisowy Eurosport', 'reporter Ekstraklasy (Canal+ Sport)'] },
+  'mikolaj-krawczyk':      { alma: 'PWSFTviT Łódź', knownFor: ['Pierwsza miłość (Paweł Krzyżanowski)', 'Klan (Tomek)', 'Teatr Wybrzeże Gdańsk'] },
+  'przemyslaw-skowron':    { alma: 'UJ (dziennikarstwo)', knownFor: ['RMF FM (od 1997)', 'Kobranocka FM', 'TVP Kraków („Regiony Kultury")'] },
+  'andrzej-krusiewicz':    { alma: null, knownFor: ['Polskie Radio (od 1977)', 'Wędrówki z dinozaurami (BBC — narrator)', 'Wędrówki z bestiami (BBC — narrator)'] },
+  'jacek-kurowski':        { alma: 'UW (dziennikarstwo)', knownFor: ['TVP Sport (od 2003)', 'program „Oko w oko"', 'relacje z Igrzysk Olimpijskich (Ateny, Turyn, Pekin, Vancouver)', 'Rajd Dakar'] },
+  'laura-samojlowicz':     { alma: 'AT Warszawa', knownFor: ['Hotel 52 (Natalia Lipska)', 'M jak miłość', 'Gliniarze', 'Jak oni śpiewają (zwyciężczyni V edycji)'] }
+};
+
 var _personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": lektor.name,
   "jobTitle": "Lektor",
+  "description": lektor.description || lektor.seoDescription || "",
   "image": "https://www.powitania.pl" + lektor.photo,
-  "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/"
+  "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/",
+  "knowsLanguage": (lektor.languages || []).map(function(l) { return _langMap[l] || l; }),
+  "knowsAbout": (lektor.applications || []).slice(),
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Powitania.pl",
+    "url": "https://www.powitania.pl"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Powitania.pl bank głosów",
+    "url": "https://www.powitania.pl/bank-glosow/"
+  }
 };
+
+// Wzbogać dla famous lektorów z bazą biografii
+if (KNOWN_BIOS[lektor.id]) {
+  var _bio = KNOWN_BIOS[lektor.id];
+  if (_bio.alma) {
+    _personSchema.alumniOf = { "@type": "EducationalOrganization", "name": _bio.alma };
+  }
+  if (_bio.knownFor && _bio.knownFor.length) {
+    _personSchema.knowsAbout = _personSchema.knowsAbout.concat(_bio.knownFor);
+  }
+}
 var _serviceSchemaLektor = {
   "@context": "https://schema.org",
   "@type": "Service",
