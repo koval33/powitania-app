@@ -345,7 +345,7 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Profesjonalne Studio Lektorskie Powitania.pl — od 2001 roku | 234 lektorów',
-    description: 'Studio lektorskie Powitania.pl — 234 profesjonalnych lektorów w 30+ językach, od 2001. Spoty reklamowe, zapowiedzi IVR, audiobooki, narracje. 11 000+ nagrań dla klientów: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
+    description: 'Studio lektorskie Powitania.pl od 2001 roku — 234 lektorów w 30+ językach. Spoty, IVR, wielojęzyczne audioprzewodniki. 11 000+ nagrań: Hyundai, Orange, Play.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
