@@ -344,8 +344,8 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Profesjonalne Studio Lektorskie Powitania.pl — od 2001 roku | 230+ lektorów',
-    description: 'Studio lektorskie Powitania.pl — 230+ profesjonalnych lektorów w 30+ językach. Spoty reklamowe, zapowiedzi telefoniczne IVR, audiobooki, narracje filmowe. 8600+ zrealizowanych nagrań. Klienci: Allegro, DHL, TVN, Volvo.',
+    title: 'Profesjonalne Studio Lektorskie Powitania.pl — od 2001 roku | 234 lektorów',
+    description: 'Studio lektorskie Powitania.pl — 234 profesjonalnych lektorów w 30+ językach, od 2001. Spoty reklamowe, zapowiedzi IVR, audiobooki, narracje. 11 000+ nagrań dla klientów: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -478,7 +478,7 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
       '@context': 'https://schema.org',
       '@type': 'Service',
       'name': 'Głos do reklamy — nagrania lektorskie',
-      'description': 'Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. Ponad 230 lektorów, realizacja w 24-48h.',
+      'description': 'Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. Ponad 234 lektorów, realizacja w 24-48h.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
       'url': 'https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/',
@@ -594,7 +594,7 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
 app.get('/o-firmie/', (req, res) => {
   res.render('o-firmie', {
     title: 'O firmie | powitania.pl',
-    description: 'OPTIMUM Paweł Kowalski — studio nagrań lektorskich działające od 2001 roku. Ponad 230 lektorów, 30+ języków.',
+    description: 'OPTIMUM Paweł Kowalski — studio nagrań lektorskich działające od 2001 roku. 234 lektorów, 30+ języków.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'O firmie', url: '/o-firmie/' }
@@ -766,8 +766,8 @@ app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 // === English version (Phase 1) ===
 app.get('/en/', (req, res) => {
   res.render('en/index', {
-    title: 'Professional Voiceover Studio Powitania.pl — since 2001 | 230+ voice artists',
-    description: 'Powitania.pl voiceover studio — 230+ professional voice artists in 30+ languages. Advertising spots, IVR phone announcements, audiobooks, film narration. 8600+ projects completed. Clients: Allegro, DHL, TVN, Volvo.',
+    title: 'Professional Voiceover Studio Powitania.pl — since 2001 | 234 voice artists',
+    description: 'Powitania.pl voiceover studio — 234 professional voice artists in 30+ languages, since 2001. Advertising spots, IVR announcements, audiobooks, film narration. 11,000+ recordings for clients: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -798,7 +798,7 @@ app.get('/en/contact/', (req, res) => {
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
     title: 'Voiceover Recordings | Professional Voice Artists | Powitania.pl',
-    description: 'Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. Over 230 voice artists in 30+ languages.',
+    description: 'Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. 234 voice artists in 30+ languages.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' }
@@ -820,7 +820,7 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
       '@context': 'https://schema.org',
       '@type': 'Service',
       'name': 'Voice for Advertising — Radio & TV Voiceover',
-      'description': 'Professional voiceover recordings for radio, TV and online advertising spots. 230+ voice artists, 30+ languages, 24-48h turnaround.',
+      'description': 'Professional voiceover recordings for radio, TV and online advertising spots. 234 voice artists, 30+ languages, 24-48h turnaround.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
       'url': 'https://www.powitania.pl/en/voiceover-services/voice-for-advertising/',
