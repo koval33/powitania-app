@@ -776,7 +776,7 @@ app.get('/en/', (req, res) => {
 app.get('/en/voice-bank/', (req, res) => {
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
-    description: 'Browse our voice bank with over 230 professional voice artists. Listen to samples, filter by language, gender, and style.',
+    description: 'Browse our voice bank with 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style.',
     voices: loadVoices()
   });
 });
