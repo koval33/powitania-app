@@ -5,6 +5,11 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Asset version — bumpuje się przy każdym restarcie serwera (czyli każdym deployu).
+// Używane jako query param ?v=<assetVersion> w <script src="..."> żeby po deployu
+// przeglądarki nie serwowały starej wersji JS z cache (maxAge: 1d na static).
+const ASSET_VERSION = Date.now().toString(36);
+
 // Przekierowanie: powitania.pl → www.powitania.pl (301)
 app.use((req, res, next) => {
   const host = req.headers.host;
@@ -122,6 +127,7 @@ app.use((req, res, next) => {
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
   res.locals.gtmId = process.env.GTM_ID || '';
   res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
+  res.locals.assetVersion = ASSET_VERSION;
 
   // Hreflang: PL ↔ EN URL mapping for SEO
   var hreflangMap = {
