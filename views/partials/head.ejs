@@ -180,6 +180,12 @@ body{background-color:#f7f3ef}
 <body class="text-gray-700 antialiased">
 
 <% if (!skipHeader) { %>
+<%
+  // URL wersji EN dla przełącznika języka — z hreflangEN (mapa PL↔EN w server.js) lub fallback /en/
+  var _altEn = (typeof hreflangEN !== 'undefined' && hreflangEN)
+    ? hreflangEN.replace('https://www.powitania.pl', '')
+    : '/en/';
+%>
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/60 border-b border-stone-200/70 shadow-sm">
   <nav class="w-full max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
     <a href="/" class="flex flex-col items-start gap-0">
@@ -194,6 +200,10 @@ body{background-color:#f7f3ef}
       <a href="/cennik/" class="hover:text-accent transition-colors <%= currentPath === '/cennik/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Cennik</a>
       <a href="/opinie/" class="hover:text-accent transition-colors <%= currentPath === '/opinie/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Opinie</a>
       <a href="/kontakt/" class="hover:text-accent transition-colors <%= currentPath === '/kontakt/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Kontakt</a>
+      <a href="<%= _altEn %>" class="flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors normal-case tracking-normal" title="English version" rel="alternate" hreflang="en">
+        <span class="text-base leading-none" aria-hidden="true">🇬🇧</span>
+        <span class="text-xs font-semibold">EN</span>
+      </a>
       <a href="/?start=creator#kreator" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg transition-colors font-semibold">Twórz</a>
     </div>
 
@@ -211,6 +221,7 @@ body{background-color:#f7f3ef}
     <a href="/cennik/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Cennik</a>
     <a href="/opinie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Opinie</a>
     <a href="/kontakt/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Kontakt</a>
+    <a href="<%= _altEn %>" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100" rel="alternate" hreflang="en"><span aria-hidden="true">🇬🇧</span> English</a>
     <a href="/?start=creator#kreator" class="block mt-3 bg-accent text-white text-center px-5 py-3 rounded-lg font-semibold">Twórz</a>
   </div>
 </header>

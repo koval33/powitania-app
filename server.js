@@ -177,23 +177,28 @@ app.use((req, res, next) => {
 });
 
 // Auto-redirect non-Polish browsers to English version (only on homepage)
-app.use((req, res, next) => {
-  if (req.method !== 'GET' || req.path !== '/') return next();
-  // Respect explicit language preference
-  if (req.query.lang === 'pl') return next();
-  // Don't redirect bots/crawlers (they should index PL as canonical)
-  // Includes AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Bytespider, Google-Extended
-  const ua = req.headers['user-agent'] || '';
-  if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest|GPTBot|ChatGPT|ClaudeBot|Claude-Web|PerplexityBot|Bytespider|CCBot|Google-Extended/i.test(ua)) return next();
-  // Inform caches that response varies by language
-  res.setHeader('Vary', 'Accept-Language');
-  // Check Accept-Language header
-  const lang = req.headers['accept-language'] || '';
-  if (!lang.match(/pl/i)) {
-    return res.redirect(302, '/en/');
-  }
-  next();
-});
+// WYŁĄCZONE 2026-04-17 — na zalecenie konsultacji SEO. Powód: Googlebot (mimo user-agent
+// exclude) w niektórych przypadkach trafiał na EN zamiast PL, co psuło indeksację strony
+// polskiej jako kanonicznej. Przełącznik języka PL/EN w nagłówku pozwala użytkownikowi
+// ręcznie wybrać wersję. Kod zachowany w komentarzu — gdyby trzeba było wrócić.
+//
+// app.use((req, res, next) => {
+//   if (req.method !== 'GET' || req.path !== '/') return next();
+//   // Respect explicit language preference
+//   if (req.query.lang === 'pl') return next();
+//   // Don't redirect bots/crawlers (they should index PL as canonical)
+//   // Includes AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Bytespider, Google-Extended
+//   const ua = req.headers['user-agent'] || '';
+//   if (/bot|crawl|spider|slurp|google|bing|yandex|lighthouse|pagespeed|gtmetrix|pingdom|webpagetest|GPTBot|ChatGPT|ClaudeBot|Claude-Web|PerplexityBot|Bytespider|CCBot|Google-Extended/i.test(ua)) return next();
+//   // Inform caches that response varies by language
+//   res.setHeader('Vary', 'Accept-Language');
+//   // Check Accept-Language header
+//   const lang = req.headers['accept-language'] || '';
+//   if (!lang.match(/pl/i)) {
+//     return res.redirect(302, '/en/');
+//   }
+//   next();
+// });
 
 // 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
