@@ -154,12 +154,25 @@
 body{background-color:#f7f3ef}
 .logo-dark{filter:brightness(0);opacity:.5;transition:opacity .3s ease,filter .3s ease}
 .logo-dark:hover{opacity:.8}
-.hero-dotgrid{background-color:#faf8f5}
-.kreator-widget{max-width:800px;margin:0 auto}
+.hero-dotgrid{background-color:#efe8df}
+.hero-studio{background-image:linear-gradient(to bottom,rgba(250,248,245,.30) 0%,rgba(250,248,245,.08) 30%,rgba(250,248,245,.05) 100%),url('/img/studio-bg-960.webp');background-size:cover;background-position:center;padding-top:20px}
+@media (min-width:768px){.hero-studio{background-image:linear-gradient(to bottom,rgba(250,248,245,.30) 0%,rgba(250,248,245,.08) 30%,rgba(250,248,245,.05) 100%),url('/img/studio-bg-1920.webp')}}
+.hero-studio h1,.hero-studio h2{paint-order:stroke fill;-webkit-text-stroke:1px rgba(255,255,255,.7);text-shadow:0 0 2px #fff,0 0 4px #fff,0 0 8px #fff,0 0 12px rgba(255,255,255,.75),0 0 22px rgba(255,255,255,.55)}
+.hero-studio p{text-shadow:0 0 2px #fff,0 0 4px #fff,0 0 6px #fff,0 0 8px rgba(255,255,255,.75),0 0 14px rgba(255,255,255,.6)}
+.kreator-widget{max-width:720px;margin:0 auto}
+@media(min-width:768px){.hero-left-col{max-width:720px;margin-left:auto;margin-right:auto;text-align:left}}
+/* Tryb "compact" — kreator poza welcome: H1+P ukryte, pozostałe nagłówki wycentrowane, top padding zrekompensowany */
+.hero-compact{background-color:#f4ede1}
+.hero-compact #hero-heading{display:none}
+.hero-compact #kreator{padding-top:2.5rem}
+@media(min-width:768px){.hero-compact #kreator{padding-top:3.5rem}.hero-compact .hero-left-col{text-align:center}}
 .kreator-inner{animation:kreator-fade .3s ease}
 @keyframes kreator-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.kreator-card{background:linear-gradient(to bottom,#fff,#f9fafb);border:2px solid #e5e7eb;border-radius:16px;padding:2rem;text-align:left;transition:all .2s ease;cursor:pointer;width:100%;box-shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05)}
+.kreator-card{background:linear-gradient(to bottom,#fffcf6,#fbf5e8);border:2px solid #ebe3d2;border-radius:16px;padding:1rem 1.5rem 1.5rem;text-align:left;transition:all .2s ease;cursor:pointer;width:100%;display:flex;flex-direction:column;box-shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);zoom:.9}
+.kreator-card>span:last-child{margin-top:auto}
 .kreator-card:hover{border-color:#ea580c;box-shadow:0 10px 25px -5px rgba(0,0,0,.1),0 4px 20px rgba(234,88,12,.15);transform:translateY(-2px)}
+.kreator-tile{background:linear-gradient(to bottom,#fffcf6,#fbf5e8);border:2px solid #e5dfd1;border-radius:12px;transition:all .2s ease;cursor:pointer;box-shadow:0 2px 4px -1px rgba(0,0,0,.04)}
+.kreator-tile:hover{border-color:#ea580c;box-shadow:0 6px 14px -2px rgba(234,88,12,.15);transform:translateY(-1px)}
 .kreator-btn-primary{background-color:#ea580c;color:#fff;border:none;border-radius:10px;padding:12px 24px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .kreator-btn-primary:hover{background-color:#f97316;box-shadow:0 4px 12px rgba(234,88,12,.3)}
 .kreator-btn-primary:disabled{background-color:#f3f4f6;color:#9ca3af;cursor:not-allowed;box-shadow:none}

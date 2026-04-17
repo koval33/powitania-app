@@ -1,21 +1,22 @@
 <%- include('partials/head') %>
 
 <!-- HERO + KREATOR -->
-<section class="relative overflow-hidden hero-dotgrid">
+<section class="relative overflow-hidden hero-dotgrid hero-studio">
 
-  <div class="relative max-w-4xl mx-auto px-4 pt-10 pb-4 md:pt-14 md:pb-6 text-center">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight" style="font-family: 'Poppins', sans-serif;">
+  <div id="hero-heading" class="relative max-w-4xl mx-auto px-4 pt-10 pb-4 md:pt-14 md:pb-6 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight hero-left-col" style="font-family: 'Poppins', sans-serif;">
       Profesjonalne kreacje lektorskie
     </h1>
-    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-      Przygotuj tekst, wybierz lektora, zamów nagranie. Ponad 234 profesjonalnych głosów w 30+ językach.
+    <p class="text-lg font-semibold text-gray-900 hero-left-col">
+      <span>Przygotuj tekst, wybierz lektora, zamów nagranie.</span>
+      <span class="md:block">Ponad 234 profesjonalnych głosów w 30+ językach.</span>
     </p>
   </div>
 
   <!-- KREATOR wewnątrz sekcji z kropkami -->
   <div id="kreator" class="relative pb-10 pt-2 scroll-mt-[8rem]">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5 hero-left-col">
         <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">Kreator Treści Lektorskich</h2>
       </div>
       <%- include('partials/kreator') %>

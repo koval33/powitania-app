@@ -312,8 +312,28 @@
   // Render
   var _frozenHeight = 0;
 
+  // Przełączanie wyglądu sekcji hero w zależności od kroku kreatora:
+  //  - welcome     → zdjęcie studia + H1/P widoczne, H2 lewa (do panelu)
+  //  - non-welcome → jasne tło, H1/P ukryte, H2 wycentrowane (compact)
+  // SEO: H1/P zostają w server-side HTML — ukrycie po interakcji nie jest cloakingiem.
+  function toggleHeroBackground() {
+    var sec = document.querySelector('section.hero-dotgrid');
+    if (!sec) return;
+    if (state.step === 'welcome') {
+      sec.classList.add('hero-studio');
+      sec.classList.remove('hero-compact');
+    } else {
+      sec.classList.remove('hero-studio');
+      sec.classList.add('hero-compact');
+    }
+  }
+
   function render() {
     if (!root) return;
+
+    // Tło "hero-studio" (zdjęcie studia) tylko na ekranie powitalnym.
+    // Gdy user wejdzie w ścieżkę kreatora — wracamy do jasnego tła hero-dotgrid.
+    toggleHeroBackground();
 
     // Przy wejściu w loading — zamroź wysokość kontenera (formularz ~500px)
     if (state.loading && _frozenHeight === 0) {
@@ -393,13 +413,13 @@
       '<button data-action="setPath" data-value="creator" class="kreator-card group">' +
         '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Nie mam jeszcze tekstu</h3>' +
-        '<p class="text-gray-400 text-sm mb-3">Podaj szczegóły, a w kilka sekund przygotujemy tekst gotowy do nagrania</p>' +
+        '<p class="text-gray-600 text-base mb-3">Podaj szczegóły, a w kilka sekund przygotujemy tekst gotowy do nagrania</p>' +
         '<span class="text-sm text-accent font-medium">Rozpocznij &rarr;</span>' +
       '</button>' +
       '<button data-action="setPath" data-value="optimizer" class="kreator-card group">' +
         '<div class="mb-4 text-gray-400 group-hover:text-accent transition-colors"><svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg></div>' +
         '<h3 class="text-xl font-bold mb-2 group-hover:text-accent">Mam tekst, chcę go sprawdzić</h3>' +
-        '<p class="text-gray-400 text-sm mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
+        '<p class="text-gray-600 text-base mb-3">Zoptymalizuj długość i styl istniejącego tekstu</p>' +
         '<span class="text-sm text-accent font-medium">Zoptymalizuj &rarr;</span>' +
       '</button>' +
     '</div>';
@@ -407,11 +427,11 @@
 
   // STEP: Service type — 4 category tiles
   function renderServiceType() {
-    var html = '<h3 class="text-xl font-bold mb-6">Jaki tekst chcesz przygotować?</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6 text-center">Jaki tekst chcesz przygotować?</h3>';
     html += '<div class="grid grid-cols-2 gap-4">';
     for (var i = 0; i < CATEGORIES.length; i++) {
       var c = CATEGORIES[i];
-      html += '<button data-action="setCategory" data-value="' + c.id + '" class="p-6 rounded-xl border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-accent/50 hover:bg-accent/10">' +
+      html += '<button data-action="setCategory" data-value="' + c.id + '" class="kreator-tile p-6 text-left">' +
         '<div class="text-gray-400 mb-3">' + c.icon + '</div>' +
         '<div class="font-semibold">' + c.label + '</div>' +
       '</button>';
@@ -429,7 +449,7 @@
     }
     if (!cat) return renderServiceType();
 
-    var html = '<h3 class="text-xl font-bold mb-6">' + cat.label + ' &mdash; wybierz rodzaj</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6 text-center">' + cat.label + ' &mdash; wybierz rodzaj</h3>';
     html += '<div class="grid grid-cols-1 md:grid-cols-' + cat.services.length + ' gap-3">';
     for (var j = 0; j < cat.services.length; j++) {
       var svc = null;
@@ -437,7 +457,7 @@
         if (SERVICE_TYPES[k].v === cat.services[j]) { svc = SERVICE_TYPES[k]; break; }
       }
       if (!svc) continue;
-      html += '<button data-action="setService" data-value="' + svc.v + '" class="p-5 rounded-xl border-2 text-left transition-all hover:shadow-md border-gray-200 hover:border-accent/50 hover:bg-accent/10">' +
+      html += '<button data-action="setService" data-value="' + svc.v + '" class="kreator-tile p-5 text-left">' +
         '<div class="text-gray-400 mb-2">' + svc.icon + '</div>' +
         '<div class="font-semibold text-sm">' + svc.l + '</div>' +
       '</button>';
@@ -471,8 +491,11 @@
     html += '<div class="space-y-5">';
 
     // Main fields — always visible
-    html += renderSelect('industry', 'Branża', INDUSTRIES);
-    html += renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics');
+    // Branża + Nazwa firmy w jednym wierszu na desktop (md+), stackowane na mobile
+    html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-5">' +
+      renderSelect('industry', 'Branża', INDUSTRIES) +
+      renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics') +
+    '</div>';
     if (!isIVR) {
       html += renderTextarea('offering', 'Co chcesz podkreślić', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wpisz hasłowo, co ma wybrzmieć — wystarczy kilka słów o cechach, korzyściach lub przewagach Twojego produktu lub usługi.');
     }
@@ -500,8 +523,8 @@
         var selected = state.form.languages.indexOf(lang.v) >= 0;
         var disabled = !selected && state.form.languages.length >= 2;
         html += '<button data-action="toggleLang" data-value="' + lang.v + '" ' + (disabled ? 'disabled' : '') +
-          ' class="p-3 rounded-lg border-2 text-sm ' +
-          (selected ? 'border-accent bg-accent/10' : disabled ? 'border-gray-200 bg-gray-100 opacity-50' : 'border-gray-200 hover:border-accent/50') + '">' +
+          ' class="p-3 rounded-lg text-sm ' +
+          (selected ? 'border-2 border-accent bg-accent/10' : disabled ? 'border-2 border-gray-200 bg-gray-100 opacity-50' : 'kreator-tile') + '">' +
           lang.flag + ' ' + lang.l + (selected ? ' &#10003;' : '') + '</button>';
       }
       html += '</div></div>';

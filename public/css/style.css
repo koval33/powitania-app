@@ -17,13 +17,103 @@ body {
 
 /* Hero */
 .hero-dotgrid {
-  background-color: #faf8f5;
+  /* Cieplejszy krem — kafle/przyciski kreatora są teraz jaśniejsze od tła,
+     więc wyraźnie się odróżniają (wcześniej #faf8f5 mieszało się z kaflami). */
+  background-color: #efe8df;
+}
+
+/* Hero z tłem studia — overlay prawie zdjęty, studio dominuje.
+   Tekst H1/P wyjustowany do lewej (w index.ejs), żeby nie zasłaniał lektorki. */
+.hero-studio {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(250, 248, 245, 0.30) 0%,
+      rgba(250, 248, 245, 0.08) 30%,
+      rgba(250, 248, 245, 0.05) 100%
+    ),
+    url('/img/studio-bg-960.webp');
+  background-size: cover;
+  background-position: center;
+  /* +20px od góry — więcej tła widać nad H1 */
+  padding-top: 20px;
+}
+@media (min-width: 768px) {
+  .hero-studio {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(250, 248, 245, 0.30) 0%,
+        rgba(250, 248, 245, 0.08) 30%,
+        rgba(250, 248, 245, 0.05) 100%
+      ),
+      url('/img/studio-bg-1920.webp');
+  }
+}
+/* Minimalny obrys 1px + 5 warstw halo (o stopień słabsze niż wcześniej —
+   nowe tło studia ma ciemniejszą lewą stronę gdzie siedzi tekst). */
+.hero-studio h1,
+.hero-studio h2 {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.70);
+  text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 8px #fff,
+    0 0 12px rgba(255, 255, 255, 0.75),
+    0 0 22px rgba(255, 255, 255, 0.55);
+}
+/* Paragraf — bez stroke, tylko 5 warstw halo. */
+.hero-studio p {
+  text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px #fff,
+    0 0 8px rgba(255, 255, 255, 0.75),
+    0 0 14px rgba(255, 255, 255, 0.60);
 }
 
 /* Kreator widget scoped styles */
 .kreator-widget {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
+}
+
+/* Hero + kreator — lewe krawędzie H1, P i H2 zrównane z lewą krawędzią
+   panelu kreatora (max-width: 720px, wyśrodkowany) na desktopie.
+   Mobile zostaje wyśrodkowany (brak reguły poza media). */
+@media (min-width: 768px) {
+  .hero-left-col {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+/* Tryb "compact" — kreator poza welcome (state.step !== 'welcome').
+   - H1 + P (#hero-heading) ukryte
+   - pozostałe nagłówki (H2 "Kreator Treści Lektorskich", H3 w krokach) wycentrowane
+   - top padding zrekompensowany (zastępuje pt-10/md:pt-14 na #hero-heading)
+   Klasa dokładana dynamicznie przez kreator.js → toggleHeroBackground(). */
+.hero-compact {
+  /* Trochę jaśniej niż #efe8df (hero-dotgrid) — w kreatorze tło ma być mniej
+     wyraziste, żeby kafle/inputy dominowały. */
+  background-color: #f4ede1;
+}
+.hero-compact #hero-heading {
+  display: none;
+}
+.hero-compact #kreator {
+  padding-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .hero-compact #kreator {
+    padding-top: 3.5rem;
+  }
+  .hero-compact .hero-left-col {
+    text-align: center;
+  }
 }
 
 .kreator-inner {
@@ -37,21 +127,50 @@ body {
 
 /* Cards */
 .kreator-card {
-  background: linear-gradient(to bottom, #ffffff, #f9fafb);
-  border: 2px solid #e5e7eb;
+  background: linear-gradient(to bottom, #fffcf6, #fbf5e8);
+  border: 2px solid #ebe3d2;
   border-radius: 16px;
-  padding: 2rem;
+  /* mniej paddingu u góry — kafel ucięty od góry; boczne i dolne zostają */
+  padding: 1rem 1.5rem 1.5rem;
   text-align: left;
   transition: all 0.2s ease;
   cursor: pointer;
   width: 100%;
+  /* flex column + mt-auto na ostatnim <span> wyrównuje linki
+     "Rozpocznij →" i "Zoptymalizuj →" na tym samym poziomie */
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  /* 10% proporcjonalne pomniejszenie kafla — skaluje padding, tekst,
+     ikonę i border-radius zachowując aspect ratio */
+  zoom: 0.9;
+}
+
+.kreator-card > span:last-child {
+  margin-top: auto;
 }
 
 .kreator-card:hover {
   border-color: #ea580c;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(234, 88, 12, 0.15);
   transform: translateY(-2px);
+}
+
+/* Tile — mniejszy, uniwersalny kafel kremowy dla kroków po welcome
+   (wybór kategorii, rodzaju spotu). Kontrastuje z cieplejszym tłem sekcji. */
+.kreator-tile {
+  background: linear-gradient(to bottom, #fffcf6, #fbf5e8);
+  border: 2px solid #e5dfd1;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+.kreator-tile:hover {
+  border-color: #ea580c;
+  box-shadow: 0 6px 14px -2px rgba(234, 88, 12, 0.15);
+  transform: translateY(-1px);
 }
 
 /* Buttons */

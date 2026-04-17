@@ -167,6 +167,25 @@ app.use((req, res, next) => {
     }
   }
 
+  // Dynamic: blog post hreflang (PL /aktualnosci-pl/:slug/ ↔ EN /en/news/:slug/).
+  // hreflangEN ustawiany tylko jeśli post ma pełne tłumaczenie (titleEn + contentEn)
+  // — spójne z warunkiem w sitemap.xml (linia ~1152).
+  var blogPlMatch = path.match(/^\/aktualnosci-pl\/([^/]+)\/$/);
+  var blogEnMatch = path.match(/^\/en\/news\/([^/]+)\/$/);
+  if (blogPlMatch || blogEnMatch) {
+    var slug = (blogPlMatch || blogEnMatch)[1];
+    try {
+      var posts = loadBlogPosts();
+      var post = posts.find(function(p) { return p.slug === slug; });
+      if (post) {
+        res.locals.hreflangPL = 'https://www.powitania.pl/aktualnosci-pl/' + slug + '/';
+        if (post.titleEn && post.contentEn) {
+          res.locals.hreflangEN = 'https://www.powitania.pl/en/news/' + slug + '/';
+        }
+      }
+    } catch(e) {}
+  }
+
   if (res.locals.isEmbed) {
     res.removeHeader('X-Frame-Options');
   } else {
