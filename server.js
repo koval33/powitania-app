@@ -135,7 +135,7 @@ app.use((req, res, next) => {
     '/uslugi/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
     '/uslugi/sesje-zdalne/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
-    '/aktualnosci/': '/en/news/'
+    '/aktualnosci-pl/': '/en/news/'
   };
   var path = req.path;
   if (path.startsWith('/en/')) {
@@ -1083,6 +1083,8 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
 // 301 Redirects — stare EN URL-e (WordPress / dev.powitania.pl patterns)
 app.get('/en/lectors/:slug/', (req, res) => res.redirect(301, '/en/voice-artists/' + req.params.slug + '/'));
 app.get('/en/lectors/', (req, res) => res.redirect(301, '/en/voice-bank/'));
+app.get('/en/price-list/', (req, res) => res.redirect(301, '/en/pricing/'));
+app.get('/en/voice-recordings/', (req, res) => res.redirect(301, '/en/voiceover-services/'));
 app.get('/en/search/*', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/feed/', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/', (req, res) => res.redirect(301, '/en/'));
