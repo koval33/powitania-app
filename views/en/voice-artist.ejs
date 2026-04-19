@@ -148,9 +148,10 @@
         <div id="pricing-wizard" class="mt-6 hidden">
           <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/30 p-6">
             <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <svg class="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                 <h3 class="text-lg font-bold text-gray-900">Recording Quote</h3>
+                <span id="wizard-subtitle" class="text-sm text-gray-500 hidden"></span>
               </div>
               <button onclick="clearPricingContext()" class="text-gray-500 hover:text-gray-900 transition-colors" title="Close">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -1152,6 +1153,32 @@ var SERVICE_TYPE_MAP = {
   'podcast': 'podcast'
 };
 
+// Quote subtitle labels — reminds user what they're pricing
+var WIZARD_SUBTITLE_LABELS = {
+  'ivr':       'phone IVR message',
+  'powitania': 'phone greeting',
+  'radio':     'radio ad spot',
+  'tv':        'TV ad spot',
+  'spot':      'ad spot',
+  'social':    'social media content',
+  'elearning': 'e-learning content',
+  'audiobook': 'audiobook',
+  'film':      'film narration',
+  'podcast':   'podcast intro/outro'
+};
+function setWizardSubtitle(serviceType) {
+  var el = document.getElementById('wizard-subtitle');
+  if (!el) return;
+  var label = serviceType && WIZARD_SUBTITLE_LABELS[serviceType];
+  if (label) {
+    el.textContent = '· ' + label;
+    el.classList.remove('hidden');
+  } else {
+    el.textContent = '';
+    el.classList.add('hidden');
+  }
+}
+
 // --- Helpers ---
 function countWords(text) {
   // Usun oznaczenia sekcji w ** ** (np. **Powitanie:**) — to nie tekst do nagrania
@@ -2084,6 +2111,9 @@ function showPricingWizard(ctx) {
   var wordCount = countWords(ctx.text);
   wordCountEl.textContent = wordCount + ' words';
 
+  // Subtitle — use original kreator serviceType (finer granularity)
+  setWizardSubtitle(ctx.serviceType);
+
   // Mapuj serviceType z kreatora
   var mappedType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
 
@@ -2217,6 +2247,7 @@ function updateWizardPricing() {
   pricingEl.innerHTML = '';
   pricingEl.classList.add('hidden');
   ctaEl.classList.add('hidden');
+  setWizardSubtitle(serviceType);
 
   if (!serviceType) return;
 
@@ -2272,6 +2303,7 @@ function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
   var wizard = document.getElementById('pricing-wizard');
   if (wizard) wizard.classList.add('hidden');
+  setWizardSubtitle(null);
   // Cennik usunięty — nie ma czego przywracać
 }
 

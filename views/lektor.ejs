@@ -161,9 +161,10 @@
         <div id="pricing-wizard" class="mt-6 hidden">
           <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/30 p-6">
             <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <svg class="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                 <h3 class="text-lg font-bold text-gray-900">Wycena nagrania</h3>
+                <span id="wizard-subtitle" class="text-sm text-gray-500 hidden"></span>
               </div>
               <button onclick="clearPricingContext()" class="text-gray-500 hover:text-gray-900 transition-colors" title="Zamknij">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -1124,6 +1125,32 @@ var SERVICE_TYPE_MAP = {
   'audiobook': 'film',
   'podcast': 'film'
 };
+
+// Etykiety podtytulu nad wyceną — przypominają userowi nad czym pracuje
+var WIZARD_SUBTITLE_LABELS = {
+  'ivr':       'zapowiedź telefoniczna',
+  'powitania': 'powitanie telefoniczne',
+  'radio':     'spot radiowy',
+  'tv':        'spot telewizyjny',
+  'spot':      'spot reklamowy',
+  'social':    'treść na social media',
+  'elearning': 'treść e-learningowa',
+  'audiobook': 'audiobook',
+  'film':      'narracja filmowa',
+  'podcast':   'intro/outro podcastu'
+};
+function setWizardSubtitle(serviceType) {
+  var el = document.getElementById('wizard-subtitle');
+  if (!el) return;
+  var label = serviceType && WIZARD_SUBTITLE_LABELS[serviceType];
+  if (label) {
+    el.textContent = '· ' + label;
+    el.classList.remove('hidden');
+  } else {
+    el.textContent = '';
+    el.classList.add('hidden');
+  }
+}
 
 // --- Helpers ---
 function countWords(text) {
@@ -2124,6 +2151,9 @@ function showPricingWizard(ctx) {
   var wordCount = countWords(ctx.text);
   wordCountEl.textContent = wordCount + ' słów';
 
+  // Podtytul — uzywamy oryginalnego serviceType z kreatora (finer granularity)
+  setWizardSubtitle(ctx.serviceType);
+
   // Mapuj serviceType z kreatora
   var mappedType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
 
@@ -2250,6 +2280,7 @@ function updateWizardPricing() {
   pricingEl.innerHTML = '';
   pricingEl.classList.add('hidden');
   ctaEl.classList.add('hidden');
+  setWizardSubtitle(serviceType);
 
   if (!serviceType) return;
 
@@ -2305,6 +2336,7 @@ function clearPricingContext() {
   try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
   var wizard = document.getElementById('pricing-wizard');
   if (wizard) wizard.classList.add('hidden');
+  setWizardSubtitle(null);
   // Przywroc CTA sekcje i cennik
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.remove('hidden');
