@@ -270,37 +270,80 @@
       /* Elementy mobile-only — ukryte domyślnie (desktop pokazuje vc-badge-inline w vc-info + link profil w player-box) */
       .vc-badge-mobile { display: none; }
       .vc-more-link { display: none; }
-      /* Mobile: ciasny grid — info+zdjecie (row1), player+zdjecie-cd (row2), wiecej+badge (row3), cta (row4). Zero rozciagania. */
+      /* Mobile: 3-strefowy uklad — (1) zdjecie+info, (2) player full-width, (3) CTA+wiecej */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
-          grid-template-columns: 1fr auto !important;
-          column-gap: 10px !important;
-          row-gap: 3px !important;
+          grid-template-columns: 72px 1fr !important;
+          column-gap: 12px !important;
+          row-gap: 8px !important;
           align-items: start !important;
-          padding: 8px 10px !important;
+          padding: 10px !important;
           gap: unset;
         }
-        /* Zdjecie: prawa kolumna, spanuje rzedy 1-2 (info+player mieszcza sie po lewej obok) */
-        .vc-photo { grid-column: 2; grid-row: 1 / span 2; width: 112px !important; height: 112px !important; align-self: start; flex-shrink: 0; }
-        /* Info: lewa kolumna, rzad 1 */
-        .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
-        /* Ciasniejsze odstepy wewnatrz info */
-        .vc-info > div { margin-top: 2px !important; }
-        .vc-badge-inline { display: none !important; }
-        /* Flatten wrapper — player-box i vc-cta staja sie bezposrednimi dziecmi grid */
+        /* STREFA 1 — zdjecie 72px w lewej kolumnie */
+        .vc-photo {
+          grid-column: 1; grid-row: 1;
+          width: 72px !important; height: 72px !important;
+          flex-shrink: 0;
+        }
+        /* STREFA 1 — info: imie+badge w rzedzie 1, meta pod spodem */
+        .vc-info {
+          grid-column: 2; grid-row: 1;
+          display: grid !important;
+          grid-template-columns: minmax(0, 1fr) auto;
+          column-gap: 8px;
+          row-gap: 2px;
+          align-content: center;
+          align-self: center;
+          flex: initial !important;
+          width: auto !important;
+          min-width: 0;
+        }
+        .vc-info > h3 { grid-column: 1; grid-row: 1; min-width: 0; }
+        /* Badge inline obok imienia (zamiast pod meta) */
+        .vc-info > .vc-badge-inline {
+          grid-column: 2; grid-row: 1;
+          margin: 0 !important;
+          align-self: center;
+          display: block !important;
+        }
+        /* Meta (wiek/jezyk/termin/cena) — pelna szerokosc info, bez gornego marginesu */
+        .vc-info > div:not(.vc-badge-inline) {
+          grid-column: 1 / -1;
+          margin-top: 0 !important;
+        }
+        /* Osobny .vc-badge-mobile niepotrzebny — badge jest obok imienia */
+        .vc-badge-mobile { display: none !important; }
+
+        /* STREFA 2 — player full-width */
         .vc-player-wrap { display: contents !important; }
-        /* Player: lewa kolumna, rzad 2, naturalna wysokosc (bez stretch) */
-        .player-box { grid-column: 1; grid-row: 2; align-self: start; flex: initial !important; padding: 5px 10px !important; }
-        /* Ciasniejszy margines labelki "Probka" w playerze */
-        .player-box > div:first-child { margin-bottom: 2px !important; }
-        /* Badge: prawa kolumna, rzad 3 — tuz pod zdjeciem (row-gap 3px) */
-        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 3; }
-        /* Link "wiecej": lewa kolumna, rzad 3 — obok badge */
+        .player-box {
+          grid-column: 1 / -1; grid-row: 2;
+          flex: initial !important;
+          padding: 10px 12px !important;
+        }
+        /* Wiekszy Play button — tap-target 40x40 */
+        .player-box .play-btn { width: 40px !important; height: 40px !important; }
         .vc-profile-inline { display: none !important; }
-        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 3; justify-self: start; align-self: center; }
-        /* CTA: prawa kolumna, rzad 4 */
-        .vc-cta { grid-column: 2; grid-row: 4; justify-self: center; }
+
+        /* STREFA 3 — akcje: CTA lewa, "wiecej" prawa */
+        .vc-cta {
+          grid-column: 1; grid-row: 3;
+          justify-self: start;
+          align-self: center;
+        }
+        .vc-cta .cta-inquiry { min-height: 44px; }
+        .vc-more-link {
+          display: inline-flex;
+          align-items: center;
+          grid-column: 2; grid-row: 3;
+          justify-self: end;
+          align-self: center;
+          padding: 8px 4px;
+          font-size: 12px;
+          color: rgb(107 114 128);
+        }
       }
     </style>
     <!-- Siatka lektorów -->

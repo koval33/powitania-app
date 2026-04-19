@@ -239,37 +239,80 @@
       /* Mobile-only elements — hidden on desktop */
       .vc-badge-mobile { display: none; }
       .vc-more-link { display: none; }
-      /* Mobile: tight grid — info+photo (row1), player+photo-cont (row2), more+badge (row3), cta (row4). No stretching. */
+      /* Mobile: 3-zone layout — (1) photo+info, (2) full-width player, (3) CTA+more */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
-          grid-template-columns: 1fr auto !important;
-          column-gap: 10px !important;
-          row-gap: 3px !important;
+          grid-template-columns: 72px 1fr !important;
+          column-gap: 12px !important;
+          row-gap: 8px !important;
           align-items: start !important;
-          padding: 8px 10px !important;
+          padding: 10px !important;
           gap: unset;
         }
-        /* Photo: right col, spans rows 1-2 (info+player fit next to it on the left) */
-        .vc-photo { grid-column: 2; grid-row: 1 / span 2; width: 112px !important; height: 112px !important; align-self: start; flex-shrink: 0; }
-        /* Info: left col, row 1 */
-        .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
-        /* Tighter internal spacing in info */
-        .vc-info > div { margin-top: 2px !important; }
-        .vc-badge-inline { display: none !important; }
-        /* Flatten wrapper — player-box and vc-cta become direct grid children */
+        /* ZONE 1 — photo 72px in left column */
+        .vc-photo {
+          grid-column: 1; grid-row: 1;
+          width: 72px !important; height: 72px !important;
+          flex-shrink: 0;
+        }
+        /* ZONE 1 — info: name+badge row 1, meta below */
+        .vc-info {
+          grid-column: 2; grid-row: 1;
+          display: grid !important;
+          grid-template-columns: minmax(0, 1fr) auto;
+          column-gap: 8px;
+          row-gap: 2px;
+          align-content: center;
+          align-self: center;
+          flex: initial !important;
+          width: auto !important;
+          min-width: 0;
+        }
+        .vc-info > h3 { grid-column: 1; grid-row: 1; min-width: 0; }
+        /* Badge inline next to name (instead of under meta) */
+        .vc-info > .vc-badge-inline {
+          grid-column: 2; grid-row: 1;
+          margin: 0 !important;
+          align-self: center;
+          display: block !important;
+        }
+        /* Meta (age/lang/turnaround/price) — full info width, no top margin */
+        .vc-info > div:not(.vc-badge-inline) {
+          grid-column: 1 / -1;
+          margin-top: 0 !important;
+        }
+        /* Separate .vc-badge-mobile not needed — badge sits next to name */
+        .vc-badge-mobile { display: none !important; }
+
+        /* ZONE 2 — full-width player */
         .vc-player-wrap { display: contents !important; }
-        /* Player: left col, row 2, natural height (no stretch) */
-        .player-box { grid-column: 1; grid-row: 2; align-self: start; flex: initial !important; padding: 5px 10px !important; }
-        /* Tighter "Sample" label margin inside player */
-        .player-box > div:first-child { margin-bottom: 2px !important; }
-        /* Badge: right col, row 3 — right under photo (row-gap 3px) */
-        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 3; }
-        /* "more" link: left col, row 3 — next to badge */
+        .player-box {
+          grid-column: 1 / -1; grid-row: 2;
+          flex: initial !important;
+          padding: 10px 12px !important;
+        }
+        /* Bigger Play button — 40x40 tap-target */
+        .player-box .play-btn { width: 40px !important; height: 40px !important; }
         .vc-profile-inline { display: none !important; }
-        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 3; justify-self: start; align-self: center; }
-        /* CTA: right col, row 4 */
-        .vc-cta { grid-column: 2; grid-row: 4; justify-self: center; }
+
+        /* ZONE 3 — actions: CTA left, "more" right */
+        .vc-cta {
+          grid-column: 1; grid-row: 3;
+          justify-self: start;
+          align-self: center;
+        }
+        .vc-cta .cta-inquiry { min-height: 44px; }
+        .vc-more-link {
+          display: inline-flex;
+          align-items: center;
+          grid-column: 2; grid-row: 3;
+          justify-self: end;
+          align-self: center;
+          padding: 8px 4px;
+          font-size: 12px;
+          color: rgb(107 114 128);
+        }
       }
     </style>
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
