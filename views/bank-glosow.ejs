@@ -270,26 +270,37 @@
       /* Elementy mobile-only — ukryte domyślnie (desktop pokazuje vc-badge-inline w vc-info + link profil w player-box) */
       .vc-badge-mobile { display: none; }
       .vc-more-link { display: none; }
-      /* Mobile: grid — zdjecie top-right, badge wysrodkowany pod zdjeciem, player waski (col 1) pod opisami, przycisk w col 2, "wiecej" pod playerem */
+      /* Mobile: ciasny grid — info+zdjecie (row1), player+zdjecie-cd (row2), wiecej+badge (row3), cta (row4). Zero rozciagania. */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
-          grid-template-columns: 1fr auto;
-          column-gap: 14px;
-          row-gap: 6px;
-          align-items: start;
-          padding: 12px 14px !important;
+          grid-template-columns: 1fr auto !important;
+          column-gap: 10px !important;
+          row-gap: 3px !important;
+          align-items: start !important;
+          padding: 8px 10px !important;
+          gap: unset;
         }
-        .vc-photo { grid-column: 2; grid-row: 1; width: 112px !important; height: 112px !important; flex-shrink: 0; }
+        /* Zdjecie: prawa kolumna, spanuje rzedy 1-2 (info+player mieszcza sie po lewej obok) */
+        .vc-photo { grid-column: 2; grid-row: 1 / span 2; width: 112px !important; height: 112px !important; align-self: start; flex-shrink: 0; }
+        /* Info: lewa kolumna, rzad 1 */
         .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
+        /* Ciasniejsze odstepy wewnatrz info */
+        .vc-info > div { margin-top: 2px !important; }
         .vc-badge-inline { display: none !important; }
-        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 2; margin-top: 2px; }
         /* Flatten wrapper — player-box i vc-cta staja sie bezposrednimi dziecmi grid */
         .vc-player-wrap { display: contents !important; }
-        .player-box { grid-column: 1; grid-row: 2 / span 2; align-self: stretch; flex: initial !important; }
-        .vc-cta { grid-column: 2; grid-row: 3; justify-self: center; align-self: end; }
+        /* Player: lewa kolumna, rzad 2, naturalna wysokosc (bez stretch) */
+        .player-box { grid-column: 1; grid-row: 2; align-self: start; flex: initial !important; padding: 5px 10px !important; }
+        /* Ciasniejszy margines labelki "Probka" w playerze */
+        .player-box > div:first-child { margin-bottom: 2px !important; }
+        /* Badge: prawa kolumna, rzad 3 — tuz pod zdjeciem (row-gap 3px) */
+        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 3; }
+        /* Link "wiecej": lewa kolumna, rzad 3 — obok badge */
         .vc-profile-inline { display: none !important; }
-        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 4; justify-self: start; margin-top: 2px; }
+        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 3; justify-self: start; align-self: center; }
+        /* CTA: prawa kolumna, rzad 4 */
+        .vc-cta { grid-column: 2; grid-row: 4; justify-self: center; }
       }
     </style>
     <!-- Siatka lektorów -->

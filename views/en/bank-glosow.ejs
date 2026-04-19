@@ -239,26 +239,37 @@
       /* Mobile-only elements — hidden on desktop */
       .vc-badge-mobile { display: none; }
       .vc-more-link { display: none; }
-      /* Mobile: grid — photo top-right, badge centered under photo, narrow player in left col, button in right col, "more" link under player */
+      /* Mobile: tight grid — info+photo (row1), player+photo-cont (row2), more+badge (row3), cta (row4). No stretching. */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
-          grid-template-columns: 1fr auto;
-          column-gap: 14px;
-          row-gap: 6px;
-          align-items: start;
-          padding: 12px 14px !important;
+          grid-template-columns: 1fr auto !important;
+          column-gap: 10px !important;
+          row-gap: 3px !important;
+          align-items: start !important;
+          padding: 8px 10px !important;
+          gap: unset;
         }
-        .vc-photo { grid-column: 2; grid-row: 1; width: 112px !important; height: 112px !important; flex-shrink: 0; }
+        /* Photo: right col, spans rows 1-2 (info+player fit next to it on the left) */
+        .vc-photo { grid-column: 2; grid-row: 1 / span 2; width: 112px !important; height: 112px !important; align-self: start; flex-shrink: 0; }
+        /* Info: left col, row 1 */
         .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
+        /* Tighter internal spacing in info */
+        .vc-info > div { margin-top: 2px !important; }
         .vc-badge-inline { display: none !important; }
-        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 2; margin-top: 2px; }
         /* Flatten wrapper — player-box and vc-cta become direct grid children */
         .vc-player-wrap { display: contents !important; }
-        .player-box { grid-column: 1; grid-row: 2 / span 2; align-self: stretch; flex: initial !important; }
-        .vc-cta { grid-column: 2; grid-row: 3; justify-self: center; align-self: end; }
+        /* Player: left col, row 2, natural height (no stretch) */
+        .player-box { grid-column: 1; grid-row: 2; align-self: start; flex: initial !important; padding: 5px 10px !important; }
+        /* Tighter "Sample" label margin inside player */
+        .player-box > div:first-child { margin-bottom: 2px !important; }
+        /* Badge: right col, row 3 — right under photo (row-gap 3px) */
+        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 3; }
+        /* "more" link: left col, row 3 — next to badge */
         .vc-profile-inline { display: none !important; }
-        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 4; justify-self: start; margin-top: 2px; }
+        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 3; justify-self: start; align-self: center; }
+        /* CTA: right col, row 4 */
+        .vc-cta { grid-column: 2; grid-row: 4; justify-self: center; }
       }
     </style>
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
