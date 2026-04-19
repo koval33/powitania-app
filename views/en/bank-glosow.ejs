@@ -236,12 +236,23 @@
       .vc-info { width: 200px !important; flex-shrink: 0; }
       .vc-photo { width: 106px !important; height: 106px !important; }
       .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
-      /* Mobile: wrap to new row */
+      /* Mobile-only badge under photo — hidden on desktop */
+      .vc-badge-mobile { display: none; }
+      /* Mobile: grid — photo top-right, info top-left, badge under photo, player row 3 */
       @media (max-width: 767px) {
-        .vc-inner { flex-wrap: wrap; padding: 12px 14px !important; gap: 8px 10px !important; }
-        .vc-photo { width: 56px !important; height: 56px !important; flex-shrink: 0; }
-        .vc-info { flex: 1 !important; width: auto !important; min-width: 0; }
-        .vc-player-wrap { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; }
+        .vc-inner {
+          display: grid !important;
+          grid-template-columns: 1fr auto;
+          column-gap: 14px;
+          row-gap: 8px;
+          align-items: start;
+          padding: 12px 14px !important;
+        }
+        .vc-photo { grid-column: 2; grid-row: 1; width: 112px !important; height: 112px !important; flex-shrink: 0; }
+        .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
+        .vc-badge-inline { display: none !important; }
+        .vc-badge-mobile { display: flex; justify-content: flex-end; grid-column: 2; grid-row: 2; margin-top: 2px; }
+        .vc-player-wrap { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; grid-column: 1 / -1; }
         .vc-player-wrap .player-box { flex: 1; min-width: 0; }
       }
     </style>
@@ -268,8 +279,8 @@
 
         <div class="vc-inner flex items-center gap-4 px-5 py-4">
 
-          <!-- Photo -->
-          <div class="vc-photo flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
+          <!-- Photo (link to profile) -->
+          <a href="<%= profileUrl %>" class="vc-photo flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -277,10 +288,10 @@
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             <% } %>
-          </div>
+          </a>
 
-          <!-- Name + meta -->
-          <div class="vc-info flex-shrink-0 min-w-0">
+          <!-- Name + meta (link to profile) -->
+          <a href="<%= profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
             <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
             <div class="flex items-center gap-1.5 mt-2 flex-wrap">
               <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
@@ -301,11 +312,18 @@
               <% } %>
             </div>
             <% if (v.famous) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
+              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
             <% } else if (v.native) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
+              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
             <% } %>
-          </div>
+          </a>
+
+          <!-- Mobile-only badge under photo (sibling of vc-info — outside the link) -->
+          <% if (v.famous) { %>
+            <div class="vc-badge-mobile"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
+          <% } else if (v.native) { %>
+            <div class="vc-badge-mobile"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
+          <% } %>
 
           <!-- Player + CTA — desktop: display:contents, mobile: flex row -->
           <div class="vc-player-wrap">

@@ -267,12 +267,23 @@
       /* Większe zdjęcie, mniejszy padding karty, wyrównany odstęp */
       .vc-photo { width: 106px !important; height: 106px !important; }
       .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
-      /* Mobile: wrapper staje się wierszem pod nazwiskiem */
+      /* Badge mobile-only — ukryty domyślnie (desktop pokazuje vc-badge-inline w vc-info) */
+      .vc-badge-mobile { display: none; }
+      /* Mobile: grid z zdjeciem w prawym gornym rogu, badge pod zdjeciem, player full-width rzad 3 */
       @media (max-width: 767px) {
-        .vc-inner { flex-wrap: wrap; padding: 12px 14px !important; gap: 8px 10px !important; }
-        .vc-photo { width: 56px !important; height: 56px !important; flex-shrink: 0; }
-        .vc-info { flex: 1 !important; width: auto !important; min-width: 0; }
-        .vc-player-wrap { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; }
+        .vc-inner {
+          display: grid !important;
+          grid-template-columns: 1fr auto;
+          column-gap: 14px;
+          row-gap: 8px;
+          align-items: start;
+          padding: 12px 14px !important;
+        }
+        .vc-photo { grid-column: 2; grid-row: 1; width: 112px !important; height: 112px !important; flex-shrink: 0; }
+        .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
+        .vc-badge-inline { display: none !important; }
+        .vc-badge-mobile { display: flex; justify-content: flex-end; grid-column: 2; grid-row: 2; margin-top: 2px; }
+        .vc-player-wrap { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; grid-column: 1 / -1; }
         .vc-player-wrap .player-box { flex: 1; min-width: 0; }
       }
     </style>
@@ -324,11 +335,18 @@
               <% } %>
             </div>
             <% if (v.famous) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
+              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
             <% } else if (v.native) { %>
-              <div class="mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
+              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
             <% } %>
           </a>
+
+          <!-- Badge pod zdjeciem (mobile-only) — sibling vc-info, poza linkiem -->
+          <% if (v.famous) { %>
+            <div class="vc-badge-mobile"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
+          <% } else if (v.native) { %>
+            <div class="vc-badge-mobile"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
+          <% } %>
 
           <!-- Player + przyciski — na desktop: display:contents (niewidoczny wrapper), na mobile: wiersz -->
           <%
