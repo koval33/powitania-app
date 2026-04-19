@@ -236,24 +236,29 @@
       .vc-info { width: 200px !important; flex-shrink: 0; }
       .vc-photo { width: 106px !important; height: 106px !important; }
       .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
-      /* Mobile-only badge under photo — hidden on desktop */
+      /* Mobile-only elements — hidden on desktop */
       .vc-badge-mobile { display: none; }
-      /* Mobile: grid — photo top-right, info top-left, badge under photo, player row 3 */
+      .vc-more-link { display: none; }
+      /* Mobile: grid — photo top-right, badge centered under photo, narrow player in left col, button in right col, "more" link under player */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
           grid-template-columns: 1fr auto;
           column-gap: 14px;
-          row-gap: 8px;
+          row-gap: 6px;
           align-items: start;
           padding: 12px 14px !important;
         }
         .vc-photo { grid-column: 2; grid-row: 1; width: 112px !important; height: 112px !important; flex-shrink: 0; }
         .vc-info { grid-column: 1; grid-row: 1; flex: initial !important; width: auto !important; min-width: 0; align-self: start; }
         .vc-badge-inline { display: none !important; }
-        .vc-badge-mobile { display: flex; justify-content: flex-end; grid-column: 2; grid-row: 2; margin-top: 2px; }
-        .vc-player-wrap { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; grid-column: 1 / -1; }
-        .vc-player-wrap .player-box { flex: 1; min-width: 0; }
+        .vc-badge-mobile { display: flex; justify-content: center; grid-column: 2; grid-row: 2; margin-top: 2px; }
+        /* Flatten wrapper — player-box and vc-cta become direct grid children */
+        .vc-player-wrap { display: contents !important; }
+        .player-box { grid-column: 1; grid-row: 2 / span 2; align-self: stretch; flex: initial !important; }
+        .vc-cta { grid-column: 2; grid-row: 3; justify-self: center; align-self: end; }
+        .vc-profile-inline { display: none !important; }
+        .vc-more-link { display: inline-block; grid-column: 1; grid-row: 4; justify-self: start; margin-top: 2px; }
       }
     </style>
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
@@ -347,17 +352,20 @@
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
                 </a>
               </div>
-              <a href="<%= profileUrl %>" onclick="event.stopPropagation()" class="block text-[10px] text-gray-400 hover:text-accent mt-1.5 transition-colors">&bull;&bull;&bull;&nbsp;full voice profile</a>
+              <a href="<%= profileUrl %>" onclick="event.stopPropagation()" class="vc-profile-inline block text-[10px] text-gray-400 hover:text-accent mt-1.5 transition-colors">more</a>
             </div>
 
             <!-- CTA button -->
-            <div class="flex-shrink-0 flex items-center justify-center">
+            <div class="vc-cta flex-shrink-0 flex items-center justify-center">
               <a href="<%= profileUrl %>" onclick="event.stopPropagation()" class="cta-inquiry inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
                 Quote
               </a>
             </div>
           </div>
+
+          <!-- "More" link under player (mobile-only via CSS) -->
+          <a href="<%= profileUrl %>" onclick="event.stopPropagation()" class="vc-more-link text-[11px] text-gray-500 hover:text-accent transition-colors">more</a>
 
         </div>
       </div>
