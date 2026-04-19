@@ -2360,7 +2360,70 @@ if (KNOWN_BIOS_EN[lektor.id]) {
     _personSchemaEn.knowsAbout = _personSchemaEn.knowsAbout.concat(_bioEn.knownFor);
   }
 }
+
+// --- Product schema — prices per service for Google SERP rich results (EUR) ---
+// Note: aggregateRating intentionally omitted — reviews are global (about the studio),
+// not about a specific voice artist. Google may flag as review spam if duplicated
+// across 234 product pages.
+var _pricesEn = lektor.prices || {};
+var _offersEn = [];
+var _lektorUrlEn = "https://www.powitania.pl/en/voice-artists/" + lektor.id + "/";
+function _addOfferEn(field, name) {
+  var v = _pricesEn[field];
+  if (v && v !== 'wycena' && !isNaN(parseInt(v))) {
+    _offersEn.push({
+      "@type": "Offer",
+      "name": name,
+      "price": String(parseInt(v)),
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "url": _lektorUrlEn + "#wycena",
+      "seller": { "@type": "Organization", "name": "Powitania.pl" }
+    });
+  }
+}
+if (!lektor.hidePrice) {
+  _addOfferEn('ivr_100',            'Phone announcement / IVR — up to 100 words');
+  _addOfferEn('ivr_200',            'Phone announcement / IVR — up to 200 words');
+  _addOfferEn('spot_radio_local',   'Radio commercial — local');
+  _addOfferEn('spot_radio_national','Radio commercial — national');
+  _addOfferEn('spot_tv_local',      'TV commercial — local');
+  _addOfferEn('spot_tv_national',   'TV commercial — national');
+  _addOfferEn('spot_social_1min',   'Social media voiceover — up to 1 minute');
+  _addOfferEn('spot_social_2min',   'Social media voiceover — up to 2 minutes');
+  _addOfferEn('narration_1page',    'Film / e-learning narration — 1 A4 page');
+  _addOfferEn('narration_2pages',   'Film / e-learning narration — 2 A4 pages');
+  _addOfferEn('narration_3pages',   'Film / e-learning narration — 3 A4 pages');
+}
+var _productSchemaEn = null;
+if (_offersEn.length > 0) {
+  var _prsEn = _offersEn.map(function(o) { return parseInt(o.price); });
+  var _descEn = (lektor.descriptionEn || lektor.description || lektor.seoDescription || ('Professional voice-over recordings by ' + lektor.name + '. IVR, radio/TV commercials, film narration, social media.')).replace(/\s+/g, ' ').trim();
+  if (_descEn.length > 500) _descEn = _descEn.substring(0, 497) + '...';
+  _productSchemaEn = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "productID": "voice-artist-" + lektor.id,
+    "name": "Voice-over recording — " + lektor.name,
+    "description": _descEn,
+    "image": "https://www.powitania.pl" + lektor.photo,
+    "brand": { "@type": "Brand", "name": "Powitania.pl" },
+    "category": "Voice-over services",
+    "url": _lektorUrlEn,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": String(Math.min.apply(null, _prsEn)),
+      "highPrice": String(Math.max.apply(null, _prsEn)),
+      "offerCount": _offersEn.length,
+      "offers": _offersEn
+    }
+  };
+}
 %>
 <script type="application/ld+json"><%- JSON.stringify(_personSchemaEn) %></script>
+<% if (_productSchemaEn) { %>
+<script type="application/ld+json"><%- JSON.stringify(_productSchemaEn) %></script>
+<% } %>
 
 <%- include('../partials/foot-en') %>

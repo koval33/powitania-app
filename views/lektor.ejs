@@ -2419,6 +2419,66 @@ var _serviceSchemaLektor = {
   "areaServed": "PL",
   "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/"
 };
+
+// --- Product schema — ceny per usługa dla rich results w Google SERP ---
+// Uwaga: aggregateRating celowo pominięte, bo opinie są globalne (o studiu),
+// nie o konkretnym lektorze. Doklejanie tej samej oceny do 234 produktów
+// Google może uznać za spam.
+var _prices = lektor.prices || {};
+var _offers = [];
+var _lektorUrl = "https://www.powitania.pl/lektorzy/" + lektor.id + "/";
+function _addOffer(field, name) {
+  var v = _prices[field];
+  if (v && v !== 'wycena' && !isNaN(parseInt(v))) {
+    _offers.push({
+      "@type": "Offer",
+      "name": name,
+      "price": String(parseInt(v)),
+      "priceCurrency": "PLN",
+      "availability": "https://schema.org/InStock",
+      "url": _lektorUrl + "#wycena",
+      "seller": { "@type": "Organization", "name": "Powitania.pl" }
+    });
+  }
+}
+if (!lektor.hidePrice) {
+  _addOffer('ivr_100',            'Zapowiedź telefoniczna IVR — do 100 słów');
+  _addOffer('ivr_200',            'Zapowiedź telefoniczna IVR — do 200 słów');
+  _addOffer('spot_radio_local',   'Spot reklamowy radio — lokalny');
+  _addOffer('spot_radio_national','Spot reklamowy radio — krajowy');
+  _addOffer('spot_tv_local',      'Spot reklamowy TV — lokalny');
+  _addOffer('spot_tv_national',   'Spot reklamowy TV — krajowy');
+  _addOffer('spot_social_1min',   'Nagranie social media — do 1 minuty');
+  _addOffer('spot_social_2min',   'Nagranie social media — do 2 minut');
+  _addOffer('narration_1page',    'Narracja / film — 1 strona A4');
+  _addOffer('narration_2pages',   'Narracja / film — 2 strony A4');
+  _addOffer('narration_3pages',   'Narracja / film — 3 strony A4');
+}
+var _productSchema = null;
+if (_offers.length > 0) {
+  var _prs = _offers.map(function(o) { return parseInt(o.price); });
+  var _desc = (lektor.description || lektor.seoDescription || ('Profesjonalne nagrania lektorskie w wykonaniu ' + lektor.name + '. Zapowiedzi IVR, spoty reklamowe, narracje filmowe, social media.')).replace(/\s+/g, ' ').trim();
+  if (_desc.length > 500) _desc = _desc.substring(0, 497) + '...';
+  _productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "productID": "lektor-" + lektor.id,
+    "name": "Nagranie lektorskie — " + lektor.name,
+    "description": _desc,
+    "image": "https://www.powitania.pl" + lektor.photo,
+    "brand": { "@type": "Brand", "name": "Powitania.pl" },
+    "category": "Voice-over services",
+    "url": _lektorUrl,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "PLN",
+      "lowPrice": String(Math.min.apply(null, _prs)),
+      "highPrice": String(Math.max.apply(null, _prs)),
+      "offerCount": _offers.length,
+      "offers": _offers
+    }
+  };
+}
 var _faqItems = [];
 var _faqDisplayName = lektor.name.replace(/\s+\d+$/, '').trim();
 var _faqTurnaroundSchema = lektor.turnaround || (lektor.hidePrice ? '4 dni robocze' : null);
@@ -2439,6 +2499,9 @@ var _faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEn
 %>
 <script type="application/ld+json"><%- JSON.stringify(_personSchema) %></script>
 <script type="application/ld+json"><%- JSON.stringify(_serviceSchemaLektor) %></script>
+<% if (_productSchema) { %>
+<script type="application/ld+json"><%- JSON.stringify(_productSchema) %></script>
+<% } %>
 <script type="application/ld+json"><%- JSON.stringify(_faqSchema) %></script>
 <% if (allAudio && allAudio.length > 0) { allAudio.forEach(function(s) { %>
 <script type="application/ld+json"><%- JSON.stringify({ "@context": "https://schema.org", "@type": "AudioObject", "name": s.name || ("Próbka głosowa — " + lektor.name), "contentUrl": s.url, "encodingFormat": "audio/mpeg", "description": "Próbka głosowa lektora " + lektor.name }) %></script>
