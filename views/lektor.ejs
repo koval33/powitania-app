@@ -1219,11 +1219,12 @@ function renderQuestions(serviceType, targetEl) {
   if (serviceType === 'spot') {
     var radioOpts = PRICING_MAP['radio'].options;
     var tvOpts = PRICING_MAP['tv'].options;
-    function spotOptionHtml(opt) {
+    function spotOptionHtml(opt, isChecked) {
       var price = LEKTOR_PRICES[opt.field];
       var priceLabel = price ? ('<span class="text-accent font-semibold"> — ' + price + ' zł netto</span>') : '';
+      var checkedAttr = isChecked ? ' checked' : '';
       return '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
-        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)"' + checkedAttr + '>' +
         '<span class="text-gray-600 text-sm">' + opt.label + priceLabel + '</span>' +
         '</label>';
     }
@@ -1231,10 +1232,11 @@ function renderQuestions(serviceType, targetEl) {
     html += '<label class="block text-gray-900 font-semibold mb-3 text-sm">Wybierz medium i zasięg:</label>';
     html += '<div class="grid grid-cols-2 gap-x-4">';
     html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Radio</p><div class="space-y-2">';
-    radioOpts.forEach(function(opt) { html += spotOptionHtml(opt); });
+    // Domyślnie zaznaczamy "Radio — lokalne" (pierwsza opcja radio), żeby cena pokazała się od razu
+    radioOpts.forEach(function(opt, idx) { html += spotOptionHtml(opt, idx === 0); });
     html += '</div></div>';
     html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">TV</p><div class="space-y-2">';
-    tvOpts.forEach(function(opt) { html += spotOptionHtml(opt); });
+    tvOpts.forEach(function(opt) { html += spotOptionHtml(opt, false); });
     html += '</div></div>';
     html += '</div>';
     if (PRICING_MAP['spot'].note) {
@@ -1254,11 +1256,13 @@ function renderQuestions(serviceType, targetEl) {
     html += '<div class="mb-4">';
     html += '<label class="block text-gray-900 font-semibold mb-3 text-sm">' + getQuestionLabel(serviceType) + '</label>';
     html += '<div class="space-y-2">';
-    cfg.options.forEach(function(opt) {
+    // Domyślnie zaznaczamy pierwszą opcję (np. "Do 1 minuty" dla Social), żeby cena pokazała się od razu
+    cfg.options.forEach(function(opt, idx) {
       var price = LEKTOR_PRICES[opt.field];
       var priceLabel = price ? (' — ' + price + ' zł netto') : '';
+      var checkedAttr = idx === 0 ? ' checked' : '';
       html += '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
-        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)"' + checkedAttr + '>' +
         '<span class="text-gray-600 text-sm">' + opt.label + '<span class="text-accent font-semibold">' + priceLabel + '</span></span>' +
       '</label>';
     });
@@ -1633,15 +1637,16 @@ function modalCalculate() {
     if (!cfg) return;
 
     if (cfg.method === 'choice') {
-      // Renderuj pytania jesli nie ma jeszcze
+      // Renderuj pytania jesli nie ma jeszcze (pierwsza opcja pre-checked w renderQuestions)
       if (!questionsEl.innerHTML.trim()) {
         renderQuestions(serviceType, questionsEl);
+      }
+      var chosen = questionsEl.querySelector('input[name="service-choice"]:checked');
+      if (!chosen) {
         pricingEl.classList.add('hidden');
         ctaEl.classList.add('hidden');
         return;
       }
-      var chosen = questionsEl.querySelector('input[name="service-choice"]:checked');
-      if (!chosen) return;
       var result = calculatePrice(serviceType, wordCount, { choiceField: chosen.value });
       renderPricing(result, wordCount, pricingEl);
     } else {
@@ -2145,8 +2150,6 @@ function showPricingWizard(ctx) {
       } else {
         // Dopytaj o parametry (radio/tv → zasięg, social bez duration)
         renderQuestions(mappedType, questionsEl);
-        pricingEl.classList.add('hidden');
-        ctaEl.classList.add('hidden');
 
         // Listener na wybor
         questionsEl.addEventListener('change', function(e) {
@@ -2156,6 +2159,17 @@ function showPricingWizard(ctx) {
             ctaEl.classList.remove('hidden');
           }
         });
+
+        // Pierwsza opcja pre-checked — pokaż cenę od razu
+        var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
+        if (preChecked) {
+          var result = calculatePrice(mappedType, wordCount, { choiceField: preChecked.value });
+          renderPricing(result, wordCount, pricingEl);
+          ctaEl.classList.remove('hidden');
+        } else {
+          pricingEl.classList.add('hidden');
+          ctaEl.classList.add('hidden');
+        }
       }
     } else {
       // IVR/pages — oblicz od razu
@@ -2253,6 +2267,13 @@ function updateWizardPricing() {
         ctaEl.classList.remove('hidden');
       }
     });
+    // Jeśli pierwsza opcja jest domyślnie zaznaczona (social/spot) — pokaż cenę od razu
+    var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
+    if (preChecked) {
+      var result = calculatePrice(serviceType, wordCount, { choiceField: preChecked.value });
+      renderPricing(result, wordCount, pricingEl);
+      ctaEl.classList.remove('hidden');
+    }
   } else {
     var result = calculatePrice(serviceType, wordCount, {});
     renderPricing(result, wordCount, pricingEl);

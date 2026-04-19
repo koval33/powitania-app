@@ -1251,11 +1251,13 @@ function renderQuestions(serviceType, targetEl) {
     html += '<div class="mb-4">';
     html += '<label class="block text-gray-900 font-semibold mb-3 text-sm">' + getQuestionLabel(serviceType) + '</label>';
     html += '<div class="space-y-2">';
-    cfg.options.forEach(function(opt) {
+    // Pre-select first option (e.g. "Up to 1 minute" for Social, "Local ad" for Ad Spot) so price shows immediately
+    cfg.options.forEach(function(opt, idx) {
       var price = LEKTOR_PRICES[opt.field];
       var priceLabel = price ? (' — ' + price + ' EUR net') : '';
+      var checkedAttr = idx === 0 ? ' checked' : '';
       html += '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
-        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)">' +
+        '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)"' + checkedAttr + '>' +
         '<span class="text-gray-600 text-sm">' + opt.label + '<span class="text-accent font-semibold">' + priceLabel + '</span></span>' +
       '</label>';
     });
@@ -1619,15 +1621,16 @@ function modalCalculate() {
     if (!cfg) return;
 
     if (cfg.method === 'choice') {
-      // Renderuj pytania jesli nie ma jeszcze
+      // Render questions if not yet rendered (first option pre-checked in renderQuestions)
       if (!questionsEl.innerHTML.trim()) {
         renderQuestions(serviceType, questionsEl);
+      }
+      var chosen = questionsEl.querySelector('input[name="service-choice"]:checked');
+      if (!chosen) {
         pricingEl.classList.add('hidden');
         ctaEl.classList.add('hidden');
         return;
       }
-      var chosen = questionsEl.querySelector('input[name="service-choice"]:checked');
-      if (!chosen) return;
       var result = calculatePrice(serviceType, wordCount, { choiceField: chosen.value });
       renderPricing(result, wordCount, pricingEl);
     } else {
@@ -2105,12 +2108,10 @@ function showPricingWizard(ctx) {
         renderPricing(result, wordCount, pricingEl);
         ctaEl.classList.remove('hidden');
       } else {
-        // Dopytaj o parametry (radio/tv → zasięg, social bez duration)
+        // Ask for parameters (radio/tv → reach, social without duration)
         renderQuestions(mappedType, questionsEl);
-        pricingEl.classList.add('hidden');
-        ctaEl.classList.add('hidden');
 
-        // Listener na wybor
+        // Listener on choice
         questionsEl.addEventListener('change', function(e) {
           if (e.target.name === 'service-choice') {
             var result = calculatePrice(mappedType, wordCount, { choiceField: e.target.value });
@@ -2118,6 +2119,17 @@ function showPricingWizard(ctx) {
             ctaEl.classList.remove('hidden');
           }
         });
+
+        // First option pre-checked — show price immediately
+        var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
+        if (preChecked) {
+          var result = calculatePrice(mappedType, wordCount, { choiceField: preChecked.value });
+          renderPricing(result, wordCount, pricingEl);
+          ctaEl.classList.remove('hidden');
+        } else {
+          pricingEl.classList.add('hidden');
+          ctaEl.classList.add('hidden');
+        }
       }
     } else {
       // IVR/pages — oblicz od razu
@@ -2222,6 +2234,13 @@ function updateWizardPricing() {
         ctaEl.classList.remove('hidden');
       }
     });
+    // If first option is pre-selected (social/radio) — show price immediately
+    var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
+    if (preChecked) {
+      var result = calculatePrice(serviceType, wordCount, { choiceField: preChecked.value });
+      renderPricing(result, wordCount, pricingEl);
+      ctaEl.classList.remove('hidden');
+    }
   } else {
     var result = calculatePrice(serviceType, wordCount, {});
     renderPricing(result, wordCount, pricingEl);
