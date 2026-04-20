@@ -1,5 +1,13 @@
 /* powitania.pl — Light theme styles (Fiverr-inspired) */
 
+/* Nav dropdown */
+.nav-dropdown .nav-dropdown-menu { display: none; position: absolute; left: 0; top: 100%; z-index: 50; padding-top: 0; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu-inner { background: #fff; border-radius: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 1px solid #f3f4f6; padding: 0.5rem 0; min-width: 260px; margin-top: 0.25rem; }
+.nav-dropdown-menu-inner a { display: block; padding: 0.5rem 1rem; font-size: 0.875rem; text-transform: none; letter-spacing: normal; font-weight: 400; color: #4b5563; transition: color 0.15s, background 0.15s; }
+.nav-dropdown-menu-inner a:hover { color: var(--color-accent, #e8734a); background: #f9fafb; }
+.nav-dropdown > a { padding-bottom: 0.75rem; margin-bottom: -0.75rem; }
+
 /* Warm background */
 body {
   background-color: #f7f3ef;
