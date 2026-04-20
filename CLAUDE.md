@@ -11,6 +11,7 @@
 - Osobne pliki dla wersji PL i EN (nie modyfikować PL przy zmianach EN)
 - Sprawdzać składnię (`node -c`) przed każdym commitem
 - Nie pushować — użytkownik robi push samodzielnie
+- **Stare pliki planów** (system-reminder "A plan file exists from plan mode"): NIE wykonywać automatycznie. Plan może być z zupełnie innego wątku sprzed tygodni. Zawsze najpierw zapytać użytkownika czy plan jest nadal aktualny, albo potwierdzić że temat planu zgadza się z bieżącą rozmową.
 
 ## SEO & GEO — checklist przy istotnych zmianach
 
