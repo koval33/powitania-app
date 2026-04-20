@@ -210,8 +210,20 @@ body{background-color:#f7f3ef}
 
     <div class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
       <a href="/bank-glosow/" class="hover:text-accent transition-colors <%= currentPath === '/bank-glosow/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Bank głosów</a>
-      <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors <%= currentPath === '/nagrania-lektorskie/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Nagrania lektorskie</a>
-      <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="hover:text-accent transition-colors <%= currentPath === '/sesje-zdalne-nagrania-lektorskie-online/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Sesje zdalne</a>
+      <div class="relative group">
+        <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors flex items-center gap-1 <%= currentPath.startsWith('/nagrania-lektorskie') || currentPath === '/sesje-zdalne-nagrania-lektorskie-online/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">
+          Nagrania lektorskie
+          <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+          <div class="bg-white rounded-lg shadow-lg border border-gray-100 py-2 min-w-[260px]">
+            <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="block px-4 py-2 text-sm normal-case tracking-normal font-normal text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors">Profesjonalny lektor do filmów</a>
+            <a href="/nagrania-lektorskie/glos-do-reklamy/" class="block px-4 py-2 text-sm normal-case tracking-normal font-normal text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors">Głos do reklamy</a>
+            <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="block px-4 py-2 text-sm normal-case tracking-normal font-normal text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors">Zapowiedzi telefoniczne</a>
+            <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block px-4 py-2 text-sm normal-case tracking-normal font-normal text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors">Sesje zdalne</a>
+          </div>
+        </div>
+      </div>
       <a href="/cennik/" class="hover:text-accent transition-colors <%= currentPath === '/cennik/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Cennik</a>
       <a href="/opinie/" class="hover:text-accent transition-colors <%= currentPath === '/opinie/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Opinie</a>
       <a href="/kontakt/" class="hover:text-accent transition-colors <%= currentPath === '/kontakt/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Kontakt</a>
@@ -232,7 +244,10 @@ body{background-color:#f7f3ef}
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 uppercase tracking-wide text-sm font-semibold">
     <a href="/bank-glosow/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Bank głosów</a>
     <a href="/nagrania-lektorskie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Nagrania lektorskie</a>
-    <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Sesje zdalne</a>
+    <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Profesjonalny lektor do filmów</a>
+    <a href="/nagrania-lektorskie/glos-do-reklamy/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Głos do reklamy</a>
+    <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Zapowiedzi telefoniczne</a>
+    <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-100 text-xs normal-case tracking-normal font-normal">Sesje zdalne</a>
     <a href="/cennik/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Cennik</a>
     <a href="/opinie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Opinie</a>
     <a href="/kontakt/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Kontakt</a>
