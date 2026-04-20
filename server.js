@@ -514,8 +514,8 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie | Lektor, głos do reklamy | Powitania.pl',
-    description: 'Najlepsze nagrania lektorskie, znane głosy do reklamy. Audiobooki, komunikaty lektorskie. Zapoznaj się z naszą bazą i wybierz lektora do reklamy. Zapraszamy!',
+    title: 'Nagrania lektorskie — 234 lektorów, realizacja 48h, od 300 zł | powitania.pl',
+    description: 'Profesjonalne studio nagrań lektorskich od 2001 r. 234 lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
@@ -857,8 +857,8 @@ app.get('/en/contact/', (req, res) => {
 
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
-    title: 'Voiceover Recordings | Professional Voice Artists | Powitania.pl',
-    description: 'Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. 234 voice artists in 30+ languages.',
+    title: 'Voiceover Recordings — 234 Voice Artists, 48h Delivery, from €70 | powitania.pl',
+    description: 'Professional voiceover recording studio since 2001. 234 voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' }
