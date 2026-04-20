@@ -57,5 +57,5 @@ Non-Polish browsers are automatically redirected to the English version.
 - E-mail: biuro@powitania.pl
 - Telefon: +48 605 491 069
 - Adres: ul. Pozytywistów 4/4, 20-639 Lublin, Polska
-- Godziny pracy: Poniedziałek–Piątek 08:00–18:00
+- Godziny pracy: Poniedziałek-Piątek 08:00-18:00
 - NIP: Firma OPTIMUM Paweł Kowalski

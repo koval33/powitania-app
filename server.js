@@ -527,7 +527,7 @@ app.get('/nagrania-lektorskie/', (req, res) => {
 app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
     title: 'Głos do reklamy | Lektor do reklamy | Powitania.pl',
-    description: 'Przyciągnij uwagę słuchaczy – wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
+    description: 'Przyciągnij uwagę słuchaczy - wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -550,7 +550,7 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
 app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
   res.render('uslugi/lektor-do-filmow', {
     title: 'Profesjonalny lektor do filmów | Powitania.pl',
-    description: 'Profesjonalny lektor do filmów – naturalny głos, wysoka jakość nagrań, szybka realizacja. Idealny wybór do filmów promocyjnych, instruktażowych dokumentalnych.',
+    description: 'Profesjonalny lektor do filmów - naturalny głos, wysoka jakość nagrań, szybka realizacja. Idealny wybór do filmów promocyjnych, instruktażowych dokumentalnych.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },

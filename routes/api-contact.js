@@ -70,7 +70,7 @@ router.post('/order', async (req, res) => {
         <h2 style="color:#1a1d23">Thank you for your order!</h2>
         <p>Hi ${esc(name)},</p>
         <p>We have received your recording order${lektorName ? ' with voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
-        <p>We will respond within 2 hours during business hours (Mon–Fri 8:00 AM – 6:00 PM CET).</p>
+        <p>We will respond within 2 hours during business hours (Mon-Fri 8:00 AM - 6:00 PM CET).</p>
         ${totalPrice ? `<p><strong>Quote:</strong> ${esc(totalPrice)}</p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
@@ -79,7 +79,7 @@ router.post('/order', async (req, res) => {
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(name)},</p>
         <p>Otrzymaliśmy Twoje zamówienie nagrania${lektorName ? ' u lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
-        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00-18:00).</p>
         ${totalPrice ? `<p><strong>Wycena:</strong> ${esc(totalPrice)}</p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
@@ -137,7 +137,7 @@ router.post('/inquiry', async (req, res) => {
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your inquiry!</h2>
         <p>Hi${name ? ' ' + esc(name) : ''},</p>
-        <p>We have received your inquiry. We will respond within 2 hours during business hours (Mon–Fri 8:00 AM – 6:00 PM CET).</p>
+        <p>We have received your inquiry. We will respond within 2 hours during business hours (Mon-Fri 8:00 AM - 6:00 PM CET).</p>
         ${lektorName ? `<p style="margin-top:16px">Voice artist: <strong>${esc(lektorName)}</strong></p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
         ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Your message:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
@@ -146,7 +146,7 @@ router.post('/inquiry', async (req, res) => {
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć${name ? ' ' + esc(name) : ''},</p>
-        <p>Otrzymaliśmy Twoje zapytanie. Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        <p>Otrzymaliśmy Twoje zapytanie. Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00-18:00).</p>
         ${lektorName ? `<p style="margin-top:16px">Lektor: <strong>${esc(lektorName)}</strong></p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Twój tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
         ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Twoja wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
@@ -329,7 +329,7 @@ router.post('/partner-inquiry', async (req, res) => {
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć ${esc(name)},</p>
         <p>Otrzymaliśmy Twoje zapytanie${voiceName ? ' dotyczące lektora <strong>' + esc(voiceName) + '</strong>' : ''}.</p>
-        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00–18:00).</p>
+        <p>Odpowiemy w ciągu 2 godzin w godzinach pracy (pon-pt 8:00-18:00).</p>
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>${esc(partnerName)}</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">Powered by powitania.pl</p>
       `

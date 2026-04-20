@@ -36,7 +36,7 @@ for (const v of voices) {
     console.error(`MISSING seoDescriptionEn: ${v.id}`);
     errors++;
   } else {
-    // length 120–160
+    // length 120-160
     if (v.seoDescriptionEn.length < 120) {
       console.error(`seoDescriptionEn TOO SHORT (${v.seoDescriptionEn.length}): ${v.id}`);
       errors++;
