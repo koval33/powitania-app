@@ -269,6 +269,36 @@ app.get('/lektorzy/slawek-2/', (req, res) => res.status(410).end());
 app.get('/lektorzy/zosia/',    (req, res) => res.status(410).end());
 app.get('/lektorzy/barbara/',  (req, res) => res.status(410).end());
 app.get('/lektorzy/mikolaj/',  (req, res) => res.status(410).end());
+app.get('/lektorzy/barbara-2/',      (req, res) => res.status(410).end());
+app.get('/lektorzy/gabriela/',       (req, res) => res.status(410).end());
+app.get('/lektorzy/krystyna-loska/', (req, res) => res.status(410).end());
+app.get('/lektorzy/tomasz-knapik/',  (req, res) => res.status(410).end());
+// EN — usunięci lektorzy
+app.get('/en/voice-artists/marcin-2/', (req, res) => res.redirect(301, '/en/voice-artists/marcin-dubbing/'));
+
+// GSC 404 cleanup (20.04.2026) — stare WordPress / root-level URL-e
+// 301 — przekierowania na poprawne adresy
+app.get('/marcin-2/',    (req, res) => res.redirect(301, '/lektorzy/marcin-dubbing/'));
+app.get('/contact/',     (req, res) => res.redirect(301, '/en/contact/'));
+app.get('/category/glosy-meskie/',  (req, res) => res.redirect(301, '/bank-glosow/meskie/'));
+app.get('/category/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-glosow/zenskie/'));
+app.get('/bank-glosow/page/:page/', (req, res) => res.redirect(301, '/bank-glosow/'));
+app.get('/aktualnosci-pl/page/:page/', (req, res) => res.redirect(301, '/aktualnosci-pl/strona/' + req.params.page + '/'));
+app.get('/szukaj/page/*',           (req, res) => res.redirect(301, '/bank-glosow/'));
+// 410 — usunięte strony (WordPress, stare blogi, API, truncated URLs)
+app.get('/lektor/',       (req, res) => res.status(410).end());
+app.get('/miksowanie-probne/', (req, res) => res.status(410).end());
+app.get('/category/nagrania-ekspresowe/', (req, res) => res.status(410).end());
+app.get('/bank/znani-i-*',     (req, res) => res.status(410).end());
+app.get('/sesje-',             (req, res) => res.status(410).end());
+app.get('/laura-samojlowicz-dolaczyla-*', (req, res) => res.status(410).end());
+app.get('/wp-admin/*',         (req, res) => res.status(410).end());
+app.get('/wp-content/*',       (req, res) => res.status(410).end());
+app.get('/wp-*.php',           (req, res) => res.status(410).end());
+app.get('/aktualnosci-pl/generowanie-plikow-srt/', (req, res) => res.status(410).end());
+app.get('/en/news/native-speakers-wanted/',        (req, res) => res.status(410).end());
+app.get('/en/news/voiceover-recording-for-electronic-brain/', (req, res) => res.status(410).end());
+
 app.get('/faq/', (req, res) => res.redirect(301, '/faq-pl/'));
 app.get('/sesje-zdalne/', (req, res) => res.redirect(301, '/sesje-zdalne-nagrania-lektorskie-online/'));
 app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
