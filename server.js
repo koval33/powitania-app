@@ -136,10 +136,10 @@ app.use((req, res, next) => {
     '/cennik/': '/en/pricing/',
     '/kontakt/': '/en/contact/',
     '/nagrania-lektorskie/': '/en/voiceover-services/',
-    '/uslugi/glos-do-reklamy/': '/en/voiceover-services/voice-for-advertising/',
-    '/uslugi/lektor-do-filmow/': '/en/voiceover-services/film-voiceover/',
-    '/uslugi/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
-    '/uslugi/sesje-zdalne/': '/en/remote-sessions/',
+    '/nagrania-lektorskie/glos-do-reklamy/': '/en/voiceover-services/voice-for-advertising/',
+    '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/': '/en/voiceover-services/film-voiceover/',
+    '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
+    '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/aktualnosci-pl/': '/en/news/'
   };
