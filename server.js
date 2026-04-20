@@ -1199,13 +1199,14 @@ app.get('/sitemap.xml', (req, res) => {
     xml += `  <url>\n    <loc>${baseUrl}/en/voice-artists/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
   });
 
-  // Blog posts
+  // Blog posts - użyj p.modified jeśli dostępne (świeższy sygnał dla Google po edycji)
   const blogPosts = loadBlogPosts();
   blogPosts.forEach(p => {
-    xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
+    const lastmod = p.modified || p.date;
+    xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
     // EN blog posts (only those with full English translation)
     if (p.titleEn && p.contentEn) {
-      xml += `  <url>\n    <loc>${baseUrl}/en/news/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
+      xml += `  <url>\n    <loc>${baseUrl}/en/news/${p.slug}/</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
     }
   });
 
