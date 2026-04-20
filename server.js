@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Asset version — bumpuje się przy każdym restarcie serwera (czyli każdym deployu).
+// Asset version - bumpuje się przy każdym restarcie serwera (czyli każdym deployu).
 // Używane jako query param ?v=<assetVersion> w <script src="..."> żeby po deployu
 // przeglądarki nie serwowały starej wersji JS z cache (maxAge: 1d na static).
 const ASSET_VERSION = Date.now().toString(36);
@@ -28,12 +28,12 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Data — dynamiczne ładowanie (admin może edytować)
+// Data - dynamiczne ładowanie (admin może edytować)
 const fs = require('fs');
 
 // Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
-// Pliki użytkownika (reviews, voices, partners) — kopiowane tylko jeśli nie istnieją
-// Pliki deweloperskie (blog-posts, melodies) — zawsze nadpisywane z repo
+// Pliki użytkownika (reviews, voices, partners) - kopiowane tylko jeśli nie istnieją
+// Pliki deweloperskie (blog-posts, melodies) - zawsze nadpisywane z repo
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
 const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'voices.json', 'partners.json'];
@@ -77,7 +77,7 @@ function loadMelodies() {
   catch { return []; }
 }
 
-// Healthcheck — monitorowany przez UptimeRobot
+// Healthcheck - monitorowany przez UptimeRobot
 app.get('/api/health', (req, res) => {
   const checks = {};
   let ok = true;
@@ -175,7 +175,7 @@ app.use((req, res, next) => {
 
   // Dynamic: blog post hreflang (PL /aktualnosci-pl/:slug/ ↔ EN /en/news/:slug/).
   // hreflangEN ustawiany tylko jeśli post ma pełne tłumaczenie (titleEn + contentEn)
-  // — spójne z warunkiem w sitemap.xml (linia ~1152).
+  // - spójne z warunkiem w sitemap.xml (linia ~1152).
   var blogPlMatch = path.match(/^\/aktualnosci-pl\/([^/]+)\/$/);
   var blogEnMatch = path.match(/^\/en\/news\/([^/]+)\/$/);
   if (blogPlMatch || blogEnMatch) {
@@ -202,10 +202,10 @@ app.use((req, res, next) => {
 });
 
 // Auto-redirect non-Polish browsers to English version (only on homepage)
-// WYŁĄCZONE 2026-04-17 — na zalecenie konsultacji SEO. Powód: Googlebot (mimo user-agent
+// WYŁĄCZONE 2026-04-17 - na zalecenie konsultacji SEO. Powód: Googlebot (mimo user-agent
 // exclude) w niektórych przypadkach trafiał na EN zamiast PL, co psuło indeksację strony
 // polskiej jako kanonicznej. Przełącznik języka PL/EN w nagłówku pozwala użytkownikowi
-// ręcznie wybrać wersję. Kod zachowany w komentarzu — gdyby trzeba było wrócić.
+// ręcznie wybrać wersję. Kod zachowany w komentarzu - gdyby trzeba było wrócić.
 //
 // app.use((req, res, next) => {
 //   if (req.method !== 'GET' || req.path !== '/') return next();
@@ -225,10 +225,10 @@ app.use((req, res, next) => {
 //   next();
 // });
 
-// 301 Redirects — zachowanie starych URL-ów (20 lat SEO history)
+// 301 Redirects - zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
 
-// Slug cleanup — 301 ze starych slugów z cyframi na czyste
+// Slug cleanup - 301 ze starych slugów z cyframi na czyste
 app.get('/lektorzy/dorota-3/',         (req, res) => res.redirect(301, '/lektorzy/dorota-radio/'));
 app.get('/lektorzy/michal-5/',         (req, res) => res.redirect(301, '/lektorzy/michal-wszechstronny/'));
 app.get('/lektorzy/patryk-2-2/',       (req, res) => res.redirect(301, '/lektorzy/patryk-baryton/'));
@@ -257,14 +257,14 @@ app.get('/lektorzy/mateusz-3/',        (req, res) => res.redirect(301, '/lektorz
 app.get('/lektorzy/piotr-2/',          (req, res) => res.redirect(301, '/lektorzy/piotr-niski/'));
 app.get('/lektorzy/agnieszka-2/',      (req, res) => res.redirect(301, '/lektorzy/agnieszka-dubbing/'));
 
-// 1.1 Zombie URLs — stare WordPress attachment paths indeksowane przez Google
+// 1.1 Zombie URLs - stare WordPress attachment paths indeksowane przez Google
 app.get('/lektorzy/kuba-bielak.webp',        (req, res) => res.redirect(301, '/lektorzy/kuba-bielak/'));
 app.get('/lektorzy/lukasz-nowicki.webp',      (req, res) => res.redirect(301, '/lektorzy/lukasz-nowicki/'));
 app.get('/lektorzy/przemyslaw-skowron.webp',  (req, res) => res.redirect(301, '/lektorzy/przemyslaw-skowron/'));
 app.get('/lektorzy/maciej-jablonski.webp',    (req, res) => res.redirect(301, '/lektorzy/maciej-jablonski/'));
 app.get('/lektorzy/jacek-brzostynski.webp',   (req, res) => res.redirect(301, '/lektorzy/jacek-brzostynski/'));
 app.get('/lektorzy/stanislaw-olejniczak.webp',(req, res) => res.redirect(301, '/lektorzy/stanislaw-olejniczak/'));
-// Usunięci lektorzy — 410 Gone (Google usuwa z indeksu)
+// Usunięci lektorzy - 410 Gone (Google usuwa z indeksu)
 app.get('/lektorzy/slawek-2/', (req, res) => res.status(410).end());
 app.get('/lektorzy/zosia/',    (req, res) => res.status(410).end());
 app.get('/lektorzy/barbara/',  (req, res) => res.status(410).end());
@@ -273,11 +273,11 @@ app.get('/lektorzy/barbara-2/',      (req, res) => res.status(410).end());
 app.get('/lektorzy/gabriela/',       (req, res) => res.status(410).end());
 app.get('/lektorzy/krystyna-loska/', (req, res) => res.status(410).end());
 app.get('/lektorzy/tomasz-knapik/',  (req, res) => res.status(410).end());
-// EN — usunięci lektorzy
+// EN - usunięci lektorzy
 app.get('/en/voice-artists/marcin-2/', (req, res) => res.redirect(301, '/en/voice-artists/marcin-dubbing/'));
 
-// GSC 404 cleanup (20.04.2026) — stare WordPress / root-level URL-e
-// 301 — przekierowania na poprawne adresy
+// GSC 404 cleanup (20.04.2026) - stare WordPress / root-level URL-e
+// 301 - przekierowania na poprawne adresy
 app.get('/marcin-2/',    (req, res) => res.redirect(301, '/lektorzy/marcin-dubbing/'));
 app.get('/contact/',     (req, res) => res.redirect(301, '/en/contact/'));
 app.get('/category/glosy-meskie/',  (req, res) => res.redirect(301, '/bank-glosow/meskie/'));
@@ -285,7 +285,7 @@ app.get('/category/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-gloso
 app.get('/bank-glosow/page/:page/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/aktualnosci-pl/page/:page/', (req, res) => res.redirect(301, '/aktualnosci-pl/strona/' + req.params.page + '/'));
 app.get('/szukaj/page/*',           (req, res) => res.redirect(301, '/bank-glosow/'));
-// 410 — usunięte strony (WordPress, stare blogi, API, truncated URLs)
+// 410 - usunięte strony (WordPress, stare blogi, API, truncated URLs)
 app.get('/lektor/',       (req, res) => res.status(410).end());
 app.get('/miksowanie-probne/', (req, res) => res.status(410).end());
 app.get('/category/nagrania-ekspresowe/', (req, res) => res.status(410).end());
@@ -315,17 +315,17 @@ app.get('/search/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/search/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/uncategorized-pl/*', (req, res) => res.redirect(301, '/aktualnosci-pl/'));
 
-// 301 Redirects — WordPress feed/RSS URLs (nie istnieją w nowym serwisie)
+// 301 Redirects - WordPress feed/RSS URLs (nie istnieją w nowym serwisie)
 app.get('*/feed/rss2/', (req, res) => res.redirect(301, '/'));
 app.get('*/feed/', (req, res) => res.redirect(301, '/'));
 
-// 301 Redirects — stare WordPress URLs powodujące 5xx w Google Search Console
+// 301 Redirects - stare WordPress URLs powodujące 5xx w Google Search Console
 app.get('/wp-content/*', (req, res) => res.redirect(301, '/'));
 app.get('/wp-includes/*', (req, res) => res.redirect(301, '/'));
 app.get('/wp-admin/*', (req, res) => res.redirect(301, '/'));
 app.get('/wp-login.php', (req, res) => res.redirect(301, '/'));
 
-// 301 Redirects — strony systemowe (nie istnieją w nowym serwisie)
+// 301 Redirects - strony systemowe (nie istnieją w nowym serwisie)
 ['/podziekowanie-za-zlozenie-zamowienia/', '/podziekowanie-za-opinie/',
  '/podziekowanie-za-oplacenie-zamowienia/', '/newsletter/',
  '/newsletter/newsletter-anulowanie/', '/potwierdzenie-dodania-lektora/',
@@ -340,7 +340,7 @@ app.use('/api/contact', require('./routes/api-contact'));
 app.use('/api/payment', require('./routes/api-payment'));
 app.use('/api/reviews', require('./routes/api-reviews'));
 
-// API: sprawdź dostępność filmów YouTube (proxy oEmbed — CORS)
+// API: sprawdź dostępność filmów YouTube (proxy oEmbed - CORS)
 app.get('/api/yt-check', async (req, res) => {
   const ids = (req.query.ids || '').split(',').filter(Boolean);
   if (!ids.length) return res.json({ results: {} });
@@ -354,7 +354,7 @@ app.get('/api/yt-check', async (req, res) => {
   res.json({ results });
 });
 
-// Health check — kreator (testuje połączenie z Anthropic API)
+// Health check - kreator (testuje połączenie z Anthropic API)
 app.get('/api/health/kreator', async (req, res) => {
   const secret = process.env.HEALTH_SECRET;
   if (secret && req.query.key !== secret) {
@@ -404,8 +404,8 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 // Page routes
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Profesjonalne Studio Lektorskie Powitania.pl — od 2001 roku | 234 lektorów',
-    description: 'Studio lektorskie Powitania.pl od 2001 roku — 234 lektorów w 30+ językach. Spoty, IVR, wielojęzyczne audioprzewodniki. 11 000+ nagrań: Hyundai, Orange, Play.',
+    title: 'Profesjonalne Studio Lektorskie Powitania.pl - od 2001 roku | 234 lektorów',
+    description: 'Studio lektorskie Powitania.pl od 2001 roku - 234 lektorów w 30+ językach. Spoty, IVR, wielojęzyczne audioprzewodniki. 11 000+ nagrań: Hyundai, Orange, Play.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -414,7 +414,7 @@ app.get('/', (req, res) => {
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Bank głosów lektorskich | Baza lektorów | Głosy lektorskie | Powitania.pl',
-    description: 'Bank głosów lektorskich Powitania.pl — 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
+    description: 'Bank głosów lektorskich Powitania.pl - 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
     voices: loadVoices()
   });
 });
@@ -422,8 +422,8 @@ app.get('/bank-glosow/', (req, res) => {
 // 1.2 Gender-specific URLs
 app.get('/bank-glosow/meskie/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Głosy męskie — 143 lektorów do nagrań | powitania.pl',
-    description: 'Bank głosów męskich. 143 profesjonalnych lektorów — dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
+    title: 'Głosy męskie - 143 lektorów do nagrań | powitania.pl',
+    description: 'Bank głosów męskich. 143 profesjonalnych lektorów - dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'm'),
     genderSegment: 'm',
     pageH1: 'Głosy męskie do nagrań'
@@ -431,8 +431,8 @@ app.get('/bank-glosow/meskie/', (req, res) => {
 });
 app.get('/bank-glosow/zenskie/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Głosy żeńskie — 91 lektorek do nagrań | powitania.pl',
-    description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek — ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
+    title: 'Głosy żeńskie - 91 lektorek do nagrań | powitania.pl',
+    description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek - ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'f'),
     genderSegment: 'f',
     pageH1: 'Głosy żeńskie do nagrań'
@@ -458,7 +458,7 @@ app.get('/lektorzy/:slug/', (req, res) => {
     .sort(() => Math.random() - 0.5)
     .slice(0, 5);
   res.render('lektor', {
-    title: lektor.seoTitle || (lektor.name + ' — Lektor | powitania.pl'),
+    title: lektor.seoTitle || (lektor.name + ' - Lektor | powitania.pl'),
     description: lektor.seoDescription || lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
     breadcrumbs: [
@@ -514,7 +514,7 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie — 234 lektorów, realizacja 48h, od 300 zł | powitania.pl',
+    title: 'Nagrania lektorskie - 234 lektorów, realizacja 48h, od 300 zł | powitania.pl',
     description: 'Profesjonalne studio nagrań lektorskich od 2001 r. 234 lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -537,7 +537,7 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Głos do reklamy — nagrania lektorskie',
+      'name': 'Głos do reklamy - nagrania lektorskie',
       'description': 'Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. Ponad 234 lektorów, realizacja w 24-48h.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
@@ -560,7 +560,7 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Lektor do filmów — narracje filmowe i korporacyjne',
+      'name': 'Lektor do filmów - narracje filmowe i korporacyjne',
       'description': 'Profesjonalne nagrania lektorskie do filmów promocyjnych, instruktażowych, korporacyjnych i dokumentalnych. Naturalny głos, szybka realizacja.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
@@ -595,7 +595,7 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
 
 app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
   res.render('uslugi/sesje-zdalne', {
-    title: 'Sesje zdalne — Nagrania lektorskie online | powitania.pl',
+    title: 'Sesje zdalne - Nagrania lektorskie online | powitania.pl',
     description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -604,7 +604,7 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Sesje zdalne — nagrania lektorskie online',
+      'name': 'Sesje zdalne - nagrania lektorskie online',
       'description': 'Zdalne sesje nagraniowe przez Zoom, Teams lub Source-Connect. Klient kieruje lektorem na żywo w czasie rzeczywistym. Idealne dla projektów wymagających precyzyjnej reżyserii.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
@@ -616,7 +616,7 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
 
 app.get('/nagranie-ekspresowe/', (req, res) => {
   const voices = loadVoices();
-  // Dyżurujący lektorzy — lektorzy z turnaround "24h" i ze zdjęciem, ceny +50%
+  // Dyżurujący lektorzy - lektorzy z turnaround "24h" i ze zdjęciem, ceny +50%
   const dutyVoices = voices
     .filter(v => v.turnaround && v.turnaround.includes('24') && v.photo)
     .slice(0, 6)
@@ -640,7 +640,7 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Nagranie ekspresowe — realizacja tego samego dnia',
+      'name': 'Nagranie ekspresowe - realizacja tego samego dnia',
       'description': 'Nagrania lektorskie ekspresowe: zamów do 14:00, otrzymaj do 18:00. Dostępne również w weekendy i święta. Dopłata ekspresowa 50%.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
@@ -654,7 +654,7 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
 app.get('/o-firmie/', (req, res) => {
   res.render('o-firmie', {
     title: 'O firmie | powitania.pl',
-    description: 'OPTIMUM Paweł Kowalski — studio nagrań lektorskich działające od 2001 roku. 234 lektorów, 30+ języków.',
+    description: 'OPTIMUM Paweł Kowalski - studio nagrań lektorskich działające od 2001 roku. 234 lektorów, 30+ języków.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'O firmie', url: '/o-firmie/' }
@@ -686,7 +686,7 @@ app.get('/regulamin-serwisu/', (req, res) => {
   });
 });
 
-// Blog / Aktualności — lista postów
+// Blog / Aktualności - lista postów
 app.get('/aktualnosci-pl/', (req, res) => {
   const posts = loadBlogPosts();
   const perPage = 10;
@@ -706,7 +706,7 @@ app.get('/aktualnosci-pl/', (req, res) => {
   });
 });
 
-// Blog — paginacja
+// Blog - paginacja
 app.get('/aktualnosci-pl/strona/:page/', (req, res) => {
   const posts = loadBlogPosts();
   const perPage = 10;
@@ -716,7 +716,7 @@ app.get('/aktualnosci-pl/strona/:page/', (req, res) => {
   if (currentPage > totalPages) return res.redirect('/aktualnosci-pl/');
   const pagePosts = posts.slice((currentPage - 1) * perPage, currentPage * perPage);
   res.render('aktualnosci', {
-    title: 'Aktualności — strona ' + currentPage + ' | powitania.pl',
+    title: 'Aktualności - strona ' + currentPage + ' | powitania.pl',
     description: 'Nowości ze studia nagrań lektorskich, nowi lektorzy, porady i artykuły branżowe.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -728,7 +728,7 @@ app.get('/aktualnosci-pl/strona/:page/', (req, res) => {
   });
 });
 
-// Blog — pojedynczy post
+// Blog - pojedynczy post
 app.get('/aktualnosci-pl/:slug/', (req, res) => {
   const posts = loadBlogPosts();
   const idx = posts.findIndex(p => p.slug === req.params.slug);
@@ -771,23 +771,23 @@ app.get('/zamowienie-przyjete/', (req, res) => {
   });
 });
 
-// 301 Redirects — stare URL-e bloga (WordPress category)
+// 301 Redirects - stare URL-e bloga (WordPress category)
 app.get('/category/aktualnosci-pl/', (req, res) => res.redirect(301, '/aktualnosci-pl/'));
 app.get('/category/aktualnosci-pl/page/:page/', (req, res) => res.redirect(301, '/aktualnosci-pl/strona/' + req.params.page + '/'));
 
-// 301 Redirects — portfolio (stare URL-e → nowe podstrony usług)
+// 301 Redirects - portfolio (stare URL-e → nowe podstrony usług)
 app.get('/portfolio/', (req, res) => res.redirect(301, '/nagrania-lektorskie/'));
 app.get('/portfolio/zapowiedzi-telefoniczne/', (req, res) => res.redirect(301, '/nagrania-lektorskie/zapowiedzi-telefoniczne/'));
 app.get('/portfolio/reklama-radiowa/', (req, res) => res.redirect(301, '/nagrania-lektorskie/glos-do-reklamy/'));
 app.get('/portfolio/lektorzy-online/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
 app.get('/portfolio/*', (req, res) => res.redirect(301, '/nagrania-lektorskie/'));
 
-// 301 Redirects — stare WordPress sitemap i inne strony powodujące 404
+// 301 Redirects - stare WordPress sitemap i inne strony powodujące 404
 app.get('/page-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
 app.get('/post-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
 app.get('/zamowienie-nagrania/', (req, res) => res.redirect(301, '/cennik/'));
 
-// Partner pages — /p/:slug/
+// Partner pages - /p/:slug/
 app.get('/p/:slug/', (req, res) => {
   const partners = loadPartners();
   const partner = partners.find(p => p.slug === req.params.slug && p.active);
@@ -826,8 +826,8 @@ app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 // === English version (Phase 1) ===
 app.get('/en/', (req, res) => {
   res.render('en/index', {
-    title: 'Professional Voiceover Studio Powitania.pl — since 2001 | 234 voice artists',
-    description: 'Powitania.pl voiceover studio — 234 professional voice artists in 30+ languages, since 2001. Advertising spots, IVR announcements, audiobooks, film narration. 11,000+ recordings for clients: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
+    title: 'Professional Voiceover Studio Powitania.pl - since 2001 | 234 voice artists',
+    description: 'Powitania.pl voiceover studio - 234 professional voice artists in 30+ languages, since 2001. Advertising spots, IVR announcements, audiobooks, film narration. 11,000+ recordings for clients: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -836,7 +836,7 @@ app.get('/en/', (req, res) => {
 app.get('/en/voice-bank/', (req, res) => {
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
-    description: 'Voice bank Powitania.pl — 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.',
+    description: 'Voice bank Powitania.pl - 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.',
     voices: loadVoices()
   });
 });
@@ -857,7 +857,7 @@ app.get('/en/contact/', (req, res) => {
 
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
-    title: 'Voiceover Recordings — 234 Voice Artists, 48h Delivery, from €70 | powitania.pl',
+    title: 'Voiceover Recordings - 234 Voice Artists, 48h Delivery, from €70 | powitania.pl',
     description: 'Professional voiceover recording studio since 2001. 234 voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
@@ -869,7 +869,7 @@ app.get('/en/voiceover-services/', (req, res) => {
 app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
   res.render('en/voice-for-advertising', {
     title: 'Voice for Advertising | Radio & TV Spots | Powitania.pl',
-    description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media — professional voiceover recordings that sell.',
+    description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media - professional voiceover recordings that sell.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
@@ -879,7 +879,7 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Voice for Advertising — Radio & TV Voiceover',
+      'name': 'Voice for Advertising - Radio & TV Voiceover',
       'description': 'Professional voiceover recordings for radio, TV and online advertising spots. 234 voice artists, 30+ languages, 24-48h turnaround.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
@@ -892,7 +892,7 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
 app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
   res.render('en/film-voiceover', {
     title: 'Professional Film Voiceover | Narration & Audio-Video | Powitania.pl',
-    description: 'Professional film voiceover — narration for corporate, instructional, e-learning and promotional videos. Audio-video editing included.',
+    description: 'Professional film voiceover - narration for corporate, instructional, e-learning and promotional videos. Audio-video editing included.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
@@ -981,7 +981,7 @@ app.get('/en/express-recording/', (req, res) => {
     serviceSchema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': 'Express Voiceover Recording — Same-Day Delivery',
+      'name': 'Express Voiceover Recording - Same-Day Delivery',
       'description': 'Same-day voiceover recordings: order by 2 PM, receive by 6 PM. Available on weekends and public holidays. Express surcharge applies.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
@@ -991,7 +991,7 @@ app.get('/en/express-recording/', (req, res) => {
   });
 });
 
-// EN — News / Blog
+// EN - News / Blog
 app.get('/en/news/', (req, res) => {
   const posts = loadBlogPosts();
   const perPage = 10;
@@ -1020,7 +1020,7 @@ app.get('/en/news/page/:page/', (req, res) => {
   if (currentPage > totalPages) return res.redirect('/en/news/');
   const pagePosts = posts.slice((currentPage - 1) * perPage, currentPage * perPage);
   res.render('en/news', {
-    title: 'News — page ' + currentPage + ' | Powitania.pl',
+    title: 'News - page ' + currentPage + ' | Powitania.pl',
     description: 'Studio updates, new voice artists, tips and industry articles.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
@@ -1057,7 +1057,7 @@ app.get('/en/news/:slug/', (req, res) => {
   });
 });
 
-// EN — Voice artist profile
+// EN - Voice artist profile
 var EUR_RATE = 4.25;
 function plnToEur(pln) {
   if (typeof pln !== 'number') return pln;
@@ -1096,13 +1096,13 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
   const enLangs = (lektor.languages || []).join(', ');
   let enTitle;
   if (lektor.native && lektor.nativeLanguage) {
-    enTitle = `${lektor.name} — Native ${lektor.nativeLanguage} Voice Artist | Powitania.pl`;
+    enTitle = `${lektor.name} - Native ${lektor.nativeLanguage} Voice Artist | Powitania.pl`;
   } else if (lektor.native && lektor.languages && lektor.languages.length) {
-    enTitle = `${lektor.name} — Native ${lektor.languages[0]} Voice Artist | Powitania.pl`;
+    enTitle = `${lektor.name} - Native ${lektor.languages[0]} Voice Artist | Powitania.pl`;
   } else if (lektor.famous) {
-    enTitle = `${lektor.name} — Celebrity Voice Artist | Powitania.pl`;
+    enTitle = `${lektor.name} - Celebrity Voice Artist | Powitania.pl`;
   } else {
-    enTitle = `${lektor.name} — ${enGender} Voice Artist${enLangs ? ', ' + enLangs : ''} | Powitania.pl`;
+    enTitle = `${lektor.name} - ${enGender} Voice Artist${enLangs ? ', ' + enLangs : ''} | Powitania.pl`;
   }
   const enPrices = lektorEn.prices || {};
   const enPriceParts = [];
@@ -1111,7 +1111,7 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
   if (enPrices.narration_1page) enPriceParts.push(`narration from ${enPrices.narration_1page} EUR`);
   const enApps = (lektor.applications || []).join(', ');
   const enDesc = [
-    lektor.name + (lektor.native ? ` — native ${enLangs} voice artist` : ` — ${enGender.toLowerCase()} voice artist`) + (lektor.age ? `, ${lektor.age}` : '') + '.',
+    lektor.name + (lektor.native ? ` - native ${enLangs} voice artist` : ` - ${enGender.toLowerCase()} voice artist`) + (lektor.age ? `, ${lektor.age}` : '') + '.',
     enApps ? enApps + '.' : '',
     enPriceParts.length ? enPriceParts.join(', ') + '.' : '',
     `Listen to samples and order online. Delivery: ${lektor.turnaround || '24-48h'}.`
@@ -1135,7 +1135,7 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
   });
 });
 
-// 301 Redirects — stare EN URL-e (WordPress / dev.powitania.pl patterns)
+// 301 Redirects - stare EN URL-e (WordPress / dev.powitania.pl patterns)
 app.get('/en/lectors/:slug/', (req, res) => res.redirect(301, '/en/voice-artists/' + req.params.slug + '/'));
 app.get('/en/lectors/', (req, res) => res.redirect(301, '/en/voice-bank/'));
 app.get('/en/price-list/', (req, res) => res.redirect(301, '/en/pricing/'));
@@ -1144,10 +1144,10 @@ app.get('/en/search/*', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/feed/', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/', (req, res) => res.redirect(301, '/en/'));
 
-// EN — strony bez dedykowanego tłumaczenia → redirect na główną EN
+// EN - strony bez dedykowanego tłumaczenia → redirect na główną EN
 app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
 
-// Sitemap.xml — dynamiczny
+// Sitemap.xml - dynamiczny
 app.get('/sitemap.xml', (req, res) => {
   const voices = loadVoices();
   const baseUrl = 'https://www.powitania.pl';
@@ -1172,7 +1172,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/aktualnosci-pl/', priority: '0.7', changefreq: 'weekly' },
     { url: '/polityka-prywatnosci/', priority: '0.3', changefreq: 'yearly' },
     { url: '/regulamin-serwisu/', priority: '0.3', changefreq: 'yearly' },
-    // /bank/* routes now redirect to /bank-glosow/ — removed from sitemap
+    // /bank/* routes now redirect to /bank-glosow/ - removed from sitemap
     // English version
     { url: '/en/', priority: '0.8', changefreq: 'weekly' },
     { url: '/en/voice-bank/', priority: '0.7', changefreq: 'weekly' },
@@ -1215,8 +1215,8 @@ app.get('/sitemap.xml', (req, res) => {
   res.send(xml);
 });
 
-// 301 Redirects — stare WordPress root-level profile lektorów (np. /marcin/ → /lektorzy/marcin/)
-// Dynamiczne sprawdzanie — jeśli slug istnieje w voices.json, przekieruj do /lektorzy/:slug/
+// 301 Redirects - stare WordPress root-level profile lektorów (np. /marcin/ → /lektorzy/marcin/)
+// Dynamiczne sprawdzanie - jeśli slug istnieje w voices.json, przekieruj do /lektorzy/:slug/
 app.get('/:slug/', (req, res, next) => {
   const slug = req.params.slug;
   // Nie przechwytuj ścieżek z kropką (pliki statyczne) ani znanych prefixów
@@ -1229,7 +1229,7 @@ app.get('/:slug/', (req, res, next) => {
   next();
 });
 
-// 404 catch-all — MUSI być ostatnim routem
+// 404 catch-all - MUSI być ostatnim routem
 app.use((req, res) => {
   res.status(404).render('404', {
     title: 'Nie znaleziono strony | powitania.pl',

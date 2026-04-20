@@ -4,7 +4,7 @@
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voice Bank</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">234 professional voice actors in 30+ languages — experienced voice actors, radio presenters, and voices of renowned TV stations. Use the filters, listen to samples, and find the perfect voice for your project.</p>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">234 professional voice actors in 30+ languages - experienced voice actors, radio presenters, and voices of renowned TV stations. Use the filters, listen to samples, and find the perfect voice for your project.</p>
   </div>
 </section>
 
@@ -230,16 +230,16 @@
 
     <!-- SIATKA LEKTORÓW -->
     <style>
-      /* Desktop: player wrap is display:contents — player and buttons are direct flex children */
+      /* Desktop: player wrap is display:contents - player and buttons are direct flex children */
       .vc-player-wrap { display: contents; }
       /* Fixed-width name column for consistent player widths */
       .vc-info { width: 200px !important; flex-shrink: 0; }
       .vc-photo { width: 106px !important; height: 106px !important; }
       .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
-      /* Mobile-only elements — hidden on desktop */
+      /* Mobile-only elements - hidden on desktop */
       .vc-badge-mobile { display: none; }
       .vc-more-link { display: none; }
-      /* Mobile: 3-zone layout — (1) photo+info, (2) full-width player, (3) CTA+more */
+      /* Mobile: 3-zone layout - (1) photo+info, (2) full-width player, (3) CTA+more */
       @media (max-width: 767px) {
         .vc-inner {
           display: grid !important;
@@ -250,13 +250,13 @@
           padding: 10px !important;
           gap: unset;
         }
-        /* ZONE 1 — photo 72px in left column */
+        /* ZONE 1 - photo 72px in left column */
         .vc-photo {
           grid-column: 1; grid-row: 1;
           width: 72px !important; height: 72px !important;
           flex-shrink: 0;
         }
-        /* ZONE 1 — info: name+badge row 1, meta below */
+        /* ZONE 1 - info: name+badge row 1, meta below */
         .vc-info {
           grid-column: 2; grid-row: 1;
           display: grid !important;
@@ -277,26 +277,26 @@
           align-self: center;
           display: block !important;
         }
-        /* Meta (age/lang/turnaround/price) — full info width, no top margin */
+        /* Meta (age/lang/turnaround/price) - full info width, no top margin */
         .vc-info > div:not(.vc-badge-inline) {
           grid-column: 1 / -1;
           margin-top: 0 !important;
         }
-        /* Separate .vc-badge-mobile not needed — badge sits next to name */
+        /* Separate .vc-badge-mobile not needed - badge sits next to name */
         .vc-badge-mobile { display: none !important; }
 
-        /* ZONE 2 — full-width player */
+        /* ZONE 2 - full-width player */
         .vc-player-wrap { display: contents !important; }
         .player-box {
           grid-column: 1 / -1; grid-row: 2;
           flex: initial !important;
           padding: 10px 12px !important;
         }
-        /* Bigger Play button — 40x40 tap-target */
+        /* Bigger Play button - 40x40 tap-target */
         .player-box .play-btn { width: 40px !important; height: 40px !important; }
         .vc-profile-inline { display: none !important; }
 
-        /* ZONE 3 — actions: CTA left, "more" right */
+        /* ZONE 3 - actions: CTA left, "more" right */
         .vc-cta {
           grid-column: 1; grid-row: 3;
           justify-self: start;
@@ -377,14 +377,14 @@
             <% } %>
           </a>
 
-          <!-- Mobile-only badge under photo (sibling of vc-info — outside the link) -->
+          <!-- Mobile-only badge under photo (sibling of vc-info - outside the link) -->
           <% if (v.famous) { %>
             <div class="vc-badge-mobile"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
           <% } else if (v.native) { %>
             <div class="vc-badge-mobile"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
           <% } %>
 
-          <!-- Player + CTA — desktop: display:contents, mobile: flex row -->
+          <!-- Player + CTA - desktop: display:contents, mobile: flex row -->
           <div class="vc-player-wrap">
             <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
               <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name || 'Sample' %></div>
@@ -448,11 +448,11 @@
 <!-- Dodatkowy opis -->
 <section class="py-12 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4 text-gray-600 leading-relaxed space-y-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional voice bank — find the voice for your needs</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional voice bank - find the voice for your needs</h2>
     <p>Our voice bank will help you find the right voice for your project. Our voice actors are experienced voice actors who work daily as actors, radio presenters, and as voices for renowned television stations.</p>
-    <p>The voice bank has an advanced filter system, making it easy to find the right voice actor. You can search by entering the voice actor's name, selecting gender, voice age, or price group. A very useful feature of the filter is the ability to search for voice actors recording in specific languages. We work with voice actors from all over the world — you have over 30 languages to choose from. The voice bank is an open catalog — every month, several new voice actor profiles are added to the database.</p>
-    <p>In the basic view of the voice bank, you can listen to a voice sample from each voice actor. By clicking the "More" button, you go to their profile, where you'll find a detailed description of the voice actor and more voice samples. From the voice actor's profile, you can immediately calculate the price of the recording — just paste the text or select the type of production, and the system will automatically provide a quote and allow you to place an order. You can also use the <a href="/#kreator" class="text-accent hover:text-accent-light">Content Creator</a> on the home page, which will help you prepare professional text, and then direct you to the voice bank with a ready-made script.</p>
-    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Famous voices — voice bank Warsaw</h3>
+    <p>The voice bank has an advanced filter system, making it easy to find the right voice actor. You can search by entering the voice actor's name, selecting gender, voice age, or price group. A very useful feature of the filter is the ability to search for voice actors recording in specific languages. We work with voice actors from all over the world - you have over 30 languages to choose from. The voice bank is an open catalog - every month, several new voice actor profiles are added to the database.</p>
+    <p>In the basic view of the voice bank, you can listen to a voice sample from each voice actor. By clicking the "More" button, you go to their profile, where you'll find a detailed description of the voice actor and more voice samples. From the voice actor's profile, you can immediately calculate the price of the recording - just paste the text or select the type of production, and the system will automatically provide a quote and allow you to place an order. You can also use the <a href="/#kreator" class="text-accent hover:text-accent-light">Content Creator</a> on the home page, which will help you prepare professional text, and then direct you to the voice bank with a ready-made script.</p>
+    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Famous voices - voice bank Warsaw</h3>
     <p>If you're looking for the most experienced and recognizable voice actors, we invite you to use the "Famous" filter. At your disposal are voices of voice actors such as Jacek Rozenek, Łukasz Nowicki, Stanisław Olejniczak, Andrzej Ferenc, Jacek Brzostyński, and many other prestigious voices.</p>
     <p>The voice bank contains sample voice recordings as well as original music soundtracks. We encourage the implementation of all kinds of recordings using our voice recordings. Our database will allow you to match a voice to any project.</p>
   </div>
@@ -694,7 +694,7 @@
   }
 
   function updateFilterHighlights() {
-    // Grupa płci — zielona ramka gdy nie "Wszyscy"
+    // Grupa płci - zielona ramka gdy nie "Wszyscy"
     var genderGroup = document.getElementById('gender-group');
     if (genderGroup) {
       if (activeGender !== 'all') {
@@ -703,7 +703,7 @@
         genderGroup.style.borderColor = '';
       }
     }
-    // Selecty — klasa active gdy wartość ≠ domyślna
+    // Selecty - klasa active gdy wartość ≠ domyślna
     ['filter-lang', 'filter-age', 'filter-price'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el.value !== 'all') {
@@ -712,7 +712,7 @@
         el.classList.remove('active');
       }
     });
-    // Szukajka — zielona ramka gdy coś wpisano
+    // Szukajka - zielona ramka gdy coś wpisano
     var searchEl = document.getElementById('filter-search');
     if (searchEl.value.length > 0) {
       searchEl.style.borderColor = '#10b981';
@@ -790,7 +790,7 @@
         banner.classList.remove('hidden');
       }
 
-      // Activate kreator mode — hides hidePrice voices
+      // Activate kreator mode - hides hidePrice voices
       kreatorMode = true;
 
       // EN kreator: default to English speakers, sort native EN first
@@ -805,7 +805,7 @@
           document.getElementById('filter-lang').value = kreatorLangs[0];
         }
       } else if (isENKreator) {
-        // EN kreator with no specific language (non-IVR) — show English speakers
+        // EN kreator with no specific language (non-IVR) - show English speakers
         kreatorLangs = ['angielski'];
         document.getElementById('filter-lang').value = 'angielski';
       } else {

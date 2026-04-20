@@ -72,7 +72,7 @@ router.use(requireAuth);
 router.get('/', (req, res) => {
   const voices = loadVoices();
   res.render('admin/lektorzy', {
-    title: 'Admin — Lektorzy',
+    title: 'Admin - Lektorzy',
     voices,
     msg: req.query.msg || null
   });

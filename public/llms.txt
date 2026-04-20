@@ -1,4 +1,4 @@
-# Powitania.pl — Profesjonalne Studio Nagrań Lektorskich
+# Powitania.pl - Profesjonalne Studio Nagrań Lektorskich
 
 > Powitania.pl to polskie studio nagrań lektorskich działające od 2001 roku. Oferujemy profesjonalne nagrania lektorskie: spoty reklamowe, zapowiedzi telefoniczne (IVR), audiobooki, filmy korporacyjne, e-learning i dubbing. Dysponujemy bazą 232 lektorów w 36 językach. Firma OPTIMUM Paweł Kowalski z siedzibą w Lublinie.
 
@@ -10,12 +10,12 @@
 - 20 znanych lektorów (głosy znane z TV i radia)
 - 147 pozytywnych opinii klientów
 - Realizacja nagrań od 24h (usługa ekspresowa)
-- Kreator tekstów AI — narzędzie do tworzenia scenariuszy lektorskich
-- Sesje zdalne — udział w nagraniu online w czasie rzeczywistym
+- Kreator tekstów AI - narzędzie do tworzenia scenariuszy lektorskich
+- Sesje zdalne - udział w nagraniu online w czasie rzeczywistym
 
 ## Usługi
 
-- [Nagrania lektorskie](https://www.powitania.pl/nagrania-lektorskie/): Pełen zakres usług nagrań lektorskich — od spotów reklamowych po audiobooki
+- [Nagrania lektorskie](https://www.powitania.pl/nagrania-lektorskie/): Pełen zakres usług nagrań lektorskich - od spotów reklamowych po audiobooki
 - [Głos do reklamy](https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/): Profesjonalny lektor do reklam radiowych, telewizyjnych i internetowych
 - [Lektor do filmów](https://www.powitania.pl/nagrania-lektorskie/profesjonalny-lektor-do-filmow/): Lektor do filmów korporacyjnych, promocyjnych, instruktażowych i dokumentalnych
 - [Zapowiedzi telefoniczne](https://www.powitania.pl/nagrania-lektorskie/zapowiedzi-telefoniczne/): Profesjonalne zapowiedzi IVR, powitania telefoniczne, komunikaty dla central telefonicznych
@@ -25,7 +25,7 @@
 
 ## Zasoby
 
-- [Bank głosów](https://www.powitania.pl/bank-glosow/): Pełna baza 232 lektorów z próbkami audio — możliwość filtrowania po języku, płci, stylu głosu
+- [Bank głosów](https://www.powitania.pl/bank-glosow/): Pełna baza 232 lektorów z próbkami audio - możliwość filtrowania po języku, płci, stylu głosu
 - [Opinie klientów](https://www.powitania.pl/opinie/): 147 zweryfikowanych opinii od klientów
 - [FAQ](https://www.powitania.pl/faq-pl/): Najczęściej zadawane pytania o nagrania lektorskie
 - [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (60 artykułów)
@@ -36,9 +36,9 @@
 Powitania.pl is also available in English for international clients:
 
 - [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services with AI Script Creator tool
-- [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples — filter by language, gender, style
-- [Voice Artist Profiles (EN)](https://www.powitania.pl/en/voice-artists/{slug}/): Individual voice artist profile pages with audio samples, pricing, and order forms — 232 profiles available
-- [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services — commercials, IVR, audiobooks, film, e-learning
+- [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples - filter by language, gender, style
+- [Voice Artist Profiles (EN)](https://www.powitania.pl/en/voice-artists/{slug}/): Individual voice artist profile pages with audio samples, pricing, and order forms - 232 profiles available
+- [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services - commercials, IVR, audiobooks, film, e-learning
 - [Voice for Advertising (EN)](https://www.powitania.pl/en/voiceover-services/voice-for-advertising/): Professional voiceover for radio, TV, and online ads
 - [Film Voiceover (EN)](https://www.powitania.pl/en/voiceover-services/film-voiceover/): Voiceover for corporate, promotional, instructional, and documentary films
 - [Phone Announcements (EN)](https://www.powitania.pl/en/voiceover-services/phone-announcements/): Professional IVR announcements, phone greetings, PBX messages
@@ -46,7 +46,7 @@ Powitania.pl is also available in English for international clients:
 - [Express Recording (EN)](https://www.powitania.pl/en/express-recording/): Same-day recording delivery
 - [Pricing (EN)](https://www.powitania.pl/en/pricing/): Transparent pricing in EUR for all voiceover services
 - [News (EN)](https://www.powitania.pl/en/news/): Industry blog with articles about voiceover and audio production
-- [Contact (EN)](https://www.powitania.pl/en/contact/): Get in touch — we respond within 2 hours
+- [Contact (EN)](https://www.powitania.pl/en/contact/): Get in touch - we respond within 2 hours
 
 Non-Polish browsers are automatically redirected to the English version.
 

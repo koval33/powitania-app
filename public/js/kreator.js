@@ -105,7 +105,7 @@
 
   function initHistory() {
     _historyManaged = true;
-    // Replace current state — keep current URL without forcing #kreator
+    // Replace current state - keep current URL without forcing #kreator
     try {
       history.replaceState({ kreatorStep: state.step }, '', window.location.pathname + window.location.search + (window.location.hash || ''));
     } catch(e) {}
@@ -143,12 +143,12 @@
     render();
   }
 
-  // Turnstile — get verification token before API call
+  // Turnstile - get verification token before API call
   function getTurnstileToken() {
     return new Promise(function(resolve) {
       var siteKey = window.__TURNSTILE_SITE_KEY;
       if (!siteKey || typeof turnstile === 'undefined') {
-        resolve(''); // no Turnstile configured — skip
+        resolve(''); // no Turnstile configured - skip
         return;
       }
       var resolved = false;
@@ -157,7 +157,7 @@
         resolved = true;
         resolve(token);
       }
-      // Timeout — jeśli widget nie odpowie w 6s (np. Safari + "Ukryj adres IP"), fail open
+      // Timeout - jeśli widget nie odpowie w 6s (np. Safari + "Ukryj adres IP"), fail open
       var timer = setTimeout(function() { done(''); }, 6000);
       // Remove previous widget if exists
       var container = document.getElementById('turnstile-container');
@@ -195,7 +195,7 @@
       var payload = Object.assign({}, body);
       if (token) payload.turnstileToken = token;
 
-      // AbortController timeout — zabezpieczenie przed zawieszonym połączeniem
+      // AbortController timeout - zabezpieczenie przed zawieszonym połączeniem
       // (szczególnie Safari z keep-alive lub powolnym Anthropic API)
       var controller = new AbortController();
       var timer = setTimeout(function() { controller.abort(); }, 35000);
@@ -315,7 +315,7 @@
   // Przełączanie wyglądu sekcji hero w zależności od kroku kreatora:
   //  - welcome     → zdjęcie studia + H1/P widoczne, H2 lewa (do panelu)
   //  - non-welcome → jasne tło, H1/P ukryte, H2 wycentrowane (compact)
-  // SEO: H1/P zostają w server-side HTML — ukrycie po interakcji nie jest cloakingiem.
+  // SEO: H1/P zostają w server-side HTML - ukrycie po interakcji nie jest cloakingiem.
   function toggleHeroBackground() {
     var sec = document.querySelector('section.hero-dotgrid');
     if (!sec) return;
@@ -332,10 +332,10 @@
     if (!root) return;
 
     // Tło "hero-studio" (zdjęcie studia) tylko na ekranie powitalnym.
-    // Gdy user wejdzie w ścieżkę kreatora — wracamy do jasnego tła hero-dotgrid.
+    // Gdy user wejdzie w ścieżkę kreatora - wracamy do jasnego tła hero-dotgrid.
     toggleHeroBackground();
 
-    // Przy wejściu w loading — zamroź wysokość kontenera (formularz ~500px)
+    // Przy wejściu w loading - zamroź wysokość kontenera (formularz ~500px)
     if (state.loading && _frozenHeight === 0) {
       _frozenHeight = root.offsetHeight;
     }
@@ -361,7 +361,7 @@
     root.innerHTML = '<div class="kreator-inner">' + fn() + '</div>' + renderToast();
     bindEvents();
 
-    // Podczas loading — scroll do kreator żeby user widział spinner (nie czarne tło)
+    // Podczas loading - scroll do kreator żeby user widział spinner (nie czarne tło)
     if (state.loading) {
       var kreatorEl = document.getElementById('kreator');
       if (kreatorEl) kreatorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -392,7 +392,7 @@
       _loadingTimer = setTimeout(function() {
         _loadingTimer = null;
         var sub = document.querySelector('[data-loading-sub]');
-        if (sub) sub.textContent = 'Generowanie trwa dłużej niż zwykle — jeszcze chwilę...';
+        if (sub) sub.textContent = 'Generowanie trwa dłużej niż zwykle - jeszcze chwilę...';
       }, 10000);
     }
     return '<div class="flex flex-col items-center justify-center py-20">' +
@@ -425,7 +425,7 @@
     '</div>';
   }
 
-  // STEP: Service type — 4 category tiles
+  // STEP: Service type - 4 category tiles
   function renderServiceType() {
     var html = '<h3 class="text-xl font-bold mb-6 text-center">Jaki tekst chcesz przygotować?</h3>';
     html += '<div class="grid grid-cols-2 gap-4">';
@@ -441,7 +441,7 @@
     return html;
   }
 
-  // STEP: Sub-service — spot type selection
+  // STEP: Sub-service - spot type selection
   function renderSubService() {
     var cat = null;
     for (var i = 0; i < CATEGORIES.length; i++) {
@@ -449,7 +449,7 @@
     }
     if (!cat) return renderServiceType();
 
-    var html = '<h3 class="text-xl font-bold mb-6 text-center">' + cat.label + ' &mdash; wybierz rodzaj</h3>';
+    var html = '<h3 class="text-xl font-bold mb-6 text-center">' + cat.label + ' - wybierz rodzaj</h3>';
     html += '<div class="grid grid-cols-1 md:grid-cols-' + cat.services.length + ' gap-3">';
     for (var j = 0; j < cat.services.length; j++) {
       var svc = null;
@@ -467,7 +467,7 @@
     return html;
   }
 
-  // STEP: Details — simplified form with "Więcej opcji" section
+  // STEP: Details - simplified form with "Więcej opcji" section
   function renderDetails() {
     if (state.loading) return renderLoading();
     var svc = getService();
@@ -490,14 +490,14 @@
     html += renderError();
     html += '<div class="space-y-5">';
 
-    // Main fields — always visible
+    // Main fields - always visible
     // Branża + Nazwa firmy w jednym wierszu na desktop (md+), stackowane na mobile
     html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-5">' +
       renderSelect('industry', 'Branża', INDUSTRIES) +
       renderInput('company', 'Nazwa firmy', 'np. Fast Trans Logistics') +
     '</div>';
     if (!isIVR) {
-      html += renderTextarea('offering', 'Co chcesz podkreślić', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wpisz hasłowo, co ma wybrzmieć — wystarczy kilka słów o cechach, korzyściach lub przewagach Twojego produktu lub usługi.');
+      html += renderTextarea('offering', 'Co chcesz podkreślić', 'np. transport door-to-door, ekspresowa realizacja, 20 lat na rynku', 'Wpisz hasłowo, co ma wybrzmieć - wystarczy kilka słów o cechach, korzyściach lub przewagach Twojego produktu lub usługi.');
     }
 
     // Duration (if applicable)
@@ -532,7 +532,7 @@
 
     html += '</div>';
 
-    // "Więcej opcji" — collapsed section
+    // "Więcej opcji" - collapsed section
     if (!isIVR) {
       var moreOpen = state._moreOptions;
       html += '<div class="mt-4">' +
@@ -550,7 +550,7 @@
       html += '</div>';
     }
 
-    // Validation — simplified: only industry, company, tone required
+    // Validation - simplified: only industry, company, tone required
     var canProceed = state.form.industry && state.form.company;
     if (needsLanguages) canProceed = canProceed && state.form.languages.length > 0;
 
@@ -582,7 +582,7 @@
 
     html += '<button data-action="goTo" data-value="details" class="text-accent text-sm font-medium mb-6 block">&larr; Generuj ponownie</button>';
 
-    // PRIMARY CTA — Wybierz lektora
+    // PRIMARY CTA - Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-green-50 to-green-50/50 rounded-xl border border-green-200">' +
       '<p class="text-sm text-gray-500 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
@@ -602,7 +602,7 @@
   // Strip IVR section labels / formatting before counting speakable words
   function countSpeakableWords(text) {
     var cleaned = text
-      .replace(/\[JĘZYK\s+\d+\s*[—–-]\s*[^\]]*\]/gi, '')  // [JĘZYK 1 — polskim]
+      .replace(/\[JĘZYK\s+\d+\s*[—–-]\s*[^\]]*\]/gi, '')  // [JĘZYK 1 - polskim]
       .replace(/^[ \t]*(Powitanie|Menu|Zakończenie|Komunikat[^:\n]*|Informacja[^:\n]*|Oczekiwanie[^:\n]*):/gmi, '') // Section labels
       .replace(/^[ \t]*\d+\.\s*/gm, '')  // Numbered list markers: "1. "
       .trim();
@@ -727,7 +727,7 @@
     return html;
   }
 
-  // STEP: Optimize result — with diff view or plain textarea
+  // STEP: Optimize result - with diff view or plain textarea
   function renderOptResult() {
     var resultText = state.result || state.form.textInput;
     var resultWords = countSpeakableWords(resultText);
@@ -765,7 +765,7 @@
       return html;
     }
 
-    // Standard view — editable textarea (after accepting or when no diff)
+    // Standard view - editable textarea (after accepting or when no diff)
     html += '<div class="rounded-xl p-6 mb-6 ' + (ok ? 'bg-green-50 border border-green-200' : 'bg-orange-50 border border-orange-200') + '">' +
       '<h3 class="text-lg font-bold mb-2">' + (ok ? '&#10003; Tekst gotowy' : '&#9888;&#65039; Uwaga: ' + (diff > 0 ? 'za długi' : 'za krótki') + ' o ' + Math.abs(diff) + ' słów') + '</h3>' +
       '<p class="text-sm text-gray-500">' + resultWords + ' słów (cel: ' + target + ' dla ' + state.form.targetDur + 's)</p>' +
@@ -779,7 +779,7 @@
       '<textarea data-result-edit class="kreator-textarea leading-relaxed" rows="10">' + esc(resultText) + '</textarea>' +
     '</div>';
 
-    // PRIMARY CTA — Wybierz lektora
+    // PRIMARY CTA - Wybierz lektora
     html += '<div class="p-4 bg-gradient-to-r from-green-50 to-green-50/50 rounded-xl border border-green-200">' +
       '<p class="text-sm text-gray-500 mb-3 text-center">Teraz wybierz idealny głos dla tego tekstu</p>' +
       '<button data-action="selectVoice" class="kreator-btn-primary w-full py-4 text-center flex items-center justify-center gap-2">' +
@@ -835,7 +835,7 @@
   function renderInquiryForm() {
     if (state.loading) return renderLoading();
     var html = '<h3 class="text-xl font-bold mb-6">Zapytaj o wycenę</h3>';
-    html += '<p class="text-gray-400 text-sm mb-6">Opisz swój projekt — odpowiemy w ciągu 2 godzin.</p>';
+    html += '<p class="text-gray-400 text-sm mb-6">Opisz swój projekt - odpowiemy w ciągu 2 godzin.</p>';
     html += renderError();
     html += '<div class="space-y-4">' +
       renderInput('name', 'Imię', 'Jan Kowalski') +
@@ -916,7 +916,7 @@
     return d.innerHTML;
   }
 
-  // Event handling — delegate all events on root (survives innerHTML rebuilds)
+  // Event handling - delegate all events on root (survives innerHTML rebuilds)
   var bound = false;
   function bindEvents() {
     if (bound) return;
@@ -955,12 +955,12 @@
           if (CATEGORIES[ci].id === value) { cat = CATEGORIES[ci]; break; }
         }
         if (cat && cat.services.length === 1) {
-          // Single service — go directly to details
+          // Single service - go directly to details
           state.form.serviceType = cat.services[0];
           state.form.languages = [];
           setState({ step: 'details', _category: value });
         } else if (cat) {
-          // Multiple services — show sub-service selection
+          // Multiple services - show sub-service selection
           setState({ step: 'sub-service', _category: value });
         }
         break;
@@ -981,7 +981,7 @@
         scrollToKreator();
         break;
       case 'goBack':
-        // Smart back — go to preview, opt-result, or opt-check
+        // Smart back - go to preview, opt-result, or opt-check
         if (state.result) {
           setState({ step: state._originalText ? 'opt-result' : (state.form.textInput ? 'opt-result' : 'preview'), error: null });
         } else {
@@ -1182,7 +1182,7 @@
       if (ctxStr) {
         var ctx = JSON.parse(ctxStr);
         if (ctx.returnUrl && ctx.lektorName) {
-          // Coming from lektor page — redirect back after text is generated
+          // Coming from lektor page - redirect back after text is generated
           state._returnUrl = ctx.returnUrl;
           state._lektorName = ctx.lektorName;
           state._lektorId = ctx.lektorId;

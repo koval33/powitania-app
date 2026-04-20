@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
   const approved = reviews.filter(r => r.approved);
 
   res.render('admin/opinie', {
-    title: 'Admin — Opinie',
+    title: 'Admin - Opinie',
     reviews,
     pending,
     approved,

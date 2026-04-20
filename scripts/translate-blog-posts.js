@@ -50,7 +50,7 @@ async function callClaude(apiKey, prompt, maxTokens = 4096) {
 
 function buildTranslationPrompt(post) {
   return `Translate the following Polish blog post about voiceover/recording services into English.
-The post is from powitania.pl — a professional voiceover studio.
+The post is from powitania.pl - a professional voiceover studio.
 
 IMPORTANT RULES:
 - Maintain the same HTML structure (tags, classes, etc.)
@@ -93,7 +93,7 @@ async function main() {
   console.log(`Found ${toTranslate.length} posts to translate, processing ${batch.length} in this batch.`);
   if (isDryRun) {
     batch.forEach((p, i) => console.log(`  ${i + 1}. ${p.title} (${p.content.length} chars)`));
-    console.log('Dry run — no changes made.');
+    console.log('Dry run - no changes made.');
     return;
   }
 

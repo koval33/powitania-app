@@ -1,7 +1,7 @@
 {
   "name": "powitania-app",
   "version": "1.0.0",
-  "description": "powitania.pl — Agencja Kreatywna",
+  "description": "powitania.pl - Agencja Kreatywna",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

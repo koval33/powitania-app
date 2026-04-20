@@ -13,7 +13,7 @@ function saveReviews(data) {
   fs.writeFileSync(reviewsPath, JSON.stringify(data, null, 2), 'utf8');
 }
 
-// POST /api/reviews/add — klient dodaje opinię (domyślnie approved: false)
+// POST /api/reviews/add - klient dodaje opinię (domyślnie approved: false)
 router.post('/add', (req, res) => {
   const { company, author, text, link } = req.body;
 
@@ -21,7 +21,7 @@ router.post('/add', (req, res) => {
     return res.status(400).json({ ok: false, error: 'Nazwa firmy i treść opinii są wymagane.' });
   }
 
-  // Walidacja linku — tylko http(s)
+  // Walidacja linku - tylko http(s)
   let cleanLink = '';
   if (link && typeof link === 'string') {
     cleanLink = link.trim();

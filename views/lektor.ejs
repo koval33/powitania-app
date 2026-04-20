@@ -75,7 +75,7 @@
           <p class="text-sm text-gray-400 italic mb-4"><%= lektor.studioNote %></p>
         <% } %>
 
-        <!-- Meta info — kompaktowo -->
+        <!-- Meta info - kompaktowo -->
         <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-gray-500 mb-4">
           <span><%= lektor.languages.join(', ') %></span>
           <span class="text-gray-400">·</span>
@@ -88,7 +88,7 @@
           <% } %>
         </div>
 
-        <!-- PRÓBKI GŁOSOWE — od razu w kolumnie -->
+        <!-- PRÓBKI GŁOSOWE - od razu w kolumnie -->
         <%
           var allAudio = [];
           var seenUrls = {};
@@ -143,11 +143,11 @@
         <% if (typeof isExpress !== 'undefined' && isExpress) { %>
         <div class="bg-yellow-50 border border-yellow-400/30 rounded-xl px-4 py-3 mb-3 flex items-center gap-2 text-sm">
           <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
-          <span class="text-yellow-800"><strong>Nagranie ekspresowe</strong> — stawki uwzględniają priorytetową realizację</span>
+          <span class="text-yellow-800"><strong>Nagranie ekspresowe</strong> - stawki uwzględniają priorytetową realizację</span>
         </div>
         <% } %>
 
-        <!-- CTA (tylko dla hidePrice — kieruje do formularza zapytania) -->
+        <!-- CTA (tylko dla hidePrice - kieruje do formularza zapytania) -->
         <% if (lektor.hidePrice) { %>
         <div id="lektor-cta-section" class="flex flex-col gap-3">
           <a href="#zapytanie" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
@@ -182,7 +182,7 @@
             <div id="wizard-service-type" class="hidden mb-4">
               <label class="block text-gray-900 font-semibold mb-2 text-sm">Typ nagrania</label>
               <select id="wizard-service-select" class="hidden" onchange="updateWizardPricing()">
-                <option value="">— wybierz typ nagrania —</option>
+                <option value="">- wybierz typ nagrania -</option>
                 <option value="ivr">Zapowiedź telefoniczna</option>
                 <option value="social">Social Media</option>
                 <option value="spot">Spot reklamowy</option>
@@ -211,10 +211,10 @@
             <div id="wizard-questions"></div>
             <!-- Wycena -->
             <div id="wizard-pricing" class="hidden"></div>
-            <!-- CTA + formularz zamówienia — pojawi się dopiero po wycenie -->
+            <!-- CTA + formularz zamówienia - pojawi się dopiero po wycenie -->
             <div id="wizard-cta" class="hidden mt-5">
 
-              <!-- Formularz PEŁNY (zamówienie — widoczny gdy jest cena) -->
+              <!-- Formularz PEŁNY (zamówienie - widoczny gdy jest cena) -->
               <div id="wizard-order-form" class="border-t border-gray-200 pt-4">
                 <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
                   <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
@@ -289,13 +289,13 @@
         <div id="wycena" class="mt-6">
           <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
-          Wyceń nagranie — <%= lektor.name %>
+          Wyceń nagranie - <%= lektor.name %>
         </h2>
-        <p class="text-sm text-gray-500 mb-4">Wybierz typ nagrania — cena wyliczy się automatycznie.</p>
+        <p class="text-sm text-gray-500 mb-4">Wybierz typ nagrania - cena wyliczy się automatycznie.</p>
 
-        <!-- Wybór typu nagrania — nad formularzem -->
+        <!-- Wybór typu nagrania - nad formularzem -->
         <select id="modal-service-select" class="hidden">
-          <option value="">— wybierz typ nagrania —</option>
+          <option value="">- wybierz typ nagrania -</option>
           <option value="ivr">Zapowiedź telefoniczna</option>
           <option value="social">Social Media</option>
           <option value="spot">Spot reklamowy</option>
@@ -326,7 +326,7 @@
             <textarea id="modal-text-input" rows="5" placeholder="Wklej tutaj swój tekst do nagrania..." class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y mb-1"></textarea>
             <div class="flex items-center justify-between mb-3">
               <button onclick="goToKreatorWithLektor()" class="text-accent hover:text-accent-light font-medium hover:underline inline-flex items-center gap-1 text-sm">
-                Nie mam tekstu — wygeneruj w kreatorze
+                Nie mam tekstu - wygeneruj w kreatorze
               </button>
               <p id="modal-word-count" class="text-xs text-gray-400"></p>
             </div>
@@ -530,7 +530,7 @@
             <span>Jak szybko <%= displayName %> zrealizuje nagranie?</span>
             <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
           </summary>
-          <div class="px-6 pb-5 text-gray-600 leading-relaxed">Standardowy czas realizacji to <strong><%= _faqTurnaround %></strong>. Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia.</div>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed">Standardowy czas realizacji to <strong><%= _faqTurnaround %></strong>. Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty - wycena indywidualna z terminem do ustalenia.</div>
         </details>
         <% } %>
 
@@ -575,7 +575,7 @@
       </div>
     </div>
 
-    <!-- CENNIK usunięty — ceny w sidebarze przy formularzu wyceny -->
+    <!-- CENNIK usunięty - ceny w sidebarze przy formularzu wyceny -->
     <% if (false && !lektor.hidePrice && lektor.prices) { %>
     <div class="mt-12" id="lektor-cennik-section">
       <details>
@@ -659,36 +659,36 @@
           <table class="w-full text-sm">
             <tbody class="divide-y divide-gray-200">
               <tr>
-                <td class="py-2 text-gray-500">Radio — lokalny</td>
+                <td class="py-2 text-gray-500">Radio - lokalny</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_radio_local %> zł netto</td>
               </tr>
               <% if (lektor.prices.spot_radio_national) { %>
               <tr>
-                <td class="py-2 text-gray-500">Radio — ogólnokrajowy</td>
+                <td class="py-2 text-gray-500">Radio - ogólnokrajowy</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_radio_national %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_tv_local) { %>
               <tr>
-                <td class="py-2 text-gray-500">TV — lokalny</td>
+                <td class="py-2 text-gray-500">TV - lokalny</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_tv_local %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_tv_national) { %>
               <tr>
-                <td class="py-2 text-gray-500">TV — ogólnokrajowy</td>
+                <td class="py-2 text-gray-500">TV - ogólnokrajowy</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_tv_national %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_social_1min) { %>
               <tr>
-                <td class="py-2 text-gray-500">Spot kampania social media — do 1 min</td>
+                <td class="py-2 text-gray-500">Spot kampania social media - do 1 min</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_social_1min %> zł netto</td>
               </tr>
               <% } %>
               <% if (lektor.prices.spot_social_2min) { %>
               <tr>
-                <td class="py-2 text-gray-500">Spot kampania social media — do 2 min</td>
+                <td class="py-2 text-gray-500">Spot kampania social media - do 2 min</td>
                 <td class="py-2 text-right text-gray-900 font-semibold"><%= lektor.prices.spot_social_2min %> zł netto</td>
               </tr>
               <% } %>
@@ -798,7 +798,7 @@ function resetCurrentBtn() {
 }
 
 function getAudioEl() {
-  // Zawsze tworzymy nowy element — najprostsza metoda unikania problemów z ponownym użyciem
+  // Zawsze tworzymy nowy element - najprostsza metoda unikania problemów z ponownym użyciem
   var el = document.getElementById('shared-audio-el');
   if (el) el.remove();
   el = document.createElement('audio');
@@ -840,7 +840,7 @@ function initSamplePlayer(btn) {
 
     var existing = document.getElementById('shared-audio-el');
 
-    // Klik na ten sam przycisk — pauza/wznowienie
+    // Klik na ten sam przycisk - pauza/wznowienie
     if (currentBtn === this && existing) {
       if (existing.paused) {
         existing.play();
@@ -854,7 +854,7 @@ function initSamplePlayer(btn) {
       return;
     }
 
-    // Inny przycisk — resetuj poprzedni, stwórz nowy element audio
+    // Inny przycisk - resetuj poprzedni, stwórz nowy element audio
     if (existing && !existing.paused) existing.pause();
     resetCurrentBtn();
     currentBtn = this;
@@ -991,7 +991,7 @@ var PRICING_MAP = {
       { field: 'ivr_guarantee_100', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w <= 100; } },
       { field: 'ivr_guarantee_100plus', label: 'gwarancja bezpłatnej modyfikacji nagrania w okresie 12 m-cy', tooltip: 'Liczba słów w zleceniu modyfikacji nie może być większa niż w nagraniu pierwotnym.', condition: function(w) { return w > 100; } },
       { field: 'ivr_melody', label: 'Melodia w tle', hasMelodySelector: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: null
   },
@@ -1004,8 +1004,8 @@ var PRICING_MAP = {
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
@@ -1018,8 +1018,8 @@ var PRICING_MAP = {
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
@@ -1032,8 +1032,8 @@ var PRICING_MAP = {
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
   },
@@ -1048,8 +1048,8 @@ var PRICING_MAP = {
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   },
   film: {
@@ -1063,8 +1063,8 @@ var PRICING_MAP = {
     ],
     addons: [
       { field: 'addon_av_montage', label: 'Montaż audio-video', price: 200, tooltip: 'Montaż nagranej ścieżki audio z materiałem video. Gotowy plik w formacie MP4.' },
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ],
     note: 'Licencja nie obejmuje płatnych kampanii reklamowych.'
   },
@@ -1078,8 +1078,8 @@ var PRICING_MAP = {
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
     ],
     addons: [
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   },
   podcast: {
@@ -1092,8 +1092,8 @@ var PRICING_MAP = {
       { max: Infinity, field: 'narration_3plus', label: 'pow. 3 stron A4' }
     ],
     addons: [
-      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online — słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
-      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata — w razie potrzeby modyfikacji lub ponownego pobrania.' }
+      { field: 'addon_remote_session', label: 'Zdalny udział w nagraniu', price: 150, tooltip: 'Bierzesz udział w sesji nagraniowej online - słyszysz lektora w czasie rzeczywistym i możesz przekazywać uwagi na bieżąco.', hideOnHidePrice: true },
+      { field: 'addon_archiving', label: 'Archiwizacja nagrań Klienta na okres 2 lat', price: 50, tooltip: 'Przechowujemy pliki źródłowe nagrania przez 2 lata - w razie potrzeby modyfikacji lub ponownego pobrania.' }
     ]
   }
 };
@@ -1104,10 +1104,10 @@ PRICING_MAP['spot'] = {
   label: 'Spot reklamowy',
   method: 'choice',
   options: [
-    { field: 'spot_radio_local', label: 'Radio — lokalne' },
-    { field: 'spot_radio_national', label: 'Radio — krajowe' },
-    { field: 'spot_tv_local', label: 'TV — lokalna' },
-    { field: 'spot_tv_national', label: 'TV — krajowa' }
+    { field: 'spot_radio_local', label: 'Radio - lokalne' },
+    { field: 'spot_radio_national', label: 'Radio - krajowe' },
+    { field: 'spot_tv_local', label: 'TV - lokalna' },
+    { field: 'spot_tv_national', label: 'TV - krajowa' }
   ],
   addons: PRICING_MAP['radio'].addons,
   note: 'Stawka uwzgl. licencję na kampanie reklamowe na okres do 12 mies.'
@@ -1126,7 +1126,7 @@ var SERVICE_TYPE_MAP = {
   'podcast': 'film'
 };
 
-// Etykiety podtytulu nad wyceną — przypominają userowi nad czym pracuje
+// Etykiety podtytulu nad wyceną - przypominają userowi nad czym pracuje
 var WIZARD_SUBTITLE_LABELS = {
   'ivr':       'zapowiedź telefoniczna',
   'powitania': 'powitanie telefoniczne',
@@ -1154,7 +1154,7 @@ function setWizardSubtitle(serviceType) {
 
 // --- Helpers ---
 function countWords(text) {
-  // Usun oznaczenia sekcji w ** ** (np. **Powitanie:**) — to nie tekst do nagrania
+  // Usun oznaczenia sekcji w ** ** (np. **Powitanie:**) - to nie tekst do nagrania
   var cleaned = text.replace(/\*\*[^*]*\*\*/g, '');
   return cleaned.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
 }
@@ -1171,7 +1171,7 @@ function calculatePrice(serviceType, wordCount, options) {
   var result = { basePrice: null, label: '', addons: [], note: cfg.note || null, needsCustomQuote: false };
 
   if (cfg.method === 'wordcount') {
-    // IVR — cena z tieru wg liczby slow
+    // IVR - cena z tieru wg liczby slow
     for (var i = 0; i < cfg.tiers.length; i++) {
       var tier = cfg.tiers[i];
       if (wordCount <= tier.max) {
@@ -1186,7 +1186,7 @@ function calculatePrice(serviceType, wordCount, options) {
         break;
       }
     }
-    // Pakiet dwujezyczny — automatycznie gdy 2 jezyki
+    // Pakiet dwujezyczny - automatycznie gdy 2 jezyki
     if (options && options.bilingual) {
       var bilingualPrice = LEKTOR_PRICES['ivr_bilingual'];
       if (bilingualPrice) {
@@ -1194,7 +1194,7 @@ function calculatePrice(serviceType, wordCount, options) {
       }
     }
   } else if (cfg.method === 'choice') {
-    // Radio/TV/Social — klient wybiera opcje
+    // Radio/TV/Social - klient wybiera opcje
     if (options && options.choiceField) {
       var choicePrice = LEKTOR_PRICES[options.choiceField];
       if (choicePrice) {
@@ -1206,7 +1206,7 @@ function calculatePrice(serviceType, wordCount, options) {
       }
     }
   } else if (cfg.method === 'pages') {
-    // Narracja — cena per strona A4
+    // Narracja - cena per strona A4
     var pages = wordsToPages(wordCount);
     for (var j = 0; j < cfg.tiers.length; j++) {
       var pageTier = cfg.tiers[j];
@@ -1224,7 +1224,7 @@ function calculatePrice(serviceType, wordCount, options) {
     }
   }
 
-  // Addony — wspolne dla wszystkich metod
+  // Addony - wspolne dla wszystkich metod
   if (cfg.addons) {
     cfg.addons.forEach(function(addon) {
       if (addon.condition && !addon.condition(wordCount)) return;
@@ -1242,13 +1242,13 @@ function calculatePrice(serviceType, wordCount, options) {
 
 // --- Renderowanie pytan per serviceType ---
 function renderQuestions(serviceType, targetEl) {
-  // Spot reklamowy — dwie kolumny: Radio (lewo) + TV (prawo)
+  // Spot reklamowy - dwie kolumny: Radio (lewo) + TV (prawo)
   if (serviceType === 'spot') {
     var radioOpts = PRICING_MAP['radio'].options;
     var tvOpts = PRICING_MAP['tv'].options;
     function spotOptionHtml(opt, isChecked) {
       var price = LEKTOR_PRICES[opt.field];
-      var priceLabel = price ? ('<span class="text-accent font-semibold"> — ' + price + ' zł netto</span>') : '';
+      var priceLabel = price ? ('<span class="text-accent font-semibold"> - ' + price + ' zł netto</span>') : '';
       var checkedAttr = isChecked ? ' checked' : '';
       return '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
         '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)"' + checkedAttr + '>' +
@@ -1259,7 +1259,7 @@ function renderQuestions(serviceType, targetEl) {
     html += '<label class="block text-gray-900 font-semibold mb-3 text-sm">Wybierz medium i zasięg:</label>';
     html += '<div class="grid grid-cols-2 gap-x-4">';
     html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Radio</p><div class="space-y-2">';
-    // Domyślnie zaznaczamy "Radio — lokalne" (pierwsza opcja radio), żeby cena pokazała się od razu
+    // Domyślnie zaznaczamy "Radio - lokalne" (pierwsza opcja radio), żeby cena pokazała się od razu
     radioOpts.forEach(function(opt, idx) { html += spotOptionHtml(opt, idx === 0); });
     html += '</div></div>';
     html += '<div><p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">TV</p><div class="space-y-2">';
@@ -1286,7 +1286,7 @@ function renderQuestions(serviceType, targetEl) {
     // Domyślnie zaznaczamy pierwszą opcję (np. "Do 1 minuty" dla Social), żeby cena pokazała się od razu
     cfg.options.forEach(function(opt, idx) {
       var price = LEKTOR_PRICES[opt.field];
-      var priceLabel = price ? (' — ' + price + ' zł netto') : '';
+      var priceLabel = price ? (' - ' + price + ' zł netto') : '';
       var checkedAttr = idx === 0 ? ' checked' : '';
       html += '<label class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors border border-transparent has-[:checked]:border-accent/50">' +
         '<input type="radio" name="service-choice" value="' + opt.field + '" class="accent-emerald-600" onchange="onChoiceChange(this)"' + checkedAttr + '>' +
@@ -1331,7 +1331,7 @@ function renderPricing(result, wordCount, targetEl) {
       '<span class="text-gray-900 font-bold">' + result.basePrice + ' zł netto</span>' +
     '</div>';
 
-    // Nagranie dwujezyczne — automatycznie doliczane
+    // Nagranie dwujezyczne - automatycznie doliczane
     if (result.bilingualPrice) {
       totalBase += result.bilingualPrice;
       html += '<div class="flex items-center justify-between mb-2">' +
@@ -1340,7 +1340,7 @@ function renderPricing(result, wordCount, targetEl) {
       '</div>';
     }
 
-    // Addony (checkboxy) — sekcja zwijalna
+    // Addony (checkboxy) - sekcja zwijalna
     if (result.addons && result.addons.length > 0) {
       html += '<div class="border-t border-gray-200 pt-2 mt-2">';
       html += '<button type="button" onclick="toggleAddonsSection(this)" class="inline-flex items-center gap-1.5 text-left py-1 group">' +
@@ -1371,7 +1371,7 @@ function renderPricing(result, wordCount, targetEl) {
             '<span class="text-gray-500 mr-1">&#9432;</span>' + addon.tooltip +
           '</div>';
         }
-        // Selector melodii — kompaktowa lista z przyciskami play
+        // Selector melodii - kompaktowa lista z przyciskami play
         if (addon.hasMelodySelector && MELODIES.length > 0) {
           html += '<div id="melody-selector" class="hidden ml-6 mt-1 bg-gray-50 rounded-lg border border-gray-200 px-3 py-2">';
           html += '<p class="text-xs text-gray-500 mb-1.5">Wybierz melodię i odsłuchaj:</p>';
@@ -1469,7 +1469,7 @@ function toggleAddonTooltip(e, idx) {
   if (tip) tip.classList.toggle('hidden');
 }
 
-// Melody selector — show/hide panel when checkbox toggled
+// Melody selector - show/hide panel when checkbox toggled
 function toggleMelodySelector(checkbox) {
   var panel = document.getElementById('melody-selector');
   if (!panel) return;
@@ -1491,7 +1491,7 @@ function playMelody(btn) {
   if (!audio) return;
   var src = btn.getAttribute('data-src');
 
-  // If same button clicked — toggle pause/play
+  // If same button clicked - toggle pause/play
   if (currentMelodyBtn === btn && !audio.paused) {
     audio.pause();
     showPlayIcon(btn);
@@ -1581,7 +1581,7 @@ function scrollToCalc(e) {
 }
 // Legacy aliases
 function showOrderModal() { scrollToCalc(); }
-function closeOrderModal() { /* no-op — inline now */ }
+function closeOrderModal() { /* no-op - inline now */ }
 
 function onChoiceChange(radio) {
   // Rozpoznaj kontekst: wizard vs modal
@@ -1645,7 +1645,7 @@ function modalCalculate() {
 
 }
 
-// Auto-kalkulacja w modalu — po wpisaniu tekstu i wyborze typu
+// Auto-kalkulacja w modalu - po wpisaniu tekstu i wyborze typu
 (function() {
   var sel = document.getElementById('modal-service-select');
   var textarea = document.getElementById('modal-text-input');
@@ -1807,7 +1807,7 @@ function validateOrderFields(prefix, msgElId) {
     else { clearFieldError(el); }
   });
 
-  // Walidacja formatu NIP (opcjonalne, ale jeśli podane — walidowane)
+  // Walidacja formatu NIP (opcjonalne, ale jeśli podane - walidowane)
   var nipEl = document.getElementById(prefix + '-nip');
   if (nipEl && nipEl.value.trim()) {
     var nipCheck = validateNIP(nipEl.value.trim());
@@ -1815,7 +1815,7 @@ function validateOrderFields(prefix, msgElId) {
     else { clearFieldError(nipEl); }
   } else if (nipEl) { clearFieldError(nipEl); }
 
-  // Walidacja formatu telefonu (opcjonalne, ale jeśli podane — walidowane)
+  // Walidacja formatu telefonu (opcjonalne, ale jeśli podane - walidowane)
   var phoneEl = document.getElementById(prefix + '-phone');
   if (phoneEl && phoneEl.value.trim()) {
     var phoneCheck = validatePhone(phoneEl.value.trim());
@@ -2066,7 +2066,7 @@ function submitOrderRequest(data, msgElId) {
   var msgEl = document.getElementById(msgElId);
   if (msgEl) { msgEl.classList.add('hidden'); }
 
-  // Sprawdź czy mamy numeryczną cenę (> 0) — jeśli tak, kieruj na płatność P24
+  // Sprawdź czy mamy numeryczną cenę (> 0) - jeśli tak, kieruj na płatność P24
   var numericPrice = parseFloat(String(data.totalPrice || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
   var hasPrice = numericPrice > 0;
 
@@ -2136,14 +2136,14 @@ function showPricingWizard(ctx) {
 
   if (!wizard || !ctx.text) return;
 
-  // Ukryj CTA sekcje — wizard ma wlasne przyciski
+  // Ukryj CTA sekcje - wizard ma wlasne przyciski
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.add('hidden');
 
-  // Ukryj cennik — w flow kreatora konczymy na formularzu zamowienia
-  // (cennik usunięty — sekcja już nie istnieje)
+  // Ukryj cennik - w flow kreatora konczymy na formularzu zamowienia
+  // (cennik usunięty - sekcja już nie istnieje)
 
-  // Ukryj inline kalkulator — wizard zastępuje go całkowicie
+  // Ukryj inline kalkulator - wizard zastępuje go całkowicie
   var wycenaSection = document.getElementById('wycena');
   if (wycenaSection) wycenaSection.classList.add('hidden');
 
@@ -2151,14 +2151,14 @@ function showPricingWizard(ctx) {
   var wordCount = countWords(ctx.text);
   wordCountEl.textContent = wordCount + ' słów';
 
-  // Podtytul — uzywamy oryginalnego serviceType z kreatora (finer granularity)
+  // Podtytul - uzywamy oryginalnego serviceType z kreatora (finer granularity)
   setWizardSubtitle(ctx.serviceType);
 
   // Mapuj serviceType z kreatora
   var mappedType = SERVICE_TYPE_MAP[ctx.serviceType] || null;
 
   if (mappedType) {
-    // Typ znany z kreatora — nie pokazuj selecta
+    // Typ znany z kreatora - nie pokazuj selecta
     serviceTypeEl.classList.add('hidden');
     var cfg = PRICING_MAP[mappedType];
 
@@ -2171,7 +2171,7 @@ function showPricingWizard(ctx) {
       }
 
       if (autoField) {
-        // Duration znany — pokaż wycenę od razu bez dodatkowych pytań
+        // Duration znany - pokaż wycenę od razu bez dodatkowych pytań
         var autoOpt = cfg.options.find(function(o) { return o.field === autoField; });
         questionsEl.innerHTML = '<p class="text-gray-500 text-sm mb-2">Czas trwania nagrania: <strong class="text-gray-900">' + (autoOpt ? autoOpt.label : '') + '</strong></p>';
         var result = calculatePrice(mappedType, wordCount, { choiceField: autoField });
@@ -2190,7 +2190,7 @@ function showPricingWizard(ctx) {
           }
         });
 
-        // Pierwsza opcja pre-checked — pokaż cenę od razu
+        // Pierwsza opcja pre-checked - pokaż cenę od razu
         var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
         if (preChecked) {
           var result = calculatePrice(mappedType, wordCount, { choiceField: preChecked.value });
@@ -2202,7 +2202,7 @@ function showPricingWizard(ctx) {
         }
       }
     } else {
-      // IVR/pages — oblicz od razu
+      // IVR/pages - oblicz od razu
       questionsEl.innerHTML = '';
       var isBilingual = ctx.languages && ctx.languages.length >= 2;
       var result = calculatePrice(mappedType, wordCount, { bilingual: isBilingual });
@@ -2210,7 +2210,7 @@ function showPricingWizard(ctx) {
       ctaEl.classList.remove('hidden');
     }
   } else {
-    // Typ nieznany — pokaz select
+    // Typ nieznany - pokaz select
     serviceTypeEl.classList.remove('hidden');
     questionsEl.innerHTML = '';
     pricingEl.classList.add('hidden');
@@ -2231,10 +2231,10 @@ function showPricingWizard(ctx) {
 })();
 
 var EXAMPLE_TEXTS = {
-  ivr: '[ Przykładowy tekst — zastąp własnym ]\n\nDziękujemy za kontakt z firmą Kowalski. Witamy w systemie obsługi klienta.\nAby połączyć się z działem sprzedaży, naciśnij 1.\nAby skontaktować się z działem serwisu, naciśnij 2.\nJeśli chcesz porozmawiać z recepcją, naciśnij 0.\nW przypadku spraw pilnych prosimy o e-mail na adres biuro@kowalski.pl.\nCzas pracy biura: poniedziałek–piątek, godziny 8:00–17:00.\nDziękujemy i zapraszamy do rozmowy z naszymi konsultantami.',
-  social: '[ Przykładowy tekst — zastąp własnym ]\n\nHej! Szukasz sprawdzonego sposobu na szybką dostawę? Z naszą aplikacją zamówisz jedzenie, zakupy i kuriera w jednym miejscu. Ponad milion zadowolonych użytkowników w całej Polsce. Pierwsze zamówienie z rabatem 20% — wpisz kod NOWY20 przy kasie. Pobierz aplikację już teraz i odkryj wygodę, której szukałeś. Dostępna w App Store i Google Play. Dostawa nawet w 30 minut.',
-  spot: '[ Przykładowy tekst — zastąp własnym ]\n\nTylko dziś w MediaExpert wyjątkowa okazja! Telewizory 4K, laptopy, lodówki i pralki — wszystko do 40% taniej niż w standardowej cenie. Oferta ograniczona czasowo, tylko w ten weekend. Odwiedź najbliższy salon MediaExpert lub zamów online na mediaexpert.pl. Szybka dostawa do domu już od 0 złotych. MediaExpert — tu kupują mądrzy.',
-  film: '[ Przykładowy tekst — zastąp własnym, ok. 1 strona A4 ]\n\nModuł pierwszy: Bezpieczeństwo i higiena pracy na stanowiskach biurowych.\n\nPraca przy komputerze przez wiele godzin dziennie może prowadzić do przeciążeń układu mięśniowo-szkieletowego, problemów ze wzrokiem i przewlekłego zmęczenia. Nawet kilka prostych zasad ergonomii może zapobiec poważnym dolegliwościom w przyszłości. Właściwe zorganizowanie stanowiska pracy chroni zdrowie i zwiększa efektywność od pierwszego dnia zatrudnienia.\n\nFotel powinien być regulowany w zakresie wysokości siedziska i podparcia lędźwiowego. Prawidłowa pozycja zakłada, że stopy spoczywają płasko na podłodze, uda ułożone są poziomo, a kąt w stawach kolanowych wynosi około 90 stopni. Plecy powinny być lekko odchylone do tyłu i podparte przez oparcie fotela.\n\nMonitor ustawiamy w odległości 50–70 cm od oczu. Górna krawędź ekranu powinna znajdować się na poziomie oczu lub nieco poniżej. Unikaj refleksów świetlnych — jeśli to możliwe, ustaw monitor prostopadle do okna.\n\nKlawiatura i mysz powinny leżeć na tej samej powierzchni, w odległości umożliwiającej pracę ze zgiętymi łokciami pod kątem 90 stopni. Nadgarstki utrzymuj w pozycji neutralnej — nie opieraj ich o blat podczas pisania. Unikaj długotrwałego napinania mięśni przedramion.\n\nPamiętaj o regularnych przerwach. Co 45–60 minut pracy wstań, pospaceruj i wykonaj kilka ćwiczeń rozciągających. Stosuj zasadę 20-20-20: co 20 minut patrz przez 20 sekund na obiekt oddalony o ok. 6 metrów. Pozwoli to odpocząć mięśniom odpowiedzialnym za akomodację wzroku.\n\nW kolejnym module omówimy zasady ergonomicznego korzystania z urządzeń mobilnych w miejscu pracy.'
+  ivr: '[ Przykładowy tekst - zastąp własnym ]\n\nDziękujemy za kontakt z firmą Kowalski. Witamy w systemie obsługi klienta.\nAby połączyć się z działem sprzedaży, naciśnij 1.\nAby skontaktować się z działem serwisu, naciśnij 2.\nJeśli chcesz porozmawiać z recepcją, naciśnij 0.\nW przypadku spraw pilnych prosimy o e-mail na adres biuro@kowalski.pl.\nCzas pracy biura: poniedziałek–piątek, godziny 8:00–17:00.\nDziękujemy i zapraszamy do rozmowy z naszymi konsultantami.',
+  social: '[ Przykładowy tekst - zastąp własnym ]\n\nHej! Szukasz sprawdzonego sposobu na szybką dostawę? Z naszą aplikacją zamówisz jedzenie, zakupy i kuriera w jednym miejscu. Ponad milion zadowolonych użytkowników w całej Polsce. Pierwsze zamówienie z rabatem 20% - wpisz kod NOWY20 przy kasie. Pobierz aplikację już teraz i odkryj wygodę, której szukałeś. Dostępna w App Store i Google Play. Dostawa nawet w 30 minut.',
+  spot: '[ Przykładowy tekst - zastąp własnym ]\n\nTylko dziś w MediaExpert wyjątkowa okazja! Telewizory 4K, laptopy, lodówki i pralki - wszystko do 40% taniej niż w standardowej cenie. Oferta ograniczona czasowo, tylko w ten weekend. Odwiedź najbliższy salon MediaExpert lub zamów online na mediaexpert.pl. Szybka dostawa do domu już od 0 złotych. MediaExpert - tu kupują mądrzy.',
+  film: '[ Przykładowy tekst - zastąp własnym, ok. 1 strona A4 ]\n\nModuł pierwszy: Bezpieczeństwo i higiena pracy na stanowiskach biurowych.\n\nPraca przy komputerze przez wiele godzin dziennie może prowadzić do przeciążeń układu mięśniowo-szkieletowego, problemów ze wzrokiem i przewlekłego zmęczenia. Nawet kilka prostych zasad ergonomii może zapobiec poważnym dolegliwościom w przyszłości. Właściwe zorganizowanie stanowiska pracy chroni zdrowie i zwiększa efektywność od pierwszego dnia zatrudnienia.\n\nFotel powinien być regulowany w zakresie wysokości siedziska i podparcia lędźwiowego. Prawidłowa pozycja zakłada, że stopy spoczywają płasko na podłodze, uda ułożone są poziomo, a kąt w stawach kolanowych wynosi około 90 stopni. Plecy powinny być lekko odchylone do tyłu i podparte przez oparcie fotela.\n\nMonitor ustawiamy w odległości 50–70 cm od oczu. Górna krawędź ekranu powinna znajdować się na poziomie oczu lub nieco poniżej. Unikaj refleksów świetlnych - jeśli to możliwe, ustaw monitor prostopadle do okna.\n\nKlawiatura i mysz powinny leżeć na tej samej powierzchni, w odległości umożliwiającej pracę ze zgiętymi łokciami pod kątem 90 stopni. Nadgarstki utrzymuj w pozycji neutralnej - nie opieraj ich o blat podczas pisania. Unikaj długotrwałego napinania mięśni przedramion.\n\nPamiętaj o regularnych przerwach. Co 45–60 minut pracy wstań, pospaceruj i wykonaj kilka ćwiczeń rozciągających. Stosuj zasadę 20-20-20: co 20 minut patrz przez 20 sekund na obiekt oddalony o ok. 6 metrów. Pozwoli to odpocząć mięśniom odpowiedzialnym za akomodację wzroku.\n\nW kolejnym module omówimy zasady ergonomicznego korzystania z urządzeń mobilnych w miejscu pracy.'
 };
 
 function pickService(btn) {
@@ -2298,7 +2298,7 @@ function updateWizardPricing() {
         ctaEl.classList.remove('hidden');
       }
     });
-    // Jeśli pierwsza opcja jest domyślnie zaznaczona (social/spot) — pokaż cenę od razu
+    // Jeśli pierwsza opcja jest domyślnie zaznaczona (social/spot) - pokaż cenę od razu
     var preChecked = questionsEl.querySelector('input[name="service-choice"]:checked');
     if (preChecked) {
       var result = calculatePrice(serviceType, wordCount, { choiceField: preChecked.value });
@@ -2340,7 +2340,7 @@ function clearPricingContext() {
   // Przywroc CTA sekcje i cennik
   var ctaSection = document.getElementById('lektor-cta-section');
   if (ctaSection) ctaSection.classList.remove('hidden');
-  // cennik usunięty — nie ma czego przywracać
+  // cennik usunięty - nie ma czego przywracać
 }
 
 // --- Auto-detect context on page load ---
@@ -2385,23 +2385,23 @@ var KNOWN_BIOS = {
   'tomasz-raczek':         { alma: 'AT Warszawa', knownFor: ['Perły z lamusa (TVP)', 'redaktor naczelny „Film"', 'Magazyn Filmowy SFP', 'krytyk Canal+/Kino Polska'] },
   'tomasz-bednarek':       { alma: 'PWST Wrocław', knownFor: ['Klan (Jacek Borecki)', 'Shrek (Ciastek)', 'Madagaskar (Mort)', 'Gwiezdne wojny: Wojny klonów (Anakin)'] },
   'lukasz-nowicki':        { alma: 'AST Kraków', knownFor: ['Pytanie na śniadanie (TVP2)', 'Postaw na milion (TVP2)', 'Teatr Ateneum Warszawa', 'Niania'] },
-  'wiktor-zborowski':      { alma: 'AT Warszawa', knownFor: ['Ogniem i mieczem (Longinus Podbipięta)', 'Kogel-mogel', 'Asterix i Obelix (Obelix — dubbing)', 'Król Lew (Mufasa — dubbing)'] },
-  'jacek-rozenek':         { alma: 'AT Warszawa', knownFor: ['Wiedźmin (Geralt — gry)', 'Klan (Rafał Kozień)', 'Barwy szczęścia (Artur Chowański)'] },
+  'wiktor-zborowski':      { alma: 'AT Warszawa', knownFor: ['Ogniem i mieczem (Longinus Podbipięta)', 'Kogel-mogel', 'Asterix i Obelix (Obelix - dubbing)', 'Król Lew (Mufasa - dubbing)'] },
+  'jacek-rozenek':         { alma: 'AT Warszawa', knownFor: ['Wiedźmin (Geralt - gry)', 'Klan (Rafał Kozień)', 'Barwy szczęścia (Artur Chowański)'] },
   'andrzej-ferenc':        { alma: 'AT Warszawa', knownFor: ['lektor programowy TVN (1997-2024)', 'pierwszy polski głos Batmana (dubbing)', 'Na Wspólnej', 'narrator słuchowisk radiowych'] },
   'beata-tadla':           { alma: 'UAM Poznań (kulturoznawstwo)', knownFor: ['Wiadomości TVP1', 'Fakty po południu (TVN24)', 'Pytanie na śniadanie (TVP2)', 'Taniec z gwiazdami (zwyciężczyni 8. edycji)'] },
   'anna-samusionek':       { alma: 'AT Warszawa', knownFor: ['Na dobre i na złe (Lucyna Sikorka)', 'Na Wspólnej (Ilona Zdybicka)', 'Złotopolscy', 'Darmozjad polski (Złoty Lew)'] },
   'katarzyna-skolimowska': { alma: 'AT Warszawa', knownFor: ['Teatr Rozmaitości Warszawa', 'Teatr Komedia', 'aktorka dubbingowa'] },
-  'pawel-szwajgier':       { alma: null, knownFor: ['Kabaret Smile', 'skecz „Pan Stanisław — kierowca TIR-a"', 'skecz „Merlin"'] },
+  'pawel-szwajgier':       { alma: null, knownFor: ['Kabaret Smile', 'skecz „Pan Stanisław - kierowca TIR-a"', 'skecz „Merlin"'] },
   'jacek-brzostynski':     { alma: 'AST Kraków', knownFor: ['lektor Canal+/Polsat/TVN', 'Telewizyjny Koncert Życzeń (TVP)', 'Kill Bill / Wściekłe psy', 'Gwiezdne wojny IV-VI (lektor)'] },
   'kuba-bielak':           { alma: 'AWF Warszawa', knownFor: ['TVN Turbo („Jazda polska", „K2", „Wypad z kraju")', 'Akademia Bezpiecznej Jazdy', 'Radio Yanosik'] },
   'stanislaw-olejniczak':  { alma: null, knownFor: ['Moda na sukces (lektor TVP1, 1994-2014)', 'Wiadomości 19:30 TVP1 (1989-1992)', 'Titanic', 'Terminator'] },
   'maciej-jablonski':      { alma: 'Akademia Muzyczna Warszawa', knownFor: ['Wiadomości Sportowe TVP1', 'Sportowy Wieczór (TVP Sport)', 'studio olimpijskie Pekin/Londyn/Soczi', 'serwisy TVP Info'] },
   'zbigniew-moskal':       { alma: null, knownFor: ['głos autopromocji Programu 1 Polskiego Radia', 'reklamy Danone / Audi / Meridol', 'dramat „Czas na pogodę"'] },
-  'miroslaw-utta':         { alma: 'filologia romańska', knownFor: ['lektor telenowel TVN (Esmeralda, Camila)', 'S.T.A.L.K.E.R. (narrator)', 'Stary Testament (Biblia Tysiąclecia — audiobook)'] },
+  'miroslaw-utta':         { alma: 'filologia romańska', knownFor: ['lektor telenowel TVN (Esmeralda, Camila)', 'S.T.A.L.K.E.R. (narrator)', 'Stary Testament (Biblia Tysiąclecia - audiobook)'] },
   'bartek-ignacik':        { alma: 'UG (prawo)', knownFor: ['TURBOKOZAK (nc+/Canal+)', 'komentator tenisowy Eurosport', 'reporter Ekstraklasy (Canal+ Sport)'] },
   'mikolaj-krawczyk':      { alma: 'PWSFTviT Łódź', knownFor: ['Pierwsza miłość (Paweł Krzyżanowski)', 'Klan (Tomek)', 'Teatr Wybrzeże Gdańsk'] },
   'przemyslaw-skowron':    { alma: 'UJ (dziennikarstwo)', knownFor: ['RMF FM (od 1997)', 'Kobranocka FM', 'TVP Kraków („Regiony Kultury")'] },
-  'andrzej-krusiewicz':    { alma: null, knownFor: ['Polskie Radio (od 1977)', 'Wędrówki z dinozaurami (BBC — narrator)', 'Wędrówki z bestiami (BBC — narrator)'] },
+  'andrzej-krusiewicz':    { alma: null, knownFor: ['Polskie Radio (od 1977)', 'Wędrówki z dinozaurami (BBC - narrator)', 'Wędrówki z bestiami (BBC - narrator)'] },
   'jacek-kurowski':        { alma: 'UW (dziennikarstwo)', knownFor: ['TVP Sport (od 2003)', 'program „Oko w oko"', 'relacje z Igrzysk Olimpijskich (Ateny, Turyn, Pekin, Vancouver)', 'Rajd Dakar'] },
   'laura-samojlowicz':     { alma: 'AT Warszawa', knownFor: ['Hotel 52 (Natalia Lipska)', 'M jak miłość', 'Gliniarze', 'Jak oni śpiewają (zwyciężczyni V edycji)'] }
 };
@@ -2442,17 +2442,17 @@ var _serviceSchemaLektor = {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Voice Over Recording",
-  "name": "Nagranie lektorskie — " + lektor.name,
+  "name": "Nagranie lektorskie - " + lektor.name,
   "provider": {
     "@type": "Organization",
-    "name": "Powitania.pl — OPTIMUM Paweł Kowalski",
+    "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
     "url": "https://www.powitania.pl"
   },
   "areaServed": "PL",
   "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/"
 };
 
-// --- Product schema — ceny per usługa dla rich results w Google SERP ---
+// --- Product schema - ceny per usługa dla rich results w Google SERP ---
 // Uwaga: aggregateRating celowo pominięte, bo opinie są globalne (o studiu),
 // nie o konkretnym lektorze. Doklejanie tej samej oceny do 234 produktów
 // Google może uznać za spam.
@@ -2474,17 +2474,17 @@ function _addOffer(field, name) {
   }
 }
 if (!lektor.hidePrice) {
-  _addOffer('ivr_100',            'Zapowiedź telefoniczna IVR — do 100 słów');
-  _addOffer('ivr_200',            'Zapowiedź telefoniczna IVR — do 200 słów');
-  _addOffer('spot_radio_local',   'Spot reklamowy radio — lokalny');
-  _addOffer('spot_radio_national','Spot reklamowy radio — krajowy');
-  _addOffer('spot_tv_local',      'Spot reklamowy TV — lokalny');
-  _addOffer('spot_tv_national',   'Spot reklamowy TV — krajowy');
-  _addOffer('spot_social_1min',   'Nagranie social media — do 1 minuty');
-  _addOffer('spot_social_2min',   'Nagranie social media — do 2 minut');
-  _addOffer('narration_1page',    'Narracja / film — 1 strona A4');
-  _addOffer('narration_2pages',   'Narracja / film — 2 strony A4');
-  _addOffer('narration_3pages',   'Narracja / film — 3 strony A4');
+  _addOffer('ivr_100',            'Zapowiedź telefoniczna IVR - do 100 słów');
+  _addOffer('ivr_200',            'Zapowiedź telefoniczna IVR - do 200 słów');
+  _addOffer('spot_radio_local',   'Spot reklamowy radio - lokalny');
+  _addOffer('spot_radio_national','Spot reklamowy radio - krajowy');
+  _addOffer('spot_tv_local',      'Spot reklamowy TV - lokalny');
+  _addOffer('spot_tv_national',   'Spot reklamowy TV - krajowy');
+  _addOffer('spot_social_1min',   'Nagranie social media - do 1 minuty');
+  _addOffer('spot_social_2min',   'Nagranie social media - do 2 minut');
+  _addOffer('narration_1page',    'Narracja / film - 1 strona A4');
+  _addOffer('narration_2pages',   'Narracja / film - 2 strony A4');
+  _addOffer('narration_3pages',   'Narracja / film - 3 strony A4');
 }
 var _productSchema = null;
 if (_offers.length > 0) {
@@ -2495,7 +2495,7 @@ if (_offers.length > 0) {
     "@context": "https://schema.org",
     "@type": "Product",
     "productID": "lektor-" + lektor.id,
-    "name": "Nagranie lektorskie — " + lektor.name,
+    "name": "Nagranie lektorskie - " + lektor.name,
     "description": _desc,
     "image": "https://www.powitania.pl" + lektor.photo,
     "brand": { "@type": "Brand", "name": "Powitania.pl" },
@@ -2515,7 +2515,7 @@ var _faqItems = [];
 var _faqDisplayName = lektor.name.replace(/\s+\d+$/, '').trim();
 var _faqTurnaroundSchema = lektor.turnaround || (lektor.hidePrice ? '4 dni robocze' : null);
 if (_faqTurnaroundSchema) {
-  _faqItems.push({ "@type": "Question", "name": "Jak szybko " + _faqDisplayName + " zrealizuje nagranie?", "acceptedAnswer": { "@type": "Answer", "text": "Standardowy czas realizacji to " + _faqTurnaroundSchema + ". Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty — wycena indywidualna z terminem do ustalenia." } });
+  _faqItems.push({ "@type": "Question", "name": "Jak szybko " + _faqDisplayName + " zrealizuje nagranie?", "acceptedAnswer": { "@type": "Answer", "text": "Standardowy czas realizacji to " + _faqTurnaroundSchema + ". Krótkie formy reklamowe (do 30 sekund) często gotowe tego samego dnia. Dłuższe projekty - wycena indywidualna z terminem do ustalenia." } });
 }
 if (!lektor.hidePrice) {
   _faqItems.push({ "@type": "Question", "name": "Jak zamówić nagranie lektorskie?", "acceptedAnswer": { "@type": "Answer", "text": "Możesz w prosty sposób dokonać wyceny i zamówić nagranie w powyższym formularzu. Jeśli masz jakieś wątpliwości, zadzwoń do nas: 605 491 069 lub napisz na biuro@powitania.pl." } });
@@ -2536,6 +2536,6 @@ var _faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEn
 <% } %>
 <script type="application/ld+json"><%- JSON.stringify(_faqSchema) %></script>
 <% if (allAudio && allAudio.length > 0) { allAudio.forEach(function(s) { %>
-<script type="application/ld+json"><%- JSON.stringify({ "@context": "https://schema.org", "@type": "AudioObject", "name": s.name || ("Próbka głosowa — " + lektor.name), "contentUrl": s.url, "encodingFormat": "audio/mpeg", "description": "Próbka głosowa lektora " + lektor.name }) %></script>
+<script type="application/ld+json"><%- JSON.stringify({ "@context": "https://schema.org", "@type": "AudioObject", "name": s.name || ("Próbka głosowa - " + lektor.name), "contentUrl": s.url, "encodingFormat": "audio/mpeg", "description": "Próbka głosowa lektora " + lektor.name }) %></script>
 <% }); } %>
 <%- include('partials/foot') %>

@@ -72,7 +72,7 @@ router.use(requireAuth);
 router.get('/', (req, res) => {
   const partners = loadPartners();
   res.render('admin/partnerzy', {
-    title: 'Admin — Partnerzy',
+    title: 'Admin - Partnerzy',
     partners,
     msg: req.query.msg || null
   });

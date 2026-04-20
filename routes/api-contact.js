@@ -17,7 +17,7 @@ const upload = multer({
   }
 });
 
-// "Zamów nagranie" — pełny formularz z danymi firmy
+// "Zamów nagranie" - pełny formularz z danymi firmy
 router.post('/order', async (req, res) => {
   const { firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody, lang } = req.body;
   const isEN = lang === 'en';
@@ -39,18 +39,18 @@ router.post('/order', async (req, res) => {
   try {
     // Mail do biura
     await sendMail({
-      subject: `${isExpress ? '⚡ [EKSPRES] ' : '[Zamówienie] '}${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
+      subject: `${isExpress ? '⚡ [EKSPRES] ' : '[Zamówienie] '}${firmName} - ${serviceType || 'nagranie'}${lektorName ? ' - ' + lektorName : ''}`,
       replyTo: email,
       html: `
         <h2>Nowe zamówienie nagrania</h2>
-        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE — priorytetowa realizacja tego samego dnia</div>' : ''}
+        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE - priorytetowa realizacja tego samego dnia</div>' : ''}
         <table style="border-collapse:collapse;width:100%">
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(firmName)}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Zamawiający:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name)}</td></tr>
           ${nip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">NIP:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(nip)}</td></tr>` : ''}
           ${address ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Adres:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(address)}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(email)}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '—')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '-')}</td></tr>
           ${serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(serviceType)}</td></tr>` : ''}
           ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
           ${totalPrice ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Wycena:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#10b981;font-weight:bold">${esc(totalPrice)}</td></tr>` : ''}
@@ -58,14 +58,14 @@ router.post('/order', async (req, res) => {
         </table>
         ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
-        <p style="color:#999;font-size:12px">Wysłano z powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
     });
 
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: isEN ? 'Order confirmation — Powitania' : 'Potwierdzenie zamówienia — Powitania',
+      subject: isEN ? 'Order confirmation - Powitania' : 'Potwierdzenie zamówienia - Powitania',
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your order!</h2>
         <p>Hi ${esc(name)},</p>
@@ -74,7 +74,7 @@ router.post('/order', async (req, res) => {
         ${totalPrice ? `<p><strong>Quote:</strong> ${esc(totalPrice)}</p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(name)},</p>
@@ -83,13 +83,13 @@ router.post('/order', async (req, res) => {
         ${totalPrice ? `<p><strong>Wycena:</strong> ${esc(totalPrice)}</p>` : ''}
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
     });
 
     res.json({ ok: true, message: isEN ? 'Order sent. We will respond within 2 hours.' : 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
-    // Send to CRM (non-blocking — after response)
+    // Send to CRM (non-blocking - after response)
     sendOrderToCRM({ firmName, name, nip, street, zipCode, city, email, phone, notes, serviceType, industry, generatedText, lektorName, lektorId, totalPrice, isExpress, selectedAddons, selectedMelody, status: 'Order', source: 'powitania.pl (zamówienie)' })
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
@@ -98,7 +98,7 @@ router.post('/order', async (req, res) => {
   }
 });
 
-// "Zapytaj o wycenę" — lekki formularz
+// "Zapytaj o wycenę" - lekki formularz
 router.post('/inquiry', async (req, res) => {
   const { name, email, phone, description, generatedText, serviceType, industry, lektorName, lang } = req.body;
   const isEN = lang === 'en';
@@ -112,12 +112,12 @@ router.post('/inquiry', async (req, res) => {
   try {
     // Mail do biura
     await sendMail({
-      subject: `[Zapytanie] ${name || 'Klient'} — ${serviceType || 'wycena'}`,
+      subject: `[Zapytanie] ${name || 'Klient'} - ${serviceType || 'wycena'}`,
       replyTo: email,
       html: `
         <h2>Zapytanie o wycenę</h2>
         <table style="border-collapse:collapse;width:100%">
-          <tr><td style="padding:8px;font-weight:bold">Imię:</td><td style="padding:8px">${esc(name || '—')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold">Imię:</td><td style="padding:8px">${esc(name || '-')}</td></tr>
           <tr><td style="padding:8px;font-weight:bold">Email:</td><td style="padding:8px">${esc(email)}</td></tr>
           ${phone ? `<tr><td style="padding:8px;font-weight:bold">Telefon:</td><td style="padding:8px">${esc(phone)}</td></tr>` : ''}
           ${serviceType ? `<tr><td style="padding:8px;font-weight:bold">Typ usługi:</td><td style="padding:8px">${esc(serviceType)}</td></tr>` : ''}
@@ -126,14 +126,14 @@ router.post('/inquiry', async (req, res) => {
         </table>
         ${description ? `<h3>Opis projektu:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         ${generatedText ? `<h3>Tekst z kreatora:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
-        <p style="color:#999;font-size:12px">Wysłano z powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
     });
 
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: isEN ? 'Inquiry confirmation — Powitania' : 'Potwierdzenie zapytania — Powitania',
+      subject: isEN ? 'Inquiry confirmation - Powitania' : 'Potwierdzenie zapytania - Powitania',
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your inquiry!</h2>
         <p>Hi${name ? ' ' + esc(name) : ''},</p>
@@ -142,7 +142,7 @@ router.post('/inquiry', async (req, res) => {
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
         ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Your message:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć${name ? ' ' + esc(name) : ''},</p>
@@ -151,13 +151,13 @@ router.post('/inquiry', async (req, res) => {
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:16px">Twój tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-family:inherit">${esc(generatedText)}</pre>` : ''}
         ${description ? `<h3 style="color:#1a1d23;margin-top:16px">Twoja wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
     });
 
     res.json({ ok: true, message: isEN ? 'Thank you! We will respond within 2 hours.' : 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
-    // Send to CRM (non-blocking — after response)
+    // Send to CRM (non-blocking - after response)
     sendOrderToCRM({ name, email, phone, serviceType, industry, lektorName, generatedText, notes: description, status: 'Prospect', source: 'powitania.pl (zapytanie)' })
       .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
@@ -166,7 +166,7 @@ router.post('/inquiry', async (req, res) => {
   }
 });
 
-// "Zapisz tekst" — lead magnet
+// "Zapisz tekst" - lead magnet
 router.post('/save-text', async (req, res) => {
   const { email, generatedText, serviceType } = req.body;
 
@@ -187,20 +187,20 @@ router.post('/save-text', async (req, res) => {
             Zamów nagranie tego tekstu
           </a>
         </p>
-        <p style="color:#999;font-size:12px;margin-top:32px">powitania.pl — Profesjonalne nagrania lektorskie</p>
+        <p style="color:#999;font-size:12px;margin-top:32px">powitania.pl - Profesjonalne nagrania lektorskie</p>
       `
     });
 
     // Notyfikacja do biura
     await sendMail({
-      subject: `[Lead] Zapisany tekst — ${email}`,
+      subject: `[Lead] Zapisany tekst - ${email}`,
       replyTo: email,
-      html: `<p>Klient ${esc(email)} zapisał tekst (${esc(serviceType || '—')}).</p><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>`
+      html: `<p>Klient ${esc(email)} zapisał tekst (${esc(serviceType || '-')}).</p><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>`
     });
 
     res.json({ ok: true, message: 'Tekst wysłany na podany adres email.' });
 
-    // Send to CRM (non-blocking — after response)
+    // Send to CRM (non-blocking - after response)
     sendOrderToCRM({ email, serviceType, generatedText, status: 'Prospect', source: 'powitania.pl (zapisany tekst)' })
       .catch(err => console.error('[CRM] save-text webhook error:', err));
   } catch (err) {
@@ -209,7 +209,7 @@ router.post('/save-text', async (req, res) => {
   }
 });
 
-// "Zapytaj o wycenę" — lektor premium (z załącznikiem)
+// "Zapytaj o wycenę" - lektor premium (z załącznikiem)
 router.post('/inquiry-premium', upload.single('attachment'), async (req, res) => {
   const { email, description, lektorName, lektorId, lang } = req.body;
   const isEN = lang === 'en';
@@ -220,19 +220,19 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
 
   try {
     const mailOptions = {
-      subject: `[Zapytanie premium] ${lektorName || 'Lektor'} — wycena indywidualna`,
+      subject: `[Zapytanie premium] ${lektorName || 'Lektor'} - wycena indywidualna`,
       replyTo: email,
       html: `
-        <h2>Zapytanie o wycenę — lektor premium</h2>
+        <h2>Zapytanie o wycenę - lektor premium</h2>
         <table style="border-collapse:collapse;width:100%">
-          <tr><td style="padding:8px;font-weight:bold">Lektor:</td><td style="padding:8px">${esc(lektorName || '—')}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold">ID lektora:</td><td style="padding:8px">${esc(lektorId || '—')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold">Lektor:</td><td style="padding:8px">${esc(lektorName || '-')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold">ID lektora:</td><td style="padding:8px">${esc(lektorId || '-')}</td></tr>
           <tr><td style="padding:8px;font-weight:bold">Email:</td><td style="padding:8px">${esc(email)}</td></tr>
         </table>
         <h3>Opis projektu:</h3>
         <p style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(description)}</p>
         ${req.file ? '<p style="color:#666;font-size:13px">📎 Załącznik: ' + esc(req.file.originalname) + ' (' + Math.round(req.file.size / 1024) + ' KB)</p>' : ''}
-        <p style="color:#999;font-size:12px">Wysłano z profilu lektora na powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+        <p style="color:#999;font-size:12px">Wysłano z profilu lektora na powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
     };
 
@@ -250,25 +250,25 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: isEN ? 'Inquiry confirmation — Powitania' : 'Potwierdzenie zapytania — Powitania',
+      subject: isEN ? 'Inquiry confirmation - Powitania' : 'Potwierdzenie zapytania - Powitania',
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your inquiry!</h2>
         <p>We have received your quote request${lektorName ? ' for voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
         <p>We will respond as soon as possible.</p>
         <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zapytanie!</h2>
         <p>Otrzymaliśmy Twoje zapytanie o wycenę${lektorName ? ' lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
         <p>Odpowiemy najszybciej jak to możliwe.</p>
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
     });
 
     res.json({ ok: true, message: isEN ? 'Thank you! We will respond as soon as possible.' : 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
 
-    // Send to CRM (non-blocking — after response)
+    // Send to CRM (non-blocking - after response)
     sendOrderToCRM({ name: '', email, lektorName, lektorId, description, status: 'Prospect', source: 'powitania.pl (zapytanie premium)' })
       .catch(err => console.error('[CRM] premium inquiry webhook error:', err));
   } catch (err) {
@@ -277,7 +277,7 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
   }
 });
 
-// "Zapytaj o wycenę" — ze strony partnera
+// "Zapytaj o wycenę" - ze strony partnera
 router.post('/partner-inquiry', async (req, res) => {
   const { name, company, email, phone, message, partnerId, voiceName } = req.body;
 
@@ -304,7 +304,7 @@ router.post('/partner-inquiry', async (req, res) => {
     // Mail do biura (lub do partnera)
     await sendMail({
       to: recipientEmail,
-      subject: `[Partner: ${esc(partnerName)}] Zapytanie — ${esc(voiceName || 'wycena')}`,
+      subject: `[Partner: ${esc(partnerName)}] Zapytanie - ${esc(voiceName || 'wycena')}`,
       replyTo: email,
       html: `
         <h2>Zapytanie ze strony partnera</h2>
@@ -317,14 +317,14 @@ router.post('/partner-inquiry', async (req, res) => {
           ${voiceName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(voiceName)}</td></tr>` : ''}
         </table>
         ${message ? `<h3>Wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(message)}</p>` : ''}
-        <p style="color:#999;font-size:12px">Wysłano ze strony partnera na powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+        <p style="color:#999;font-size:12px">Wysłano ze strony partnera na powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
     });
 
     // Potwierdzenie do klienta
     await sendMail({
       to: email,
-      subject: 'Potwierdzenie zapytania — ' + esc(partnerName),
+      subject: 'Potwierdzenie zapytania - ' + esc(partnerName),
       html: `
         <h2 style="color:#1a1d23">Dziękujemy za kontakt!</h2>
         <p>Cześć ${esc(name)},</p>
@@ -337,7 +337,7 @@ router.post('/partner-inquiry', async (req, res) => {
 
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
-    // Send to CRM (non-blocking — after response)
+    // Send to CRM (non-blocking - after response)
     sendOrderToCRM({ name, firmName: company, email, phone, lektorName: voiceName, description: message, status: 'Prospect', source: 'powitania.pl (partner: ' + partnerName + ')' })
       .catch(err => console.error('[CRM] partner inquiry webhook error:', err));
   } catch (err) {

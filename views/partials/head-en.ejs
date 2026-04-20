@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <% if (gtmId) { %>
-  <!-- Google Consent Mode v2 — domyślne ustawienia (MUSI być PRZED GTM) -->
+  <!-- Google Consent Mode v2 - domyślne ustawienia (MUSI być PRZED GTM) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -70,7 +70,7 @@
   {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
-    "name": "Powitania.pl — OPTIMUM Paweł Kowalski",
+    "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
     "url": "https://www.powitania.pl",
     "logo": "https://www.powitania.pl/img/logo-powitania.png",
     "image": "https://www.powitania.pl/img/og-default.jpg",
@@ -143,7 +143,7 @@
   </script>
   <% } %>
 
-  <%/* GTM preconnect removed — GTM is now deferred until after load/interaction */%>
+  <%/* GTM preconnect removed - GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
@@ -164,7 +164,7 @@ body{background-color:#f7f3ef}
 }
 .kreator-widget{max-width:720px;margin:0 auto}
 @media(min-width:768px){.hero-left-col{max-width:720px;margin-left:auto;margin-right:auto;text-align:left}}
-/* Tryb "compact" — kreator poza welcome: H1+P ukryte, pozostałe nagłówki wycentrowane, top padding zrekompensowany */
+/* Tryb "compact" - kreator poza welcome: H1+P ukryte, pozostałe nagłówki wycentrowane, top padding zrekompensowany */
 .hero-compact{background-color:#f4ede1}
 .hero-compact #hero-heading{display:none}
 .hero-compact #kreator{padding-top:2.5rem}
@@ -199,7 +199,7 @@ body{background-color:#f7f3ef}
 
 <% if (!skipHeader) { %>
 <%
-  // PL version URL for language switcher — from hreflangPL (mapping in server.js) or fallback /
+  // PL version URL for language switcher - from hreflangPL (mapping in server.js) or fallback /
   var _altPl = (typeof hreflangPL !== 'undefined' && hreflangPL)
     ? hreflangPL.replace('https://www.powitania.pl', '')
     : '/';

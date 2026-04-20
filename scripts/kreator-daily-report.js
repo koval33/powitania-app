@@ -16,7 +16,7 @@ const { readLog } = require('../lib/kreator-logger');
 // ── Helpers ────────────────────────────────────────────────────────────
 
 function fmtMs(ms) {
-  if (ms == null) return '—';
+  if (ms == null) return '-';
   if (ms < 1000) return ms + ' ms';
   return (ms / 1000).toFixed(1) + ' s';
 }
@@ -56,12 +56,12 @@ function generateReport(dateStr) {
 
   var lines = [];
   lines.push('═══════════════════════════════════════════════════════');
-  lines.push('  RAPORT KREATORA — ' + dateStr);
+  lines.push('  RAPORT KREATORA - ' + dateStr);
   lines.push('═══════════════════════════════════════════════════════');
   lines.push('');
 
   if (!entries.length) {
-    lines.push('Brak danych — kreator nie był używany tego dnia.');
+    lines.push('Brak danych - kreator nie był używany tego dnia.');
     return lines.join('\n');
   }
 
@@ -101,7 +101,7 @@ function generateReport(dateStr) {
     if (slow.length) {
       lines.push('  ⚠️  Wolne odpowiedzi (>10s): ' + slow.length);
       slow.forEach(function(e) {
-        lines.push('    • ' + e.ts.substring(11, 19) + ' — ' + fmtMs(e.responseTimeMs) + ' — ' + (e.serviceType || '?') + ' (' + (e.lang || 'pl') + ')');
+        lines.push('    • ' + e.ts.substring(11, 19) + ' - ' + fmtMs(e.responseTimeMs) + ' - ' + (e.serviceType || '?') + ' (' + (e.lang || 'pl') + ')');
       });
       lines.push('');
     }
@@ -173,7 +173,7 @@ function generateReport(dateStr) {
     lines.push('───────────────────────────────────────────────────────');
     var byCompany = groupBy(companies, 'company');
     Object.keys(byCompany).forEach(function(c) {
-      lines.push('  • ' + c + ' (' + byCompany[c].length + 'x) — ' + (byCompany[c][0].serviceType || ''));
+      lines.push('  • ' + c + ' (' + byCompany[c].length + 'x) - ' + (byCompany[c][0].serviceType || ''));
     });
     lines.push('');
   }
@@ -226,7 +226,7 @@ function generateReport(dateStr) {
       lines.push('');
     });
   } else {
-    lines.push('✅ BRAK BŁĘDÓW — kreator działał bez problemów.');
+    lines.push('✅ BRAK BŁĘDÓW - kreator działał bez problemów.');
     lines.push('');
   }
 

@@ -33,7 +33,7 @@ async function callAnthropic(apiKey, messages, maxTokens = 2048) {
   return data;
 }
 
-// Walidacja pól wejściowych — tylko znane pola, reszta ignorowana
+// Walidacja pól wejściowych - tylko znane pola, reszta ignorowana
 const FIELD_LIMITS = {
   lang: 5,
   company: 200,
@@ -66,7 +66,7 @@ function validateInput(body) {
   return null;
 }
 
-// ── Generate — jedno wywołanie API, bez retry ───────────────────────────
+// ── Generate - jedno wywołanie API, bez retry ───────────────────────────
 router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -115,7 +115,7 @@ router.post('/generate', kreatorLimiter.middleware(), verifyTurnstile, async (re
   }
 });
 
-// ── Optimize — jedno wywołanie API, bez retry ───────────────────────────
+// ── Optimize - jedno wywołanie API, bez retry ───────────────────────────
 router.post('/optimize', kreatorLimiter.middleware(), verifyTurnstile, async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {

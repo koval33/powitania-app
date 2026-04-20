@@ -1,26 +1,26 @@
 /**
- * GA4 Event Tracking — powitania.pl
+ * GA4 Event Tracking - powitania.pl
  *
  * Centralny plik push eventów do dataLayer.
  * Agencja SEM może łatwo podpiąć te eventy jako triggery w GTM
  * lub śledzić bezpośrednio w GA4 jako custom events.
  *
  * EVENTS:
- *   kreator_generate      — użytkownik wygenerował tekst w kreatorze
- *   kreator_optimize      — użytkownik zoptymalizował tekst pod czas
- *   form_submit_order     — złożenie zamówienia (z ceną / bez płatności online)
- *   form_submit_payment   — przejście do płatności P24
- *   form_submit_inquiry   — zapytanie o lektora
- *   form_submit_inquiry_bank — zapytanie z banku głosów (popup "Zapytaj")
- *   form_submit_inquiry_premium — zapytanie premium (ze strony lektora)
- *   form_submit_contact   — formularz kontaktowy (strona główna)
- *   form_submit_partner   — zapytanie ze strony partnera
- *   form_submit_review    — dodanie opinii
- *   audio_play            — odtworzenie próbki audio
- *   lektor_card_click     — kliknięcie w kartę lektora (bank głosów)
- *   lektor_profile_view   — wejście na profil lektora
- *   phone_click           — kliknięcie numeru telefonu
- *   email_click           — kliknięcie adresu email
+ *   kreator_generate      - użytkownik wygenerował tekst w kreatorze
+ *   kreator_optimize      - użytkownik zoptymalizował tekst pod czas
+ *   form_submit_order     - złożenie zamówienia (z ceną / bez płatności online)
+ *   form_submit_payment   - przejście do płatności P24
+ *   form_submit_inquiry   - zapytanie o lektora
+ *   form_submit_inquiry_bank - zapytanie z banku głosów (popup "Zapytaj")
+ *   form_submit_inquiry_premium - zapytanie premium (ze strony lektora)
+ *   form_submit_contact   - formularz kontaktowy (strona główna)
+ *   form_submit_partner   - zapytanie ze strony partnera
+ *   form_submit_review    - dodanie opinii
+ *   audio_play            - odtworzenie próbki audio
+ *   lektor_card_click     - kliknięcie w kartę lektora (bank głosów)
+ *   lektor_profile_view   - wejście na profil lektora
+ *   phone_click           - kliknięcie numeru telefonu
+ *   email_click           - kliknięcie adresu email
  */
 
 (function() {

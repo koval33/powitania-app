@@ -61,7 +61,7 @@
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
               <span class="text-white font-semibold"><%= r.company %></span>
-              <% if (r.author) { %><span class="text-gray-500 text-sm">— <%= r.author %></span><% } %>
+              <% if (r.author) { %><span class="text-gray-500 text-sm">- <%= r.author %></span><% } %>
               <span class="text-[10px] bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">Oczekuje</span>
             </div>
             <p class="text-gray-400 text-sm leading-relaxed"><%= r.text %></p>
@@ -96,7 +96,7 @@
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
               <span class="text-white font-semibold"><%= r.company %></span>
-              <% if (r.author) { %><span class="text-gray-500 text-sm">— <%= r.author %></span><% } %>
+              <% if (r.author) { %><span class="text-gray-500 text-sm">- <%= r.author %></span><% } %>
               <span class="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Zatwierdzona</span>
             </div>
             <p class="text-gray-400 text-sm leading-relaxed"><%= r.text %></p>

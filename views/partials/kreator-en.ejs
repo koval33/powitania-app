@@ -4,7 +4,7 @@
 
 <% if (turnstileSiteKey) { %>
 <script>
-  // Skip Turnstile on Safari — cross-origin frame errors break the kreator
+  // Skip Turnstile on Safari - cross-origin frame errors break the kreator
   if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
     window.__TURNSTILE_SITE_KEY = '<%= turnstileSiteKey %>';
     var s = document.createElement('script');

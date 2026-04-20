@@ -55,13 +55,13 @@ function updateOrder(sessionId, partial) {
 }
 
 /**
- * POST /register — rejestracja transakcji w P24
+ * POST /register - rejestracja transakcji w P24
  *
  * Body: { firmName, name, nip, street, zipCode, city, email, phone, notes,
  *         serviceType, industry, generatedText, lektorName, lektorId,
  *         totalPrice, isExpress, selectedAddons, selectedMelody }
  *
- * totalPrice — kwota netto w PLN (np. "150" lub "150 zł")
+ * totalPrice - kwota netto w PLN (np. "150" lub "150 zł")
  */
 router.post('/register', async (req, res) => {
   try {
@@ -115,7 +115,7 @@ router.post('/register', async (req, res) => {
     };
     saveOrder(sessionId, orderData);
 
-    // Wyślij do CRM (non-blocking) — generatedText trafia do orderDetails, nie do description
+    // Wyślij do CRM (non-blocking) - generatedText trafia do orderDetails, nie do description
     const crmData = { ...req.body };
     if (crmData.generatedText) {
       crmData.orderDetails = crmData.generatedText;
@@ -128,26 +128,26 @@ router.post('/register', async (req, res) => {
       source: 'powitania.pl (płatność online)'
     }).catch(err => console.error('[CRM] payment order webhook error:', err));
 
-    // Wyślij emaile z zamówieniem od razu (non-blocking — nie blokuje przekierowania na P24)
+    // Wyślij emaile z zamówieniem od razu (non-blocking - nie blokuje przekierowania na P24)
     const { street, city, serviceType, lektorName, lektorId, generatedText, notes, isExpress, selectedAddons, selectedMelody, lang } = req.body;
     const isEN = lang === 'en';
     const address = [street, zipCode, city].filter(Boolean).join(', ');
 
-    // Mail do biura — zamówienie oczekujące na płatność
+    // Mail do biura - zamówienie oczekujące na płatność
     sendMail({
-      subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}🕐 [OCZEKUJE NA PŁATNOŚĆ] ${firmName} — ${serviceType || 'nagranie'}${lektorName ? ' — ' + lektorName : ''}`,
+      subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}🕐 [OCZEKUJE NA PŁATNOŚĆ] ${firmName} - ${serviceType || 'nagranie'}${lektorName ? ' - ' + lektorName : ''}`,
       replyTo: email,
       html: `
         <h2>Nowe zamówienie nagrania</h2>
         <div style="background:#fef9c3;border:1px solid #facc15;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">🕐 Oczekuje na płatność online (${amountBrutto} zł brutto / ${priceNetto} zł netto)</div>
-        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE — priorytetowa realizacja tego samego dnia</div>' : ''}
+        ${isExpress ? '<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold">⚡ NAGRANIE EKSPRESOWE - priorytetowa realizacja tego samego dnia</div>' : ''}
         <table style="border-collapse:collapse;width:100%">
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(firmName)}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Zamawiający:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name)}</td></tr>
           ${nip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">NIP:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(nip)}</td></tr>` : ''}
           ${address ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Adres:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(address)}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(email)}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '—')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(phone || '-')}</td></tr>
           ${serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(serviceType)}</td></tr>` : ''}
           ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Kwota:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#d97706;font-weight:bold">${amountBrutto} zł brutto (${priceNetto} zł netto)</td></tr>
@@ -155,32 +155,32 @@ router.post('/register', async (req, res) => {
         </table>
         ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
-        <p style="color:#999;font-size:12px">Wysłano z powitania.pl — ${new Date().toLocaleString('pl-PL')}</p>
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
     }).catch(err => console.error('[Payment] Office email error:', err));
 
     // Potwierdzenie do klienta
     sendMail({
       to: email,
-      subject: isEN ? 'Order confirmation — Powitania' : 'Potwierdzenie zamówienia — Powitania',
+      subject: isEN ? 'Order confirmation - Powitania' : 'Potwierdzenie zamówienia - Powitania',
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your order!</h2>
         <p>Hi ${esc(name)},</p>
         <p>We have received your recording order${lektorName ? ' with voice artist <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
         <p><strong>Amount:</strong> ${amountBrutto} PLN gross (${priceNetto} PLN net)</p>
-        <p>If the payment was not completed, don't worry — you can contact us and we will help you finalize the order.</p>
+        <p>If the payment was not completed, don't worry - you can contact us and we will help you finalize the order.</p>
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Best regards,<br><strong>Powitania Team</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(name)},</p>
         <p>Otrzymaliśmy Twoje zamówienie nagrania${lektorName ? ' u lektora <strong>' + esc(lektorName) + '</strong>' : ''}.</p>
         <p><strong>Kwota:</strong> ${amountBrutto} zł brutto (${priceNetto} zł netto)</p>
-        <p>Jeśli płatność nie została dokończona — nic się nie stało. Skontaktuj się z nami, a pomożemy sfinalizować zamówienie.</p>
+        <p>Jeśli płatność nie została dokończona - nic się nie stało. Skontaktuj się z nami, a pomożemy sfinalizować zamówienie.</p>
         ${generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
     }).catch(err => console.error('[Payment] Customer email error:', err));
 
@@ -219,7 +219,7 @@ router.post('/register', async (req, res) => {
 });
 
 /**
- * POST /notify — webhook od P24 (urlStatus)
+ * POST /notify - webhook od P24 (urlStatus)
  * P24 wysyła tu notyfikację po zakończeniu płatności
  */
 router.post('/notify', async (req, res) => {
@@ -269,9 +269,9 @@ router.post('/notify', async (req, res) => {
     // Mail do biura
     await sendMail({
       replyTo: order.email,
-      subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}💰 [OPŁACONE] ${order.firmName} — ${order.serviceType || 'nagranie'}${order.lektorName ? ' — ' + order.lektorName : ''}`,
+      subject: `${isExpress ? '⚡ [EKSPRES] ' : ''}💰 [OPŁACONE] ${order.firmName} - ${order.serviceType || 'nagranie'}${order.lektorName ? ' - ' + order.lektorName : ''}`,
       html: `
-        <h2>Nowe zamówienie nagrania — OPŁACONE</h2>
+        <h2>Nowe zamówienie nagrania - OPŁACONE</h2>
         <div style="background:#d1fae5;border:1px solid #10b981;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-weight:bold;color:#065f46">
           ✅ Płatność potwierdzona: ${order.amountBrutto} PLN brutto (${order.priceNetto} zł netto + VAT)
         </div>
@@ -282,7 +282,7 @@ router.post('/notify', async (req, res) => {
           ${order.nip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">NIP:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.nip)}</td></tr>` : ''}
           ${address ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Adres:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(address)}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.email)}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.phone || '—')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.phone || '-')}</td></tr>
           ${order.serviceType ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Typ nagrania:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.serviceType)}</td></tr>` : ''}
           ${order.lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.lektorName)}${order.lektorId ? ' (' + esc(order.lektorId) + ')' : ''}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Kwota:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#10b981;font-weight:bold">${order.amountBrutto} PLN brutto (${order.priceNetto} zł netto)</td></tr>
@@ -298,7 +298,7 @@ router.post('/notify', async (req, res) => {
     const isEN = order.lang === 'en';
     await sendMail({
       to: order.email,
-      subject: isEN ? 'Order confirmed — Powitania.pl' : 'Zamówienie przyjęte do realizacji — Powitania.pl',
+      subject: isEN ? 'Order confirmed - Powitania.pl' : 'Zamówienie przyjęte do realizacji - Powitania.pl',
       html: isEN ? `
         <h2 style="color:#1a1d23">Thank you for your order!</h2>
         <p>Hi ${esc(order.name)},</p>
@@ -307,7 +307,7 @@ router.post('/notify', async (req, res) => {
         <p>Our team is already working on your project. We will keep you updated via email.</p>
         ${order.generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Your script:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(order.generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Best regards,<br><strong>Powitania.pl Team</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       ` : `
         <h2 style="color:#1a1d23">Dziękujemy za zamówienie!</h2>
         <p>Cześć ${esc(order.name)},</p>
@@ -316,7 +316,7 @@ router.post('/notify', async (req, res) => {
         <p>Nasz zespół już pracuje nad Twoim projektem. O postępach poinformujemy Cię mailowo.</p>
         ${order.generatedText ? `<h3 style="color:#1a1d23;margin-top:24px">Twój tekst:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(order.generatedText)}</pre>` : ''}
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania.pl</strong></p>
-        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl — tel. +48 605 491 069 — biuro@powitania.pl</p>
+        <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
     });
 
@@ -329,7 +329,7 @@ router.post('/notify', async (req, res) => {
 });
 
 /**
- * GET /return — powrót klienta po płatności
+ * GET /return - powrót klienta po płatności
  * Przekierowuje na stronę podziękowania
  */
 router.get('/return', (req, res) => {
@@ -340,7 +340,7 @@ router.get('/return', (req, res) => {
     return res.redirect('/zamowienie-oplacone/');
   }
 
-  // Płatność jeszcze nieprzetworzona lub anulowana — pokaż stronę oczekiwania
+  // Płatność jeszcze nieprzetworzona lub anulowana - pokaż stronę oczekiwania
   res.redirect('/zamowienie-przyjete/?sid=' + (sessionId || ''));
 });
 
