@@ -742,6 +742,7 @@ app.get('/aktualnosci-pl/:slug/', (req, res) => {
   res.render('blog-post', {
     title: post.title + ' | powitania.pl',
     description: post.excerpt,
+    noindex: !!post.noindex,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Aktualności', url: '/aktualnosci-pl/' },
@@ -1045,7 +1046,7 @@ app.get('/en/news/:slug/', (req, res) => {
   res.render('en/blog-post', {
     title: (post.titleEn || post.title) + ' | Powitania.pl',
     description: post.excerptEn || post.excerpt,
-    noindex: !post.contentEn,
+    noindex: !post.contentEn || !!post.noindex,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'News', url: '/en/news/' },
@@ -1202,6 +1203,8 @@ app.get('/sitemap.xml', (req, res) => {
   // Blog posts
   const blogPosts = loadBlogPosts();
   blogPosts.forEach(p => {
+    // Pomijamy posty z noindex - sitemap + noindex to sprzeczny sygnał dla Google
+    if (p.noindex) return;
     xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
     // EN blog posts (only those with full English translation)
     if (p.titleEn && p.contentEn) {
