@@ -470,8 +470,17 @@
 
     <!-- FORMULARZ ZAPYTANIA (dla lektorów z hidePrice) -->
     <% if (lektor.hidePrice) { %>
-    <div class="mt-12" id="zapytanie">
+    <div class="mt-12 scroll-mt-8" id="zapytanie">
       <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border border-gray-200 p-8">
+        <div class="flex items-center gap-4 mb-6">
+          <% if (lektor.photo) { %>
+            <img src="<%= lektor.photo %>" alt="<%= lektor.name %>" class="w-14 h-14 rounded-full object-cover border-2 border-gray-200 flex-shrink-0">
+          <% } %>
+          <div class="min-w-0">
+            <div class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-0.5">Zapytanie o realizację</div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 truncate"><%= lektor.name %></h2>
+          </div>
+        </div>
         <p class="text-gray-600 leading-relaxed mb-8">
           Udział artysty w projekcie jest potwierdzany indywidualnie. Proszę o przesłanie możliwie jak najszerszej informacji na temat projektu (typ nagrania, pole jego eksploatacji, czas na jaki ma zostać udzielona licencja) a my wrócimy z informacją na temat zainteresowania artysty i kosztów.
         </p>

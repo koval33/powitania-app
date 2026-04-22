@@ -263,13 +263,14 @@
       /* Desktop: wrapper niewidoczny - player i przyciski są bezpośrednimi dziećmi flex */
       .vc-player-wrap { display: contents; }
       /* Stała szerokość kolumny z imieniem - zapewnia jednolitą szerokość playerów */
-      .vc-info { width: 200px !important; flex-shrink: 0; }
+      .vc-info { width: 170px !important; flex-shrink: 0; }
+      /* Stała szerokość kolumny CTA - player ma wtedy stałą długość niezależnie ile przycisków jest w środku */
+      .vc-cta { width: 140px !important; flex-shrink: 0; }
       /* Większe zdjęcie, mniejszy padding karty, wyrównany odstęp */
       .vc-photo { width: 106px !important; height: 106px !important; }
       .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
-      /* Elementy mobile-only - ukryte domyślnie (desktop pokazuje vc-badge-inline w vc-info + link profil w player-box) */
+      /* Elementy mobile-only - ukryte domyślnie (desktop pokazuje vc-badge-inline w vc-info) */
       .vc-badge-mobile { display: none; }
-      .vc-more-link { display: none; }
       /* Mobile: 3-strefowy uklad - (1) zdjecie+info, (2) player full-width, (3) CTA+wiecej */
       @media (max-width: 767px) {
         .vc-inner {
@@ -325,25 +326,16 @@
         }
         /* Wiekszy Play button - tap-target 40x40 */
         .player-box .play-btn { width: 40px !important; height: 40px !important; }
-        .vc-profile-inline { display: none !important; }
 
-        /* STREFA 3 - akcje: CTA lewa, "wiecej" prawa */
+        /* STREFA 3 - akcje: dwa CTA side-by-side, pełna szerokość */
         .vc-cta {
-          grid-column: 1; grid-row: 3;
-          justify-self: start;
+          width: auto !important;
+          grid-column: 1 / -1; grid-row: 3;
+          flex-direction: row !important;
+          gap: 8px !important;
           align-self: center;
         }
-        .vc-cta .cta-inquiry { min-height: 44px; }
-        .vc-more-link {
-          display: inline-flex;
-          align-items: center;
-          grid-column: 2; grid-row: 3;
-          justify-self: end;
-          align-self: center;
-          padding: 8px 4px;
-          font-size: 12px;
-          color: rgb(107 114 128);
-        }
+        .vc-cta > a, .vc-cta > button { flex: 1; min-height: 44px; }
       }
     </style>
     <!-- Siatka lektorów -->
@@ -375,7 +367,7 @@
 
           <!-- Imię + meta (link do profilu) -->
           <a href="<%= v.profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
-            <h3 class="font-bold text-gray-900 text-base truncate leading-tight"><%= v.name %></h3>
+            <h3 class="font-bold text-gray-900 tracking-tight truncate leading-tight" style="font-size: <%= v.name.length > 17 ? '13px' : '15px' %>"><%= v.name %></h3>
             <div class="flex items-center gap-1.5 mt-2 flex-wrap">
               <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
               <% v.languages.slice(0,1).forEach(function(lang) { %>
@@ -435,20 +427,28 @@
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
                 </a>
               </div>
-              <a href="<%= v.profileUrl %>" onclick="event.stopPropagation()" class="vc-profile-inline block text-[10px] text-gray-400 hover:text-accent mt-1.5 transition-colors">więcej</a>
             </div>
 
-            <!-- Akcje -->
-            <div class="vc-cta flex-shrink-0 flex items-center justify-center">
-              <button type="button" class="cta-inquiry inline-flex items-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-                Zapytaj
-              </button>
+            <!-- Akcje: premium (hidePrice) → tylko Zapytaj prowadzący do formularza na profilu; pozostali → Wyceń (primary) + Zapytaj (secondary, modal) -->
+            <div class="vc-cta flex-shrink-0 flex flex-col gap-2 items-stretch justify-center">
+              <% if (v.hidePrice) { %>
+                <a href="<%= v.profileUrl %>#zapytanie" onclick="event.stopPropagation()" class="cta-inquiry inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                  Zapytaj
+                </a>
+              <% } else { %>
+                <a href="<%= v.profileUrl %>" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h4m3 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  Wyceń
+                  <svg class="w-3.5 h-3.5 -mr-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <button type="button" class="cta-inquiry inline-flex items-center justify-center gap-1.5 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium px-4 py-2.5 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                  Zapytaj
+                </button>
+              <% } %>
             </div>
           </div>
-
-          <!-- Link "wiecej" pod playerem (mobile-only via CSS) -->
-          <a href="<%= v.profileUrl %>" onclick="event.stopPropagation()" class="vc-more-link text-[11px] text-gray-500 hover:text-accent transition-colors">więcej</a>
 
         </div>
       </div>
@@ -886,17 +886,7 @@
       // Activate kreator mode - hides hidePrice voices
       kreatorMode = true;
 
-      // Zmień CTA: "Zapytaj" → "Wyceń →" (prowadzi do profilu gdzie wizard się aktywuje)
-      document.querySelectorAll('.voice-card').forEach(function(card) {
-        var inquiryBtn = card.querySelector('.cta-inquiry');
-        if (inquiryBtn) {
-          inquiryBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg> Wyceń';
-          inquiryBtn.onclick = function(e) {
-            e.stopPropagation();
-            window.location.href = card.dataset.url;
-          };
-        }
-      });
+      // (Wyceń CTA jest zawsze widoczne na karcie i prowadzi do profilu, gdzie wizard auto-aktywuje się z kontekstu kreatora.)
 
       // Auto-filter by language based on kreator context
       var langs = ctx.languages || [];
