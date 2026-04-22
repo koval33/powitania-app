@@ -784,20 +784,6 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="py-12 border-t border-gray-200">
-  <div class="max-w-2xl mx-auto px-4 text-center">
-    <h2 class="text-xl font-bold text-gray-900 mb-2">Subscribe to Our Newsletter</h2>
-    <p class="text-gray-500 text-sm mb-6">Stay up to date with news, promotions and industry tips.</p>
-    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-      <input type="email" id="nl-email" name="email" required class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors text-sm" placeholder="Your email address">
-      <button type="submit" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-sm transition-colors whitespace-nowrap">Subscribe</button>
-    </form>
-    <p class="text-xs text-gray-500 mt-3">By subscribing, you accept the <a href="/en/privacy-policy/" class="text-accent hover:underline">privacy policy</a>. You can unsubscribe at any time.</p>
-    <div id="nl-msg" class="hidden text-center text-sm py-2 mt-2 rounded-lg"></div>
-  </div>
-</section>
-
 <!-- Audio player for popular lectors + Reviews carousel -->
 <script>
 var popularAudio = null;
@@ -994,22 +980,6 @@ setInterval(function() { slideReviews(1); }, 8000);
       btn.disabled = false;
       btn.textContent = 'Send Message';
     });
-  });
-})();
-
-// Newsletter form (UI - shows confirmation, actual endpoint TBD)
-(function() {
-  var form = document.getElementById('newsletter-form');
-  if (!form) return;
-  var msg = document.getElementById('nl-msg');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var email = document.getElementById('nl-email').value.trim();
-    if (!email) return;
-    msg.className = 'text-center text-sm py-2 mt-2 rounded-lg bg-accent/10 border border-accent/30 text-accent';
-    msg.textContent = 'Thank you for subscribing! Confirmation will be sent to ' + email;
-    form.reset();
   });
 })();
 </script>

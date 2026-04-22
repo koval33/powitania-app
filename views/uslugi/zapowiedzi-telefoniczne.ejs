@@ -220,44 +220,6 @@
   </div>
 </section>
 
-<!-- Formularz zamówienia zapowiedzi -->
-<section class="py-12 border-t border-gray-200" id="zamow">
-  <div class="max-w-xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Zamów zapowiedź telefoniczną</h2>
-    <p class="text-gray-500 text-center mb-8">Opisz swój projekt - przygotujemy wycenę i odezwiemy się w ciągu 2 godzin.</p>
-    <form id="ivr-inquiry-form" class="space-y-4">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Imię / Firma</label>
-          <input type="text" id="ivr-name" name="name" placeholder="Jan Kowalski" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">E-mail <span class="text-red-500">*</span></label>
-          <input type="email" id="ivr-email" name="email" required placeholder="jan@firma.pl" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
-        </div>
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
-        <input type="tel" id="ivr-phone" name="phone" placeholder="+48 600 000 000" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Opis projektu</label>
-        <textarea id="ivr-description" name="description" rows="4" placeholder="Np. Potrzebujemy nagranie powitania głównego i menu IVR dla 3 działów. Centrala Panasonic." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent resize-none"></textarea>
-      </div>
-      <button type="submit" id="ivr-submit-btn" class="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3 rounded-lg transition-colors">
-        Wyślij zapytanie
-      </button>
-      <p class="text-xs text-gray-400 text-center">Odpowiemy w ciągu 1-2 godzin roboczych</p>
-    </form>
-    <div id="ivr-form-success" class="hidden text-center py-8">
-      <svg class="w-16 h-16 text-green-500 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <h3 class="text-lg font-bold text-gray-900 mb-1">Zapytanie wysłane!</h3>
-      <p class="text-sm text-gray-500">Odezwiemy się najszybciej jak to możliwe.</p>
-    </div>
-    <div id="ivr-form-error" class="hidden mt-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3"></div>
-  </div>
-</section>
-
 <style>
 @media (max-width: 639px) {
   .ivr-samples-grid { grid-template-columns: 1fr !important; }
@@ -338,48 +300,6 @@
     });
   });
 })();
-
-// IVR inquiry form
-document.getElementById('ivr-inquiry-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var btn = document.getElementById('ivr-submit-btn');
-  var errorEl = document.getElementById('ivr-form-error');
-  errorEl.classList.add('hidden');
-  btn.disabled = true;
-  btn.textContent = 'Wysyłanie...';
-
-  var data = {
-    email: document.getElementById('ivr-email').value.trim(),
-    name: document.getElementById('ivr-name').value.trim(),
-    phone: document.getElementById('ivr-phone').value.trim(),
-    description: document.getElementById('ivr-description').value.trim(),
-    serviceType: 'ivr',
-  };
-
-  fetch('/api/contact/inquiry', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(result) {
-    if (result.success || result.ok) {
-      document.getElementById('ivr-inquiry-form').classList.add('hidden');
-      document.getElementById('ivr-form-success').classList.remove('hidden');
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: 'ivr' });
-      }
-    } else {
-      throw new Error(result.error || 'Wystąpił błąd');
-    }
-  })
-  .catch(function(err) {
-    errorEl.textContent = err.message || 'Nie udało się wysłać. Spróbuj ponownie.';
-    errorEl.classList.remove('hidden');
-    btn.disabled = false;
-    btn.textContent = 'Wyślij zapytanie';
-  });
-});
 </script>
 
 <!-- Treści SEO -->
