@@ -2081,16 +2081,43 @@ function submitOrderRequest(data, msgElId) {
   .then(function(r) { return r.json(); })
   .then(function(res) {
     if (res.ok && res.redirectUrl) {
-      // Event dopiero po potwierdzeniu serwera
-      if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'order', event_label: '<%= lektor.name %>', value: numericPrice });
       if (msgEl) {
         msgEl.classList.remove('hidden');
         msgEl.className = 'text-center text-sm mt-2 text-accent';
         msgEl.textContent = 'Przekierowuję na stronę płatności...';
       }
       try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}
-      window.location.href = res.redirectUrl;
+
+      // Fix race condition: nawigacja dopiero po wykonaniu tagów GTM (eventCallback).
+      // Bez tego window.location.href anuluje pending GA4 beacony przed wysłaniem.
+      var navigated = false;
+      var navigateOnce = function() {
+        if (navigated) return;
+        navigated = true;
+        window.location.href = res.redirectUrl;
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: eventName,
+        lektor: '<%= lektor.id %>',
+        value: numericPrice,
+        eventCallback: navigateOnce,
+        eventTimeout: 2000
+      });
+
+      // gtag() sam nie obsługuje callbacku, ale pushuje do dataLayer równolegle
+      // — tagi zdążą przy eventTimeout/setTimeout 2-2.5s.
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'order',
+          event_label: '<%= lektor.name %>',
+          value: numericPrice
+        });
+      }
+
+      // Fallback: gdy GTM niedostępny / eventCallback się nie wykona — nawigacja po 2.5s.
+      setTimeout(navigateOnce, 2500);
       return;
     }
     if (msgEl) {
