@@ -342,6 +342,7 @@
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
       <% voices.forEach(function(v, idx) { %>
       <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
+           data-id="<%= v.id %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -709,6 +710,7 @@
   // --- Filters ---
   var activeGender = 'all';
   var ivrMode = false;
+  var customVoiceIds = []; // Uporządkowana lista ID gdy wchodzimy z linku ?voices=id1,id2,...
 
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -735,6 +737,7 @@
     var search = document.getElementById('filter-search').value.toLowerCase();
 
     filteredCards = allCards.filter(function(card) {
+      if (customVoiceIds.length > 0 && customVoiceIds.indexOf(card.dataset.id) === -1) return false;
       if (activeGender !== 'all' && card.dataset.gender !== activeGender) return false;
       if ((kreatorMode || ivrMode) && card.dataset.hideprice === 'true') return false;
       if (kreatorMode && kreatorLangs.length > 0) {
@@ -759,6 +762,17 @@
       if (search && card.dataset.name.indexOf(search) === -1) return false;
       return true;
     });
+
+    // Niestandardowa kolejność z URL (?voices=id1,id2,...) - sortuj + przenieś w DOM
+    if (customVoiceIds.length > 0) {
+      filteredCards.sort(function(a, b) {
+        return customVoiceIds.indexOf(a.dataset.id) - customVoiceIds.indexOf(b.dataset.id);
+      });
+      var grid = document.getElementById('voices-grid');
+      if (grid) {
+        filteredCards.forEach(function(card) { grid.appendChild(card); });
+      }
+    }
 
     shownCount = PAGE_SIZE;
     updateVisibility();
@@ -804,6 +818,14 @@
     kreatorMode = false;
     kreatorLangs = [];
     ivrMode = false;
+    // Jeśli była niestandardowa lista - wyczyść ją i przywróć pierwotny porządek DOM
+    if (customVoiceIds.length > 0) {
+      customVoiceIds = [];
+      var grid = document.getElementById('voices-grid');
+      if (grid) {
+        allCards.forEach(function(card) { grid.appendChild(card); });
+      }
+    }
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
     var genderSel = document.getElementById('filter-gender-select');
@@ -864,6 +886,15 @@
     }
     if (params.get('filter') === 'ivr') {
       ivrMode = true;
+    }
+    // Niestandardowa uporządkowana lista lektorów: ?voices=id1,id2,id3
+    var voicesParam = params.get('voices');
+    if (voicesParam) {
+      customVoiceIds = voicesParam.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+      if (customVoiceIds.length > 0) {
+        // Wymuś przebudowę filtrów zaraz po załadowaniu
+        setTimeout(applyFilters, 0);
+      }
     }
   })();
 
