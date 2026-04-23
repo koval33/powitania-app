@@ -1,0 +1,31 @@
+<%- include('../partials/head-en') %>
+
+<section class="min-h-[60vh] flex items-center justify-center px-4">
+  <div class="text-center max-w-lg">
+    <div class="text-8xl font-bold text-accent/20 mb-4">404</div>
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Page not found</h1>
+    <p class="text-gray-500 mb-8 leading-relaxed">
+      The page you are looking for does not exist or has been moved.
+      Please check the URL or navigate to one of the sections below.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/en/" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+        Home
+      </a>
+      <a href="/en/voice-bank/" class="bg-white hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors border border-gray-200">
+        Voice Bank
+      </a>
+      <a href="/en/contact/" class="bg-white hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors border border-gray-200">
+        Contact
+      </a>
+    </div>
+    <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <a href="/en/voiceover-services/" class="text-gray-500 hover:text-gray-900 transition-colors">Voiceover services</a>
+      <a href="/en/pricing/" class="text-gray-500 hover:text-gray-900 transition-colors">Pricing</a>
+      <a href="/en/news/" class="text-gray-500 hover:text-gray-900 transition-colors">News</a>
+      <a href="/en/remote-sessions/" class="text-gray-500 hover:text-gray-900 transition-colors">Remote sessions</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/foot-en') %>

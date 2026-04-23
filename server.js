@@ -1145,8 +1145,20 @@ app.get('/en/search/*', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/feed/', (req, res) => res.redirect(301, '/en/'));
 app.get('/en/thank-you/', (req, res) => res.redirect(301, '/en/'));
 
-// EN - strony bez dedykowanego tłumaczenia → redirect na główną EN
-app.get('/en/*', (req, res) => res.redirect(302, '/en/'));
+// 301 Redirects - EN URL-e z audytu SEO (23.04.2026) - stare warianty nazw indeksowane przez Google
+// Target URL-e zweryfikowane curl-em (200 OK) przed dodaniem redirectów.
+app.get('/en/voice-actors/:slug/', (req, res) => res.redirect(301, '/en/voice-artists/' + req.params.slug + '/'));
+app.get('/en/phone-announcements/', (req, res) => res.redirect(301, '/en/voiceover-services/phone-announcements/'));
+app.get('/en/voice-for-advertising/', (req, res) => res.redirect(301, '/en/voiceover-services/voice-for-advertising/'));
+app.get('/en/professional-voiceover-for-films/', (req, res) => res.redirect(301, '/en/voiceover-services/film-voiceover/'));
+
+// EN catch-all → 404 (zamiast wcześniejszego 302 → /en/, co tworzyło soft-404 i duplikaty homepage EN w indeksie Google)
+app.get('/en/*', (req, res) => {
+  res.status(404).render('en/404', {
+    title: 'Page not found | Powitania.pl',
+    description: 'The page you are looking for does not exist.'
+  });
+});
 
 // Sitemap.xml - dynamiczny
 app.get('/sitemap.xml', (req, res) => {
