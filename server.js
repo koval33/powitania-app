@@ -124,6 +124,9 @@ app.use((req, res, next) => {
   res.locals.skipHeader = req.query.skip_header === '1';
   res.locals.isEmbed = res.locals.skipHeader;
   res.locals.currentPath = req.path;
+  // SEO: strony z query param ?express=1 są duplikatem canonical URL-a (strona lektora),
+  // więc nie powinny być indeksowane. Audyt SEO 23.04.2026.
+  res.locals.hasNoindexQuery = req.query.express === '1';
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
   res.locals.gtmId = process.env.GTM_ID || '';
   res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
