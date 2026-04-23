@@ -1,14 +1,10 @@
 <%- include('partials/head') %>
 
 <!-- Hero -->
-<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
+<section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Nagrania lektorskie - 234&nbsp;lektorów, realizacja do&nbsp;48h</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Profesjonalne studio nagrań lektorskich od&nbsp;2001&nbsp;roku. Spoty reklamowe, filmy, zapowiedzi telefoniczne, audiobooki i&nbsp;e-learning. Ponad 30&nbsp;języków, realizacja w&nbsp;2&nbsp;dni robocze.</p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
-      <a href="/bank-glosow/" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Przejdź do banku głosów</a>
-      <a href="/nagranie-ekspresowe/" class="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-3 rounded-lg font-semibold transition-colors border border-yellow-400/20">Nagranie ekspresowe</a>
-    </div>
+    <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Profesjonalne studio nagrań lektorskich od&nbsp;2001&nbsp;roku. Spoty reklamowe, filmy, zapowiedzi telefoniczne, audiobooki i&nbsp;e-learning. Ponad 30&nbsp;języków, realizacja w&nbsp;2&nbsp;dni robocze.</p>
   </div>
 </section>
 
@@ -17,6 +13,8 @@
 
     <!-- Galeria studia -->
     <div class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center">Zobacz jak realizujemy nagrania lektorskie</h2>
+      <p class="text-gray-500 text-center max-w-2xl mx-auto mb-8">Nasze studio w&nbsp;Warszawie działa od&nbsp;2001&nbsp;roku. Kabina lektorska, realizatornia, sprzęt broadcastowy&nbsp;— kliknij zdjęcie, żeby powiększyć, lub&nbsp;odtwórz krótki fragment sesji.</p>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
         <img src="/img/studio/sesja-beata-tadla.webp" alt="Beata Tadla nagrywa w studiu lektorskim Powitania.pl" class="rounded-xl w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity" loading="lazy" onclick="openLightbox(this)">
         <img src="/img/studio/realizatornia.webp" alt="Realizatornia - stanowisko inżyniera dźwięku w studiu Powitania.pl" class="rounded-xl w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity" loading="lazy" onclick="openLightbox(this)">
@@ -107,6 +105,12 @@
           <p class="text-gray-500 text-sm leading-relaxed">Gotowy plik dostaniesz mailem - zwykle w&nbsp;ciągu <strong class="text-gray-900">2 dni roboczych</strong>. Krótkie spoty często jeszcze tego samego dnia. Poprawki? W&nbsp;cenie.</p>
         </article>
 
+      </div>
+
+      <!-- CTA pod 3 krokami -->
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center max-w-xl mx-auto">
+        <a href="/bank-glosow/" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors text-center">Przejdź do banku głosów</a>
+        <a href="/nagranie-ekspresowe/" class="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-3 rounded-lg font-semibold transition-colors border border-yellow-400/40 text-center">Nagranie ekspresowe</a>
       </div>
     </div>
 
@@ -293,10 +297,10 @@
       </div>
 
       <!-- Optymalizacja kosztów / dobór głosu -->
-      <div class="max-w-3xl mx-auto mt-8 bg-accent/5 border border-accent/20 rounded-xl p-5 md:p-6">
+      <div class="max-w-3xl mx-auto mt-8 bg-green-50 border border-green-200 rounded-xl p-5 md:p-6">
         <div class="flex gap-4">
-          <div class="flex-shrink-0 w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <div class="flex-1">
             <p class="text-gray-900 font-semibold text-sm mb-1">Dobór głosu i&nbsp;optymalizacja kosztów</p>
@@ -310,30 +314,19 @@
     <div class="bg-stone-100/80 rounded-2xl border border-gray-200 p-8 md:p-12 mb-16 text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Zaufały nam największe marki</h2>
       <p class="text-gray-500 mb-6 max-w-2xl mx-auto">Od 2001 roku realizujemy nagrania lektorskie dla agencji reklamowych, domów mediowych, korporacji i producentów filmowych. Wśród naszych klientów są między innymi:</p>
-      <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm font-semibold text-gray-400">
-        <span>TVN</span>
-        <span>Orange</span>
-        <span>Play</span>
-        <span>PKO BP</span>
-        <span>PZU</span>
-        <span>Samsung</span>
-        <span>Biedronka</span>
-        <span>Allegro</span>
-        <span>IKEA</span>
-        <span>Leroy Merlin</span>
-        <span>Media Markt</span>
-        <span>RMF FM</span>
-      </div>
-    </div>
-
-    <!-- Film prezentacyjny -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">Poznaj nasze studio</h2>
-      <div class="aspect-video bg-gray-50 rounded-2xl overflow-hidden relative cursor-pointer border border-gray-200 shadow-md" data-vid="6gZmS_99rVs" onclick="loadYT(this)">
-        <img src="https://img.youtube.com/vi/6gZmS_99rVs/sddefault.jpg" alt="Nagrania lektorskie - studio Powitania.pl" class="w-full h-full object-cover">
-        <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors">
-          <svg class="w-16 h-16 md:w-20 md:h-20 text-white/90" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
-        </div>
+      <div class="flex flex-wrap gap-2 justify-center">
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">TVN</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Orange</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Play</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">PKO BP</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">PZU</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Samsung</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Biedronka</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Allegro</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">IKEA</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Leroy Merlin</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">Media Markt</span>
+        <span class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-semibold text-gray-700">RMF FM</span>
       </div>
     </div>
 
