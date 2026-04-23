@@ -497,7 +497,7 @@ app.get('/faq-pl/', (req, res) => {
 app.get('/kontakt/', (req, res) => {
   res.render('kontakt', {
     title: 'Kontakt | powitania.pl',
-    description: 'Skontaktuj się z nami. Odpowiadamy w ciągu 2 godzin.'
+    description: 'Skontaktuj się ze Studiem Lektorskim Powitania.pl. Nagrania lektorskie w 24-48h, ponad 200 lektorów, 30+ języków. Odpowiadamy w ciągu 2 godzin.'
   });
 });
 
@@ -506,7 +506,7 @@ app.get('/opinie/', (req, res) => {
   const reviews = allReviews.filter(r => r.approved);
   res.render('opinie', {
     title: 'Opinie Klientów | powitania.pl',
-    description: 'Przeczytaj opinie naszych Klientów. Ponad ' + reviews.length + ' opinii od Klientów z całej Polski.',
+    description: 'Opinie Klientów Studia Lektorskiego Powitania.pl. Ponad ' + reviews.length + ' opinii od firm i agencji z całej Polski o jakości nagrań, tempie realizacji i współpracy.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Opinie', url: '/opinie/' }
@@ -657,7 +657,7 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
 app.get('/o-firmie/', (req, res) => {
   res.render('o-firmie', {
     title: 'O firmie | powitania.pl',
-    description: 'OPTIMUM Paweł Kowalski - studio nagrań lektorskich działające od 2001 roku. 234 lektorów, 30+ języków.',
+    description: 'OPTIMUM Paweł Kowalski - Studio Lektorskie Powitania.pl, działające od 2001 r. Ponad 200 lektorów, 30+ języków, realizacje dla agencji, TV i marek premium.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'O firmie', url: '/o-firmie/' }
@@ -855,7 +855,7 @@ app.get('/en/pricing/', (req, res) => {
 app.get('/en/contact/', (req, res) => {
   res.render('en/kontakt', {
     title: 'Contact | Powitania.pl',
-    description: 'Get in touch with our voiceover studio. We respond within 2 hours.'
+    description: 'Contact Powitania.pl Voiceover Studio. Professional voice recordings in 24-48h, 200+ voice artists, 30+ languages. We reply within 2 hours on weekdays.'
   });
 });
 
