@@ -416,7 +416,7 @@ app.get('/', (req, res) => {
 
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Bank głosów lektorskich | Baza lektorów | Głosy lektorskie | Powitania.pl',
+    title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
     description: 'Bank głosów lektorskich Powitania.pl - 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
     voices: loadVoices()
   });
@@ -743,7 +743,7 @@ app.get('/aktualnosci-pl/:slug/', (req, res) => {
   }
   const post = posts[idx];
   res.render('blog-post', {
-    title: post.title + ' | powitania.pl',
+    title: (post.seoTitle || post.title) + ' | powitania.pl',
     description: post.excerpt,
     noindex: !!post.noindex,
     breadcrumbs: [
@@ -1047,7 +1047,7 @@ app.get('/en/news/:slug/', (req, res) => {
   }
   const post = posts[idx];
   res.render('en/blog-post', {
-    title: (post.titleEn || post.title) + ' | Powitania.pl',
+    title: (post.seoTitleEn || post.titleEn || post.title) + ' | Powitania.pl',
     description: post.excerptEn || post.excerpt,
     noindex: !post.contentEn || !!post.noindex,
     breadcrumbs: [
