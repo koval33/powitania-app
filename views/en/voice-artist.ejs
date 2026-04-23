@@ -501,6 +501,94 @@
     </div>
     <% } %>
 
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3 max-w-3xl">
+
+        <%
+          var displayNameEn = lektor.name.replace(/\s+\d+$/, '').trim();
+          var _faqTurnaroundEn = lektor.turnaround || (lektor.hidePrice ? '4 business days' : null);
+          // PL → EN maps for languages and applications (shared with schema below)
+          var _faqLangMap = {
+            'polski': 'Polish', 'angielski': 'English', 'niemiecki': 'German', 'hiszpański': 'Spanish',
+            'francuski': 'French', 'włoski': 'Italian', 'rosyjski': 'Russian', 'ukraiński': 'Ukrainian',
+            'czeski': 'Czech', 'słowacki': 'Slovak', 'portugalski': 'Portuguese', 'arabski': 'Arabic',
+            'chiński': 'Chinese', 'japoński': 'Japanese', 'koreański': 'Korean', 'hindi': 'Hindi',
+            'turecki': 'Turkish', 'fiński': 'Finnish', 'norweski': 'Norwegian', 'duński': 'Danish',
+            'szwedzki': 'Swedish', 'islandzki': 'Icelandic', 'estoński': 'Estonian', 'litewski': 'Lithuanian',
+            'łotewski': 'Latvian', 'węgierski': 'Hungarian', 'bułgarski': 'Bulgarian', 'słoweński': 'Slovenian',
+            'holenderski': 'Dutch', 'flamandzki': 'Flemish', 'tajski': 'Thai', 'hebrajski': 'Hebrew',
+            'rumuński': 'Romanian', 'grecki': 'Greek', 'wietnamski': 'Vietnamese'
+          };
+          var _faqAppMap = {
+            'Reklama': 'commercials', 'Narracja do filmu': 'film narration', 'Audiobook': 'audiobooks',
+            'Dubbing': 'dubbing', 'Powitanie tel.': 'phone announcements / IVR', 'Dokument': 'documentaries',
+            'Bajka': 'children\u2019s stories', 'E-learning': 'e-learning', 'Podcast': 'podcasts',
+            'Komentarz': 'voice-over commentary', 'Animacja': 'animation', 'Gra komputerowa': 'video games'
+          };
+          function _faqTranslateLangs(arr) {
+            return (arr || []).map(function(l) { return _faqLangMap[l] || l; }).join(', ');
+          }
+          function _faqTranslateApps(arr) {
+            return (arr || []).map(function(a) { return _faqAppMap[a] || a.toLowerCase(); }).join(', ');
+          }
+          var _faqNativeLang = lektor.native
+            ? (lektor.nativeLanguage ? (_faqLangMap[lektor.nativeLanguage.toLowerCase()] || lektor.nativeLanguage) : _faqTranslateLangs((lektor.languages || []).slice(0, 1)))
+            : 'Polish';
+        %>
+
+        <% if (_faqTurnaroundEn) { %>
+        <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+            <span>How quickly will <%= displayNameEn %> deliver the recording?</span>
+            <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed">Standard turnaround is <strong><%= _faqTurnaroundEn %></strong>. Short advertising formats (up to 30 seconds) are often ready the same day. Longer projects are quoted individually with a timeline agreed with the client.</div>
+        </details>
+        <% } %>
+
+        <% if (!lektor.hidePrice) { %>
+        <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+            <span>How do I order a voice-over recording?</span>
+            <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed">You can get an instant quote and place an order using the form above. If you have any questions, email us at <a href="mailto:biuro@powitania.pl" class="text-accent hover:underline">biuro@powitania.pl</a> or call <a href="tel:+48605491069" class="text-accent hover:underline">+48 605 491 069</a>.</div>
+        </details>
+
+        <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+            <span>Is a free sample available?</span>
+            <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed">On request we deliver a free, dedicated voice sample based on your script. Ready-made audio samples are also available on this profile for you to listen to right away.</div>
+        </details>
+        <% } %>
+
+        <% if (lektor.languages && lektor.languages.length > 0) { %>
+        <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+            <span>Which languages does <%= displayNameEn %> record in?</span>
+            <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed"><strong><%= displayNameEn %></strong> records in <strong><%= _faqTranslateLangs(lektor.languages) %></strong>. Native language: <strong><%= _faqNativeLang %></strong>.</div>
+        </details>
+        <% } %>
+
+        <% if (lektor.applications && lektor.applications.length > 0) { %>
+        <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+            <span>What does <%= displayNameEn %> specialise in?</span>
+            <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-gray-600 leading-relaxed"><strong><%= displayNameEn %></strong> specialises in: <strong><%= _faqTranslateApps(lektor.applications) %></strong>. Details and audio samples are available above.</div>
+        </details>
+        <% } %>
+
+      </div>
+    </div>
+
     <!-- CENNIK usunięty - ceny pod zdjęciem i w formularzu wyceny -->
     <% if (false && !lektor.hidePrice && lektor.prices) { %>
     <div class="mt-12" id="lektor-cennik-section">
@@ -2491,10 +2579,56 @@ if (_offersEn.length > 0) {
     }
   };
 }
+
+// FAQ schema EN — lustro PL, ale z angielskim tekstem (audyt SEO 23.04.2026, thin content)
+var _faqItemsEn = [];
+var _faqDisplayNameEn = lektor.name.replace(/\s+\d+$/, '').trim();
+var _faqTurnaroundSchemaEn = lektor.turnaround || (lektor.hidePrice ? '4 business days' : null);
+// Lokalne mapy (duplikat tych w UI — schema budowany w osobnym scope EJS)
+var _faqLangMapEn = {
+  'polski': 'Polish', 'angielski': 'English', 'niemiecki': 'German', 'hiszpański': 'Spanish',
+  'francuski': 'French', 'włoski': 'Italian', 'rosyjski': 'Russian', 'ukraiński': 'Ukrainian',
+  'czeski': 'Czech', 'słowacki': 'Slovak', 'portugalski': 'Portuguese', 'arabski': 'Arabic',
+  'chiński': 'Chinese', 'japoński': 'Japanese', 'koreański': 'Korean', 'hindi': 'Hindi',
+  'turecki': 'Turkish', 'fiński': 'Finnish', 'norweski': 'Norwegian', 'duński': 'Danish',
+  'szwedzki': 'Swedish', 'islandzki': 'Icelandic', 'estoński': 'Estonian', 'litewski': 'Lithuanian',
+  'łotewski': 'Latvian', 'węgierski': 'Hungarian', 'bułgarski': 'Bulgarian', 'słoweński': 'Slovenian',
+  'holenderski': 'Dutch', 'flamandzki': 'Flemish', 'tajski': 'Thai', 'hebrajski': 'Hebrew',
+  'rumuński': 'Romanian', 'grecki': 'Greek', 'wietnamski': 'Vietnamese'
+};
+var _faqAppMapEn = {
+  'Reklama': 'commercials', 'Narracja do filmu': 'film narration', 'Audiobook': 'audiobooks',
+  'Dubbing': 'dubbing', 'Powitanie tel.': 'phone announcements / IVR', 'Dokument': 'documentaries',
+  'Bajka': 'children\u2019s stories', 'E-learning': 'e-learning', 'Podcast': 'podcasts',
+  'Komentarz': 'voice-over commentary', 'Animacja': 'animation', 'Gra komputerowa': 'video games'
+};
+var _faqLangsJoinedEn = (lektor.languages || []).map(function(l) { return _faqLangMapEn[l] || l; }).join(', ');
+var _faqAppsJoinedEn = (lektor.applications || []).map(function(a) { return _faqAppMapEn[a] || a.toLowerCase(); }).join(', ');
+var _faqNativeLangEn = lektor.native
+  ? (lektor.nativeLanguage ? (_faqLangMapEn[lektor.nativeLanguage.toLowerCase()] || lektor.nativeLanguage) : _faqLangsJoinedEn.split(',')[0].trim())
+  : 'Polish';
+
+if (_faqTurnaroundSchemaEn) {
+  _faqItemsEn.push({ "@type": "Question", "name": "How quickly will " + _faqDisplayNameEn + " deliver the recording?", "acceptedAnswer": { "@type": "Answer", "text": "Standard turnaround is " + _faqTurnaroundSchemaEn + ". Short advertising formats (up to 30 seconds) are often ready the same day. Longer projects are quoted individually with a timeline agreed with the client." } });
+}
+if (!lektor.hidePrice) {
+  _faqItemsEn.push({ "@type": "Question", "name": "How do I order a voice-over recording?", "acceptedAnswer": { "@type": "Answer", "text": "You can get an instant quote and place an order using the form on this page. If you have any questions, email biuro@powitania.pl or call +48 605 491 069." } });
+  _faqItemsEn.push({ "@type": "Question", "name": "Is a free sample available?", "acceptedAnswer": { "@type": "Answer", "text": "On request we deliver a free, dedicated voice sample based on your script. Ready-made audio samples are also available on this profile." } });
+}
+if (lektor.languages && lektor.languages.length > 0) {
+  _faqItemsEn.push({ "@type": "Question", "name": "Which languages does " + _faqDisplayNameEn + " record in?", "acceptedAnswer": { "@type": "Answer", "text": _faqDisplayNameEn + " records in " + _faqLangsJoinedEn + ". Native language: " + _faqNativeLangEn + "." } });
+}
+if (lektor.applications && lektor.applications.length > 0) {
+  _faqItemsEn.push({ "@type": "Question", "name": "What does " + _faqDisplayNameEn + " specialise in?", "acceptedAnswer": { "@type": "Answer", "text": _faqDisplayNameEn + " specialises in: " + _faqAppsJoinedEn + ". Details and audio samples are available above." } });
+}
+var _faqSchemaEn = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": _faqItemsEn };
 %>
 <script type="application/ld+json"><%- JSON.stringify(_personSchemaEn) %></script>
 <% if (_productSchemaEn) { %>
 <script type="application/ld+json"><%- JSON.stringify(_productSchemaEn) %></script>
+<% } %>
+<% if (_faqItemsEn.length > 0) { %>
+<script type="application/ld+json"><%- JSON.stringify(_faqSchemaEn) %></script>
 <% } %>
 
 <%- include('../partials/foot-en') %>
