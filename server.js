@@ -478,8 +478,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
 
 app.get('/cennik/', (req, res) => {
   res.render('cennik', {
-    title: 'Lektor | Cena | Nagrania lektorskie cennik | Powitania.pl',
-    description: 'Profesjonalne nagrania lektorskie. Poznaj cennik! Rozbudowana baza, najlepsi lektorzy. Doświadczenie i szybka realizacja. Zapraszamy do zapoznania się z ofertą.'
+    title: 'Cennik nagrań lektorskich od 300 zł, 24-72h | Powitania.pl',
+    description: 'Cennik nagrań lektorskich: reklama od 300 zł, narracja od 340 zł/A4, IVR od 380 zł. Realizacja 24-72h, ponad 200 lektorów. Bezpłatna próbka na życzenie.'
   });
 });
 
