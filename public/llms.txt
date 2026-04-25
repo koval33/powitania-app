@@ -28,7 +28,8 @@
 - [Bank głosów](https://www.powitania.pl/bank-glosow/): Pełna baza 232 lektorów z próbkami audio - możliwość filtrowania po języku, płci, stylu głosu
 - [Opinie klientów](https://www.powitania.pl/opinie/): 147 zweryfikowanych opinii od klientów
 - [FAQ](https://www.powitania.pl/faq-pl/): Najczęściej zadawane pytania o nagrania lektorskie
-- [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (60 artykułów)
+- [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (62 artykuły)
+- [Ile kosztuje nagranie lektorskie? Cennik 2026](https://www.powitania.pl/aktualnosci-pl/ile-kosztuje-nagranie-lektorskie/): Szczegółowy artykuł o cenach nagrań lektorskich w 2026 - stawki dla IVR (od 380 zł), spotów reklamowych (od 300 zł), narracji do filmu, audioprzewodników. Wyjaśnienie pojęcia "pole eksploatacji", grup cenowych lektorów, dopłaty za tryb ekspresowy i lektorów native
 - [O firmie](https://www.powitania.pl/o-firmie/): Historia i informacje o studiu
 
 ## English Version

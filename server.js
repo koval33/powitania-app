@@ -743,8 +743,11 @@ app.get('/aktualnosci-pl/:slug/', (req, res) => {
   }
   const post = posts[idx];
   res.render('blog-post', {
-    title: (post.seoTitle || post.title) + ' | powitania.pl',
-    description: post.excerpt,
+    // metaTitle - pełny override (bez sufiksu), używaj gdy artykuł wymaga ścisłej
+    // kontroli SEO title; w przeciwnym razie standardowo: seoTitle/title + suffix
+    title: post.metaTitle || ((post.seoTitle || post.title) + ' | powitania.pl'),
+    // metaDescription - SEO override; jeśli brak, używamy excerpt
+    description: post.metaDescription || post.excerpt,
     noindex: !!post.noindex,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
