@@ -1057,8 +1057,9 @@ app.get('/en/news/:slug/', (req, res) => {
   }
   const post = posts[idx];
   res.render('en/blog-post', {
-    title: (post.seoTitleEn || post.titleEn) + ' | Powitania.pl',
-    description: post.excerptEn || post.excerpt,
+    // metaTitleEn - pełny override SEO title (bez auto-suffix); analogicznie do PL
+    title: post.metaTitleEn || ((post.seoTitleEn || post.titleEn) + ' | Powitania.pl'),
+    description: post.metaDescriptionEn || post.excerptEn || post.excerpt,
     noindex: !!post.noindex,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
