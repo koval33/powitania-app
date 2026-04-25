@@ -999,8 +999,15 @@ app.get('/en/express-recording/', (req, res) => {
 });
 
 // EN - News / Blog
+// W EN listach i routes pokazujemy WYŁĄCZNIE posty z pełnym tłumaczeniem
+// (titleEn + contentEn) - posty PL-only nie mają sensu na EN i powodowały
+// fallback do polskiego tytułu na liście oraz pustkę po kliknięciu.
+function loadEnBlogPosts() {
+  return loadBlogPosts().filter(p => p.titleEn && p.contentEn);
+}
+
 app.get('/en/news/', (req, res) => {
-  const posts = loadBlogPosts();
+  const posts = loadEnBlogPosts();
   const perPage = 10;
   const currentPage = 1;
   const totalPages = Math.ceil(posts.length / perPage);
@@ -1019,7 +1026,7 @@ app.get('/en/news/', (req, res) => {
 });
 
 app.get('/en/news/page/:page/', (req, res) => {
-  const posts = loadBlogPosts();
+  const posts = loadEnBlogPosts();
   const perPage = 10;
   const currentPage = parseInt(req.params.page) || 1;
   if (currentPage < 1) return res.redirect('/en/news/');
@@ -1040,7 +1047,7 @@ app.get('/en/news/page/:page/', (req, res) => {
 });
 
 app.get('/en/news/:slug/', (req, res) => {
-  const posts = loadBlogPosts();
+  const posts = loadEnBlogPosts();
   const idx = posts.findIndex(p => p.slug === req.params.slug);
   if (idx === -1) {
     return res.status(404).render('404', {
@@ -1050,13 +1057,13 @@ app.get('/en/news/:slug/', (req, res) => {
   }
   const post = posts[idx];
   res.render('en/blog-post', {
-    title: (post.seoTitleEn || post.titleEn || post.title) + ' | Powitania.pl',
+    title: (post.seoTitleEn || post.titleEn) + ' | Powitania.pl',
     description: post.excerptEn || post.excerpt,
-    noindex: !post.contentEn || !!post.noindex,
+    noindex: !!post.noindex,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'News', url: '/en/news/' },
-      { name: post.titleEn || post.title, url: '/en/news/' + post.slug + '/' }
+      { name: post.titleEn, url: '/en/news/' + post.slug + '/' }
     ],
     post,
     prevPost: idx > 0 ? posts[idx - 1] : null,
