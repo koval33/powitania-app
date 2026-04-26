@@ -75,4 +75,24 @@
 }
 </script>
 
+<% if (post.faqEn && post.faqEn.length > 0) { %>
+<!-- JSON-LD: FAQPage (extractable Q&A for AI/LLM + Google rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [<% post.faqEn.forEach(function(item, idx) { %>
+    {
+      "@type": "Question",
+      "name": <%- JSON.stringify(item.q) %>,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": <%- JSON.stringify(item.a) %>
+      }
+    }<%= idx < post.faqEn.length - 1 ? ',' : '' %><% }); %>
+  ]
+}
+</script>
+<% } %>
+
 <%- include('../partials/foot-en') %>
