@@ -80,7 +80,7 @@
 
     <div class="grid md:grid-cols-3 gap-6">
       <% posts.forEach(function(post) { %>
-      <a href="/en/news/<%= post.slug %>/" class="group bg-white rounded-xl border border-gray-200 hover:border-accent overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+      <a href="/en/news/<%= post.slugEn || post.slug %>/" class="group bg-white rounded-xl border border-gray-200 hover:border-accent overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-6">
           <div class="text-xs text-gray-500 mb-3"><%= post.date %></div>
           <h3 class="font-semibold mb-2 text-gray-900 group-hover:text-accent transition-colors line-clamp-2"><%= post.titleEn || post.title %></h3>

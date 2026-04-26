@@ -28,10 +28,10 @@
       <a href="/en/news/" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">&larr; All news</a>
       <div class="flex gap-3">
         <% if (prevPost) { %>
-          <a href="/en/news/<%= prevPost.slug %>/" class="text-gray-500 hover:text-gray-900 transition-colors text-sm" title="<%= prevPost.titleEn || prevPost.title %>">&larr; Previous</a>
+          <a href="/en/news/<%= prevPost.slugEn || prevPost.slug %>/" class="text-gray-500 hover:text-gray-900 transition-colors text-sm" title="<%= prevPost.titleEn || prevPost.title %>">&larr; Previous</a>
         <% } %>
         <% if (nextPost) { %>
-          <a href="/en/news/<%= nextPost.slug %>/" class="text-gray-500 hover:text-gray-900 transition-colors text-sm" title="<%= nextPost.titleEn || nextPost.title %>">Next &rarr;</a>
+          <a href="/en/news/<%= nextPost.slugEn || nextPost.slug %>/" class="text-gray-500 hover:text-gray-900 transition-colors text-sm" title="<%= nextPost.titleEn || nextPost.title %>">Next &rarr;</a>
         <% } %>
       </div>
     </div>

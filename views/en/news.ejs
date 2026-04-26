@@ -9,7 +9,7 @@
     <!-- Post list -->
     <div class="space-y-6">
       <% posts.forEach(function(post) { %>
-      <a href="/en/news/<%= post.slug %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-6 hover:border-accent/30 transition-all">
+      <a href="/en/news/<%= post.slugEn || post.slug %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-6 hover:border-accent/30 transition-all">
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1 min-w-0">
             <h2 class="text-lg font-bold text-gray-900 group-hover:text-accent transition-colors mb-2"><%= post.titleEn || post.title %></h2>

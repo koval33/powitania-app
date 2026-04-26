@@ -182,14 +182,20 @@ app.use((req, res, next) => {
   var blogPlMatch = path.match(/^\/aktualnosci-pl\/([^/]+)\/$/);
   var blogEnMatch = path.match(/^\/en\/news\/([^/]+)\/$/);
   if (blogPlMatch || blogEnMatch) {
-    var slug = (blogPlMatch || blogEnMatch)[1];
+    var urlSlug = (blogPlMatch || blogEnMatch)[1];
     try {
       var posts = loadBlogPosts();
-      var post = posts.find(function(p) { return p.slug === slug; });
+      var post;
+      if (blogPlMatch) {
+        post = posts.find(function(p) { return p.slug === urlSlug; });
+      } else {
+        // EN URL używa post.slugEn; fallback na p.slug dla legacy linków
+        post = posts.find(function(p) { return (p.slugEn || p.slug) === urlSlug; });
+      }
       if (post) {
-        res.locals.hreflangPL = 'https://www.powitania.pl/aktualnosci-pl/' + slug + '/';
+        res.locals.hreflangPL = 'https://www.powitania.pl/aktualnosci-pl/' + post.slug + '/';
         if (post.titleEn && post.contentEn) {
-          res.locals.hreflangEN = 'https://www.powitania.pl/en/news/' + slug + '/';
+          res.locals.hreflangEN = 'https://www.powitania.pl/en/news/' + (post.slugEn || post.slug) + '/';
         }
       }
     } catch(e) {}
@@ -1048,23 +1054,30 @@ app.get('/en/news/page/:page/', (req, res) => {
 
 app.get('/en/news/:slug/', (req, res) => {
   const posts = loadEnBlogPosts();
-  const idx = posts.findIndex(p => p.slug === req.params.slug);
+  const reqSlug = req.params.slug;
+  // Canonical match: po slugEn (z fallback do slug dla niezmigrowanych)
+  let idx = posts.findIndex(p => (p.slugEn || p.slug) === reqSlug);
   if (idx === -1) {
+    // Może URL używa starego PL sluga? Jeśli tak -> 301 do canonical EN URL
+    const legacyIdx = posts.findIndex(p => p.slug === reqSlug && p.slugEn && p.slugEn !== p.slug);
+    if (legacyIdx !== -1) {
+      return res.redirect(301, '/en/news/' + posts[legacyIdx].slugEn + '/');
+    }
     return res.status(404).render('404', {
       title: 'Article not found | Powitania.pl',
       description: 'The article at this address does not exist.'
     });
   }
   const post = posts[idx];
+  const enSlug = post.slugEn || post.slug;
   res.render('en/blog-post', {
-    // metaTitleEn - pełny override SEO title (bez auto-suffix); analogicznie do PL
     title: post.metaTitleEn || ((post.seoTitleEn || post.titleEn) + ' | Powitania.pl'),
     description: post.metaDescriptionEn || post.excerptEn || post.excerpt,
     noindex: !!post.noindex,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'News', url: '/en/news/' },
-      { name: post.titleEn, url: '/en/news/' + post.slug + '/' }
+      { name: post.titleEn, url: '/en/news/' + enSlug + '/' }
     ],
     post,
     prevPost: idx > 0 ? posts[idx - 1] : null,
@@ -1232,9 +1245,10 @@ app.get('/sitemap.xml', (req, res) => {
     // Pomijamy posty z noindex - sitemap + noindex to sprzeczny sygnał dla Google
     if (p.noindex) return;
     xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
-    // EN blog posts (only those with full English translation)
+    // EN blog posts (only those with full English translation) - URL używa slugEn (z fallback do slug)
     if (p.titleEn && p.contentEn) {
-      xml += `  <url>\n    <loc>${baseUrl}/en/news/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
+      const enSlug = p.slugEn || p.slug;
+      xml += `  <url>\n    <loc>${baseUrl}/en/news/${enSlug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
     }
   });
 
