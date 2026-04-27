@@ -416,6 +416,9 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Profesjonalne Studio Lektorskie Powitania.pl - od 2001 roku | 234 lektorów',
     description: 'Studio lektorskie Powitania.pl od 2001 roku - 234 lektorów w 30+ językach. Spoty, IVR, wielojęzyczne audioprzewodniki. 11 000+ nagrań: Hyundai, Orange, Play.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' }
+    ],
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -425,6 +428,10 @@ app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
     description: 'Bank głosów lektorskich Powitania.pl - 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Bank głosów', url: '/bank-glosow/' }
+    ],
     voices: loadVoices()
   });
 });
@@ -504,7 +511,11 @@ app.get('/faq-pl/', (req, res) => {
 app.get('/kontakt/', (req, res) => {
   res.render('kontakt', {
     title: 'Kontakt | powitania.pl',
-    description: 'Skontaktuj się ze Studiem Lektorskim Powitania.pl. Nagrania lektorskie w 24-48h, ponad 200 lektorów, 30+ języków. Odpowiadamy w ciągu 2 godzin.'
+    description: 'Skontaktuj się ze Studiem Lektorskim Powitania.pl. Nagrania lektorskie w 24-48h, ponad 200 lektorów, 30+ języków. Odpowiadamy w ciągu 2 godzin.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Kontakt', url: '/kontakt/' }
+    ]
   });
 });
 
