@@ -126,9 +126,10 @@
     {
       "@type": "Review",
       "author": { "@type": "Organization", "name": <%- JSON.stringify(r.company) %> },
+      "itemReviewed": { "@type": "LocalBusiness", "name": "Powitania.pl - OPTIMUM Paweł Kowalski", "url": "https://www.powitania.pl" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1" },
-      "reviewBody": <%- JSON.stringify(r.text) %><% if (r.date) { %>,
-      "datePublished": "<%= r.date %>"<% } %>
+      "reviewBody": <%- JSON.stringify(r.text) %>,
+      "datePublished": "<%= r.date %>"
     }<%= i < Math.min(reviews.length, 10) - 1 ? ',' : '' %>
     <% }); %>
   ]

@@ -49,4 +49,31 @@
   </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://www.powitania.pl/aktualnosci-pl/#blog",
+  "name": "Aktualności Powitania.pl",
+  "description": "Blog branżowy o nagraniach lektorskich, voice-over, dubbingu, IVR i produkcji audio. Aktualności ze studia, nowi lektorzy, case studies klientów.",
+  "url": "https://www.powitania.pl/aktualnosci-pl/",
+  "inLanguage": "pl-PL",
+  "isPartOf": { "@id": "https://www.powitania.pl/#website" },
+  "publisher": { "@id": "https://www.powitania.pl/#organization" },
+  "blogPost": [
+    <% posts.forEach(function(p, i) { %>
+    {
+      "@type": "BlogPosting",
+      "headline": <%- JSON.stringify(p.title) %>,
+      "description": <%- JSON.stringify(p.excerpt) %>,
+      "datePublished": "<%= p.date %>",
+      "url": "https://www.powitania.pl/aktualnosci-pl/<%= p.slug %>/",
+      "author": { "@type": "Organization", "name": "Powitania.pl - OPTIMUM Paweł Kowalski" },
+      "publisher": { "@id": "https://www.powitania.pl/#organization" }
+    }<%= i < posts.length - 1 ? ',' : '' %>
+    <% }); %>
+  ]
+}
+</script>
+
 <%- include('partials/foot') %>

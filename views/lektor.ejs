@@ -2445,6 +2445,7 @@ var KNOWN_BIOS = {
 var _personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.powitania.pl/lektorzy/" + lektor.id + "/#person",
   "name": lektor.name,
   "jobTitle": "Lektor",
   "description": lektor.description || lektor.seoDescription || "",
@@ -2565,6 +2566,16 @@ if (lektor.applications && lektor.applications.length > 0) {
 }
 var _faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": _faqItems };
 %>
+<script type="application/ld+json"><%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://www.powitania.pl/lektorzy/" + lektor.id + "/#profilepage",
+  "url": "https://www.powitania.pl/lektorzy/" + lektor.id + "/",
+  "name": "Profil lektora " + lektor.name,
+  "isPartOf": { "@id": "https://www.powitania.pl/#website" },
+  "about": { "@id": "https://www.powitania.pl/#organization" },
+  "mainEntity": { "@id": "https://www.powitania.pl/lektorzy/" + lektor.id + "/#person" }
+}) %></script>
 <script type="application/ld+json"><%- JSON.stringify(_personSchema) %></script>
 <script type="application/ld+json"><%- JSON.stringify(_serviceSchemaLektor) %></script>
 <% if (_productSchema) { %>
@@ -2572,6 +2583,6 @@ var _faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEn
 <% } %>
 <script type="application/ld+json"><%- JSON.stringify(_faqSchema) %></script>
 <% if (allAudio && allAudio.length > 0) { allAudio.forEach(function(s) { %>
-<script type="application/ld+json"><%- JSON.stringify({ "@context": "https://schema.org", "@type": "AudioObject", "name": s.name || ("Próbka głosowa - " + lektor.name), "contentUrl": s.url, "encodingFormat": "audio/mpeg", "description": "Próbka głosowa lektora " + lektor.name }) %></script>
+<script type="application/ld+json"><%- JSON.stringify({ "@context": "https://schema.org", "@type": "AudioObject", "name": s.name || ("Próbka głosowa - " + lektor.name), "contentUrl": (s.url && s.url.startsWith('http') ? s.url : 'https://www.powitania.pl' + s.url), "encodingFormat": "audio/mpeg", "description": "Próbka głosowa lektora " + lektor.name }) %></script>
 <% }); } %>
 <%- include('partials/foot') %>
