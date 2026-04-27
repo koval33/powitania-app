@@ -89,6 +89,7 @@
   {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
+    "@id": "https://www.powitania.pl/#organization",
     "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
     "url": "https://www.powitania.pl",
     "logo": "https://www.powitania.pl/img/logo-powitania.png",
@@ -158,9 +159,13 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": "https://www.powitania.pl<%= currentPath %>#webpage",
     "name": "<%= typeof title !== 'undefined' ? title : 'powitania.pl' %>",
     "description": "<%= typeof description !== 'undefined' ? description : '' %>",
-    "url": "https://www.powitania.pl<%= currentPath %>"
+    "url": "https://www.powitania.pl<%= currentPath %>",
+    "inLanguage": "pl-PL",
+    "isPartOf": { "@id": "https://www.powitania.pl/#website" },
+    "about": { "@id": "https://www.powitania.pl/#organization" }
   }
   </script>
 
@@ -176,11 +181,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://www.powitania.pl/#website",
     "url": "https://www.powitania.pl",
     "name": "Powitania.pl - Profesjonalne Studio Nagrań Lektorskich",
     "alternateName": "Powitania",
     "inLanguage": "pl-PL",
-    "publisher": { "@type": "Organization", "name": "Powitania.pl - OPTIMUM Paweł Kowalski" },
+    "publisher": { "@id": "https://www.powitania.pl/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
