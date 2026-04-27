@@ -58,6 +58,7 @@ Non-Polish browsers are automatically redirected to the English version.
 - Formularz kontaktowy: [https://www.powitania.pl/kontakt/](https://www.powitania.pl/kontakt/)
 - E-mail: biuro@powitania.pl
 - Telefon: +48 605 491 069
-- Adres: ul. Pozytywistów 4/4, 20-639 Lublin, Polska
+- Adres studia: ul. Fiołkowa 36, 05-532 Solec, Polska
+- Siedziba prawna firmy OPTIMUM: ul. Pozytywistów 4/4, 20-639 Lublin, Polska
 - Godziny pracy: Poniedziałek-Piątek 08:00-18:00
 - NIP: Firma OPTIMUM Paweł Kowalski
