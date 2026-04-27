@@ -156,4 +156,18 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 });
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://www.powitania.pl/en/contact/#contactpage",
+  "url": "https://www.powitania.pl/en/contact/",
+  "name": "Contact - Powitania.pl",
+  "isPartOf": { "@id": "https://www.powitania.pl/#website" },
+  "about": { "@id": "https://www.powitania.pl/#organization" },
+  "mainEntity": { "@id": "https://www.powitania.pl/#organization" },
+  "inLanguage": "en"
+}
+</script>
+
 <%- include('../partials/foot-en') %>
