@@ -896,6 +896,15 @@
         setTimeout(applyFilters, 0);
       }
     }
+    // Sitelinks search box (Google SearchAction): ?search=<query> ustawia filter-search
+    var searchParam = params.get('search') || params.get('q');
+    if (searchParam) {
+      var searchEl = document.getElementById('filter-search');
+      if (searchEl) {
+        searchEl.value = searchParam;
+        setTimeout(applyFilters, 0);
+      }
+    }
   })();
 
   // Kreator context detection + auto-filtering

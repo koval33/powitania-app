@@ -164,6 +164,27 @@
   </script>
   <% } %>
 
+  <!-- JSON-LD: WebSite + SearchAction (sitelinks search box w SERP dla brand queries) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.powitania.pl",
+    "name": "Powitania.pl - Profesjonalne Studio Nagrań Lektorskich",
+    "alternateName": "Powitania",
+    "inLanguage": "pl-PL",
+    "publisher": { "@type": "Organization", "name": "Powitania.pl - OPTIMUM Paweł Kowalski" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.powitania.pl/bank-glosow/?search={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <%/* GTM preconnect removed - GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
