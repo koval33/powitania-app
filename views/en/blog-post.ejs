@@ -54,6 +54,9 @@
 </style>
 
 <!-- JSON-LD: BlogPosting -->
+<%
+var enSlug = (typeof post.slugEn !== 'undefined' && post.slugEn) ? post.slugEn : post.slug;
+%>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,17 +64,16 @@
   "headline": <%- JSON.stringify(post.titleEn || post.title) %>,
   "description": <%- JSON.stringify(post.excerptEn || post.excerpt) %>,
   "datePublished": "<%= post.date %>",
+  "dateModified": "<%= post.date %>",
+  "image": "https://www.powitania.pl/img/og-default.jpg",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.powitania.pl/en/news/<%= enSlug %>/" },
+  "inLanguage": "en",
   "author": {
     "@type": "Organization",
     "name": "Powitania.pl - OPTIMUM Paweł Kowalski"
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Powitania.pl",
-    "url": "https://www.powitania.pl",
-    "logo": { "@type": "ImageObject", "url": "https://www.powitania.pl/img/logo-powitania.png" }
-  },
-  "url": "https://www.powitania.pl/en/news/<%= post.slug %>/"
+  "publisher": { "@id": "https://www.powitania.pl/#organization" },
+  "url": "https://www.powitania.pl/en/news/<%= enSlug %>/"
 }
 </script>
 

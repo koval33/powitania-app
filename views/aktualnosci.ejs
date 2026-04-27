@@ -67,7 +67,11 @@
       "headline": <%- JSON.stringify(p.title) %>,
       "description": <%- JSON.stringify(p.excerpt) %>,
       "datePublished": "<%= p.date %>",
+      "dateModified": "<%= p.date %>",
+      "inLanguage": "pl-PL",
       "url": "https://www.powitania.pl/aktualnosci-pl/<%= p.slug %>/",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.powitania.pl/aktualnosci-pl/<%= p.slug %>/" },
+      "image": "https://www.powitania.pl/img/og-default.jpg",
       "author": { "@type": "Organization", "name": "Powitania.pl - OPTIMUM Paweł Kowalski" },
       "publisher": { "@id": "https://www.powitania.pl/#organization" }
     }<%= i < posts.length - 1 ? ',' : '' %>
