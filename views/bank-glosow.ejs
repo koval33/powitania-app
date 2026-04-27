@@ -1195,4 +1195,43 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
 });
 </script>
 
+<%
+// CollectionPage + ItemList schema - sygnał dla Google że strona reprezentuje
+// encję "bank głosów" (kandydat do Carousel rich result + Knowledge Graph)
+var _bgItems = voices.map(function(v, idx) {
+  return {
+    "@type": "ListItem",
+    "position": idx + 1,
+    "url": "https://www.powitania.pl/lektorzy/" + v.id + "/",
+    "item": {
+      "@type": "Person",
+      "name": v.name,
+      "url": "https://www.powitania.pl/lektorzy/" + v.id + "/",
+      "gender": v.gender === 'm' ? 'Male' : 'Female',
+      "image": v.photo ? "https://www.powitania.pl" + v.photo : undefined
+    }
+  };
+});
+var _bgSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Bank głosów - 234 profesjonalnych lektorów",
+  "description": "Pełna baza lektorów Powitania.pl - 234 głosów w 30+ językach. Filtruj po płci, języku, stylu, sprawdź próbki audio i zamów nagranie.",
+  "url": "https://www.powitania.pl/bank-glosow/",
+  "isPartOf": { "@type": "WebSite", "url": "https://www.powitania.pl" },
+  "about": {
+    "@type": "Service",
+    "name": "Profesjonalne nagrania lektorskie",
+    "provider": { "@type": "Organization", "name": "Powitania.pl - OPTIMUM Paweł Kowalski" }
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Bank głosów - lista lektorów",
+    "numberOfItems": voices.length,
+    "itemListElement": _bgItems
+  }
+};
+%>
+<script type="application/ld+json"><%- JSON.stringify(_bgSchema) %></script>
+
 <%- include('partials/foot') %>
