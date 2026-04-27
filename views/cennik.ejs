@@ -45,8 +45,12 @@
               <td class="px-3 md:px-6 py-3 text-right text-accent font-semibold whitespace-nowrap text-sm">od 750 zł</td>
             </tr>
             <tr class="hover:bg-gray-50 transition-colors">
-              <td class="px-3 md:px-6 py-3 text-gray-700 text-sm">Reklama ogólnopolska (radio / TV)</td>
+              <td class="px-3 md:px-6 py-3 text-gray-700 text-sm">Reklama ogólnopolska (radio)</td>
               <td class="px-3 md:px-6 py-3 text-right text-accent font-semibold whitespace-nowrap text-sm">od 900 zł</td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-3 md:px-6 py-3 text-gray-700 text-sm">Reklama ogólnopolska (TV)</td>
+              <td class="px-3 md:px-6 py-3 text-right text-accent font-semibold whitespace-nowrap text-sm">od 2200 zł</td>
             </tr>
             <tr class="hover:bg-gray-50 transition-colors">
               <td class="px-3 md:px-6 py-3 text-gray-700 text-sm">Kampania internetowa do 2 minut</td>
@@ -315,10 +319,11 @@ var _cennikServiceSchema = {
         "@type": "OfferCatalog",
         "name": "Kampanie internetowe i reklama",
         "itemListElement": [
-          { "@type": "Offer", "name": "Reklama lokalna (radio, galerie, internet)", "price": "300", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Reklama lokalna (radio, galeria, mobile)", "price": "300", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
           { "@type": "Offer", "name": "Kampania internetowa do 1 minuty", "price": "750", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
-          { "@type": "Offer", "name": "Reklama radio ogólnopolskie", "price": "900", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
-          { "@type": "Offer", "name": "Reklama TV ogólnopolska", "price": "950", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
+          { "@type": "Offer", "name": "Reklama ogólnopolska (radio)", "price": "900", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Kampania internetowa do 2 minut", "price": "950", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Reklama ogólnopolska (TV)", "price": "2200", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
         ]
       },
       {
@@ -374,10 +379,10 @@ var _cennikServiceSchema = {
   "offers": {
     "@type": "AggregateOffer",
     "lowPrice": "300",
-    "highPrice": "950",
+    "highPrice": "2200",
     "priceCurrency": "PLN",
-    "offerCount": "12",
-    "description": "Minimum dla pełnego projektu nagrania (reklama lokalna). Pozycje per-strona (audiobook, narracja filmowa) i dodatki mają niezależne ceny jednostkowe widoczne w katalogu."
+    "offerCount": "13",
+    "description": "Minimum dla pełnego projektu nagrania (reklama lokalna 300 zł). Maksimum: spot TV ogólnopolska 2200 zł. Pozycje per-strona (audiobook, narracja filmowa) i dodatki mają niezależne ceny jednostkowe widoczne w katalogu."
   }
 };
 %>
