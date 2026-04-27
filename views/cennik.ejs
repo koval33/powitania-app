@@ -325,8 +325,36 @@ var _cennikServiceSchema = {
         "@type": "OfferCatalog",
         "name": "Multimedia i narracja do filmów",
         "itemListElement": [
-          { "@type": "Offer", "name": "Audiobook (za stronę 1800 znaków)", "price": "70", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
-          { "@type": "Offer", "name": "Narracja filmowa (za stronę 1800 znaków)", "price": "340", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          {
+            "@type": "Offer",
+            "name": "Audiobook",
+            "url": "https://www.powitania.pl/cennik/",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "70",
+              "priceCurrency": "PLN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": "1",
+                "unitText": "strona A4 (1800 znaków)"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Narracja filmowa",
+            "url": "https://www.powitania.pl/cennik/",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "340",
+              "priceCurrency": "PLN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": "1",
+                "unitText": "strona A4 (1800 znaków)"
+              }
+            }
+          },
           { "@type": "Offer", "name": "Film korporacyjny / e-learning (do 5 minut)", "price": "450", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
           { "@type": "Offer", "name": "Film instruktażowy (do 5 minut)", "price": "550", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
         ]
@@ -345,10 +373,11 @@ var _cennikServiceSchema = {
   },
   "offers": {
     "@type": "AggregateOffer",
-    "lowPrice": "70",
+    "lowPrice": "300",
     "highPrice": "950",
     "priceCurrency": "PLN",
-    "offerCount": "12"
+    "offerCount": "12",
+    "description": "Minimum dla pełnego projektu nagrania (reklama lokalna). Pozycje per-strona (audiobook, narracja filmowa) i dodatki mają niezależne ceny jednostkowe widoczne w katalogu."
   }
 };
 %>
