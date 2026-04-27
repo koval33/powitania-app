@@ -265,4 +265,30 @@
 })();
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.powitania.pl/nagranie-ekspresowe/#service",
+  "name": "Nagranie ekspresowe - realizacja w dniu zamówienia",
+  "serviceType": "Express voiceover recording (same-day delivery)",
+  "description": "Tryb ekspresowy realizacji nagrania - dostępny dla zamówień złożonych do godziny 14:00. Plik audio wysyłamy klientowi do godziny 18:00 tego samego dnia roboczego. Wiąże się z dopłatą +50% do stawki podstawowej.",
+  "provider": { "@id": "https://www.powitania.pl/#organization" },
+  "areaServed": { "@type": "Country", "name": "Polska" },
+  "url": "https://www.powitania.pl/nagranie-ekspresowe/",
+  "offers": {
+    "@type": "Offer",
+    "name": "Tryb ekspresowy (dopłata)",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "description": "+50% do stawki podstawowej (np. reklama lokalna 300 zł netto + 150 zł ekspres = 450 zł netto)",
+      "priceCurrency": "PLN"
+    },
+    "availability": "https://schema.org/LimitedAvailability",
+    "availabilityEnds": "T14:00:00",
+    "url": "https://www.powitania.pl/cennik/"
+  }
+}
+</script>
+
 <%- include('partials/foot') %>

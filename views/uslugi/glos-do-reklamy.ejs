@@ -131,4 +131,33 @@
   </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/#service",
+  "name": "Głos do reklamy - profesjonalny lektor reklamowy",
+  "serviceType": "Voiceover for advertising",
+  "description": "Profesjonalny lektor do spotów radiowych, telewizyjnych i internetowych. Stawki od 300 zł netto za reklamę lokalną (12-miesięczna licencja).",
+  "provider": { "@id": "https://www.powitania.pl/#organization" },
+  "areaServed": { "@type": "Country", "name": "Polska" },
+  "url": "https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/",
+  "offers": {
+    "@type": "Offer",
+    "name": "Spot reklamowy - radio lokalne (od)",
+    "price": "300",
+    "priceCurrency": "PLN",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "300",
+      "maxPrice": "950",
+      "priceCurrency": "PLN",
+      "description": "Od 300 zł (radio lokalne) do 950 zł (TV ogólnopolska). Pełen cennik na /cennik/."
+    },
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.powitania.pl/cennik/"
+  }
+}
+</script>
+
 <%- include('../partials/foot') %>
