@@ -245,6 +245,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (typeof gtag === 'function') {
         gtag('consent', 'update', obj);
       }
+      // Microsoft Clarity consent sync - przełącza zbieranie danych
+      // (analytics_storage = granted -> Clarity zbiera; denied -> wstrzymane)
+      if (typeof window.clarity === 'function') {
+        window.clarity('consent', obj.analytics_storage === 'granted');
+      }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
       setConsentCookie(obj);
       window.dataLayer = window.dataLayer || [];

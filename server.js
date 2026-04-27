@@ -129,6 +129,7 @@ app.use((req, res, next) => {
   res.locals.hasNoindexQuery = req.query.express === '1';
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
   res.locals.gtmId = process.env.GTM_ID || '';
+  res.locals.clarityProjectId = process.env.CLARITY_PROJECT_ID || '';
   res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
   res.locals.assetVersion = ASSET_VERSION;
 
