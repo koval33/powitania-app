@@ -388,4 +388,37 @@ var _cennikServiceSchema = {
 %>
 <script type="application/ld+json"><%- JSON.stringify(_cennikServiceSchema) %></script>
 
+<%
+// Product schema - Google rich result type "Produkty/Oferty" w Rich Results
+// (Service jest valid schema.org ale nie kwalifikuje się jako rich result type
+// w Google; Product+AggregateOffer daje SERP snippet "od 300 PLN")
+var _cennikProductSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://www.powitania.pl/cennik/#product",
+  "name": "Profesjonalne nagrania lektorskie",
+  "description": "Pełen cennik nagrań lektorskich: spoty reklamowe (radio, TV, internet), zapowiedzi telefoniczne IVR, narracja filmowa, audiobooki, e-learning. Realizacja 24-48h.",
+  "brand": { "@type": "Brand", "name": "Powitania.pl" },
+  "image": "https://www.powitania.pl/img/og-default.jpg",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "300",
+    "highPrice": "2200",
+    "priceCurrency": "PLN",
+    "offerCount": "13",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@id": "https://www.powitania.pl/#organization" },
+    "url": "https://www.powitania.pl/cennik/"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": String(typeof reviewCount !== 'undefined' ? reviewCount : 147),
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+};
+%>
+<script type="application/ld+json"><%- JSON.stringify(_cennikProductSchema) %></script>
+
 <%- include('partials/foot') %>
