@@ -293,4 +293,65 @@ var _cennikFaqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "
 %>
 <script type="application/ld+json"><%- JSON.stringify(_cennikFaqSchema) %></script>
 
+<%
+// Service + OfferCatalog schema - rich result "from 300 PLN" w SERP
+// + sygnały cenowe dla AI Overviews / Perplexity / ChatGPT
+var _cennikServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Nagrania lektorskie - cennik 2026",
+  "provider": {
+    "@type": "Organization",
+    "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
+    "url": "https://www.powitania.pl"
+  },
+  "areaServed": { "@type": "Country", "name": "Polska" },
+  "url": "https://www.powitania.pl/cennik/",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Cennik nagrań lektorskich",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Kampanie internetowe i reklama",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Reklama lokalna (radio, galerie, internet)", "price": "300", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Kampania internetowa do 1 minuty", "price": "750", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Reklama radio ogólnopolskie", "price": "900", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Reklama TV ogólnopolska", "price": "950", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Multimedia i narracja do filmów",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Audiobook (za stronę 1800 znaków)", "price": "70", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Narracja filmowa (za stronę 1800 znaków)", "price": "340", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Film korporacyjny / e-learning (do 5 minut)", "price": "450", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Film instruktażowy (do 5 minut)", "price": "550", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Powitania i zapowiedzi telefoniczne (IVR)",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Zapowiedź telefoniczna IVR (do 100 słów)", "price": "380", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Zapowiedź telefoniczna rozszerzona (101-200 słów)", "price": "540", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Gwarancja modyfikacji nagrania (12 miesięcy)", "price": "140", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" },
+          { "@type": "Offer", "name": "Melodia w tle (podkład muzyczny)", "price": "120", "priceCurrency": "PLN", "url": "https://www.powitania.pl/cennik/" }
+        ]
+      }
+    ]
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "70",
+    "highPrice": "950",
+    "priceCurrency": "PLN",
+    "offerCount": "12"
+  }
+};
+%>
+<script type="application/ld+json"><%- JSON.stringify(_cennikServiceSchema) %></script>
+
 <%- include('partials/foot') %>
