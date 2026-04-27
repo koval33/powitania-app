@@ -108,11 +108,12 @@
   </div>
 </section>
 
-<!-- Review Schema.org -->
+<!-- Review Schema.org - wskazuje przez @id na globalną Organization z head.ejs -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://www.powitania.pl/#organization",
   "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -125,8 +126,9 @@
     <% reviews.slice(0, 10).forEach(function(r, i) { %>
     {
       "@type": "Review",
+      "name": <%- JSON.stringify("Opinia firmy " + r.company + " o usługach Powitania.pl") %>,
       "author": { "@type": "Organization", "name": <%- JSON.stringify(r.company) %> },
-      "itemReviewed": { "@type": "LocalBusiness", "name": "Powitania.pl - OPTIMUM Paweł Kowalski", "url": "https://www.powitania.pl" },
+      "itemReviewed": { "@id": "https://www.powitania.pl/#organization" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1" },
       "reviewBody": <%- JSON.stringify(r.text) %>,
       "datePublished": "<%= r.date %>"
