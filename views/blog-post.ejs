@@ -5,6 +5,9 @@
 
     <!-- Header -->
     <header class="mb-10">
+      <% if (post.image) { %>
+      <img src="<%= post.image %>" alt="<%= post.title %>" class="w-32 h-32 rounded-full object-cover border-2 border-gray-200 mb-6" loading="lazy">
+      <% } %>
       <time class="text-accent text-sm font-semibold" datetime="<%= post.date %>">
         <%= new Date(post.date).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }) %>
       </time>

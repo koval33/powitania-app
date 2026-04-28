@@ -10,15 +10,18 @@
     <div class="space-y-6">
       <% posts.forEach(function(post) { %>
       <a href="/en/news/<%= post.slugEn || post.slug %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-6 hover:border-accent/30 transition-all">
-        <div class="flex items-start justify-between gap-4">
+        <div class="flex items-start gap-4">
+          <% if (post.image) { %>
+          <img src="<%= post.image %>" alt="<%= post.titleEn || post.title %>" class="w-20 h-20 rounded-full object-cover border border-gray-200 flex-shrink-0" loading="lazy">
+          <% } %>
           <div class="flex-1 min-w-0">
-            <h2 class="text-lg font-bold text-gray-900 group-hover:text-accent transition-colors mb-2"><%= post.titleEn || post.title %></h2>
+            <div class="flex items-start justify-between gap-4">
+              <h2 class="text-lg font-bold text-gray-900 group-hover:text-accent transition-colors mb-2"><%= post.titleEn || post.title %></h2>
+              <time class="text-xs text-gray-600 flex-shrink-0" datetime="<%= post.date %>">
+                <%= new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+              </time>
+            </div>
             <p class="text-gray-500 text-sm leading-relaxed"><%= post.excerptEn || post.excerpt %></p>
-          </div>
-          <div class="flex-shrink-0 text-right">
-            <time class="text-xs text-gray-600" datetime="<%= post.date %>">
-              <%= new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %>
-            </time>
           </div>
         </div>
       </a>
