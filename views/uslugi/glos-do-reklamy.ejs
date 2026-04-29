@@ -18,24 +18,32 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <% var flagPL = [
-        {id: 'andrzej-ferenc', desc: 'Głęboki, rozpoznawalny męski głos, kojarzony z setkami reklam telewizyjnych i radiowych.'},
-        {id: 'jacek-brzostynski', desc: 'Charyzmatyczny, autorytatywny głos męski, doskonały do spotów premium i kampanii korporacyjnych.'},
-        {id: 'lukasz-nowicki', desc: 'Wszechstronny głos męski, rozpoznawalny z mediów. Dobrze sprawdza się zarówno w spotach reklamowych, jak i narracji.'},
-        {id: 'przemyslaw-skowron', desc: 'Głęboki, dynamiczny głos męski. Częsty wybór do reklam motoryzacyjnych i kampanii z mocnym przekazem emocjonalnym.'},
-        {id: 'stanislaw-olejniczak', desc: 'Legendarny głos polskiej telewizji i kina, ikoniczny dla wielu pokoleń odbiorców.'},
-        {id: 'janusz', desc: 'Doświadczony lektor reklamowy, sprawdzony w setkach spotów radiowych i telewizyjnych.'}
+        {id: 'andrzej-ferenc', desc: 'Głęboki, rozpoznawalny męski głos, kojarzony z setkami reklam telewizyjnych i radiowych.', sampleUrl: '/audio/samples/Ferenc_1.mp3', sampleLabel: 'Demo lektorskie'},
+        {id: 'jacek-brzostynski', desc: 'Charyzmatyczny, autorytatywny głos męski, doskonały do spotów premium i kampanii korporacyjnych.', sampleUrl: '/audio/samples/Jacek-Brzosty%C5%84ski_spot-Nest-Bank.mp3', sampleLabel: 'Spot reklamowy &mdash; Nest Bank'},
+        {id: 'lukasz-nowicki', desc: 'Wszechstronny głos męski, rozpoznawalny z mediów. Dobrze sprawdza się zarówno w spotach reklamowych, jak i narracji.', sampleUrl: '/audio/samples/Lukasz_Nowicki.mp3', sampleLabel: 'Próbka głosowa'},
+        {id: 'przemyslaw-skowron', desc: 'Głęboki, dynamiczny głos męski. Częsty wybór do reklam motoryzacyjnych i kampanii z mocnym przekazem emocjonalnym.', sampleUrl: '/audio/samples/Skowron_1.mp3', sampleLabel: 'Nagranie lektorskie'},
+        {id: 'stanislaw-olejniczak', desc: 'Legendarny głos polskiej telewizji i kina, ikoniczny dla wielu pokoleń odbiorców.', sampleUrl: '/audio/samples/StanislawOlejniczak_21.mp3', sampleLabel: 'Nagranie lektorskie'},
+        {id: 'janusz', desc: 'Doświadczony lektor reklamowy, sprawdzony w setkach spotów radiowych i telewizyjnych.', sampleUrl: '/audio/samples/Janusz_demo2.mp3', sampleLabel: 'Radiowy spot reklamowy'}
       ]; %>
       <% flagPL.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <div class="flex items-center gap-4 mb-3">
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 mb-3">
             <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
             <div>
               <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
               <p class="text-xs text-gray-500">Lektor reklamowy</p>
             </div>
+          </a>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3"><%= item.desc %></p>
+          <% if (item.sampleUrl) { %>
+          <div class="border-t border-gray-100 pt-3">
+            <p class="text-xs text-gray-500 mb-2"><%- item.sampleLabel %></p>
+            <audio controls preload="none" class="w-full h-9">
+              <source src="<%= item.sampleUrl %>" type="audio/mpeg">
+            </audio>
           </div>
-          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
-        </a>
+          <% } %>
+        </div>
       <% } }); %>
     </div>
   </div>
@@ -49,24 +57,32 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <% var flagNative = [
-        {id: 'bill', desc: 'Angielski (USA / brytyjski) - profesjonalny native speaker do spotów eksportowych.'},
-        {id: 'roy-2', desc: 'Angielski - charakterystyczny męski głos. Profil zawiera realizacje wideo z kampanii reklamowych.'},
-        {id: 'jon', desc: 'Angielski - uniwersalny głos męski, dobry do spotów korporacyjnych i e-learningu.'},
-        {id: 'konstancja', desc: 'Lektor native - barwa głosu i język do uzgodnienia, sprawdź profil.'},
-        {id: 'julien', desc: 'Francuski - lektor native dla rynku frankofońskiego.'},
-        {id: 'carla', desc: 'Lektor native - kobiecy głos do spotów wielojęzycznych, sprawdź profil.'}
+        {id: 'bill', desc: 'Angielski (USA / brytyjski) - profesjonalny native speaker do spotów eksportowych.', sampleUrl: '/audio/samples/BillRatner_CommercialVO.mp3', sampleLabel: 'Commercial voiceover'},
+        {id: 'roy-2', desc: 'Angielski - charakterystyczny męski głos. Profil zawiera realizacje wideo z kampanii reklamowych.', sampleUrl: '/audio/samples/Roy_2_commercials.mp3', sampleLabel: 'Commercials demo'},
+        {id: 'jon', desc: 'Angielski - uniwersalny głos męski, dobry do spotów korporacyjnych i e-learningu.', sampleUrl: '/audio/samples/Jon-Carter-TV-Promo-Demo.mp3', sampleLabel: 'TV promo demo'},
+        {id: 'konstancja', desc: 'Lektor native - barwa głosu i język do uzgodnienia, sprawdź profil.', sampleUrl: '/audio/samples/spot_Konstancja.mp3', sampleLabel: 'Spot reklamowy'},
+        {id: 'julien', desc: 'Francuski - lektor native dla rynku frankofońskiego.', sampleUrl: '/audio/samples/Julien_demo1.mp3', sampleLabel: 'Próbka demo'},
+        {id: 'carla', desc: 'Lektor native - kobiecy głos do spotów wielojęzycznych, sprawdź profil.', sampleUrl: '/audio/samples/Carla_commercial.mp3', sampleLabel: 'Commercial voiceover'}
       ]; %>
       <% flagNative.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <div class="flex items-center gap-4 mb-3">
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 mb-3">
             <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
             <div>
               <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
               <p class="text-xs text-gray-500">Lektor native</p>
             </div>
+          </a>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3"><%= item.desc %></p>
+          <% if (item.sampleUrl) { %>
+          <div class="border-t border-gray-100 pt-3">
+            <p class="text-xs text-gray-500 mb-2"><%- item.sampleLabel %></p>
+            <audio controls preload="none" class="w-full h-9">
+              <source src="<%= item.sampleUrl %>" type="audio/mpeg">
+            </audio>
           </div>
-          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
-        </a>
+          <% } %>
+        </div>
       <% } }); %>
     </div>
 
@@ -283,6 +299,14 @@
       <li class="flex items-center gap-2">
         <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         <strong>Sofitel Grand Sopot</strong>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>Michelin</strong>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>Allegro</strong>
       </li>
     </ul>
 
