@@ -5,8 +5,90 @@
   <div class="max-w-4xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voice for Advertising</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Hire the most recognisable voice artists and create an advertising spot that captures your audience's attention. A professional voice artist and a distinctive voice mean a higher-quality commercial.
+      Hire the most recognisable voice artists and create an advertising spot that captures your audience's attention. A professional voice and a distinctive performance mean a higher-quality commercial.
     </p>
+  </div>
+</section>
+
+<!-- Most popular voice artists for advertising (PL flagship) -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Most popular voice artists for advertising</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">In our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> you'll find the most recognisable voice talents in Polish advertising — voices known from hundreds of TV, radio and cinema spots. Their authority and distinctive timbre build trust from the first seconds of your commercial. The choice for brands that want immediate association with quality and prestige.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% var flagPL = [
+        {id: 'andrzej-ferenc', desc: 'Deep, recognisable male voice known from hundreds of Polish TV and radio commercials.', sampleUrl: '/audio/samples/Ferenc_1.mp3'},
+        {id: 'jacek-brzostynski', desc: 'Charismatic, authoritative male voice — perfect for premium spots and corporate campaigns.', sampleUrl: '/audio/samples/Jacek-Brzosty%C5%84ski_spot-Nest-Bank.mp3'},
+        {id: 'lukasz-nowicki', desc: 'Versatile male voice known from Polish media. Works equally well for spots and narration.', sampleUrl: '/audio/samples/Lukasz_Nowicki.mp3'},
+        {id: 'przemyslaw-skowron', desc: 'Deep, dynamic male voice — frequent choice for automotive ads and emotionally driven campaigns.', sampleUrl: '/audio/samples/Skowron_1.mp3'},
+        {id: 'stanislaw-olejniczak', desc: 'Legendary voice of Polish television and cinema, iconic to multiple generations of viewers.', sampleUrl: '/audio/samples/StanislawOlejniczak_21.mp3'},
+        {id: 'janusz', desc: 'Experienced advertising voice talent, proven in hundreds of radio and TV spots.', sampleUrl: '/audio/samples/Janusz_demo2.mp3'}
+      ]; %>
+      <% flagPL.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <div class="flex items-center gap-4 mb-3">
+            <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 flex-1 min-w-0">
+              <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+              <div class="min-w-0">
+                <p class="font-bold text-gray-900 group-hover:text-accent transition-colors truncate"><%= v.name %></p>
+                <p class="text-xs text-gray-500">Advertising voice</p>
+              </div>
+            </a>
+            <% if (item.sampleUrl) { %>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
+        </div>
+      <% } }); %>
+    </div>
+  </div>
+</section>
+
+<!-- Native voice artists for foreign-language ads -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Native voice artists for foreign-language ads</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">We also produce advertising spots in foreign languages with native voice talent. The right choice for international brands, export campaigns and retail chains with multilingual messaging. Native rates are typically about 2× higher than Polish voices.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% var flagNative = [
+        {id: 'bill', desc: 'English (US / British) — professional native speaker for export-ready spots.', sampleUrl: '/audio/samples/BillRatner_CommercialVO.mp3'},
+        {id: 'roy-2', desc: 'English — distinctive male voice. Profile includes video reels from advertising campaigns.', sampleUrl: '/audio/samples/Roy_2_commercials.mp3'},
+        {id: 'jon', desc: 'English — versatile male voice, great for corporate spots and e-learning.', sampleUrl: '/audio/samples/Jon-Carter-TV-Promo-Demo.mp3'},
+        {id: 'konstancja', desc: 'Native voice talent — language and tone confirmed on profile.', sampleUrl: '/audio/samples/spot_Konstancja.mp3'},
+        {id: 'julien', desc: 'French — native voice for the francophone market.', sampleUrl: '/audio/samples/Julien_demo1.mp3'},
+        {id: 'carla', desc: 'Native voice talent — female voice for multilingual spots, see profile.', sampleUrl: '/audio/samples/Carla_commercial.mp3'}
+      ]; %>
+      <% flagNative.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <div class="flex items-center gap-4 mb-3">
+            <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 flex-1 min-w-0">
+              <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+              <div class="min-w-0">
+                <p class="font-bold text-gray-900 group-hover:text-accent transition-colors truncate"><%= v.name %></p>
+                <p class="text-xs text-gray-500">Native voice</p>
+              </div>
+            </a>
+            <% if (item.sampleUrl) { %>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
+        </div>
+      <% } }); %>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/en/voice-bank/?native=1" class="text-accent hover:text-accent-light font-medium text-sm">Browse all native voice artists &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -18,8 +100,8 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-6">What we offer</h2>
         <div class="space-y-4">
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Radio spots</h3>
@@ -27,17 +109,17 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Television spots</h3>
-              <p class="text-sm text-gray-500">Professional voice artists for TV commercials - from local stations to national reach.</p>
+              <p class="text-sm text-gray-500">Professional voice artists for TV commercials — from local stations to national reach.</p>
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Social media ads</h3>
@@ -45,22 +127,64 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900">Celebrity voices</h3>
-              <p class="text-sm text-gray-500">Recognisable voices from television, radio and cinema. Your ad with a star's voice.</p>
+              <h3 class="font-semibold text-gray-900">Sponsor billboards & retail chains</h3>
+              <p class="text-sm text-gray-500">Short sponsor messages on radio and TV, voiceovers for in-store audio systems.</p>
             </div>
           </div>
         </div>
       </div>
       <div>
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Why us?</h2>
-        <div class="space-y-4 text-gray-500 text-sm leading-relaxed">
-          <p>High-quality microphones and studio equipment guarantee a clean, professional sound for every recording. Our voice artists have many years of experience in the advertising industry.</p>
-          <p>The fee for an advertising spot includes a licence for up to 12 months. We also offer audio-video editing - we'll prepare a ready-to-air material with the voice track laid in.</p>
-          <p>Fast production - standard turnaround in 24-48 hours. In express mode, even on the same day.</p>
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">We help you pick the voice</h3>
+              <p class="text-sm text-gray-500">We advise which voice best fits the specifics of your ad — industry, target group and product character.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Script review</h3>
+              <p class="text-sm text-gray-500">We read the script before stepping into the studio. If we spot language errors or problematic passages, we'll suggest a fix before recording.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Editing &amp; mastering included</h3>
+              <p class="text-sm text-gray-500">No surcharges for post-production — loudness normalisation, cleanup and mastering are part of the recording rate.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">At least 3 takes per spot</h3>
+              <p class="text-sm text-gray-500">We deliver at least three versions with different interpretations — you pick the best one for your edit.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Audio-video editing</h3>
+              <p class="text-sm text-gray-500">For a small extra fee we'll lay the voice track under your video — you get a finished spot ready to air.</p>
+            </div>
+          </div>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
           <a href="/en/#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Prepare your spot script</a>
@@ -71,71 +195,272 @@
   </div>
 </section>
 
-<!-- Popular voices -->
-<section class="py-16" style="background-color:#efe8df">
+<!-- Pricing -->
+<section class="py-16 bg-stone-100/60 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Advertising Voice Artists</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-      <% var recIds = ['jacek-brzostynski', 'maciej-jablonski', 'malgorzata', 'anita']; %>
-      <% recIds.forEach(function(pid) { %>
-        <% var v = voices.find(function(x) { return x.id === pid; }); %>
-        <% if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="text-center group">
-          <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all mb-2" loading="lazy">
-          <div class="text-gray-900 font-semibold text-sm group-hover:text-accent transition-colors"><%= v.name %></div>
-        </a>
-        <% } %>
-      <% }); %>
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Voiceover pricing for advertising</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-8">Indicative net rates per common usage scope. Licence covers 12 months in every case. Rates in PLN (net).</p>
+
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-gray-200">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-100 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Usage scope</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Base rate (net, PLN)</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Licence</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr><td class="px-4 py-3 text-gray-900">Local radio spot</td><td class="px-4 py-3 text-gray-600">from 300 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">National radio spot</td><td class="px-4 py-3 text-gray-600">approx. 1,000 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Local TV spot</td><td class="px-4 py-3 text-gray-600">from 600 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">National TV spot</td><td class="px-4 py-3 text-gray-600">from 2,200 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Social media (organic)</td><td class="px-4 py-3 text-gray-600">from 750 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Sponsor billboard</td><td class="px-4 py-3 text-gray-600">from 1,200 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">In-store / retail chain spot</td><td class="px-4 py-3 text-gray-600">from 850 PLN</td><td class="px-4 py-3 text-gray-600">12 months</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="text-center mt-8">
-      <a href="/en/voice-bank/" class="text-accent hover:text-accent-light font-medium text-sm">Browse all voice artists &rarr;</a>
+
+    <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm text-gray-600">
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <p class="font-semibold text-gray-900 mb-1">Express turnaround</p>
+        <p>Same-day delivery: +50% surcharge on the base rate.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <p class="font-semibold text-gray-900 mb-1">Native voice</p>
+        <p>Native speakers in foreign languages: rates approx. 2× higher than Polish voices.</p>
+      </div>
     </div>
+
+    <p class="text-center text-sm text-gray-500 mt-6">Full <a href="/en/pricing/" class="text-accent hover:underline">pricing page</a></p>
   </div>
 </section>
 
-<!-- SEO content -->
+<!-- Brands -->
 <section class="py-16 border-t border-gray-200">
-  <div class="max-w-6xl mx-auto px-4 text-gray-600 leading-relaxed space-y-10">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Brands that trusted us</h2>
+    <p class="text-gray-600 text-center leading-relaxed mb-8">We've produced advertising spots and voiceover recordings for, among others:</p>
 
-    <div>
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional voice artist for advertising</h2>
-      <p>Choosing the right voice for your advertisement has a huge impact on how effective your message will be. A professional voice artist doesn't just read the script - they give it the right tone and emotion to capture your audience's attention. At our recording studio, we focus on quality, precision and a professional approach to every production. We offer top-tier voiceover recordings that work perfectly in advertising campaigns - television, radio and online.</p>
-    </div>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-gray-700 max-w-2xl mx-auto">
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Hyundai</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Wawel</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Black &amp; Decker</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Auto Hero</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Asseco</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>For Bet</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Sofitel Grand Sopot</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Michelin</strong></li>
+      <li class="flex items-center gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Allegro</strong></li>
+    </ul>
 
-    <div>
-      <h3 class="text-xl font-bold text-gray-900 mb-3">What makes the best voice for TV and radio commercials?</h3>
-      <p>The best voice for a commercial is one that fits the product, the target audience and the ad format. There is no single ideal voice - it all depends on the emotions the recording needs to evoke. In our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> you'll find artists with deep, broadcast-quality tones as well as more neutral, versatile voices. We also offer foreign-language voice artists, allowing you to run advertising campaigns in other languages.</p>
-    </div>
-
-    <div>
-      <h3 class="text-xl font-bold text-gray-900 mb-3">How much does a voiceover recording cost and what affects the price?</h3>
-      <p>Voiceover prices depend on several factors: script length, medium type (radio, TV, online), campaign reach and the licence duration. If you're wondering how much a voice for your ad costs - <a href="/en/contact/" class="text-accent hover:underline">get in touch</a> and we'll prepare a personalised quote. We treat every recording individually. Our studio guarantees fast turnaround and transparent terms.</p>
-    </div>
-
-    <div>
-      <h3 class="text-xl font-bold text-gray-900 mb-3">How does the voice recording process work?</h3>
-      <p>Voiceover production is a creative process that requires experience and an understanding of the client's needs. First, we select a voice from our database together with the client. Then the artist records the script in our professional studio, maintaining the right pace, emotion and style. After recording, the material is edited and cleaned. The file format and audio signal level are normalised according to the requirements of the target broadcaster or platform.</p>
-      <p class="mt-3">To speed up the process and give you real-time influence over the performance, we also offer <a href="/en/remote-sessions/" class="text-accent hover:underline">remote participation in the recording session</a>.</p>
-    </div>
-
-    <div>
-      <h3 class="text-xl font-bold text-gray-900 mb-3">Voice bank - find the ideal voice for your ads</h3>
-      <p>Our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> is a rich database of voice artists - both local and international. It lets you quickly compare available voices and choose the one that best fits your project. Pick a voice that will capture your customers' attention and set your ad apart from the competition.</p>
-    </div>
-
+    <p class="text-center text-sm text-gray-500 mt-8">Full client list available on request after signing an NDA.</p>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="py-16">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold text-gray-900 mb-4">Need an advertising spot?</h2>
-    <p class="text-gray-500 mb-8">Get in touch - we'll prepare a quote and help you choose the right voice.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:+48605491069" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">+48 605 491 069</a>
-      <a href="mailto:biuro@powitania.pl" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors">biuro@powitania.pl</a>
+<!-- Other formats -->
+<section class="py-16 bg-stone-100/60 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Other advertising formats we record</h2>
+    <p class="text-gray-600 text-center leading-relaxed mb-10">Beyond standard radio, TV and social media spots, we also produce:</p>
+
+    <div class="space-y-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Sponsor billboards</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Short sponsor announcements aired before or after commercial blocks on radio and television, presenting the sponsor of an event, sports programme or TV series. The compressed format — a few seconds for the brand name and tagline — demands a voice talent skilled at expression in a very tight window.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">In-store and retail chain spots</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">In-store audio systems, promotional announcements played during shopping. Licence scaled to the number of points of sale — from a single shop to nationwide chains. We also produce informational spots, price promotions and seasonal campaigns.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Internal corporate ads</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Motivational messages, product presentations for sales teams, recordings for trade shows and industry events. We often pair these with audio-video editing so you receive a finished asset ready to embed in a multimedia presentation.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Be at the recording -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Be present at the recording &mdash; fewer takes, faster delivery</h2>
+    <p class="text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto text-center">The classic flow: voice talent records, agency sends files, client listens, sends back notes by email, voice talent records another version. Three takes is typically three days and three invoices &mdash; under the pressure of a campaign deadline. A <a href="/en/remote-sessions/" class="text-accent hover:underline">remote online session</a> compresses this into one hour.</p>
+
+    <ul class="space-y-4 max-w-3xl mx-auto">
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <div class="text-gray-600 leading-relaxed"><strong class="text-gray-900">Real-time direction</strong> &mdash; you hear every take and request changes in pace, intonation or emphasis on the spot, no emails involved.</div>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <div class="text-gray-600 leading-relaxed"><strong class="text-gray-900">Spot finished in one session</strong> &mdash; you approve the final version live, with no follow-up rounds or campaign delays.</div>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <div class="text-gray-600 leading-relaxed"><strong class="text-gray-900">Saves time and money</strong> &mdash; fewer billable hours on both sides. Lower production cost and faster time-to-market.</div>
+      </li>
+    </ul>
+
+    <div class="text-center mt-10">
+      <a href="/en/remote-sessions/" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+        See how remote sessions work
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 bg-stone-100/60 border-t border-gray-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Frequently asked questions</h2>
+    <p class="text-gray-600 text-center mb-10">Answers to the questions that come up most often when commissioning an advertising spot.</p>
+
+    <div class="space-y-3">
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>How much does a voiceover for an ad cost?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Pricing depends mainly on the usage scope (broadcast medium). A local radio spot starts from 300 PLN net, national from approx. 1,000 PLN. Local TV from 600 PLN, national TV from 2,200 PLN. Full pricing in the table above.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Is a radio voice different from a TV voice?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Often the same talent works in both media, but the dynamics differ — radio rewards stronger storytelling, TV calls for synergy with the picture. We'll help match the voice to your specific production.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>What licence applies to an advertising recording?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">12 months from the broadcast date as standard. After that you can renew the licence or commission a fresh recording.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Can I get a same-day express recording?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes — orders placed by 14:00 are delivered by 18:00 the same business day. +50% surcharge on the base rate. Details on <a href="/en/express-recording/" class="text-accent hover:underline">express recording</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Do you record spots in foreign languages?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes. Native voice rates are typically about 2× higher than Polish voices. We work with talent in 30+ languages — see <a href="/en/voice-bank/?native=1" class="text-accent hover:underline">native voice artists</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Do you also produce sponsor billboards and in-store spots?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes — these are frequent assignments. Pricing scales with the broadcast reach. We also handle in-store audio for retail chains nationwide.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Can I attend the recording session remotely?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes — we offer <a href="/en/remote-sessions/" class="text-accent hover:underline">real-time remote direction</a>. You can suggest changes during the session itself.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>How do I pick the right voice for my ad?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Filter our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a> by gender, age, language and tone. We recommend listening to 3-5 samples and comparing against the character of your product. If in doubt, <a href="/en/contact/" class="text-accent hover:underline">contact us</a> and we'll help you choose.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- JSON-LD: Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.powitania.pl/en/voiceover-services/voice-for-advertising/#service",
+  "name": "Voice for Advertising — professional advertising voiceover",
+  "serviceType": "Voiceover for advertising",
+  "description": "Professional voice talent for radio, TV and online advertising spots. Rates from 300 PLN net for local advertising (12-month licence).",
+  "provider": { "@id": "https://www.powitania.pl/#organization" },
+  "areaServed": { "@type": "Country", "name": "Poland" },
+  "url": "https://www.powitania.pl/en/voiceover-services/voice-for-advertising/",
+  "offers": {
+    "@type": "Offer",
+    "name": "Advertising spot — local radio (from)",
+    "price": "300",
+    "priceCurrency": "PLN",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "300",
+      "maxPrice": "2200",
+      "priceCurrency": "PLN",
+      "description": "From 300 PLN (local radio) up to 2,200 PLN (national TV). Full pricing on /en/pricing/."
+    },
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.powitania.pl/en/pricing/"
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/en/voiceover-services/voice-for-advertising/#faq",
+  "mainEntity": [
+    {"@type":"Question","name":"How much does a voiceover for an ad cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing depends mainly on the usage scope (broadcast medium). A local radio spot starts from 300 PLN net, national from approx. 1,000 PLN. Local TV from 600 PLN, national TV from 2,200 PLN."}},
+    {"@type":"Question","name":"Is a radio voice different from a TV voice?","acceptedAnswer":{"@type":"Answer","text":"Often the same talent works in both media, but the dynamics differ - radio rewards stronger storytelling, TV calls for synergy with the picture. We'll help match the voice to your specific production."}},
+    {"@type":"Question","name":"What licence applies to an advertising recording?","acceptedAnswer":{"@type":"Answer","text":"12 months from the broadcast date as standard. After that you can renew the licence or commission a fresh recording."}},
+    {"@type":"Question","name":"Can I get a same-day express recording?","acceptedAnswer":{"@type":"Answer","text":"Yes - orders placed by 14:00 are delivered by 18:00 the same business day. +50% surcharge on the base rate."}},
+    {"@type":"Question","name":"Do you record spots in foreign languages?","acceptedAnswer":{"@type":"Answer","text":"Yes. Native voice rates are typically about 2× higher than Polish voices. We work with talent in 30+ languages."}},
+    {"@type":"Question","name":"Do you also produce sponsor billboards and in-store spots?","acceptedAnswer":{"@type":"Answer","text":"Yes - these are frequent assignments. Pricing scales with the broadcast reach. We also handle in-store audio for retail chains nationwide."}},
+    {"@type":"Question","name":"Can I attend the recording session remotely?","acceptedAnswer":{"@type":"Answer","text":"Yes - we offer real-time remote direction. You can suggest changes during the session itself."}},
+    {"@type":"Question","name":"How do I pick the right voice for my ad?","acceptedAnswer":{"@type":"Answer","text":"Filter our voice bank by gender, age, language and tone. We recommend listening to 3-5 samples and comparing against the character of your product."}}
+  ]
+}
+</script>
+
+<script>
+(function() {
+  var currentAudio = null;
+  var currentBtn = null;
+  function setBtnState(btn, playing) {
+    var play = btn.querySelector('.play-icon');
+    var pause = btn.querySelector('.pause-icon');
+    if (playing) { play.classList.add('hidden'); pause.classList.remove('hidden'); }
+    else { play.classList.remove('hidden'); pause.classList.add('hidden'); }
+  }
+  window.playSample = function(btn, url) {
+    if (currentAudio && currentBtn === btn) {
+      if (currentAudio.paused) { currentAudio.play(); setBtnState(btn, true); }
+      else { currentAudio.pause(); setBtnState(btn, false); }
+      return;
+    }
+    if (currentAudio) { currentAudio.pause(); setBtnState(currentBtn, false); }
+    currentAudio = new Audio(url);
+    currentBtn = btn;
+    currentAudio.play();
+    setBtnState(btn, true);
+    currentAudio.onended = function() { setBtnState(btn, false); currentAudio = null; currentBtn = null; };
+  };
+})();
+</script>
 
 <%- include('../partials/foot-en') %>

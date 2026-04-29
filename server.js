@@ -897,7 +897,7 @@ app.get('/en/voiceover-services/', (req, res) => {
 
 app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
   res.render('en/voice-for-advertising', {
-    title: 'Voice for Advertising | Radio & TV Spots | Powitania.pl',
+    title: 'Voice for Advertising | Radio, TV & social media spots | Powitania.pl',
     description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media - professional voiceover recordings that sell.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
