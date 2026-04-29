@@ -27,22 +27,22 @@
       ]; %>
       <% flagPL.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
         <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 mb-3">
-            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
-            <div>
-              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
-              <p class="text-xs text-gray-500">Lektor reklamowy</p>
-            </div>
-          </a>
-          <p class="text-sm text-gray-600 leading-relaxed mb-3"><%= item.desc %></p>
-          <% if (item.sampleUrl) { %>
-          <div class="border-t border-gray-100 pt-3">
-            <p class="text-xs text-gray-500 mb-2"><%- item.sampleLabel %></p>
-            <audio controls preload="none" class="w-full h-9">
-              <source src="<%= item.sampleUrl %>" type="audio/mpeg">
-            </audio>
+          <div class="flex items-center gap-4 mb-3">
+            <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 flex-1 min-w-0">
+              <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+              <div class="min-w-0">
+                <p class="font-bold text-gray-900 group-hover:text-accent transition-colors truncate"><%= v.name %></p>
+                <p class="text-xs text-gray-500">Lektor reklamowy</p>
+              </div>
+            </a>
+            <% if (item.sampleUrl) { %>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
           </div>
-          <% } %>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
         </div>
       <% } }); %>
     </div>
@@ -66,22 +66,22 @@
       ]; %>
       <% flagNative.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
         <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 mb-3">
-            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
-            <div>
-              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
-              <p class="text-xs text-gray-500">Lektor native</p>
-            </div>
-          </a>
-          <p class="text-sm text-gray-600 leading-relaxed mb-3"><%= item.desc %></p>
-          <% if (item.sampleUrl) { %>
-          <div class="border-t border-gray-100 pt-3">
-            <p class="text-xs text-gray-500 mb-2"><%- item.sampleLabel %></p>
-            <audio controls preload="none" class="w-full h-9">
-              <source src="<%= item.sampleUrl %>" type="audio/mpeg">
-            </audio>
+          <div class="flex items-center gap-4 mb-3">
+            <a href="/lektorzy/<%= v.id %>/" class="group flex items-center gap-4 flex-1 min-w-0">
+              <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+              <div class="min-w-0">
+                <p class="font-bold text-gray-900 group-hover:text-accent transition-colors truncate"><%= v.name %></p>
+                <p class="text-xs text-gray-500">Lektor native</p>
+              </div>
+            </a>
+            <% if (item.sampleUrl) { %>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-accent hover:bg-accent-light rounded-full flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
           </div>
-          <% } %>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
         </div>
       <% } }); %>
     </div>
@@ -546,6 +546,32 @@
     }
   ]
 }
+</script>
+
+<script>
+(function() {
+  var currentAudio = null;
+  var currentBtn = null;
+  function setBtnState(btn, playing) {
+    var play = btn.querySelector('.play-icon');
+    var pause = btn.querySelector('.pause-icon');
+    if (playing) { play.classList.add('hidden'); pause.classList.remove('hidden'); }
+    else { play.classList.remove('hidden'); pause.classList.add('hidden'); }
+  }
+  window.playSample = function(btn, url) {
+    if (currentAudio && currentBtn === btn) {
+      if (currentAudio.paused) { currentAudio.play(); setBtnState(btn, true); }
+      else { currentAudio.pause(); setBtnState(btn, false); }
+      return;
+    }
+    if (currentAudio) { currentAudio.pause(); setBtnState(currentBtn, false); }
+    currentAudio = new Audio(url);
+    currentBtn = btn;
+    currentAudio.play();
+    setBtnState(btn, true);
+    currentAudio.onended = function() { setBtnState(btn, false); currentAudio = null; currentBtn = null; };
+  };
+})();
 </script>
 
 <%- include('../partials/foot') %>
