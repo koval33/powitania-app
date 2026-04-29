@@ -551,7 +551,7 @@ app.get('/nagrania-lektorskie/', (req, res) => {
 // Service subpages
 app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
-    title: 'Głos do reklamy | Lektor do reklamy | Powitania.pl',
+    title: 'Głos do reklamy | Spoty radiowe, TV, social media | Powitania.pl',
     description: 'Przyciągnij uwagę słuchaczy - wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
