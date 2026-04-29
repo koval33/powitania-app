@@ -539,7 +539,7 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie - 234 lektorów, realizacja 48h, od 300 zł | powitania.pl',
+    title: 'Nagrania lektorskie | Lektor do reklamy | Bank głosów lektorskich | Powitania.pl',
     description: 'Profesjonalne studio nagrań lektorskich od 2001 r. 234 lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
