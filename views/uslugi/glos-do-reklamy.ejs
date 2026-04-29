@@ -10,6 +10,70 @@
   </div>
 </section>
 
+<!-- Najczęściej wybierani lektorzy do reklamy (PL flagowi) -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Najczęściej wybierani lektorzy do reklamy</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">W naszym <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> dostępni są lektorzy z najwyższej grupy cenowej - głosy rozpoznawalne z reklam telewizyjnych, radiowych i kinowych. Ich autorytet i charakterystyczna barwa budują zaufanie odbiorcy od pierwszych sekund spotu. To wybór dla marek, które chcą natychmiastowego skojarzenia z jakością i prestiżem.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% var flagPL = [
+        {id: 'andrzej-ferenc', desc: 'Głęboki, rozpoznawalny męski głos, kojarzony z setkami reklam telewizyjnych i radiowych.'},
+        {id: 'jacek-brzostynski', desc: 'Charyzmatyczny, autorytatywny głos męski, doskonały do spotów premium i kampanii korporacyjnych.'},
+        {id: 'lukasz-nowicki', desc: 'Wszechstronny głos męski, rozpoznawalny z mediów. Dobrze sprawdza się zarówno w spotach reklamowych, jak i narracji.'},
+        {id: 'przemyslaw-skowron', desc: 'Głęboki, dynamiczny głos męski. Częsty wybór do reklam motoryzacyjnych i kampanii z mocnym przekazem emocjonalnym.'},
+        {id: 'stanislaw-olejniczak', desc: 'Legendarny głos polskiej telewizji i kina, ikoniczny dla wielu pokoleń odbiorców.'}
+      ]; %>
+      <% flagPL.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
+        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <div class="flex items-center gap-4 mb-3">
+            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+            <div>
+              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
+              <p class="text-xs text-gray-500">Lektor reklamowy</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
+        </a>
+      <% } }); %>
+    </div>
+  </div>
+</section>
+
+<!-- Lektorzy do reklam wielojęzycznych (native) -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Lektorzy do reklam wielojęzycznych</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Realizujemy spoty reklamowe również w językach obcych - z udziałem lektorów native. To rozwiązanie dla marek międzynarodowych, kampanii eksportowych i sieci handlowych z wielojęzycznym przekazem. Stawki dla lektorów native są zwykle ok. 2× wyższe niż dla polskich lektorów.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% var flagNative = [
+        {id: 'bill', desc: 'Angielski (USA / brytyjski) - profesjonalny native speaker do spotów eksportowych.'},
+        {id: 'roy-2', desc: 'Angielski - charakterystyczny męski głos. Profil zawiera realizacje wideo z kampanii reklamowych.'},
+        {id: 'jon', desc: 'Angielski - uniwersalny głos męski, dobry do spotów korporacyjnych i e-learningu.'},
+        {id: 'konstancja', desc: 'Lektor native - barwa głosu i język do uzgodnienia, sprawdź profil.'},
+        {id: 'julien', desc: 'Francuski - lektor native dla rynku frankofońskiego.'}
+      ]; %>
+      <% flagNative.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
+        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <div class="flex items-center gap-4 mb-3">
+            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+            <div>
+              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
+              <p class="text-xs text-gray-500">Lektor native</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
+        </a>
+      <% } }); %>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/bank-glosow/?native=1" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów native &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- Features -->
 <section class="py-16">
   <div class="max-w-5xl mx-auto px-4">
@@ -18,8 +82,8 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Co oferujemy?</h2>
         <div class="space-y-4">
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Spoty radiowe</h3>
@@ -27,8 +91,8 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Spoty telewizyjne</h3>
@@ -36,8 +100,8 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Reklama w social media</h3>
@@ -45,8 +109,8 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
               <h3 class="font-semibold text-gray-900">Billboardy sponsorskie i sieci handlowe</h3>
@@ -109,7 +173,7 @@
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-900">Reklama social media (organic)</td>
-            <td class="px-4 py-3 text-gray-600">od 400 zł / strona 1800 znaków</td>
+            <td class="px-4 py-3 text-gray-600">od 750 zł / strona 1800 znaków</td>
             <td class="px-4 py-3 text-gray-600">bezterminowa lub umowa</td>
           </tr>
           <tr>
@@ -143,33 +207,40 @@
 
 <!-- Marki -->
 <section class="py-16 border-t border-gray-200">
-  <div class="max-w-5xl mx-auto px-4">
+  <div class="max-w-3xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Marki, które nam zaufały</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Realizowaliśmy spoty reklamowe i nagrania lektorskie m.in. dla:</p>
+    <p class="text-gray-600 text-center leading-relaxed mb-8">Realizowaliśmy spoty reklamowe i nagrania lektorskie m.in. dla:</p>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">Hyundai</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">Wawel</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">Black &amp; Decker</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">Auto Hero</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">Asseco</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center">
-        <p class="text-lg font-bold text-gray-900">For Bet</p>
-      </div>
-      <div class="bg-stone-100/80 rounded-xl border border-gray-200 px-4 py-6 text-center col-span-2 sm:col-span-2">
-        <p class="text-lg font-bold text-gray-900">Sofitel Grand Sopot</p>
-      </div>
-    </div>
+    <ul class="space-y-2 text-gray-700 text-base max-w-md mx-auto">
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Hyundai</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Wawel</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Black &amp; Decker</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Auto Hero</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Asseco</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>For Bet</strong></span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span><strong>Sofitel Grand Sopot</strong></span>
+      </li>
+    </ul>
 
     <p class="text-center text-sm text-gray-500 mt-8">Pełna lista realizacji dostępna na życzenie po podpisaniu NDA.</p>
   </div>
@@ -196,92 +267,6 @@
         <h3 class="text-lg font-bold text-gray-900 mb-2">Reklamy wewnętrzne dla firm</h3>
         <p class="text-gray-600 text-sm leading-relaxed">Komunikaty motywacyjne, prezentacje produktów dla działów sprzedaży, nagrania na targi i wydarzenia branżowe. Często łączymy je z usługą montażu audio-video, aby przekazać klientowi gotowy materiał do wykorzystania w prezentacji multimedialnej.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Lektorzy reklamowi - carousel istniejący -->
-<section class="py-16" style="background-color:#efe8df">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Lektorzy reklamowi</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-      <% var recIds = ['jacek-brzostynski', 'maciej-jablonski', 'malgorzata', 'anita']; %>
-      <% recIds.forEach(function(pid) { %>
-        <% var v = voices.find(function(x) { return x.id === pid; }); %>
-        <% if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="text-center group">
-          <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all mb-2" loading="lazy">
-          <div class="text-gray-900 font-semibold text-sm group-hover:text-accent transition-colors"><%= v.name %></div>
-        </a>
-        <% } %>
-      <% }); %>
-    </div>
-    <div class="text-center mt-8">
-      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- Najczęściej wybierani lektorzy do reklamy (PL flagowi) -->
-<section class="py-16 border-t border-gray-200">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Najczęściej wybierani lektorzy do reklamy</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">W naszym <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> dostępni są lektorzy z najwyższej grupy cenowej - głosy rozpoznawalne z reklam telewizyjnych, radiowych i kinowych. Ich autorytet i charakterystyczna barwa budują zaufanie odbiorcy od pierwszych sekund spotu. To wybór dla marek, które chcą natychmiastowego skojarzenia z jakością i prestiżem.</p>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <% var flagPL = [
-        {id: 'andrzej-ferenc', desc: 'Głęboki, rozpoznawalny męski głos, kojarzony z setkami reklam telewizyjnych i radiowych.'},
-        {id: 'jacek-brzostynski', desc: 'Charyzmatyczny, autorytatywny głos męski, doskonały do spotów premium i kampanii korporacyjnych.'},
-        {id: 'lukasz-nowicki', desc: 'Wszechstronny głos męski, rozpoznawalny z mediów. Dobrze sprawdza się zarówno w spotach reklamowych, jak i narracji.'},
-        {id: 'przemyslaw-skowron', desc: 'Głęboki, dynamiczny głos męski. Częsty wybór do reklam motoryzacyjnych i kampanii z mocnym przekazem emocjonalnym.'},
-        {id: 'stanislaw-olejniczak', desc: 'Legendarny głos polskiej telewizji i kina, ikoniczny dla wielu pokoleń odbiorców.'}
-      ]; %>
-      <% flagPL.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <div class="flex items-center gap-4 mb-3">
-            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
-            <div>
-              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
-              <p class="text-xs text-gray-500">Lektor reklamowy</p>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
-        </a>
-      <% } }); %>
-    </div>
-  </div>
-</section>
-
-<!-- Lektorzy do reklam wielojęzycznych (native) -->
-<section class="py-16 bg-stone-100/60 border-t border-gray-200">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Lektorzy do reklam wielojęzycznych</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Realizujemy spoty reklamowe również w językach obcych - z udziałem lektorów native. To rozwiązanie dla marek międzynarodowych, kampanii eksportowych i sieci handlowych z wielojęzycznym przekazem. Stawki dla lektorów native są zwykle ok. 2× wyższe niż dla polskich lektorów.</p>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <% var flagNative = [
-        {id: 'bill', desc: 'Angielski (USA / brytyjski) - profesjonalny native speaker do spotów eksportowych.'},
-        {id: 'roy-2', desc: 'Angielski - charakterystyczny męski głos. Profil zawiera realizacje wideo z kampanii reklamowych.'},
-        {id: 'jon', desc: 'Angielski - uniwersalny głos męski, dobry do spotów korporacyjnych i e-learningu.'},
-        {id: 'konstancja', desc: 'Lektor native - barwa głosu i język do uzgodnienia, sprawdź profil.'},
-        {id: 'julien', desc: 'Francuski - lektor native dla rynku frankofońskiego.'}
-      ]; %>
-      <% flagNative.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
-        <a href="/lektorzy/<%= v.id %>/" class="block group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
-          <div class="flex items-center gap-4 mb-3">
-            <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
-            <div>
-              <p class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= v.name %></p>
-              <p class="text-xs text-gray-500">Lektor native</p>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
-        </a>
-      <% } }); %>
-    </div>
-
-    <div class="text-center mt-8">
-      <a href="/bank-glosow/?native=1" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów native &rarr;</a>
     </div>
   </div>
 </section>
