@@ -145,7 +145,8 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
-    '/aktualnosci-pl/': '/en/news/'
+    '/aktualnosci-pl/': '/en/news/',
+    '/polityka-prywatnosci/': '/en/privacy-policy/'
   };
   var path = req.path;
   if (path.startsWith('/en/')) {
@@ -884,6 +885,17 @@ app.get('/en/contact/', (req, res) => {
   });
 });
 
+app.get('/en/privacy-policy/', (req, res) => {
+  res.render('en/privacy-policy', {
+    title: 'Privacy Policy | Powitania.pl',
+    description: 'Privacy Policy for the Powitania.pl voiceover studio. Learn how we process personal data under GDPR — controller, purposes, retention, user rights, cookies.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Privacy Policy', url: '/en/privacy-policy/' }
+    ]
+  });
+});
+
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
     title: 'Voiceover Recordings - 234 Voice Artists, 48h Delivery, from €70 | powitania.pl',
@@ -1241,6 +1253,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },
+    { url: '/en/privacy-policy/', priority: '0.3', changefreq: 'yearly' },
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

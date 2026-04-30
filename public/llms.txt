@@ -49,6 +49,7 @@ Powitania.pl is also available in English for international clients:
 - [News (EN)](https://www.powitania.pl/en/news/): Industry blog with articles about voiceover and audio production
 - [Voiceover Pricing 2026 (EN)](https://www.powitania.pl/en/news/ile-kosztuje-nagranie-lektorskie/): How much does a voiceover cost in 2026 - rates for IVR (from EUR 90), radio ads (from EUR 70), film narration, audio guides. Explanation of "field of exploitation", price tiers, express delivery surcharge and native voice artists
 - [Contact (EN)](https://www.powitania.pl/en/contact/): Get in touch - we respond within 2 hours
+- [Privacy Policy (EN)](https://www.powitania.pl/en/privacy-policy/): GDPR-compliant privacy policy - data controller, processing purposes, user rights, cookies and analytics (GA4, GTM)
 
 Non-Polish browsers are automatically redirected to the English version.
 
