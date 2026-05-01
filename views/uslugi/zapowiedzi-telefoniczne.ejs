@@ -3,9 +3,16 @@
 <!-- Hero -->
 <section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
+    <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-accent transition-colors">Strona główna</a>
+      <span class="mx-2 text-gray-300">›</span>
+      <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors">Nagrania lektorskie</a>
+      <span class="mx-2 text-gray-300">›</span>
+      <span class="text-gray-700">Zapowiedzi telefoniczne</span>
+    </nav>
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Zapowiedzi telefoniczne</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym i komunikacyjnym dla firmy. Starannie przygotowane nagrania IVR zachęcają Klientów do kontaktu.
+      Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym i komunikacyjnym dla firmy. Starannie przygotowane nagrania IVR zachęcają Klientów do kontaktu &mdash; to część szerszej oferty <a href="/nagrania-lektorskie/" class="text-accent hover:underline">nagrań lektorskich</a> realizowanych przez nasze studio od 2001 roku.
     </p>
     <p class="text-accent font-bold text-xl mt-4">od 380 zł netto</p>
   </div>
@@ -171,6 +178,136 @@
   </div>
 </section>
 
+<!-- Drzewo menu IVR -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Drzewo menu IVR &mdash; jak zaprojektować</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Dobrze zaprojektowane drzewo menu IVR to różnica między klientem, który dotrze do właściwego konsultanta w 20 sekund, a klientem, który rezygnuje z połączenia. Poniżej kilka praktycznych zasad.</p>
+
+    <div class="space-y-8">
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Struktura menu &mdash; best practices</h3>
+        <ul class="space-y-2 text-gray-600 text-sm leading-relaxed">
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Maksymalnie 4&ndash;5 opcji</strong> na jednym poziomie. Więcej powoduje, że klient gubi się i wybiera losowo.</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Maksymalnie 3 poziomy głębokości.</strong> Drzewo zbyt głębokie powoduje rezygnację z połączenia.</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Najczęściej wybierana opcja jako pierwsza.</strong> Sprawdź statystyki połączeń przed projektem menu.</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Zawsze opcja &bdquo;Połącz z konsultantem"</strong> (zwykle pod &bdquo;0") &mdash; awaryjne wyjście z drzewa menu.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Typowy schemat menu &mdash; przykład</h3>
+        <pre class="bg-stone-100 rounded-lg p-4 text-sm text-gray-700 overflow-x-auto leading-relaxed">Powitanie główne
+├─ 1. Sprzedaż / Nowi klienci
+├─ 2. Serwis / Wsparcie techniczne
+├─ 3. Reklamacje / Faktury
+├─ 4. Współpraca biznesowa
+└─ 0. Recepcja (przekierowanie do operatora)</pre>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Czego unikać w drzewie menu</h3>
+        <ul class="space-y-2 text-gray-600 text-sm leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-red-500 font-bold mt-0.5 flex-shrink-0">&times;</span><span>Zbyt długie wprowadzenia przed listą opcji (klient zapomina pierwsze opcje, zanim usłyszy ostatnie).</span></li>
+          <li class="flex items-start gap-2"><span class="text-red-500 font-bold mt-0.5 flex-shrink-0">&times;</span><span>Pętle, w których klient nie może wrócić do menu głównego.</span></li>
+          <li class="flex items-start gap-2"><span class="text-red-500 font-bold mt-0.5 flex-shrink-0">&times;</span><span>Brak opcji &bdquo;Wracam do menu" / &bdquo;Połącz z konsultantem" na każdym poziomie.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Komunikaty po godzinach pracy -->
+<section class="py-16 border-t border-gray-200 bg-stone-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Komunikaty po godzinach pracy &mdash; przykłady</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Komunikat po godzinach pracy nie powinien tylko informować &bdquo;biuro zamknięte". Powinien dać klientowi konkretną alternatywę &mdash; godziny pracy, e-mail, formularz kontaktowy.</p>
+
+    <div class="space-y-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-3">Komunikat po godzinach pracy &mdash; szablon</h3>
+        <p class="italic text-gray-700 leading-relaxed">&bdquo;Dzień dobry, dodzwoniłeś się do firmy [nazwa]. Aktualnie biuro jest zamknięte. Pracujemy od poniedziałku do piątku w godzinach [X]&ndash;[Y]. Zapraszamy do kontaktu w godzinach pracy lub do pozostawienia wiadomości po sygnale &mdash; oddzwonimy pierwszego dnia roboczego."</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-3">Komunikaty świąteczne i wakacyjne</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Boże Narodzenie, Wielkanoc, długie weekendy &mdash; krótka informacja o terminach wznowienia pracy. Przy dłuższym urlopie firmowym warto podać dane do zastępstwa awaryjnego (np. dyżurujący konsultant lub formularz reklamacyjny). Te nagrania można zlecić raz na cały rok &mdash; przy każdej okazji świątecznej zmienia się tylko data.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-3">Awaryjne dane kontaktowe</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Komunikat poza godzinami pracy zwykle warto uzupełnić o e-mail kontaktowy lub link do formularza na stronie. Dla branż obsługujących awarie (telekomunikacja, IT, hosting) &mdash; dyżurujący numer dla zgłoszeń krytycznych.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Klauzula RODO -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Klauzula RODO i informowanie o nagrywaniu rozmów</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Jeśli Twoja centrala nagrywa rozmowy &mdash; np. dla celów reklamacji lub jakości obsługi &mdash; jesteś zobowiązany do poinformowania rozmówcy o tym fakcie. To wynika z RODO i ustawy o ochronie danych osobowych. Klauzula informacyjna jest najczęściej nagrywana jako pierwsza zapowiedź, zaraz po powitaniu, przed menu IVR.</p>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Klauzula informacyjna RODO &mdash; co musi zawierać</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-3">Zwięzła informacja dla rozmówcy o tym, że rozmowa jest nagrywana, kto jest administratorem danych, w jakim celu i na jakiej podstawie prawnej. Wymagana w branżach regulowanych: call centers, banki, firmy ubezpieczeniowe, urzędy, podmioty obsługujące dane wrażliwe. Zalecana w każdej firmie, która nagrywa rozmowy w celu jakości obsługi.</p>
+      </div>
+
+      <div class="bg-stone-100 rounded-lg p-5 border border-gray-200">
+        <p class="text-gray-900 font-semibold mb-2">Przykład tekstu klauzuli (do skopiowania)</p>
+        <p class="italic text-gray-700 leading-relaxed">&bdquo;Informujemy, że niniejsza rozmowa może być nagrywana w celu poprawy jakości obsługi i rozpatrywania reklamacji. Administratorem danych osobowych jest [nazwa firmy]. Pełna informacja o przetwarzaniu danych dostępna na stronie [link]."</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+          <h3 class="font-bold text-gray-900 mb-2">Kiedy klauzula jest obowiązkowa</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Branże regulowane (banki, ubezpieczenia, telekomunikacja), infolinie reklamacyjne, każda sytuacja gdy firma faktycznie nagrywa i przechowuje treść rozmów dla celów dowodowych lub reklamacyjnych.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+          <h3 class="font-bold text-gray-900 mb-2">Kiedy klauzula jest zalecana</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Nawet bez nagrywania rozmów &mdash; jeśli firma zbiera dane osobowe podczas połączenia (numer, imię, sprawa) &mdash; klauzula buduje zaufanie i transparentność.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Czy nagrywać klauzulę osobno czy w głównym komunikacie?</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Z naszego doświadczenia: klauzulę warto nagrać jako oddzielny plik. Po pierwsze &mdash; łatwiej ją zaktualizować, gdy zmieni się np. nazwa administratora. Po drugie &mdash; centrala telefoniczna może odtwarzać klauzulę selektywnie (np. tylko na infolinii reklamacyjnej, a nie w głównym IVR).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Music on Hold -->
+<section class="py-16 border-t border-gray-200 bg-stone-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Muzyka w tle i czas oczekiwania (Music on Hold)</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Klient czekający na połączenie w ciszy rozłącza się średnio po 30 sekundach. Z muzyką w tle &mdash; po 2&ndash;3 minutach. Music on Hold to nie tylko kwestia komfortu &mdash; to realny współczynnik utrzymania klienta na linii.</p>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Co odtwarzać podczas oczekiwania</h3>
+        <ul class="space-y-2 text-gray-600 text-sm leading-relaxed">
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Muzyka instrumentalna</strong> &mdash; bezpieczna dla każdej branży, nieingerująca, nie odwraca uwagi.</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Komunikaty informacyjne</strong> &mdash; godziny pracy, oferta, nowości, link do strony WWW. Dobrze przeplatać z muzyką co 60&ndash;90 sekund.</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span><strong class="text-gray-900">Cykliczne potwierdzenia</strong> &mdash; &bdquo;Twoje połączenie jest dla nas ważne. Czas oczekiwania to ok. X minut" &mdash; redukują frustrację.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Licencja muzyki &mdash; ZAiKS i bezpieczne źródła</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-3">Wykorzystanie komercyjnej muzyki (np. radiowych przebojów) w centrali telefonicznej wymaga licencji ZAiKS. Bezpieczniejsze i tańsze rozwiązanie to autorskie podkłady muzyczne <strong class="text-gray-900">free-of-rights</strong> &mdash; jednorazowa opłata bez konieczności rozliczania ZAiKS.</p>
+        <p class="text-gray-600 text-sm leading-relaxed">W naszej ofercie melodia w tle (autorska, licencjonowana do użytku w centrali) to dodatek 120 zł netto do nagrania zapowiedzi.</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Optymalna długość pętli muzycznej</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">2&ndash;5 minut. Krótsza pętla (np. 30-sekundowa) jest bardzo szybko rozpoznawalna jako powtarzanie i frustruje. Optymalnie: muzyka 60&ndash;90 sek + komunikat informacyjny 15&ndash;20 sek + powtórka. Klient nie zauważa pętli przez pierwsze 5&ndash;10 minut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Cena + co zawiera -->
 <section class="py-12 border-t border-gray-200 bg-stone-50">
   <div class="max-w-3xl mx-auto px-4">
@@ -302,6 +439,35 @@
 })();
 </script>
 
+<!-- Marki -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Marki, które nam zaufały</h2>
+    <p class="text-gray-600 text-center leading-relaxed mb-8">Realizowaliśmy zapowiedzi telefoniczne i nagrania IVR m.in. dla:</p>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-3 text-gray-700 max-w-2xl mx-auto">
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>Truphone Polska</strong> <span class="text-sm text-gray-500">&mdash; wielojęzyczne IVR + komunikaty po godzinach</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>siteimpulse</strong>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>GoClever</strong>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <strong>SWUP S.A.</strong>
+      </li>
+    </ul>
+
+    <p class="text-center text-sm text-gray-500 mt-8">Pełna lista realizacji dostępna na życzenie po podpisaniu NDA.</p>
+  </div>
+</section>
+
 <!-- Treści SEO -->
 <section class="py-16 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4 text-gray-600 leading-relaxed space-y-10">
@@ -365,6 +531,80 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="py-16 bg-stone-100/60 border-t border-gray-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Najczęściej zadawane pytania</h2>
+    <p class="text-gray-600 text-center mb-10">Odpowiedzi na pytania, które najczęściej pojawiają się przy zamawianiu zapowiedzi telefonicznej.</p>
+
+    <div class="space-y-3">
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile kosztuje nagranie zapowiedzi telefonicznej?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Bazowa stawka 380 zł netto za nagranie do 100 słów (mogą to być 4 krótkie zapowiedzi po 25 słów albo jedna dłuższa). Cena obejmuje licencję bezterminową &mdash; udzielaną na czas nieokreślony, bez opłat abonamentowych. Pełen rozkład stawek w sekcji <a href="#cennik" class="text-accent hover:underline">cennika powyżej</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czym jest gwarancja modyfikacji nagrania w 12 miesięcy?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Jako jedyni na rynku oferujemy usługę jednorazowej modyfikacji nagrania zapowiedzi w okresie 12 miesięcy od jego realizacji. Klient ma pewność, że jeśli zmieni godziny pracy, numer telefonu lub komunikat &mdash; może wykupić modyfikację za niewielką dopłatą bez zaskoczenia kosztem. Cena gwarancji od 140 zł netto.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile słów mieści się w jednej zapowiedzi za 380 zł?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Bazowa stawka obejmuje do 100 słów łącznie. Mogą to być 4 krótkie zapowiedzi po 25 słów (np. powitanie + menu IVR + komunikat po godzinach + klauzula RODO) albo jedna dłuższa zapowiedź &mdash; klient decyduje o podziale tekstu między poszczególne nagrania.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czy potrzebuję klauzuli RODO przy nagrywaniu rozmów?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Klauzula informacyjna RODO jest obowiązkowa, jeśli firma faktycznie nagrywa i przechowuje rozmowy klientów (np. infolinia reklamacyjna, call center bankowy). Jeśli centrala tylko przekierowuje połączenia bez nagrywania &mdash; klauzula nie jest wymagana, ale jest dobrą praktyką, jeśli zbierane są dane osobowe podczas rozmowy. Przykładowy tekst klauzuli &mdash; w sekcji RODO powyżej.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czy nagrywacie zapowiedzi w językach obcych?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Tak. Dysponujemy lektorami native dla większości języków europejskich (angielski, niemiecki, francuski, hiszpański, włoski, ukraiński). Stawki dla lektorów native są zwykle ok. 2× wyższe niż polskich. Realizujemy regularnie wielojęzyczne IVR dla klientów z biurami w Europie &mdash; np. polsko-angielski IVR z osobnymi gałęziami menu dla każdego języka.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Jak szybko otrzymam pliki do instalacji w centrali?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Standardowa realizacja zapowiedzi IVR &mdash; 24&ndash;48 godzin od zatwierdzenia tekstu. Pliki dostarczamy w formacie dopasowanym do Twojej centrali (najczęściej WAV 8 kHz mono PCM dla central PBX, MP3 lub WAV 44.1 kHz dla nowszych systemów VoIP). Specyfikację formatu ustalamy przed nagraniem.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czy mogę zainstalować nagranie w wielu centralach?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Tak. Licencja na zapowiedź telefoniczną jest bezterminowa i nie ogranicza liczby instalacji w obrębie jednej firmy. Jeśli planujesz wykorzystanie nagrania w wielu odrębnych podmiotach prawnych (np. franczyza, grupa kapitałowa) &mdash; <a href="/kontakt/" class="text-accent hover:underline">skontaktuj się z nami</a> o dedykowaną wycenę.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Co z muzyką w tle i czasem oczekiwania?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Oferujemy autorskie podkłady muzyczne free-of-rights (120 zł netto), które bezpiecznie można wykorzystać w centrali telefonicznej bez konieczności opłaty ZAiKS. Możemy zmiksować nagranie głosowe z muzyką w tle dla pełnego efektu Music on Hold &mdash; klient otrzymuje gotowy plik do wgrania do centrali bez konieczności samodzielnego miksowania.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="py-16" style="background-color:#efe8df">
   <div class="max-w-3xl mx-auto px-4 text-center">
@@ -396,6 +636,81 @@
     "availability": "https://schema.org/InStock",
     "url": "https://www.powitania.pl/cennik/"
   }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/zapowiedzi-telefoniczne/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje nagranie zapowiedzi telefonicznej?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bazowa stawka 380 zł netto za nagranie do 100 słów (mogą to być 4 krótkie zapowiedzi po 25 słów albo jedna dłuższa). Cena obejmuje licencję bezterminową — udzielaną na czas nieokreślony, bez opłat abonamentowych."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czym jest gwarancja modyfikacji nagrania w 12 miesięcy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jako jedyni na rynku oferujemy usługę jednorazowej modyfikacji nagrania zapowiedzi w okresie 12 miesięcy od jego realizacji. Klient ma pewność, że jeśli zmieni godziny pracy, numer telefonu lub komunikat — może wykupić modyfikację za niewielką dopłatą bez zaskoczenia kosztem. Cena gwarancji od 140 zł netto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile słów mieści się w jednej zapowiedzi za 380 zł?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bazowa stawka obejmuje do 100 słów łącznie. Mogą to być 4 krótkie zapowiedzi po 25 słów (np. powitanie + menu IVR + komunikat po godzinach + klauzula RODO) albo jedna dłuższa zapowiedź — klient decyduje o podziale tekstu między poszczególne nagrania."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy potrzebuję klauzuli RODO przy nagrywaniu rozmów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Klauzula informacyjna RODO jest obowiązkowa, jeśli firma faktycznie nagrywa i przechowuje rozmowy klientów (np. infolinia reklamacyjna, call center bankowy). Jeśli centrala tylko przekierowuje połączenia bez nagrywania — klauzula nie jest wymagana, ale jest dobrą praktyką."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy nagrywacie zapowiedzi w językach obcych?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Dysponujemy lektorami native dla większości języków europejskich (angielski, niemiecki, francuski, hiszpański, włoski, ukraiński). Stawki dla lektorów native są zwykle ok. 2× wyższe niż polskich. Realizujemy regularnie wielojęzyczne IVR dla klientów z biurami w Europie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak szybko otrzymam pliki do instalacji w centrali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowa realizacja zapowiedzi IVR — 24-48 godzin od zatwierdzenia tekstu. Pliki dostarczamy w formacie dopasowanym do centrali (najczęściej WAV 8 kHz mono PCM dla central PBX, MP3 lub WAV 44.1 kHz dla nowszych systemów VoIP)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zainstalować nagranie w wielu centralach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Licencja na zapowiedź telefoniczną jest bezterminowa i nie ogranicza liczby instalacji w obrębie jednej firmy. Jeśli planujesz wykorzystanie nagrania w wielu odrębnych podmiotach prawnych (np. franczyza, grupa kapitałowa) — skontaktuj się o dedykowaną wycenę."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co z muzyką w tle i czasem oczekiwania?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oferujemy autorskie podkłady muzyczne free-of-rights (120 zł netto), które bezpiecznie można wykorzystać w centrali telefonicznej bez konieczności opłaty ZAiKS. Możemy zmiksować nagranie głosowe z muzyką w tle dla pełnego efektu Music on Hold."
+      }
+    }
+  ]
 }
 </script>
 
