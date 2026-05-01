@@ -84,8 +84,8 @@
 %>
 <section class="py-12 border-t border-gray-200">
   <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Posłuchaj zapowiedzi telefonicznych dla firmy</h2>
-    <p class="text-gray-500 text-center mb-8">Poniżej znajdziesz przykładowe nagrania na centralę telefoniczną, jakie zrealizowaliśmy dla naszych Klientów.</p>
+    <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Przykładowe nagrania powitań telefonicznych &mdash; posłuchaj realizacji</h2>
+    <p class="text-gray-500 text-center mb-8">Poniżej znajdziesz przykładowe nagrania powitań i komunikatów głosowych zrealizowanych dla naszych klientów &mdash; od krótkich powitań ogólnych po pełne menu IVR.</p>
     <div class="ivr-samples-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
       <% ivrSamples.forEach(function(v) { %>
       <div class="ivr-sample-row bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-center gap-4">
@@ -165,8 +165,8 @@
       <div>
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Dlaczego warto?</h2>
         <div class="space-y-4 text-gray-500 text-sm leading-relaxed">
-          <p>Profesjonalne zapowiedzi telefoniczne budują wizerunek firmy i sprawiają, że Klienci czują się obsłużeni od pierwszej sekundy połączenia.</p>
-          <p>Zapowiedzi IVR to też doskonałe narzędzie marketingu bezpośredniego - promuj nowe produkty i usługi podczas oczekiwania na połączenie.</p>
+          <p>Profesjonalne komunikaty głosowe na centralę telefoniczną budują wizerunek firmy i sprawiają, że Klienci czują się obsłużeni od pierwszej sekundy połączenia.</p>
+          <p>System IVR to także doskonałe narzędzie marketingu bezpośredniego - promuj nowe produkty i usługi podczas oczekiwania na połączenie.</p>
           <p>Oferujemy gwarancję modyfikacji - jeśli tekst wymaga drobnych zmian, poprawimy nagranie bez dodatkowych kosztów (do ustalonego limitu słów).</p>
           <p>Podkład muzyczny (melodia w tle) dostępny jako dodatek do nagrania.</p>
         </div>
@@ -218,6 +218,33 @@
         <h3 class="text-xl font-bold text-gray-900 mb-3">Wielojęzyczne menu &mdash; wybór języka jak najwcześniej</h3>
         <p class="text-gray-600 text-sm leading-relaxed">Praktyczny insight z naszych realizacji wielojęzycznych IVR: informację o wyborze języka należy umieszczać na samym początku menu &mdash; w pierwszych 3&ndash;5 sekundach komunikatu. Klient obcojęzyczny czeka maksymalnie kilka sekund &mdash; jeśli nie usłyszy zrozumiałego komunikatu, najczęściej się rozłącza. Najlepsza praktyka: &bdquo;Witamy w firmie ..." i krótkie &bdquo;Press 1 for English / Wciśnij 1 aby kontynuować po polsku" jako pierwsza informacja, a pełne menu &mdash; dopiero po wyborze języka.</p>
       </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Przykładowe teksty zapowiedzi</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">Cztery gotowe szablony, które można dostosować do specyfiki firmy. Każdy szablon to krótka treść do nagrania &mdash; wystarczy podstawić nazwę firmy, godziny pracy i numery wewnętrzne.</p>
+
+        <div class="space-y-4">
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <p class="text-gray-900 font-semibold mb-2 text-sm">1. Powitanie ogólne (krótkie)</p>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dzień dobry, dodzwoniłeś się do firmy [nazwa]. Cieszymy się, że do nas dzwonisz &mdash; za chwilę połączymy Cię z konsultantem."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <p class="text-gray-900 font-semibold mb-2 text-sm">2. Powitanie + menu IVR z opcjami</p>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w firmie [nazwa]. Aby usprawnić obsługę, wybierz odpowiedni numer: 1 &mdash; sprzedaż, 2 &mdash; serwis, 3 &mdash; reklamacje, 4 &mdash; współpraca biznesowa, 0 &mdash; recepcja. W każdej chwili możesz wrócić do menu głównego, naciskając gwiazdkę."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <p class="text-gray-900 font-semibold mb-2 text-sm">3. Komunikat zajętości linii</p>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dziękujemy za telefon do firmy [nazwa]. Wszystkie linie konsultantów są obecnie zajęte. Twoje połączenie jest dla nas ważne &mdash; prosimy o chwilę cierpliwości lub naciśnij 1, aby pozostawić wiadomość. Oddzwonimy najpóźniej w ciągu jednego dnia roboczego."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <p class="text-gray-900 font-semibold mb-2 text-sm">4. Komunikat wakacyjny / urlop firmowy</p>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w firmie [nazwa]. Informujemy, że w dniach [X]&ndash;[Y] biuro jest nieczynne z uwagi na urlop firmowy. Wznawiamy pracę [data]. W sprawach pilnych prosimy o kontakt mailowy: [adres]. Życzymy pięknej pogody."</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -251,7 +278,7 @@
 <section class="py-16 border-t border-gray-200">
   <div class="max-w-4xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Klauzula RODO i informowanie o nagrywaniu rozmów</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Jeśli Twoja centrala nagrywa rozmowy &mdash; np. dla celów reklamacji lub jakości obsługi &mdash; jesteś zobowiązany do poinformowania rozmówcy o tym fakcie. To wynika z RODO i ustawy o ochronie danych osobowych. Klauzula informacyjna jest najczęściej nagrywana jako pierwsza zapowiedź, zaraz po powitaniu, przed menu IVR.</p>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Jeśli Twoja wirtualna centrala nagrywa rozmowy &mdash; np. dla celów reklamacji lub jakości obsługi &mdash; jesteś zobowiązany do poinformowania rozmówcy o tym fakcie. To wynika z RODO i ustawy o ochronie danych osobowych. Klauzula informacyjna jest najczęściej nagrywana jako pierwsza zapowiedź, zaraz po powitaniu, przed menu wirtualnej centrali.</p>
 
     <div class="space-y-6">
       <div>
@@ -448,7 +475,7 @@
 <section class="py-16 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Marki, które nam zaufały</h2>
-    <p class="text-gray-600 text-center leading-relaxed mb-10">Realizowaliśmy zapowiedzi telefoniczne i nagrania IVR m.in. dla:</p>
+    <p class="text-gray-600 text-center leading-relaxed mb-10">Realizowaliśmy nagrania powitań i komunikaty głosowe IVR dla biur obsługi klienta m.in. dla:</p>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
       <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
@@ -564,7 +591,7 @@
 <section class="py-16 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Statystyki połączeń telefonicznych</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Dane z&nbsp;naszych realizacji oraz badań branżowych pokazują, dlaczego dobre nagranie IVR jest realnym narzędziem utrzymania klienta na linii.</p>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Dane z&nbsp;naszych realizacji oraz badań branżowych pokazują, dlaczego dobry komunikat głosowy w systemie IVR jest realnym narzędziem utrzymania klienta na linii.</p>
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
       <div class="bg-stone-50 rounded-lg p-6 text-center border border-gray-200">
@@ -662,7 +689,7 @@
 <!-- CTA -->
 <section class="py-16" style="background-color:#efe8df">
   <div class="max-w-3xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold text-gray-900 mb-4">Potrzebujesz zapowiedzi telefonicznej?</h2>
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">Potrzebujesz nagrania powitania telefonicznego?</h2>
     <p class="text-gray-500 mb-8">Opisz swój projekt - przygotujemy wycenę i nagranie w 2 dni robocze.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="/bank-glosow/?filter=ivr" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Wybierz lektora</a>
