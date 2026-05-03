@@ -150,6 +150,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <% } %>
 
+<!-- Floating Cookie Settings Button (widoczny po akceptacji) -->
+<button id="cookie-settings-btn"
+        onclick="reopenConsentBanner()"
+        title="Ustawienia cookies"
+        aria-label="Otwórz ustawienia cookies"
+        class="hidden fixed bottom-5 left-5 z-30 w-12 h-12 bg-white hover:bg-stone-50 border border-gray-200 hover:border-accent rounded-full shadow-md hover:shadow-lg flex items-center justify-center transition-all hover:scale-110">
+  <svg class="w-6 h-6 text-amber-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+    <path d="M8.5 8.5v.01"/>
+    <path d="M16 15.5v.01"/>
+    <path d="M12 12v.01"/>
+    <path d="M11 17v.01"/>
+    <path d="M7 14v.01"/>
+  </svg>
+</button>
+
 <!-- Cookie Consent Modal (Google Consent Mode v2) -->
 <div id="consent-banner" class="hidden" role="dialog" aria-label="Zgoda na cookies" aria-modal="true">
   <!-- Overlay -->
@@ -225,11 +241,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var COOKIE_NAME = 'cookie_consent';
     var COOKIE_DAYS = 365;
     var banner = document.getElementById('consent-banner');
+    var floatBtn = document.getElementById('cookie-settings-btn');
 
-    // Pokaż banner jeśli użytkownik nie podjął jeszcze decyzji
-    var saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved && banner) {
+    // Helper: odczytaj first-party cookie
+    function getConsentCookie() {
+      var match = document.cookie.match(new RegExp('(?:^|;\\s*)' + COOKIE_NAME + '=([^;]+)'));
+      return match ? decodeURIComponent(match[1]) : null;
+    }
+
+    // Decyzja zapisana wymaga OBIE storage (localStorage AND cookie) - jeśli któreś brak
+    // (np. user wyczyścił cookies przez DevTools), traktujemy jako brak zgody i pokazujemy banner ponownie.
+    var savedLS = localStorage.getItem(STORAGE_KEY);
+    var savedCookie = getConsentCookie();
+    var hasValidConsent = !!(savedLS && savedCookie);
+
+    if (!hasValidConsent && banner) {
       banner.classList.remove('hidden');
+    } else if (hasValidConsent && floatBtn) {
+      floatBtn.classList.remove('hidden');
     }
 
     // Helper: ustaw first-party cookie
@@ -240,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.cookie = COOKIE_NAME + '=' + val + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
     }
 
-    // Helper: zastosuj consent i ukryj banner
+    // Helper: zastosuj consent, ukryj banner, pokaż floating cookie button
     function applyConsent(obj) {
       if (typeof gtag === 'function') {
         gtag('consent', 'update', obj);
@@ -255,7 +284,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'consent_update', consent: obj });
       if (banner) banner.classList.add('hidden');
+      if (floatBtn) floatBtn.classList.remove('hidden');
     }
+
+    // Re-open banner z aktualnymi ustawieniami (po kliknięciu floating cookie button)
+    window.reopenConsentBanner = function() {
+      if (!banner) return;
+      banner.classList.remove('hidden');
+      // Pokaż od razu panel ustawień (z pre-filled checkboxes), nie main view
+      document.getElementById('consent-main').classList.add('hidden');
+      var settingsPanel = document.getElementById('consent-settings');
+      settingsPanel.classList.remove('hidden');
+      var current = localStorage.getItem(STORAGE_KEY);
+      if (current) {
+        try {
+          var prev = JSON.parse(current);
+          document.getElementById('consent-analytics').checked = (prev.analytics_storage === 'granted');
+          document.getElementById('consent-marketing').checked = (prev.ad_storage === 'granted');
+        } catch(e) {}
+      }
+    };
 
     // Akceptuj wszystkie
     window.consentAcceptAll = function() {
