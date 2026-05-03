@@ -206,7 +206,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
   <% if (currentPath === '/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
-  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
   <%/* style.css inlined to eliminate render-blocking request */%>
   <style>
 .nav-dropdown .nav-dropdown-menu{display:none;position:absolute;left:0;top:100%;z-index:50;padding-top:0}.nav-dropdown:hover .nav-dropdown-menu{display:block}.nav-dropdown-menu-inner{background:#fff;border-radius:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.12);border:1px solid #f3f4f6;padding:.5rem 0;min-width:260px;margin-top:.25rem}.nav-dropdown-menu-inner a{display:block;padding:.5rem 1rem;font-size:.875rem;text-transform:none;letter-spacing:normal;font-weight:400;color:#4b5563;transition:color .15s,background .15s}.nav-dropdown-menu-inner a:hover{color:#e8734a;background:#f9fafb}.nav-dropdown>a{padding-bottom:.75rem;margin-bottom:-.75rem}
