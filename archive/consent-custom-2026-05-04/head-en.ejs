@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <% if (gtmId) { %>
   <!-- Google Consent Mode v2 - domyślne ustawienia (MUSI być PRZED GTM) -->
@@ -15,10 +15,11 @@
       'security_storage':     'granted',
       'wait_for_update':      500
     });
+    (function(){
+      var s = localStorage.getItem('cookie-consent-v2');
+      if (s) { try { gtag('consent', 'update', JSON.parse(s)); } catch(e){} }
+    })();
   </script>
-  <!-- Start cookieyes banner -->
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0a55f516e583ff35e79183f692472781/script.js"></script>
-  <!-- End cookieyes banner -->
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -29,9 +30,9 @@
   <% } %>
 
   <% if (clarityProjectId) { %>
-  <!-- Microsoft Clarity (z consent sync - domyślnie deferred, zbiera dopiero po
-       akceptacji analytics_storage w bannerze cookies; foot.ejs po akceptacji
-       wywoła window.clarity('consent', true)) -->
+  <!-- Microsoft Clarity (with consent sync - deferred by default, collects only
+       after analytics_storage acceptance in cookie banner; foot-en.ejs calls
+       window.clarity('consent', true) on acceptance) -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -74,7 +75,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.powitania.pl<%= currentPath %>">
   <meta property="og:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : 'https://www.powitania.pl/img/og-default.jpg' %>">
-  <meta property="og:locale" content="pl_PL">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="powitania.pl">
 
   <!-- Twitter Card -->
@@ -93,10 +94,10 @@
     "url": "https://www.powitania.pl",
     "logo": "https://www.powitania.pl/img/logo-powitania.png",
     "image": "https://www.powitania.pl/img/og-default.jpg",
-    "description": "Profesjonalne studio nagrań lektorskich. 234 lektorów, 30+ języków, 25 lat doświadczenia.",
+    "description": "Professional voiceover recording studio. 234 voice artists, 30+ languages, 25 years of experience.",
     "telephone": "+48605491069",
     "email": "biuro@powitania.pl",
-    "priceRange": "300 PLN - 2200 PLN",
+    "priceRange": "70 EUR - 520 EUR",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "ul. Fiołkowa 36",
@@ -130,8 +131,8 @@
       "worstRating": "1"
     },
     "foundingDate": "2001",
-    "slogan": "Profesjonalne studio lektorskie od 2001 roku",
-    "knowsAbout": ["voice-over", "lektor", "nagrania lektorskie", "IVR", "zapowiedzi telefoniczne", "audiobook", "spoty reklamowe", "narracje filmowe", "e-learning", "sesje zdalne"]
+    "slogan": "Professional voiceover studio since 2001",
+    "knowsAbout": ["voice-over", "voiceover", "voice artist", "IVR", "phone announcements", "audiobook", "advertising spots", "film narration", "e-learning", "remote recording sessions"]
   }
   </script>
 
@@ -164,7 +165,7 @@
     "name": "<%= typeof title !== 'undefined' ? title : 'powitania.pl' %>",
     "description": "<%= typeof description !== 'undefined' ? description : '' %>",
     "url": "https://www.powitania.pl<%= currentPath %>",
-    "inLanguage": "pl-PL",
+    "inLanguage": "en",
     "isPartOf": { "@id": "https://www.powitania.pl/#website" },
     "about": { "@id": "https://www.powitania.pl/#organization" }
   }
@@ -177,22 +178,22 @@
   </script>
   <% } %>
 
-  <!-- JSON-LD: WebSite + SearchAction (sitelinks search box w SERP dla brand queries) -->
+  <!-- JSON-LD: WebSite + SearchAction (sitelinks search box in SERP for brand queries) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": "https://www.powitania.pl/#website",
     "url": "https://www.powitania.pl",
-    "name": "Powitania.pl - Profesjonalne Studio Nagrań Lektorskich",
+    "name": "Powitania.pl - Professional Voiceover Studio",
     "alternateName": "Powitania",
-    "inLanguage": "pl-PL",
+    "inLanguage": "en",
     "publisher": { "@id": "https://www.powitania.pl/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.powitania.pl/bank-glosow/?search={search_term_string}"
+        "urlTemplate": "https://www.powitania.pl/en/voice-bank/?search={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -204,7 +205,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
-  <% if (currentPath === '/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
+  <% if (currentPath === '/en/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
   <%/* style.css inlined to eliminate render-blocking request */%>
   <style>
@@ -250,49 +251,48 @@ body{background-color:#f7f3ef}
 .kreator-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#ea580c;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:500;z-index:1000;animation:kreator-toast-in .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 @keyframes kreator-toast-in{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @media(max-width:640px){.kreator-card{padding:1.5rem}.kreator-btn-primary,.kreator-btn-secondary{padding:10px 18px;font-size:.9rem}}
-<% if (currentPath.indexOf('/lektorzy/') === -1 && currentPath.indexOf('/bank-glosow/') === -1) { %>@media(max-width:767px){body{padding-bottom:72px}}<% } %>
   </style>
 </head>
 <body class="text-gray-700 antialiased">
 
 <% if (!skipHeader) { %>
 <%
-  // URL wersji EN dla przełącznika języka - z hreflangEN (mapa PL↔EN w server.js) lub fallback /en/
-  var _altEn = (typeof hreflangEN !== 'undefined' && hreflangEN)
-    ? hreflangEN.replace('https://www.powitania.pl', '')
-    : '/en/';
+  // PL version URL for language switcher - from hreflangPL (mapping in server.js) or fallback /
+  var _altPl = (typeof hreflangPL !== 'undefined' && hreflangPL)
+    ? hreflangPL.replace('https://www.powitania.pl', '')
+    : '/';
 %>
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/60 border-b border-stone-200/70 shadow-sm">
   <nav class="w-full max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
-    <a href="/" class="flex flex-col items-start gap-0">
+    <a href="/en/" class="flex flex-col items-start gap-0">
       <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="h-11 md:h-14 w-auto">
-      <span class="text-[0.6rem] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 pl-[2.4rem] md:pl-[3.2rem] -mt-0.5">Twórz treści. Nadaj im głos.</span>
+      <span class="text-[0.6rem] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 pl-[2.4rem] md:pl-[3.2rem] -mt-0.5">Create content. Give it a voice.</span>
     </a>
 
     <div class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
-      <a href="/bank-glosow/" class="hover:text-accent transition-colors <%= currentPath === '/bank-glosow/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Bank głosów</a>
+      <a href="/en/voice-bank/" class="hover:text-accent transition-colors <%= currentPath === '/en/voice-bank/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Voice Bank</a>
       <div class="relative nav-dropdown">
-        <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors flex items-center gap-1 <%= currentPath.startsWith('/nagrania-lektorskie') || currentPath === '/sesje-zdalne-nagrania-lektorskie-online/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">
-          Nagrania lektorskie
+        <a href="/en/voiceover-services/" class="hover:text-accent transition-colors flex items-center gap-1 <%= currentPath.startsWith('/en/voiceover-services') || currentPath === '/en/remote-sessions/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">
+          Voiceover Services
           <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-menu-inner">
-            <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/">Profesjonalny lektor do filmów</a>
-            <a href="/nagrania-lektorskie/glos-do-reklamy/">Głos do reklamy</a>
-            <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/">Zapowiedzi telefoniczne</a>
-            <a href="/sesje-zdalne-nagrania-lektorskie-online/">Sesje zdalne</a>
+            <a href="/en/voiceover-services/film-voiceover/">Film Voiceover</a>
+            <a href="/en/voiceover-services/voice-for-advertising/">Voice for Advertising</a>
+            <a href="/en/voiceover-services/phone-announcements/">Phone Announcements</a>
+            <a href="/en/remote-sessions/">Remote Sessions</a>
           </div>
         </div>
       </div>
-      <a href="/cennik/" class="hover:text-accent transition-colors <%= currentPath === '/cennik/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Cennik</a>
-      <a href="/opinie/" class="hover:text-accent transition-colors <%= currentPath === '/opinie/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Opinie</a>
-      <a href="/kontakt/" class="hover:text-accent transition-colors <%= currentPath === '/kontakt/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Kontakt</a>
-      <a href="<%= _altEn %>" class="flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors normal-case tracking-normal" title="English version" rel="alternate" hreflang="en">
-        <span class="text-base leading-none" aria-hidden="true">🇬🇧</span>
-        <span class="text-xs font-semibold">EN</span>
+      <a href="/en/pricing/" class="hover:text-accent transition-colors <%= currentPath === '/en/pricing/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Pricing</a>
+      <a href="/en/news/" class="hover:text-accent transition-colors <%= currentPath.startsWith('/en/news') ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">News</a>
+      <a href="/en/contact/" class="hover:text-accent transition-colors <%= currentPath === '/en/contact/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Contact</a>
+      <a href="<%= _altPl %>" class="flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors normal-case tracking-normal" title="Wersja polska" rel="alternate" hreflang="pl">
+        <span class="text-base leading-none" aria-hidden="true">🇵🇱</span>
+        <span class="text-xs font-semibold">PL</span>
       </a>
-      <a href="/?start=creator#kreator" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg transition-colors font-semibold">Twórz</a>
+      <a href="/en/#kreator" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg transition-colors font-semibold">Create</a>
     </div>
 
     <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-500">
@@ -303,17 +303,17 @@ body{background-color:#f7f3ef}
   </nav>
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 uppercase tracking-wide text-sm font-semibold">
-    <a href="/bank-glosow/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Bank głosów</a>
-    <a href="/nagrania-lektorskie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Nagrania lektorskie</a>
-    <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Profesjonalny lektor do filmów</a>
-    <a href="/nagrania-lektorskie/glos-do-reklamy/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Głos do reklamy</a>
-    <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Zapowiedzi telefoniczne</a>
-    <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-100 text-xs normal-case tracking-normal font-normal">Sesje zdalne</a>
-    <a href="/cennik/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Cennik</a>
-    <a href="/opinie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Opinie</a>
-    <a href="/kontakt/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Kontakt</a>
-    <a href="<%= _altEn %>" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100" rel="alternate" hreflang="en"><span aria-hidden="true">🇬🇧</span> English</a>
-    <a href="/?start=creator#kreator" class="block mt-3 bg-accent text-white text-center px-5 py-3 rounded-lg font-semibold">Twórz</a>
+    <a href="/en/voice-bank/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voice Bank</a>
+    <a href="/en/voiceover-services/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voiceover Services</a>
+    <a href="/en/voiceover-services/film-voiceover/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Film Voiceover</a>
+    <a href="/en/voiceover-services/voice-for-advertising/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Voice for Advertising</a>
+    <a href="/en/voiceover-services/phone-announcements/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Phone Announcements</a>
+    <a href="/en/remote-sessions/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-100 text-xs normal-case tracking-normal font-normal">Remote Sessions</a>
+    <a href="/en/pricing/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Pricing</a>
+    <a href="/en/news/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">News</a>
+    <a href="/en/contact/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Contact</a>
+    <a href="<%= _altPl %>" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100" rel="alternate" hreflang="pl"><span aria-hidden="true">🇵🇱</span> Polski</a>
+    <a href="/en/#kreator" class="block mt-3 bg-accent text-white text-center px-5 py-3 rounded-lg font-semibold">Create</a>
   </div>
 </header>
 <% } %>

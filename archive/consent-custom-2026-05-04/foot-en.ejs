@@ -93,7 +93,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 <% } %>
 
-<!-- Cookie banner managed by CookieYes (script in head-en.ejs) -->
+<!-- Cookie Consent Banner (Google Consent Mode v2) -->
+<!-- Cookie Consent Modal (Google Consent Mode v2) -->
+<div id="consent-banner" class="hidden" role="dialog" aria-label="Cookie consent" aria-modal="true">
+  <!-- Overlay -->
+  <div style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:998"></div>
+  <!-- Modal -->
+  <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999;width:100%;max-width:480px;padding:0 1rem;box-sizing:border-box">
+    <div class="bg-white rounded-2xl shadow-2xl p-6">
+
+      <!-- Main view -->
+      <div id="consent-main">
+        <div class="mb-1">
+          <svg class="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+          <p class="text-base text-gray-900 font-bold mb-2">This website uses cookies</p>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            We use cookies and similar technologies for analytics and advertising purposes.
+            Details in our <a href="/en/privacy-policy/" class="text-accent hover:underline">privacy policy</a>.
+          </p>
+        </div>
+        <div class="mt-5 space-y-3">
+          <button onclick="consentAcceptAll()" class="w-full bg-accent hover:bg-accent-light text-white py-3 rounded-xl text-sm font-bold transition-colors">Accept All</button>
+          <button onclick="consentRejectOptional()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl text-sm font-medium transition-colors">Essential Only</button>
+          <button onclick="showConsentSettings()" class="w-full text-gray-400 hover:text-gray-600 text-xs py-1 transition-colors">Cookie Settings</button>
+        </div>
+      </div>
+
+      <!-- Settings panel (hidden by default) -->
+      <div id="consent-settings" class="hidden">
+        <p class="text-base text-gray-900 font-bold mb-4">Cookie Settings</p>
+        <div class="space-y-3 mb-5">
+          <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3">
+            <div>
+              <p class="text-sm text-gray-900 font-medium">Essential</p>
+              <p class="text-xs text-gray-500">Required for the website to function properly</p>
+            </div>
+            <span class="text-xs text-gray-500 font-medium">Always active</span>
+          </div>
+          <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
+            <div>
+              <p class="text-sm text-gray-900 font-medium">Analytics</p>
+              <p class="text-xs text-gray-500">Help us understand how visitors use the site (Google Analytics)</p>
+            </div>
+            <input type="checkbox" id="consent-analytics" class="w-5 h-5 rounded accent-orange-500 cursor-pointer">
+          </label>
+          <label class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 cursor-pointer">
+            <div>
+              <p class="text-sm text-gray-900 font-medium">Advertising</p>
+              <p class="text-xs text-gray-500">Enable personalized ads to be displayed (Google Ads)</p>
+            </div>
+            <input type="checkbox" id="consent-marketing" class="w-5 h-5 rounded accent-orange-500 cursor-pointer">
+          </label>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="consentSaveSettings()" class="flex-1 bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Save Settings</button>
+          <button onclick="hideConsentSettings()" class="border border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">Back</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <script>
   // Mobile menu toggle
@@ -103,13 +163,104 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     toggle.addEventListener('click', function() { menu.classList.toggle('hidden'); });
   }
 
-  // Cookie consent managed by CookieYes (script in head-en.ejs)
-  // "Cookie Settings" link in footer calls window.revisitCkyConsent (CookieYes API)
-  window.showConsentBanner = function() {
-    if (typeof window.revisitCkyConsent === 'function') {
-      window.revisitCkyConsent();
+  // === Cookie Consent - Google Consent Mode v2 ===
+  (function() {
+    var STORAGE_KEY = 'cookie-consent-v2';
+    var COOKIE_NAME = 'cookie_consent';
+    var COOKIE_DAYS = 365;
+    var banner = document.getElementById('consent-banner');
+
+    // Show banner if user hasn't made a decision yet
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved && banner) {
+      banner.classList.remove('hidden');
     }
-  };
+
+    // Helper: set first-party cookie
+    function setConsentCookie(obj) {
+      var val = encodeURIComponent(JSON.stringify(obj));
+      var d = new Date();
+      d.setTime(d.getTime() + COOKIE_DAYS * 86400000);
+      document.cookie = COOKIE_NAME + '=' + val + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
+
+    // Helper: apply consent and hide banner
+    function applyConsent(obj) {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', obj);
+      }
+      // Microsoft Clarity consent sync - toggles data collection
+      // (analytics_storage = granted -> Clarity collects; denied -> paused)
+      if (typeof window.clarity === 'function') {
+        window.clarity('consent', obj.analytics_storage === 'granted');
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+      setConsentCookie(obj);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'consent_update', consent: obj });
+      if (banner) banner.classList.add('hidden');
+    }
+
+    // Accept all
+    window.consentAcceptAll = function() {
+      applyConsent({
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    };
+
+    // Essential only
+    window.consentRejectOptional = function() {
+      applyConsent({
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    };
+
+    // Show settings panel
+    window.showConsentSettings = function() {
+      document.getElementById('consent-main').classList.add('hidden');
+      document.getElementById('consent-settings').classList.remove('hidden');
+      if (saved) {
+        try {
+          var prev = JSON.parse(saved);
+          document.getElementById('consent-analytics').checked = (prev.analytics_storage === 'granted');
+          document.getElementById('consent-marketing').checked = (prev.ad_storage === 'granted');
+        } catch(e) {}
+      }
+    };
+
+    // Back from settings panel
+    window.hideConsentSettings = function() {
+      document.getElementById('consent-settings').classList.add('hidden');
+      document.getElementById('consent-main').classList.remove('hidden');
+    };
+
+    // Save granular settings
+    window.consentSaveSettings = function() {
+      var a = document.getElementById('consent-analytics').checked;
+      var m = document.getElementById('consent-marketing').checked;
+      applyConsent({
+        'ad_storage': m ? 'granted' : 'denied',
+        'ad_user_data': m ? 'granted' : 'denied',
+        'ad_personalization': m ? 'granted' : 'denied',
+        'analytics_storage': a ? 'granted' : 'denied'
+      });
+    };
+
+    // Show banner again (link in footer)
+    window.showConsentBanner = function() {
+      if (banner) {
+        document.getElementById('consent-main').classList.remove('hidden');
+        document.getElementById('consent-settings').classList.add('hidden');
+        banner.classList.remove('hidden');
+      }
+    };
+  })();
 
   // YouTube lazy-load facade (global)
   function loadYT(el) {
