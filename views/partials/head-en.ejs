@@ -2,19 +2,10 @@
 <html lang="en">
 <head>
   <% if (gtmId) { %>
-  <!-- Google Consent Mode v2 - domyślne ustawienia (MUSI być PRZED GTM) -->
+  <!-- dataLayer init (CookieYes will set gtag consent default automatically once loaded) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage':           'denied',
-      'ad_user_data':         'denied',
-      'ad_personalization':   'denied',
-      'analytics_storage':    'denied',
-      'functionality_storage':'granted',
-      'security_storage':     'granted',
-      'wait_for_update':      500
-    });
   </script>
   <!-- Start cookieyes banner -->
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0a55f516e583ff35e79183f692472781/script.js"></script>
@@ -29,20 +20,13 @@
   <% } %>
 
   <% if (clarityProjectId) { %>
-  <!-- Microsoft Clarity (with consent sync - deferred by default, collects only
-       after analytics_storage acceptance in cookie banner; foot-en.ejs calls
-       window.clarity('consent', true) on acceptance) -->
+  <!-- Microsoft Clarity (consent managed by CookieYes "Microsoft Clarity Consent API integration") -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "<%= clarityProjectId %>");
-    (function() {
-      var consent = null;
-      try { consent = JSON.parse(localStorage.getItem('cookie-consent-v2')); } catch(e) {}
-      window.clarity('consent', !!(consent && consent.analytics_storage === 'granted'));
-    })();
   </script>
   <!-- End Microsoft Clarity -->
   <% } %>
