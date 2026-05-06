@@ -125,6 +125,19 @@
       "bestRating": "5",
       "worstRating": "1"
     },
+    <% if (typeof reviewsForSchema !== 'undefined' && Array.isArray(reviewsForSchema) && reviewsForSchema.length > 0) { %>
+    "review": [
+      <% reviewsForSchema.forEach(function(r, i) { %>
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1" },
+        "author": { "@type": "Person", "name": <%- JSON.stringify(r.author || r.company) %> },
+        "reviewBody": <%- JSON.stringify(r.text) %>,
+        "datePublished": "<%= new Date(r.date || r.createdAt).toISOString().split('T')[0] %>"
+      }<%= i < reviewsForSchema.length - 1 ? ',' : '' %>
+      <% }); %>
+    ],
+    <% } %>
     "foundingDate": "2001",
     "slogan": "Profesjonalne studio lektorskie od 2001 roku",
     "knowsAbout": ["voice-over", "lektor", "nagrania lektorskie", "IVR", "zapowiedzi telefoniczne", "audiobook", "spoty reklamowe", "narracje filmowe", "e-learning", "sesje zdalne"]

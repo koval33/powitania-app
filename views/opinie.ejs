@@ -108,35 +108,9 @@
   </div>
 </section>
 
-<!-- Review Schema.org - wskazuje przez @id na globalną Organization z head.ejs -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.powitania.pl/#organization",
-  "name": "Powitania.pl - OPTIMUM Paweł Kowalski",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "bestRating": "5",
-    "worstRating": "1",
-    "reviewCount": "<%= reviews.length %>"
-  },
-  "review": [
-    <% reviews.slice(0, 10).forEach(function(r, i) { %>
-    {
-      "@type": "Review",
-      "name": <%- JSON.stringify("Opinia firmy " + r.company + " o usługach Powitania.pl") %>,
-      "author": { "@type": "Organization", "name": <%- JSON.stringify(r.company) %> },
-      "itemReviewed": { "@id": "https://www.powitania.pl/#organization" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1" },
-      "reviewBody": <%- JSON.stringify(r.text) %>,
-      "datePublished": "<%= r.date %>"
-    }<%= i < Math.min(reviews.length, 10) - 1 ? ',' : '' %>
-    <% }); %>
-  ]
-}
-</script>
+<!-- Review schema (review array + aggregateRating) wstrzyknięte do globalnej
+     Organization+LocalBusiness w head.ejs - przez locals reviewsForSchema/reviewCount.
+     Wczesniej duplikat tu (osobny <script>) powodowal warning w GSC. -->
 
 <script>
 // Load more reviews

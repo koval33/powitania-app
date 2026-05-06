@@ -60,7 +60,8 @@ const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
 const partnersPath = path.join(__dirname, 'data', 'partners.json');
 const melodiesPath = path.join(__dirname, 'data', 'melodies.json');
 function loadVoices() {
-  return JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+  const voices = JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+  return voices.sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999));
 }
 function loadReviews() {
   return JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
@@ -534,7 +535,11 @@ app.get('/opinie/', (req, res) => {
       { name: 'Strona główna', url: '/' },
       { name: 'Opinie', url: '/opinie/' }
     ],
-    reviews
+    reviews,
+    // Wstrzyknij reviewCount + top 10 do schema.org Organization (head.ejs)
+    // - usuwa duplikat z osobnego LocalBusiness blocku w opinie.ejs
+    reviewCount: reviews.length,
+    reviewsForSchema: reviews.slice(0, 10)
   });
 });
 
