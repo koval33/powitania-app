@@ -317,7 +317,17 @@ router.post('/zapisz/', upload.fields([
       ...(seoFields.seoDescription !== undefined ? { seoDescription: seoFields.seoDescription } : {}),
       ...(seoFields.seoTitleEn !== undefined ? { seoTitleEn: seoFields.seoTitleEn } : {}),
       ...(seoFields.seoDescriptionEn !== undefined ? { seoDescriptionEn: seoFields.seoDescriptionEn } : {}),
-      order: nextOrder
+      order: nextOrder,
+      // Zachowaj approved i createdAt (KRYTYCZNE - bez approved=true loadVoices()
+      // ukryje lektora przed publicznym widokiem). Nowy lektor utworzony recznie
+      // w panelu = od razu zaakceptowany (approved=true), tylko drafty z API
+      // /api/voices/draft/ maja approved=false.
+      approved: existingVoice && typeof existingVoice.approved === 'boolean'
+        ? existingVoice.approved
+        : true,
+      ...(existingVoice && existingVoice.createdAt !== undefined
+        ? { createdAt: existingVoice.createdAt }
+        : {})
     };
 
     if (isEdit) {
