@@ -545,7 +545,7 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie | Lektor do reklamy | Bank głosów lektorskich | Powitania.pl',
+    title: 'Nagrania lektorskie - 234 lektorów, 24-48h | Powitania.pl',
     description: 'Profesjonalne studio nagrań lektorskich od 2001 r. 234 lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -626,7 +626,7 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
 
 app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
   res.render('uslugi/sesje-zdalne', {
-    title: 'Sesje zdalne - Nagrania lektorskie online | powitania.pl',
+    title: 'Zdalne sesje nagraniowe z lektorem - kontrola live | Powitania.pl',
     description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
