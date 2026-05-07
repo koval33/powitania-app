@@ -37,7 +37,8 @@
     "seoTitle": "Tomasz Raczek - lektor, krytyk filmowy | powitania.pl",
     "seoDescription": "Tomasz Raczek - 50+ lat, głos rozpoznawalny z TV i radia. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Tomasz Raczek - legendary film critic voice | powitania.pl",
-    "seoDescriptionEn": "Tomasz Raczek - Poland's most recognised film critic and voice, 50+. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Tomasz Raczek - Poland's most recognised film critic and voice, 50+. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 10
   },
   {
     "id": "tomasz-bednarek",
@@ -87,7 +88,8 @@
     "seoTitle": "Tomasz Bednarek - aktor, lektor dubbingowy | powitania.pl",
     "seoDescription": "Tomasz Bednarek - 50+ lat, rozpoznawalny głos polskiego kina i TV. Reklama, dubbing, audiobook. Próbka + wycena w 72h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Tomasz Bednarek - award-winning narrator | powitania.pl",
-    "seoDescriptionEn": "Tomasz Bednarek - celebrated Polish narrator, 50+. Rich, expressive voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Tomasz Bednarek - celebrated Polish narrator, 50+. Rich, expressive voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 20
   },
   {
     "id": "lukasz-nowicki",
@@ -142,7 +144,8 @@
     "seoTitle": "Łukasz Nowicki - aktor, prezenter TV, lektor | powitania.pl",
     "seoDescription": "Łukasz Nowicki - 30-50 lat, aktor filmowy i prezenter telewizyjny. Reklama, narracja do filmu. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Łukasz Nowicki - actor & TV presenter voice | powitania.pl",
-    "seoDescriptionEn": "Łukasz Nowicki - famous Polish actor and TV presenter, 50+. Distinctive voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Łukasz Nowicki - famous Polish actor and TV presenter, 50+. Distinctive voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 30
   },
   {
     "id": "jon",
@@ -211,7 +214,8 @@
     "seoTitle": "Jon - native speaker (angielski), lektor | powitania.pl",
     "seoDescription": "Jon - native speaker (angielski), głos znany z radia i TV. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jon - native English voice artist | powitania.pl",
-    "seoDescriptionEn": "Jon - native English voice artist, 30-50. Clear, professional American voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jon - native English voice artist, 30-50. Clear, professional American voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 40
   },
   {
     "id": "wiktor-zborowski",
@@ -271,7 +275,8 @@
     "seoTitle": "Wiktor Zborowski - aktor, lektor | powitania.pl",
     "seoDescription": "Wiktor Zborowski - 50+ lat, legendarny aktor teatralny i filmowy. Reklama, narracja, audiobook. Próbka + wycena w 72h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Wiktor Zborowski - stage & screen actor voice | powitania.pl",
-    "seoDescriptionEn": "Wiktor Zborowski - acclaimed Polish actor, 50+. Deep, authoritative voice for IVR, narration, audiobooks. Quote + sample. powitania.pl since 2001."
+    "seoDescriptionEn": "Wiktor Zborowski - acclaimed Polish actor, 50+. Deep, authoritative voice for IVR, narration, audiobooks. Quote + sample. powitania.pl since 2001.",
+    "order": 50
   },
   {
     "id": "patryk-baryton",
@@ -336,7 +341,8 @@
     "seoTitle": "Patryk - lektor o głębokim, ciepłym głosie | powitania.pl",
     "seoDescription": "Patryk - 30-50 lat, głęboki ciepły tembr, wszechstronny. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Patryk - baritone voice artist | powitania.pl",
-    "seoDescriptionEn": "Patryk - Polish baritone voice artist, 30-50. Rich, deep timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Patryk - Polish baritone voice artist, 30-50. Rich, deep timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 60
   },
   {
     "id": "jacek-rozenek",
@@ -390,7 +396,8 @@
     "seoTitle": "Jacek Rozenek - aktor, lektor dubbingowy | powitania.pl",
     "seoDescription": "Jacek Rozenek - 50+ lat, aktor teatralny, filmowy i dubbingowy. Reklama, narracja, audiobook. Próbka + wycena w 72h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jacek Różenek - celebrity voice artist | powitania.pl",
-    "seoDescriptionEn": "Jacek Różenek - Polish celebrity and presenter, 30-50. Charismatic voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jacek Różenek - Polish celebrity and presenter, 30-50. Charismatic voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 70
   },
   {
     "id": "andrzej-ferenc",
@@ -454,7 +461,8 @@
     "seoTitle": "Andrzej Ferenc - znany głos polskiej TV | powitania.pl",
     "seoDescription": "Andrzej Ferenc - 30-50 lat, lektor wiodących stacji telewizyjnych. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Andrzej Ferenc - experienced Polish TV voice | powitania.pl",
-    "seoDescriptionEn": "Andrzej Ferenc - veteran Polish TV voice artist, 50+. Warm, authoritative timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Andrzej Ferenc - veteran Polish TV voice artist, 50+. Warm, authoritative timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 80
   },
   {
     "id": "maciej-szeptanka",
@@ -515,7 +523,8 @@
     "seoTitle": "Maciej - szeptanka, głos Netflixa i HBO | powitania.pl",
     "seoDescription": "Maciej - 30-50 lat, lektor szeptankowy Netflixa, HBO, Disney+, Nat Geo. Reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Maciej - whisper voice artist | powitania.pl",
-    "seoDescriptionEn": "Maciej - Polish whisper voice, Netflix/HBO timbre, 30-50. IVR, narration, audiobooks. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Maciej - Polish whisper voice, Netflix/HBO timbre, 30-50. IVR, narration, audiobooks. Sample + quote. powitania.pl since 2001.",
+    "order": 90
   },
   {
     "id": "maciek",
@@ -580,7 +589,8 @@
     "seoTitle": "Maciek - młody, ciepły, wszechstronny głos | powitania.pl",
     "seoDescription": "Maciek - 20-30 lat, ciepły spokojny tembr. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Maciek - warm Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Maciek - Polish male voice artist, 30-50. Warm, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Maciek - Polish male voice artist, 30-50. Warm, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 100
   },
   {
     "id": "beata-tadla",
@@ -642,7 +652,8 @@
     "seoTitle": "Beata Tadla - dziennikarka telewizyjna | powitania.pl",
     "seoDescription": "Beata Tadla - 30-50 lat, znana dziennikarka radiowa i TV, trenerka mówców. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Beata Tadła - known TV journalist voice | powitania.pl",
-    "seoDescriptionEn": "Beata Tadła - recognised Polish TV journalist and presenter, 30-50. Clear, professional voice for IVR, commercials. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Beata Tadła - recognised Polish TV journalist and presenter, 30-50. Clear, professional voice for IVR, commercials. Sample + quote. powitania.pl since 2001.",
+    "order": 110
   },
   {
     "id": "anna-samusionek",
@@ -704,7 +715,8 @@
     "seoTitle": "Anna Samusionek - niski aksamitny głos | powitania.pl",
     "seoDescription": "Anna Samusionek - 30-50 lat, aktorka o niskiej, aksamitnej barwie głosu. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Anna Samusionek - actress & voice artist | powitania.pl",
-    "seoDescriptionEn": "Anna Samusionek - Polish actress and voice artist, 30-50. Expressive, warm voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Anna Samusionek - Polish actress and voice artist, 30-50. Expressive, warm voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 120
   },
   {
     "id": "dorota-radio",
@@ -766,7 +778,8 @@
     "seoTitle": "Dorota - aktorka, lektorka radiowa | powitania.pl",
     "seoDescription": "Dorota - 30-50 lat, aktorka z 30+ latami doświadczenia, lektorka radiowa. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Dorota - radio voice artist | powitania.pl",
-    "seoDescriptionEn": "Dorota - experienced Polish radio voice artist, 30-50. Warm, clear timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Dorota - experienced Polish radio voice artist, 30-50. Warm, clear timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 130
   },
   {
     "id": "jacek",
@@ -831,7 +844,8 @@
     "seoTitle": "Jacek - lektor radiowy, głos z reklam TV | powitania.pl",
     "seoDescription": "Jacek - 30-50 lat, bogate doświadczenie radiowe i producenckie. Reklama, IVR, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jacek - deep Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Jacek - Polish male voice artist, 30-50. Deep, clear voice for IVR, commercials, narration and audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jacek - Polish male voice artist, 30-50. Deep, clear voice for IVR, commercials, narration and audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 140
   },
   {
     "id": "zuzanna",
@@ -893,7 +907,8 @@
     "seoTitle": "Zuzanna - ciepły, melodyjny głos | powitania.pl",
     "seoDescription": "Zuzanna - 30-50 lat, ciepły głos o doskonałym brzmieniu w średnich rejestrach. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Zuzanna - warm Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Zuzanna - Polish female voice, 30-50. Warm, expressive voice for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Zuzanna - Polish female voice, 30-50. Warm, expressive voice for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 150
   },
   {
     "id": "katarzyna-skolimowska",
@@ -958,7 +973,8 @@
     "seoTitle": "Katarzyna Skolimowska - aktorka PWST | powitania.pl",
     "seoDescription": "Katarzyna Skolimowska - 50+ lat, aktorka PWST Warszawa, dubbing i reklamy. IVR, narracja, audiobook. Próbka + wycena w 76h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Katarzyna Skolimowska - warm actor voice | powitania.pl",
-    "seoDescriptionEn": "Katarzyna Skolimowska - Polish actress, 30-50. Warm voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Katarzyna Skolimowska - Polish actress, 30-50. Warm voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 160
   },
   {
     "id": "carla",
@@ -1023,7 +1039,8 @@
     "seoTitle": "Carla - nagradzana lektorka native EN | powitania.pl",
     "seoDescription": "Carla - native speaker (British English), nagradzana artystka głosowa. Reklama, IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Carla - native English female voice | powitania.pl",
-    "seoDescriptionEn": "Carla - native English female voice artist, 30-50. Warm, engaging American voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Carla - native English female voice artist, 30-50. Warm, engaging American voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 170
   },
   {
     "id": "michal-wszechstronny",
@@ -1084,7 +1101,8 @@
     "seoTitle": "Michał - wszechstronny lektor | powitania.pl",
     "seoDescription": "Michał - 30-50 lat, pełna komunikatywna barwa głosu. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Michał - versatile male voice artist | powitania.pl",
-    "seoDescriptionEn": "Michał - versatile Polish male voice, 30-50. Wide range: IVR, commercials, narration, e-learning. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Michał - versatile Polish male voice, 30-50. Wide range: IVR, commercials, narration, e-learning. Quote in 48h. powitania.pl since 2001.",
+    "order": 180
   },
   {
     "id": "antonis",
@@ -1149,7 +1167,8 @@
     "seoTitle": "Antonis - native speaker (grecki), lektor | powitania.pl",
     "seoDescription": "Antonis - 30-50 lat, native speaker (grecki), niski ciepły głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Antonis - native Greek voice artist | powitania.pl",
-    "seoDescriptionEn": "Antonis - native Greek voice artist, authentic pronunciation for IVR, commercials and narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Antonis - native Greek voice artist, authentic pronunciation for IVR, commercials and narration. Sample + quote. powitania.pl since 2001.",
+    "order": 190
   },
   {
     "id": "magda",
@@ -1210,7 +1229,8 @@
     "seoDescription": "Magda - 50+ lat, aktorka PWST, prowadzi audycję w Radiu Wnet. Audiobooki, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Polish voice artist with a warm, expressive timbre. Magda brings clarity and natural charm to every recording, making her an excellent choice for IVR, commercials and narration.",
     "seoTitleEn": "Magda - warm expressive Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Magda - warm, expressive Polish female voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Magda - warm, expressive Polish female voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 200
   },
   {
     "id": "pawel-szwajgier",
@@ -1267,7 +1287,8 @@
     "seoTitle": "Paweł Szwajgier - kabaret, bajki i scenki | powitania.pl",
     "seoDescription": "Paweł Szwajgier - 30-50 lat, głos kabaretowy znany ze scen i telewizji. Bajki, reklama, narracja. Próbka + wycena w 96h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Paweł Szwajgier - Polish radio voice legend | powitania.pl",
-    "seoDescriptionEn": "Paweł Szwajgier - iconic Polish radio voice, 50+. Deep, resonant timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Paweł Szwajgier - iconic Polish radio voice, 50+. Deep, resonant timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 210
   },
   {
     "id": "magdalena",
@@ -1328,7 +1349,8 @@
     "seoTitle": "Magdalena - ciepły alt, realizacja 24h | powitania.pl",
     "seoDescription": "Magdalena - 20-30 lat, ciepły alt, błyskawiczna realizacja 24h. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Magdalena - expressive Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Magdalena - Polish female voice artist, 30-50. Expressive, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Magdalena - Polish female voice artist, 30-50. Expressive, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 220
   },
   {
     "id": "krzysztof-studio",
@@ -1390,7 +1412,8 @@
     "seoTitle": "Krzysztof - lektor z własnym studiem, 24h | powitania.pl",
     "seoDescription": "Krzysztof - 30-50 lat, własne studio, ekspresowa realizacja 24h. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Krzysztof Studio - studio-grade Polish voice | powitania.pl",
-    "seoDescriptionEn": "Krzysztof Studio - studio-background Polish voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Krzysztof Studio - studio-background Polish voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 230
   },
   {
     "id": "jacek-brzostynski",
@@ -1454,7 +1477,8 @@
     "seoTitle": "Jacek Brzostyński - lektor filmowy | powitania.pl",
     "seoDescription": "Jacek Brzostyński - 50+ lat, lektor filmowy i reklamowy słyszany w radio i TV. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jacek Brzostynski - dramatic actor voice | powitania.pl",
-    "seoDescriptionEn": "Jacek Brzostynski - Polish dramatic actor and voice talent, 30-50. Powerful voice for IVR, narration, audiobooks. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jacek Brzostynski - Polish dramatic actor and voice talent, 30-50. Powerful voice for IVR, narration, audiobooks. Sample + quote. powitania.pl since 2001.",
+    "order": 240
   },
   {
     "id": "kuba-bielak",
@@ -1514,7 +1538,8 @@
     "seoTitle": "Kuba Bielak - lektor TVN Turbo, radio i TV | powitania.pl",
     "seoDescription": "Kuba Bielak - 30-50 lat, 15 lat w TV i radiu, głos programów TVN Turbo. Reklama, narracja. Próbka + wycena w 72h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kuba Bielak - actor & voice artist | powitania.pl",
-    "seoDescriptionEn": "Kuba Bielak - Polish actor and voice artist, 30-50. Versatile voice for IVR, commercials, narration, dubbing. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Kuba Bielak - Polish actor and voice artist, 30-50. Versatile voice for IVR, commercials, narration, dubbing. Sample + quote. powitania.pl since 2001.",
+    "order": 250
   },
   {
     "id": "janek",
@@ -1575,7 +1600,8 @@
     "seoTitle": "Janek - lektor radiowy, konferansjer | powitania.pl",
     "seoDescription": "Janek - 30-50 lat, lektor radiowy i konferansjer. IVR, reklama, szeptanki, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Janek - fresh youthful Polish voice | powitania.pl",
-    "seoDescriptionEn": "Janek - young Polish male voice artist, 20-30. Fresh, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Janek - young Polish male voice artist, 20-30. Fresh, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 260
   },
   {
     "id": "justyna",
@@ -1635,7 +1661,8 @@
     "seoTitle": "Justyna - lektorka, dziennikarka i aktorka | powitania.pl",
     "seoDescription": "Justyna - 20-30 lat, dziennikarka i aktorka, energiczny głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Justyna - clear Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Justyna - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Justyna - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 270
   },
   {
     "id": "blazej",
@@ -1692,7 +1719,8 @@
     "seoTitle": "Błażej - lektor radiowy, dynamiczny głos | powitania.pl",
     "seoDescription": "Błażej - 20-30 lat, lektor radiowy z dużym doświadczeniem. Reklama, IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Błażej - powerful Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Błażej - Polish male voice artist, 30-50. Powerful, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Błażej - Polish male voice artist, 30-50. Powerful, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 280
   },
   {
     "id": "michal-reklamowy",
@@ -1753,7 +1781,8 @@
     "seoTitle": "Michał - lektor reklamowy, 20+ lat | powitania.pl",
     "seoDescription": "Michał - 30-50 lat, specjalista od spotów reklamowych, 20+ lat doświadczenia. Reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Michał 4 - commercial specialist Polish voice | powitania.pl",
-    "seoDescriptionEn": "Michał 4 - Polish commercial specialist, 30-50. Lively voice for IVR, radio and TV ads. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Michał 4 - Polish commercial specialist, 30-50. Lively voice for IVR, radio and TV ads. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 290
   },
   {
     "id": "pavel",
@@ -1810,7 +1839,8 @@
     "seoTitle": "Pavel - native speaker (czeski), lektor | powitania.pl",
     "seoDescription": "Pavel - 30-50 lat, czeski native speaker. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Pavel - native Czech voice artist | powitania.pl",
-    "seoDescriptionEn": "Pavel - native Czech voice artist with a clear, authoritative voice. IVR, commercials, narration, e-learning in Czech. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Pavel - native Czech voice artist with a clear, authoritative voice. IVR, commercials, narration, e-learning in Czech. Sample + quote. powitania.pl since 2001.",
+    "order": 300
   },
   {
     "id": "krzysztof-niski-glos",
@@ -1880,7 +1910,8 @@
     "seoTitle": "Krzysztof - niski głos z chrypką, PL i EN | powitania.pl",
     "seoDescription": "Krzysztof - 30-50 lat, niski głos z delikatną chrypką, nagrania PL i EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Krzysztof - low deep Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Krzysztof - Polish male voice artist with a notably low, deep voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Krzysztof - Polish male voice artist with a notably low, deep voice, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 310
   },
   {
     "id": "beata",
@@ -1945,7 +1976,8 @@
     "seoTitle": "Beata - ciepła barwa wzbudzająca zaufanie | powitania.pl",
     "seoDescription": "Beata - 30-50 lat, ciepła okrągła barwa wzbudzająca zaufanie słuchaczy. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Beata - clear professional Polish voice | powitania.pl",
-    "seoDescriptionEn": "Beata - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Beata - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 320
   },
   {
     "id": "bartosz",
@@ -2015,7 +2047,8 @@
     "seoTitle": "Bartosz - mocny głos lektorski, 10 lat | powitania.pl",
     "seoDescription": "Bartosz - 30-50 lat, solidny mocny głos z 10+ latami pracy studyjnej. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Bartosz - dynamic Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Bartosz - Polish male voice artist, 30-50. Dynamic, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Bartosz - Polish male voice artist, 30-50. Dynamic, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 330
   },
   {
     "id": "marcin-weteran",
@@ -2076,7 +2109,8 @@
     "seoTitle": "Marcin - wszechstronny lektor, 30 lat | powitania.pl",
     "seoDescription": "Marcin - 50+ lat, 30 lat doświadczenia, szerokie zdolności interpretacyjne. IVR, reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marcin Weteran - veteran Polish voice | powitania.pl",
-    "seoDescriptionEn": "Marcin Weteran - 20+ years veteran Polish voice, 30-50. Deep voice for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Marcin Weteran - 20+ years veteran Polish voice, 30-50. Deep voice for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 340
   },
   {
     "id": "alicja-wszechstronna",
@@ -2137,7 +2171,8 @@
     "seoTitle": "Alicja - zmysłowy, zabawny, zadziorny głos | powitania.pl",
     "seoDescription": "Alicja - 30-50 lat, wszechstronny głos: ciepły, zmysłowy, zabawny i zadziorny. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Alicja 2 - versatile Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Alicja 2 - versatile Polish female voice, 30-50. IVR, commercials, narration, e-learning. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Alicja 2 - versatile Polish female voice, 30-50. IVR, commercials, narration, e-learning. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 350
   },
   {
     "id": "janusz",
@@ -2202,7 +2237,8 @@
     "seoTitle": "Janusz - lektor dubbingowy, reklamy i gry | powitania.pl",
     "seoDescription": "Janusz - 30-50 lat, doświadczony lektor dubbingowy. Reklamy, gry komputerowe, IVR. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Janusz - experienced Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Janusz - experienced Polish male voice artist, 50+. Mature, authoritative voice for IVR, commercials and narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Janusz - experienced Polish male voice artist, 50+. Mature, authoritative voice for IVR, commercials and narration. Sample + quote. powitania.pl since 2001.",
+    "order": 360
   },
   {
     "id": "anita",
@@ -2264,7 +2300,8 @@
     "seoTitle": "Anita - doświadczona lektorka, jasny głos | powitania.pl",
     "seoDescription": "Anita - 30-50 lat, jedna z najbardziej doświadczonych lektorek. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Anita - pleasant Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Anita - Polish female voice artist, 30-50. Pleasant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Anita - Polish female voice artist, 30-50. Pleasant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 370
   },
   {
     "id": "stanislaw-olejniczak",
@@ -2320,7 +2357,8 @@
     "seoTitle": "Stanisław Olejniczak - głos filmowy | powitania.pl",
     "seoDescription": "Stanisław Olejniczak - 30-50 lat, jeden z najbardziej rozpoznawalnych głosów filmowych. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Stanisław Olejniczak - trusted Polish voice | powitania.pl",
-    "seoDescriptionEn": "Stanisław Olejniczak - experienced Polish voice artist, 50+. Authoritative timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Stanisław Olejniczak - experienced Polish voice artist, 50+. Authoritative timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 380
   },
   {
     "id": "mariusz",
@@ -2385,7 +2423,8 @@
     "seoTitle": "Mariusz - młody tenorowy głos, realizacja 24h | powitania.pl",
     "seoDescription": "Mariusz - 30-50 lat, energiczny tenorowy głos, ekspresowa realizacja 24h. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mariusz - clear Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Mariusz - Polish male voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mariusz - Polish male voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 390
   },
   {
     "id": "paulina",
@@ -2450,7 +2489,8 @@
     "seoTitle": "Paulina - młody witalny głos, bajki i gry | powitania.pl",
     "seoDescription": "Paulina - 5-20 lat, energiczny witalny głos do bajek, gier i spotów. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Paulina - bright Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Paulina - Polish female voice artist, 20-30. Bright, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Paulina - Polish female voice artist, 20-30. Bright, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 400
   },
   {
     "id": "daniel-radiowy",
@@ -2512,7 +2552,8 @@
     "seoTitle": "Daniel - lektor PL+EN, głos radiowy | powitania.pl",
     "seoDescription": "Daniel - 30-50 lat, lektor PL i EN, wieloletni głos radiowy. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Daniel - radio-style Polish voice | powitania.pl",
-    "seoDescriptionEn": "Daniel - radio-style Polish voice, 30-50. Smooth broadcast voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Daniel - radio-style Polish voice, 30-50. Smooth broadcast voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 410
   },
   {
     "id": "konstancja",
@@ -2578,7 +2619,8 @@
     "seoTitle": "Konstancja - native British i American EN | powitania.pl",
     "seoDescription": "Konstancja - 30-50 lat, native speaker (British EN, American EN) i lektor PL. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Konstancja - bilingual Polish-English voice | powitania.pl",
-    "seoDescriptionEn": "Konstancja - native English speaker fluent in Polish, 20-30. Authentic bilingual voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Konstancja - native English speaker fluent in Polish, 20-30. Authentic bilingual voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 420
   },
   {
     "id": "vasyl",
@@ -2650,7 +2692,8 @@
     "seoTitle": "Vasyl - lektor wielojęzyczny, native EN (US) | powitania.pl",
     "seoDescription": "Vasyl - 30-50 lat, wielojęzyczny lektor, angielski (akcent US) jako drugi ojczysty. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Vasyl - native Ukrainian voice artist | powitania.pl",
-    "seoDescriptionEn": "Vasyl - native Ukrainian voice artist with a confident, natural delivery. IVR, commercials, narration in Ukrainian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Vasyl - native Ukrainian voice artist with a confident, natural delivery. IVR, commercials, narration in Ukrainian. Sample + quote. powitania.pl since 2001.",
+    "order": 430
   },
   {
     "id": "kinga",
@@ -2711,7 +2754,8 @@
     "seoTitle": "Kinga - lektorka, wokalistka, wesoły głos | powitania.pl",
     "seoDescription": "Kinga - 20-30 lat, lektorka i wokalistka, młody wesoły głos. IVR, reklama. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kinga - fresh Polish female voice artist | powitania.pl",
-    "seoDescriptionEn": "Kinga - Polish female voice artist, 20-30. Fresh, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Kinga - Polish female voice artist, 20-30. Fresh, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 440
   },
   {
     "id": "olga",
@@ -2772,7 +2816,8 @@
     "seoTitle": "Olga - duże zdolności interpretacyjne | powitania.pl",
     "seoDescription": "Olga - 30-50 lat, duże zdolności interpretacyjne, wszechstronny głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Olga - natural Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Olga - Polish female voice artist, 30-50. Natural, trustworthy voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Olga - Polish female voice artist, 30-50. Natural, trustworthy voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 450
   },
   {
     "id": "maciej-jablonski",
@@ -2833,7 +2878,8 @@
     "seoTitle": "Maciej Jabłoński - prezenter TVP, trener | powitania.pl",
     "seoDescription": "Maciej Jabłoński - 30-50 lat, dziennikarz i prezenter TVP, trener głosu. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Maciej Jabłoński - warm Polish voice artist | powitania.pl",
-    "seoDescriptionEn": "Maciej Jabłoński - established Polish voice artist, 30-50. Warm, natural voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Maciej Jabłoński - established Polish voice artist, 30-50. Warm, natural voice for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 460
   },
   {
     "id": "marcin-dubbing",
@@ -2899,7 +2945,8 @@
     "seoTitle": "Marcin - lektor dubbingowy, reklama i IVR | powitania.pl",
     "seoDescription": "Marcin - 30-50 lat, wszechstronny głos: dubbing, reklama, IVR. Nagrania PL i EN. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marcin - dubbing specialist Polish voice | powitania.pl",
-    "seoDescriptionEn": "Marcin - dubbing specialist Polish voice, 30-50. Versatile for IVR, commercials, dubbing. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marcin - dubbing specialist Polish voice, 30-50. Versatile for IVR, commercials, dubbing. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 470
   },
   {
     "id": "patryk",
@@ -2960,7 +3007,8 @@
     "seoTitle": "Patryk - przyjemny młody głos lektorski | powitania.pl",
     "seoDescription": "Patryk - 30-50 lat, przyjemny komunikatywny głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Patryk - youthful Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Patryk - young Polish male voice artist, 20-30. Fresh, energetic voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Patryk - young Polish male voice artist, 20-30. Fresh, energetic voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 480
   },
   {
     "id": "aleksander",
@@ -3030,7 +3078,8 @@
     "seoTitle": "Aleksander - muzyk, charakterystyczny głos | powitania.pl",
     "seoDescription": "Aleksander - 30-50 lat, lektor i muzyk, charakterystyczny nowy głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Aleksander - sonorous Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Aleksander - Polish male voice artist, 30-50. Sonorous, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Aleksander - Polish male voice artist, 30-50. Sonorous, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 490
   },
   {
     "id": "katarzyna",
@@ -3091,7 +3140,8 @@
     "seoTitle": "Katarzyna - dziennikarka radiowa, 8 lat | powitania.pl",
     "seoDescription": "Katarzyna - 20-30 lat, 8 lat w radiu jako prezenter i dziennikarz muzyczny. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Katarzyna - classic Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Katarzyna - Polish female voice artist, 30-50. Classic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Katarzyna - Polish female voice artist, 30-50. Classic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 500
   },
   {
     "id": "rafal",
@@ -3152,7 +3202,8 @@
     "seoDescription": "Rafał - 30-50 lat, lektor polski. IVR, reklama, narracja, audiobook. Nagrania w studio - próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "descriptionEn": "Polish male voice artist with a confident, balanced delivery. Rafał records IVR greetings, radio commercials and narrations with reliable professionalism.",
     "seoTitleEn": "Rafał - Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Rafał - Polish male voice, 30-50. Confident, balanced delivery for IVR, commercials and narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Rafał - Polish male voice, 30-50. Confident, balanced delivery for IVR, commercials and narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 510
   },
   {
     "id": "arek",
@@ -3213,7 +3264,8 @@
     "seoTitle": "Arek - lektor i DJ radiowy, doświadczony głos | powitania.pl",
     "seoDescription": "Arek - 30-50 lat, lektor i DJ radiowy, pół życia przed mikrofonem. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Arek - smooth Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Arek - Polish male voice artist, 30-50. Smooth, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Arek - Polish male voice artist, 30-50. Smooth, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 520
   },
   {
     "id": "roch",
@@ -3278,7 +3330,8 @@
     "seoTitle": "Roch - doświadczony aktor, audiobooki i gry | powitania.pl",
     "seoDescription": "Roch - 50+ lat, doświadczony aktor i lektor, specjalista od audiobooków. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Roch - distinctive Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Roch - Polish male voice artist, 30-50. Distinctive, resonant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Roch - Polish male voice artist, 30-50. Distinctive, resonant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 530
   },
   {
     "id": "agnieszka-dzieci",
@@ -3339,7 +3392,8 @@
     "seoTitle": "Agnieszka - delikatny głos, dzieci i beauty | powitania.pl",
     "seoDescription": "Agnieszka - 30-50 lat, aktorka i lektorka o delikatnym głosie. Nagrania dla dzieci i branży beauty. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Agnieszka 2 - children's content specialist | powitania.pl",
-    "seoDescriptionEn": "Agnieszka 2 - children's content Polish voice, 30-50. Warm, gentle for audiobooks, e-learning. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Agnieszka 2 - children's content Polish voice, 30-50. Warm, gentle for audiobooks, e-learning. Quote in 48h. powitania.pl since 2001.",
+    "order": 540
   },
   {
     "id": "kim-dubbing",
@@ -3401,7 +3455,8 @@
     "seoTitle": "Kim - aktorka, dubbing i audiobooki | powitania.pl",
     "seoDescription": "Kim - 20-30 lat, dyplomowana aktorka, wiele projektów dubbingowych. IVR, reklama, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kim 2 - dubbing specialist Polish voice | powitania.pl",
-    "seoDescriptionEn": "Kim 2 - Polish dubbing specialist, 20-30. Expressive, versatile for dubbing, narration, IVR. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Kim 2 - Polish dubbing specialist, 20-30. Expressive, versatile for dubbing, narration, IVR. Quote in 48h. powitania.pl since 2001.",
+    "order": 550
   },
   {
     "id": "zofia",
@@ -3461,7 +3516,8 @@
     "seoTitle": "Zofia - aktorka PWSF Łódź, uczennica Gajosa | powitania.pl",
     "seoDescription": "Zofia - 30-50 lat, absolwentka PWSF Łódź, wychowanka Janusza Gajosa. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Zofia - elegant Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Zofia - Polish female voice artist, 30-50. Elegant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Zofia - Polish female voice artist, 30-50. Elegant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 560
   },
   {
     "id": "jarek",
@@ -3530,7 +3586,8 @@
     "seoTitle": "Jarek - dziennikarz radiowy, głos Google Maps | powitania.pl",
     "seoDescription": "Jarek - 30-50 lat, dziennikarz radiowy i producent, głos Google Maps. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jarek - natural Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Jarek - Polish male voice artist, 30-50. Natural, trustworthy voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jarek - Polish male voice artist, 30-50. Natural, trustworthy voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 570
   },
   {
     "id": "marius",
@@ -3595,7 +3652,8 @@
     "seoTitle": "Marius - native speaker (rumuński), lektor | powitania.pl",
     "seoDescription": "Marius - 30-50 lat, rumuński native speaker. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marius - native Romanian voice artist | powitania.pl",
-    "seoDescriptionEn": "Marius - native Romanian male voice artist with a warm, confident delivery. IVR, commercials and narration in Romanian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Marius - native Romanian male voice artist with a warm, confident delivery. IVR, commercials and narration in Romanian. Sample + quote. powitania.pl since 2001.",
+    "order": 580
   },
   {
     "id": "natalia-wszechstronna",
@@ -3656,7 +3714,8 @@
     "seoTitle": "Natalia - spoty, eventy, trailery, IVR | powitania.pl",
     "seoDescription": "Natalia - 20-30 lat, wszechstronna lektorka: spoty, audiobooki, eventy, trailery, IVR. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Natalia - versatile Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Natalia - versatile Polish female voice, 20-30. IVR, commercials, audiobooks, trailers, animatics. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Natalia - versatile Polish female voice, 20-30. IVR, commercials, audiobooks, trailers, animatics. Quote in 48h. powitania.pl since 2001.",
+    "order": 590
   },
   {
     "id": "lucia",
@@ -3723,7 +3782,8 @@
     "seoTitle": "Lucia - lektorka EN, ES, DE, wielojęzyczna | powitania.pl",
     "seoDescription": "Lucia - 30-50 lat, wielojęzyczna lektorka: angielski, hiszpański, niemiecki. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Lucia - native Spanish female voice | powitania.pl",
-    "seoDescriptionEn": "Lucia - native Spanish female voice artist with a bright, warm timbre. IVR, commercials and narration in Spanish. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Lucia - native Spanish female voice artist with a bright, warm timbre. IVR, commercials and narration in Spanish. Sample + quote. powitania.pl since 2001.",
+    "order": 600
   },
   {
     "id": "kamila",
@@ -3784,7 +3844,8 @@
     "seoTitle": "Kamila - energia i femme fatale w głosie | powitania.pl",
     "seoDescription": "Kamila - 30-50 lat, wszechstronny głos: energiczna, profesjonalna, uwodzicielska. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kamila - Eska Radio voice, versatile range | powitania.pl",
-    "seoDescriptionEn": "Kamila - Eska Radio Polish voice, 30-50. Wide range from cheerful to femme fatale. IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Kamila - Eska Radio Polish voice, 30-50. Wide range from cheerful to femme fatale. IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 610
   },
   {
     "id": "marek-pl-en",
@@ -3846,7 +3907,8 @@
     "seoTitle": "Marek - doświadczony lektor, głos PL i EN | powitania.pl",
     "seoDescription": "Marek - 30-50 lat, doświadczony lektor o uniwersalnej barwie, nagrania PL i EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marek - versatile voice, Polish & English | powitania.pl",
-    "seoDescriptionEn": "Marek - versatile Polish & English voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marek - versatile Polish & English voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 620
   },
   {
     "id": "robert",
@@ -3911,7 +3973,8 @@
     "seoTitle": "Robert - lektor radiowy od 2007, dynamiczny | powitania.pl",
     "seoDescription": "Robert - 30-50 lat, lektor radiowy od 2007. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Robert - strong Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Robert - Polish male voice artist, 30-50. Strong, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Robert - Polish male voice artist, 30-50. Strong, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 630
   },
   {
     "id": "przemyslaw",
@@ -3975,7 +4038,8 @@
     "seoTitle": "Przemysław - dynamiczny głos do reklam | powitania.pl",
     "seoDescription": "Przemysław - 20-30 lat, energiczny głos do reklam, IVR i scenek. Reklama, narracja, prezentacje. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Przemysław - professional Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Przemysław - professional Polish male voice, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Przemysław - professional Polish male voice, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 640
   },
   {
     "id": "zbigniew-moskal",
@@ -4036,7 +4100,8 @@
     "seoTitle": "Zbigniew Moskal - niski głos z reklam | powitania.pl",
     "seoDescription": "Zbigniew Moskal - 50+ lat, ciepły niski głos znany z reklam radiowych i TV. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Zbigniew Moskal - seasoned Polish narrator | powitania.pl",
-    "seoDescriptionEn": "Zbigniew Moskal - seasoned Polish narrator and voice artist, 50+. Deep timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Zbigniew Moskal - seasoned Polish narrator and voice artist, 50+. Deep timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 650
   },
   {
     "id": "lukasz-reklamy",
@@ -4101,7 +4166,8 @@
     "seoTitle": "Łukasz - lektor od 2012, IKEA i Coca-Cola | powitania.pl",
     "seoDescription": "Łukasz - 30-50 lat, mocny dynamiczny głos, nagrywał dla IKEA i Coca-Cola. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Łukasz - commercial-focused Polish voice | powitania.pl",
-    "seoDescriptionEn": "Łukasz - commercial-focused Polish voice, 30-50. Punchy voice for IVR and radio/TV ads. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Łukasz - commercial-focused Polish voice, 30-50. Punchy voice for IVR and radio/TV ads. Quote in 48h. powitania.pl since 2001.",
+    "order": 660
   },
   {
     "id": "mateusz-mlody",
@@ -4162,7 +4228,8 @@
     "seoTitle": "Mateusz - młody, przyjemny głos lektorski | powitania.pl",
     "seoDescription": "Mateusz - 20-30 lat, młodo brzmiący, przyjemny głos. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mateusz 2 - young Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Mateusz 2 - young Polish male voice artist, 20-30. Fresh, upbeat voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mateusz 2 - young Polish male voice artist, 20-30. Fresh, upbeat voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 670
   },
   {
     "id": "bruno",
@@ -4222,7 +4289,8 @@
     "seoTitle": "Bruno - młody głos, spoty reklamowe | powitania.pl",
     "seoDescription": "Bruno - do 20 lat, świeży głos z doświadczeniem w spotach reklamowych. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Bruno - characterful Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Bruno - Polish male voice artist with a characterful, warm timbre, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Bruno - Polish male voice artist with a characterful, warm timbre, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 680
   },
   {
     "id": "aleksandra",
@@ -4283,7 +4351,8 @@
     "seoTitle": "Aleksandra - dziennikarka radiowa, 20 lat | powitania.pl",
     "seoDescription": "Aleksandra - 30-50 lat, lektorka i dziennikarka radiowa z 20+ latami doświadczenia. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Aleksandra - radio journalist, 20+ years | powitania.pl",
-    "seoDescriptionEn": "Aleksandra - 20+ years radio journalist voice, 30-50. Versatile for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Aleksandra - 20+ years radio journalist voice, 30-50. Versatile for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 690
   },
   {
     "id": "anna-narracja",
@@ -4344,7 +4413,8 @@
     "seoTitle": "Anna - dojrzały ciepły głos, narracje | powitania.pl",
     "seoDescription": "Anna - 30-50 lat, dojrzały ciepły głos, specjalistka od narracji i filmów przyrodniczych. Reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Anna 2 - narration specialist Polish voice | powitania.pl",
-    "seoDescriptionEn": "Anna 2 - narration specialist Polish voice, 30-50. Warm voice for film narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Anna 2 - narration specialist Polish voice, 30-50. Warm voice for film narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 700
   },
   {
     "id": "franek",
@@ -4400,7 +4470,8 @@
     "seoTitle": "Franek - dziecięcy głos lektorski, radio i TV | powitania.pl",
     "seoDescription": "Franek - do 20 lat, dziecięcy głos z wieloletnim doświadczeniem, słyszany w radiu i TV. Reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Franek - young energetic Polish voice | powitania.pl",
-    "seoDescriptionEn": "Franek - young Polish male voice artist, 20-30. Energetic, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Franek - young Polish male voice artist, 20-30. Energetic, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 710
   },
   {
     "id": "pola",
@@ -4461,7 +4532,8 @@
     "seoTitle": "Pola - dziecięcy głos lektorski, doświadczona | powitania.pl",
     "seoDescription": "Pola - do 20 lat, dziecięcy głos z dużym doświadczeniem w nagraniach. Reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Pola - youthful Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Pola - young Polish female voice artist, 20-30. Youthful, friendly voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Pola - young Polish female voice artist, 20-30. Youthful, friendly voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 720
   },
   {
     "id": "maciej-spiker",
@@ -4527,7 +4599,8 @@
     "seoTitle": "Maciej - spiker sportowy PZPN, lektor PL i EN | powitania.pl",
     "seoDescription": "Maciej - 20-30 lat, spiker zawodów sportowych z licencją PZPN, lektor PL i EN. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Maciej Spiker - presenter-style Polish voice | powitania.pl",
-    "seoDescriptionEn": "Maciej Spiker - presenter-style Polish voice, 30-50. Broadcast-ready for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Maciej Spiker - presenter-style Polish voice, 30-50. Broadcast-ready for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 730
   },
   {
     "id": "malgorzata",
@@ -4589,7 +4662,8 @@
     "seoTitle": "Małgorzata - 29 lat, RMF FM i Meloradio | powitania.pl",
     "seoDescription": "Małgorzata - 30-50 lat, 29 lat w radiu, m.in. 10 lat RMF FM, Zet Gold, Meloradio. Reklama, IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Małgorzata - smooth Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Małgorzata - Polish female voice artist, 30-50. Smooth, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Małgorzata - Polish female voice artist, 30-50. Smooth, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 740
   },
   {
     "id": "michal-dj",
@@ -4650,7 +4724,8 @@
     "seoTitle": "Michał - DJ, producent, spoty i zajawki | powitania.pl",
     "seoDescription": "Michał - 30-50 lat, lektor, DJ i producent, specjalność spoty reklamowe i zajawki. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Michał DJ - energetic DJ-style Polish voice | powitania.pl",
-    "seoDescriptionEn": "Michał DJ - Polish DJ-style male voice artist, 30-50. Energetic, upbeat voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Michał DJ - Polish DJ-style male voice artist, 30-50. Energetic, upbeat voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 750
   },
   {
     "id": "katarzyna-tv",
@@ -4711,7 +4786,8 @@
     "seoTitle": "Katarzyna - dziennikarka TV, ciepła barwa | powitania.pl",
     "seoDescription": "Katarzyna - 20-30 lat, dziennikarka telewizyjna z ciepłą barwą i nienagannan dykcją. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Katarzyna TV - TV-style Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Katarzyna TV - Polish female voice artist with a polished TV-style delivery, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Katarzyna TV - Polish female voice artist with a polished TV-style delivery, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 760
   },
   {
     "id": "krzysztof-ekspresowy",
@@ -4772,7 +4848,8 @@
     "seoTitle": "Krzysztof - doświadczony lektor, 24h | powitania.pl",
     "seoDescription": "Krzysztof - 30-50 lat, doświadczony lektor, szybka realizacja nagrań. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Krzysztof 3 - fast expressive Polish voice | powitania.pl",
-    "seoDescriptionEn": "Krzysztof 3 - Polish male voice artist known for fast, expressive delivery, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Krzysztof 3 - Polish male voice artist known for fast, expressive delivery, 30-50. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 770
   },
   {
     "id": "mateusz-wszechstronny",
@@ -4842,7 +4919,8 @@
     "seoTitle": "Mateusz - wszechstronny głos i dynamika | powitania.pl",
     "seoDescription": "Mateusz - 30-50 lat, sprawdzony głos promosów i reportaży, znany z Orange Sport. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mateusz 3 - versatile Polish voice artist | powitania.pl",
-    "seoDescriptionEn": "Mateusz 3 - versatile Polish voice, 30-50. Wide range: IVR, commercials, narration, e-learning. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mateusz 3 - versatile Polish voice, 30-50. Wide range: IVR, commercials, narration, e-learning. Quote in 48h. powitania.pl since 2001.",
+    "order": 780
   },
   {
     "id": "michal",
@@ -4911,7 +4989,8 @@
     "seoTitle": "Michał - czytelny głos w średnicy | powitania.pl",
     "seoDescription": "Michał - 30-50 lat, bardzo czytelny głos w środkowych rejestrach. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Michał - confident Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Michał - Polish male voice artist, 30-50. Confident, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Michał - Polish male voice artist, 30-50. Confident, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 790
   },
   {
     "id": "klaudia",
@@ -4972,7 +5051,8 @@
     "seoTitle": "Klaudia - ciepły, głęboki i ekspresyjny głos | powitania.pl",
     "seoDescription": "Klaudia - 20-30 lat, ciepły głęboki ekspresyjny głos. Spoty, opowiadania, narracja, audiodeskrypcja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Klaudia - warm Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Klaudia - Polish female voice artist, 30-50. Warm, approachable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Klaudia - Polish female voice artist, 30-50. Warm, approachable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 800
   },
   {
     "id": "jaroslaw",
@@ -5033,7 +5113,8 @@
     "seoTitle": "Jarosław - aktorska interpretacja, 50+ lat | powitania.pl",
     "seoDescription": "Jarosław - 50+ lat, doświadczony aktor i lektor, ciepły tembr z aktorską interpretacją. Reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jarosław - experienced Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Jarosław - experienced Polish male voice artist, 30-50. Deep, resonant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jarosław - experienced Polish male voice artist, 30-50. Deep, resonant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 810
   },
   {
     "id": "filip",
@@ -5099,7 +5180,8 @@
     "seoTitle": "Filip - DJ radiowy od 2010, Radio Lublin | powitania.pl",
     "seoDescription": "Filip - 20-30 lat, lektor i DJ radiowy od 2010, Radio Freee i Radio Lublin. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Filip - youthful clear Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Filip - young Polish male voice artist, 20-30. Clear, friendly voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Filip - young Polish male voice artist, 20-30. Clear, friendly voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 820
   },
   {
     "id": "daniel",
@@ -5164,7 +5246,8 @@
     "seoTitle": "Daniel - głos reklamowy PL, EN | powitania.pl",
     "seoDescription": "Daniel - 30-50 lat, jeden z bardziej rozpoznawalnych głosów reklamowych. IVR, reklama, narracja. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Daniel - balanced Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Daniel - Polish male voice artist, 30-50. Balanced, clear delivery for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Daniel - Polish male voice artist, 30-50. Balanced, clear delivery for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 830
   },
   {
     "id": "shubham",
@@ -5225,7 +5308,8 @@
     "seoDescription": "Shubham - 30-50 lat, hindi native speaker. Nagrania po hindi w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Hindi voice artist with a clear, pleasant male voice. Shubham delivers high-quality recordings for IVR greetings, commercials and narration in the Indian market.",
     "seoTitleEn": "Shubham - native Hindi voice artist | powitania.pl",
-    "seoDescriptionEn": "Shubham - native Hindi male voice. Clear, pleasant delivery for IVR, commercials, narration in Hindi. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Shubham - native Hindi male voice. Clear, pleasant delivery for IVR, commercials, narration in Hindi. Quote. powitania.pl since 2001.",
+    "order": 840
   },
   {
     "id": "siddhi",
@@ -5286,7 +5370,8 @@
     "seoDescription": "Siddhi - 20-30 lat, hindi native speaker (kobieta). Nagrania po hindi w 48h. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Hindi voice artist with a warm, friendly female timbre. Siddhi brings an authentic sound to IVR, advertising and narration projects targeting Indian audiences.",
     "seoTitleEn": "Siddhi - native Hindi female voice | powitania.pl",
-    "seoDescriptionEn": "Siddhi - native Hindi female voice. Warm, friendly timbre for IVR, commercials, narration in Hindi. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Siddhi - native Hindi female voice. Warm, friendly timbre for IVR, commercials, narration in Hindi. Quote. powitania.pl since 2001.",
+    "order": 850
   },
   {
     "id": "marcin",
@@ -5346,7 +5431,8 @@
     "seoTitle": "Marcin - lektor szeptany, 20+ lat | powitania.pl",
     "seoDescription": "Marcin - 30-50 lat, charakterystyczny szeptany styl, 20+ lat w branży lektorskiej. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marcin - Polish voice artist, whisper style | powitania.pl",
-    "seoDescriptionEn": "Marcin - Polish whisper-style voice, 30-50. Distinctive after 20 years. IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Marcin - Polish whisper-style voice, 30-50. Distinctive after 20 years. IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 860
   },
   {
     "id": "uku",
@@ -5407,7 +5493,8 @@
     "seoDescription": "Uku - 30-50 lat, estoński native speaker. Nagrania po estońsku w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Estonian voice artist with a natural, trustworthy delivery. Uku is the go-to choice for IVR greetings, commercials and narration in the Estonian language.",
     "seoTitleEn": "Uku - native Estonian voice artist | powitania.pl",
-    "seoDescriptionEn": "Uku - native Estonian voice artist with a natural, trustworthy delivery. IVR, commercials and narration in Estonian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Uku - native Estonian voice artist with a natural, trustworthy delivery. IVR, commercials and narration in Estonian. Sample + quote. powitania.pl since 2001.",
+    "order": 870
   },
   {
     "id": "hasan",
@@ -5468,7 +5555,8 @@
     "seoDescription": "Hasan - 30-50 lat, turecki native speaker. Nagrania po turecku w 48h. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Turkish voice artist with a strong, authoritative male voice. Hasan provides authentic Turkish recordings for IVR, commercials and film narration.",
     "seoTitleEn": "Hasan - native Turkish male voice | powitania.pl",
-    "seoDescriptionEn": "Hasan - native Turkish male voice. Strong, authoritative for IVR, commercials, film narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Hasan - native Turkish male voice. Strong, authoritative for IVR, commercials, film narration. Quote. powitania.pl since 2001.",
+    "order": 880
   },
   {
     "id": "piotr-niski",
@@ -5533,7 +5621,8 @@
     "seoTitle": "Piotr - lektor, niski głos i dobry warsztat | powitania.pl",
     "seoDescription": "Piotr - 30-50 lat, niski głos i solidny warsztat lektorski. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Piotr 2 - low-register Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Piotr 2 - low-register Polish male voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Piotr 2 - low-register Polish male voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 890
   },
   {
     "id": "agnieszka-dubbing",
@@ -5593,7 +5682,8 @@
     "seoTitle": "Agnieszka - aktorka, szeptanki i dubbing | powitania.pl",
     "seoDescription": "Agnieszka - 30-50 lat, aktorka i lektorka: spoty, audiobooki, szeptanki, dubbing. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Agnieszka 3 - dubbing actress, Polish | powitania.pl",
-    "seoDescriptionEn": "Agnieszka 3 - Polish dubbing actress, 30-50. Commercials, audiobooks, whisper voiceovers. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Agnieszka 3 - Polish dubbing actress, 30-50. Commercials, audiobooks, whisper voiceovers. Quote in 48h. powitania.pl since 2001.",
+    "order": 900
   },
   {
     "id": "anka",
@@ -5654,7 +5744,8 @@
     "seoTitle": "Anka - mocny alt, lektorka i redaktorka | powitania.pl",
     "seoDescription": "Anka - 30-50 lat, mocny stonowany alt o szerokich możliwościach interpretacyjnych. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Anka - strong alto, 20-year editor voice | powitania.pl",
-    "seoDescriptionEn": "Anka - strong alto, 20-year editor, 30-50. IVR, narration, commercials, audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Anka - strong alto, 20-year editor, 30-50. IVR, narration, commercials, audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 910
   },
   {
     "id": "pawel-3",
@@ -5727,7 +5818,8 @@
     "seoTitle": "Paweł 3 - piaskowy tembr, aktor i lektor | powitania.pl",
     "seoDescription": "Paweł 3 - 30-50 lat, niski piaskowy tembr głosu, aktor i wszechstronny lektor. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Paweł 3 - low sandy actor-voice artist | powitania.pl",
-    "seoDescriptionEn": "Paweł 3 - Polish actor, low sandy timbre, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Paweł 3 - Polish actor, low sandy timbre, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 920
   },
   {
     "id": "przemyslaw-2",
@@ -5787,7 +5879,8 @@
     "seoTitle": "Przemysław 2 - niski dźwięczny głos, lektor | powitania.pl",
     "seoDescription": "Przemysław 2 - 20-30 lat, niski dźwięczny głos z wyraźną interpretacją. Reklama, narracja, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Przemysław 2 - versatile Polish voice | powitania.pl",
-    "seoDescriptionEn": "Przemysław 2 - Polish male voice artist, 30-50. Versatile, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Przemysław 2 - Polish male voice artist, 30-50. Versatile, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 930
   },
   {
     "id": "tomasz-2",
@@ -5848,7 +5941,8 @@
     "seoTitle": "Tomasz 2 - aktor teatralny i radiowy, lektor | powitania.pl",
     "seoDescription": "Tomasz 2 - 30-50 lat, dojrzała barwa aktora teatralnego i radiowego. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Tomasz 2 - mature Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Tomasz 2 - mature Polish male voice artist, 50+. Rich, authoritative voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Tomasz 2 - mature Polish male voice artist, 50+. Rich, authoritative voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 940
   },
   {
     "id": "emilia",
@@ -5909,7 +6003,8 @@
     "seoTitle": "Emilia - ekspresyjna dykcja, lektorka | powitania.pl",
     "seoDescription": "Emilia - 20-30 lat, perfekcyjna dykcja i bogaty warsztat interpretacyjny. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Emilia - gentle Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Emilia - Polish female voice artist, 30-50. Gentle, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Emilia - Polish female voice artist, 30-50. Gentle, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 950
   },
   {
     "id": "miroslaw-utta",
@@ -5974,7 +6069,8 @@
     "seoTitle": "Mirosław Utta - 45 lat w zawodzie, lektor | powitania.pl",
     "seoDescription": "Mirosław Utta - 50+ lat, autorytatywny głos z 45-letnim stażem lektorskim. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mirosław Utta - professional Polish voice | powitania.pl",
-    "seoDescriptionEn": "Mirosław Utta - experienced Polish voice artist, 50+. Clear, reliable timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mirosław Utta - experienced Polish voice artist, 50+. Clear, reliable timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 960
   },
   {
     "id": "tomasz",
@@ -6039,7 +6135,8 @@
     "seoTitle": "Tomasz - charyzmatyczna barwa, trener głosu | powitania.pl",
     "seoDescription": "Tomasz - 30-50 lat, charyzmatyczna i młoda barwa głosu, trener autoprezentacji. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Tomasz - reliable Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Tomasz - Polish male voice artist, 30-50. Reliable, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Tomasz - Polish male voice artist, 30-50. Reliable, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 970
   },
   {
     "id": "piotr-3",
@@ -6100,7 +6197,8 @@
     "seoTitle": "Piotr 3 - aktor teatralny, lektor i dubbing | powitania.pl",
     "seoDescription": "Piotr 3 - 30-50 lat, wszechstronny głos aktora teatralnego i dubbingowego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Piotr 3 - Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Piotr 3 - Polish male voice artist, 30-50. Reliable, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Piotr 3 - Polish male voice artist, 30-50. Reliable, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 980
   },
   {
     "id": "miguel",
@@ -6165,7 +6263,8 @@
     "seoDescription": "Miguel - 30-50 lat, natywny lektor języka portugalskiego, nagrania PT. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Portuguese voice artist with a warm, engaging male voice. Miguel records IVR greetings, commercials and narrations for both European and Brazilian Portuguese markets.",
     "seoTitleEn": "Miguel - native Portuguese voice artist | powitania.pl",
-    "seoDescriptionEn": "Miguel - native Portuguese male voice artist, warm and engaging delivery. IVR, commercials and narration in Portuguese. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Miguel - native Portuguese male voice artist, warm and engaging delivery. IVR, commercials and narration in Portuguese. Sample + quote. powitania.pl since 2001.",
+    "order": 990
   },
   {
     "id": "aga",
@@ -6225,7 +6324,8 @@
     "seoTitle": "Aga - lektorka PL i EN, reklama i narracja | powitania.pl",
     "seoDescription": "Aga - 30-50 lat, doświadczona lektorka nagrywająca w języku polskim i angielskim. IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Aga - friendly Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Aga - Polish female voice artist, 30-50. Friendly, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Aga - Polish female voice artist, 30-50. Friendly, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1000
   },
   {
     "id": "iwona",
@@ -6286,7 +6386,8 @@
     "seoTitle": "Iwona - ciepły niski kobiecy głos, lektorka | powitania.pl",
     "seoDescription": "Iwona - 20-30 lat, ciepły i niski kobiecy głos o szerokich możliwościach. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Iwona - professional Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Iwona - Polish female voice artist, 30-50. Professional, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Iwona - Polish female voice artist, 30-50. Professional, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1010
   },
   {
     "id": "catarina",
@@ -6351,7 +6452,8 @@
     "seoDescription": "Catarina - 30-50 lat, natywna lektorka języka portugalskiego, nagrania PT. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Portuguese voice artist with a clear, pleasant female timbre. Catarina delivers natural, professional recordings for IVR, advertising and narration in Portuguese.",
     "seoTitleEn": "Catarina - native Portuguese female voice | powitania.pl",
-    "seoDescriptionEn": "Catarina - native Portuguese female voice. Clear, pleasant for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Catarina - native Portuguese female voice. Clear, pleasant for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1020
   },
   {
     "id": "vishal",
@@ -6412,7 +6514,8 @@
     "seoTitle": "Vishal - dojrzała barwa, natywny głos włoski | powitania.pl",
     "seoDescription": "Vishal - 30-50 lat, dojrzała i przyjemna barwa natywnego głosu włoskiego. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Vishal - mature native Italian female voice | powitania.pl",
-    "seoDescriptionEn": "Vishal - mature native Italian female voice, 30-50. IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Vishal - mature native Italian female voice, 30-50. IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1030
   },
   {
     "id": "sebastian",
@@ -6477,7 +6580,8 @@
     "seoTitle": "Sebastian - dojrzały głos, lektor | powitania.pl",
     "seoDescription": "Sebastian - 30-50 lat, młody lecz dojrzały głos o wszechstronnej barwie. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Sebastian - Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Sebastian - Polish male voice artist, 30-50. Clear, engaging voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Sebastian - Polish male voice artist, 30-50. Clear, engaging voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1040
   },
   {
     "id": "diana",
@@ -6543,7 +6647,8 @@
     "seoTitle": "Diana - głęboki alt, lektorka PL i EN | powitania.pl",
     "seoDescription": "Diana - 30-50 lat, głęboki alt z 10-letnim doświadczeniem, nagrania w PL i EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Diana - engaging Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Diana - Polish female voice artist, 30-50. Engaging, warm voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Diana - Polish female voice artist, 30-50. Engaging, warm voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1050
   },
   {
     "id": "jakub-3",
@@ -6603,7 +6708,8 @@
     "seoTitle": "Jakub 3 - konferansjer, muzyk i lektor | powitania.pl",
     "seoDescription": "Jakub 3 - 20-30 lat, głos konferansjera i muzyka z 11-letnim stażem. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jakub 3 - bright Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Jakub 3 - Polish male voice artist, 20-30. Bright, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jakub 3 - Polish male voice artist, 20-30. Bright, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1060
   },
   {
     "id": "lea",
@@ -6671,7 +6777,8 @@
     "seoTitle": "Lea - utalentowana dziecięca lektorka | powitania.pl",
     "seoDescription": "Lea - 5-20 lat, wyjątkowa barwa dziecięcego głosu znana z radia i telewizji. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Lea - young fresh Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Lea - young Polish female voice artist, 20-30. Fresh, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Lea - young Polish female voice artist, 20-30. Fresh, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1070
   },
   {
     "id": "malgorzata-2",
@@ -6732,7 +6839,8 @@
     "seoTitle": "Małgorzata 2 - miękki ciepły głos, lektorka | powitania.pl",
     "seoDescription": "Małgorzata 2 - 30-50 lat, miękki i ciepły kobiecy głos, bogata gama interpretacyjna. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Małgorzata 2 - mature Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Małgorzata 2 - mature Polish female voice artist, 50+. Deep, warm voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Małgorzata 2 - mature Polish female voice artist, 50+. Deep, warm voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1080
   },
   {
     "id": "basia",
@@ -6792,7 +6900,8 @@
     "seoTitle": "Basia - ciekawy niski kobiecy głos, lektorka | powitania.pl",
     "seoDescription": "Basia - 30-50 lat, ciekawy niski kobiecy głos, idealny do reklam i audiobooków. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Basia - natural Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Basia - Polish female voice artist, 30-50. Natural, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Basia - Polish female voice artist, 30-50. Natural, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1090
   },
   {
     "id": "marcin-4",
@@ -6861,7 +6970,8 @@
     "seoTitle": "Marcin 4 - barwny energetyczny głos, lektor | powitania.pl",
     "seoDescription": "Marcin 4 - 20-30 lat, przyjemny, barwny głos pełen energii. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marcin 4 - bright Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Marcin 4 - Polish male voice artist, 20-30. Bright, engaging voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marcin 4 - Polish male voice artist, 20-30. Bright, engaging voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1100
   },
   {
     "id": "witalij",
@@ -6919,7 +7029,8 @@
     "seoTitle": "Witalij - dynamiczny głos, RU i UA | powitania.pl",
     "seoDescription": "Witalij - 30-50 lat, aktywny i dynamiczny głos, nagrania RU, UA. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Witalij - native Ukrainian voice artist | powitania.pl",
-    "seoDescriptionEn": "Witalij - native Ukrainian male voice artist. Strong, natural delivery for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Witalij - native Ukrainian male voice artist. Strong, natural delivery for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1110
   },
   {
     "id": "eri",
@@ -6977,7 +7088,8 @@
     "seoTitle": "Eri - natywny głos, język hebrajski | powitania.pl",
     "seoDescription": "Eri - 20-30 lat, rozpoznawalny hebrajski głos znany z programów TV i reklam. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Eri - native Hebrew female voice | powitania.pl",
-    "seoDescriptionEn": "Eri - native Hebrew female voice artist with a warm, expressive timbre. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Eri - native Hebrew female voice artist with a warm, expressive timbre. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001.",
+    "order": 1120
   },
   {
     "id": "yurika",
@@ -7039,7 +7151,8 @@
     "seoDescription": "Yurika - 20-30 lat, natywna lektorka nagrywająca w języku japońskim i chińskim. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Japanese voice artist with a bright, clear female voice. Yurika provides authentic Japanese recordings for IVR greetings, commercials and narration.",
     "seoTitleEn": "Yurika - native Japanese female voice | powitania.pl",
-    "seoDescriptionEn": "Yurika - native Japanese female voice artist with a bright, clear delivery. IVR, commercials and narration in Japanese. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Yurika - native Japanese female voice artist with a bright, clear delivery. IVR, commercials and narration in Japanese. Sample + quote. powitania.pl since 2001.",
+    "order": 1130
   },
   {
     "id": "marta-2",
@@ -7108,7 +7221,8 @@
     "seoTitle": "Marta 2 - lektorka PL i FR, dziennikarka | powitania.pl",
     "seoDescription": "Marta 2 - 30-50 lat, doświadczona lektorka nagrywająca w języku polskim i francuskim. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marta 2 - Polish & French voice journalist | powitania.pl",
-    "seoDescriptionEn": "Marta 2 - Polish & French voice journalist, 30-50. Voice & Speech trained, recording since 2010. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marta 2 - Polish & French voice journalist, 30-50. Voice & Speech trained, recording since 2010. Quote in 48h. powitania.pl since 2001.",
+    "order": 1140
   },
   {
     "id": "marzena-2",
@@ -7169,7 +7283,8 @@
     "seoTitle": "Marzena 2 - stonowany głos, lektorka radiowa | powitania.pl",
     "seoDescription": "Marzena 2 - 20-30 lat, dojrzały i stonowany głos z doświadczeniem radiowym. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marzena 2 - decisive radio Polish voice | powitania.pl",
-    "seoDescriptionEn": "Marzena 2 - decisive radio-trained Polish voice, 20-30. IVR, audiobooks, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marzena 2 - decisive radio-trained Polish voice, 20-30. IVR, audiobooks, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1150
   },
   {
     "id": "erwin",
@@ -7230,7 +7345,8 @@
     "seoTitle": "Erwin - radiowiec, lektor i konferansjer | powitania.pl",
     "seoDescription": "Erwin - 30-50 lat, doświadczony radiowiec i konferansjer. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Erwin - warm Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Erwin - Polish male voice artist, 30-50. Warm, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Erwin - Polish male voice artist, 30-50. Warm, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1160
   },
   {
     "id": "bartek-ignacik",
@@ -7290,7 +7406,8 @@
     "seoTitle": "Bartek Ignacik - dziennikarz sportowy | powitania.pl",
     "seoDescription": "Bartek Ignacik - 30-50 lat, charakterystyczny głos dziennikarza sportowego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Bartek Ignacik - sports presenter voice | powitania.pl",
-    "seoDescriptionEn": "Bartek Ignacik - Polish sports presenter, 30-50. Energetic voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Bartek Ignacik - Polish sports presenter, 30-50. Energetic voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 1170
   },
   {
     "id": "jaroslav",
@@ -7356,7 +7473,8 @@
     "seoTitle": "Jaroslav - natywny głos, czeski i słowacki | powitania.pl",
     "seoDescription": "Jaroslav - 20-30 lat, natywny lektor nagrywający w języku czeskim i słowackim. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jaroslav - native Czech & Slovak voice | powitania.pl",
-    "seoDescriptionEn": "Jaroslav - native voice artist recording in both Czech and Slovak. IVR, commercials and narration in CZ and SK. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jaroslav - native voice artist recording in both Czech and Slovak. IVR, commercials and narration in CZ and SK. Sample + quote. powitania.pl since 2001.",
+    "order": 1180
   },
   {
     "id": "lukasz",
@@ -7410,7 +7528,8 @@
     "seoTitle": "Łukasz - głos Eska Rock i Eurosport, lektor | powitania.pl",
     "seoDescription": "Łukasz - 30-50 lat, ciepły głos znany ze stacji Eska Rock i kanału Eurosport. Reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Łukasz - Eska Rock & Eurosport voice | powitania.pl",
-    "seoDescriptionEn": "Łukasz - Eska Rock & Eurosport voice, 30-50. Young, warm timbre for film narration and commercials. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Łukasz - Eska Rock & Eurosport voice, 30-50. Young, warm timbre for film narration and commercials. Quote. powitania.pl since 2001.",
+    "order": 1190
   },
   {
     "id": "wiktor",
@@ -7474,7 +7593,8 @@
     "seoTitle": "Wiktor - dynamiczny głos, VIVA i Nickelodeon | powitania.pl",
     "seoDescription": "Wiktor - 20-30 lat, młody i witalny głos znany z VIVA Polska i Nickelodeon. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Wiktor - young dynamic Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Wiktor - young Polish male voice artist, 20-30. Dynamic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Wiktor - young Polish male voice artist, 20-30. Dynamic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1200
   },
   {
     "id": "ula",
@@ -7534,7 +7654,8 @@
     "seoTitle": "Ula - uspokajający kobiecy głos, lektorka | powitania.pl",
     "seoDescription": "Ula - 20-30 lat, łagodny i uspokajający kobiecy głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ula - warm Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Ula - Polish female voice artist, 30-50. Warm, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Ula - Polish female voice artist, 30-50. Warm, natural voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1210
   },
   {
     "id": "bartek",
@@ -7594,7 +7715,8 @@
     "seoTitle": "Bartek - nienaganna dykcja, lektor i aktor | powitania.pl",
     "seoDescription": "Bartek - 30-50 lat, nienaganna dykcja i znakomite zdolności interpretacyjne aktora. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Bartek - engaging Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Bartek - Polish male voice artist, 20-30. Engaging, upbeat voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Bartek - Polish male voice artist, 20-30. Engaging, upbeat voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1220
   },
   {
     "id": "alan",
@@ -7654,7 +7776,8 @@
     "seoTitle": "Alan - młody witalny głos do reklam | powitania.pl",
     "seoDescription": "Alan - 20-30 lat, młody i witalny głos o świeżym brzmieniu. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Alan - modern Polish male voice artist | powitania.pl",
-    "seoDescriptionEn": "Alan - Polish male voice artist, 20-30. Modern, fresh voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Alan - Polish male voice artist, 20-30. Modern, fresh voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1230
   },
   {
     "id": "arminas",
@@ -7712,7 +7835,8 @@
     "seoDescription": "Arminas - 20-30 lat, natywny lektor języka litewskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Lithuanian voice artist with a steady, professional delivery. Arminas records IVR greetings, commercials and narration for the Lithuanian-speaking market.",
     "seoTitleEn": "Arminas - native Lithuanian voice artist | powitania.pl",
-    "seoDescriptionEn": "Arminas - native Lithuanian male voice. Steady, professional for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Arminas - native Lithuanian male voice. Steady, professional for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1240
   },
   {
     "id": "vladimir-2",
@@ -7772,7 +7896,8 @@
     "seoTitle": "Vladimir 2 - natywny głos, język słowacki | powitania.pl",
     "seoDescription": "Vladimir 2 - 20-30 lat, natywny lektor języka słowackiego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Vladimir 2 - native Slovak voice artist | powitania.pl",
-    "seoDescriptionEn": "Vladimir 2 - native Slovak voice artist with a clear, professional delivery. IVR, commercials and narration in Slovak. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Vladimir 2 - native Slovak voice artist with a clear, professional delivery. IVR, commercials and narration in Slovak. Sample + quote. powitania.pl since 2001.",
+    "order": 1250
   },
   {
     "id": "mikolaj-krawczyk",
@@ -7840,7 +7965,8 @@
     "seoTitle": "Mikołaj Krawczyk - aktor filmowy i teatralny | powitania.pl",
     "seoDescription": "Mikołaj Krawczyk - 20-30 lat, rozpoznawalny głos aktora filmowego i teatralnego. Reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mikołaj Krawczyk - young dynamic Polish voice | powitania.pl",
-    "seoDescriptionEn": "Mikołaj Krawczyk - young and dynamic Polish voice artist, 20-30. Fresh timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mikołaj Krawczyk - young and dynamic Polish voice artist, 20-30. Fresh timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1260
   },
   {
     "id": "daria",
@@ -7900,7 +8026,8 @@
     "seoTitle": "Daria - ciepły głos, intrygujący niski ton | powitania.pl",
     "seoDescription": "Daria - 20-30 lat, ciepły kobiecy głos z umiejętnością obniżonego, intrygującego tonu. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Daria - vibrant Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Daria - Polish female voice artist, 20-30. Vibrant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Daria - Polish female voice artist, 20-30. Vibrant, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1270
   },
   {
     "id": "anna-3",
@@ -7962,7 +8089,8 @@
     "seoDescription": "Anna 3 - 30-50 lat, natywna lektorka nagrywająca w języku angielskim i rosyjskim. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Russian voice artist with a smooth, expressive female timbre. Anna records IVR greetings, commercials and narrations in Russian with natural authenticity.",
     "seoTitleEn": "Anna 3 - native Russian female voice | powitania.pl",
-    "seoDescriptionEn": "Anna 3 - native Russian female voice. Smooth, expressive for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Anna 3 - native Russian female voice. Smooth, expressive for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1280
   },
   {
     "id": "julien",
@@ -8021,7 +8149,8 @@
     "seoTitle": "Julien - dojrzały energiczny głos, natywny FR | powitania.pl",
     "seoDescription": "Julien - 30-50 lat, dojrzały i energiczny głos natywnego lektora języka francuskiego. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Julien - native French male voice artist | powitania.pl",
-    "seoDescriptionEn": "Julien - native French male voice artist with a warm, expressive delivery. IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Julien - native French male voice artist with a warm, expressive delivery. IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001.",
+    "order": 1290
   },
   {
     "id": "krzysiek",
@@ -8082,7 +8211,8 @@
     "seoTitle": "Krzysiek - niski tembr, lektor radiowy i TV | powitania.pl",
     "seoDescription": "Krzysiek - 20-30 lat, niski tembr głosu lektora radiowego i telewizyjnego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Krzysiek - natural Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Krzysiek - Polish male voice artist, 30-50. Natural, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Krzysiek - Polish male voice artist, 30-50. Natural, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1300
   },
   {
     "id": "nikolay",
@@ -8142,7 +8272,8 @@
     "seoTitle": "Nikolay - ciepły głos, natywny lektor | powitania.pl",
     "seoDescription": "Nikolay - 30-50 lat, głęboka i ciepła barwa głosu, natywny aktor głosowy EN i BG. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Nikolay - native Bulgarian voice artist | powitania.pl",
-    "seoDescriptionEn": "Nikolay - native Bulgarian male voice. Confident, clear for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Nikolay - native Bulgarian male voice. Confident, clear for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1310
   },
   {
     "id": "maciej",
@@ -8204,7 +8335,8 @@
     "seoTitle": "Maciej - lektor PL i EN, dubbing i produkcja | powitania.pl",
     "seoDescription": "Maciej - 20-30 lat, wszechstronny głos do dubbingu i reklam, nagrania PL, EN. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Maciej - dubbing specialist Polish voice | powitania.pl",
-    "seoDescriptionEn": "Maciej - Polish dubbing specialist, 30-50. Expressive voice for dubbing, narration, IVR. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Maciej - Polish dubbing specialist, 30-50. Expressive voice for dubbing, narration, IVR. Quote. powitania.pl since 2001.",
+    "order": 1320
   },
   {
     "id": "norbert",
@@ -8267,7 +8399,8 @@
     "seoTitle": "Norbert - dojrzały głos, lektor PL, EN i DE | powitania.pl",
     "seoDescription": "Norbert - 20-30 lat, dojrzały głęboki głos, nagrania PL, EN, DE. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Norbert - serious Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Norbert - Polish male voice artist, 30-50. Serious, reliable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Norbert - Polish male voice artist, 30-50. Serious, reliable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1330
   },
   {
     "id": "ofer",
@@ -8327,7 +8460,8 @@
     "seoTitle": "Ofer - natywny lektor hebrajski, media i TV | powitania.pl",
     "seoDescription": "Ofer - 30-50 lat, natywny lektor z 12-letnim doświadczeniem, specjalizacja: media. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ofer - native Hebrew voice artist | powitania.pl",
-    "seoDescriptionEn": "Ofer - native Hebrew male voice artist with a confident, natural delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Ofer - native Hebrew male voice artist with a confident, natural delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001.",
+    "order": 1340
   },
   {
     "id": "noa",
@@ -8387,7 +8521,8 @@
     "seoTitle": "Noa - natywna lektorka, język hebrajski | powitania.pl",
     "seoDescription": "Noa - 20-30 lat, natywna lektorka HE z 8-letnim doświadczeniem w reklamie i grach. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Noa - native Hebrew female voice | powitania.pl",
-    "seoDescriptionEn": "Noa - native Hebrew female voice artist with a clear, pleasant timbre. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Noa - native Hebrew female voice artist with a clear, pleasant timbre. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001.",
+    "order": 1350
   },
   {
     "id": "eyal",
@@ -8445,7 +8580,8 @@
     "seoTitle": "Eyal - natywny lektor hebrajski, radio i TV | powitania.pl",
     "seoDescription": "Eyal - 30-50 lat, natywny lektor z 13-letnim doświadczeniem w radiu i telewizji. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Eyal - native Hebrew male voice | powitania.pl",
-    "seoDescriptionEn": "Eyal - native Hebrew male voice artist with a warm, engaging delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Eyal - native Hebrew male voice artist with a warm, engaging delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001.",
+    "order": 1360
   },
   {
     "id": "uriel",
@@ -8503,7 +8639,8 @@
     "seoDescription": "Uriel - 30-50 lat, natywny lektor języka hebrajskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Hebrew voice artist with a warm, expressive male voice. Uriel delivers professional recordings for IVR, commercials and narration in Hebrew.",
     "seoTitleEn": "Uriel - native Hebrew male voice | powitania.pl",
-    "seoDescriptionEn": "Uriel - native Hebrew male voice artist with a warm, expressive delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Uriel - native Hebrew male voice artist with a warm, expressive delivery. IVR, commercials and narration in Hebrew. Sample + quote. powitania.pl since 2001.",
+    "order": 1370
   },
   {
     "id": "vita",
@@ -8567,7 +8704,8 @@
     "seoTitle": "Vita - ciepła barwa, lektorka LV i RU | powitania.pl",
     "seoDescription": "Vita - 20-30 lat, niski i ciepły kobiecy głos, nagrania w języku łotewskim i rosyjskim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Vita - native Latvian female voice | powitania.pl",
-    "seoDescriptionEn": "Vita - native Latvian female voice artist with a warm, engaging delivery. IVR, commercials and narration in Latvian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Vita - native Latvian female voice artist with a warm, engaging delivery. IVR, commercials and narration in Latvian. Sample + quote. powitania.pl since 2001.",
+    "order": 1380
   },
   {
     "id": "goran",
@@ -8635,7 +8773,8 @@
     "seoTitle": "Goran - przyjemny głos, lektor HR i EN | powitania.pl",
     "seoDescription": "Goran - 30-50 lat, pozytywny i przyjemny głos z neutralnym akcentem, nagrania HR i EN. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Goran - native Croatian voice artist | powitania.pl",
-    "seoDescriptionEn": "Goran - native Croatian male voice artist with a strong, natural delivery. IVR, commercials and narration in Croatian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Goran - native Croatian male voice artist with a strong, natural delivery. IVR, commercials and narration in Croatian. Sample + quote. powitania.pl since 2001.",
+    "order": 1390
   },
   {
     "id": "mark",
@@ -8694,7 +8833,8 @@
     "seoTitle": "Mark - natywny lektor, język węgierski | powitania.pl",
     "seoDescription": "Mark - 20-30 lat, natywny lektor z wieloletnim doświadczeniem w dubbingu i narracji. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mark - native Hungarian voice artist | powitania.pl",
-    "seoDescriptionEn": "Mark - native Hungarian male voice artist. Clear, confident delivery for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Mark - native Hungarian male voice artist. Clear, confident delivery for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1400
   },
   {
     "id": "humberto",
@@ -8771,7 +8911,8 @@
     "seoTitle": "Humberto - głęboki baryton, natywny lektor | powitania.pl",
     "seoDescription": "Humberto - 30-50 lat, dojrzały barytonowy głos aktora głosowego, nagrania EN, ES i PT. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Humberto - native Portuguese voice artist | powitania.pl",
-    "seoDescriptionEn": "Humberto - native Portuguese voice artist with a warm, mature male voice. IVR, commercials and narration in Portuguese. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Humberto - native Portuguese voice artist with a warm, mature male voice. IVR, commercials and narration in Portuguese. Sample + quote. powitania.pl since 2001.",
+    "order": 1410
   },
   {
     "id": "przemyslaw-skowron",
@@ -8830,7 +8971,8 @@
     "seoTitle": "Przemysław Skowron - głos RMF FM, lektor | powitania.pl",
     "seoDescription": "Przemysław Skowron - 20-30 lat, charakterystyczny głos dziennikarza RMF FM z 20-letnim stażem. Narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Przemysław Skowron - TV presenter voice | powitania.pl",
-    "seoDescriptionEn": "Przemysław Skowron - Polish TV presenter, 30-50. Clear, engaging voice for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Przemysław Skowron - Polish TV presenter, 30-50. Clear, engaging voice for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1420
   },
   {
     "id": "virginie",
@@ -8901,7 +9043,8 @@
     "seoTitle": "Virginie - świeży głos, natywna lektorka FR | powitania.pl",
     "seoDescription": "Virginie - 30-50 lat, świeży i żywy kobiecy głos, idealny do reklam, natywna lektorka FR. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Virginie - native French female voice | powitania.pl",
-    "seoDescriptionEn": "Virginie - native French female voice artist with a pleasant, clear timbre. IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Virginie - native French female voice artist with a pleasant, clear timbre. IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001.",
+    "order": 1430
   },
   {
     "id": "tomek",
@@ -8961,7 +9104,8 @@
     "seoTitle": "Tomek - miękki ciepły głos, lektor PL i EN | powitania.pl",
     "seoDescription": "Tomek - 30-50 lat, miękki i ciepły tembr głosu, nagrania w języku polskim i angielskim. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Tomek - friendly Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Tomek - Polish male voice artist, 30-50. Friendly, approachable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Tomek - Polish male voice artist, 30-50. Friendly, approachable voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1440
   },
   {
     "id": "piotr-4",
@@ -9022,7 +9166,8 @@
     "seoTitle": "Piotr 4 - aktor i lektor, reklamy i gry | powitania.pl",
     "seoDescription": "Piotr 4 - 30-50 lat, wszechstronny głos aktora do reklam, gier i Teatru PR. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Piotr 4 - energetic Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Piotr 4 - Polish male voice artist, 20-30. Energetic, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Piotr 4 - Polish male voice artist, 20-30. Energetic, confident voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1450
   },
   {
     "id": "edyta",
@@ -9083,7 +9228,8 @@
     "seoDescription": "Edyta - 30-50 lat, profesjonalna lektorka do wszechstronnych zastosowań. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Polish female voice artist with a clear, pleasant timbre suited to a wide range of projects. Edyta records IVR greetings, commercials and narrations with reliable quality.",
     "seoTitleEn": "Edyta - clear Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Edyta - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Edyta - Polish female voice artist, 30-50. Clear, professional voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1460
   },
   {
     "id": "hubert",
@@ -9144,7 +9290,8 @@
     "seoTitle": "Hubert - ciepła barwa, dziennikarz radiowy | powitania.pl",
     "seoDescription": "Hubert - 30-50 lat, ciepła barwa i ciekawy tembr, doświadczenie prezentera radiowego. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Hubert - energetic Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Hubert - Polish male voice artist, 20-30. Energetic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Hubert - Polish male voice artist, 20-30. Energetic, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1470
   },
   {
     "id": "dariusz",
@@ -9209,7 +9356,8 @@
     "seoTitle": "Dariusz - mistrz mowy, lektor radiowy | powitania.pl",
     "seoDescription": "Dariusz - 50+ lat, doświadczony mistrz mowy polskiej, radio, reklama i dubbing. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Dariusz - mature Polish male voice | powitania.pl",
-    "seoDescriptionEn": "Dariusz - Polish male voice artist, 50+. Mature, deep voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Dariusz - Polish male voice artist, 50+. Mature, deep voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1480
   },
   {
     "id": "andy",
@@ -9270,7 +9418,8 @@
     "seoTitle": "Andy - brytyjski natywny lektor angielski | powitania.pl",
     "seoDescription": "Andy - 30-50 lat, brytyjski lektor EN w Polsce, łatwa wymowa polskich nazw. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Andy - native English voice artist | powitania.pl",
-    "seoDescriptionEn": "Andy - native English male voice artist, 30-50. Trustworthy, natural voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Andy - native English male voice artist, 30-50. Trustworthy, natural voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1490
   },
   {
     "id": "joanna",
@@ -9330,7 +9479,8 @@
     "seoTitle": "Joanna - charakterystyczna barwa, lektorka | powitania.pl",
     "seoDescription": "Joanna - 30-50 lat, wszechstronna barwa głosu z wielu kampanii reklamowych. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Joanna - versatile Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Joanna - Polish female voice artist, 30-50. Versatile, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Joanna - Polish female voice artist, 30-50. Versatile, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1500
   },
   {
     "id": "roy",
@@ -9390,7 +9540,8 @@
     "seoTitle": "Roy - ciepły precyzyjny głos, natywny DE | powitania.pl",
     "seoDescription": "Roy - 30-50 lat, ciepły i precyzyjny głos natywnego lektora języka niemieckiego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Roy - warm precise native German voice | powitania.pl",
-    "seoDescriptionEn": "Roy - native German male voice artist, 30-50. Warm and precise timbre for IVR, commercials and narration in German. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Roy - native German male voice artist, 30-50. Warm and precise timbre for IVR, commercials and narration in German. Sample + quote. powitania.pl since 2001.",
+    "order": 1510
   },
   {
     "id": "guntis",
@@ -9451,7 +9602,8 @@
     "seoDescription": "Guntis - 30-50 lat, natywny lektor języka łotewskiego. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Latvian voice artist with a clear, authoritative male voice. Guntis records IVR greetings, commercials and narrations for the Latvian-speaking market.",
     "seoTitleEn": "Guntis - native Latvian male voice | powitania.pl",
-    "seoDescriptionEn": "Guntis - native Latvian male voice. Clear, authoritative for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Guntis - native Latvian male voice. Clear, authoritative for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1520
   },
   {
     "id": "ada",
@@ -9511,7 +9663,8 @@
     "seoTitle": "Ada - mocny czytelny głos, lektorka | powitania.pl",
     "seoDescription": "Ada - 30-50 lat, mocny i czytelny kobiecy głos. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ada - crisp young Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Ada - young Polish female voice artist, 20-30. Crisp, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Ada - young Polish female voice artist, 20-30. Crisp, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1530
   },
   {
     "id": "adam",
@@ -9571,7 +9724,8 @@
     "seoTitle": "Adam - niski mocny głos, lektor TOK FM | powitania.pl",
     "seoDescription": "Adam - 30-50 lat, niska mocna barwa głosu lektora radiowego TOK FM. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Adam - distinctive TOK FM radio voice | powitania.pl",
-    "seoDescriptionEn": "Adam - TOK FM radio journalist, 30-50. Distinctive, authoritative voice for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Adam - TOK FM radio journalist, 30-50. Distinctive, authoritative voice for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1540
   },
   {
     "id": "silvia",
@@ -9640,7 +9794,8 @@
     "seoDescription": "Silvia - 30-50 lat, natywna lektorka języka portugalskiego. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Portuguese voice artist with a warm, expressive female timbre. Silvia delivers natural-sounding recordings for IVR, advertising and narration in Portuguese.",
     "seoTitleEn": "Silvia - native Portuguese female voice | powitania.pl",
-    "seoDescriptionEn": "Silvia - native Portuguese female voice. Warm, expressive for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Silvia - native Portuguese female voice. Warm, expressive for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1550
   },
   {
     "id": "marta",
@@ -9701,7 +9856,8 @@
     "seoDescription": "Marta - 20-30 lat, natywna lektorka nagrywająca w języku słoweńskim i angielskim. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Slovenian voice artist with a pleasant, clear female voice. Marta records IVR greetings, commercials and narrations for the Slovenian-speaking market.",
     "seoTitleEn": "Marta - native Slovenian female voice | powitania.pl",
-    "seoDescriptionEn": "Marta - native Slovenian female voice artist with a pleasant, clear voice. IVR, commercials and narration in Slovenian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Marta - native Slovenian female voice artist with a pleasant, clear voice. IVR, commercials and narration in Slovenian. Sample + quote. powitania.pl since 2001.",
+    "order": 1560
   },
   {
     "id": "nina",
@@ -9759,7 +9915,8 @@
     "seoTitle": "Nina - szeroka skala, natywna lektorka HR | powitania.pl",
     "seoDescription": "Nina - 20-30 lat, chorwacka piosenkarka i lektorka o bardzo szerokiej skali głosowej. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Nina - native Croatian female voice | powitania.pl",
-    "seoDescriptionEn": "Nina - native Croatian female voice artist with a warm, clear timbre. IVR, commercials and narration in Croatian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Nina - native Croatian female voice artist with a warm, clear timbre. IVR, commercials and narration in Croatian. Sample + quote. powitania.pl since 2001.",
+    "order": 1570
   },
   {
     "id": "ewelina",
@@ -9821,7 +9978,8 @@
     "seoTitle": "Ewelina - prezenterka, lektorka PL i EN | powitania.pl",
     "seoDescription": "Ewelina - 20-30 lat, świeży głos prezenterki radiowej, nagrania PL, EN. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ewelina - elegant Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Ewelina - Polish female voice artist, 30-50. Elegant, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Ewelina - Polish female voice artist, 30-50. Elegant, pleasant voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1580
   },
   {
     "id": "andrzej",
@@ -9899,7 +10057,8 @@
     "seoTitle": "Andrzej - miły głos, lektor PL i EN | powitania.pl",
     "seoDescription": "Andrzej - 20-30 lat, sympatyczny i przyjemny w odbiorze głos, nagrania PL, EN. IVR, reklama, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Andrzej - young pleasant Polish voice | powitania.pl",
-    "seoDescriptionEn": "Andrzej - young Polish voice, 20-30. Pleasant, friendly for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Andrzej - young Polish voice, 20-30. Pleasant, friendly for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 1590
   },
   {
     "id": "yonca",
@@ -9954,7 +10113,8 @@
     "seoDescription": "Yonca - 30-50 lat, natywna lektorka języka tureckiego. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Turkish voice artist with a mature, smooth female voice. Yonca provides authentic Turkish recordings for IVR, commercials, narration and audiobooks.",
     "seoTitleEn": "Yonca - native Turkish female voice | powitania.pl",
-    "seoDescriptionEn": "Yonca - native Turkish female voice artist, 30-50. Smooth, mature voice for IVR, commercials, narration, audiobooks. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Yonca - native Turkish female voice artist, 30-50. Smooth, mature voice for IVR, commercials, narration, audiobooks. Sample + quote. powitania.pl since 2001.",
+    "order": 1600
   },
   {
     "id": "juliya",
@@ -10015,7 +10175,8 @@
     "seoTitle": "Juliya - łagodna barwa, lektorka RU i UA | powitania.pl",
     "seoDescription": "Juliya - 30-50 lat, miękka i łagodna barwa kobiecego głosu, nagrania RU, UA. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Juliya - soft Russian & Ukrainian voice | powitania.pl",
-    "seoDescriptionEn": "Juliya - native Ukrainian voice, 30-50. Soft, gentle for IVR, commercials, narration in RU and UA. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Juliya - native Ukrainian voice, 30-50. Soft, gentle for IVR, commercials, narration in RU and UA. Quote. powitania.pl since 2001.",
+    "order": 1610
   },
   {
     "id": "marcin-3",
@@ -10074,7 +10235,8 @@
     "seoTitle": "Marcin 3 - młody zdecydowany głos, lektor | powitania.pl",
     "seoDescription": "Marcin 3 - 30-50 lat, młody i zdecydowany głos realizatora i lektora. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marcin 3 - young decisive Polish voice | powitania.pl",
-    "seoDescriptionEn": "Marcin 3 - young, decisive Polish voice artist, 30-50. Fresh, confident voice for IVR and commercials. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marcin 3 - young, decisive Polish voice artist, 30-50. Fresh, confident voice for IVR and commercials. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1620
   },
   {
     "id": "klaudiusz",
@@ -10134,7 +10296,8 @@
     "seoTitle": "Klaudiusz - aktor, lektor PL i DE | powitania.pl",
     "seoDescription": "Klaudiusz - 30-50 lat, doświadczony głos aktora reklamowego, nagrania PL, DE. IVR, reklama. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Klaudiusz - Polish actor voice, PL & DE | powitania.pl",
-    "seoDescriptionEn": "Klaudiusz - experienced Polish actor voice artist recording in Polish and German, 30-50. IVR, commercials. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Klaudiusz - experienced Polish actor voice artist recording in Polish and German, 30-50. IVR, commercials. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1630
   },
   {
     "id": "karol",
@@ -10194,7 +10357,8 @@
     "seoTitle": "Karol - mocne czytelne brzmienie, lektor | powitania.pl",
     "seoDescription": "Karol - 20-30 lat, mocne i czytelne brzmienie w średnich rejestrach. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Karol - strong clear mid-range Polish voice | powitania.pl",
-    "seoDescriptionEn": "Karol - Polish male voice artist, 20-30. Strong and clear mid-range voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Karol - Polish male voice artist, 20-30. Strong and clear mid-range voice for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1640
   },
   {
     "id": "andrzej-krusiewicz",
@@ -10255,7 +10419,8 @@
     "seoTitle": "Andrzej Krusiewicz - liryczny głos, lektor | powitania.pl",
     "seoDescription": "Andrzej Krusiewicz - 50+ lat, liryczna, głęboka barwa głosu lektora radiowego i TV. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Andrzej Krusiewicz - lyrical radio voice | powitania.pl",
-    "seoDescriptionEn": "Andrzej Krusiewicz - Polish Radio voice since 1977, 50+. Lyrical, deep timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Andrzej Krusiewicz - Polish Radio voice since 1977, 50+. Lyrical, deep timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1650
   },
   {
     "id": "jacek-kurowski",
@@ -10316,7 +10481,8 @@
     "seoTitle": "Jacek Kurowski - lektor, dziennikarz | powitania.pl",
     "seoDescription": "Jacek Kurowski - 30-50 lat, głos doświadczonego dziennikarza sportowego i lektora. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jacek Kurowski - sports journalist voice | powitania.pl",
-    "seoDescriptionEn": "Jacek Kurowski - Polish sports journalist, 30-50. Authoritative voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jacek Kurowski - Polish sports journalist, 30-50. Authoritative voice for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 1660
   },
   {
     "id": "pawel",
@@ -10375,7 +10541,8 @@
     "seoTitle": "Paweł - głos aktora i lektora, dubbing | powitania.pl",
     "seoDescription": "Paweł - 30-50 lat, wszechstronny głos zawodowego aktora - reklamy TV, audiobooki i dubbing. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Paweł - actor & dubbing voice artist | powitania.pl",
-    "seoDescriptionEn": "Paweł - Polish actor & voice artist, 30-50. Theatre, film and TV background. IVR, commercials, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Paweł - Polish actor & voice artist, 30-50. Theatre, film and TV background. IVR, commercials, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1670
   },
   {
     "id": "joachim",
@@ -10433,7 +10600,8 @@
     "seoTitle": "Joachim - dwujęzyczny lektor, DE i PL | powitania.pl",
     "seoDescription": "Joachim - 20-30 lat, jeden z niewielu lektorów natywnych w PL, DE. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Joachim - bilingual German & Polish voice | powitania.pl",
-    "seoDescriptionEn": "Joachim - bilingual German & Polish native voice, 20-30. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Joachim - bilingual German & Polish native voice, 20-30. IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1680
   },
   {
     "id": "dorota-2",
@@ -10489,7 +10657,8 @@
     "seoTitle": "Dorota 2 - charakterystyczna chrypka, lektor | powitania.pl",
     "seoDescription": "Dorota 2 - 30-50 lat, aktorka z ciekawą chrypką i charyzmą w głosie. Reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Dorota 2 - actress with raspy charisma | powitania.pl",
-    "seoDescriptionEn": "Dorota 2 - Polish actress, raspy charisma, 30-50. Commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Dorota 2 - Polish actress, raspy charisma, 30-50. Commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1690
   },
   {
     "id": "laura-samojlowicz",
@@ -10550,7 +10719,8 @@
     "seoTitle": "Laura Samojłowicz - ciepła wyrazista barwa | powitania.pl",
     "seoDescription": "Laura Samojłowicz - 30-50 lat, ciepła i wyrazista barwa aktorki z nienaganna dykcją. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Laura Samojłowicz - actress & voice artist | powitania.pl",
-    "seoDescriptionEn": "Laura Samojłowicz - Polish actress with warm, expressive voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Laura Samojłowicz - Polish actress with warm, expressive voice, 30-50. IVR, commercials, narration, audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1700
   },
   {
     "id": "ioana",
@@ -10609,7 +10779,8 @@
     "seoTitle": "Ioana - pozytywna energia, lektorka RO | powitania.pl",
     "seoDescription": "Ioana - 30-50 lat, pozytywny, pełen energii głos natywnej lektorki rumuńskiej. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ioana - native Romanian female voice | powitania.pl",
-    "seoDescriptionEn": "Ioana - native Romanian female voice, 30-50. Friendly, energetic for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Ioana - native Romanian female voice, 30-50. Friendly, energetic for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1710
   },
   {
     "id": "alfonso",
@@ -10670,7 +10841,8 @@
     "seoDescription": "Alfonso - 30-50 lat, natywny lektor języka hiszpańskiego. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Spanish voice artist with a warm, clear male voice. Alfonso delivers professional recordings for IVR, commercials, narration and audiobooks in Spanish.",
     "seoTitleEn": "Alfonso - native Spanish voice artist | powitania.pl",
-    "seoDescriptionEn": "Alfonso - native Spanish male voice, 30-50. Warm, clear for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Alfonso - native Spanish male voice, 30-50. Warm, clear for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1720
   },
   {
     "id": "joel",
@@ -10729,7 +10901,8 @@
     "seoDescription": "Joel - 50+ lat, dojrzały natywny głos hiszpańskojęzyczny. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Spanish voice artist with a mature, authoritative male voice. Joel brings depth and gravitas to IVR, commercials, narration and audiobook projects in Spanish.",
     "seoTitleEn": "Joel - mature native Spanish voice | powitania.pl",
-    "seoDescriptionEn": "Joel - mature native Spanish male voice, 50+. Authoritative for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Joel - mature native Spanish male voice, 50+. Authoritative for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1730
   },
   {
     "id": "kornelia",
@@ -10783,7 +10956,8 @@
     "seoDescription": "Kornelia - 20-30 lat, natywna lektorka języka bułgarskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Bulgarian voice artist with a young, clear female voice. Kornelia records IVR greetings, commercials and narrations for the Bulgarian-speaking market.",
     "seoTitleEn": "Kornelia - native Bulgarian female voice | powitania.pl",
-    "seoDescriptionEn": "Kornelia - native Bulgarian female voice, 20-30. Young, clear for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Kornelia - native Bulgarian female voice, 20-30. Young, clear for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1740
   },
   {
     "id": "mona",
@@ -10842,7 +11016,8 @@
     "seoDescription": "Mona - 30-50 lat, natywna lektorka języka arabskiego. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Arabic voice artist with a warm, expressive female voice. Mona delivers authentic Arabic recordings for IVR, commercials, narration and audiobooks.",
     "seoTitleEn": "Mona - native Arabic female voice | powitania.pl",
-    "seoDescriptionEn": "Mona - native Arabic female voice, 30-50. Warm, expressive for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Mona - native Arabic female voice, 30-50. Warm, expressive for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1750
   },
   {
     "id": "wael",
@@ -10900,7 +11075,8 @@
     "seoDescription": "Wael - 30-50 lat, natywny lektor języka arabskiego, nagrania AR. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Arabic voice artist with a clear, confident male voice. Wael provides professional Arabic recordings for IVR, commercials and film narration.",
     "seoTitleEn": "Wael - native Arabic voice artist | powitania.pl",
-    "seoDescriptionEn": "Wael - native Arabic male voice artist, 30-50. Clear, confident voice for IVR, commercials and narration in Arabic. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Wael - native Arabic male voice artist, 30-50. Clear, confident voice for IVR, commercials and narration in Arabic. Sample + quote. powitania.pl since 2001.",
+    "order": 1760
   },
   {
     "id": "luis",
@@ -10959,7 +11135,8 @@
     "seoDescription": "Luis - 50+ lat, dojrzały natywny głos hiszpańskojęzyczny. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Spanish voice artist with a mature, rich male voice. Luis brings experience and authority to IVR, commercials, narration and audiobook projects in Spanish.",
     "seoTitleEn": "Luis - mature native Spanish voice artist | powitania.pl",
-    "seoDescriptionEn": "Luis - native Spanish male voice, 50+. Rich, mature voice for IVR, commercials, narration, audiobooks in Spanish. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Luis - native Spanish male voice, 50+. Rich, mature voice for IVR, commercials, narration, audiobooks in Spanish. Sample + quote. powitania.pl since 2001.",
+    "order": 1770
   },
   {
     "id": "linda",
@@ -11018,7 +11195,8 @@
     "seoTitle": "Linda - elegancki precyzyjny głos, EN i DE | powitania.pl",
     "seoDescription": "Linda - 30-50 lat, elegancki i precyzyjny głos natywnej lektorki angielskiej i niemieckiej. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Linda - smooth native German & English voice | powitania.pl",
-    "seoDescriptionEn": "Linda - native German & English voice, 30-50. Smooth, precise mid-range for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Linda - native German & English voice, 30-50. Smooth, precise mid-range for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1780
   },
   {
     "id": "mirek",
@@ -11079,7 +11257,8 @@
     "seoDescription": "Mirek - 30-50 lat, profesjonalny lektor do wszechstronnych zastosowań. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Polish male voice artist with a warm, versatile delivery. Mirek records IVR greetings, radio spots, narrations and audiobooks with consistent professional quality.",
     "seoTitleEn": "Mirek - warm versatile Polish voice | powitania.pl",
-    "seoDescriptionEn": "Mirek - Polish male voice artist, 30-50. Warm, versatile voice for IVR, commercials, narration and audiobooks. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mirek - Polish male voice artist, 30-50. Warm, versatile voice for IVR, commercials, narration and audiobooks. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1790
   },
   {
     "id": "nanna",
@@ -11133,7 +11312,8 @@
     "seoDescription": "Nanna - 20-30 lat, natywna lektorka języka islandzkiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Icelandic voice artist with a young, natural female voice. Nanna records IVR greetings, commercials and narrations for the Icelandic-speaking market.",
     "seoTitleEn": "Nanna - native Icelandic female voice | powitania.pl",
-    "seoDescriptionEn": "Nanna - native Icelandic female voice, 20-30. Young, natural for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Nanna - native Icelandic female voice, 20-30. Young, natural for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1800
   },
   {
     "id": "liv",
@@ -11189,7 +11369,8 @@
     "seoDescription": "Liv - 20-30 lat, natywna lektorka języka norweskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Norwegian voice artist with a fresh, pleasant female voice. Liv delivers natural Norwegian recordings for IVR, commercials and narration projects.",
     "seoTitleEn": "Liv - native Norwegian female voice | powitania.pl",
-    "seoDescriptionEn": "Liv - native Norwegian female voice, 20-30. Fresh, pleasant for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Liv - native Norwegian female voice, 20-30. Fresh, pleasant for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1810
   },
   {
     "id": "anna",
@@ -11245,7 +11426,8 @@
     "seoDescription": "Anna - 20-30 lat, natywna lektorka języka fińskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Finnish voice artist with a clear, warm female voice. Anna records IVR greetings, commercials and narrations for the Finnish-speaking market.",
     "seoTitleEn": "Anna - native Finnish female voice | powitania.pl",
-    "seoDescriptionEn": "Anna - native Finnish female voice artist, 20-30. Clear, warm voice for IVR, commercials and narration in Finnish. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Anna - native Finnish female voice artist, 20-30. Clear, warm voice for IVR, commercials and narration in Finnish. Sample + quote. powitania.pl since 2001.",
+    "order": 1820
   },
   {
     "id": "smari",
@@ -11305,7 +11487,8 @@
     "seoDescription": "Smari - 20-30 lat, natywny lektor nagrywający w języku islandzkim i angielskim. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Icelandic voice artist recording in both Icelandic and English. Smari offers authentic bilingual voiceover for IVR, commercials, narration and audiobooks.",
     "seoTitleEn": "Smari - native Icelandic & English voice | powitania.pl",
-    "seoDescriptionEn": "Smari - native Icelandic & English voice, 20-30. Bilingual recordings for IVR, commercials, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Smari - native Icelandic & English voice, 20-30. Bilingual recordings for IVR, commercials, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1830
   },
   {
     "id": "gianmarco",
@@ -11360,7 +11543,8 @@
     "seoDescription": "Gianmarco - 20-30 lat, natywny lektor języka włoskiego. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Italian voice artist with a natural, engaging male voice. Gianmarco records IVR greetings, commercials, narrations and audiobooks in Italian.",
     "seoTitleEn": "Gianmarco - native Italian voice artist | powitania.pl",
-    "seoDescriptionEn": "Gianmarco - native Italian male voice, 20-30. Natural, engaging for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Gianmarco - native Italian male voice, 20-30. Natural, engaging for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1840
   },
   {
     "id": "dorota",
@@ -11420,7 +11604,8 @@
     "seoTitle": "Dorota - aktorka teatralna i TV, lektorka | powitania.pl",
     "seoDescription": "Dorota - 30-50 lat, aktorka teatralna i TV, znakomita do audiobooków i narracji. IVR, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Dorota - theatre and TV actress voice | powitania.pl",
-    "seoDescriptionEn": "Dorota - Polish theatre and TV actress, 30-50. Outstanding voice for audiobooks, film narration and IVR. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Dorota - Polish theatre and TV actress, 30-50. Outstanding voice for audiobooks, film narration and IVR. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1850
   },
   {
     "id": "anne",
@@ -11480,7 +11665,8 @@
     "seoDescription": "Anne - 30-50 lat, natywna lektorka nagrywająca w języku angielskim i niemieckim. IVR, reklama, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native German voice artist fluent in both German and English. Anne delivers polished recordings for IVR, commercials, narration and audiobooks in both languages.",
     "seoTitleEn": "Anne - native German & English voice | powitania.pl",
-    "seoDescriptionEn": "Anne - native German & English voice, 30-50. Polished for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Anne - native German & English voice, 30-50. Polished for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 1860
   },
   {
     "id": "jenna",
@@ -11539,7 +11725,8 @@
     "seoDescription": "Jenna - 30-50 lat, natywna lektorka języka angielskiego. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native English voice artist with a clear, friendly female voice. Jenna provides natural English recordings for IVR, commercials, narration and audiobooks.",
     "seoTitleEn": "Jenna - friendly native English voice | powitania.pl",
-    "seoDescriptionEn": "Jenna - native English female voice artist, 30-50. Clear, friendly voice for IVR, commercials, narration, audiobooks. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jenna - native English female voice artist, 30-50. Clear, friendly voice for IVR, commercials, narration, audiobooks. Sample + quote. powitania.pl since 2001.",
+    "order": 1870
   },
   {
     "id": "roy-2",
@@ -11608,7 +11795,8 @@
     "seoDescription": "Roy 2 - 50+ lat, dojrzały natywny głos anglojęzyczny. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native English voice artist with a mature, powerful male voice. Roy 2 brings gravitas and versatility to IVR, commercials, narration and audiobook projects.",
     "seoTitleEn": "Roy 2 - powerful mature native English voice | powitania.pl",
-    "seoDescriptionEn": "Roy 2 - mature native English male voice, 50+. Gravitas for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Roy 2 - mature native English male voice, 50+. Gravitas for IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 1880
   },
   {
     "id": "jakub",
@@ -11669,7 +11857,8 @@
     "seoTitle": "Jakub - lektor i aktor, karta mikrofonowa PR | powitania.pl",
     "seoDescription": "Jakub - 30-50 lat, głos aktora z kartą mikrofonową Polskiego Radia. IVR, reklama, narracja, audiobook. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jakub - Polish Radio-certified voice artist | powitania.pl",
-    "seoDescriptionEn": "Jakub - Polish Radio-certified voice artist, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Jakub - Polish Radio-certified voice artist, 30-50. IVR, commercials, narration, audiobooks. Quote in 48h. powitania.pl since 2001.",
+    "order": 1890
   },
   {
     "id": "bozena",
@@ -11729,7 +11918,8 @@
     "seoDescription": "Bożena - 30-50 lat, profesjonalna lektorka do różnych zastosowań. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Polish female voice artist with a warm, clear delivery ideal for a variety of projects. Bożena records IVR greetings, commercials and narrations in Polish.",
     "seoTitleEn": "Bożena - professional Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Bożena - Polish female voice artist, 30-50. Professional, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Bożena - Polish female voice artist, 30-50. Professional, clear voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 1900
   },
   {
     "id": "zuzana",
@@ -11793,7 +11983,8 @@
     "seoDescription": "Zuzana - 20-30 lat, natywna lektorka języka słowackiego. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Slovak voice artist with a young, fresh female voice. Zuzana records IVR greetings, commercials and narrations for the Slovak-speaking market.",
     "seoTitleEn": "Zuzana - native Slovak female voice | powitania.pl",
-    "seoDescriptionEn": "Zuzana - native Slovak female voice, 20-30. Fresh, clear for IVR, commercials, narration in Slovak. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Zuzana - native Slovak female voice, 20-30. Fresh, clear for IVR, commercials, narration in Slovak. Quote in 48h. powitania.pl since 2001.",
+    "order": 1910
   },
   {
     "id": "zeno",
@@ -11851,7 +12042,8 @@
     "seoDescription": "Zeno - 30-50 lat, natywny lektor języka holenderskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Dutch voice artist with a calm, clear male voice. Zeno delivers natural Dutch recordings for IVR, commercials and film narration projects.",
     "seoTitleEn": "Zeno - native Dutch voice artist | powitania.pl",
-    "seoDescriptionEn": "Zeno - native Dutch male voice artist, 30-50. Calm, clear voice for IVR, commercials and narration in Dutch. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Zeno - native Dutch male voice artist, 30-50. Calm, clear voice for IVR, commercials and narration in Dutch. Sample + quote. powitania.pl since 2001.",
+    "order": 1920
   },
   {
     "id": "roger",
@@ -11909,7 +12101,8 @@
     "seoDescription": "Roger - 30-50 lat, natywny lektor języka norweskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Norwegian voice artist with a warm, clear male voice. Roger provides professional Norwegian recordings for IVR, commercials and narration.",
     "seoTitleEn": "Roger - native Norwegian voice artist | powitania.pl",
-    "seoDescriptionEn": "Roger - native Norwegian male voice artist, 30-50. Warm, clear voice for IVR, commercials and narration in Norwegian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Roger - native Norwegian male voice artist, 30-50. Warm, clear voice for IVR, commercials and narration in Norwegian. Sample + quote. powitania.pl since 2001.",
+    "order": 1930
   },
   {
     "id": "kristien",
@@ -11968,7 +12161,8 @@
     "seoDescription": "Kristien - 20-30 lat, natywna lektorka nagrywająca w języku holenderskim i flamandzkim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Flemish and Dutch voice artist with a fresh, approachable female voice. Kristien records IVR, commercials and narrations in both Dutch and Flemish.",
     "seoTitleEn": "Kristien - native Dutch & Flemish voice | powitania.pl",
-    "seoDescriptionEn": "Kristien - native Flemish voice, 20-30. Clear for IVR, commercials, narration in Dutch and Flemish. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Kristien - native Flemish voice, 20-30. Clear for IVR, commercials, narration in Dutch and Flemish. Quote. powitania.pl since 2001.",
+    "order": 1940
   },
   {
     "id": "pierre",
@@ -12026,7 +12220,8 @@
     "seoTitle": "Pierre - ciepła głęboka barwa, lektor FR | powitania.pl",
     "seoDescription": "Pierre - 30-50 lat, ciepła i głęboka barwa natywnego lektora języka francuskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Pierre - warm deep native French voice | powitania.pl",
-    "seoDescriptionEn": "Pierre - native French male voice artist, 30-50. Warm and deep timbre for IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Pierre - native French male voice artist, 30-50. Warm and deep timbre for IVR, commercials and narration in French. Sample + quote. powitania.pl since 2001.",
+    "order": 1950
   },
   {
     "id": "vladimir",
@@ -12084,7 +12279,8 @@
     "seoTitle": "Vladimir - niski miękki głos, lektor SR | powitania.pl",
     "seoDescription": "Vladimir - 30-50 lat, niski i miękki głos natywnego lektora serbskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Vladimir - low soft native Serbian voice | powitania.pl",
-    "seoDescriptionEn": "Vladimir - native Serbian male voice artist, 30-50. Low, soft voice for IVR, commercials and narration in Serbian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Vladimir - native Serbian male voice artist, 30-50. Low, soft voice for IVR, commercials and narration in Serbian. Sample + quote. powitania.pl since 2001.",
+    "order": 1960
   },
   {
     "id": "lara",
@@ -12142,7 +12338,8 @@
     "seoTitle": "Lara - świeży głos, natywna lektorka IT | powitania.pl",
     "seoDescription": "Lara - 20-30 lat, młody i świeży kobiecy głos natywnej lektorki włoskiej. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Lara - young fresh native Italian voice | powitania.pl",
-    "seoDescriptionEn": "Lara - native Italian female voice artist, 20-30. Young, fresh timbre for IVR, commercials and narration in Italian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Lara - native Italian female voice artist, 20-30. Young, fresh timbre for IVR, commercials and narration in Italian. Sample + quote. powitania.pl since 2001.",
+    "order": 1970
   },
   {
     "id": "pascale",
@@ -12200,7 +12397,8 @@
     "seoTitle": "Pascale - delikatna barwa, lektor FR | powitania.pl",
     "seoDescription": "Pascale - 30-50 lat, przyjemna i delikatna barwa natywnej lektorki języka francuskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Pascale - delicate native French voice | powitania.pl",
-    "seoDescriptionEn": "Pascale - native French female voice, 30-50. Delicate timbre for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Pascale - native French female voice, 30-50. Delicate timbre for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1980
   },
   {
     "id": "masha",
@@ -12259,7 +12457,8 @@
     "seoDescription": "Masha - 30-50 lat, natywna lektorka nagrywająca w języku rosyjskim i ukraińskim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Russian voice artist recording in both Russian and Ukrainian. Masha offers expressive bilingual recordings for IVR, commercials and narration.",
     "seoTitleEn": "Masha - native Russian & Ukrainian voice | powitania.pl",
-    "seoDescriptionEn": "Masha - native Russian & Ukrainian voice, 30-50. Expressive for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Masha - native Russian & Ukrainian voice, 30-50. Expressive for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 1990
   },
   {
     "id": "grete",
@@ -12318,7 +12517,8 @@
     "seoTitle": "Grete - zmysłowy wyrazisty głos, EN i DA | powitania.pl",
     "seoDescription": "Grete - 30-50 lat, dojrzały, zmysłowy i wyrazisty głos natywnej lektorki EN, DA. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Grete - sensual native Danish & English voice | powitania.pl",
-    "seoDescriptionEn": "Grete - native Danish voice, 30-50. Sensual, expressive for IVR, commercials, narration in DA and EN. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Grete - native Danish voice, 30-50. Sensual, expressive for IVR, commercials, narration in DA and EN. Quote. powitania.pl since 2001.",
+    "order": 2000
   },
   {
     "id": "natalia-2",
@@ -12376,7 +12576,8 @@
     "seoTitle": "Natalia - argentyńska lektorka ES i EN | powitania.pl",
     "seoDescription": "Natalia - 20-30 lat, lektorka AR z 13-letnim stażem, hiszpański AR, ES i EN. Reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Natalia - Argentine voice, Spanish & English | powitania.pl",
-    "seoDescriptionEn": "Natalia - Argentine voice, 13 yrs exp., 20-30. Spanish (AR+EU) and English. Commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Natalia - Argentine voice, 13 yrs exp., 20-30. Spanish (AR+EU) and English. Commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2010
   },
   {
     "id": "andrew",
@@ -12435,7 +12636,8 @@
     "seoDescription": "Andrew - 30-50 lat, natywny lektor nagrywający w języku rosyjskim i ukraińskim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Russian voice artist recording in both Russian and Ukrainian. Andrew delivers clear, professional recordings for IVR, commercials and film narration.",
     "seoTitleEn": "Andrew - native Russian & Ukrainian voice | powitania.pl",
-    "seoDescriptionEn": "Andrew - native Russian & Ukrainian voice, 30-50. Clear, professional for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Andrew - native Russian & Ukrainian voice, 30-50. Clear, professional for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2020
   },
   {
     "id": "bill",
@@ -12499,7 +12701,8 @@
     "seoTitle": "Bill - kultowy głos USA, trailery filmowe | powitania.pl",
     "seoDescription": "Bill - 50+ lat, jeden z najbardziej rozpoznawalnych głosów USA, trailery filmowe. IVR, reklama, narracja. Próbka + wycena w 72h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Bill - iconic American voice, CBS & Discovery | powitania.pl",
-    "seoDescriptionEn": "Bill - iconic American voice, 50+. CBS, Discovery, film trailers, Hyundai. IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Bill - iconic American voice, 50+. CBS, Discovery, film trailers, Hyundai. IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2030
   },
   {
     "id": "david-2",
@@ -12560,7 +12763,8 @@
     "seoTitle": "David 2 - lektor EN, ES, DE, PT - spec. port. | powitania.pl",
     "seoDescription": "David 2 - 30-50 lat, lektor wielojęzyczny, język portugalski PT i BR. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "David 2 - Portuguese specialist, EN/ES/DE/PT | powitania.pl",
-    "seoDescriptionEn": "David 2 - native Portuguese voice, 30-50. European and Brazilian PT variants. IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "David 2 - native Portuguese voice, 30-50. European and Brazilian PT variants. IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2040
   },
   {
     "id": "judit",
@@ -12618,7 +12822,8 @@
     "seoDescription": "Judit - 20-30 lat, natywna lektorka języka węgierskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Hungarian voice artist with a pleasant, clear female voice. Judit records IVR greetings, commercials and narrations for the Hungarian-speaking market.",
     "seoTitleEn": "Judit - native Hungarian female voice | powitania.pl",
-    "seoDescriptionEn": "Judit - native Hungarian female voice, 20-30. Pleasant, clear for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Judit - native Hungarian female voice, 20-30. Pleasant, clear for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2050
   },
   {
     "id": "zoltan",
@@ -12677,7 +12882,8 @@
     "seoTitle": "Zoltan - młody głos, natywny lektor WE | powitania.pl",
     "seoDescription": "Zoltan - 20-30 lat, świeże i młode brzmienie natywnego lektora języka węgierskiego. IVR, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Zoltan - young native Hungarian voice | powitania.pl",
-    "seoDescriptionEn": "Zoltan - native Hungarian male voice artist, 20-30. Young, fresh voice for IVR and narration in Hungarian. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Zoltan - native Hungarian male voice artist, 20-30. Young, fresh voice for IVR and narration in Hungarian. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 2060
   },
   {
     "id": "josh",
@@ -12737,7 +12943,8 @@
     "seoTitle": "Josh - żywy pełny głos, natywny lektor EN | powitania.pl",
     "seoDescription": "Josh - 30-50 lat, żywy i pełny głos w średnich rejestrach, natywny lektor angielski. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Josh - vital mid-range native English voice | powitania.pl",
-    "seoDescriptionEn": "Josh - native English male voice, 30-50. Rolling, vital mid-range timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Josh - native English male voice, 30-50. Rolling, vital mid-range timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 2070
   },
   {
     "id": "alison",
@@ -12805,7 +13012,8 @@
     "seoTitle": "Alison - klasyczne brzmienie angielskie | powitania.pl",
     "seoDescription": "Alison - 30-50 lat, czyste i klasyczne angielskie brzmienie, natywna lektorka. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Alison - classic British English voice | powitania.pl",
-    "seoDescriptionEn": "Alison - native British English female voice, 30-50. Pure, engaging timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Alison - native British English female voice, 30-50. Pure, engaging timbre for IVR, commercials, narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 2080
   },
   {
     "id": "sandra",
@@ -12865,7 +13073,8 @@
     "seoTitle": "Sandra - pełna i zmysłowa barwa, natywna DE | powitania.pl",
     "seoDescription": "Sandra - 30-50 lat, pełna, ciepła i zmysłowa barwa natywnej lektorki DE. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Sandra - warm sensuous native German voice | powitania.pl",
-    "seoDescriptionEn": "Sandra - native German female voice, 30-50. Full, warm and sensuous for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Sandra - native German female voice, 30-50. Full, warm and sensuous for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2090
   },
   {
     "id": "ilja",
@@ -12923,7 +13132,8 @@
     "seoTitle": "Ilja - głos do reportażu, natywny lektor RU | powitania.pl",
     "seoDescription": "Ilja - 50+ lat, dojrzały głos natywnego lektora RU, idealny do reportażu i felietonów. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ilja - mature native Russian voice | powitania.pl",
-    "seoDescriptionEn": "Ilja - native Russian male voice, 50+. Authoritative for reportage, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Ilja - native Russian male voice, 50+. Authoritative for reportage, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2100
   },
   {
     "id": "jeroen",
@@ -12986,7 +13196,8 @@
     "seoDescription": "Jeroen - 30-50 lat, natywny lektor nagrywający w języku holenderskim i angielskim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Dutch voice artist recording in both Dutch and English. Jeroen delivers natural bilingual recordings for IVR, commercials and film narration.",
     "seoTitleEn": "Jeroen - native Dutch & English voice | powitania.pl",
-    "seoDescriptionEn": "Jeroen - native Dutch & English voice, 30-50. Bilingual for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jeroen - native Dutch & English voice, 30-50. Bilingual for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2110
   },
   {
     "id": "edward",
@@ -13041,7 +13252,8 @@
     "seoDescription": "Edward - 30-50 lat, natywny lektor nagrywający w języku angielskim i polskim. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native English voice artist also recording in Polish. Edward provides authentic bilingual recordings for IVR, commercials and narration in English and Polish.",
     "seoTitleEn": "Edward - native English & Polish voice | powitania.pl",
-    "seoDescriptionEn": "Edward - native English & Polish voice, 30-50. Authentic bilingual for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Edward - native English & Polish voice, 30-50. Authentic bilingual for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2120
   },
   {
     "id": "ola",
@@ -13099,7 +13311,8 @@
     "seoTitle": "Ola - doświadczony natywny lektor szwedzki | powitania.pl",
     "seoDescription": "Ola - 30-50 lat, doświadczony natywny lektor języka szwedzkiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ola - experienced native Swedish voice | powitania.pl",
-    "seoDescriptionEn": "Ola - experienced native Swedish voice, 30-50. Clear, natural for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Ola - experienced native Swedish voice, 30-50. Clear, natural for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2130
   },
   {
     "id": "kim",
@@ -13158,7 +13371,8 @@
     "seoTitle": "Kim - miła barwa, natywna lektorka SV i EN | powitania.pl",
     "seoDescription": "Kim - 30-50 lat, miły i przyjemny kobiecy głos natywnej lektorki szwedzkiej i angielskiej. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kim - pleasant native Swedish & English voice | powitania.pl",
-    "seoDescriptionEn": "Kim - native Swedish & English female voice, 30-50. Pleasant timbre for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Kim - native Swedish & English female voice, 30-50. Pleasant timbre for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2140
   },
   {
     "id": "david",
@@ -13220,7 +13434,8 @@
     "seoTitle": "David - pełny czysty głos, natywny lektor EN | powitania.pl",
     "seoDescription": "David - 30-50 lat, pełny i czysty amerykański głos natywnego lektora angielskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "David - full clear American voice | powitania.pl",
-    "seoDescriptionEn": "David - native American English voice, 30-50. Full and clear timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "David - native American English voice, 30-50. Full and clear timbre for IVR, commercials, narration. Sample + quote. powitania.pl since 2001.",
+    "order": 2150
   },
   {
     "id": "helena",
@@ -13278,7 +13493,8 @@
     "seoTitle": "Helena - młody kobiecy głos, natywna CS | powitania.pl",
     "seoDescription": "Helena - 30-50 lat, młody kobiecy głos natywnej lektorki CS, wszechstronne zastosowania. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Helena - young female native Czech voice | powitania.pl",
-    "seoDescriptionEn": "Helena - native Czech female voice artist, 30-50. Young, clear voice for all voiceover applications in Czech. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Helena - native Czech female voice artist, 30-50. Young, clear voice for all voiceover applications in Czech. Sample + quote. powitania.pl since 2001.",
+    "order": 2160
   },
   {
     "id": "alicja",
@@ -13338,7 +13554,8 @@
     "seoTitle": "Alicja - wszechstronny głos, lektorka | powitania.pl",
     "seoDescription": "Alicja - 30-50 lat, wszechstronny kobiecy głos pasujący do różnych rodzajów nagrań. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Alicja - versatile Polish female voice | powitania.pl",
-    "seoDescriptionEn": "Alicja - versatile Polish female voice, 30-50. Suitable for all types of IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Alicja - versatile Polish female voice, 30-50. Suitable for all types of IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2170
   },
   {
     "id": "ela",
@@ -13398,7 +13615,8 @@
     "seoTitle": "Ela - barwny głos, aktorka i lektorka | powitania.pl",
     "seoDescription": "Ela - 30-50 lat, barwny kobiecy głos aktora i lektora. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ela - actress & voice artist, Polish | powitania.pl",
-    "seoDescriptionEn": "Ela - Polish actress and voice artist, 30-50. Colourful, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Ela - Polish actress and voice artist, 30-50. Colourful, expressive voice for IVR, commercials and narration. Sample + quote in 48h. powitania.pl since 2001.",
+    "order": 2180
   },
   {
     "id": "agnieszka",
@@ -13458,7 +13676,8 @@
     "seoTitle": "Agnieszka - dojrzały głos, reportaż i bajki | powitania.pl",
     "seoDescription": "Agnieszka - 50+ lat, dojrzały i głęboki głos do reportażu, publicystyki i bajek. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Agnieszka - mature voice for reportage | powitania.pl",
-    "seoDescriptionEn": "Agnieszka - mature Polish female voice, 50+. Ideal for reportage, fairy tales, IVR, commercials. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Agnieszka - mature Polish female voice, 50+. Ideal for reportage, fairy tales, IVR, commercials. Quote in 48h. powitania.pl since 2001.",
+    "order": 2190
   },
   {
     "id": "iza",
@@ -13519,7 +13738,8 @@
     "seoTitle": "Iza - precyzyjna lektorka PL i DE | powitania.pl",
     "seoDescription": "Iza - 30-50 lat, precyzyjna lektorka specjalizująca się w nagraniach PL, DE. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Iza - precise Polish & German voice | powitania.pl",
-    "seoDescriptionEn": "Iza - precise Polish & German female voice, 30-50. Fast delivery for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Iza - precise Polish & German female voice, 30-50. Fast delivery for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2200
   },
   {
     "id": "ola-2",
@@ -13578,7 +13798,8 @@
     "seoTitle": "Ola 2 - lektorka PL i EN, trójjęzyczna | powitania.pl",
     "seoDescription": "Ola 2 - 30-50 lat, wszechstronna lektorka i aktorka posługująca się trzema językami. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Ola 2 - trilingual Polish & English voice | powitania.pl",
-    "seoDescriptionEn": "Ola 2 - trilingual Polish & English voice, 30-50. IVR, commercials, narration in Polish and English. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Ola 2 - trilingual Polish & English voice, 30-50. IVR, commercials, narration in Polish and English. Quote. powitania.pl since 2001.",
+    "order": 2210
   },
   {
     "id": "luigi",
@@ -13638,7 +13859,8 @@
     "seoTitle": "Luigi - melodyjny radosny głos, natywny IT | powitania.pl",
     "seoDescription": "Luigi - 20-30 lat, melodyjny i radosny głos w wysokich rejestrach, natywny lektor IT. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Luigi - melodious native Italian voice | powitania.pl",
-    "seoDescriptionEn": "Luigi - native Italian male voice, 20-30. Melodious, cheerful for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Luigi - native Italian male voice, 20-30. Melodious, cheerful for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2220
   },
   {
     "id": "jessica",
@@ -13698,7 +13920,8 @@
     "seoTitle": "Jessica - wyrazista barwa, natywna EN, FR, DE | powitania.pl",
     "seoDescription": "Jessica - 30-50 lat, wyrazista i pełna barwa głosu, nagrania EN, FR, DE. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jessica - strong native EN, FR, DE voice | powitania.pl",
-    "seoDescriptionEn": "Jessica - native German voice, EN & FR fluent, 30-50. Strong, vital for IVR, commercials, narration. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jessica - native German voice, EN & FR fluent, 30-50. Strong, vital for IVR, commercials, narration. Quote. powitania.pl since 2001.",
+    "order": 2230
   },
   {
     "id": "mateusz",
@@ -13758,7 +13981,8 @@
     "seoTitle": "Mateusz - głos TV Orange Sport, lektor | powitania.pl",
     "seoDescription": "Mateusz - 30-50 lat, sprawdzony głos promosów i reportaży, znany z Orange Sport. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Mateusz - Orange Sport TV promo voice | powitania.pl",
-    "seoDescriptionEn": "Mateusz - Orange Sport TV promo voice, 30-50. Proven in reportages and promos. IVR, commercials. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Mateusz - Orange Sport TV promo voice, 30-50. Proven in reportages and promos. IVR, commercials. Quote in 48h. powitania.pl since 2001.",
+    "order": 2240
   },
   {
     "id": "minna",
@@ -13812,7 +14036,8 @@
     "seoDescription": "Minna - 20-30 lat, natywna lektorka języka estońskiego. IVR, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Estonian voice artist with a young, clear female voice. Minna records IVR greetings, narrations and audiobooks for the Estonian-speaking market.",
     "seoTitleEn": "Minna - native Estonian female voice | powitania.pl",
-    "seoDescriptionEn": "Minna - native Estonian female voice artist, 20-30. Young, clear voice for IVR, narration and audiobooks in Estonian. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Minna - native Estonian female voice artist, 20-30. Young, clear voice for IVR, narration and audiobooks in Estonian. Sample + quote. powitania.pl since 2001.",
+    "order": 2250
   },
   {
     "id": "krzysztof",
@@ -13873,7 +14098,8 @@
     "seoTitle": "Krzysztof - lektor PL i EN, filolog angielski | powitania.pl",
     "seoDescription": "Krzysztof - 30-50 lat, lektor z dyplomem filologii angielskiej, nagrania PL, EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Krzysztof - bilingual Polish & English voice | powitania.pl",
-    "seoDescriptionEn": "Krzysztof - English philology voice, 30-50. Expert bilingual PL & EN for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Krzysztof - English philology voice, 30-50. Expert bilingual PL & EN for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2260
   },
   {
     "id": "jakub-2",
@@ -13932,7 +14158,8 @@
     "seoTitle": "Jakub 2 - neutralna barwa, natywny lektor CS | powitania.pl",
     "seoDescription": "Jakub 2 - 30-50 lat, natywny czeski głos o neutralnej, profesjonalnej barwie. IVR, reklama, narracja, audiobook. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Jakub 2 - neutral native Czech voice | powitania.pl",
-    "seoDescriptionEn": "Jakub 2 - native Czech voice, 30-50. Neutral, professional for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Jakub 2 - native Czech voice, 30-50. Neutral, professional for IVR, commercials, narration, audiobooks. Quote. powitania.pl since 2001.",
+    "order": 2270
   },
   {
     "id": "hoki",
@@ -13990,7 +14217,8 @@
     "seoDescription": "Hoki - 30-50 lat, natywny lektor języka koreańskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Korean voice artist with a warm, natural male voice. Hoki provides authentic Korean recordings for IVR, commercials and film narration.",
     "seoTitleEn": "Hoki - native Korean voice artist | powitania.pl",
-    "seoDescriptionEn": "Hoki - native Korean male voice artist, 30-50. Warm, natural voice for IVR, commercials and narration in Korean. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Hoki - native Korean male voice artist, 30-50. Warm, natural voice for IVR, commercials and narration in Korean. Sample + quote. powitania.pl since 2001.",
+    "order": 2280
   },
   {
     "id": "june",
@@ -14048,7 +14276,8 @@
     "seoDescription": "June - 30-50 lat, natywna lektorka języka koreańskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Korean voice artist with a pleasant, clear female voice. June delivers professional Korean recordings for IVR, commercials and narration.",
     "seoTitleEn": "June - native Korean female voice | powitania.pl",
-    "seoDescriptionEn": "June - native Korean female voice artist, 30-50. Pleasant, clear voice for IVR, commercials and narration in Korean. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "June - native Korean female voice artist, 30-50. Pleasant, clear voice for IVR, commercials and narration in Korean. Sample + quote. powitania.pl since 2001.",
+    "order": 2290
   },
   {
     "id": "kritsada",
@@ -14106,7 +14335,8 @@
     "seoTitle": "Kritsada - natywny lektor tajski, BBC Thai | powitania.pl",
     "seoDescription": "Kritsada - 30-50 lat, doświadczony natywny lektor TH, były prezenter BBC World Service Thai. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kritsada - native Thai voice, former BBC | powitania.pl",
-    "seoDescriptionEn": "Kritsada - native Thai voice, 30-50. Former BBC World Service Thai presenter. IVR, commercials. Quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Kritsada - native Thai voice, 30-50. Former BBC World Service Thai presenter. IVR, commercials. Quote. powitania.pl since 2001.",
+    "order": 2300
   },
   {
     "id": "peerapon",
@@ -14164,7 +14394,8 @@
     "seoDescription": "Peerapon - 30-50 lat, natywny lektor języka tajskiego. IVR, reklama, narracja. Próbka + wycena. powitania.pl od 2001 roku.",
     "descriptionEn": "Native Thai voice artist with a confident, clear male voice. Peerapon provides professional Thai recordings for IVR, commercials and narration.",
     "seoTitleEn": "Peerapon - native Thai voice artist | powitania.pl",
-    "seoDescriptionEn": "Peerapon - native Thai male voice artist, 30-50. Confident, clear voice for IVR, commercials and narration in Thai. Sample + quote. powitania.pl since 2001."
+    "seoDescriptionEn": "Peerapon - native Thai male voice artist, 30-50. Confident, clear voice for IVR, commercials and narration in Thai. Sample + quote. powitania.pl since 2001.",
+    "order": 2310
   },
   {
     "id": "marek",
@@ -14224,7 +14455,8 @@
     "seoTitle": "Marek - dojrzały głos, lektor, aktor i muzyk | powitania.pl",
     "seoDescription": "Marek - 50+ lat, doświadczony głos lektora, aktora i muzyka. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Marek - Polish voice artist, actor & musician | powitania.pl",
-    "seoDescriptionEn": "Marek - Polish voice, actor & musician, 50+. Mature, rich for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Marek - Polish voice, actor & musician, 50+. Mature, rich for IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2320
   },
   {
     "id": "piotr",
@@ -14285,7 +14517,8 @@
     "seoTitle": "Piotr - ekspresowe czytanie, lektor PL i EN | powitania.pl",
     "seoDescription": "Piotr - 30-50 lat, ekspresowe i czytelne czytanie, nagrania PL, EN. IVR, reklama, narracja. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Piotr - express clear Polish voice, PL & EN | powitania.pl",
-    "seoDescriptionEn": "Piotr - express clear Polish & English voice, 30-50. Prized for fast delivery. IVR, commercials, narration. Quote in 48h. powitania.pl since 2001."
+    "seoDescriptionEn": "Piotr - express clear Polish & English voice, 30-50. Prized for fast delivery. IVR, commercials, narration. Quote in 48h. powitania.pl since 2001.",
+    "order": 2330
   },
   {
     "id": "test-lektor",
@@ -14334,6 +14567,7 @@
     "seoTitle": "Test Lektor (DO USUNIĘCIA) - lektor | powitania.pl",
     "seoDescription": "Test Lektor - 30-50 lat, lektor testowy do testowania płatności. Reklama. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Test Lektor - voice testing profile | powitania.pl",
-    "seoDescriptionEn": "Test Lektor - internal testing profile for payment and checkout flow testing. Not a real voice artist. powitania.pl since 2001."
+    "seoDescriptionEn": "Test Lektor - internal testing profile for payment and checkout flow testing. Not a real voice artist. powitania.pl since 2001.",
+    "order": 2340
   }
 ]

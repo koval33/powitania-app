@@ -42,9 +42,14 @@
     </div>
   <% } %>
 
-  <!-- Search -->
-  <div class="max-w-7xl mx-auto px-6 mt-6">
+  <!-- Search + status -->
+  <div class="max-w-7xl mx-auto px-6 mt-6 flex items-center gap-3">
     <input type="text" id="search" placeholder="Szukaj lektora..." class="bg-dark-800 border border-white/10 text-gray-300 text-sm rounded-lg px-4 py-2.5 w-full max-w-md focus:border-accent focus:outline-none placeholder-gray-500">
+    <span id="reorder-status" class="text-xs text-gray-500"></span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 mt-3 text-xs text-gray-500">
+    Przeciagnij wiersz (uchwyt po lewej) lub edytuj liczbe w polu "Order" i wcisnij Enter, aby zmienic kolejnosc na publicznej stronie.
   </div>
 
   <!-- Table -->
@@ -53,6 +58,8 @@
       <table class="w-full">
         <thead>
           <tr class="border-b border-white/10 text-left">
+            <th class="px-2 py-3 text-xs font-medium text-gray-500 uppercase w-8"></th>
+            <th class="px-2 py-3 text-xs font-medium text-gray-500 uppercase">Order</th>
             <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Zdjecie</th>
             <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Nazwa</th>
             <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase">Plec</th>
@@ -64,9 +71,13 @@
             <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase text-right">Akcje</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-white/5">
+        <tbody id="voices-tbody" class="divide-y divide-white/5">
           <% voices.forEach(function(v) { %>
-          <tr class="voice-row hover:bg-white/[0.02] transition-colors" data-name="<%= v.name.toLowerCase() %>">
+          <tr class="voice-row hover:bg-white/[0.02] transition-colors" data-name="<%= v.name.toLowerCase() %>" data-id="<%= v.id %>">
+            <td class="px-2 py-3 text-center cursor-grab text-gray-600 hover:text-gray-400 select-none drag-handle" title="Przeciagnij aby zmienic kolejnosc">&#x2630;</td>
+            <td class="px-2 py-3">
+              <input type="number" class="order-input bg-dark-700 border border-white/10 text-gray-300 text-xs rounded px-2 py-1 w-20 focus:border-accent focus:outline-none" value="<%= v.order %>" data-id="<%= v.id %>" step="1">
+            </td>
             <td class="px-4 py-3">
               <% if (v.photo) { %>
                 <img src="<%= v.photo %>" alt="" class="w-10 h-10 rounded-lg object-cover">
@@ -112,11 +123,82 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
   <script>
+    // --- Search ---
     document.getElementById('search').addEventListener('input', function() {
       var q = this.value.toLowerCase();
       document.querySelectorAll('.voice-row').forEach(function(row) {
         row.style.display = row.dataset.name.indexOf(q) !== -1 ? '' : 'none';
+      });
+    });
+
+    // --- Reorder helpers ---
+    var statusEl = document.getElementById('reorder-status');
+    function setStatus(txt, color) {
+      statusEl.textContent = txt;
+      statusEl.style.color = color || '';
+      if (txt) setTimeout(function() { if (statusEl.textContent === txt) statusEl.textContent = ''; }, 4000);
+    }
+
+    function postReorder(orderedIds) {
+      setStatus('Zapisuje...', '');
+      fetch('/admin/lektorzy/reorder/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order: orderedIds })
+      }).then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).then(function(data) {
+        // Update visible order inputs to new step-10 values
+        if (data && Array.isArray(data.voices)) {
+          data.voices.forEach(function(item) {
+            var inp = document.querySelector('.order-input[data-id="' + item.id + '"]');
+            if (inp) inp.value = item.order;
+          });
+        }
+        setStatus('Zapisano', '#10b981');
+      }).catch(function(err) {
+        setStatus('Blad: ' + err.message, '#ef4444');
+      });
+    }
+
+    // --- Drag&drop ---
+    var tbody = document.getElementById('voices-tbody');
+    Sortable.create(tbody, {
+      handle: '.drag-handle',
+      animation: 150,
+      onEnd: function() {
+        var ids = Array.from(tbody.querySelectorAll('.voice-row')).map(function(r) { return r.dataset.id; });
+        postReorder(ids);
+      }
+    });
+
+    // --- Inline order edit (Enter aby zatwierdzic) ---
+    document.querySelectorAll('.order-input').forEach(function(inp) {
+      inp.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.blur();
+        }
+      });
+      inp.addEventListener('change', function() {
+        var rows = Array.from(tbody.querySelectorAll('.voice-row'));
+        // Build [id, order] pairs from current input values
+        var pairs = rows.map(function(r) {
+          var i = r.querySelector('.order-input');
+          return { id: r.dataset.id, order: parseFloat(i.value) || 0 };
+        });
+        // Sort by current numeric order, stable
+        pairs.sort(function(a, b) { return a.order - b.order; });
+        // Reorder DOM to match
+        pairs.forEach(function(p) {
+          var row = document.querySelector('.voice-row[data-id="' + p.id + '"]');
+          tbody.appendChild(row);
+        });
+        // Persist
+        postReorder(pairs.map(function(p) { return p.id; }));
       });
     });
   </script>

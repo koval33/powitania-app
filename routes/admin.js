@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 const DATA_PATH = path.join(__dirname, '..', 'data', 'voices.json');
+const SEED_PATH = path.join(__dirname, '..', 'data-seed', 'voices.json');
 const IMG_DIR = path.join(__dirname, '..', 'public', 'img', 'lektorzy');
 const AUDIO_DIR = path.join(__dirname, '..', 'public', 'audio', 'lektorzy');
 
@@ -17,7 +18,7 @@ const upload = multer({
     if (file.fieldname === 'photo') {
       const ok = /\.(jpg|jpeg|png|gif|webp)$/i.test(file.originalname);
       cb(null, ok);
-    } else if (file.fieldname === 'audio') {
+    } else if (file.fieldname === 'audio' || file.fieldname === 'new_sample_file' || file.fieldname === 'new_sample_file[]') {
       const ok = /\.(mp3|wav|ogg)$/i.test(file.originalname);
       cb(null, ok);
     } else {
@@ -32,7 +33,20 @@ function loadVoices() {
 }
 
 function saveVoices(voices) {
-  fs.writeFileSync(DATA_PATH, JSON.stringify(voices, null, 2), 'utf8');
+  // Zapis atomowy do obydwu plikow (data/ i data-seed/) tak, zeby
+  // zmiana przezyla restart serwera (alwaysOverwrite kopiuje data-seed/ -> data/).
+  // User commituje oba pliki razem - spojne z istniejacym workflow w repo.
+  const json = JSON.stringify(voices, null, 2);
+  fs.writeFileSync(DATA_PATH, json, 'utf8');
+  try {
+    fs.writeFileSync(SEED_PATH, json, 'utf8');
+  } catch (err) {
+    // Brak data-seed/ na produkcji (Railway) jest OK - tam tylko data/ jest zapisywalny.
+    // Loguj, ale nie wyrzucaj bledu - zmiana jest juz w data/.
+    if (err.code !== 'ENOENT' && err.code !== 'EACCES') {
+      console.warn('[admin] data-seed/voices.json sync skipped:', err.code, err.message);
+    }
+  }
 }
 
 function slugify(text) {
@@ -103,7 +117,9 @@ router.get('/edytuj/:id/', (req, res) => {
 // --- Zapis (dodaj / edytuj) ---
 router.post('/zapisz/', upload.fields([
   { name: 'photo', maxCount: 1 },
-  { name: 'audio', maxCount: 1 }
+  { name: 'audio', maxCount: 1 },
+  { name: 'new_sample_file[]', maxCount: 10 },
+  { name: 'new_sample_file', maxCount: 10 }
 ]), async (req, res) => {
   try {
     const voices = loadVoices();
@@ -135,8 +151,9 @@ router.post('/zapisz/', upload.fields([
       photoPath = `/img/lektorzy/${slug}.webp`;
     }
 
-    // Process audio
-    let audioPath = isEdit ? (voices.find(v => v.id === slug)?.audio || null) : null;
+    // Process audio (glowna probka)
+    const existingVoice = isEdit ? voices.find(v => v.id === slug) : null;
+    let audioPath = existingVoice ? existingVoice.audio : null;
     if (req.files && req.files.audio && req.files.audio[0]) {
       const tmpFile = req.files.audio[0].path;
       const ext = path.extname(req.files.audio[0].originalname).toLowerCase() || '.mp3';
@@ -144,6 +161,58 @@ router.post('/zapisz/', upload.fields([
       fs.renameSync(tmpFile, outFile);
       audioPath = `/audio/lektorzy/${slug}${ext}`;
     }
+
+    // Process samples (dodatkowe probki) - obsluga 3 przypadkow:
+    // 1. Istniejace - rename (existing_sample_name_N) lub remove (existing_sample_remove_N=1)
+    // 2. Nowe pliki uploadowane (new_sample_file[] + new_sample_name[])
+    const samples = [];
+    const filesToDelete = []; // pliki ktore trzeba skasowac z dysku po zapisie
+
+    // 1. Istniejace probki
+    if (existingVoice && Array.isArray(existingVoice.samples)) {
+      existingVoice.samples.forEach((s, i) => {
+        const removeFlag = b[`existing_sample_remove_${i}`];
+        if (removeFlag === '1') {
+          // Usun probke - jesli plik nie jest wspoldzielony z audioPath, do skasowania
+          if (s.url && s.url !== audioPath) filesToDelete.push(s.url);
+          return;
+        }
+        const newName = (b[`existing_sample_name_${i}`] || s.name || '').trim();
+        const url = b[`existing_sample_url_${i}`] || s.url;
+        samples.push({ name: newName || `Probka ${i + 1}`, url });
+      });
+    }
+
+    // 2. Nowe pliki
+    const newFiles = (req.files && (req.files['new_sample_file[]'] || req.files['new_sample_file'])) || [];
+    const newNames = Array.isArray(b['new_sample_name[]']) ? b['new_sample_name[]'] : (b['new_sample_name[]'] ? [b['new_sample_name[]']] : []);
+    if (newFiles.length > 0) {
+      // Znajdz nastepny wolny indeks pliku ({slug}-N.ext) - skanujemy istniejace samples i audioPath
+      const usedNumbers = new Set();
+      const allUrls = [audioPath, ...samples.map(s => s.url)].filter(Boolean);
+      allUrls.forEach(u => {
+        const m = u.match(new RegExp(`/${slug}(?:-(\\d+))?\\.(?:mp3|wav|ogg)$`));
+        if (m) usedNumbers.add(m[1] ? parseInt(m[1]) : 1);
+      });
+      let nextNum = 2;
+      while (usedNumbers.has(nextNum)) nextNum++;
+
+      for (let i = 0; i < newFiles.length; i++) {
+        const f = newFiles[i];
+        const ext = path.extname(f.originalname).toLowerCase() || '.mp3';
+        const fname = nextNum === 1 ? `${slug}${ext}` : `${slug}-${nextNum}${ext}`;
+        const outFile = path.join(AUDIO_DIR, fname);
+        fs.renameSync(f.path, outFile);
+        const url = `/audio/lektorzy/${fname}`;
+        const name = (newNames[i] || '').trim() || `Probka ${samples.length + 1}`;
+        samples.push({ name, url });
+        usedNumbers.add(nextNum);
+        while (usedNumbers.has(nextNum)) nextNum++;
+      }
+    }
+
+    // Auto-fix: jesli audioPath jest pusty, ustaw na pierwsza probke
+    if (!audioPath && samples.length > 0) audioPath = samples[0].url;
 
     // Parse languages
     const languages = (b.languages || '').split(',').map(l => l.trim()).filter(l => l);
@@ -181,6 +250,20 @@ router.post('/zapisz/', upload.fields([
     prices['narration_3plus'] = 'wycena';
     prices['ivr_200plus'] = prices['ivr_200plus'] || 'wycena';
 
+    // Zachowaj order (przy edycji) lub przypisz nowy (na koniec listy) przy dodawaniu
+    let nextOrder;
+    if (existingVoice && typeof existingVoice.order === 'number') {
+      nextOrder = existingVoice.order;
+    } else {
+      const maxOrder = voices.reduce((m, v) => Math.max(m, typeof v.order === 'number' ? v.order : 0), 0);
+      nextOrder = maxOrder + 10;
+    }
+
+    // Zachowaj seoTitle/seoDescription i ich warianty EN (jesli istniejace)
+    const seoFields = existingVoice
+      ? { seoTitle: existingVoice.seoTitle, seoDescription: existingVoice.seoDescription, seoTitleEn: existingVoice.seoTitleEn, seoDescriptionEn: existingVoice.seoDescriptionEn, descriptionEn: existingVoice.descriptionEn }
+      : {};
+
     const voiceData = {
       id: slug,
       name: b.name,
@@ -188,9 +271,10 @@ router.post('/zapisz/', upload.fields([
       age: b.age || null,
       languages,
       description: b.description || null,
+      ...(seoFields.descriptionEn !== undefined ? { descriptionEn: seoFields.descriptionEn } : {}),
       photo: photoPath,
       audio: audioPath,
-      samples: null,
+      samples: samples.length > 0 ? samples : null,
       turnaround: b.turnaround || null,
       famous: b.famous === 'on',
       native: b.native === 'on',
@@ -199,7 +283,12 @@ router.post('/zapisz/', upload.fields([
       priceGroup: b.priceGroup || null,
       hidePrice: b.hidePrice === 'on',
       prices,
-      profileUrl: `/lektorzy/${slug}/`
+      profileUrl: `/lektorzy/${slug}/`,
+      ...(seoFields.seoTitle !== undefined ? { seoTitle: seoFields.seoTitle } : {}),
+      ...(seoFields.seoDescription !== undefined ? { seoDescription: seoFields.seoDescription } : {}),
+      ...(seoFields.seoTitleEn !== undefined ? { seoTitleEn: seoFields.seoTitleEn } : {}),
+      ...(seoFields.seoDescriptionEn !== undefined ? { seoDescriptionEn: seoFields.seoDescriptionEn } : {}),
+      order: nextOrder
     };
 
     if (isEdit) {
@@ -213,12 +302,60 @@ router.post('/zapisz/', upload.fields([
 
     saveVoices(voices);
 
+    // Skasuj fizyczne pliki probek oznaczone do usuniecia (po udanym zapisie JSON)
+    filesToDelete.forEach(url => {
+      const fname = path.basename(url);
+      const fpath = path.join(AUDIO_DIR, fname);
+      if (fs.existsSync(fpath)) {
+        try { fs.unlinkSync(fpath); }
+        catch (e) { console.warn('[admin] Could not delete sample file:', fpath, e.message); }
+      }
+    });
+
     const action = isEdit ? 'Zaktualizowano' : 'Dodano';
     res.redirect(`/admin/lektorzy/?msg=${action}+${encodeURIComponent(b.name)}`);
 
   } catch (err) {
     console.error('Admin save error:', err);
     res.redirect('/admin/lektorzy/?msg=Blad:+' + encodeURIComponent(err.message));
+  }
+});
+
+// --- Reorder (drag&drop / inline order edit) ---
+router.post('/reorder/', express.json(), (req, res) => {
+  try {
+    const incoming = req.body && Array.isArray(req.body.order) ? req.body.order : null;
+    if (!incoming) return res.status(400).json({ error: 'Brak pola order (array of ids)' });
+
+    const voices = loadVoices();
+    const byId = new Map(voices.map(v => [v.id, v]));
+    const seen = new Set();
+    const ordered = [];
+
+    // 1. Wpisy z incoming (w kolejnosci jak przyszly)
+    incoming.forEach(id => {
+      if (typeof id === 'string' && byId.has(id) && !seen.has(id)) {
+        ordered.push(byId.get(id));
+        seen.add(id);
+      }
+    });
+    // 2. Reszta (jesli klient nie przyslal wszystkich) - dopisana na koncu w obecnej kolejnosci
+    voices.forEach(v => {
+      if (!seen.has(v.id)) ordered.push(v);
+    });
+
+    // 3. Renumeracja krokiem 10
+    ordered.forEach((v, i) => { v.order = (i + 1) * 10; });
+
+    saveVoices(ordered);
+
+    res.json({
+      ok: true,
+      voices: ordered.map(v => ({ id: v.id, order: v.order }))
+    });
+  } catch (err) {
+    console.error('Reorder error:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 

@@ -81,17 +81,79 @@
         <input type="file" name="photo" accept="image/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
       </div>
 
-      <!-- Audio -->
+      <!-- Audio (legacy single, glowna probka) -->
       <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1.5">Probka glosu (MP3/WAV)</label>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Glowna probka glosu (MP3/WAV)</label>
+        <p class="text-xs text-gray-500 mb-2">Pojedynczy plik widoczny na karcie lektora w banku glosow. Dodatkowe probki dodaj nizej.</p>
         <% if (voice && voice.audio) { %>
           <div class="flex items-center gap-3 mb-2">
             <audio controls src="<%= voice.audio %>" class="h-8"></audio>
-            <span class="text-xs text-gray-500">Aktualna probka.</span>
+            <span class="text-xs text-gray-500">Aktualna glowna probka.</span>
           </div>
         <% } %>
         <input type="file" name="audio" accept="audio/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
       </div>
+
+      <!-- Dodatkowe probki (samples[]) -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Dodatkowe probki audio</label>
+        <p class="text-xs text-gray-500 mb-2">Lista probek pokazywana na profilu lektora (max 10). Mozesz zmienic nazwy istniejacych albo dodac nowe.</p>
+
+        <!-- Istniejace probki (mozna nadac inna nazwe lub usunac) -->
+        <% var existingSamples = (voice && Array.isArray(voice.samples)) ? voice.samples : []; %>
+        <div id="existing-samples" class="space-y-2 mb-3">
+          <% existingSamples.forEach(function(s, i) { %>
+            <div class="sample-row flex items-center gap-2 bg-dark-800 border border-white/10 rounded-lg p-2" data-index="<%= i %>">
+              <input type="hidden" name="existing_sample_url_<%= i %>" value="<%= s.url %>">
+              <input type="hidden" name="existing_sample_remove_<%= i %>" value="0" class="remove-flag">
+              <input type="text" name="existing_sample_name_<%= i %>" value="<%= s.name || '' %>" placeholder="Nazwa probki" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
+              <audio controls src="<%= s.url %>" class="h-8"></audio>
+              <button type="button" onclick="markSampleRemove(this)" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">Usun</button>
+            </div>
+          <% }); %>
+        </div>
+
+        <!-- Dynamiczne nowe probki -->
+        <div id="new-samples" class="space-y-2 mb-3"></div>
+
+        <button type="button" id="add-sample-btn" class="text-xs text-accent border border-accent/30 hover:border-accent/60 px-3 py-1.5 rounded">+ Dodaj probke</button>
+
+        <template id="new-sample-tpl">
+          <div class="sample-row flex items-center gap-2 bg-dark-800 border border-accent/20 rounded-lg p-2">
+            <input type="text" name="new_sample_name[]" placeholder="Nazwa (np. Spot reklamowy)" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
+            <input type="file" name="new_sample_file[]" accept="audio/*" required class="text-xs text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
+            <button type="button" onclick="this.parentElement.remove()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">&times;</button>
+          </div>
+        </template>
+      </div>
+
+      <script>
+        function markSampleRemove(btn) {
+          var row = btn.closest('.sample-row');
+          var flag = row.querySelector('.remove-flag');
+          if (flag.value === '1') {
+            // Cofnij oznaczenie usuniecia
+            flag.value = '0';
+            row.classList.remove('opacity-40', 'line-through');
+            btn.textContent = 'Usun';
+            btn.classList.remove('text-gray-400', 'border-white/10');
+            btn.classList.add('text-red-400', 'border-red-500/20');
+          } else {
+            // Oznacz do usuniecia
+            flag.value = '1';
+            row.classList.add('opacity-40', 'line-through');
+            btn.textContent = 'Cofnij';
+            btn.classList.remove('text-red-400', 'border-red-500/20');
+            btn.classList.add('text-gray-400', 'border-white/10');
+          }
+        }
+
+        document.getElementById('add-sample-btn').addEventListener('click', function() {
+          var tpl = document.getElementById('new-sample-tpl');
+          var clone = tpl.content.cloneNode(true);
+          document.getElementById('new-samples').appendChild(clone);
+        });
+      </script>
 
       <!-- Realizacja + Grupa cenowa -->
       <div class="grid grid-cols-2 gap-4">
@@ -291,7 +353,7 @@
               ivr_100: 450, ivr_200: 650, ivr_200plus: 'wycena',
               ivr_guarantee_100: 180, ivr_guarantee_100plus: 280,
               ivr_melody: 120, ivr_bilingual: 150,
-              spot_radio_local: 850, spot_radio_national: 1500,
+              spot_radio_local: 350, spot_radio_national: 1200,
               spot_tv_local: 800, spot_tv_national: 2400,
               spot_social_1min: 1100, spot_social_2min: 1500,
               narration_1page: 850, narration_2pages: 1200, narration_3pages: 1600
