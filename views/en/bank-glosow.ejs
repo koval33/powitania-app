@@ -352,9 +352,9 @@
             <div class="flex items-center gap-1.5 mt-0.5">
               <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
               <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <% var _ivr_eur = Math.round(v.prices.ivr_100 / 4.2 / 5) * 5; %>
+                <%# v.prices juz w EUR (route /en/voice-bank/ konwertuje serverowo) %>
                 <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-gray-500">from <strong class="text-gray-700"><%= _ivr_eur %> EUR</strong></span>
+                <span class="text-xs text-gray-500">from <strong class="text-gray-700"><%= v.prices.ivr_100 %> EUR</strong></span>
               <% } else if (v.hidePrice) { %>
                 <span class="text-xs text-gray-300">&bull;</span>
                 <span class="text-xs text-yellow-600">custom pricing</span>

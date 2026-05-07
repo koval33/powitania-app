@@ -1,6 +1,6 @@
 [
   {
-    "id": "lukasz-spysinski",
+    "id": "lukasz-3",
     "name": "Łukasz 3",
     "gender": "m",
     "age": "30-50 lat",
@@ -12,20 +12,20 @@
     "realName": "Łukasz Spysiński",
     "contactEmail": "totenglos@gmail.com",
     "contactPhone": "505 532 235",
-    "photo": "/img/lektorzy/lukasz-spysinski.webp",
-    "audio": "/audio/lektorzy/lukasz-spysinski.mp3",
+    "photo": "/img/lektorzy/lukasz-3.webp",
+    "audio": "/audio/lektorzy/lukasz-3.mp3",
     "samples": [
       {
         "name": "Demo lektorskie",
-        "url": "/audio/lektorzy/lukasz-spysinski.mp3"
+        "url": "/audio/lektorzy/lukasz-3.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "/audio/lektorzy/lukasz-spysinski-2.mp3"
+        "url": "/audio/lektorzy/lukasz-3-2.mp3"
       },
       {
         "name": "Narracja lektorska",
-        "url": "/audio/lektorzy/lukasz-spysinski-3.mp3"
+        "url": "/audio/lektorzy/lukasz-3-3.mp3"
       }
     ],
     "turnaround": "24h",
@@ -59,7 +59,7 @@
       "narration_3pages": 1600,
       "narration_3plus": "wycena"
     },
-    "profileUrl": "/lektorzy/lukasz-spysinski/",
+    "profileUrl": "/lektorzy/lukasz-3/",
     "seoTitle": "Łukasz - głos oprawowy TV, lektor reklamowy | powitania.pl",
     "seoDescription": "Łukasz - 30-50 lat, lektor reklamowy i głos oprawowy TV. Spoty radiowe, telewizyjne, filmy korporacyjne. Próbka + wycena w 48h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Łukasz - TV voice-over artist, narrator | powitania.pl",

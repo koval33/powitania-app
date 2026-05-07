@@ -37,18 +37,18 @@
 
         <% if (!lektor.hidePrice && lektor.prices) { %>
         <div class="mt-5 space-y-1.5 text-xs text-gray-500">
-          <% function plnEur(v) { return typeof v === 'number' ? Math.round(v / 4.2 / 5) * 5 : v; } %>
+          <%# UWAGA: lektor.prices przychodza JUZ przekonwertowane na EUR przez convertPricesToEur() w server.js. Nie konwertuj ponownie! %>
           <% if (lektor.prices.ivr_100) { %>
-          <div class="flex justify-between"><span>Phone Announcement</span><span class="font-semibold text-gray-800">from <%= plnEur(lektor.prices.ivr_100) %> EUR</span></div>
+          <div class="flex justify-between"><span>Phone Announcement</span><span class="font-semibold text-gray-800">from <%= lektor.prices.ivr_100 %> EUR</span></div>
           <% } %>
           <% if (lektor.prices.spot_social_1min) { %>
-          <div class="flex justify-between"><span>Social Media</span><span class="font-semibold text-gray-800">from <%= plnEur(lektor.prices.spot_social_1min) %> EUR</span></div>
+          <div class="flex justify-between"><span>Social Media</span><span class="font-semibold text-gray-800">from <%= lektor.prices.spot_social_1min %> EUR</span></div>
           <% } %>
           <% if (lektor.prices.spot_radio_local) { %>
-          <div class="flex justify-between"><span>Ad Spot</span><span class="font-semibold text-gray-800">from <%= plnEur(lektor.prices.spot_radio_local) %> EUR</span></div>
+          <div class="flex justify-between"><span>Ad Spot</span><span class="font-semibold text-gray-800">from <%= lektor.prices.spot_radio_local %> EUR</span></div>
           <% } %>
           <% if (lektor.prices.narration_1page) { %>
-          <div class="flex justify-between"><span>Narration / film</span><span class="font-semibold text-gray-800">from <%= plnEur(lektor.prices.narration_1page) %> EUR</span></div>
+          <div class="flex justify-between"><span>Narration / film</span><span class="font-semibold text-gray-800">from <%= lektor.prices.narration_1page %> EUR</span></div>
           <% } %>
         </div>
         <% } %>
@@ -1096,15 +1096,8 @@ var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
 var IS_EXPRESS = <%= typeof isExpress !== 'undefined' && isExpress ? 'true' : 'false' %>;
 var MELODIES = <%- JSON.stringify(typeof melodies !== 'undefined' ? melodies : []) %>;
 
-// Convert PLN → EUR (1 EUR ≈ 4.20 PLN), round to nearest 5
-(function() {
-  var EUR_RATE = 4.20;
-  for (var key in LEKTOR_PRICES) {
-    if (typeof LEKTOR_PRICES[key] === 'number') {
-      LEKTOR_PRICES[key] = Math.round(LEKTOR_PRICES[key] / EUR_RATE / 5) * 5;
-    }
-  }
-})();
+// LEKTOR_PRICES sa juz w EUR (przekonwertowane server-side przez plnToEur w server.js).
+// NIE konwertuj ponownie - to powodowalo podwojna konwersje (PLN -> EUR -> ~EUR/4.2).
 
 // Express mode: prices +50% rounded to nearest 5 EUR
 if (IS_EXPRESS) {

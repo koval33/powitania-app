@@ -876,10 +876,12 @@ app.get('/en/', (req, res) => {
 });
 
 app.get('/en/voice-bank/', (req, res) => {
+  // Konwersja prices PLN -> EUR per voice (template uzywa juz-EUR wartosci, bez wlasnej konwersji)
+  const voicesEur = loadVoices().map(v => ({ ...v, prices: convertPricesToEur(v.prices) }));
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
     description: 'Voice bank Powitania.pl - 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.',
-    voices: loadVoices()
+    voices: voicesEur
   });
 });
 
@@ -1011,6 +1013,7 @@ app.get('/en/remote-sessions/', (req, res) => {
 
 app.get('/en/express-recording/', (req, res) => {
   const voices = loadVoices();
+  // Express +50% w PLN, potem konwersja na EUR (zaokraglenie w gore do 5 EUR)
   const dutyVoices = voices
     .filter(v => v.turnaround && v.turnaround.includes('24') && v.photo)
     .slice(0, 6)
@@ -1018,7 +1021,7 @@ app.get('/en/express-recording/', (req, res) => {
       const expressPrices = {};
       if (v.prices) {
         for (const [key, val] of Object.entries(v.prices)) {
-          expressPrices[key] = typeof val === 'number' ? Math.round(val * 1.5 / 10) * 10 : val;
+          expressPrices[key] = typeof val === 'number' ? plnToEur(val * 1.5) : val;
         }
       }
       return { ...v, prices: expressPrices };
@@ -1126,12 +1129,13 @@ app.get('/en/news/:slug/', (req, res) => {
 });
 
 // EN - Voice artist profile
-var EUR_RATE = 4.25;
+// Konwersja PLN -> EUR. Stawka 4.20, zaokraglanie ZAWSZE w GORE do nastepnego 5 EUR
+// (umowa biznesowa: nie zanizamy ceny po konwersji).
+var EUR_RATE = 4.20;
 function plnToEur(pln) {
   if (typeof pln !== 'number') return pln;
   var eur = pln / EUR_RATE;
-  // Round to nearest 5 for amounts >= 25, otherwise round to nearest integer
-  return eur >= 25 ? Math.round(eur / 5) * 5 : Math.round(eur);
+  return Math.ceil(eur / 5) * 5;
 }
 function convertPricesToEur(prices) {
   if (!prices) return {};
