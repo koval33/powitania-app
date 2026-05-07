@@ -44,8 +44,20 @@ async function fetchVoicesJson() {
   return await r.text();
 }
 
+function isExternalUrl(url) {
+  // YouTube i inne zewnetrzne sample - pomijamy
+  return /^https?:\/\//i.test(url) && !url.startsWith(PROD_URL);
+}
+
 async function fetchBinary(relUrl, destPath) {
-  const r = await fetch(PROD_URL + relUrl);
+  // Jesli juz absolute URL na powitania.pl - bierzemy bez prefixu
+  // Jesli zewnetrzne (np. YouTube) - skip
+  // Jesli relative - prepend PROD_URL
+  if (isExternalUrl(relUrl)) {
+    return { ok: false, skipped: true, reason: 'external URL' };
+  }
+  const fullUrl = relUrl.startsWith('http') ? relUrl : PROD_URL + relUrl;
+  const r = await fetch(fullUrl);
   if (!r.ok) {
     return { ok: false, status: r.status };
   }
@@ -106,20 +118,24 @@ async function fetchBinary(relUrl, destPath) {
   }
 
   // Sciaganie binarnych
-  let imgDownloaded = 0, imgSkipped = 0, imgFailed = 0;
-  let audDownloaded = 0, audSkipped = 0, audFailed = 0;
+  let imgDownloaded = 0, imgSkipped = 0, imgFailed = 0, imgExternal = 0;
+  let audDownloaded = 0, audSkipped = 0, audFailed = 0, audExternal = 0;
   const audioFiles = new Set(); // unique URL list (audio + samples)
 
   for (const v of voices) {
     // Photo
     if (v.photo) {
-      const photoFile = path.join(__dirname, '..', 'public', v.photo.replace(/^\//, ''));
-      if (FULL || !fs.existsSync(photoFile)) {
-        const res = await fetchBinary(v.photo, photoFile);
-        if (res.ok) { imgDownloaded++; console.log('  + IMG ' + v.photo + ' (' + res.bytes + 'B)'); }
-        else { imgFailed++; console.log('  ! IMG ' + v.photo + ' HTTP ' + res.status); }
+      if (isExternalUrl(v.photo)) {
+        imgExternal++;
       } else {
-        imgSkipped++;
+        const photoFile = path.join(__dirname, '..', 'public', v.photo.replace(/^\//, ''));
+        if (FULL || !fs.existsSync(photoFile)) {
+          const res = await fetchBinary(v.photo, photoFile);
+          if (res.ok) { imgDownloaded++; console.log('  + IMG ' + v.photo + ' (' + res.bytes + 'B)'); }
+          else { imgFailed++; console.log('  ! IMG ' + v.photo + ' HTTP ' + res.status); }
+        } else {
+          imgSkipped++;
+        }
       }
     }
     // Audio (glowny + samples)
@@ -130,6 +146,10 @@ async function fetchBinary(relUrl, destPath) {
   }
 
   for (const audUrl of audioFiles) {
+    if (isExternalUrl(audUrl)) {
+      audExternal++;
+      continue;
+    }
     const audFile = path.join(__dirname, '..', 'public', audUrl.replace(/^\//, ''));
     if (FULL || !fs.existsSync(audFile)) {
       const res = await fetchBinary(audUrl, audFile);
@@ -141,8 +161,8 @@ async function fetchBinary(relUrl, destPath) {
   }
 
   console.log('---');
-  console.log('Zdjecia: ' + imgDownloaded + ' pobrane, ' + imgSkipped + ' juz mialem, ' + imgFailed + ' nieudane');
-  console.log('Audio  : ' + audDownloaded + ' pobrane, ' + audSkipped + ' juz mialem, ' + audFailed + ' nieudane');
+  console.log('Zdjecia: ' + imgDownloaded + ' pobrane, ' + imgSkipped + ' juz mialem, ' + imgFailed + ' nieudane' + (imgExternal ? ', ' + imgExternal + ' zewnetrzne (pominiete)' : ''));
+  console.log('Audio  : ' + audDownloaded + ' pobrane, ' + audSkipped + ' juz mialem, ' + audFailed + ' nieudane' + (audExternal ? ', ' + audExternal + ' zewnetrznych (YouTube/inne, pominiete)' : ''));
 
   if (DRY) {
     console.log('(DRY RUN - zadne pliki nie zostaly zapisane)');
