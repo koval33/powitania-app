@@ -7,7 +7,9 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "build:css": "npx tailwindcss -i src/input.css -o public/css/tailwind.css --minify",
-    "pull-prod": "node scripts/pull-from-prod.js"
+    "pull-prod": "node scripts/pull-from-prod.js",
+    "check-sync": "node scripts/check-prod-sync.js",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

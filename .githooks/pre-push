@@ -1,0 +1,9 @@
+#!/bin/sh
+# Pre-push hook - chroni przed nadpisaniem draftow z produkcji.
+# Sprawdza czy lokalny data/voices.json zgadza sie z prod (czy n8n nie stworzyl
+# nowych draftow ktorych nie pulled).
+#
+# By bypassowac (swiadome nadpisanie): git push --no-verify
+
+node "$(dirname "$0")/../scripts/check-prod-sync.js"
+exit $?
