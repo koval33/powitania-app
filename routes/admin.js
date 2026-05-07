@@ -84,10 +84,28 @@ router.use(requireAuth);
 
 // --- Lista lektorów ---
 router.get('/', (req, res) => {
-  const voices = loadVoices();
+  let voices = loadVoices();
+  const filter = req.query.filter || 'all';
+  // Sort pending by createdAt DESC (newest first), reszta po order
+  if (filter === 'pending') {
+    voices = voices
+      .filter(v => v.approved === false)
+      .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+  } else if (filter === 'approved') {
+    voices = voices.filter(v => v.approved !== false);
+  }
+  // Liczniki dla nawigacji
+  const all = loadVoices();
+  const counts = {
+    all: all.length,
+    approved: all.filter(v => v.approved !== false).length,
+    pending: all.filter(v => v.approved === false).length
+  };
   res.render('admin/lektorzy', {
     title: 'Admin - Lektorzy',
     voices,
+    filter,
+    counts,
     msg: req.query.msg || null
   });
 });
@@ -357,6 +375,40 @@ router.post('/reorder/', express.json(), (req, res) => {
     console.error('Reorder error:', err);
     res.status(500).json({ error: err.message });
   }
+});
+
+// --- Akceptacja drafta (approved=false -> true) ---
+router.post('/zaakceptuj/:id/', (req, res) => {
+  const voices = loadVoices();
+  const voice = voices.find(v => v.id === req.params.id);
+  if (!voice) return res.redirect('/admin/lektorzy/?msg=Nie+znaleziono');
+
+  voice.approved = true;
+  saveVoices(voices);
+
+  res.redirect(`/admin/lektorzy/?msg=Zaakceptowano+${encodeURIComponent(voice.name)}`);
+});
+
+// --- Odrzucenie drafta (delete) - tylko dla approved=false ---
+router.post('/odrzuc/:id/', (req, res) => {
+  const voices = loadVoices();
+  const voice = voices.find(v => v.id === req.params.id);
+  if (!voice) return res.redirect('/admin/lektorzy/?msg=Nie+znaleziono');
+
+  // Bezpiecznik: odrzuc tylko drafty (approved=false). Approved lektory uzywaj /usun/.
+  if (voice.approved === true) {
+    return res.redirect('/admin/lektorzy/?msg=' + encodeURIComponent('Lektor jest zaakceptowany - uzyj Usun'));
+  }
+
+  const name = voice.name;
+  const filtered = voices.filter(v => v.id !== req.params.id);
+  saveVoices(filtered);
+
+  // Pliki photo/audio nie istnieja dla draftow (n8n nie wgrywa), ale defensive cleanup:
+  const webpFile = path.join(IMG_DIR, `${req.params.id}.webp`);
+  if (fs.existsSync(webpFile)) fs.unlinkSync(webpFile);
+
+  res.redirect(`/admin/lektorzy/?filter=pending&msg=Odrzucono+${encodeURIComponent(name)}`);
 });
 
 // --- Usuwanie ---

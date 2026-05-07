@@ -20,7 +20,12 @@
   <header class="bg-dark-800 border-b border-white/10 px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-4">
       <h1 class="text-xl font-bold text-white">Panel Admin</h1>
-      <span class="text-sm text-gray-500">/ Lektorzy (<%= voices.length %>)</span>
+      <span class="text-sm text-gray-500">/ Lektorzy (<%= counts ? counts.all : voices.length %>)</span>
+      <% if (counts && counts.pending > 0) { %>
+        <a href="/admin/lektorzy/?filter=pending" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-red-500/30 transition-colors">
+          Pending: <%= counts.pending %>
+        </a>
+      <% } %>
     </div>
     <div class="flex items-center gap-3">
       <a href="/admin/lektorzy/dodaj/" class="bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
@@ -42,8 +47,23 @@
     </div>
   <% } %>
 
+  <!-- Filter tabs -->
+  <% if (counts) { %>
+    <div class="max-w-7xl mx-auto px-6 mt-6 flex items-center gap-2">
+      <a href="/admin/lektorzy/" class="text-sm px-3 py-1.5 rounded-lg border transition-colors <%= filter === 'all' ? 'bg-accent/10 text-accent border-accent/30' : 'text-gray-400 border-white/10 hover:border-white/20' %>">
+        Wszyscy (<%= counts.all %>)
+      </a>
+      <a href="/admin/lektorzy/?filter=approved" class="text-sm px-3 py-1.5 rounded-lg border transition-colors <%= filter === 'approved' ? 'bg-accent/10 text-accent border-accent/30' : 'text-gray-400 border-white/10 hover:border-white/20' %>">
+        Zaakceptowani (<%= counts.approved %>)
+      </a>
+      <a href="/admin/lektorzy/?filter=pending" class="text-sm px-3 py-1.5 rounded-lg border transition-colors <%= filter === 'pending' ? 'bg-red-500/10 text-red-300 border-red-500/30' : 'text-gray-400 border-white/10 hover:border-white/20' %>">
+        Pending (<%= counts.pending %>)
+      </a>
+    </div>
+  <% } %>
+
   <!-- Search + status -->
-  <div class="max-w-7xl mx-auto px-6 mt-6 flex items-center gap-3">
+  <div class="max-w-7xl mx-auto px-6 mt-4 flex items-center gap-3">
     <input type="text" id="search" placeholder="Szukaj lektora..." class="bg-dark-800 border border-white/10 text-gray-300 text-sm rounded-lg px-4 py-2.5 w-full max-w-md focus:border-accent focus:outline-none placeholder-gray-500">
     <span id="reorder-status" class="text-xs text-gray-500"></span>
   </div>
@@ -73,7 +93,7 @@
         </thead>
         <tbody id="voices-tbody" class="divide-y divide-white/5">
           <% voices.forEach(function(v) { %>
-          <tr class="voice-row hover:bg-white/[0.02] transition-colors" data-name="<%= v.name.toLowerCase() %>" data-id="<%= v.id %>">
+          <tr class="voice-row hover:bg-white/[0.02] transition-colors <%= v.approved === false ? 'bg-red-500/5' : '' %>" data-name="<%= v.name.toLowerCase() %>" data-id="<%= v.id %>">
             <td class="px-2 py-3 text-center cursor-grab text-gray-600 hover:text-gray-400 select-none drag-handle" title="Przeciagnij aby zmienic kolejnosc">&#x2630;</td>
             <td class="px-2 py-3">
               <input type="number" class="order-input bg-dark-700 border border-white/10 text-gray-300 text-xs rounded px-2 py-1 w-20 focus:border-accent focus:outline-none" value="<%= v.order %>" data-id="<%= v.id %>" step="1">
@@ -87,7 +107,13 @@
             </td>
             <td class="px-4 py-3">
               <span class="text-white font-medium"><%= v.name %></span>
+              <% if (v.approved === false) { %>
+                <span class="ml-1.5 text-[10px] bg-red-500/20 text-red-300 px-1.5 py-0.5 rounded font-semibold">DRAFT</span>
+              <% } %>
               <div class="text-xs text-gray-500"><%= v.id %></div>
+              <% if (v.createdAt) { %>
+                <div class="text-[10px] text-gray-600">dodany: <%= new Date(v.createdAt).toLocaleDateString('pl-PL') %></div>
+              <% } %>
             </td>
             <td class="px-4 py-3 text-sm"><%= v.gender === 'm' ? 'M' : 'K' %></td>
             <td class="px-4 py-3 text-sm"><%= v.age || '-' %></td>
@@ -110,10 +136,21 @@
             </td>
             <td class="px-4 py-3 text-right">
               <div class="flex items-center justify-end gap-2">
+                <% if (v.approved === false) { %>
+                  <form method="POST" action="/admin/lektorzy/zaakceptuj/<%= v.id %>/" onsubmit="return confirm('Zaakceptowac <%= v.name %>? Lektor stanie sie widoczny publicznie.')" class="inline">
+                    <button type="submit" class="text-xs text-green-400 hover:text-green-300 transition-colors px-2 py-1 rounded border border-green-500/20 hover:border-green-500/40 font-semibold">Akceptuj</button>
+                  </form>
+                <% } %>
                 <a href="/admin/lektorzy/edytuj/<%= v.id %>/" class="text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded border border-white/10 hover:border-white/20">Edytuj</a>
-                <form method="POST" action="/admin/lektorzy/usun/<%= v.id %>/" onsubmit="return confirm('Na pewno usunac <%= v.name %>?')" class="inline">
-                  <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-2 py-1 rounded border border-red-500/20 hover:border-red-500/40">Usun</button>
-                </form>
+                <% if (v.approved === false) { %>
+                  <form method="POST" action="/admin/lektorzy/odrzuc/<%= v.id %>/" onsubmit="return confirm('Odrzucic <%= v.name %>? Draft zostanie usuniety na stale.')" class="inline">
+                    <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-2 py-1 rounded border border-red-500/20 hover:border-red-500/40">Odrzuc</button>
+                  </form>
+                <% } else { %>
+                  <form method="POST" action="/admin/lektorzy/usun/<%= v.id %>/" onsubmit="return confirm('Na pewno usunac <%= v.name %>?')" class="inline">
+                    <button type="submit" class="text-xs text-red-400 hover:text-red-300 transition-colors px-2 py-1 rounded border border-red-500/20 hover:border-red-500/40">Usun</button>
+                  </form>
+                <% } %>
               </div>
             </td>
           </tr>

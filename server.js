@@ -59,8 +59,12 @@ const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
 const partnersPath = path.join(__dirname, 'data', 'partners.json');
 const melodiesPath = path.join(__dirname, 'data', 'melodies.json');
-function loadVoices() {
-  const voices = JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+function loadVoices(opts = {}) {
+  // includeDrafts=true zwraca wszystkich (admin), default tylko approved (publiczne)
+  let voices = JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
+  if (!opts.includeDrafts) {
+    voices = voices.filter(v => v.approved === true);
+  }
   return voices.sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999));
 }
 function loadReviews() {
@@ -407,6 +411,9 @@ app.get('/api/health/kreator', async (req, res) => {
     res.status(500).json({ ok: false, error: err.message });
   }
 });
+
+// Public API
+app.use('/api/voices', require('./routes/api-voices'));
 
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
