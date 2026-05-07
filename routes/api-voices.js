@@ -103,6 +103,10 @@ function validateBody(b) {
   if (b.turnaround != null && !ALLOWED_TURN.includes(b.turnaround)) {
     return 'turnaround must be one of: ' + ALLOWED_TURN.join(', ') + ' or null';
   }
+  // Pola administracyjne (opcjonalne, nigdy nie wyswietlane publicznie)
+  if (b.realName != null && typeof b.realName !== 'string') return 'realName must be string or null';
+  if (b.contactEmail != null && typeof b.contactEmail !== 'string') return 'contactEmail must be string or null';
+  if (b.contactPhone != null && typeof b.contactPhone !== 'string') return 'contactPhone must be string or null';
   return null;
 }
 
@@ -226,6 +230,10 @@ router.post('/draft/', express.json({ limit: '50kb' }), requireBearer, async (re
       languages: b.languages,
       description: b.description.trim(),
       descriptionEn: seo.descriptionEn,
+      // Pola administracyjne (z n8n parsing emaila kandydata, nigdy publicznie)
+      realName: (b.realName || '').trim() || null,
+      contactEmail: (b.contactEmail || '').trim() || null,
+      contactPhone: (b.contactPhone || '').trim() || null,
       photo: null,
       audio: null,
       samples: null,

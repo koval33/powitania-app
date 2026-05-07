@@ -297,6 +297,10 @@ router.post('/zapisz/', upload.fields([
       languages,
       description: b.description || null,
       ...(seoFields.descriptionEn !== undefined ? { descriptionEn: seoFields.descriptionEn } : {}),
+      // Dane administracyjne - niewidoczne publicznie
+      realName: (b.realName || '').trim() || null,
+      contactEmail: (b.contactEmail || '').trim() || null,
+      contactPhone: (b.contactPhone || '').trim() || null,
       photo: photoPath,
       audio: audioPath,
       samples: samples.length > 0 ? samples : null,
