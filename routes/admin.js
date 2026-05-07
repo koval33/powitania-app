@@ -82,6 +82,13 @@ function requireAuth(req, res, next) {
 
 router.use(requireAuth);
 
+// --- Export voices.json (do synchronizacji local <- prod) ---
+router.get('/export/', (req, res) => {
+  res.set('Content-Type', 'application/json; charset=utf-8');
+  res.set('Content-Disposition', 'inline; filename="voices.json"');
+  res.send(fs.readFileSync(DATA_PATH, 'utf8'));
+});
+
 // --- Lista lektorów ---
 router.get('/', (req, res) => {
   let voices = loadVoices();

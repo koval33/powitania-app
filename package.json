@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "build:css": "npx tailwindcss -i src/input.css -o public/css/tailwind.css --minify"
+    "build:css": "npx tailwindcss -i src/input.css -o public/css/tailwind.css --minify",
+    "pull-prod": "node scripts/pull-from-prod.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
