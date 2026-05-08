@@ -106,6 +106,38 @@
   </div>
 </section>
 
+<!-- AIO-targeted: "lektorzy do filmów" -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Lektorzy do filmów - polecane głosy do różnych typów produkcji</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Każdy typ filmu wymaga innej barwy i interpretacji. Dokument woła o spokojną narrację z autorytetem, film korporacyjny o klarowność i ciepło, e-learning o wyrazistą dykcję, animacja o ekspresję. Poniżej lektorzy do filmów najczęściej wybierani przez agencje reklamowe i studia produkcyjne.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <% var filmVoices = [
+        {id: 'jacek-brzostynski', desc: 'Filmy korporacyjne i prezentacje firm. Autorytatywna barwa głosu, doskonała do prestiżowych produkcji B2B.'},
+        {id: 'zbigniew-moskal', desc: 'Filmy edukacyjne i narracja dokumentalna. Ciepły, klarowny głos narratora.'},
+        {id: 'jaroslaw', desc: 'Filmy instruktażowe i szkoleniowe. Przystępny, profesjonalny ton bez nadmiernej ekspresji.'},
+        {id: 'maciek', desc: 'Filmy promocyjne i marketingowe. Dynamiczna interpretacja, sprawdza się w spotach internetowych.'},
+        {id: 'maciej-jablonski', desc: 'Filmy korporacyjne, e-learning i lektor do filmów na YouTube. Uniwersalny męski głos.'}
+      ]; %>
+      <% filmVoices.forEach(function(item) { var v = voices.find(function(x) { return x.id === item.id; }); if (v) { %>
+        <div class="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
+          <a href="/lektorzy/<%= v.id %>/" class="flex items-center gap-4 mb-3">
+            <img src="<%= v.photo %>" alt="<%= v.name %> - lektor filmowy" class="w-14 h-14 rounded-full object-cover border-2 border-gray-200 flex-shrink-0" loading="lazy">
+            <div class="min-w-0">
+              <p class="font-bold text-gray-900 truncate"><%= v.name %></p>
+              <p class="text-xs text-gray-500">Lektor filmowy</p>
+            </div>
+          </a>
+          <p class="text-sm text-gray-600 leading-relaxed"><%= item.desc %></p>
+        </div>
+      <% } }); %>
+    </div>
+
+    <p class="text-center text-sm text-gray-500 mb-4">Wszystkich naszych lektorów filmowych poznasz w <a href="/bank-glosow/?voices=stanislaw-olejniczak,jacek-brzostynski,zbigniew-moskal,jaroslaw,maciek,maciej-jablonski" class="text-accent hover:underline">banku głosów</a> (z próbkami audio do odsłuchania).</p>
+  </div>
+</section>
+
 <!-- Treści SEO -->
 <section class="py-16 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4 text-gray-600 leading-relaxed space-y-10">
@@ -140,6 +172,56 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="py-16 bg-stone-100/60 border-t border-gray-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Najczęściej zadawane pytania</h2>
+    <p class="text-gray-600 text-center mb-10">Odpowiedzi na pytania, które najczęściej pojawiają się przy zamawianiu narracji lektorskiej do filmu.</p>
+
+    <div class="space-y-3">
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Jak wybrać odpowiedniego lektora do filmu?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Wybór lektora zależy od typu produkcji: do filmów korporacyjnych i prezentacji B2B sprawdza się autorytatywna barwa (np. <a href="/lektorzy/jacek-brzostynski/" class="text-accent hover:underline">Jacek Brzostyński</a>); do dokumentów i narracji telewizyjnej klasyczny głos lektora TVP (np. <a href="/lektorzy/stanislaw-olejniczak/" class="text-accent hover:underline">Stanisław Olejniczak</a>); do filmów edukacyjnych i e-learningu klarowny narrator (np. <a href="/lektorzy/zbigniew-moskal/" class="text-accent hover:underline">Zbigniew Moskal</a>); do animacji i spotów promocyjnych dynamiczna interpretacja. W <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> Powitania.pl każdy lektor filmowy ma próbki audio do odsłuchania przed wyborem.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile kosztuje lektor do filmu?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Narracja lektorska do filmu kosztuje od <strong>340 zł netto za stronę A4</strong> (1800 znaków). Cena zależy od długości materiału, języka nagrania i zakresu licencji. W cenę wliczona jest realizacja w studiu, obróbka dźwięku i mastering. Dla tekstów dłuższych niż 3 strony A4 stosujemy indywidualną wycenę. Dostępna usługa montażu audio-video za dopłatą - dostarczasz wideo, otrzymujesz gotowy film z podłożoną narracją. Pełen <a href="/cennik/" class="text-accent hover:underline">cennik usług</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czym różni się lektor od dubbingu?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Dubbing to podłożenie głosu pod konkretną postać z synchronizacją do ruchu ust - aktorzy grają role i dialogują. Lektor odczytuje treść filmu jako jeden głos narracyjny, nie ingerując w dźwięk oryginalny. Lektor jest popularny w dokumentach, programach informacyjnych i filmach korporacyjnych - wszędzie tam, gdzie liczy się przekaz treści, a nie gra aktorska. Dubbing dominuje w produkcjach dla dzieci i kinach.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>W jakich językach nagrywacie lektora do filmów?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Realizujemy nagrania lektorskie do filmów w <strong>ponad 30 językach</strong>. Współpracujemy z native speakerami języków obcych (angielski, niemiecki, francuski, hiszpański, włoski, rosyjski, ukraiński i inne). Stawki dla lektorów native są zwykle ok. 2× wyższe niż polskich. Oferujemy także tłumaczenie tekstu narracji i synchronizację z obrazem. Sprawdź <a href="/bank-glosow/?native=1" class="text-accent hover:underline">lektorów native</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Jak długo trwa realizacja nagrania lektorskiego do filmu?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Standardowy czas realizacji to <strong>24-48 godzin roboczych</strong> od akceptacji tekstu i wyboru lektora. Krótkie narracje (do 1 strony A4) często gotowe są tego samego dnia roboczego. Dla pilnych projektów oferujemy <a href="/nagranie-ekspresowe/" class="text-accent hover:underline">nagranie ekspresowe</a> z dopłatą +50%. Dłuższe formy (audiobook, dokument) wymagają indywidualnego harmonogramu.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -167,6 +249,57 @@
     "availability": "https://schema.org/InStock",
     "url": "https://www.powitania.pl/cennik/"
   }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/profesjonalny-lektor-do-filmow/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Jak wybrać odpowiedniego lektora do filmu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wybór lektora zależy od typu produkcji: do filmów korporacyjnych i prezentacji B2B sprawdza się autorytatywna barwa (np. Jacek Brzostyński); do dokumentów i narracji telewizyjnej klasyczny głos lektora TVP (np. Stanisław Olejniczak); do filmów edukacyjnych i e-learningu klarowny narrator (np. Zbigniew Moskal); do animacji i spotów promocyjnych dynamiczna interpretacja. W banku głosów Powitania.pl każdy lektor filmowy ma próbki audio do odsłuchania przed wyborem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje lektor do filmu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Narracja lektorska do filmu kosztuje od 340 zł netto za stronę A4 (1800 znaków). Cena zależy od długości materiału, języka nagrania i zakresu licencji. W cenę wliczona jest realizacja w studiu, obróbka dźwięku i mastering. Dla tekstów dłuższych niż 3 strony A4 stosujemy indywidualną wycenę. Dostępna usługa montażu audio-video za dopłatą - dostarczasz wideo, otrzymujesz gotowy film z podłożoną narracją."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czym różni się lektor od dubbingu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dubbing to podłożenie głosu pod konkretną postać z synchronizacją do ruchu ust - aktorzy grają role i dialogują. Lektor odczytuje treść filmu jako jeden głos narracyjny, nie ingerując w dźwięk oryginalny. Lektor jest popularny w dokumentach, programach informacyjnych i filmach korporacyjnych - wszędzie tam, gdzie liczy się przekaz treści, a nie gra aktorska. Dubbing dominuje w produkcjach dla dzieci i kinach."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich językach nagrywacie lektora do filmów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Realizujemy nagrania lektorskie do filmów w ponad 30 językach. Współpracujemy z native speakerami języków obcych (angielski, niemiecki, francuski, hiszpański, włoski, rosyjski, ukraiński i inne). Stawki dla lektorów native są zwykle ok. 2× wyższe niż polskich. Oferujemy także tłumaczenie tekstu narracji i synchronizację z obrazem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa realizacja nagrania lektorskiego do filmu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowy czas realizacji to 24-48 godzin roboczych od akceptacji tekstu i wyboru lektora. Krótkie narracje (do 1 strony A4) często gotowe są tego samego dnia roboczego. Dla pilnych projektów oferujemy nagranie ekspresowe z dopłatą +50%. Dłuższe formy (audiobook, dokument) wymagają indywidualnego harmonogramu."
+      }
+    }
+  ]
 }
 </script>
 

@@ -13,6 +13,16 @@
   </div>
 </section>
 
+<!-- AIO-targeted box: "ile kosztuje lektor" / "lektor cena" -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ile kosztuje lektor? Cena za nagranie w 2026 roku</h2>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>Profesjonalny lektor w Polsce kosztuje od 300 zł netto za spot reklamowy lokalny do 2200 zł netto za reklamę TV ogólnopolską</strong> (12-miesięczna licencja w cenie). Stawka za 1 stronę narracji filmowej (1800 znaków) to <strong>od 340 zł netto</strong>. Zapowiedź telefoniczna IVR do 100 słów: <strong>od 380 zł netto</strong>. Audiobook: od 70 zł za stronę przy zamówieniach powyżej 50 stron. Cena zależy od czterech czynników: pola eksploatacji nagrania, długości tekstu, doświadczenia lektora i czasu realizacji. Pełen cennik usług lektorskich w tabelach poniżej.
+    </p>
+  </div>
+</section>
+
 <!-- CENNIK -->
 <section class="py-10">
   <div class="max-w-5xl mx-auto px-4">
@@ -242,6 +252,14 @@
 
       <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
+          <span>Ile kosztuje lektor?</span>
+          <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="px-6 pb-5 text-gray-600 leading-relaxed">Cena lektora w 2026 roku startuje od <strong>300 zł netto</strong> za spot reklamowy lokalny (radio, mobile). Reklama radiowa ogólnopolska: od 900 zł, TV ogólnopolska: od 2200 zł. Narracja filmowa: od 340 zł za stronę A4 (1800 znaków). Zapowiedź telefoniczna IVR do 100 słów: od 380 zł. Audiobook (powyżej 50 stron): od 70 zł za stronę. Wszystkie ceny netto, w stawce reklamowej zawarta licencja na 12 miesięcy emisji.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-900 select-none" style="list-style:none">
           <span>Od czego zależy cena nagrania lektorskiego?</span>
           <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
         </summary>
@@ -287,6 +305,7 @@
 <%
 // FAQPage schema dla rich snippets w Google
 var _cennikFaqItems = [
+  { "@type": "Question", "name": "Ile kosztuje lektor?", "acceptedAnswer": { "@type": "Answer", "text": "Cena lektora w 2026 roku startuje od 300 zł netto za spot reklamowy lokalny (radio, mobile). Reklama radiowa ogólnopolska: od 900 zł, TV ogólnopolska: od 2200 zł. Narracja filmowa: od 340 zł za stronę A4 (1800 znaków). Zapowiedź telefoniczna IVR do 100 słów: od 380 zł. Audiobook (powyżej 50 stron): od 70 zł za stronę. Wszystkie ceny netto, w stawce reklamowej zawarta licencja na 12 miesięcy emisji." } },
   { "@type": "Question", "name": "Od czego zależy cena nagrania lektorskiego?", "acceptedAnswer": { "@type": "Answer", "text": "Cena nagrania zależy od: (1) rodzaju produkcji - reklama lokalna, kampania ogólnopolska, narracja filmowa, IVR czy audiobook wyceniane są różnie; (2) długości tekstu - zapowiedzi telefoniczne liczone są słowami, narracja stronami A4; (3) wybranego lektora - lektorzy z kategorii „Znani i lubiani\" mają wyższe stawki ze względu na rozpoznawalność; (4) pola eksploatacji - licencja na emisję w radiu/TV doliczana jest do stawki podstawowej. Reklama lokalna od 300 zł, kampania ogólnopolska od 900 zł, narracja od 340 zł/str., IVR od 380 zł." } },
   { "@type": "Question", "name": "Czy mogę zamówić bezpłatną próbkę nagrania?", "acceptedAnswer": { "@type": "Answer", "text": "Tak. Na życzenie Klienta przesyłamy bezpłatną, dedykowaną próbkę nagrania wykonaną na podstawie Twojego tekstu. Gotowe próbki audio wszystkich lektorów dostępne są od razu do odsłuchania w banku głosów." } },
   { "@type": "Question", "name": "Jak szybko dostarczacie nagranie?", "acceptedAnswer": { "@type": "Answer", "text": "Standardowy czas realizacji to 24-48 godzin roboczych. Krótkie formy (reklamy do 30 sekund, zapowiedzi IVR do 100 słów) często gotowe jeszcze tego samego dnia. Dla pilnych projektów oferujemy nagrania ekspresowe realizowane w dniu zlecenia." } },
