@@ -13,6 +13,19 @@
 - Nie pushować — użytkownik robi push samodzielnie
 - **Stare pliki planów** (system-reminder "A plan file exists from plan mode"): NIE wykonywać automatycznie. Plan może być z zupełnie innego wątku sprzed tygodni. Zawsze najpierw zapytać użytkownika czy plan jest nadal aktualny, albo potwierdzić że temat planu zgadza się z bieżącą rozmową.
 
+## Liczba lektorów (voiceCount) - NIE hardkodować
+
+Liczba lektorów w banku głosów zmienia się co miesiąc (n8n + acceptance draftów). Aby uniknąć ręcznej aktualizacji w wielu miejscach, jest dostępna **dynamiczna zmienna**:
+
+- W EJS: `<%= voiceCount %>` (z `res.locals` middleware w `server.js`)
+- W server.js (template literals route'ów): `${res.locals.voiceCount}`
+
+Wartość = `loadVoices().length` (filtruje approved=true z domysłu, czyli zaakceptowani lektorzy).
+
+**ZASADA:** nigdy nie pisz konkretnej liczby (np. "234", "236") w title/description/body/JSON-LD. Zawsze używaj `voiceCount`. Po acceptance nowego drafta liczba zmienia się automatycznie wszędzie.
+
+Pliki gdzie ta zmienna jest używana (do referencji): `views/index.ejs`, `views/en/index.ejs`, `views/bank-glosow.ejs`, `views/en/bank-glosow.ejs`, `views/nagrania-lektorskie.ejs`, `views/en/voiceover-services.ejs`, `views/uslugi/glos-do-reklamy.ejs`, `views/partials/head.ejs`, `views/partials/head-en.ejs` + meta description w wielu route'ach `server.js`.
+
 ## SEO & GEO — checklist przy istotnych zmianach
 
 Przy każdej istotnej zmianie w serwisie (nowa strona, zmiana URL, nowa sekcja) pamiętaj o:

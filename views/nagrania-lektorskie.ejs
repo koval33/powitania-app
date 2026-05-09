@@ -3,7 +3,7 @@
 <!-- Hero -->
 <section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Nagrania lektorskie - 234&nbsp;lektorów, realizacja do&nbsp;48h</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Nagrania lektorskie - <%= voiceCount %>&nbsp;lektorów, realizacja do&nbsp;48h</h1>
     <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Profesjonalne studio nagrań lektorskich od&nbsp;2001&nbsp;roku. Spoty reklamowe, filmy, zapowiedzi telefoniczne, audiobooki i&nbsp;e-learning. Ponad 30&nbsp;języków, realizacja w&nbsp;2&nbsp;dni robocze.</p>
   </div>
 </section>
@@ -14,7 +14,7 @@
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5 text-center">Czym są profesjonalne nagrania lektorskie?</h2>
     <div class="space-y-4 text-gray-600 leading-relaxed">
       <p><strong class="text-gray-900">Nagranie lektorskie</strong> to głos profesjonalnego lektora - wyszkolonego aktora głosowego lub spikera radiowo-telewizyjnego - nagrany w&nbsp;kontrolowanych warunkach studyjnych. Profesjonalne studio nagrań lektorskich różni się od&nbsp;nagrania domowego trzema rzeczami: wytłumioną akustycznie kabiną lektorską (brak pogłosu, szumów ulicznych, echa), pojemnościowym mikrofonem klasy studyjnej i&nbsp;reżyserem dźwięku odpowiedzialnym za&nbsp;post-produkcję.</p>
-      <p>W&nbsp;<strong class="text-gray-900">Powitania.pl</strong> - studio nagrań lektorskich działającym od&nbsp;<strong class="text-gray-900">2001 roku</strong> - dysponujemy bankiem głosów <strong class="text-gray-900">234 lektorów</strong>, w&nbsp;tym aktorów telewizyjnych, prezenterów, lektorów dubbingowych i&nbsp;native speakerów ponad 30 języków. Nagrania wykonywane są w&nbsp;warunkach studyjnych opisanych powyżej, a&nbsp;następnie poddajemy je normalizacji, redukcji szumów i&nbsp;masteringowi - zgodnie ze&nbsp;standardami broadcast (radio, TV, kino, IVR). W&nbsp;przypadku kampanii reklamowych Klient otrzymuje kilka wersji interpretacyjnych do wyboru.</p>
+      <p>W&nbsp;<strong class="text-gray-900">Powitania.pl</strong> - studio nagrań lektorskich działającym od&nbsp;<strong class="text-gray-900">2001 roku</strong> - dysponujemy bankiem głosów <strong class="text-gray-900"><%= voiceCount %> lektorów</strong>, w&nbsp;tym aktorów telewizyjnych, prezenterów, lektorów dubbingowych i&nbsp;native speakerów ponad 30 języków. Nagrania wykonywane są w&nbsp;warunkach studyjnych opisanych powyżej, a&nbsp;następnie poddajemy je normalizacji, redukcji szumów i&nbsp;masteringowi - zgodnie ze&nbsp;standardami broadcast (radio, TV, kino, IVR). W&nbsp;przypadku kampanii reklamowych Klient otrzymuje kilka wersji interpretacyjnych do wyboru.</p>
       <p>Profesjonalne nagrania lektorskie znajdują zastosowanie w&nbsp;spotach reklamowych, filmach korporacyjnych, audiobookach, zapowiedziach telefonicznych (IVR), kursach e-learningowych, audioprzewodnikach i&nbsp;wielu innych projektach - szczegółowy przegląd usług znajdziesz <a href="#rodzaje" class="text-accent hover:underline">w&nbsp;sekcji poniżej</a>.</p>
     </div>
   </div>
@@ -96,7 +96,7 @@
             <span class="text-4xl font-bold text-gray-900 leading-none tabular-nums">01</span>
             <h3 class="text-lg font-semibold text-gray-700">Wybierz lektora</h3>
           </div>
-          <p class="text-gray-500 text-sm leading-relaxed">Wejdź do <a href="/bank-glosow/" class="text-accent hover:text-accent-light">banku głosów</a> i&nbsp;odsłuchaj próbki. Jest ich 234 - na pewno znajdziesz głos, który pasuje do Twojego projektu.</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Wejdź do <a href="/bank-glosow/" class="text-accent hover:text-accent-light">banku głosów</a> i&nbsp;odsłuchaj próbki. Jest ich <%= voiceCount %> - na pewno znajdziesz głos, który pasuje do Twojego projektu.</p>
         </article>
 
         <article>
@@ -298,7 +298,7 @@
       </div>
       <div class="text-center mt-6">
         <a href="/bank-glosow/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors">
-          Zobacz wszystkich 234 lektorów
+          Zobacz wszystkich <%= voiceCount %> lektorów
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
       </div>
@@ -307,7 +307,7 @@
     <!-- Najczęściej wybierani lektorzy -->
     <div class="mb-16">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center">Najczęściej wybierani lektorzy</h2>
-      <p class="text-gray-500 text-center mb-4">Nasz <a href="/bank-glosow/" class="text-accent hover:underline">bank głosów lektorskich</a> to baza 234 zweryfikowanych lektorów z&nbsp;różnych segmentów rynku - od aktorów telewizyjnych przez prezenterów radiowych po native speakerów. W&nbsp;banku głosów lektorskich znajdziesz głosy rozpoznawalne z&nbsp;polskich reklam, telewizji, kina i&nbsp;dubbingu. Poniżej kilka najczęściej wybieranych głosów.</p>
+      <p class="text-gray-500 text-center mb-4">Nasz <a href="/bank-glosow/" class="text-accent hover:underline">bank głosów lektorskich</a> to baza <%= voiceCount %> zweryfikowanych lektorów z&nbsp;różnych segmentów rynku - od aktorów telewizyjnych przez prezenterów radiowych po native speakerów. W&nbsp;banku głosów lektorskich znajdziesz głosy rozpoznawalne z&nbsp;polskich reklam, telewizji, kina i&nbsp;dubbingu. Poniżej kilka najczęściej wybieranych głosów.</p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <a href="/lektorzy/andrzej-ferenc/" class="group bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:border-accent/40 transition-all">
@@ -378,7 +378,7 @@
       </div>
 
       <div class="text-center mt-8">
-        <a href="/bank-glosow/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors">Cały bank lektorów - 234 głosów <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+        <a href="/bank-glosow/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors">Cały bank lektorów - <%= voiceCount %> głosów <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
       </div>
     </div>
 
@@ -405,7 +405,7 @@
           <p class="text-sm text-gray-600">doświadczenia w&nbsp;branży nagrań lektorskich (od 2001 roku)</p>
         </div>
         <div class="bg-white rounded-xl border border-gray-200 p-5 text-center">
-          <div class="text-4xl font-bold text-accent mb-2">234</div>
+          <div class="text-4xl font-bold text-accent mb-2"><%= voiceCount %></div>
           <p class="text-sm text-gray-600">lektorów w&nbsp;banku głosów - polskich i&nbsp;native</p>
         </div>
         <div class="bg-white rounded-xl border border-gray-200 p-5 text-center">
@@ -678,7 +678,7 @@
       "worstRating": "1"
     }
   },
-  "description": "Profesjonalne nagrania lektorskie: zapowiedzi telefoniczne, spoty reklamowe, narracja do filmów, audiobooki, e-learning. 234 lektorów w 30+ językach. Studio działające od 2001 roku.",
+  "description": "Profesjonalne nagrania lektorskie: zapowiedzi telefoniczne, spoty reklamowe, narracja do filmów, audiobooki, e-learning. <%= voiceCount %> lektorów w 30+ językach. Studio działające od 2001 roku.",
   "url": "https://www.powitania.pl/nagrania-lektorskie/",
   "areaServed": "PL",
   "hasOfferCatalog": {

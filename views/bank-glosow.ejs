@@ -6,7 +6,7 @@
   <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
     <% if (typeof genderSegment === 'undefined') { %>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">234 profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } else { %>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } %>
@@ -530,7 +530,7 @@
           <h3 class="font-semibold text-gray-900 text-base m-0">Jak działa bank głosów lektorskich Powitania.pl?</h3>
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Nasz bank głosów lektorskich to przeszukiwalna baza 234 profesjonalnych lektorów. Możesz filtrować po języku (30+), płci, wieku, charakterze głosu i typie projektu. Każdy lektor ma własny profil z opisem doświadczenia, zakresem usług i indywidualnym kalkulatorem wyceny.</div>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Nasz bank głosów lektorskich to przeszukiwalna baza <%= voiceCount %> profesjonalnych lektorów. Możesz filtrować po języku (30+), płci, wieku, charakterze głosu i typie projektu. Każdy lektor ma własny profil z opisem doświadczenia, zakresem usług i indywidualnym kalkulatorem wyceny.</div>
       </details>
 
       <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
@@ -578,7 +578,7 @@
           <h3 class="font-semibold text-gray-900 text-base m-0">Co jeśli żaden głos w banku nie pasuje do mojego projektu?</h3>
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Internetowy bank głosów Powitania.pl pokazuje 234 lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - <a href="/kontakt/" class="text-accent hover:underline">napisz do nas</a> z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia.</div>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Internetowy bank głosów Powitania.pl pokazuje <%= voiceCount %> lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - <a href="/kontakt/" class="text-accent hover:underline">napisz do nas</a> z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia.</div>
       </details>
     </div>
   </div>
@@ -1282,7 +1282,7 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
       "name": "Jak działa bank głosów lektorskich Powitania.pl?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nasz bank głosów lektorskich to przeszukiwalna baza 234 profesjonalnych lektorów. Możesz filtrować po języku (30+), płci, wieku, charakterze głosu i typie projektu. Każdy lektor ma własny profil z opisem doświadczenia, zakresem usług i indywidualnym kalkulatorem wyceny."
+        "text": "Nasz bank głosów lektorskich to przeszukiwalna baza <%= voiceCount %> profesjonalnych lektorów. Możesz filtrować po języku (30+), płci, wieku, charakterze głosu i typie projektu. Każdy lektor ma własny profil z opisem doświadczenia, zakresem usług i indywidualnym kalkulatorem wyceny."
       }
     },
     {
@@ -1330,7 +1330,7 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
       "name": "Co jeśli żaden głos w banku nie pasuje do mojego projektu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Internetowy bank głosów Powitania.pl pokazuje 234 lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - napisz do nas z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia."
+        "text": "Internetowy bank głosów Powitania.pl pokazuje <%= voiceCount %> lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - napisz do nas z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia."
       }
     }
   ]
@@ -1357,8 +1357,8 @@ var _bgItems = voices.map(function(v, idx) {
 var _bgSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Bank głosów - 234 profesjonalnych lektorów",
-  "description": "Pełna baza lektorów Powitania.pl - 234 głosów w 30+ językach. Filtruj po płci, języku, stylu, sprawdź próbki audio i zamów nagranie.",
+  "name": "Bank głosów - <%= voiceCount %> profesjonalnych lektorów",
+  "description": "Pełna baza lektorów Powitania.pl - <%= voiceCount %> głosów w 30+ językach. Filtruj po płci, języku, stylu, sprawdź próbki audio i zamów nagranie.",
   "url": "https://www.powitania.pl/bank-glosow/",
   "isPartOf": { "@type": "WebSite", "url": "https://www.powitania.pl" },
   "about": {

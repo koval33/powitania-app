@@ -133,6 +133,10 @@ app.use((req, res, next) => {
   // więc nie powinny być indeksowane. Audyt SEO 23.04.2026.
   res.locals.hasNoindexQuery = req.query.express === '1';
   res.locals.reviewCount = loadReviews().filter(r => r.approved).length;
+  // voiceCount: dynamiczna liczba zaakceptowanych lektorow w banku glosow.
+  // ZAWSZE uzywaj res.locals.voiceCount (EJS) lub ${voiceCount} (server.js template literals).
+  // NIE hardkoduj liczby - po acceptance nowego drafta liczba zmienia sie automatycznie.
+  res.locals.voiceCount = loadVoices().length;
   res.locals.gtmId = process.env.GTM_ID || '';
   res.locals.clarityProjectId = process.env.CLARITY_PROJECT_ID || '';
   res.locals.turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || '';
@@ -422,9 +426,10 @@ app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 
 // Page routes
 app.get('/', (req, res) => {
+  const voiceCount = res.locals.voiceCount;
   res.render('index', {
-    title: 'Profesjonalne Studio Lektorskie Powitania.pl - od 2001 roku | 234 lektorów',
-    description: 'Studio lektorskie Powitania.pl od 2001 roku - 234 lektorów w 30+ językach. Spoty, IVR, wielojęzyczne audioprzewodniki. 11 000+ nagrań: Hyundai, Orange, Play.',
+    title: `Studio Lektorskie i Usługi Lektorskie od 2001 - ${voiceCount} lektorów`,
+    description: `Profesjonalne studio lektorskie i kompleksowe usługi lektorskie od 2001 roku. ${voiceCount} lektorów, nagrania do reklam, filmów, IVR, audiobooków. Wycena w 30 minut.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' }
     ],
@@ -436,7 +441,7 @@ app.get('/', (req, res) => {
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
-    description: 'Bank głosów lektorskich Powitania.pl - 234 profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.',
+    description: `Bank głosów lektorskich Powitania.pl - ${res.locals.voiceCount} profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Bank głosów', url: '/bank-glosow/' }
@@ -552,8 +557,8 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: 'Nagrania lektorskie - 234 lektorów, 24-48h | Powitania.pl',
-    description: 'Profesjonalne studio nagrań lektorskich od 2001 r. 234 lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.',
+    title: `Nagrania lektorskie - ${res.locals.voiceCount} lektorów, 24-48h | Powitania.pl`,
+    description: `Profesjonalne studio nagrań lektorskich od 2001 r. ${res.locals.voiceCount} lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
@@ -576,7 +581,7 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
       '@context': 'https://schema.org',
       '@type': 'Service',
       'name': 'Głos do reklamy - nagrania lektorskie',
-      'description': 'Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. Ponad 234 lektorów, realizacja w 24-48h.',
+      'description': `Profesjonalne nagrania lektorskie do spotów reklamowych radiowych, telewizyjnych i internetowych. ${res.locals.voiceCount} lektorów, realizacja w 24-48h.`,
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
       'url': 'https://www.powitania.pl/nagrania-lektorskie/glos-do-reklamy/',
@@ -867,9 +872,10 @@ app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 
 // === English version (Phase 1) ===
 app.get('/en/', (req, res) => {
+  const voiceCount = res.locals.voiceCount;
   res.render('en/index', {
-    title: 'Professional Voiceover Studio Powitania.pl - since 2001 | 234 voice artists',
-    description: 'Powitania.pl voiceover studio - 234 professional voice artists in 30+ languages, since 2001. Advertising spots, IVR announcements, audiobooks, film narration. 11,000+ recordings for clients: Hyundai, Orange, Play, Asseco, Allegro, DHL, TVN, Volvo.',
+    title: `Voice-Over Services & Studio since 2001 - ${voiceCount} talents`,
+    description: `Professional voiceover studio offering complete voice-over services since 2001. ${voiceCount} voice talents for ads, films, IVR, audiobooks. Quote in 30 minutes.`,
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
   });
@@ -880,7 +886,7 @@ app.get('/en/voice-bank/', (req, res) => {
   const voicesEur = loadVoices().map(v => ({ ...v, prices: convertPricesToEur(v.prices) }));
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
-    description: 'Voice bank Powitania.pl - 234 professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.',
+    description: `Voice bank Powitania.pl - ${res.locals.voiceCount} professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.`,
     voices: voicesEur
   });
 });
@@ -912,8 +918,8 @@ app.get('/en/privacy-policy/', (req, res) => {
 
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
-    title: 'Voiceover Recordings - 234 Voice Artists, 48h Delivery, from €70 | powitania.pl',
-    description: 'Professional voiceover recording studio since 2001. 234 voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.',
+    title: `Voiceover Recordings - ${res.locals.voiceCount} Voice Artists, 48h Delivery, from €70 | powitania.pl`,
+    description: `Professional voiceover recording studio since 2001. ${res.locals.voiceCount} voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' }
@@ -935,7 +941,7 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
       '@context': 'https://schema.org',
       '@type': 'Service',
       'name': 'Voice for Advertising - Radio & TV Voiceover',
-      'description': 'Professional voiceover recordings for radio, TV and online advertising spots. 234 voice artists, 30+ languages, 24-48h turnaround.',
+      'description': `Professional voiceover recordings for radio, TV and online advertising spots. ${res.locals.voiceCount} voice artists, 30+ languages, 24-48h turnaround.`,
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
       'url': 'https://www.powitania.pl/en/voiceover-services/voice-for-advertising/',

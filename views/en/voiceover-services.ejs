@@ -3,7 +3,7 @@
 <!-- Hero -->
 <section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voiceover Recordings - 234&nbsp;Voice Artists, Up to 48h&nbsp;Delivery</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voiceover Recordings - <%= voiceCount %>&nbsp;Voice Artists, Up to 48h&nbsp;Delivery</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Professional voiceover recording studio since&nbsp;2001. Commercials, films, phone announcements, audiobooks and&nbsp;e-learning. Over 30&nbsp;languages, delivery within 2&nbsp;business days.</p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
       <a href="/en/voice-bank/" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Browse voice artists</a>
@@ -242,7 +242,7 @@
       </div>
       <div class="text-center mt-6">
         <a href="/en/voice-bank/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors">
-          Browse all 234 voice artists
+          Browse all <%= voiceCount %> voice artists
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
       </div>
@@ -478,7 +478,7 @@
       "worstRating": "1"
     }
   },
-  "description": "Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. 234 voice artists in 30+ languages. Studio operating since 2001.",
+  "description": "Professional voiceover recordings: phone announcements, advertising spots, film narration, audiobooks, e-learning. <%= voiceCount %> voice artists in 30+ languages. Studio operating since 2001.",
   "url": "https://www.powitania.pl/en/voiceover-services/",
   "areaServed": "Worldwide",
   "hasOfferCatalog": {
