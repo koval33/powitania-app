@@ -647,6 +647,18 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   });
 });
 
+app.get('/nagrania-lektorskie/audioprzewodniki/', (req, res) => {
+  res.render('uslugi/audioprzewodniki', {
+    title: 'Audioprzewodniki | Profesjonalne nagrania lektorskie | Powitania.pl',
+    description: `Audioprzewodniki z udziałem ${res.locals.voiceCount} lektorów w 30+ językach. Muzea, parki, atrakcje turystyczne. Park Miniatur Inwałd, muzea narodowe. Wycena w 24h.`,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
+      { name: 'Audioprzewodniki', url: '/nagrania-lektorskie/audioprzewodniki/' }
+    ]
+  });
+});
+
 app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
   res.render('uslugi/sesje-zdalne', {
     title: 'Zdalne sesje nagraniowe z lektorem - kontrola live | Powitania.pl',
@@ -1263,6 +1275,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/nagrania-lektorskie/glos-do-reklamy/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagrania-lektorskie/audioprzewodniki/', priority: '0.8', changefreq: 'monthly' },
     { url: '/sesje-zdalne-nagrania-lektorskie-online/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagranie-ekspresowe/', priority: '0.7', changefreq: 'monthly' },
     { url: '/cennik/', priority: '0.7', changefreq: 'monthly' },

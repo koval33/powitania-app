@@ -1,0 +1,411 @@
+<%- include('../partials/head') %>
+
+<!-- Hero -->
+<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-accent transition-colors">Strona główna</a>
+      <span class="mx-2 text-gray-300">›</span>
+      <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors">Nagrania lektorskie</a>
+      <span class="mx-2 text-gray-300">›</span>
+      <span class="text-gray-700">Audioprzewodniki</span>
+    </nav>
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Audioprzewodniki: profesjonalne nagrania lektorskie dla muzeów, parków i&nbsp;atrakcji</h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+      Tworzymy audioprzewodniki wielojęzyczne z&nbsp;udziałem <%= voiceCount %>&nbsp;profesjonalnych lektorów w&nbsp;30+ językach. Realizacje: <strong class="text-gray-700">Park Miniatur Inwałd</strong> (PL/EN/DE), <strong class="text-gray-700">Muzeum Narodowe w&nbsp;Szczecinie</strong>, <strong class="text-gray-700">Centralne Muzeum Włókiennictwa w&nbsp;Łodzi</strong>. Od muzealnych kolekcji po parki tematyczne i&nbsp;szlaki turystyczne. Aplikacje mobilne, kody QR, urządzenia przenośne, systemy stacjonarne.
+    </p>
+    <p class="text-accent font-bold text-xl mt-4">Wycena w&nbsp;24h</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+      <a href="/bank-glosow/" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Posłuchaj próbek lektorów</a>
+      <a href="/kontakt/" class="bg-white hover:bg-stone-100 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors border border-gray-200">Zamów wycenę</a>
+    </div>
+  </div>
+</section>
+
+<!-- AIO: Dlaczego audioprzewodnik z profesjonalnym lektorem -->
+<section class="py-12 md:py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Dlaczego audioprzewodniki z&nbsp;profesjonalnym lektorem?</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Audioprzewodnik to narracja, która prowadzi gościa przez ekspozycję, park lub szlak turystyczny. Różnica między audioprzewodnikiem nagranym przez profesjonalnego lektora a&nbsp;wygenerowanym przez sztuczną inteligencję jest natychmiast słyszalna i&nbsp;ma realny wpływ na doświadczenie odwiedzających.
+    </p>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-2">Emocje i&nbsp;zaangażowanie</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Ludzki głos buduje narrację, dobiera intonację do treści, robi pauzy w&nbsp;odpowiednich miejscach. Generator AI brzmi mechanicznie, traci uwagę słuchacza po kilku punktach. Aktor głosowy potrafi opowiedzieć historię eksponatu tak, że gość pamięta szczegóły po wyjściu.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-2">Dostępność cyfrowa</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Audioprzewodnik z&nbsp;profesjonalnie nagraną narracją działa dla osób niewidomych i&nbsp;słabowidzących, seniorów, dzieci uczących się czytać. Wyraźna dykcja i&nbsp;naturalne tempo to argument za inkluzywnością obiektu - element wymogów dostępności coraz częściej oczekiwanych przez fundatorów i&nbsp;programy grantowe.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-2">Wielojęzyczność z&nbsp;native lektorami</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Polską wersję nagrywamy z&nbsp;polskim lektorem (np. <a href="/lektorzy/konstancja/" class="text-accent hover:underline">Konstancja</a> - ciepły kobiecy głos, doświadczenie w&nbsp;narracjach muzealnych). Wersję angielską, niemiecką, francuską czy włoską - zawsze z&nbsp;native lektorem z&nbsp;danego kraju. Gość z&nbsp;Berlina słyszy autentyczny niemiecki, nie przetłumaczony tekst z&nbsp;polskim akcentem.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-2">Elastyczność i&nbsp;ROI</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Audioprzewodnik wydłuża średni czas wizyty (gość słucha pełnej narracji, zatrzymuje się przy każdym punkcie), buduje pozytywne skojarzenie z&nbsp;marką obiektu i&nbsp;jest łatwy do aktualizacji - przy zmianie wystawy lub sezonu nagrywamy nowe punkty bez konieczności przebudowy całości.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dla kogo -->
+<section class="py-12 md:py-16 bg-stone-50 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Dla kogo tworzymy audioprzewodniki?</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Audioprzewodniki realizujemy dla obiektów, w&nbsp;których gość przemieszcza się między punktami i&nbsp;potrzebuje narracji prowadzącej. To szeroka kategoria - od kameralnych galerii sztuki po wieloposakowe parki tematyczne.
+    </p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Muzea i&nbsp;galerie sztuki</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Wystawy stałe i&nbsp;czasowe, kolekcje specjalistyczne, galerie regionalne. Realizujemy nagrania zarówno do tradycyjnych urządzeń wypożyczanych w&nbsp;kasie, jak i&nbsp;nowoczesnych aplikacji mobilnych z&nbsp;narracją wyzwalaną przy konkretnym eksponacie.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Parki tematyczne i&nbsp;miniatur</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Parki miniatur (zrealizowaliśmy 3-języczny audioprzewodnik dla Parku Miniatur Inwałd), ogrody botaniczne, zoo, parki rozrywki edukacyjnej. Nagrania dostosowane do trasy zwiedzania i&nbsp;przewidywanego tempa marszu.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Obiekty dziedzictwa kulturowego</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Zamki, pałace, dwory, muzea pod gołym niebem, szlaki historyczne. Narracja w&nbsp;tonie autorytatywnym (np. <a href="/lektorzy/jaroslaw/" class="text-accent hover:underline">Jarosław</a> - męski głos do narracji historycznych) z&nbsp;dbałością o&nbsp;poprawność faktograficzną.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Atrakcje turystyczne</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Punkty widokowe, trasy miejskie, ścieżki edukacyjne, geologiczne i&nbsp;przyrodnicze. Audioprzewodniki w&nbsp;formacie krótkich fragmentów (60-120 sekund), aktywowanych GPS-em lub kodem QR.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5 md:col-span-2">
+        <h3 class="font-semibold text-gray-900 mb-2">Eventy i&nbsp;wystawy czasowe</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Festiwale, targi branżowe, konferencje z&nbsp;warstwą edukacyjną, wystawy sezonowe. Krótki czas realizacji (7-14 dni) pozwala na audioprzewodniki dedykowane konkretnemu wydarzeniu, z&nbsp;narracją dopasowaną do tematyki i&nbsp;grupy docelowej.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proces -->
+<section class="py-12 md:py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Jak tworzymy audioprzewodniki: proces krok po kroku</h2>
+    <p class="text-gray-700 leading-relaxed mb-8">
+      Każdy audioprzewodnik realizujemy w&nbsp;sześciu etapach - od konsultacji merytorycznej po dostarczenie gotowych plików w&nbsp;formacie wymaganym przez Twój system.
+    </p>
+    <ol class="space-y-5">
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">1</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Analiza treści i&nbsp;konsultacja merytoryczna</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Otrzymujemy od Ciebie tekst narracji (lub szkic), weryfikujemy długość każdego punktu pod kątem optymalnego czasu odsłuchu (60-120 sekund), zwracamy uwagę na kwestie wymowy nazw własnych i&nbsp;terminów branżowych. Jeśli tekst wymaga skrócenia lub przeorganizowania, sygnalizujemy to przed nagraniem.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">2</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Casting lektorów dopasowany do grupy docelowej</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Dobieramy głos pod profil zwiedzających: ciepły, narracyjny do galerii sztuki; autorytatywny, niski do obiektów historycznych; energiczny, młodzieżowy do parków rozrywki; dziecięcy lub przystępny do ścieżek edukacyjnych dla dzieci. Wysyłamy 2-3 propozycje lektorów z&nbsp;próbkami audio do akceptacji.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">3</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Nagranie w&nbsp;studiu broadcast</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Nagrania realizujemy w&nbsp;wytłumionych akustycznie kabinach z&nbsp;mikrofonami klasy studyjnej. Polskie wersje nagrywa wybrany lektor z&nbsp;naszego banku <%= voiceCount %>&nbsp;głosów; obcojęzyczne wersje (EN, DE, FR, ES, IT i&nbsp;inne) - native lektorzy z&nbsp;portfolio audio guides.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">4</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Post-produkcja i&nbsp;mastering</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Każdy plik przechodzi normalizację głośności (równomierne brzmienie wszystkich punktów), redukcję szumów, mastering i&nbsp;eksport do wymaganego formatu (mp3, wav, ogg, aac). Pliki są przygotowane pod konkretny system - inny standard dla aplikacji mobilnej, inny dla urządzeń przenośnych.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">5</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Integracja z&nbsp;systemem klienta</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Dostarczamy pliki w&nbsp;strukturze pasującej do Twojej platformy: aplikacja mobilna z&nbsp;numerami punktów, kody QR z&nbsp;linkiem do streamu, urządzenia przenośne z&nbsp;katalogiem plików, system stacjonarny z&nbsp;przyciskami start/stop. Wspieramy integratorów na etapie wdrożenia, jeśli pojawią się pytania techniczne.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold">6</span>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-1">Testy i&nbsp;poprawki na różnych urządzeniach</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Przed odbiorem sprawdzamy synchronizację numerów punktów z&nbsp;mapą obiektu, jakość odtwarzania na słuchawkach, telefonach komórkowych, urządzeniach wypożyczanych. Drobne poprawki (np. zmiana godziny otwarcia w&nbsp;narracji wprowadzającej) wykonujemy bezpłatnie przez 12&nbsp;miesięcy od dostawy.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Lektorzy -->
+<section class="py-12 md:py-16 bg-stone-50 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Jakich lektorów wybieramy do audioprzewodników?</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Z&nbsp;naszego banku <%= voiceCount %>&nbsp;głosów wybieramy lektorów dopasowanych do tonu narracji, grupy docelowej i&nbsp;języka. Pełną listę głosów z&nbsp;próbkami audio znajdziesz w&nbsp;<a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a>.
+    </p>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Polskie głosy do narracji muzealnych</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong><a href="/lektorzy/konstancja/" class="text-accent hover:underline">Konstancja</a></strong> - kobiecy ciepły głos, doświadczenie w&nbsp;narracjach edukacyjnych i&nbsp;muzealnych; sprawdza się przy wystawach sztuki, kolekcjach kameralnych, ścieżkach przyrodniczych.</p>
+        <p class="text-gray-600 text-sm leading-relaxed"><strong><a href="/lektorzy/jaroslaw/" class="text-accent hover:underline">Jarosław</a></strong> - męski autorytatywny głos, dojrzały (50+), idealny do narracji historycznych, dokumentalnych, obiektów dziedzictwa kulturowego, narracji o&nbsp;tematyce militarnej.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Native lektorzy obcojęzyczni</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Native UK i&nbsp;US (angielski w&nbsp;wariantach RP / General American), niemiecki, francuski, hiszpański, włoski - lektorzy z&nbsp;portfolio audio guides i&nbsp;narracji edukacyjnych. Pełen wybór z&nbsp;próbkami w&nbsp;<a href="/bank-glosow/?native=1" class="text-accent hover:underline">filtrze native</a> banku głosów.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Języki rzadsze (na zamówienie)</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Rosyjski, ukraiński, czeski, słowacki, węgierski, chiński, japoński, koreański, arabski. Te języki realizujemy na zamówienie - czas dostarczenia 10-21 dni w&nbsp;zależności od dostępności native lektora.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Specjalizacje wiekowe i&nbsp;tematyczne</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Głosy dziecięce do ścieżek edukacyjnych dla najmłodszych, głosy seniorskie z&nbsp;wolniejszym tempem i&nbsp;wyraźną dykcją do obiektów odwiedzanych przez starszych gości, głosy "specjalistów" (eksperci, narratorzy popularnonaukowi) do narracji tematycznych.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formaty -->
+<section class="py-12 md:py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Formaty i&nbsp;technologie: od aplikacji mobilnej po kody QR</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Audioprzewodniki realizujemy w&nbsp;formatach kompatybilnych z&nbsp;większością systemów dystrybucji - od dedykowanych aplikacji mobilnych po proste kody QR przy eksponatach.
+    </p>
+
+    <div class="overflow-x-auto bg-white rounded-xl border border-gray-200 mb-8">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-100 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Format dystrybucji</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Pliki audio</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Specyfika wdrożenia</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr><td class="px-4 py-3 text-gray-900">Aplikacja mobilna (iOS/Android)</td><td class="px-4 py-3 text-gray-600">mp3 / aac (zoptymalizowane)</td><td class="px-4 py-3 text-gray-600">Możliwa integracja z&nbsp;GPS (autoplay przy wejściu w&nbsp;strefę), pliki offline</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Kody QR przy eksponatach</td><td class="px-4 py-3 text-gray-600">mp3 (stream HTTPS)</td><td class="px-4 py-3 text-gray-600">Bez instalacji aplikacji, odtwarzanie w&nbsp;przeglądarce, krótkie pliki (60-120s)</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Urządzenia przenośne wypożyczane</td><td class="px-4 py-3 text-gray-600">wav / mp3 (jakość archiwalna)</td><td class="px-4 py-3 text-gray-600">Pełna nazwa pliku z&nbsp;numerem punktu, kompatybilne z&nbsp;większością urządzeń branżowych</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Systemy stacjonarne (głośniki)</td><td class="px-4 py-3 text-gray-600">wav 48 kHz / mp3 320kbps</td><td class="px-4 py-3 text-gray-600">Wysokiej jakości master, aktywacja przyciskiem lub czujnikiem ruchu</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900">Internet / strona obiektu</td><td class="px-4 py-3 text-gray-600">mp3 (stream)</td><td class="px-4 py-3 text-gray-600">Audioprzewodnik dostępny zdalnie - dla zwiedzających przed wizytą lub po niej</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-stone-50 border border-gray-200 rounded-xl p-5">
+      <h3 class="font-semibold text-gray-900 mb-2">Dostępność cyfrowa</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">Do każdego audioprzewodnika możemy dostarczyć transkrypcję tekstową narracji (dla osób niedosłyszących), wersję ze spowolnionym tempem (dla osób z&nbsp;dysleksją lub w&nbsp;trakcie nauki języka) oraz wariant z&nbsp;dłuższymi pauzami między zdaniami. To dodatkowe pliki do podstawowego nagrania, wyceniane indywidualnie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Cennik -->
+<section class="py-12 md:py-16 bg-stone-50 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Ile kosztuje audioprzewodnik? Wycena i&nbsp;realizacja</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Cena audioprzewodnika zależy od czterech zmiennych: liczby punktów (eksponatów, miejsc na trasie), długości narracji każdego punktu, liczby języków (PL + native zagraniczne) oraz profilu lektora (głosy z&nbsp;wyższej grupy cenowej dotyczą znanych aktorów i&nbsp;dziennikarzy).
+    </p>
+    <div class="grid md:grid-cols-2 gap-5 mb-6">
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Przykład wyceny</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Audioprzewodnik: 20 punktów × 90 sekund × 3 języki (PL/EN/DE) - to typowy projekt muzealny. Pełną kalkulację z&nbsp;podziałem na lektorów i&nbsp;języki zobaczysz w&nbsp;<a href="/cennik/" class="text-accent hover:underline">cenniku</a> lub po kontakcie - przygotujemy ofertę dopasowaną do Twojego projektu w&nbsp;ciągu 24h.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Czas realizacji</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Standardowy projekt audioprzewodnika to 7-14 dni roboczych od akceptacji tekstu. Czas zależy od objętości materiału (liczba punktów × języków) i&nbsp;dostępności native lektorów. Tryb ekspresowy (do 7&nbsp;dni) wyceniamy z&nbsp;dopłatą.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Sesje zdalne podczas nagrania</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Klient może uczestniczyć w&nbsp;nagraniu zdalnie - obserwować przebieg sesji online, zgłaszać feedback na żywo, prosić o&nbsp;poprawki przed wyjściem ze studia. Szczegóły w&nbsp;sekcji <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="text-accent hover:underline">sesje zdalne</a>.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Gwarancja modyfikacji 12&nbsp;miesięcy</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Drobne poprawki merytoryczne (zmiana daty, godziny otwarcia, korekta nazwy własnej) wykonujemy bezpłatnie przez rok od odbioru. Większe zmiany (nowe punkty, dodatkowy język) wyceniamy jak nowy materiał, ale bez dopłat za "powrót do projektu".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Realizacje -->
+<section class="py-12 md:py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Nasze realizacje: audioprzewodniki dla parków i&nbsp;muzeów</h2>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      Wybrane projekty audioprzewodnikowe i&nbsp;narracyjne realizowane w&nbsp;naszym studiu od 2001&nbsp;roku. Pełen przegląd marek znajdziesz na <a href="/opinie/" class="text-accent hover:underline">stronie z&nbsp;opiniami klientów</a>.
+    </p>
+    <div class="space-y-4">
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Park Miniatur Inwałd - audioprzewodnik 3-języczny</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Trzyjęzyczny audioprzewodnik (polski, angielski, niemiecki) dla parku z&nbsp;miniaturami architektury europejskiej. Realizacja dla ARR Miniatury Sp. z&nbsp;o.o. - kilka projektów w&nbsp;tej samej rodzinie obiektów. Narracja dopasowana do różnorodności miniatur (od średniowiecznych zamków po nowoczesne ikony architektury).</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Muzeum Narodowe w&nbsp;Szczecinie</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Narracja do filmu edukacyjnego towarzyszącego wystawie. Tekst o&nbsp;charakterze popularnonaukowym, wymagający precyzji terminologicznej i&nbsp;równoczesnej przystępności dla zwiedzających bez przygotowania kierunkowego.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Centralne Muzeum Włókiennictwa w&nbsp;Łodzi</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Narracja w&nbsp;języku angielskim na event muzealny - lektor <a href="/lektorzy/konstancja/" class="text-accent hover:underline">Konstancja</a>. Tonalność spokojna, kontemplacyjna, dopasowana do kontekstu kolekcji tekstyliów i&nbsp;narzędzi historycznych.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-gray-900 mb-2">Markhen+ P.U.B. oraz AMISTAD Group</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Klienci powracający - wieloletnia współpraca przy projektach audioprzewodnikowych i&nbsp;narracjach do projektów edukacyjnych. Klient powracający to dla nas najmocniejsza rekomendacja - zaufanie buduje się na powtarzalnej jakości realizacji.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-12 md:py-16 bg-stone-50 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Najczęstsze pytania o&nbsp;audioprzewodniki</h2>
+    <div class="space-y-3">
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          Czy audioprzewodnik działa bez internetu?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+          Tak. Pliki mp3 lub aac są pobierane raz przy instalacji aplikacji lub wgrywane bezpośrednio na urządzenie wypożyczane gościowi. Działanie offline jest standardem dla muzeów i&nbsp;parków - nie chcemy uzależniać doświadczenia gościa od jakości WiFi w&nbsp;obiekcie. Tylko kody QR z&nbsp;linkiem do streamu wymagają internetu.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          Jak długi powinien być punkt w&nbsp;audioprzewodniku?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+          Optymalny czas to 60-120 sekund. Krótsze punkty (poniżej 60s) wydają się "ucięte" i&nbsp;nie budują pełnej narracji. Dłuższe niż 2 minuty tracą uwagę słuchacza, zwłaszcza w&nbsp;środowisku z&nbsp;rozpraszaczami (gwar, dzieci, innych gości). Wyjątek: wstępny punkt wprowadzający do całego audioprzewodnika (180-240 sekund) i&nbsp;narracje filmów edukacyjnych (bez ograniczenia, bo gość siedzi).
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          Czy mogę zaktualizować treść audioprzewodnika po nagraniu?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+          Tak. Drobne poprawki merytoryczne (zmiana godziny otwarcia, korekta nazwy własnej, poprawka faktograficzna) wykonujemy bezpłatnie przez 12&nbsp;miesięcy od dostawy. Większe zmiany (dodanie nowych punktów, kolejny język, zmiana lektora) wyceniamy jak nowy materiał - ale bez ukrytych dopłat za "powrót do projektu" lub setup studyjny.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          W&nbsp;jakich językach możemy zamówić audioprzewodnik?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+          Standardowo: polski, angielski (UK lub US), niemiecki, francuski, hiszpański, włoski, rosyjski, ukraiński, czeski, słowacki. Na zamówienie: chiński (mandaryński), japoński, koreański, arabski, węgierski, rumuński, niderlandzki i&nbsp;inne. Dla każdego języka pracujemy z&nbsp;native lektorami z&nbsp;portfolio audio guides.
+        </div>
+      </details>
+      <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
+        <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
+          Czy lektor może nagrać w&nbsp;stylu dokumentalnym, bajkowym lub edukacyjnym?
+          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+          Tak. Casting lektora robimy pod konkretną grupę docelową: ścieżki dla dzieci (głos dziecięcy, dynamiczny), narracje historyczne (głos męski autorytatywny, np. <a href="/lektorzy/jaroslaw/" class="text-accent hover:underline">Jarosław</a>), wystawy kameralne (kobiecy ciepły głos, np. <a href="/lektorzy/konstancja/" class="text-accent hover:underline">Konstancja</a>), parki rozrywki (głos energiczny, młodzieżowy). Możesz wskazać preferowanego lektora z&nbsp;<a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> lub poprosić o&nbsp;naszą rekomendację - przygotujemy 2-3 propozycje z&nbsp;próbkami audio.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 md:py-16 bg-gradient-to-br from-stone-100 via-white to-stone-100">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Zamów audioprzewodnik dla swojego obiektu</h2>
+    <p class="text-gray-600 leading-relaxed mb-8">
+      Przygotujemy szczegółową wycenę z&nbsp;podziałem na lektorów i&nbsp;języki w&nbsp;ciągu 24&nbsp;godzin. Wystarczy zarys projektu: liczba punktów, szacowana długość narracji każdego, języki, planowana technologia (aplikacja, QR, urządzenia) oraz preferowany termin dostawy.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/kontakt/" class="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zamów wycenę</a>
+      <a href="/bank-glosow/" class="bg-white hover:bg-stone-100 text-gray-800 px-8 py-3 rounded-lg font-semibold transition-colors border border-gray-200">Posłuchaj próbek lektorów</a>
+    </div>
+    <p class="text-sm text-gray-500 mt-6">
+      Lub skorzystaj z&nbsp;<a href="/?start=narration#kreator" class="text-accent hover:underline">Kreatora Treści Lektorskich</a> jeśli potrzebujesz pomocy z&nbsp;przygotowaniem tekstu narracji.
+    </p>
+  </div>
+</section>
+
+<!-- JSON-LD: Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/audioprzewodniki/#service",
+  "name": "Audioprzewodniki - profesjonalne nagrania lektorskie",
+  "serviceType": "Audioprzewodnik",
+  "description": "Profesjonalne audioprzewodniki wielojęzyczne dla muzeów, parków, atrakcji turystycznych i obiektów dziedzictwa kulturowego. Polski + native EN/DE/FR/ES/IT i języki rzadsze. Realizacja 7-14 dni.",
+  "provider": { "@id": "https://www.powitania.pl/#organization" },
+  "areaServed": { "@type": "Country", "name": "Polska" },
+  "url": "https://www.powitania.pl/nagrania-lektorskie/audioprzewodniki/",
+  "availableLanguage": ["pl", "en", "de", "fr", "es", "it", "ru", "uk", "cs", "sk"]
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/audioprzewodniki/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Czy audioprzewodnik działa bez internetu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Pliki mp3 lub aac są pobierane raz przy instalacji aplikacji lub wgrywane bezpośrednio na urządzenie wypożyczane gościowi. Działanie offline jest standardem dla muzeów i parków. Tylko kody QR z linkiem do streamu wymagają internetu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długi powinien być punkt w audioprzewodniku?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Optymalny czas to 60-120 sekund. Krótsze punkty wydają się ucięte, dłuższe niż 2 minuty tracą uwagę słuchacza. Wyjątek: punkt wprowadzający (180-240s) i narracje filmów edukacyjnych (bez ograniczenia)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę zaktualizować treść audioprzewodnika po nagraniu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Drobne poprawki merytoryczne (godziny otwarcia, korekta nazwy własnej, poprawka faktograficzna) wykonujemy bezpłatnie przez 12 miesięcy od dostawy. Większe zmiany wyceniamy jak nowy materiał, bez ukrytych dopłat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich językach możemy zamówić audioprzewodnik?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowo: polski, angielski (UK lub US), niemiecki, francuski, hiszpański, włoski, rosyjski, ukraiński, czeski, słowacki. Na zamówienie: chiński, japoński, koreański, arabski, węgierski i inne. Pracujemy z native lektorami."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy lektor może nagrać w stylu dokumentalnym, bajkowym lub edukacyjnym?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Casting lektora robimy pod konkretną grupę docelową: ścieżki dla dzieci (głos dziecięcy, dynamiczny), narracje historyczne (głos męski autorytatywny), wystawy kameralne (kobiecy ciepły głos), parki rozrywki (głos energiczny). Można wskazać preferowanego lektora z banku głosów lub poprosić o rekomendację."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD: ItemList realizacje -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://www.powitania.pl/nagrania-lektorskie/audioprzewodniki/#realizacje",
+  "name": "Realizacje audioprzewodników - Powitania.pl",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Park Miniatur Inwałd - audioprzewodnik 3-języczny (PL/EN/DE)" },
+    { "@type": "ListItem", "position": 2, "name": "Muzeum Narodowe w Szczecinie - narracja edukacyjna" },
+    { "@type": "ListItem", "position": 3, "name": "Centralne Muzeum Włókiennictwa w Łodzi - narracja eventowa (EN)" }
+  ]
+}
+</script>
+
+<%- include('../partials/foot') %>
