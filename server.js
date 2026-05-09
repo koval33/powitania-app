@@ -568,8 +568,8 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: `Nagrania lektorskie - ${res.locals.voiceCount} lektorów, 24-48h | Powitania.pl`,
-    description: `Profesjonalne studio nagrań lektorskich od 2001 r. ${res.locals.voiceCount} lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.`,
+    title: `Nagrania lektorskie - reklamy, IVR, filmy, audiobooki | 24-48h`,
+    description: `Profesjonalne nagrania lektorskie od 2001 r. ${res.locals.voiceCount} lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
@@ -929,8 +929,8 @@ app.get('/en/privacy-policy/', (req, res) => {
 
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
-    title: `Voiceover Recordings - ${res.locals.voiceCount} Voice Artists, 48h Delivery, from €70 | powitania.pl`,
-    description: `Professional voiceover recording studio since 2001. ${res.locals.voiceCount} voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.`,
+    title: `Voice-Over Recordings - Ads, IVR, Films, Audiobooks | 24-48h`,
+    description: `Professional voice-over recordings since 2001. ${res.locals.voiceCount} voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' }
