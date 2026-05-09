@@ -163,6 +163,7 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/glos-do-reklamy/': '/en/voiceover-services/voice-for-advertising/',
     '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/': '/en/voiceover-services/film-voiceover/',
     '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
+    '/nagrania-lektorskie/audioprzewodniki/': '/en/voiceover-services/audio-guides/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/aktualnosci-pl/': '/en/news/',
@@ -1019,6 +1020,18 @@ app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   });
 });
 
+app.get('/en/voiceover-services/audio-guides/', (req, res) => {
+  res.render('en/audio-guides', {
+    title: 'Audio guides voiceover | museums, QR, apps | Powitania.pl',
+    description: 'Professional voiceover recordings for audio guides: museums, parks, trails. Polish + native voice artists, integration with QR/apps. Quote within 24h.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Services', url: '/en/voiceover-services/' },
+      { name: 'Audio Guides', url: '/en/voiceover-services/audio-guides/' }
+    ]
+  });
+});
+
 app.get('/en/remote-sessions/', (req, res) => {
   res.render('en/remote-sessions', {
     title: 'Remote Recording Sessions | Online Voiceover | Powitania.pl',
@@ -1294,6 +1307,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/voiceover-services/voice-for-advertising/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/film-voiceover/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/phone-announcements/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/voiceover-services/audio-guides/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/remote-sessions/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/express-recording/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
