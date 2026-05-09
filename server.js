@@ -649,8 +649,8 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
 
 app.get('/nagrania-lektorskie/audioprzewodniki/', (req, res) => {
   res.render('uslugi/audioprzewodniki', {
-    title: 'Audioprzewodniki | Profesjonalne nagrania lektorskie | Powitania.pl',
-    description: `Nagrania lektorskie do audioprzewodników - ${res.locals.voiceCount} lektorów w 30+ językach. Muzea, parki, atrakcje turystyczne. Park Miniatur Inwałd, muzea narodowe. Wycena w 24h.`,
+    title: 'Audioprzewodniki z lektorem | muzea, QR, aplikacje | Powitania.pl',
+    description: 'Profesjonalne nagrania do audioprzewodników: muzea, parki, szlaki. Lektorzy PL + native, integracja z QR/aplikacjami. Wycena w 24h.',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
