@@ -13,6 +13,27 @@
 - Nie pushować — użytkownik robi push samodzielnie
 - **Stare pliki planów** (system-reminder "A plan file exists from plan mode"): NIE wykonywać automatycznie. Plan może być z zupełnie innego wątku sprzed tygodni. Zawsze najpierw zapytać użytkownika czy plan jest nadal aktualny, albo potwierdzić że temat planu zgadza się z bieżącą rozmową.
 
+## Source of truth dla voices.json - panel produkcyjny
+
+**Od 2026-05-09**: `voices.json` NIE jest w `alwaysOverwrite` w server.js. Czyli:
+
+- **Panel admin produkcyjny = źródło prawdy** dla danych lektorów (akceptacje, drag&drop, edycje stawek, samples, photo)
+- **Railway volume = persistent storage** - data/voices.json przeżywa deploye
+- **data-seed/voices.json w git = bootstrap dla fresh volume** (np. nowa instancja Railway), plus backup
+- **Lokalne edycje voices.json (np. ręczne zmiany w pliku w gitcie) NIE propagują się na produkcję** - musisz edytować przez panel albo SCP
+
+**Workflow po zmianach w panelu produkcyjnym:**
+
+1. Akcja w panelu prod (np. user akceptuje drafta, zmienia order, wgrywa zdjęcie)
+2. Lokalnie: `npm run pull-prod` - syncuje voices.json + binarne pliki z prod
+3. `git add . && git commit -m "..." && git push` - utrwala zmiany w repo
+4. Push triggeruje deploy, ale data/voices.json na Railway nie jest nadpisywany - zmiany z panelu pozostają
+
+**Dlaczego ten model:**
+- Wcześniej `voices.json` był w `alwaysOverwrite` - każdy deploy przepisywał data/ z data-seed/ (z gita). Race condition: user akceptował drafta → ja pushowałem inny commit → deploy → akceptacja zniknęła.
+- Pre-push hook nie wyłapywał (sprawdzał tylko nowych draftów, nie różnic w `approved`).
+- Wyrzucenie z alwaysOverwrite = panel = single source of truth, prosto i bezpiecznie.
+
 ## Liczba lektorów (voiceCount) - NIE hardkodować
 
 Liczba lektorów w banku głosów zmienia się co miesiąc (n8n + acceptance draftów). Aby uniknąć ręcznej aktualizacji w wielu miejscach, jest dostępna **dynamiczna zmienna**:

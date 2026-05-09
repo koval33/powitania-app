@@ -32,11 +32,22 @@ app.set('views', path.join(__dirname, 'views'));
 const fs = require('fs');
 
 // Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
-// Pliki użytkownika (reviews, voices, partners) - kopiowane tylko jeśli nie istnieją
-// Pliki deweloperskie (blog-posts, melodies) - zawsze nadpisywane z repo
+//
+// Pliki "developer-managed" (alwaysOverwrite) - kazdy deploy nadpisuje z repo.
+// Uzywaj dla danych edytowanych GLOWNIE przez kod/git (nie przez admin panel).
+//
+// Pliki "panel-managed" (NIE w alwaysOverwrite, np. voices.json, reviews.json) -
+// kopiowane TYLKO przy fresh volume (bootstrap). Po pierwszym deploy persistent
+// na Railway volume - admin panel jest zrodlem prawdy. Deploy NIE psuje akceptacji,
+// drag&drop, edycji stawek wykonanych w panelu.
+//
+// HISTORIA: voices.json byl w alwaysOverwrite do 2026-05-09. Race condition:
+// user akceptowal lektora w panelu, push commitu z innym kodem trigger'owal
+// deploy, ktory nadpisywal data/voices.json wersja z gita (gdzie approved=false).
+// Akceptacja ginela. Wyrzucono voices.json - panel jest teraz source of truth.
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
-const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'voices.json', 'partners.json'];
+const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'partners.json'];
 if (fs.existsSync(seedDir)) {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
   fs.readdirSync(seedDir).forEach(file => {
