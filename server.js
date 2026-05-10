@@ -627,8 +627,8 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
 
 app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
-    title: 'Zapowiedzi telefoniczne | Powitania telefoniczne | Powitania.pl',
-    description: 'Najwyższej jakości zapowiedzi telefoniczne. Realizacja we współpracy z klientem. Pomoc w redagowaniu tekstów. Zachęcamy do realizacji nagrań.',
+    title: 'Zapowiedzi telefoniczne i nagrania do centrali IVR | 24-48h',
+    description: `Profesjonalne zapowiedzi telefoniczne i nagrania do central telefonicznych (Slican, Platan, VoIP, Asterisk, 3CX). Lektor na infolinię, IVR, komunikaty powitalne. ${res.locals.voiceCount} lektorów, 24-48h.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -999,8 +999,8 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
 
 app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   res.render('en/phone-announcements', {
-    title: 'Phone Announcements | IVR Recordings | Powitania.pl',
-    description: 'Professional IVR recordings and phone announcements. Company greetings, voice menus, after-hours messages. Multilingual support.',
+    title: 'Phone announcements & IVR recordings for PBX | 24-48h',
+    description: `Professional phone announcements and voiceover recordings for PBX systems (Slican, Platan, VoIP, Asterisk, 3CX). Voice for hotlines, IVR menus, welcome messages. ${res.locals.voiceCount} voice artists, 24-48h.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },

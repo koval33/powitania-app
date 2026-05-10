@@ -10,9 +10,9 @@
       <span class="mx-2 text-gray-300">›</span>
       <span class="text-gray-700">Zapowiedzi telefoniczne</span>
     </nav>
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Zapowiedzi telefoniczne</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Zapowiedzi telefoniczne i&nbsp;nagrania do central IVR</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym i komunikacyjnym dla firmy. Starannie przygotowane nagrania IVR zachęcają Klientów do kontaktu - to część szerszej oferty <a href="/nagrania-lektorskie/" class="text-accent hover:underline">nagrań lektorskich</a> realizowanych przez nasze studio od 2001 roku.
+      Zapowiedzi telefoniczne i&nbsp;nagrania lektorskie do central telefonicznych - od pojedynczego komunikatu powitalnego po pełne drzewo IVR. Współpracujemy z&nbsp;systemami Slican, Platan, Asterisk, 3CX i&nbsp;wszystkimi popularnymi centralami VoIP. <%= voiceCount %> lektorów, realizacja 24-48h, gotowy plik w&nbsp;wymaganym formacie (WAV, MP3, GSM).
     </p>
     <p class="text-accent font-bold text-xl mt-4">od 380 zł netto</p>
   </div>
@@ -47,6 +47,38 @@
 
     <p class="text-sm text-gray-500 mt-3">
       Format <strong>WAV 8 kHz μ-law 8-bit</strong> stosują centrale PBX (Slican, Panasonic, Cisco, Avaya). Format <strong>MP3 192 kbps</strong> przyjmują centrale VoIP oparte o Asterisk, FreePBX, 3CX. Dostarczamy plik w formacie wymaganym przez Twoją centralę.
+    </p>
+  </div>
+</section>
+
+<!-- Compatibility - centrale telefoniczne i formaty plików -->
+<section class="py-12 border-b border-gray-200 bg-stone-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center">Nagrania zgodne z&nbsp;popularnymi centralami telefonicznymi</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-8">Każda centrala telefoniczna ma własne wymagania techniczne dotyczące formatu plików audio. Poniższa tabela zawiera specyfikacje dla najpopularniejszych systemów PBX i&nbsp;VoIP w&nbsp;Polsce. Dostarczamy plik w&nbsp;formacie wymaganym przez Twojego integratora - skonfigurowane gotowe do wgrania.</p>
+
+    <div class="overflow-x-auto bg-white rounded-xl border border-gray-200 shadow-sm">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-100 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Centrala telefoniczna</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Format plików</th>
+            <th class="text-left px-4 py-3 font-semibold text-gray-900">Specyfika wdrożenia</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">Slican</td><td class="px-4 py-3 text-gray-600">WAV 8 kHz mono μ-law / GSM 6.10</td><td class="px-4 py-3 text-gray-600">Najpopularniejsza centrala PBX w&nbsp;polskich firmach SMB - wymaga 8 kHz μ-law dla pełnej kompatybilności</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">Platan</td><td class="px-4 py-3 text-gray-600">WAV PCM 8 kHz / MP3 dopuszczalne</td><td class="px-4 py-3 text-gray-600">Centrale Platan Libra, Optima - kompatybilność z&nbsp;WAV PCM, MP3 dla nowszych modeli</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">Asterisk / FreePBX</td><td class="px-4 py-3 text-gray-600">WAV 8 kHz/16 kHz mono</td><td class="px-4 py-3 text-gray-600">Open-source VoIP - akceptuje WAV w&nbsp;wielu wariantach, najczęściej 8 kHz mono</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">3CX</td><td class="px-4 py-3 text-gray-600">WAV PCM / MP3</td><td class="px-4 py-3 text-gray-600">Centrala VoIP popularna w&nbsp;większych firmach - elastyczność formatów, MP3 dla quick deploy</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">Cisco UCM</td><td class="px-4 py-3 text-gray-600">WAV ulaw / alaw 8 kHz</td><td class="px-4 py-3 text-gray-600">Enterprise-grade - wymaga ulaw (US) lub alaw (EU) w&nbsp;zależności od regionu</td></tr>
+          <tr><td class="px-4 py-3 text-gray-900 font-medium">VoIP / SIP universal</td><td class="px-4 py-3 text-gray-600">MP3 / WAV / OGG</td><td class="px-4 py-3 text-gray-600">Cloud-based PBX (np. Nfon, Vonage) - akceptują większość formatów audio</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-sm text-gray-500 mt-5 text-center">
+      Nie znalazłeś swojej centrali? Współpracujemy też z&nbsp;Panasonic KX-NS, Yeastar, Grandstream, Avaya i&nbsp;innymi systemami - <a href="/kontakt/" class="text-accent hover:underline font-medium">napisz</a>, dopasujemy format pliku pod Twojego integratora.
     </p>
   </div>
 </section>
@@ -254,30 +286,139 @@
       </div>
 
       <div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3">Przykładowe teksty zapowiedzi</h3>
-        <p class="text-gray-600 text-sm leading-relaxed mb-4">Cztery gotowe szablony, które można dostosować do specyfiki firmy. Każdy szablon to krótka treść do nagrania - wystarczy podstawić nazwę firmy, godziny pracy i numery wewnętrzne.</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Przykładowe teksty zapowiedzi telefonicznych - gotowe szablony</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">Dziewięć gotowych szablonów do dostosowania pod specyfikę firmy. Każdy szablon możesz skopiować jednym kliknięciem i&nbsp;podstawić własne dane (nazwa firmy, godziny pracy, numery wewnętrzne).</p>
 
         <div class="space-y-4">
           <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
-            <p class="text-gray-900 font-semibold mb-2 text-sm">1. Powitanie ogólne (krótkie)</p>
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">1. Powitanie ogólne (krótkie)</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Dzień dobry, dodzwoniłeś się do firmy [nazwa]. Cieszymy się, że do nas dzwonisz - za chwilę połączymy Cię z konsultantem.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
             <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dzień dobry, dodzwoniłeś się do firmy [nazwa]. Cieszymy się, że do nas dzwonisz - za chwilę połączymy Cię z konsultantem."</p>
           </div>
 
           <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
-            <p class="text-gray-900 font-semibold mb-2 text-sm">2. Powitanie + menu IVR z opcjami</p>
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">2. Powitanie + menu IVR z opcjami</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Witamy w firmie [nazwa]. Aby usprawnić obsługę, wybierz odpowiedni numer: 1 - sprzedaż, 2 - serwis, 3 - reklamacje, 4 - współpraca biznesowa, 0 - recepcja. W każdej chwili możesz wrócić do menu głównego, naciskając gwiazdkę.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
             <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w firmie [nazwa]. Aby usprawnić obsługę, wybierz odpowiedni numer: 1 - sprzedaż, 2 - serwis, 3 - reklamacje, 4 - współpraca biznesowa, 0 - recepcja. W każdej chwili możesz wrócić do menu głównego, naciskając gwiazdkę."</p>
           </div>
 
           <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
-            <p class="text-gray-900 font-semibold mb-2 text-sm">3. Komunikat zajętości linii</p>
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">3. Komunikat zajętości linii</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Dziękujemy za telefon do firmy [nazwa]. Wszystkie linie konsultantów są obecnie zajęte. Twoje połączenie jest dla nas ważne - prosimy o chwilę cierpliwości lub naciśnij 1, aby pozostawić wiadomość. Oddzwonimy najpóźniej w ciągu jednego dnia roboczego.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
             <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dziękujemy za telefon do firmy [nazwa]. Wszystkie linie konsultantów są obecnie zajęte. Twoje połączenie jest dla nas ważne - prosimy o chwilę cierpliwości lub naciśnij 1, aby pozostawić wiadomość. Oddzwonimy najpóźniej w ciągu jednego dnia roboczego."</p>
           </div>
 
           <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
-            <p class="text-gray-900 font-semibold mb-2 text-sm">4. Komunikat wakacyjny / urlop firmowy</p>
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">4. Komunikat wakacyjny / urlop firmowy</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Witamy w firmie [nazwa]. Informujemy, że w dniach [X]-[Y] biuro jest nieczynne z uwagi na urlop firmowy. Wznawiamy pracę [data]. W sprawach pilnych prosimy o kontakt mailowy: [adres]. Życzymy pięknej pogody.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
             <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w firmie [nazwa]. Informujemy, że w dniach [X]&ndash;[Y] biuro jest nieczynne z uwagi na urlop firmowy. Wznawiamy pracę [data]. W sprawach pilnych prosimy o kontakt mailowy: [adres]. Życzymy pięknej pogody."</p>
           </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">5. Infolinia medyczna / przychodnia</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Dzień dobry, witamy w przychodni [nazwa]. Aby umówić wizytę, wybierz 1. Aby uzyskać wynik badania, wybierz 2. W przypadku pytań o receptę, wybierz 3. W sytuacji zagrożenia życia prosimy o kontakt z numerem 112.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dzień dobry, witamy w przychodni [nazwa]. Aby umówić wizytę, wybierz 1. Aby uzyskać wynik badania, wybierz 2. W przypadku pytań o receptę, wybierz 3. W sytuacji zagrożenia życia prosimy o kontakt z numerem 112."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">6. E-commerce - status zamówienia</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Witamy w sklepie [nazwa]. Aby sprawdzić status zamówienia, wybierz 1. Aby porozmawiać z konsultantem ds. sprzedaży, wybierz 2. Aby zgłosić reklamację lub zwrot, wybierz 3. Twój numer zamówienia znajdziesz w mailu potwierdzającym.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w sklepie [nazwa]. Aby sprawdzić status zamówienia, wybierz 1. Aby porozmawiać z konsultantem ds. sprzedaży, wybierz 2. Aby zgłosić reklamację lub zwrot, wybierz 3. Twój numer zamówienia znajdziesz w mailu potwierdzającym."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">7. Urząd / instytucja publiczna</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Witamy w [nazwa urzędu]. Godziny obsługi interesantów: poniedziałek-piątek 8:00-16:00, czwartek 8:00-18:00. Aby uzyskać informacje o sprawach urzędowych, wybierz 1. Aby umówić wizytę, wybierz 2. Aby porozmawiać z sekretariatem, wybierz 0.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Witamy w [nazwa urzędu]. Godziny obsługi interesantów: poniedziałek-piątek 8:00-16:00, czwartek 8:00-18:00. Aby uzyskać informacje o sprawach urzędowych, wybierz 1. Aby umówić wizytę, wybierz 2. Aby porozmawiać z sekretariatem, wybierz 0."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">8. Infolinia kryzysowa / awaryjna</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Dodzwoniłeś się na infolinię awaryjną [nazwa firmy]. Twoje zgłoszenie jest dla nas priorytetem. Łączymy z dyżurnym konsultantem - czas oczekiwania nie przekracza 90 sekund. Jeśli sprawa wymaga natychmiastowej interwencji, podaj proszę numer klienta po sygnale.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Dodzwoniłeś się na infolinię awaryjną [nazwa firmy]. Twoje zgłoszenie jest dla nas priorytetem. Łączymy z dyżurnym konsultantem - czas oczekiwania nie przekracza 90 sekund. Jeśli sprawa wymaga natychmiastowej interwencji, podaj proszę numer klienta po sygnale."</p>
+          </div>
+
+          <div class="bg-stone-50 rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <p class="text-gray-900 font-semibold text-sm">9. Komunikat techniczny / przerwa serwisowa</p>
+              <button type="button" class="copy-tpl-btn flex-shrink-0 text-xs text-accent hover:text-accent-light font-semibold flex items-center gap-1 px-2 py-1 rounded border border-accent/20 hover:bg-accent/5 transition-colors" data-copy="Z powodu prac konserwacyjnych nasze usługi mogą być chwilowo niedostępne. Przepraszamy za utrudnienia. Prace zakończą się do godziny [X]. Aktualne informacje publikujemy na stronie [domena]. Dziękujemy za cierpliwość.">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span class="copy-tpl-label">Skopiuj</span>
+              </button>
+            </div>
+            <p class="italic text-gray-700 text-sm leading-relaxed">&bdquo;Z powodu prac konserwacyjnych nasze usługi mogą być chwilowo niedostępne. Przepraszamy za utrudnienia. Prace zakończą się do godziny [X]. Aktualne informacje publikujemy na stronie [domena]. Dziękujemy za cierpliwość."</p>
+          </div>
         </div>
+
+        <script>
+        (function() {
+          document.querySelectorAll('.copy-tpl-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var text = this.dataset.copy;
+              if (!text) return;
+              var label = this.querySelector('.copy-tpl-label');
+              var original = label.textContent;
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                  label.textContent = 'Skopiowano!';
+                  setTimeout(function() { label.textContent = original; }, 1500);
+                }).catch(function() {
+                  label.textContent = 'Błąd';
+                  setTimeout(function() { label.textContent = original; }, 1500);
+                });
+              } else {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); label.textContent = 'Skopiowano!'; } catch(e) { label.textContent = 'Błąd'; }
+                document.body.removeChild(ta);
+                setTimeout(function() { label.textContent = original; }, 1500);
+              }
+            });
+          });
+        })();
+        </script>
       </div>
     </div>
   </div>
@@ -305,6 +446,33 @@
         <p class="text-gray-600 text-sm leading-relaxed">Komunikat poza godzinami pracy zwykle warto uzupełnić o e-mail kontaktowy lub link do formularza na stronie. Dla branż obsługujących awarie (telekomunikacja, IT, hosting) - dyżurujący numer dla zgłoszeń krytycznych.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Lektor na infolinię - target frazy "lektor na infolinię" 15 imp pos 6.1 -->
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Lektor na infolinię konsumencką, B2B i&nbsp;kryzysową</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-8">Profesjonalny lektor na infolinię to pierwszy kontakt klienta z&nbsp;Twoją marką - musi brzmieć kompetentnie, ciepło i&nbsp;zrozumiale. Dobieramy głos pod typ infolinii i&nbsp;branżę: różne tony narracji sprawdzają się w&nbsp;różnych kontekstach.</p>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+        <h3 class="font-bold text-gray-900 mb-2">Infolinia konsumencka</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Bardziej dynamiczny, pozytywny ton. Sprawdza się w&nbsp;e-commerce, retail, telekomunikacji, usługach B2C. Klient ma poczucie, że trafił do firmy gotowej pomóc - nie do urzędu. Realizujemy zapowiedzi powitalne, menu IVR, komunikaty zajętości linii.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+        <h3 class="font-bold text-gray-900 mb-2">Infolinia B2B / korporacyjna</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Formalny, profesjonalny ton. Bankowość, ubezpieczenia, software house, usługi prawne. Komunikaty zwięzłe, bez naturalności konwersacyjnej - klient szuka konkretnej informacji i&nbsp;kompetencji. Lektorzy z&nbsp;niskim, pewnym głosem.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+        <h3 class="font-bold text-gray-900 mb-2">Infolinia kryzysowa / wsparcia</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Uspokajający, opanowany ton. Linie reklamacyjne, telefon zaufania, wsparcie techniczne dla awarii, infolinie zdrowotne. Wolniejsze tempo narracji, wyraźna dykcja, ciepły głos - klient w&nbsp;stresie potrzebuje empatii, nie sprintu.</p>
+      </div>
+    </div>
+
+    <p class="text-gray-600 text-sm leading-relaxed mt-8 max-w-3xl mx-auto text-center">
+      Współpracujemy z&nbsp;bankami, telekomami, ubezpieczycielami, firmami SaaS i&nbsp;e-commerce - dla każdej branży inaczej dobieramy lektora. <a href="/bank-glosow/" class="text-accent hover:underline font-medium">Posłuchaj próbek</a> lub <a href="/kontakt/" class="text-accent hover:underline font-medium">napisz</a> jaki typ infolinii projektujesz - zaproponujemy 2-3 lektorów z&nbsp;próbką testową.
+    </p>
   </div>
 </section>
 
@@ -717,6 +885,22 @@
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Oferujemy autorskie podkłady muzyczne free-of-rights (120 zł netto), które bezpiecznie można wykorzystać w centrali telefonicznej bez konieczności opłaty ZAiKS. Możemy zmiksować nagranie głosowe z muzyką w tle dla pełnego efektu Music on Hold - klient otrzymuje gotowy plik do wgrania do centrali bez konieczności samodzielnego miksowania.</div>
       </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile kosztuje pełne drzewo IVR (10 komunikatów)?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Pełne drzewo IVR z&nbsp;10 komunikatami (powitanie, menu główne, podmenu, komunikaty po godzinach, klauzula RODO, komunikat zajętości linii, urlopy, infolinia, kontakt awaryjny, end-of-call) zwykle mieści się w&nbsp;200-300 słowach. Koszt: <strong>od 540 zł netto</strong> (101-200 słów) do <strong>~800 zł netto</strong> dla 300 słów - cennik liniowy zależny od długości tekstu, jeden lektor. Pakiet wielojęzyczny (PL+EN+DE): <strong>od 150 zł netto</strong> dopłata do każdego języka.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czy mogę dostać przykładowe teksty zapowiedzi do wykorzystania?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Tak. Na tej stronie znajdziesz <strong>9 gotowych szablonów</strong> do skopiowania (powitanie, menu IVR, zajętość linii, urlop firmowy, infolinia medyczna, e-commerce, urząd, infolinia kryzysowa, komunikat techniczny). Każdy szablon ma przycisk &bdquo;Skopiuj" - wystarczy podstawić nazwę firmy i&nbsp;dane szczegółowe. Dodatkowo: szablony klauzuli RODO i&nbsp;komunikatów po godzinach pracy w&nbsp;sekcjach powyżej.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -824,6 +1008,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Oferujemy autorskie podkłady muzyczne free-of-rights (120 zł netto), które bezpiecznie można wykorzystać w centrali telefonicznej bez konieczności opłaty ZAiKS. Możemy zmiksować nagranie głosowe z muzyką w tle dla pełnego efektu Music on Hold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje pełne drzewo IVR (10 komunikatów)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pełne drzewo IVR z 10 komunikatami (powitanie, menu główne, podmenu, komunikaty po godzinach, klauzula RODO, komunikat zajętości linii, urlopy, infolinia, kontakt awaryjny, end-of-call) zwykle mieści się w 200-300 słowach. Koszt: od 540 zł netto (101-200 słów) do ok. 800 zł netto dla 300 słów - cennik liniowy zależny od długości tekstu, jeden lektor. Pakiet wielojęzyczny (PL+EN+DE): od 150 zł netto dopłata do każdego języka."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę dostać przykładowe teksty zapowiedzi do wykorzystania?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Na stronie znajdziesz 9 gotowych szablonów do skopiowania (powitanie, menu IVR, zajętość linii, urlop firmowy, infolinia medyczna, e-commerce, urząd, infolinia kryzysowa, komunikat techniczny). Każdy szablon ma przycisk Skopiuj - wystarczy podstawić nazwę firmy i dane szczegółowe. Dodatkowo: szablony klauzuli RODO i komunikatów po godzinach pracy."
       }
     }
   ]
