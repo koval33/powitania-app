@@ -518,8 +518,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
 
 app.get('/cennik/', (req, res) => {
   res.render('cennik', {
-    title: 'Cennik nagrań lektorskich od 300 zł, 24-48h | Powitania.pl',
-    description: 'Cennik nagrań lektorskich: reklama od 300 zł, narracja od 340 zł/A4, IVR od 380 zł. Realizacja 24-48h, ponad 200 lektorów. Wycena online, 30+ języków.',
+    title: 'Cennik nagrań i usług lektorskich od 300 zł | Powitania.pl',
+    description: `Cennik nagrań i usług lektorskich Powitania.pl: lektor reklamowy od 300 zł, narracja 340 zł/A4, IVR 380 zł. ${res.locals.voiceCount} lektorów, 24-48h.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Cennik', url: '/cennik/' }
@@ -917,8 +917,8 @@ app.get('/en/voice-bank/', (req, res) => {
 
 app.get('/en/pricing/', (req, res) => {
   res.render('en/cennik', {
-    title: 'Pricing | Voiceover Recordings | Powitania.pl',
-    description: 'Professional voiceover recording prices. Transparent pricing for advertising spots, IVR, film narration, and more.'
+    title: 'Voiceover & Voice Services Pricing from EUR 70 | Powitania.pl',
+    description: `Voiceover recording pricing: radio ad from EUR 70, narration from EUR 80/page, IVR from EUR 90, audiobook from EUR 15/page. ${res.locals.voiceCount} voice artists, 24-48h delivery.`
   });
 });
 
