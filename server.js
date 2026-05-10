@@ -330,6 +330,8 @@ app.get('/wp-*.php',           (req, res) => res.status(410).end());
 app.get('/aktualnosci-pl/generowanie-plikow-srt/', (req, res) => res.status(410).end());
 app.get('/en/news/native-speakers-wanted/',        (req, res) => res.status(410).end());
 app.get('/en/news/voiceover-recording-for-electronic-brain/', (req, res) => res.status(410).end());
+// 301 dla legacy news slug (musi być PRZED dynamic /en/news/:slug/ route na linii ~1140, bo inaczej dynamic route zwraca 404)
+app.get('/en/news/new-functionality-mix-it-yourself/', (req, res) => res.redirect(301, '/en/news/'));
 
 app.get('/faq/', (req, res) => res.redirect(301, '/faq-pl/'));
 app.get('/sesje-zdalne/', (req, res) => res.redirect(301, '/sesje-zdalne-nagrania-lektorskie-online/'));
@@ -1191,6 +1193,15 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
   const voices = loadVoices();
   const lektor = voices.find(v => v.id === req.params.slug);
   if (!lektor) {
+    // Auto-redirect dla legacy WP-plugin slugs z numerycznym suffixem (-2, -3, ...)
+    // Jeśli slug bez suffixu istnieje w bazie, redirectuj 301 zamiast 404.
+    // Pokrywa ~22 slugów typu daniel-2, lukasz-2, alicja-2 z GSC audit.
+    const m = req.params.slug.match(/^(.+)-\d+$/);
+    if (m) {
+      const baseSlug = m[1];
+      const baseLektor = voices.find(v => v.id === baseSlug);
+      if (baseLektor) return res.redirect(301, '/en/voice-artists/' + baseSlug + '/');
+    }
     return res.status(404).render('placeholder', {
       title: '404 | powitania.pl',
       description: 'Voice artist not found',
@@ -1264,6 +1275,27 @@ app.get('/en/voice-actors/:slug/', (req, res) => res.redirect(301, '/en/voice-ar
 app.get('/en/phone-announcements/', (req, res) => res.redirect(301, '/en/voiceover-services/phone-announcements/'));
 app.get('/en/voice-for-advertising/', (req, res) => res.redirect(301, '/en/voiceover-services/voice-for-advertising/'));
 app.get('/en/professional-voiceover-for-films/', (req, res) => res.redirect(301, '/en/voiceover-services/film-voiceover/'));
+
+// 301 Redirects - GSC audit 2026-05-10: legacy WP-plugin EN URL-e (296 imp/90d, 5 clicks recovery)
+// /en/about-us/ + /en/reviews/ → cross-language /o-firmie/ (brak EN about page; 119 imp/90d, top problem)
+app.get('/en/about-us/', (req, res) => res.redirect(301, '/o-firmie/'));
+app.get('/en/reviews/', (req, res) => res.redirect(301, '/o-firmie/'));
+// Stare paths z poprzedniego WP themu /en/portfo-en/* → /en/voiceover-services/*
+app.get('/en/portfo-en/radio-advertising/', (req, res) => res.redirect(301, '/en/voiceover-services/voice-for-advertising/'));
+app.get('/en/portfo-en/multimedia-and-www/', (req, res) => res.redirect(301, '/en/voiceover-services/'));
+app.get('/en/portfo-en/phone-answering-systems/', (req, res) => res.redirect(301, '/en/voiceover-services/phone-announcements/'));
+// /en/bank-en/* → /en/voice-bank/ (root, bo subpaths female/male NIE istnieją w obecnej strukturze)
+app.get('/en/bank-en/female-voices/', (req, res) => res.redirect(301, '/en/voice-bank/'));
+app.get('/en/bank-en/male-voices/', (req, res) => res.redirect(301, '/en/voice-bank/'));
+app.get('/en/bank-en/known-and-famous/', (req, res) => res.redirect(301, '/en/voice-bank/'));
+// FAQ - mamy tylko /faq-pl/ (brak EN equivalent), redirect na PL FAQ
+app.get('/en/faq2-en/', (req, res) => res.redirect(301, '/faq-pl/'));
+// Pozostałe EN gaps → /en/ homepage
+app.get('/en/partnership/', (req, res) => res.redirect(301, '/en/'));
+app.get('/en/newsletter-en/', (req, res) => res.redirect(301, '/en/'));
+app.get('/en/add-lector/', (req, res) => res.redirect(301, '/en/'));
+// Old EN news posts → /en/news/ index (UWAGA: native-speakers-wanted i voiceover-recording-for-electronic-brain są celowe 410, nie ruszać; new-functionality-mix-it-yourself jest dodany wcześniej w grupie 410 bo musi byc przed dynamic /en/news/:slug/ route)
+app.get('/en/uncategorized-en/alison-and-juliya-joined-us/', (req, res) => res.redirect(301, '/en/news/'));
 
 // EN catch-all → 404 (zamiast wcześniejszego 302 → /en/, co tworzyło soft-404 i duplikaty homepage EN w indeksie Google)
 app.get('/en/*', (req, res) => {
