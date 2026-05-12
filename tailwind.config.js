@@ -13,7 +13,8 @@ module.exports = {
     extend: {
       colors: {
         dark: { 900: '#1a1d23', 800: '#22262e', 700: '#2a2f38', 600: '#343842' },
-        accent: { DEFAULT: '#ea580c', light: '#f97316', dark: '#c2410c' }
+        accent: { DEFAULT: '#0d9488', light: '#14b8a6', dark: '#0f766e' }
+        // Poprzedni pomarańczowy backup: DEFAULT: '#ea580c', light: '#f97316', dark: '#c2410c'
       }
     }
   },
