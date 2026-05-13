@@ -201,7 +201,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
   <style>html { font-size: 18px; } body, button, input, select, textarea { font-family: 'Dosis', system-ui, -apple-system, sans-serif; }</style>
-  <% if (currentPath === '/en/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
+  <% if (currentPath === '/en/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.bw-backup.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
   <%/* style.css inlined to eliminate render-blocking request */%>
   <style>
@@ -247,6 +247,33 @@ body{background-color:#f7f3ef}
 .kreator-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#ea580c;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:500;z-index:1000;animation:kreator-toast-in .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 @keyframes kreator-toast-in{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @media(max-width:640px){.kreator-card{padding:1.5rem}.kreator-btn-primary,.kreator-btn-secondary{padding:10px 18px;font-size:.9rem}}
+/* Site header transparentny dla /en/ (mirror PL .site-header) */
+.site-header{transition:background .25s ease,box-shadow .25s ease,backdrop-filter .25s ease,border-color .25s ease;background:linear-gradient(to bottom,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 50%,rgba(0,0,0,0) 100%);border:0}
+.site-header .logo-dark{display:none}
+.site-header .logo-light{display:inline-block}
+.site-header .logo-icon-only{display:none}
+.site-header.scrolled{background:rgba(55,65,81,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom-color:rgba(255,255,255,.06);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.site-header.scrolled .logo-dark{display:none}
+.site-header.scrolled .logo-light{display:none}
+.site-header.scrolled .logo-icon-only{display:inline-block}
+.site-header .header-row{height:88px;transition:height .3s ease}
+@media(min-width:768px){.site-header .header-row{height:96px}}
+.site-header.scrolled .header-row{height:56px}
+@media(min-width:768px){.site-header.scrolled .header-row{height:60px}}
+.site-header .nav-link{color:#fff}
+.site-header .nav-link:hover{color:rgba(255,255,255,.7)}
+.site-header .tagline{color:rgba(255,255,255,.85)}
+.site-header .lang-pill{color:#fff;border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.1)}
+.site-header.scrolled .lang-pill{border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.1)}
+.site-header .hamburger-bar{background:#fff}
+.site-header .brand-tagline{overflow:hidden;max-height:24px;opacity:1;white-space:nowrap;transition:max-height .35s ease,opacity .2s ease .05s,margin-top .35s ease}
+.site-header.scrolled .brand-tagline{max-height:0;opacity:0;margin-top:-0.25rem;transition:max-height .35s ease,opacity .15s ease}
+.site-header .brand-icon{transition:transform .35s ease}
+.site-header.scrolled .brand-icon{transform:scale(.85);transform-origin:left center}
+.site-header .nav-item-has-sub:hover>.nav-submenu,
+.site-header .nav-item-has-sub:focus-within>.nav-submenu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.site-header .nav-submenu{opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
+select.field-select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20'><path d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%236b7280' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 1rem center;background-size:14px 14px;padding-right:2.5rem}
   </style>
 </head>
 <body class="text-gray-700 antialiased">
@@ -258,6 +285,101 @@ body{background-color:#f7f3ef}
     ? hreflangPL.replace('https://www.powitania.pl', '')
     : '/';
 %>
+<% if (currentPath === '/en/') { %>
+<%# Homepage EN: transparent->slate-800 header (mirror PL) %>
+<header id="siteHeader" class="site-header fixed top-0 inset-x-0 z-50">
+  <div class="w-full px-3 md:px-5 lg:px-6">
+    <div class="header-row flex items-center justify-between">
+
+      <a href="/en/" class="flex flex-col items-start shrink-0 leading-tight">
+        <span class="brand-icon inline-flex shrink-0">
+          <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="logo-dark h-11 md:h-14 w-auto">
+          <img src="/img/logo-powitania.webp" alt="powitania.pl" class="logo-light h-11 md:h-14 w-auto">
+          <img src="/img/logo-simple.png" alt="powitania.pl" class="logo-icon-only h-11 md:h-14 w-auto">
+        </span>
+        <span class="brand-tagline nav-link text-[0.6rem] md:text-[0.7rem] font-bold tracking-[0.2em] uppercase pl-[2.4rem] md:pl-[3.2rem] -mt-1">Create content. Give it a&nbsp;voice.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
+        <a href="/en/voice-bank/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Voice Bank</a>
+
+        <div class="nav-item-has-sub relative">
+          <button type="button" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+            Voiceover Services
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="nav-submenu absolute left-1/2 -translate-x-1/2 top-full pt-3">
+            <ul class="min-w-[300px] bg-white rounded-md shadow-lg ring-1 ring-black/5 py-2">
+              <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/voiceover-services/film-voiceover/">Film Voiceover</a></li>
+              <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/voiceover-services/voice-for-advertising/">Voice for Advertising</a></li>
+              <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/voiceover-services/phone-announcements/">Phone Announcements</a></li>
+              <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/voiceover-services/audio-guides/">Audio Guides</a></li>
+              <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/remote-sessions/">Remote Sessions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="/en/pricing/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Pricing</a>
+        <a href="/en/news/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">News</a>
+        <a href="/en/contact/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Contact</a>
+
+        <a href="<%= _altPl %>" class="lang-pill inline-flex items-center gap-1.5 border rounded-full px-3 py-1 text-xs font-semibold tracking-wider" rel="alternate" hreflang="pl">
+          PL
+        </a>
+      </nav>
+
+      <button id="navToggle" type="button" class="md:hidden inline-flex flex-col gap-1.5 p-2 -mr-2" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-bar block w-6 h-0.5 rounded"></span>
+        <span class="hamburger-bar block w-6 h-0.5 rounded"></span>
+        <span class="hamburger-bar block w-6 h-0.5 rounded"></span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden pb-6">
+      <div class="bg-white/95 backdrop-blur-md rounded-lg ring-1 ring-black/5 p-2 mt-2">
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/voice-bank/">Voice Bank</a>
+        <details class="group">
+          <summary class="flex items-center justify-between px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded cursor-pointer list-none">
+            <span>Voiceover Services</span>
+            <svg width="12" height="12" viewBox="0 0 20 20" class="transition group-open:rotate-180" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="pl-3 pb-1">
+            <a class="block px-3 py-2 text-sm text-gray-600 hover:text-accent" href="/en/voiceover-services/film-voiceover/">Film Voiceover</a>
+            <a class="block px-3 py-2 text-sm text-gray-600 hover:text-accent" href="/en/voiceover-services/voice-for-advertising/">Voice for Advertising</a>
+            <a class="block px-3 py-2 text-sm text-gray-600 hover:text-accent" href="/en/voiceover-services/phone-announcements/">Phone Announcements</a>
+            <a class="block px-3 py-2 text-sm text-gray-600 hover:text-accent" href="/en/voiceover-services/audio-guides/">Audio Guides</a>
+            <a class="block px-3 py-2 text-sm text-gray-600 hover:text-accent" href="/en/remote-sessions/">Remote Sessions</a>
+          </div>
+        </details>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/pricing/">Pricing</a>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/news/">News</a>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/contact/">Contact</a>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="<%= _altPl %>" rel="alternate" hreflang="pl">PL</a>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+(function(){
+  var hdr=document.getElementById('siteHeader');
+  if(!hdr)return;
+  function onScroll(){if(window.scrollY>50)hdr.classList.add('scrolled');else hdr.classList.remove('scrolled');}
+  onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});
+  var toggle=document.getElementById('navToggle');
+  var menu=document.getElementById('mobileMenu');
+  if(toggle&&menu){
+    toggle.addEventListener('click',function(){
+      var willOpen=menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded',willOpen?'true':'false');
+    });
+  }
+})();
+</script>
+<% } else { %>
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/60 border-b border-stone-200/70 shadow-sm">
   <nav class="w-full max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
     <a href="/en/" class="flex flex-col items-start gap-0">
@@ -312,6 +434,7 @@ body{background-color:#f7f3ef}
     <a href="<%= _altPl %>" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100" rel="alternate" hreflang="pl"><span aria-hidden="true">🇵🇱</span> Polski</a>
   </div>
 </header>
+<% } %>
 <% } %>
 
 <main>
