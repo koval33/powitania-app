@@ -3,7 +3,7 @@
 <!-- Hero -->
 <section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Głos do reklamy</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Głos do reklamy</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
       Zatrudnij najbardziej rozpoznawalnych lektorów i stwórz spot reklamowy, który przyciągnie uwagę słuchaczy. Profesjonalny lektor do reklamy i rozpoznawalny głos to lepsza jakość spotu.
     </p>
@@ -36,9 +36,9 @@
               </div>
             </a>
             <% if (item.sampleUrl) { %>
-            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <% } %>
           </div>
@@ -75,9 +75,9 @@
               </div>
             </a>
             <% if (item.sampleUrl) { %>
-            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Posłuchaj próbki" aria-label="Posłuchaj próbki - <%= v.name %>" class="play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <% } %>
           </div>
@@ -191,7 +191,7 @@
           </div>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="/?start=spots#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Przygotuj tekst spotu</a>
+          <a href="/kreator/?start=spots" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Przygotuj tekst spotu</a>
           <a href="/cennik/" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center transition-colors">Zobacz cennik</a>
         </div>
       </div>
@@ -393,7 +393,7 @@
           <span>Co obejmuje nagranie reklamy w Waszym studiu?</span>
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Standardowy proces: pomoc w doborze lektora z banku głosów lektorskich, weryfikacja scenariusza klienta pod kątem timingu i naturalności wypowiedzi, nagranie w 3+ wersjach interpretacyjnych do wyboru, montaż audio-video (jeśli reklama ma video), mastering w jakości broadcast i dostawa w wymaganych formatach (MP3, WAV, AIFF). Nie zajmujemy się tworzeniem scenariusza ani konceptu reklamy - to dostarcza klient lub jego agencja kreatywna. Jeśli nie masz jeszcze tekstu, możesz skorzystać z naszego <a href="/?start=spots#kreator" class="text-accent hover:underline">Kreatora</a>, który pomoże Ci samodzielnie napisać scenariusz w kilka minut.</div>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Standardowy proces: pomoc w doborze lektora z banku głosów lektorskich, weryfikacja scenariusza klienta pod kątem timingu i naturalności wypowiedzi, nagranie w 3+ wersjach interpretacyjnych do wyboru, montaż audio-video (jeśli reklama ma video), mastering w jakości broadcast i dostawa w wymaganych formatach (MP3, WAV, AIFF). Nie zajmujemy się tworzeniem scenariusza ani konceptu reklamy - to dostarcza klient lub jego agencja kreatywna. Jeśli nie masz jeszcze tekstu, możesz skorzystać z naszego <a href="/kreator/?start=spots" class="text-accent hover:underline">Kreatora</a>, który pomoże Ci samodzielnie napisać scenariusz w kilka minut.</div>
       </details>
 
       <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">

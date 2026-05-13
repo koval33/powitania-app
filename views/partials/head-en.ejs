@@ -198,8 +198,9 @@
   <%/* GTM preconnect removed - GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <style>html { font-size: 18px; } body, button, input, select, textarea { font-family: 'Dosis', system-ui, -apple-system, sans-serif; }</style>
   <% if (currentPath === '/en/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
   <%/* style.css inlined to eliminate render-blocking request */%>
@@ -264,7 +265,7 @@ body{background-color:#f7f3ef}
       <span class="text-[0.6rem] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 pl-[2.4rem] md:pl-[3.2rem] -mt-0.5">Create content. Give it a voice.</span>
     </a>
 
-    <div class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
+    <div class="hidden md:flex items-center gap-7 text-base lg:text-lg font-semibold uppercase tracking-wide">
       <a href="/en/voice-bank/" class="hover:text-accent transition-colors <%= currentPath === '/en/voice-bank/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Voice Bank</a>
       <div class="relative nav-dropdown">
         <a href="/en/voiceover-services/" class="hover:text-accent transition-colors flex items-center gap-1 <%= currentPath.startsWith('/en/voiceover-services') || currentPath === '/en/remote-sessions/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">

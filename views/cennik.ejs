@@ -3,7 +3,7 @@
 <!-- HERO -->
 <section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Cennik nagrań lektorskich i&nbsp;usług lektorskich</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Cennik nagrań lektorskich i&nbsp;usług lektorskich</h1>
     <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
       Cennik Powitania.pl - przejrzyste stawki bez ukrytych dopłat. Lektor reklamowy od 300&nbsp;zł, narracja od 340&nbsp;zł/A4, IVR od 380&nbsp;zł netto. Współpracujemy z&nbsp;<%= voiceCount %> lektorami w&nbsp;30+ językach, realizacja 24-48h. Wycena online w&nbsp;30 minut.
     </p>
@@ -195,8 +195,8 @@
       <a href="/bank-glosow/" class="inline-flex items-center justify-center bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
         Wybierz lektora i zamów
       </a>
-      <a href="/?start=creator#kreator" class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors border border-gray-200">
-        Otwórz kreator wyceny
+      <a href="/kreator/?start=creator" class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors border border-gray-200">
+        Otwórz kreator tekstu
       </a>
     </div>
   </div>
@@ -209,7 +209,7 @@
     <h3 class="text-lg font-semibold text-gray-800 mb-2">Ile kosztuje lektor w&nbsp;2026 roku?</h3>
     <p><strong>Profesjonalny lektor w&nbsp;Polsce kosztuje od 300&nbsp;zł netto za spot reklamowy lokalny do 2200&nbsp;zł netto za reklamę TV ogólnopolską</strong> (12-miesięczna licencja w&nbsp;cenie). Stawka za 1&nbsp;stronę narracji filmowej (1800 znaków) to od 340&nbsp;zł netto. Zapowiedź telefoniczna IVR do 100 słów: od 380&nbsp;zł netto. Audiobook: od 70&nbsp;zł za stronę przy zamówieniach powyżej 50 stron. Konkretne stawki dla każdego rodzaju nagrania znajdziesz w&nbsp;tabelach powyżej.</p>
     <p><strong>Ceny nagrań lektorskich zależą od kilku czynników: rodzaju produkcji, długości tekstu oraz wybranego lektora.</strong> Inaczej wyceniamy krótkie <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="text-accent hover:text-accent-light">zapowiedzi telefoniczne</a>, a&nbsp;inaczej rozbudowane narracje filmowe czy audiobooki. Lektorzy z&nbsp;kategorii „Znani i&nbsp;lubiani" - rozpoznawalni aktorzy głosowi znani z&nbsp;radia i&nbsp;telewizji - mają wyższe stawki, co wynika z&nbsp;ich doświadczenia i&nbsp;rozpoznawalności głosu.</p>
-    <p>Podane w&nbsp;cenniku kwoty to stawki minimalne netto. Dokładną wycenę można uzyskać bezpośrednio na profilu wybranego lektora w&nbsp;naszym <a href="/bank-glosow/" class="text-accent hover:text-accent-light">banku głosów</a> - wystarczy wkleić tekst do nagrania, a&nbsp;system automatycznie wyliczy cenę. Można również skorzystać z&nbsp;<a href="/?start=creator#kreator" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a>, który pomoże przygotować profesjonalny scenariusz i&nbsp;od razu przejść do wyceny.</p>
+    <p>Podane w&nbsp;cenniku kwoty to stawki minimalne netto. Dokładną wycenę można uzyskać bezpośrednio na profilu wybranego lektora w&nbsp;naszym <a href="/bank-glosow/" class="text-accent hover:text-accent-light">banku głosów</a> - wystarczy wkleić tekst do nagrania, a&nbsp;system automatycznie wyliczy cenę. Można również skorzystać z&nbsp;<a href="/kreator/?start=creator" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a>, który pomoże przygotować profesjonalny scenariusz i&nbsp;od razu przejść do wyceny.</p>
     <p>W cenę nagrania lektorskiego wliczona jest realizacja w&nbsp;profesjonalnym studiu nagraniowym, obróbka dźwięku oraz dostarczenie gotowego pliku audio w&nbsp;wybranym formacie (WAV, MP3). W&nbsp;przypadku reklam radiowych i&nbsp;telewizyjnych stawka obejmuje również licencję na emisję przez okres do 12 miesięcy.</p>
     <p>Standardowy czas realizacji to 24-48 godzin roboczych. Dla pilnych projektów oferujemy <a href="/nagranie-ekspresowe/" class="text-accent hover:text-accent-light">nagrania ekspresowe</a> z&nbsp;realizacją nawet w&nbsp;dniu zlecenia. Stałym Klientom oferujemy indywidualne warunki cenowe - <a href="/kontakt/" class="text-accent hover:text-accent-light">skontaktuj się z&nbsp;nami</a>, aby omówić szczegóły współpracy.</p>
   </div>
@@ -335,7 +335,7 @@
           <span>Jak zamówić nagranie?</span>
           <svg class="w-5 h-5 flex-shrink-0 ml-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
         </summary>
-        <div class="px-6 pb-5 text-gray-600 leading-relaxed">Najszybciej: wejdź do <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a>, wybierz lektora i wklej tekst do formularza wyceny — system automatycznie wyliczy cenę. Możesz też skorzystać z <a href="/?start=creator#kreator" class="text-accent hover:underline">Kreatora Treści Lektorskich</a>, który pomoże przygotować profesjonalny scenariusz, albo <a href="/kontakt/" class="text-accent hover:underline">skontaktować się z&nbsp;nami</a> bezpośrednio — odpowiadamy w ciągu 2 godzin.</div>
+        <div class="px-6 pb-5 text-gray-600 leading-relaxed">Najszybciej: wejdź do <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a>, wybierz lektora i wklej tekst do formularza wyceny — system automatycznie wyliczy cenę. Możesz też skorzystać z <a href="/kreator/?start=creator" class="text-accent hover:underline">Kreatora Treści Lektorskich</a>, który pomoże przygotować profesjonalny scenariusz, albo <a href="/kontakt/" class="text-accent hover:underline">skontaktować się z&nbsp;nami</a> bezpośrednio — odpowiadamy w ciągu 2 godzin.</div>
       </details>
 
     </div>

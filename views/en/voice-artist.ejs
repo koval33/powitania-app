@@ -103,9 +103,9 @@
           <% allAudio.forEach(function(sample, idx) { %>
           <div class="sample-row bg-white shadow-sm rounded-lg border border-gray-200 overflow-hidden">
             <div class="flex items-center gap-3 p-3">
-              <button class="sample-play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
-                <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <button class="sample-play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors" data-audio="<%= sample.url %>">
+                <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
               </button>
               <div class="flex-1 min-w-0">
                 <div class="text-sm text-gray-900 font-medium truncate mb-1"><%= sample.name || ('Sample ' + (idx + 1)) %></div>
@@ -260,7 +260,7 @@
 
         <!-- INLINE: Quote for recording -->
         <% if (!lektor.hidePrice) { %>
-        <div id="wycena" class="mt-6">
+        <div id="wycena" class="mt-6 scroll-mt-[10rem]">
           <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
             <h2 class="text-2xl font-bold text-gray-900 mb-1">
               Get a quote - <%= lektor.name %>
@@ -910,6 +910,20 @@
 </style>
 
 <script>
+// --- Re-scroll do #wycena po pełnym załadowaniu (handluje async layout shift) ---
+(function() {
+  if (window.location.hash !== '#wycena') return;
+  function rescroll() {
+    var el = document.getElementById('wycena');
+    if (!el) return;
+    var header = document.querySelector('header');
+    var headerH = header ? header.offsetHeight : 96;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - headerH - 24;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+  window.addEventListener('load', function() { setTimeout(rescroll, 100); });
+})();
+
 // --- Custom audio player ---
 var currentBtn = null;
 var currentAudioSrc = '';
@@ -2203,7 +2217,7 @@ function goToKreatorWithLektor() {
   var ctx = { lektorName: LEKTOR_NAME, lektorId: LEKTOR_ID, returnUrl: window.location.pathname, timestamp: Date.now(), skipWelcome: true };
   try { sessionStorage.setItem('kreatorContext', JSON.stringify(ctx)); } catch(e) {}
   closeOrderModal();
-  window.location.href = '/en/#kreator';
+  window.location.href = '/en/kreator/';
 }
 
 // --- Wizard cenowy (kontekst z kreatora) ---
@@ -2406,7 +2420,7 @@ function orderWithContext() {
     ctx.lektorId = LEKTOR_ID;
     sessionStorage.setItem('kreatorContext', JSON.stringify(ctx));
   } catch(e) {}
-  window.location.href = '/en/?action=order&lektor=' + LEKTOR_ID + '#kreator';
+  window.location.href = '/en/kreator/?action=order&lektor=' + LEKTOR_ID;
 }
 
 function showWizardInquiry() {

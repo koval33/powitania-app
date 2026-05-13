@@ -3,7 +3,7 @@
 <!-- Hero -->
 <section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voice for Advertising</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Voice for Advertising</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
       Hire the most recognisable voice artists and create an advertising spot that captures your audience's attention. A professional voice and a distinctive performance mean a higher-quality commercial.
     </p>
@@ -36,9 +36,9 @@
               </div>
             </a>
             <% if (item.sampleUrl) { %>
-            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <% } %>
           </div>
@@ -75,9 +75,9 @@
               </div>
             </a>
             <% if (item.sampleUrl) { %>
-            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button type="button" onclick="playSample(this, '<%= item.sampleUrl %>')" title="Listen to sample" aria-label="Listen to sample - <%= v.name %>" class="play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors">
+              <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <% } %>
           </div>
@@ -187,7 +187,7 @@
           </div>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="/en/#kreator" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Prepare your spot script</a>
+          <a href="/en/kreator/" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors">Prepare your spot script</a>
           <a href="/en/pricing/" class="border border-gray-200 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center transition-colors">View pricing</a>
         </div>
       </div>

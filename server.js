@@ -166,6 +166,7 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/audioprzewodniki/': '/en/voiceover-services/audio-guides/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
+    '/kreator/': '/en/kreator/',
     '/aktualnosci-pl/': '/en/news/',
     '/polityka-prywatnosci/': '/en/privacy-policy/'
   };
@@ -719,6 +720,18 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
   });
 });
 
+// Kreator tekstów lektorskich (standalone)
+app.get('/kreator/', (req, res) => {
+  res.render('kreator', {
+    title: 'Kreator tekstów lektorskich - przygotuj skrypt w kilka minut | powitania.pl',
+    description: 'Kreator treści lektorskich - przygotuj profesjonalny tekst do nagrania w kilka minut. Spot reklamowy, IVR, narracja, social media. Wybierz typ, opisz potrzebę, dostań warianty dopasowane do timingu.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Kreator tekstów lektorskich', url: '/kreator/' }
+    ]
+  });
+});
+
 // O firmie
 app.get('/o-firmie/', (req, res) => {
   res.render('o-firmie', {
@@ -1055,6 +1068,18 @@ app.get('/en/remote-sessions/', (req, res) => {
   });
 });
 
+// EN Kreator (standalone)
+app.get('/en/kreator/', (req, res) => {
+  res.render('en/kreator', {
+    title: 'Voiceover Script Creator - prepare your script in minutes | Powitania.pl',
+    description: 'Voiceover script creator - prepare a professional script in minutes. Ad spot, IVR, narration, social media. Choose type, describe your need, get text variants tailored to timing.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Voiceover Script Creator', url: '/en/kreator/' }
+    ]
+  });
+});
+
 app.get('/en/express-recording/', (req, res) => {
   const voices = loadVoices();
   // Express +50% w PLN, potem konwersja na EUR (zaokraglenie w gore do 5 EUR)
@@ -1323,6 +1348,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/nagrania-lektorskie/audioprzewodniki/', priority: '0.8', changefreq: 'monthly' },
     { url: '/sesje-zdalne-nagrania-lektorskie-online/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagranie-ekspresowe/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/kreator/', priority: '0.7', changefreq: 'monthly' },
     { url: '/cennik/', priority: '0.7', changefreq: 'monthly' },
     { url: '/kontakt/', priority: '0.7', changefreq: 'monthly' },
     { url: '/opinie/', priority: '0.7', changefreq: 'monthly' },
@@ -1342,6 +1368,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/voiceover-services/audio-guides/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/remote-sessions/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/express-recording/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/kreator/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },

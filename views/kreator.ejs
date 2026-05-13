@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+
+<!-- Hero -->
+<section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Kreator tekstów lektorskich</h1>
+    <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Nie masz gotowego skryptu? Przygotuj profesjonalny tekst do nagrania lektorskiego w&nbsp;kilka minut. Wybierz typ produkcji, opisz potrzebę - kreator zaproponuje warianty tekstu dopasowane do timingu i&nbsp;stylu.</p>
+  </div>
+</section>
+
+<!-- Kreator widget -->
+<section id="kreator" class="py-10 md:py-14 scroll-mt-[6rem]">
+  <div class="max-w-4xl mx-auto px-4">
+    <%- include('partials/kreator') %>
+  </div>
+</section>
+
+<!-- CTA do banku głosów -->
+<section class="py-12 bg-stone-100/80 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Masz już tekst?</h2>
+    <p class="text-gray-500 mb-6 max-w-2xl mx-auto leading-relaxed">Przejdź do banku głosów, wybierz lektora i&nbsp;zamów nagranie. Realizacja w&nbsp;24-48h, ceny od&nbsp;<%= typeof minPriceIvr !== 'undefined' ? minPriceIvr : '70' %>&nbsp;zł.</p>
+    <a href="/bank-glosow/" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+      Przejdź do banku głosów
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<%- include('partials/foot') %>

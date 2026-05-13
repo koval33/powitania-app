@@ -211,8 +211,9 @@
   <%/* GTM preconnect removed - GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <style>html { font-size: 18px; } body, button, input, select, textarea { font-family: 'Dosis', system-ui, -apple-system, sans-serif; }</style>
   <% if (currentPath === '/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
   <%/* style.css inlined to eliminate render-blocking request */%>
@@ -321,10 +322,10 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
       </a>
 
       <nav class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-        <a href="/bank-glosow/" class="nav-link text-sm lg:text-base font-medium tracking-wide uppercase">Bank głosów</a>
+        <a href="/bank-glosow/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Bank głosów</a>
 
         <div class="nav-item-has-sub relative">
-          <button type="button" class="nav-link text-sm lg:text-base font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+          <button type="button" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
             Nagrania lektorskie
             <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -341,9 +342,9 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
           </div>
         </div>
 
-        <a href="/cennik/" class="nav-link text-sm lg:text-base font-medium tracking-wide uppercase">Cennik</a>
-        <a href="/opinie/" class="nav-link text-sm lg:text-base font-medium tracking-wide uppercase">Opinie</a>
-        <a href="/kontakt/" class="nav-link text-sm lg:text-base font-medium tracking-wide uppercase">Kontakt</a>
+        <a href="/cennik/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Cennik</a>
+        <a href="/opinie/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Opinie</a>
+        <a href="/kontakt/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Kontakt</a>
 
         <a href="<%= _altEn %>" class="lang-pill inline-flex items-center gap-1.5 border rounded-full px-3 py-1 text-xs font-semibold tracking-wider" rel="alternate" hreflang="en">
           EN
@@ -408,7 +409,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
       <span class="text-[0.6rem] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 pl-[2.4rem] md:pl-[3.2rem] -mt-0.5">Twórz treści. Nadaj im głos.</span>
     </a>
 
-    <div class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
+    <div class="hidden md:flex items-center gap-7 text-base lg:text-lg font-semibold uppercase tracking-wide">
       <a href="/bank-glosow/" class="hover:text-accent transition-colors <%= currentPath === '/bank-glosow/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Bank głosów</a>
       <div class="relative nav-dropdown">
         <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors flex items-center gap-1 <%= currentPath.startsWith('/nagrania-lektorskie') || currentPath === '/sesje-zdalne-nagrania-lektorskie-online/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">

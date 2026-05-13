@@ -4,9 +4,9 @@
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <!-- Tytuł -->
   <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
     <% if (typeof genderSegment === 'undefined') { %>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Skorzystaj z&nbsp;filtrów, odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } else { %>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } %>
@@ -134,7 +134,10 @@
 <div class="max-w-7xl mx-auto px-4 mt-6 pb-16 flex gap-6 items-start">
 
   <!-- LEWY PANEL FILTRÓW (desktop) -->
-  <aside id="filters-sidebar" class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0 sticky top-20 bg-white rounded-xl border border-gray-100 shadow-sm p-4">
+  <aside class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0">
+
+    <!-- Karta filtrów (sticky) -->
+    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky top-20">
 
     <!-- Szukaj -->
     <div class="relative">
@@ -233,6 +236,24 @@
     <!-- Reset -->
     <button onclick="resetFilters()" class="text-xs text-gray-400 hover:text-accent transition-colors text-left">↺ Wyczyść filtry</button>
 
+    <!-- Kontakt - wewnątrz karty filtru, separator border-t -->
+    <div class="border-t border-gray-100 pt-4 -mt-1 text-gray-700">
+      <p class="text-sm font-semibold mb-3 leading-snug text-gray-900">Nie wiesz od czego zacząć?<br>Zadzwoń / napisz.</p>
+      <div class="space-y-2.5 text-sm">
+        <a href="tel:+48605491069" class="flex items-center gap-2.5 hover:text-accent transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+          <span>605 491 069</span>
+        </a>
+        <a href="mailto:biuro@powitania.pl" class="flex items-center gap-2.5 hover:text-accent transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span class="break-all">biuro@powitania.pl</span>
+        </a>
+      </div>
+    </div>
+
+    </div>
+    <!-- /Karta filtrów -->
+
   </aside>
 
   <!-- PRAWA TREŚĆ -->
@@ -260,15 +281,29 @@
     <p class="text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
 
     <style>
-      /* Desktop: wrapper niewidoczny - player i przyciski są bezpośrednimi dziećmi flex */
+      /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
+      /* Photo flush z karta (bez paddingu/border-radius), pozostale strefy maja swoj padding */
+      .vc-inner {
+        display: grid !important;
+        grid-template-columns: 140px 1fr 150px !important;
+        grid-template-rows: auto auto !important;
+        column-gap: 20px !important;
+        row-gap: 6px !important;
+        padding: 0 16px 0 0 !important;
+        align-items: stretch !important;
+      }
+      .vc-photo {
+        grid-column: 1; grid-row: 1 / -1;
+        width: 140px !important;
+        height: auto !important;
+        align-self: stretch !important;
+        border-radius: 0 !important;
+      }
+      .vc-photo img { width: 100% !important; height: 100% !important; min-height: 140px; }
       .vc-player-wrap { display: contents; }
-      /* Stała szerokość kolumny z imieniem - zapewnia jednolitą szerokość playerów */
-      .vc-info { width: 170px !important; flex-shrink: 0; }
-      /* Stała szerokość kolumny CTA - player ma wtedy stałą długość niezależnie ile przycisków jest w środku */
-      .vc-cta { width: 140px !important; flex-shrink: 0; }
-      /* Większe zdjęcie, mniejszy padding karty, wyrównany odstęp */
-      .vc-photo { width: 106px !important; height: 106px !important; }
-      .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
+      .vc-player-row { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding-top: 16px; }
+      .vc-info { grid-column: 2; grid-row: 2; min-width: 0; align-self: end; padding-bottom: 16px; }
+      .vc-cta { grid-column: 3; grid-row: 1 / -1; align-self: center; padding: 16px 0; }
       /* Elementy mobile-only - ukryte domyślnie (desktop pokazuje vc-badge-inline w vc-info) */
       .vc-badge-mobile { display: none; }
       /* Mobile: 3-strefowy uklad - (1) zdjecie+info, (2) player full-width, (3) CTA+wiecej */
@@ -355,8 +390,8 @@
 
         <div class="vc-inner flex items-center gap-4 px-5 py-4">
 
-          <!-- Zdjęcie (link do profilu) -->
-          <a href="<%= v.profileUrl %>" class="vc-photo flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
+          <!-- Zdjęcie (link do profilu) - flush z karta, bez border-radius (karta ma overflow-hidden) -->
+          <a href="<%= v.profileUrl %>" class="vc-photo flex-shrink-0 w-20 h-20 overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -366,39 +401,31 @@
             <% } %>
           </a>
 
-          <!-- Imię + meta (link do profilu) -->
-          <a href="<%= v.profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
-            <h3 class="font-bold text-gray-900 tracking-tight truncate leading-tight" style="font-size: <%= v.name.length > 17 ? '13px' : '15px' %>"><%= v.name %></h3>
-            <div class="flex items-center gap-1.5 mt-2 flex-wrap">
-              <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
-              <% v.languages.slice(0,1).forEach(function(lang) { %>
-                <span class="text-xs text-gray-400">&bull;</span>
-                <span class="text-xs text-gray-500"><%= lang %></span>
-              <% }); %>
+          <!-- Imię + meta (link do profilu) - row 2 grid, pod player -->
+          <a href="<%= v.profileUrl %>" class="vc-info min-w-0 block hover:text-accent transition-colors">
+            <div class="flex items-baseline gap-2.5 flex-wrap">
+              <h3 class="font-light text-gray-900 tracking-tight leading-tight text-2xl"><%= v.name %></h3>
+              <% if (v.age) { %><span class="text-sm text-gray-500"><%= v.age %></span><% } %>
             </div>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
-              <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-gray-500">od <strong class="text-gray-700"><%= v.prices.ivr_100 %> zł</strong></span>
-              <% } else if (v.hidePrice) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-yellow-600">wycena indyw.</span>
-              <% } %>
+            <div class="mt-1.5 flex items-center justify-between gap-3 flex-wrap">
+              <div class="text-sm text-gray-500">
+                Nagrywa w&nbsp;językach: <span class="text-accent font-medium uppercase tracking-wide"><%= v.languages.slice(0,3).join(', ') %></span>
+              </div>
+              <div class="text-sm text-accent font-medium flex items-center gap-2 whitespace-nowrap">
+                <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+                  <span>od <%= v.prices.ivr_100 %>&nbsp;PLN</span>
+                  <% if (v.turnaround) { %>
+                    <span class="text-gray-300">|</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
+                    <span><%= v.turnaround %></span>
+                  <% } %>
+                <% } else if (v.hidePrice) { %>
+                  <span class="text-yellow-600">wycena indywidualna</span>
+                <% } %>
+              </div>
             </div>
-            <% if (v.famous) { %>
-              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
-            <% } else if (v.native) { %>
-              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
-            <% } %>
           </a>
 
-          <!-- Badge pod zdjeciem (mobile-only) - sibling vc-info, poza linkiem -->
-          <% if (v.famous) { %>
-            <div class="vc-badge-mobile"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Znany głos</span></div>
-          <% } else if (v.native) { %>
-            <div class="vc-badge-mobile"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
-          <% } %>
 
           <!-- Player + przyciski - na desktop: display:contents (niewidoczny wrapper), na mobile: wiersz -->
           <%
@@ -408,26 +435,50 @@
             var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
           %>
           <div class="vc-player-wrap">
-            <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
-              <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name %></div>
-              <div class="flex items-center gap-2">
-                <button class="play-btn w-8 h-8 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
-                  <svg class="play-icon w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <svg class="pause-icon w-3.5 h-3.5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </button>
-                <div class="flex-1 min-w-0">
-                  <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
-                    <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
-                  </div>
-                  <div class="flex justify-between mt-0.5">
-                    <span class="audio-time text-[10px] text-gray-400">0:00</span>
-                    <span class="audio-duration text-[10px] text-gray-400">--:--</span>
-                  </div>
-                </div>
-                <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-                </a>
+            <div class="player-box vc-player-row cursor-pointer">
+              <%# Play - czarne outline 24x24 (mniejszy ok 25%) z umiarkowanym trojkatem (12px, viewBox standardowy) %>
+              <button class="play-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>" title="Odtwórz">
+                <svg class="play-icon w-3.5 h-3.5 text-gray-900 ml-px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-3.5 h-3.5 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <%# Stop - bialy 24x24 z accent obreczy + accent kwadratem 12px %>
+              <button type="button" class="stop-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Zatrzymaj">
+                <svg class="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+              </button>
+              <%# Time display - 00:00 / 00:33 %>
+              <div class="text-xs text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
+                <span class="audio-time">00:00</span>
+                <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
+              <%# Waveform - continuous path (spektrum dzwiekowe) - symetryczne gora/dol %>
+              <%
+                var _hashStr = function(s){var h=0;for(var i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return Math.abs(h);};
+                var _seedRnd = function(seed, i){var x=Math.sin(seed*9999+i*1.37)*10000;return x-Math.floor(x);};
+                var _seed = _hashStr(v.id || v.name);
+                var _waveBars = 80;
+                var _midY = 18; // pol wysokosci viewBox (36/2)
+                var _topPts = [];
+                var _botPts = [];
+                for(var _i=0; _i<_waveBars; _i++) {
+                  var _h = 4 + Math.round(_seedRnd(_seed, _i) * 26);
+                  var _x = (_i * 100 / (_waveBars - 1)).toFixed(2);
+                  _topPts.push(_x + ',' + (_midY - _h/2).toFixed(2));
+                  _botPts.push(_x + ',' + (_midY + _h/2).toFixed(2));
+                }
+                // Path: M start L top points L bottom (reversed) Z
+                var _pathD = 'M ' + _topPts[0] + ' L ' + _topPts.join(' L ') + ' L ' + _botPts.reverse().join(' L ') + ' Z';
+              %>
+              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer">
+                <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="<%= _pathD %>" fill="currentColor"/>
+                </svg>
+                <%# Cienka pionowa kreska - progress indicator (2px wide, centered via translateX) %>
+                <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left: 0%; width: 1px; background-color: rgba(107,114,128,0.8); transform: translateX(-0.5px); transition: left 100ms linear;"></div>
+              </div>
+              <%# Download MP3 - stara ikonka (strzalka w dol, gray) %>
+              <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              </a>
             </div>
 
             <!-- Akcje: premium (hidePrice) → tylko Zapytaj prowadzący do formularza na profilu; pozostali → Wyceń (primary) + Zapytaj (secondary, modal) -->
@@ -438,7 +489,7 @@
                   Zapytaj
                 </a>
               <% } else { %>
-                <a href="<%= v.profileUrl %>" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
+                <a href="<%= v.profileUrl %>#wycena" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h4m3 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   Wyceń
                   <svg class="w-3.5 h-3.5 -mr-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
@@ -493,7 +544,7 @@
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Szukasz lektora? Sprawdź, jakie masz możliwości!</h3>
     <p>Bank głosów lektorskich posiada rozbudowany filtr, co ułatwia wyszukanie właściwego lektora i&nbsp;odsłuchanie jego głosu. Możecie Państwo wyszukiwać wpisując imię lektora, wybierając płeć, wiek głosu lub grupę cenową. Bardzo przydatną funkcją filtra jest możliwość wyszukiwania lektorów nagrywających w&nbsp;określonych językach. Współpracujemy z&nbsp;lektorami z&nbsp;całego świata, którzy posiadają ogromne doświadczenie - do wyboru mają Państwo ponad 30 języków. Bank lektorów jest katalogiem otwartym, w&nbsp;każdym miesiącu baza głosów jest poszerzana o&nbsp;kilka nowych profili lektorskich.</p>
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Wysłuchaj próbek w banku głosów lektorskich</h3>
-    <p>W podstawowym widoku banku głosów można odsłuchać charakterystyczną próbkę głosową każdego lektora. Klikając „Oblicz koszt" przechodzimy do profilu lektora, gdzie dostępna jest charakterystyka opisowa, więcej próbek nagraniowych oraz kalkulator wyceny - wystarczy wkleić tekst lub wybrać rodzaj produkcji, a&nbsp;system automatycznie przedstawi cenę i&nbsp;umożliwi złożenie zamówienia. Przycisk „Zapytaj" pozwala od razu wysłać zapytanie dotyczące wybranego lektora. Można również skorzystać z&nbsp;<a href="/#kreator" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a> na stronie głównej, który pomoże przygotować profesjonalny tekst, a&nbsp;następnie przekieruje do banku głosów z&nbsp;gotowym scenariuszem.</p>
+    <p>W podstawowym widoku banku głosów można odsłuchać charakterystyczną próbkę głosową każdego lektora. Klikając „Oblicz koszt" przechodzimy do profilu lektora, gdzie dostępna jest charakterystyka opisowa, więcej próbek nagraniowych oraz kalkulator wyceny - wystarczy wkleić tekst lub wybrać rodzaj produkcji, a&nbsp;system automatycznie przedstawi cenę i&nbsp;umożliwi złożenie zamówienia. Przycisk „Zapytaj" pozwala od razu wysłać zapytanie dotyczące wybranego lektora. Można również skorzystać z&nbsp;<a href="/kreator/" class="text-accent hover:text-accent-light">Kreatora Treści Lektorskich</a> na stronie głównej, który pomoże przygotować profesjonalny tekst, a&nbsp;następnie przekieruje do banku głosów z&nbsp;gotowym scenariuszem.</p>
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Baza lektorów: znani i lubiani - bank głosów Warszawa</h3>
     <p>Jeśli poszukują Państwo najbardziej doświadczonych i&nbsp;rozpoznawalnych głosów lektorskich, zapraszamy do skorzystania z&nbsp;filtra „Znani i&nbsp;lubiani". Do Państwa dyspozycji są głosy lektorów takich jak Jacek Rozenek, Łukasz Nowicki, Stanisław Olejniczak, Andrzej Ferenc, Jacek Brzostyński i&nbsp;wiele innych prestiżowych głosów.</p>
     <p>Bank głosów lektorskich zawiera przykładowe nagrania lektorskie jak również autorskie podkłady muzyczne. Zachęcamy do realizacji wszelkiego rodzaju nagrań, w&nbsp;których wykorzystane będą nasze nagrania lektorskie. Nasza baza pozwoli Państwu dobrać głos lektorski do każdego projektu.</p>
@@ -591,7 +642,7 @@
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Nie możesz się zdecydować?</h2>
     <p class="text-gray-500 mb-6">Opisz swój projekt, a pomożemy dobrać idealny głos.</p>
     <a href="/kontakt/" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Zapytaj o lektora</a>
-    <p class="text-gray-500 text-sm mt-3">lub <a href="/?start=creator#kreator" class="text-accent hover:text-accent-light font-medium">stwórz tekst w kreatorze</a></p>
+    <p class="text-gray-500 text-sm mt-3">lub <a href="/kreator/?start=creator" class="text-accent hover:text-accent-light font-medium">stwórz tekst w kreatorze</a></p>
   </div>
 </section>
 
@@ -610,8 +661,8 @@
     currentBtn.querySelector('.pause-icon').classList.add('hidden');
     var oldRow = currentBtn.closest('.player-box');
     if (oldRow) {
-      oldRow.querySelector('.audio-bar').style.width = '0%';
-      oldRow.querySelector('.audio-time').textContent = '0:00';
+      oldRow.querySelector('.audio-bar').style.left = '0%';
+      oldRow.querySelector('.audio-time').textContent = '00:00';
     }
   }
 
@@ -629,7 +680,7 @@
       var row = currentBtn.closest('.player-box');
       if (!row) return;
       var pct = (el.currentTime / el.duration) * 100;
-      row.querySelector('.audio-bar').style.width = pct + '%';
+      row.querySelector('.audio-bar').style.left = pct + '%';
       row.querySelector('.audio-time').textContent = formatTime(el.currentTime);
     });
     el.addEventListener('loadedmetadata', function() {
@@ -692,6 +743,21 @@
     card.querySelectorAll('.play-btn').forEach(function(btn) {
       initAudioPlayer(btn);
     });
+    // Init stop buttons - reset audio do 0:00 + pauza
+    card.querySelectorAll('.stop-btn').forEach(function(stopBtn) {
+      stopBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var audio = document.getElementById('shared-audio-el');
+        if (!audio) return;
+        // Tylko reset jeśli ten card jest aktywny
+        var cardPlayBtn = card.querySelector('.play-btn');
+        if (currentBtn !== cardPlayBtn) return;
+        audio.pause();
+        audio.currentTime = 0;
+        resetCurrentBtn();
+        currentBtn = null;
+      });
+    });
     // Klik w cały player box → play/pause (seek jeśli na progress bar)
     card.querySelectorAll('.player-box').forEach(function(playerBox) {
       playerBox.addEventListener('click', function(e) {
@@ -721,7 +787,7 @@
   function formatTime(s) {
     var m = Math.floor(s / 60);
     var sec = Math.floor(s % 60);
-    return m + ':' + (sec < 10 ? '0' : '') + sec;
+    return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
   }
 
   // --- Pagination ---

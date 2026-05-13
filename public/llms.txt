@@ -27,6 +27,7 @@
 ## Zasoby
 
 - [Bank głosów](https://www.powitania.pl/bank-glosow/): Pełna baza 232 lektorów z próbkami audio - możliwość filtrowania po języku, płci, stylu głosu
+- [Kreator tekstów lektorskich](https://www.powitania.pl/kreator/): Narzędzie do przygotowania profesjonalnego tekstu do nagrania w kilka minut - spot reklamowy, IVR, narracja, social media. Wybierz typ, opisz potrzebę, dostań warianty dopasowane do timingu
 - [Opinie klientów](https://www.powitania.pl/opinie/): 147 zweryfikowanych opinii od klientów
 - [FAQ](https://www.powitania.pl/faq-pl/): Najczęściej zadawane pytania o nagrania lektorskie
 - [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (62 artykuły)
@@ -39,6 +40,7 @@ Powitania.pl is also available in English for international clients:
 
 - [Homepage (EN)](https://www.powitania.pl/en/): Overview of voiceover services with AI Script Creator tool
 - [Voice Bank (EN)](https://www.powitania.pl/en/voice-bank/): Browse 232 voice artists with audio samples - filter by language, gender, style
+- [Voiceover Script Creator (EN)](https://www.powitania.pl/en/kreator/): Tool to prepare a professional voiceover script in minutes - ad spot, IVR, narration, social media. Choose type, describe your need, get text variants tailored to timing
 - [Voice Artist Profiles (EN)](https://www.powitania.pl/en/voice-artists/{slug}/): Individual voice artist profile pages with audio samples, pricing, and order forms - 232 profiles available
 - [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services - commercials, IVR, audiobooks, film, e-learning
 - [Voice for Advertising (EN)](https://www.powitania.pl/en/voiceover-services/voice-for-advertising/): Professional voiceover for radio, TV, and online ads

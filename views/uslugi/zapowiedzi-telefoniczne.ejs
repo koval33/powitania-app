@@ -10,7 +10,7 @@
       <span class="mx-2 text-gray-300">›</span>
       <span class="text-gray-700">Zapowiedzi telefoniczne</span>
     </nav>
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Zapowiedzi telefoniczne i&nbsp;nagrania do&nbsp;central IVR</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Zapowiedzi telefoniczne i&nbsp;nagrania do&nbsp;central IVR</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
       Zapowiedzi telefoniczne i&nbsp;nagrania lektorskie do&nbsp;central telefonicznych - od&nbsp;pojedynczego komunikatu powitalnego po&nbsp;pełne drzewo IVR. Współpracujemy z&nbsp;systemami Slican, Platan, Asterisk, 3CX i&nbsp;wszystkimi popularnymi centralami VoIP. <%= voiceCount %>&nbsp;lektorów, realizacja 24-48h, gotowy plik w&nbsp;wymaganym formacie (WAV,&nbsp;MP3,&nbsp;GSM).
     </p>
@@ -97,9 +97,9 @@
           </div>
           <div class="text-xs text-gray-400 mb-2"><%= v.sampleName %></div>
           <div class="flex items-center gap-3">
-            <button class="ivr-play-btn w-10 h-10 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
-              <svg class="play-icon w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="pause-icon w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button class="ivr-play-btn w-9 h-9 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors" data-audio="<%= v.audio %>">
+              <svg class="play-icon w-4 h-4 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-4 h-4 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <div class="flex-1">
               <div class="ivr-audio-progress w-full h-1.5 bg-gray-100 rounded-full overflow-hidden cursor-pointer">

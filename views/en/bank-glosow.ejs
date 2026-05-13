@@ -3,7 +3,7 @@
 <!-- HERO -->
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">Voice Bank</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Voice Bank</h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> professional voice actors in 30+ languages - experienced voice actors, radio presenters, and voices of renowned TV stations. Use the filters, listen to samples, and find the perfect voice for your project.</p>
   </div>
 </section>
@@ -105,7 +105,10 @@
 <div class="max-w-7xl mx-auto px-4 mt-6 pb-16 flex gap-6 items-start">
 
   <!-- LEWY PANEL FILTRÓW (desktop) -->
-  <aside id="filters-sidebar" class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0 sticky top-20 bg-white rounded-xl border border-gray-100 shadow-sm p-4">
+  <aside class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0">
+
+    <!-- Filter card (sticky) -->
+    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky top-20">
 
     <!-- Search -->
     <div class="relative">
@@ -202,6 +205,24 @@
     <!-- Reset -->
     <button onclick="resetFilters()" class="text-xs text-gray-400 hover:text-accent transition-colors text-left">↺ Reset filters</button>
 
+    <!-- Contact - inside filter card, border-t separator -->
+    <div class="border-t border-gray-100 pt-4 -mt-1 text-gray-700">
+      <p class="text-sm font-semibold mb-3 leading-snug text-gray-900">Not sure where to start?<br>Call or write us.</p>
+      <div class="space-y-2.5 text-sm">
+        <a href="tel:+48605491069" class="flex items-center gap-2.5 hover:text-accent transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+          <span>+48 605 491 069</span>
+        </a>
+        <a href="mailto:biuro@powitania.pl" class="flex items-center gap-2.5 hover:text-accent transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span class="break-all">biuro@powitania.pl</span>
+        </a>
+      </div>
+    </div>
+
+    </div>
+    <!-- /Filter card -->
+
   </aside>
 
   <!-- PRAWA TREŚĆ -->
@@ -232,12 +253,29 @@
     <style>
       /* Desktop: player wrap is display:contents - player and buttons are direct flex children */
       .vc-player-wrap { display: contents; }
-      /* Fixed-width name column for consistent player widths */
-      .vc-info { width: 170px !important; flex-shrink: 0; }
-      /* Fixed-width CTA column - player stays same length regardless of CTA content */
-      .vc-cta { width: 140px !important; flex-shrink: 0; }
-      .vc-photo { width: 106px !important; height: 106px !important; }
-      .vc-inner { gap: 23px !important; padding: 10px 20px 10px 10px !important; }
+      /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
+      /* Photo flush with card (no padding/border-radius), other zones have own padding */
+      .vc-inner {
+        display: grid !important;
+        grid-template-columns: 140px 1fr 150px !important;
+        grid-template-rows: auto auto !important;
+        column-gap: 20px !important;
+        row-gap: 6px !important;
+        padding: 0 16px 0 0 !important;
+        align-items: stretch !important;
+      }
+      .vc-photo {
+        grid-column: 1; grid-row: 1 / -1;
+        width: 140px !important;
+        height: auto !important;
+        align-self: stretch !important;
+        border-radius: 0 !important;
+      }
+      .vc-photo img { width: 100% !important; height: 100% !important; min-height: 140px; }
+      .vc-player-wrap { display: contents; }
+      .vc-player-row { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding-top: 16px; }
+      .vc-info { grid-column: 2; grid-row: 2; min-width: 0; align-self: end; padding-bottom: 16px; }
+      .vc-cta { grid-column: 3; grid-row: 1 / -1; align-self: center; padding: 16px 0; }
       /* Mobile-only elements - hidden on desktop */
       .vc-badge-mobile { display: none; }
       /* Mobile: 3-zone layout - (1) photo+info, (2) full-width player, (3) CTA+more */
@@ -329,7 +367,7 @@
         <div class="vc-inner flex items-center gap-4 px-5 py-4">
 
           <!-- Photo (link to profile) -->
-          <a href="<%= profileUrl %>" class="vc-photo flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
+          <a href="<%= profileUrl %>" class="vc-photo flex-shrink-0 w-20 h-20 overflow-hidden bg-gray-100 block hover:opacity-90 transition-opacity">
             <% if (v.photo) { %>
               <img src="<%= v.photo %>" alt="<%= v.name %>" class="w-full h-full object-cover" loading="lazy">
             <% } else { %>
@@ -339,63 +377,76 @@
             <% } %>
           </a>
 
-          <!-- Name + meta (link to profile) -->
-          <a href="<%= profileUrl %>" class="vc-info flex-shrink-0 min-w-0 block hover:text-accent transition-colors">
-            <h3 class="font-bold text-gray-900 tracking-tight truncate leading-tight" style="font-size: <%= v.name.length > 17 ? '13px' : '15px' %>"><%= v.name %></h3>
-            <div class="flex items-center gap-1.5 mt-2 flex-wrap">
-              <% if (v.age) { %><span class="text-xs text-gray-500"><%= v.age %></span><% } %>
-              <% v.languages.slice(0,1).forEach(function(lang) { %>
-                <span class="text-xs text-gray-400">&bull;</span>
-                <span class="text-xs text-gray-500"><%= lang %></span>
-              <% }); %>
+          <!-- Name + meta (link to profile) - row 2 grid, below player -->
+          <a href="<%= profileUrl %>" class="vc-info min-w-0 block hover:text-accent transition-colors">
+            <div class="flex items-baseline gap-2.5 flex-wrap">
+              <h3 class="font-light text-gray-900 tracking-tight leading-tight text-2xl"><%= v.name %></h3>
+              <% if (v.age) { %><span class="text-sm text-gray-500"><%= v.age %></span><% } %>
             </div>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <% if (v.turnaround) { %><span class="text-xs text-gray-400"><%= v.turnaround %></span><% } %>
-              <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
-                <%# v.prices juz w EUR (route /en/voice-bank/ konwertuje serverowo) %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-gray-500">from <strong class="text-gray-700"><%= v.prices.ivr_100 %> EUR</strong></span>
-              <% } else if (v.hidePrice) { %>
-                <span class="text-xs text-gray-300">&bull;</span>
-                <span class="text-xs text-yellow-600">custom pricing</span>
-              <% } %>
+            <div class="mt-1.5 flex items-center justify-between gap-3 flex-wrap">
+              <div class="text-sm text-gray-500">
+                Languages: <span class="text-accent font-medium uppercase tracking-wide"><%= v.languages.slice(0,3).join(', ') %></span>
+              </div>
+              <div class="text-sm text-accent font-medium flex items-center gap-2 whitespace-nowrap">
+                <% if (!v.hidePrice && v.prices && v.prices.ivr_100) { %>
+                  <span>from <%= v.prices.ivr_100 %>&nbsp;EUR</span>
+                  <% if (v.turnaround) { %>
+                    <span class="text-gray-300">|</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
+                    <span><%= v.turnaround %></span>
+                  <% } %>
+                <% } else if (v.hidePrice) { %>
+                  <span class="text-yellow-600">custom pricing</span>
+                <% } %>
+              </div>
             </div>
-            <% if (v.famous) { %>
-              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
-            <% } else if (v.native) { %>
-              <div class="vc-badge-inline mt-1.5"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
-            <% } %>
           </a>
 
-          <!-- Mobile-only badge under photo (sibling of vc-info - outside the link) -->
-          <% if (v.famous) { %>
-            <div class="vc-badge-mobile"><span class="text-[10px] bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded font-medium border border-yellow-300">Famous</span></div>
-          <% } else if (v.native) { %>
-            <div class="vc-badge-mobile"><span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium border border-blue-300">Native</span></div>
-          <% } %>
 
-          <!-- Player + CTA - desktop: display:contents, mobile: flex row -->
+          <!-- Player + CTA - desktop: display:contents (grid placement via CSS) -->
           <div class="vc-player-wrap">
-            <div class="player-box flex-1 min-w-0 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer">
-              <div class="text-[10px] text-gray-400 truncate mb-1"><%= sampleToPlay.name || 'Sample' %></div>
-              <div class="flex items-center gap-2">
-                <button class="play-btn w-8 h-8 flex-shrink-0 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>">
-                  <svg class="play-icon w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <svg class="pause-icon w-3.5 h-3.5 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </button>
-                <div class="flex-1 min-w-0">
-                  <div class="audio-progress w-full h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer">
-                    <div class="audio-bar h-full bg-accent rounded-full transition-all" style="width: 0%"></div>
-                  </div>
-                  <div class="flex justify-between mt-0.5">
-                    <span class="audio-time text-[10px] text-gray-400">0:00</span>
-                    <span class="audio-duration text-[10px] text-gray-400">--:--</span>
-                  </div>
-                </div>
-                <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Download MP3 sample" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-                </a>
+            <div class="player-box vc-player-row cursor-pointer">
+              <%# Play - czarne outline 24x24 (mniejszy ok 25%) z umiarkowanym trojkatem 12px %>
+              <button class="play-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white flex items-center justify-center transition-colors" data-audio="<%= sampleToPlay.url %>" title="Play">
+                <svg class="play-icon w-3.5 h-3.5 text-gray-900 ml-px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-3.5 h-3.5 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <%# Stop - bialy 24x24 z accent obreczy + accent kwadratem 12px %>
+              <button type="button" class="stop-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Stop">
+                <svg class="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+              </button>
+              <%# Time display %>
+              <div class="text-xs text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
+                <span class="audio-time">00:00</span>
+                <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
+              <%# Waveform - continuous path (spektrum) %>
+              <%
+                var _hashStr = function(s){var h=0;for(var i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return Math.abs(h);};
+                var _seedRnd = function(seed, i){var x=Math.sin(seed*9999+i*1.37)*10000;return x-Math.floor(x);};
+                var _seed = _hashStr(v.id || v.name);
+                var _waveBars = 80;
+                var _midY = 18;
+                var _topPts = [];
+                var _botPts = [];
+                for(var _i=0; _i<_waveBars; _i++) {
+                  var _h = 4 + Math.round(_seedRnd(_seed, _i) * 26);
+                  var _x = (_i * 100 / (_waveBars - 1)).toFixed(2);
+                  _topPts.push(_x + ',' + (_midY - _h/2).toFixed(2));
+                  _botPts.push(_x + ',' + (_midY + _h/2).toFixed(2));
+                }
+                var _pathD = 'M ' + _topPts[0] + ' L ' + _topPts.join(' L ') + ' L ' + _botPts.reverse().join(' L ') + ' Z';
+              %>
+              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer">
+                <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="<%= _pathD %>" fill="currentColor"/>
+                </svg>
+                <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left: 0%; width: 1px; background-color: rgba(107,114,128,0.8); transform: translateX(-0.5px); transition: left 100ms linear;"></div>
+              </div>
+              <%# Download MP3 - stara ikonka (strzalka w dol, gray) %>
+              <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Download MP3 sample" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              </a>
             </div>
 
             <!-- CTA: premium (hidePrice) → inquiry form on profile; others → Get quote (calculator) -->
@@ -406,7 +457,7 @@
                   Request a quote
                 </a>
               <% } else { %>
-                <a href="<%= profileUrl %>" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
+                <a href="<%= profileUrl %>#wycena" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h4m3 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   Get quote
                   <svg class="w-3.5 h-3.5 -mr-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
@@ -445,7 +496,7 @@
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional voice bank - find the voice for your needs</h2>
     <p>Our voice bank will help you find the right voice for your project. Our voice actors are experienced voice actors who work daily as actors, radio presenters, and as voices for renowned television stations.</p>
     <p>The voice bank has an advanced filter system, making it easy to find the right voice actor. You can search by entering the voice actor's name, selecting gender, voice age, or price group. A very useful feature of the filter is the ability to search for voice actors recording in specific languages. We work with voice actors from all over the world - you have over 30 languages to choose from. The voice bank is an open catalog - every month, several new voice actor profiles are added to the database.</p>
-    <p>In the basic view of the voice bank, you can listen to a voice sample from each voice actor. By clicking the "More" button, you go to their profile, where you'll find a detailed description of the voice actor and more voice samples. From the voice actor's profile, you can immediately calculate the price of the recording - just paste the text or select the type of production, and the system will automatically provide a quote and allow you to place an order. You can also use the <a href="/#kreator" class="text-accent hover:text-accent-light">Content Creator</a> on the home page, which will help you prepare professional text, and then direct you to the voice bank with a ready-made script.</p>
+    <p>In the basic view of the voice bank, you can listen to a voice sample from each voice actor. By clicking the "More" button, you go to their profile, where you'll find a detailed description of the voice actor and more voice samples. From the voice actor's profile, you can immediately calculate the price of the recording - just paste the text or select the type of production, and the system will automatically provide a quote and allow you to place an order. You can also use the <a href="/kreator/" class="text-accent hover:text-accent-light">Content Creator</a> on the home page, which will help you prepare professional text, and then direct you to the voice bank with a ready-made script.</p>
     <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Famous voices - voice bank Warsaw</h3>
     <p>If you're looking for the most experienced and recognizable voice actors, we invite you to use the "Famous" filter. At your disposal are voices of voice actors such as Jacek Rozenek, Łukasz Nowicki, Stanisław Olejniczak, Andrzej Ferenc, Jacek Brzostyński, and many other prestigious voices.</p>
     <p>The voice bank contains sample voice recordings as well as original music soundtracks. We encourage the implementation of all kinds of recordings using our voice recordings. Our database will allow you to match a voice to any project.</p>
@@ -458,7 +509,7 @@
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Can't decide?</h2>
     <p class="text-gray-500 mb-6">Describe your project, and we'll help you find the perfect voice.</p>
     <a href="/en/contact/" class="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold transition-colors">Ask about a voice actor</a>
-    <p class="text-gray-500 text-sm mt-3">or <a href="/#kreator" class="text-accent hover:text-accent-light font-medium">create text in the creator</a></p>
+    <p class="text-gray-500 text-sm mt-3">or <a href="/kreator/" class="text-accent hover:text-accent-light font-medium">create text in the creator</a></p>
   </div>
 </section>
 
@@ -477,8 +528,8 @@
     currentBtn.querySelector('.pause-icon').classList.add('hidden');
     var oldCard = currentBtn.closest('.voice-card');
     if (oldCard) {
-      oldCard.querySelector('.audio-bar').style.width = '0%';
-      oldCard.querySelector('.audio-time').textContent = '0:00';
+      oldCard.querySelector('.audio-bar').style.left = '0%';
+      oldCard.querySelector('.audio-time').textContent = '00:00';
     }
   }
 
@@ -496,7 +547,7 @@
       var card = currentBtn.closest('.voice-card');
       if (!card) return;
       var pct = (el.currentTime / el.duration) * 100;
-      card.querySelector('.audio-bar').style.width = pct + '%';
+      card.querySelector('.audio-bar').style.left = pct + '%';
       card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
     });
     el.addEventListener('loadedmetadata', function() {
@@ -556,6 +607,20 @@
   // Init players + progress bar seek + card click (raz na kartę)
   allCards.forEach(function(card) {
     initAudioPlayer(card.querySelector('.play-btn'));
+    // Stop button - reset audio to 0:00 + pause
+    card.querySelectorAll('.stop-btn').forEach(function(stopBtn) {
+      stopBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var audio = document.getElementById('shared-audio-el');
+        if (!audio) return;
+        var cardPlayBtn = card.querySelector('.play-btn');
+        if (currentBtn !== cardPlayBtn) return;
+        audio.pause();
+        audio.currentTime = 0;
+        resetCurrentBtn();
+        currentBtn = null;
+      });
+    });
     card.querySelector('.audio-progress').addEventListener('click', function(e) {
       var audio = document.getElementById('shared-audio-el');
       var btn = card.querySelector('.play-btn');
@@ -567,7 +632,7 @@
     });
     card.addEventListener('click', function(e) {
       var target = e.target;
-      if (target.closest('.play-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
+      if (target.closest('.play-btn') || target.closest('.stop-btn') || target.closest('.audio-progress') || target.closest('a[download]')) return;
       var url = card.dataset.url;
       if (url) window.location.href = url;
     });
@@ -576,7 +641,7 @@
   function formatTime(s) {
     var m = Math.floor(s / 60);
     var sec = Math.floor(s % 60);
-    return m + ':' + (sec < 10 ? '0' : '') + sec;
+    return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
   }
 
   // --- Pagination ---
