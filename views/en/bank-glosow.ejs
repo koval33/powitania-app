@@ -271,7 +271,8 @@
         align-self: stretch !important;
         border-radius: 0 !important;
       }
-      .vc-photo img { width: 100% !important; height: 100% !important; min-height: 140px; }
+      .vc-photo img { width: 100% !important; height: 100% !important; }
+      @media (min-width: 768px) { .vc-photo img { min-height: 140px; } }
       .vc-player-wrap { display: contents; }
       .vc-player-row { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding-top: 16px; }
       .vc-info { grid-column: 2; grid-row: 2; min-width: 0; align-self: end; padding-bottom: 16px; }
@@ -341,6 +342,12 @@
           align-self: center;
         }
         .vc-cta > a, .vc-cta > button { width: 100%; min-height: 44px; }
+
+        /* Mobile - rounded photo (avatar-style on small card) */
+        .vc-photo { border-radius: 0.5rem !important; }
+
+        /* Mobile - hide time counter to give waveform more room */
+        .player-box .audio-time-wrap { display: none !important; }
       }
     </style>
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
@@ -415,8 +422,8 @@
               <button type="button" class="stop-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Stop">
                 <svg class="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
               </button>
-              <%# Time display %>
-              <div class="text-xs text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
+              <%# Time display (hidden on mobile - gives waveform more room) %>
+              <div class="audio-time-wrap text-xs text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
                 <span class="audio-time">00:00</span>
                 <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
