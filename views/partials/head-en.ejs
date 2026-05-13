@@ -407,9 +407,8 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
       <a href="/en/pricing/" class="hover:text-accent transition-colors <%= currentPath === '/en/pricing/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Pricing</a>
       <a href="/en/news/" class="hover:text-accent transition-colors <%= currentPath.startsWith('/en/news') ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">News</a>
       <a href="/en/contact/" class="hover:text-accent transition-colors <%= currentPath === '/en/contact/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Contact</a>
-      <a href="<%= _altPl %>" class="flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors normal-case tracking-normal" title="Wersja polska" rel="alternate" hreflang="pl">
-        <span class="text-base leading-none" aria-hidden="true">🇵🇱</span>
-        <span class="text-xs font-semibold">PL</span>
+      <a href="<%= _altPl %>" class="inline-flex items-center gap-1.5 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white rounded-full px-3 py-1 text-xs font-semibold tracking-wider transition-colors" title="Wersja polska" rel="alternate" hreflang="pl">
+        PL
       </a>
     </div>
 
