@@ -157,7 +157,7 @@ app.use((req, res, next) => {
   var hreflangMap = {
     '/': '/en/',
     '/bank-glosow/': '/en/voice-bank/',
-    '/cennik/': '/en/pricing/',
+    '/cennik-nagran-lektorskich/': '/en/pricing/',
     '/kontakt/': '/en/contact/',
     '/nagrania-lektorskie/': '/en/voiceover-services/',
     '/nagrania-lektorskie/glos-do-reklamy/': '/en/voiceover-services/voice-for-advertising/',
@@ -339,8 +339,8 @@ app.get('/sesje-zdalne/', (req, res) => res.redirect(301, '/sesje-zdalne-nagrani
 app.get('/nagrania-lektorskie/lektor-do-filmow/', (req, res) => res.redirect(301, '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/'));
 app.get('/lista-lektorow/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/szukaj/', (req, res) => res.redirect(301, '/bank-glosow/'));
-app.get('/ceny-lektora/', (req, res) => res.redirect(301, '/cennik/'));
-app.get('/ceny-lektora', (req, res) => res.redirect(301, '/cennik/'));
+app.get('/ceny-lektora/', (req, res) => res.redirect(301, '/cennik-nagran-lektorskich/'));
+app.get('/ceny-lektora', (req, res) => res.redirect(301, '/cennik-nagran-lektorskich/'));
 app.get('/voice-over/', (req, res) => res.redirect(301, '/'));
 app.get('/twoj-bank-glosow/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
@@ -519,13 +519,16 @@ app.get('/lektorzy/:slug/', (req, res) => {
   });
 });
 
-app.get('/cennik/', (req, res) => {
+// Stary URL → 301 na nowy keyword-matched URL
+app.get('/cennik/', (req, res) => res.redirect(301, '/cennik-nagran-lektorskich/'));
+
+app.get('/cennik-nagran-lektorskich/', (req, res) => {
   res.render('cennik', {
-    title: 'Cennik nagrań i usług lektorskich od 300 zł | Powitania.pl',
-    description: `Cennik nagrań i usług lektorskich Powitania.pl: lektor reklamowy od 300 zł, narracja 340 zł/A4, IVR 380 zł. ${res.locals.voiceCount} lektorów, 24-48h.`,
+    title: 'Cennik nagrań lektorskich od 300 zł | Powitania.pl',
+    description: `Cennik nagrań lektorskich Powitania.pl: lektor reklamowy od 300 zł, narracja 340 zł/A4, IVR 380 zł. ${res.locals.voiceCount} lektorów, 24-48h, native speakers od 600 zł.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
-      { name: 'Cennik', url: '/cennik/' }
+      { name: 'Cennik nagrań lektorskich', url: '/cennik-nagran-lektorskich/' }
     ]
   });
 });
@@ -871,7 +874,7 @@ app.get('/portfolio/*', (req, res) => res.redirect(301, '/nagrania-lektorskie/')
 // 301 Redirects - stare WordPress sitemap i inne strony powodujące 404
 app.get('/page-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
 app.get('/post-sitemap.html', (req, res) => res.redirect(301, '/sitemap.xml'));
-app.get('/zamowienie-nagrania/', (req, res) => res.redirect(301, '/cennik/'));
+app.get('/zamowienie-nagrania/', (req, res) => res.redirect(301, '/cennik-nagran-lektorskich/'));
 
 // Partner pages - /p/:slug/
 app.get('/p/:slug/', (req, res) => {
@@ -1349,7 +1352,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/sesje-zdalne-nagrania-lektorskie-online/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagranie-ekspresowe/', priority: '0.7', changefreq: 'monthly' },
     { url: '/kreator/', priority: '0.7', changefreq: 'monthly' },
-    { url: '/cennik/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/cennik-nagran-lektorskich/', priority: '0.7', changefreq: 'monthly' },
     { url: '/kontakt/', priority: '0.7', changefreq: 'monthly' },
     { url: '/opinie/', priority: '0.7', changefreq: 'monthly' },
     { url: '/faq-pl/', priority: '0.6', changefreq: 'monthly' },
