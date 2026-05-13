@@ -1,15 +1,18 @@
 <%- include('partials/head') %>
 
-<!-- HERO - Claude Design package, obraz natural size, content przesunięty wyżej -->
-<!-- items-start z padding-top kompensuje header, content nie centered (wyżej niż items-center) -->
-<section class="hero relative min-h-[700px] md:min-h-[900px] overflow-hidden flex items-start bg-black">
+<!-- HERO - Claude Design package, obraz wypelnia container (mobile cover+top, desktop tez cover+top) -->
+<section class="hero relative min-h-[600px] md:min-h-[900px] overflow-hidden flex items-start bg-black">
 
-  <%# Background image - <img> z naturalną wysokością (w-full h-auto = natural ratio bez forced crop) %>
-  <img src="/img/studio-bg-1920.bw-backup.webp"
-       srcset="/img/studio-bg-960.bw-backup.webp 960w, /img/studio-bg-1920.bw-backup.webp 1920w"
-       sizes="100vw"
+  <%# Mobile: object-cover wypelnia container (image scaled żeby nie było czarnej pustki) %>
+  <img src="/img/studio-bg-960.bw-backup.webp"
        alt="Studio nagrań Powitania.pl - lektor przy mikrofonie"
-       class="absolute inset-x-0 top-0 w-full h-auto max-w-none"
+       class="md:hidden absolute inset-0 w-full h-full object-cover object-top"
+       loading="eager"
+       fetchpriority="high">
+  <%# Desktop: natural ratio (h-auto) - image w pełnej rozdzielczości bez forced scaling %>
+  <img src="/img/studio-bg-1920.bw-backup.webp"
+       alt=""
+       class="hidden md:block absolute inset-x-0 top-0 w-full h-auto max-w-none"
        loading="eager"
        fetchpriority="high">
 
