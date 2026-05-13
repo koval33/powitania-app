@@ -325,12 +325,12 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         <a href="/bank-glosow/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Bank głosów</a>
 
         <div class="nav-item-has-sub relative">
-          <button type="button" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+          <a href="/nagrania-lektorskie/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
             Nagrania lektorskie
             <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </button>
+          </a>
           <div class="nav-submenu absolute left-1/2 -translate-x-1/2 top-full pt-3">
             <ul class="min-w-[300px] bg-white rounded-md shadow-lg ring-1 ring-black/5 py-2">
               <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/">Profesjonalny lektor do filmów</a></li>
@@ -444,12 +444,19 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 uppercase tracking-wide text-sm font-semibold">
     <a href="/bank-glosow/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Bank głosów</a>
-    <a href="/nagrania-lektorskie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Nagrania lektorskie</a>
-    <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Profesjonalny lektor do filmów</a>
-    <a href="/nagrania-lektorskie/glos-do-reklamy/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Głos do reklamy</a>
-    <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Zapowiedzi telefoniczne</a>
-    <a href="/nagrania-lektorskie/audioprzewodniki/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Audioprzewodniki</a>
-    <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-100 text-xs normal-case tracking-normal font-normal">Sesje zdalne</a>
+    <details class="group border-b border-gray-100">
+      <summary class="flex items-center justify-between py-3 text-gray-600 hover:text-accent cursor-pointer list-none">
+        <a href="/nagrania-lektorskie/" class="flex-1">Nagrania lektorskie</a>
+        <svg width="12" height="12" viewBox="0 0 20 20" class="transition group-open:rotate-180 ml-2" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="pb-1">
+        <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Profesjonalny lektor do filmów</a>
+        <a href="/nagrania-lektorskie/glos-do-reklamy/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Głos do reklamy</a>
+        <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Zapowiedzi telefoniczne</a>
+        <a href="/nagrania-lektorskie/audioprzewodniki/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Audioprzewodniki</a>
+        <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Sesje zdalne</a>
+      </div>
+    </details>
     <a href="/cennik/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Cennik</a>
     <a href="/opinie/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Opinie</a>
     <a href="/kontakt/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Kontakt</a>

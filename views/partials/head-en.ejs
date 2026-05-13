@@ -304,12 +304,12 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         <a href="/en/voice-bank/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Voice Bank</a>
 
         <div class="nav-item-has-sub relative">
-          <button type="button" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+          <a href="/en/voiceover-services/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
             Voiceover Services
             <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </button>
+          </a>
           <div class="nav-submenu absolute left-1/2 -translate-x-1/2 top-full pt-3">
             <ul class="min-w-[300px] bg-white rounded-md shadow-lg ring-1 ring-black/5 py-2">
               <li><a class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent" href="/en/voiceover-services/film-voiceover/">Film Voiceover</a></li>
@@ -422,12 +422,19 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 uppercase tracking-wide text-sm font-semibold">
     <a href="/en/voice-bank/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voice Bank</a>
-    <a href="/en/voiceover-services/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Voiceover Services</a>
-    <a href="/en/voiceover-services/film-voiceover/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Film Voiceover</a>
-    <a href="/en/voiceover-services/voice-for-advertising/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Voice for Advertising</a>
-    <a href="/en/voiceover-services/phone-announcements/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Phone Announcements</a>
-    <a href="/en/voiceover-services/audio-guides/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-50 text-xs normal-case tracking-normal font-normal">Audio Guides</a>
-    <a href="/en/remote-sessions/" class="block py-2 pl-4 text-gray-400 hover:text-accent border-b border-gray-100 text-xs normal-case tracking-normal font-normal">Remote Sessions</a>
+    <details class="group border-b border-gray-100">
+      <summary class="flex items-center justify-between py-3 text-gray-600 hover:text-accent cursor-pointer list-none">
+        <a href="/en/voiceover-services/" class="flex-1">Voiceover Services</a>
+        <svg width="12" height="12" viewBox="0 0 20 20" class="transition group-open:rotate-180 ml-2" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="pb-1">
+        <a href="/en/voiceover-services/film-voiceover/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Film Voiceover</a>
+        <a href="/en/voiceover-services/voice-for-advertising/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Voice for Advertising</a>
+        <a href="/en/voiceover-services/phone-announcements/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Phone Announcements</a>
+        <a href="/en/voiceover-services/audio-guides/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Audio Guides</a>
+        <a href="/en/remote-sessions/" class="block py-2 pl-4 text-gray-400 hover:text-accent text-xs normal-case tracking-normal font-normal">Remote Sessions</a>
+      </div>
+    </details>
     <a href="/en/pricing/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Pricing</a>
     <a href="/en/news/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">News</a>
     <a href="/en/contact/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Contact</a>

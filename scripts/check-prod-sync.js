@@ -57,7 +57,7 @@ try {
   if (onProdNotLocal.length > 0) {
     console.error();
     console.error('============================================================');
-    console.error('STOP! Push zostal zatrzymany - rozsynchronizowanie z produkcja');
+    console.error('Push zatrzymany - rozsynchronizowanie z produkcja');
     console.error('============================================================');
     console.error();
     console.error('Produkcja ma ' + onProdNotLocal.length + ' lektora(ow) ktorych NIE MA lokalnie:');
@@ -66,12 +66,28 @@ try {
       console.error('  ' + status + v.id + ' - ' + v.name);
     });
     console.error();
-    console.error('Push teraz NADPISALBY produkcyjny voices.json wersja lokalna,');
-    console.error('co skasowaloby powyzszych lektorow z produkcji.');
+    console.error('Automatyczna synchronizacja (npm run pull-prod)...');
     console.error();
-    console.error('NAJPIERW zsynchronizuj lokalna kopie:');
-    console.error('  npm run pull-prod');
-    console.error('  git add data/voices.json data-seed/voices.json');
+    try {
+      require('child_process').execSync('npm run pull-prod', {
+        stdio: 'inherit',
+        cwd: path.join(__dirname, '..')
+      });
+    } catch (e) {
+      console.error();
+      console.error('Pull-prod nie udal sie. Uruchom recznie:');
+      console.error('  npm run pull-prod');
+      console.error('  git add data/voices.json data-seed/voices.json public/img/lektorzy/ public/audio/samples/');
+      console.error('  git commit -m "voices: sync z prod"');
+      console.error('  git push');
+      console.error();
+      process.exit(1);
+    }
+    console.error();
+    console.error('============================================================');
+    console.error('Synced! Teraz zacommituj zmiany i powtorz push:');
+    console.error('============================================================');
+    console.error('  git add data/voices.json data-seed/voices.json public/img/lektorzy/ public/audio/samples/');
     console.error('  git commit -m "voices: sync z prod"');
     console.error('  git push');
     console.error();
