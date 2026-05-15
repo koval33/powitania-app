@@ -1080,7 +1080,8 @@ function updateFileLabel(input) {
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.ok) {
-        if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
+        if (window.trackEventEC) trackEventEC('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' }, formData.get('email'), formData.get('phone'));
+        else if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
         msg.textContent = data.message || 'Thank you! We will respond as soon as possible.';
         msg.className = 'mt-4 text-center text-accent font-medium';
         form.reset();
@@ -2016,7 +2017,8 @@ function submitModalInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
-      if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
+      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Thank you! We will reply with a quote within 2 hours.';
       btn.disabled = false;
@@ -2107,7 +2109,8 @@ function submitWizardInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
-      if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
+      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'wycena_indywidualna' });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Thank you! We will respond with a quote within 2 hours.';
       btn.disabled = false;

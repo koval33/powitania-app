@@ -135,7 +135,8 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   .then(function(res) {
     msg.classList.remove('hidden');
     if (res.ok) {
-      if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
+      if (window.trackEventEC) trackEventEC('form_submit_contact', { source: 'kontakt' }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'kontakt' });
       msg.className = 'mt-4 text-center text-sm text-green-400';
       msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';

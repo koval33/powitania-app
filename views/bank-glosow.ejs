@@ -1326,7 +1326,8 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
       document.getElementById('qi-form').classList.add('hidden');
       document.getElementById('qi-success').classList.remove('hidden');
       // Track conversion
-      if (window.trackEvent) trackEvent('form_submit_inquiry_bank', { lektor: data.lektorName });
+      if (window.trackEventEC) trackEventEC('form_submit_inquiry_bank', { lektor: data.lektorName }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent('form_submit_inquiry_bank', { lektor: data.lektorName });
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: data.lektorName });
       }

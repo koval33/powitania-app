@@ -289,7 +289,8 @@
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.ok) {
-        if (window.trackEvent) trackEvent('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' });
+        if (window.trackEventEC) trackEventEC('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' }, body.email, body.phone);
+        else if (window.trackEvent) trackEvent('form_submit_' + endpoint.replace(/-/g, '_'), { source: 'kreator' });
         setState({ step: 'success', loading: false, toast: data.message });
       } else {
         setState({ loading: false, error: data.error });

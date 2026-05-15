@@ -32,6 +32,41 @@
     window.dataLayer.push(Object.assign({ event: eventName }, params));
   };
 
+  /**
+   * Enhanced Conversions for Leads - przygotowanie user-provided data.
+   * Zwraca { email, phone_number } z surowymi (NIE hashowanymi) danymi
+   * - GTM/Google hashuje SHA-256 server-side.
+   * - email: trim + lowercase
+   * - phone: E.164 (9 cyfr PL bez prefiksu -> +48XXXXXXXXX)
+   * - puste pola pomijane; jesli oba puste -> undefined
+   */
+  window.ecData = function(email, phone) {
+    var ec = {};
+    if (email && typeof email === 'string') {
+      var e = email.trim().toLowerCase();
+      if (e) ec.email = e;
+    }
+    if (phone && typeof phone === 'string') {
+      var p = phone.trim().replace(/[\s\-()]/g, '');
+      if (p) {
+        if (/^\d{9}$/.test(p)) p = '+48' + p;            // 501234567 -> +48501234567
+        else if (/^48\d{9}$/.test(p)) p = '+' + p;       // 48501234567 -> +48501234567
+        else if (/^00/.test(p)) p = '+' + p.slice(2);    // 0048... -> +48...
+        else if (p[0] !== '+' && /^\d{10,15}$/.test(p)) p = '+' + p;
+        ec.phone_number = p;
+      }
+    }
+    return Object.keys(ec).length ? ec : undefined;
+  };
+
+  // Helper: trackEvent z dolaczonym enhanced_conversion_data (jesli niepuste)
+  window.trackEventEC = function(eventName, params, email, phone) {
+    params = params || {};
+    var ec = window.ecData(email, phone);
+    if (ec) params.enhanced_conversion_data = ec;
+    window.trackEvent(eventName, params);
+  };
+
   // --- Audio play ---
   document.addEventListener('click', function(e) {
     var btn = e.target.closest('.play-btn');
