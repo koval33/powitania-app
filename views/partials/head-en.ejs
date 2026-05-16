@@ -198,8 +198,8 @@
   <%/* GTM preconnect removed - GTM is now deferred until after load/interaction */%>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=optional" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=optional" rel="stylesheet"></noscript>
   <style>html { font-size: 18px; } body, button, input, select, textarea { font-family: 'Dosis', system-ui, -apple-system, sans-serif; }</style>
   <% if (currentPath === '/en/') { %><link rel="preload" as="image" href="/img/studio-bg-1920.bw-backup.webp" media="(min-width: 768px)" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="/css/tailwind.css?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>">
@@ -297,9 +297,9 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
 
       <a href="/en/" class="flex flex-col items-start shrink-0 leading-tight">
         <span class="brand-icon inline-flex shrink-0">
-          <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="logo-dark h-11 md:h-14 w-auto">
-          <img src="/img/logo-powitania.webp" alt="powitania.pl" class="logo-light h-11 md:h-14 w-auto">
-          <img src="/img/logo-simple.png" alt="powitania.pl" class="logo-icon-only h-11 md:h-14 w-auto">
+          <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="logo-dark h-11 md:h-14 w-auto" width="900" height="170" fetchpriority="high">
+          <img src="/img/logo-powitania.webp" alt="powitania.pl" class="logo-light h-11 md:h-14 w-auto" width="900" height="170" fetchpriority="high">
+          <img src="/img/logo-simple.png" alt="powitania.pl" class="logo-icon-only h-11 md:h-14 w-auto" width="156" height="156">
         </span>
         <span class="brand-tagline nav-link text-[0.6rem] md:text-[0.7rem] font-bold tracking-[0.2em] uppercase pl-[2.4rem] md:pl-[3.2rem] -mt-1">Create content. Give it a&nbsp;voice.</span>
       </a>
@@ -387,7 +387,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/60 border-b border-stone-200/70 shadow-sm">
   <nav class="w-full max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
     <a href="/en/" class="flex flex-col items-start gap-0">
-      <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="h-11 md:h-14 w-auto">
+      <img src="/img/logo-powitania-dark.webp" alt="powitania.pl" class="h-11 md:h-14 w-auto" width="900" height="170" fetchpriority="high">
       <span class="text-[0.6rem] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 pl-[2.4rem] md:pl-[3.2rem] -mt-0.5">Create content. Give it a voice.</span>
     </a>
 
