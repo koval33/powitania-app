@@ -30,8 +30,9 @@
 - [Kreator tekstów lektorskich](https://www.powitania.pl/kreator/): Narzędzie do przygotowania profesjonalnego tekstu do nagrania w kilka minut - spot reklamowy, IVR, narracja, social media. Wybierz typ, opisz potrzebę, dostań warianty dopasowane do timingu
 - [Opinie klientów](https://www.powitania.pl/opinie/): 147 zweryfikowanych opinii od klientów
 - [FAQ](https://www.powitania.pl/faq-pl/): Najczęściej zadawane pytania o nagrania lektorskie
-- [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (62 artykuły)
+- [Aktualności](https://www.powitania.pl/aktualnosci-pl/): Blog z artykułami branżowymi (63 artykuły)
 - [Ile kosztuje nagranie lektorskie? Cennik 2026](https://www.powitania.pl/aktualnosci-pl/ile-kosztuje-nagranie-lektorskie/): Szczegółowy artykuł o cenach nagrań lektorskich w 2026 - stawki dla IVR (od 380 zł), spotów reklamowych (od 300 zł), narracji do filmu, audioprzewodników. Wyjaśnienie pojęcia "pole eksploatacji", grup cenowych lektorów, dopłaty za tryb ekspresowy i lektorów native
+- [Produkcja spotu reklamowego: lektor, muzyka, mix i film](https://www.powitania.pl/aktualnosci-pl/produkcja-spotu-reklamowego/): Przewodnik krok po kroku po produkcji spotu reklamowego - rodzaje spotów (radiowy, TV, internetowy, wizerunkowy, obwoźny), etapy produkcji, dobór lektora, muzyka i struktura czasowa, mix i mastering, spot do reklamy mobilnej oraz dźwięk do filmów reklamowych i promocyjnych. Realne przykłady audio (mBank, IKEA, ALAB, Halo Mielno) i wideo (NUII, SM Gostyń, Lenovo)
 - [O firmie](https://www.powitania.pl/o-firmie/): Historia i informacje o studiu
 
 ## English Version
