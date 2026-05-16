@@ -163,7 +163,7 @@
       <!-- 1. Kreacja - NOWE -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
-          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
             <img src="/img/sections/uslugi-kreacja.webp" alt="Kreator Treści Lektorskich - stwórz własny tekst do nagrania lektorskiego" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
@@ -196,7 +196,7 @@
       <!-- 2. Spoty reklamowe -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
-          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
             <img src="/img/sections/uslugi-spoty-ferenc-tadla.webp" alt="Andrzej Ferenc i Beata Tadla podczas nagrania spotu w studiu lektorskim Powitania.pl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
@@ -219,7 +219,7 @@
               Szybka produkcja i udźwiękowienie
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/glos-do-reklamy/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/glos-do-reklamy/" aria-label="Dowiedz się więcej o usłudze: Spoty reklamowe" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -229,7 +229,7 @@
       <!-- 3. Multimedia / lektor do filmów -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
-          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
             <img src="/img/sections/uslugi-multimedia-lektor.webp" alt="Lektor czytający scenariusz przy mikrofonie w studiu lektorskim Powitania.pl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
@@ -252,7 +252,7 @@
               Montaż audio-video w pakiecie
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" aria-label="Dowiedz się więcej o usłudze: Multimedia i lektor do filmów" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -262,7 +262,7 @@
       <!-- 4. Zapowiedzi telefoniczne -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
-          <div class="rounded-xl overflow-hidden h-56 md:h-64">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
             <img src="/img/sections/uslugi-zapowiedzi-ivr.webp" alt="Zapowiedzi i komunikaty telefoniczne IVR - asystent głosowy w telefonie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
@@ -285,7 +285,7 @@
               Marketing bezpośredni na infolinii
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" aria-label="Dowiedz się więcej o usłudze: Zapowiedzi telefoniczne" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -310,10 +310,10 @@
       </div>
 
       <!-- Nawigacja karuzeli -->
-      <button id="yt-prev" class="hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
+      <button id="yt-prev" type="button" aria-label="Poprzednie wideo" class="hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
       </button>
-      <button id="yt-next" class="hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
+      <button id="yt-next" type="button" aria-label="Następne wideo" class="hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-full items-center justify-center border border-gray-300 shadow-sm shadow-lg transition-colors z-10">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </button>
 
@@ -571,18 +571,18 @@
       </div>
 
       <!-- Navigation arrows -->
-      <button onclick="slideReviews(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
+      <button onclick="slideReviews(-1)" type="button" aria-label="Poprzednia opinia" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
       </button>
-      <button onclick="slideReviews(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
+      <button onclick="slideReviews(1)" type="button" aria-label="Następna opinia" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 bg-white hover:bg-gray-50 border border-gray-300 shadow-sm rounded-full flex items-center justify-center text-gray-700 transition-colors hidden md:flex">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </button>
 
       <!-- Dots -->
       <div class="flex justify-center gap-2 mt-6">
-        <button onclick="goToSlide(0)" class="review-dot w-2.5 h-2.5 rounded-full bg-accent transition-colors"></button>
-        <button onclick="goToSlide(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></button>
-        <button onclick="goToSlide(2)" class="review-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></button>
+        <button onclick="goToSlide(0)" type="button" aria-label="Przejdź do opinii 1" class="review-dot w-6 h-6 flex items-center justify-center"><span class="w-2.5 h-2.5 rounded-full bg-accent transition-colors"></span></button>
+        <button onclick="goToSlide(1)" type="button" aria-label="Przejdź do opinii 2" class="review-dot w-6 h-6 flex items-center justify-center"><span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></span></button>
+        <button onclick="goToSlide(2)" type="button" aria-label="Przejdź do opinii 3" class="review-dot w-6 h-6 flex items-center justify-center"><span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></span></button>
       </div>
     </div>
 
@@ -900,7 +900,8 @@ function updateSlider() {
   if (slider) slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
   var dots = document.querySelectorAll('.review-dot');
   dots.forEach(function(dot, i) {
-    dot.className = 'review-dot w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-gray-600');
+    var inner = dot.querySelector('span');
+    if (inner) inner.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-gray-600');
   });
 }
 
@@ -964,8 +965,13 @@ setInterval(function() { slideReviews(1); }, 8000);
     if (totalSlides > 1) {
       for (var d = 0; d < totalSlides; d++) {
         var dot = document.createElement('button');
+        dot.type = 'button';
         dot.setAttribute('data-slide', d);
-        dot.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (d === 0 ? 'bg-accent' : 'bg-white/20 hover:bg-white/40');
+        dot.setAttribute('aria-label', 'Przejdź do grupy filmów ' + (d + 1));
+        dot.className = 'w-6 h-6 flex items-center justify-center';
+        var dotInner = document.createElement('span');
+        dotInner.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (d === 0 ? 'bg-accent' : 'bg-white/20 hover:bg-white/40');
+        dot.appendChild(dotInner);
         dot.addEventListener('click', function() { goToSlide(parseInt(this.getAttribute('data-slide'), 10)); });
         dotsWrap.appendChild(dot);
       }
@@ -980,7 +986,8 @@ setInterval(function() { slideReviews(1); }, 8000);
     track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
     var dots = dotsWrap.querySelectorAll('button');
     dots.forEach(function(d, i) {
-      d.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-white/20 hover:bg-white/40');
+      var inner = d.querySelector('span');
+      if (inner) inner.className = 'w-2.5 h-2.5 rounded-full transition-colors ' + (i === currentSlide ? 'bg-accent' : 'bg-white/20 hover:bg-white/40');
     });
   }
 
