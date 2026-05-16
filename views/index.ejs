@@ -1,26 +1,28 @@
 <%- include('partials/head') %>
 
 <!-- HERO - Claude Design package, obraz wypelnia container (mobile cover+top, desktop tez cover+top) -->
-<section class="hero relative min-h-[600px] md:min-h-[900px] overflow-hidden flex items-start bg-black">
+<section class="hero relative overflow-hidden min-h-[600px] md:min-h-0">
 
-  <%# Mobile: object-cover wypelnia container (image scaled żeby nie było czarnej pustki) %>
+  <%# Mobile: object-cover wypelnia container (absolute, sekcja ma min-h-[600px]) %>
   <img src="/img/studio-bg-960.bw-backup.webp"
        alt="Studio nagrań Powitania.pl - lektor przy mikrofonie"
        class="md:hidden absolute inset-0 w-full h-full object-cover object-top"
+       width="960" height="490"
        loading="eager"
        fetchpriority="high">
-  <%# Desktop: natural ratio (h-auto) - image w pełnej rozdzielczości bez forced scaling %>
+  <%# Desktop: obraz W NORMALNYM FLOW - definiuje wysokość sekcji (naturalna proporcja, bez zoomu, bez pustego pasa) %>
   <img src="/img/studio-bg-1920.bw-backup.webp"
        alt=""
-       class="hidden md:block absolute inset-x-0 top-0 w-full h-auto max-w-none"
+       class="hidden md:block w-full h-auto max-w-none"
+       width="1920" height="980"
        loading="eager"
        fetchpriority="high">
 
-  <%# Overlay - lżejsza przesłona (z 35/25/45 na 20/10/30 - obraz wyraźniejszy) %>
+  <%# Overlay - pokrywa dokładnie obraz (na desktop sekcja == wysokość obrazu) %>
   <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
 
-  <%# Content - wyżej w hero, pt-[140px/160px] (88-96 header + ~50px breathing space) %>
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-[140px] md:pt-[160px] pb-8">
+  <%# Content - nałożony absolutnie na obraz, pt-[140px/160px] (header + oddech) %>
+  <div class="absolute inset-0 z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-[140px] md:pt-[160px] pb-8">
 
     <%# Tytuły w jednym bloku tła %>
     <div class="flex justify-center mb-10 md:mb-14">
@@ -80,7 +82,7 @@
 </section>
 
 <!-- ATOMIC FACTS - dla LLM/GEO -->
-<section class="py-12 bg-white">
+<section class="py-12 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-4 text-center">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Dosis', sans-serif;">
       Studio lektorskie powitania.pl - od 2001 roku
@@ -96,16 +98,16 @@
 
 <!-- AKTUALNOŚCI - karuzela -->
 <% if (typeof posts !== 'undefined' && posts.length > 0) { %>
-<section class="py-16 bg-stone-100/50 border-y border-gray-200/70">
+<section class="py-16 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
 
     <div class="flex items-end justify-between gap-6 mb-8">
       <div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Aktualności</h2>
-        <p class="text-gray-500">Nowości ze studia lektorskiego, porady i&nbsp;artykuły branżowe</p>
+        <p class="text-gray-600">Nowości ze studia lektorskiego, porady i&nbsp;artykuły branżowe</p>
       </div>
       <div class="hidden md:flex items-center gap-3 shrink-0">
-        <a href="/aktualnosci-pl/" class="text-accent hover:text-accent-light font-medium text-sm whitespace-nowrap">Wszystkie &rarr;</a>
+        <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm whitespace-nowrap">Wszystkie &rarr;</a>
         <button type="button" data-news-prev aria-label="Poprzednie" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         </button>
@@ -120,10 +122,10 @@
       <a href="/aktualnosci-pl/<%= post.slug %>/" class="news-card snap-start shrink-0 w-[290px] md:w-[330px] group bg-white rounded-xl border border-gray-200 hover:border-accent shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
         <div class="h-1 rounded-t-xl bg-accent/70 group-hover:bg-accent transition-colors"></div>
         <div class="p-6 flex flex-col flex-1">
-          <div class="text-xs text-gray-400 mb-3 tracking-wide"><%= post.date.split('-').reverse().join('.') %></div>
+          <div class="text-xs text-gray-600 mb-3 tracking-wide"><%= post.date.split('-').reverse().join('.') %></div>
           <h3 class="font-bold text-lg text-gray-900 group-hover:text-accent transition-colors line-clamp-3 mb-3 leading-snug"><%= post.title %></h3>
-          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-5"><%= post.excerpt %></p>
-          <span class="mt-auto inline-flex items-center gap-1 text-accent text-sm font-medium">
+          <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-5"><%= post.excerpt %></p>
+          <span class="mt-auto inline-flex items-center gap-1 text-accent-dark text-sm font-medium">
             Czytaj więcej
             <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </span>
@@ -133,7 +135,7 @@
     </div>
 
     <div class="text-center mt-8 md:hidden">
-      <a href="/aktualnosci-pl/" class="text-accent hover:text-accent-light font-medium text-sm">Wszystkie aktualności &rarr;</a>
+      <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm">Wszystkie aktualności &rarr;</a>
     </div>
   </div>
 </section>
@@ -150,11 +152,11 @@
 <% } %>
 
 <!-- NASZE USŁUGI - 2×2 grid -->
-<section class="py-20">
+<section class="py-20 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-14">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nasze usługi</h2>
-      <p class="text-gray-500 max-w-2xl mx-auto">Profesjonalne usługi lektorskie dla każdej branży. Ponad 25 lat doświadczenia i tysiące zrealizowanych projektów.</p>
+      <p class="text-gray-600 max-w-2xl mx-auto">Profesjonalne usługi lektorskie dla każdej branży. Ponad 25 lat doświadczenia i tysiące zrealizowanych projektów.</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
@@ -167,10 +169,10 @@
         </div>
         <div class="p-6 pt-3">
           <h3 class="text-xl font-bold text-gray-900 mb-3">Kreacja</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
             Nie masz gotowego tekstu? Skorzystaj z naszego Kreatora Treści Lektorskich. Przygotuj profesjonalny scenariusz do nagrania w kilka sekund - do spotu, zapowiedzi IVR, narracji filmowej czy e-learningu.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Stwórz tekst do nagrania od zera
@@ -184,7 +186,7 @@
               Scenariusze IVR, spotów, narracji, e-learningu
             </li>
           </ul>
-          <a href="/kreator/?start=creator" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+          <a href="/kreator/?start=creator" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Otwórz Kreator Treści Lektorskich
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -200,10 +202,10 @@
         </div>
         <div class="p-6 pt-3">
           <h3 class="text-xl font-bold text-gray-900 mb-3">Spoty reklamowe</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
             Zatrudnij najbardziej rozpoznawalnych lektorów i stwórz spot reklamowy, który przyciągnie uwagę słuchaczy. Profesjonalny lektor do reklamy i rozpoznawalny głos to lepsza jakość spotu radiowego, telewizyjnego czy internetowego.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Doświadczeni lektorzy reklamowi
@@ -217,7 +219,7 @@
               Szybka produkcja i udźwiękowienie
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/glos-do-reklamy/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/glos-do-reklamy/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -233,10 +235,10 @@
         </div>
         <div class="p-6 pt-3">
           <h3 class="text-xl font-bold text-gray-900 mb-3">Multimedia i lektor do filmów</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
             Przygotujemy ścieżkę dźwiękową do Twojego filmu, a jeśli trzeba - zamontujemy ją w materiale video. Narracja do filmów instruktażowych, korporacyjnych, e-learningowych i promocyjnych.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Narrator do dowolnego typu filmu
@@ -250,7 +252,7 @@
               Montaż audio-video w pakiecie
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -266,10 +268,10 @@
         </div>
         <div class="p-6 pt-3">
           <h3 class="text-xl font-bold text-gray-900 mb-3">Zapowiedzi telefoniczne</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
             Zapowiedzi centrali telefonicznej są ważnym elementem wizerunkowym firmy. Starannie przygotowane nagrania IVR zachęcają Klientów do kontaktu i budują profesjonalny wizerunek.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5 mb-5">
+          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
             <li class="flex items-start gap-2">
               <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               Profesjonalne pierwsze wrażenie
@@ -283,7 +285,7 @@
               Marketing bezpośredni na infolinii
             </li>
           </ul>
-          <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-medium text-sm transition-colors">
+          <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Dowiedz się więcej
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -294,11 +296,11 @@
 </section>
 
 <!-- KLIENCI I REALIZACJE - karuzela YouTube -->
-<section class="py-20">
+<section class="py-20 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Klienci i realizacje</h2>
-      <p class="text-gray-500">Posłuchaj wybranych nagrań z naszego portfolio</p>
+      <p class="text-gray-600">Posłuchaj wybranych nagrań z naszego portfolio</p>
     </div>
 
     <!-- Karuzela - budowana dynamicznie po sprawdzeniu dostępności filmów -->
@@ -331,39 +333,39 @@
       </div>
     </div>
 
-    <!-- LOGA KLIENTÓW -->
-    <div class="mt-16 pt-12 border-t border-gray-200">
-      <h3 class="text-center text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Zaufali nam</h3>
+    <!-- LOGA KLIENTÓW - ciemny panel (białe logo) -->
+    <div class="mt-16 bg-dark-700 rounded-2xl px-6 py-12 md:px-10">
+      <h3 class="text-center text-sm font-semibold uppercase tracking-widest text-gray-300 mb-8">Zaufali nam</h3>
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center justify-items-center">
-        <img src="/img/klienci/mswia.png" alt="MSWiA" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/men.png" alt="MEN" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/allegro.png" alt="Allegro" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/dhl.png" alt="DHL" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/axa.png" alt="AXA" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/dpd.png" alt="DPD" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/esky.png" alt="eSky" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/ups.png" alt="UPS" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/tvn.png" alt="TVN" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/volvo.png" alt="Volvo" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/solid-security.png" alt="Solid Security" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/Focus-Hotels.png" alt="Focus Hotels" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/3s.png" alt="3S" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/brw.png" alt="BRW" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/credit-agricole.png" alt="Credit Agricole" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/Koelner-Rawlplug.png" alt="Koelner Rawlplug" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/kazar.png" alt="Kazar" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
-        <img src="/img/klienci/TU-Europa.png" alt="TU Europa" class="h-10 md:h-12 object-contain logo-dark" loading="lazy">
+        <img src="/img/klienci/mswia.png" alt="MSWiA" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/men.png" alt="MEN" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/allegro.png" alt="Allegro" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/dhl.png" alt="DHL" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/axa.png" alt="AXA" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/dpd.png" alt="DPD" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/esky.png" alt="eSky" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/ups.png" alt="UPS" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/tvn.png" alt="TVN" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/volvo.png" alt="Volvo" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/solid-security.png" alt="Solid Security" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/Focus-Hotels.png" alt="Focus Hotels" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/3s.png" alt="3S" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/brw.png" alt="BRW" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/credit-agricole.png" alt="Credit Agricole" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/Koelner-Rawlplug.png" alt="Koelner Rawlplug" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/kazar.png" alt="Kazar" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
+        <img src="/img/klienci/TU-Europa.png" alt="TU Europa" class="h-10 md:h-12 object-contain logo-on-dark" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 <!-- POPULARNI LEKTORZY -->
-<section class="py-20" style="background-color:#e7ded3">
+<section class="py-20 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popularni lektorzy</h2>
-      <p class="text-gray-500">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
+      <p class="text-gray-600">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
@@ -392,14 +394,14 @@
             <% } %>
           </div>
           <a href="/lektorzy/<%= v.id %>/" class="text-gray-900 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
-          <div class="text-xs text-gray-500 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
+          <div class="text-xs text-gray-600 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
         </div>
         <% } %>
       <% }); %>
     </div>
 
     <div class="text-center mt-10">
-      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów (<%= voiceCount %>) &rarr;</a>
+      <a href="/bank-glosow/" class="text-accent-dark hover:text-accent font-medium text-sm">Zobacz wszystkich lektorów (<%= voiceCount %>) &rarr;</a>
     </div>
   </div>
 </section>
@@ -407,11 +409,11 @@
 <!-- NASZE OSIĄGNIĘCIA W LICZBACH -->
 
 <!-- OPINIE -->
-<section id="opinie" class="py-20" style="background-color:#dfd4c8">
+<section id="opinie" class="py-20 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Co mówią nasi Klienci</h2>
-      <p class="text-gray-500">Ponad 2&nbsp;800 zadowolonych Klientów i 25 lat doświadczenia</p>
+      <p class="text-gray-600">Ponad 2&nbsp;800 zadowolonych Klientów i 25 lat doświadczenia</p>
     </div>
 
     <!-- Carousel container -->
@@ -432,9 +434,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Wszystko zgodnie z opisem, polecam.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Sebastian</span>
-                <span class="text-gray-500"> - Stonebau Sp. z o.o.</span>
+                <span class="text-gray-600"> - Stonebau Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">15.12.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.12.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -447,9 +449,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Serdecznie polecam! Profesjonalnie, bardzo sprawnie i w bardzo miłej atmosferze.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Marta</span>
-                <span class="text-gray-500"> - mediashake</span>
+                <span class="text-gray-600"> - mediashake</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">15.12.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.12.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -462,9 +464,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Wszystko odbyło się profesjonalnie po raz kolejny, szybko, sprawnie.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Andrzej</span>
-                <span class="text-gray-500"> - FNC Poland</span>
+                <span class="text-gray-600"> - FNC Poland</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">05.11.2025</div>
+              <div class="text-xs text-gray-600 mt-1">05.11.2025</div>
             </div>
           </div>
 
@@ -481,9 +483,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Świetna współpraca - miły kontakt, szybkie odpowiedzi, proklienckie podejście, wysoka jakość i krótki termin realizacji. Polecam!&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Kasia Urbańska-Ludwicka</span>
-                <span class="text-gray-500"> - Płodni Marketing</span>
+                <span class="text-gray-600"> - Płodni Marketing</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">15.10.2025</div>
+              <div class="text-xs text-gray-600 mt-1">15.10.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -497,7 +499,7 @@
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">CU Partner</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">23.09.2025</div>
+              <div class="text-xs text-gray-600 mt-1">23.09.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -510,9 +512,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Zawsze szybko, sprawnie i w dobrej atmosferze. Wracamy regularnie.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Tatiana Maćkowiak</span>
-                <span class="text-gray-500"> - Blue Baobab Sp. z o.o.</span>
+                <span class="text-gray-600"> - Blue Baobab Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">26.08.2025</div>
+              <div class="text-xs text-gray-600 mt-1">26.08.2025</div>
             </div>
           </div>
 
@@ -529,9 +531,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Bardzo dobry kontakt, szybka realizacja, dużo wariantów do wyboru, bardzo dobra jakość nagrań. Zdecydowanie mogę polecić.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Kacper</span>
-                <span class="text-gray-500"> - Taśma Film</span>
+                <span class="text-gray-600"> - Taśma Film</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">05.08.2025</div>
+              <div class="text-xs text-gray-600 mt-1">05.08.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -544,9 +546,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy cyklicznie i za każdym razem jest to wzorowo zrealizowane zlecenie. 10/10.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Wojtek</span>
-                <span class="text-gray-500"> - Domesta Sp. z o.o.</span>
+                <span class="text-gray-600"> - Domesta Sp. z o.o.</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">22.05.2025</div>
+              <div class="text-xs text-gray-600 mt-1">22.05.2025</div>
             </div>
             <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <div class="flex gap-1 mb-3 text-yellow-400">
@@ -559,9 +561,9 @@
               <p class="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;Współpracujemy z powitania.pl od wielu lat, jakość nagrań oraz profesjonalna obsługa są na najwyższym poziomie.&rdquo;</p>
               <div class="text-sm">
                 <span class="font-semibold text-gray-900">Łukasz Piotrowski</span>
-                <span class="text-gray-500"> - Telestrada S.A.</span>
+                <span class="text-gray-600"> - Telestrada S.A.</span>
               </div>
-              <div class="text-xs text-gray-500 mt-1">10.04.2025</div>
+              <div class="text-xs text-gray-600 mt-1">10.04.2025</div>
             </div>
           </div>
 
@@ -585,118 +587,118 @@
     </div>
 
     <div class="text-center mt-8">
-      <a href="/opinie/" class="text-accent hover:text-accent-light font-medium text-sm">Wszystkie opinie &rarr;</a>
+      <a href="/opinie/" class="text-accent-dark hover:text-accent font-medium text-sm">Wszystkie opinie &rarr;</a>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-16">
+<section id="faq" class="py-16 border-t border-gray-200">
   <div class="max-w-3xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Najczęściej zadawane pytania</h2>
     <div class="space-y-4">
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Jakie usługi lektorskie świadczy Powitania.pl?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Powitania.pl świadczy kompleksowe usługi lektorskie: nagrania <a href="/nagrania-lektorskie/glos-do-reklamy/" class="text-accent hover:underline">spotów reklamowych</a> (radio, TV, social media), <a href="/nagrania-lektorskie/zapowiedzi-telefoniczne/" class="text-accent hover:underline">zapowiedzi telefoniczne i menu IVR</a>, <a href="/nagrania-lektorskie/profesjonalny-lektor-do-filmow/" class="text-accent hover:underline">narracje do filmów korporacyjnych</a> i e-learningu, audiobooki oraz audioprzewodniki. Mamy w banku <%= voiceCount %> lektorów w 30+ językach, realizujemy w 24-48h, ceny od 300 zł netto.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Jak wygląda proces zamawiania nagrania?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Przygotowujesz tekst (lub korzystasz z naszego kreatora), wybierasz lektora z banku głosów, a następnie składasz zamówienie. Nagranie jest gotowe w ciągu 24-48 godzin. Oferujemy także nagrania ekspresowe w trybie pilnym.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Ile kosztuje nagranie lektorskie?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Cena zależy od rodzaju nagrania, długości tekstu i wybranego lektora. Standardowe nagrania IVR zaczynają się od 380 złotych. Sprawdź nasz <a href="/cennik-nagran-lektorskich/" class="text-accent hover:underline">cennik</a> lub <a href="/kontakt/" class="text-accent hover:underline">zapytaj o indywidualną wycenę</a>.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           W jakich językach realizujecie nagrania?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Nasze nagrania są dostępne w ponad 30 językach. Współpracujemy zarówno z polskimi lektorami, jak i native speakerami z całego świata. Najpopularniejsze języki to: polski, angielski, niemiecki, francuski, czeski i ukraiński.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Czy mogę odsłuchać próbki głosów przed zamówieniem?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Tak! W naszym <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a> znajdziesz próbki <%= voiceCount %> lektorów. Możesz filtrować głosy według płci, języka i typu nagrania, aby znaleźć idealny głos do swojego projektu.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Jak szybko otrzymam gotowe nagranie?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Standardowy czas realizacji to 24-48 godzin od zatwierdzenia tekstu. W trybie <a href="/nagranie-ekspresowe/" class="text-accent hover:underline">nagrania ekspresowego</a> realizujemy zlecenia nawet w ciągu kilku godzin.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Do jakich celów najczęściej zamawiane są nagrania lektorskie?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Najczęściej realizujemy nagrania na potrzeby: zapowiedzi telefonicznych IVR i systemów call center, spotów reklamowych radiowych i telewizyjnych, narracji do filmów korporacyjnych i instruktażowych, audiobooków i materiałów e-learningowych, prezentacji i głosów do aplikacji. Obsługujemy zarówno pojedyncze nagrania, jak i duże projekty wielojęzyczne.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Czym różni się profesjonalny lektor od generatora głosu AI?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Profesjonalny lektor wnosi do nagrania emocje, intencję i naturalną intonację, której generatory AI nie potrafią w pełni odtworzyć. Ma znaczenie szczególnie w reklamach, audiobookach i materiałach, gdzie głos buduje wizerunek marki. Generatory AI sprawdzają się przy prototypach, testach lub masowej produkcji przy niskim budżecie. W Powitania.pl oferujemy oba rozwiązania - lektorów ludzkich oraz syntezę głosu przez <a href="https://makevoice.io" class="text-accent hover:underline" target="_blank" rel="noopener nofollow">MakeVoice.io</a>.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Jak wygląda sesja zdalna z lektorem?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Sesja zdalna odbywa się przez Zoom, Teams lub Source-Connect. Klient słyszy nagranie na żywo i może na bieżąco kierować lektorem - poprawiać intonację, tempo, akcenty. To idealne rozwiązanie dla projektów wymagających precyzyjnej reżyserii, np. reklam z charakterystycznym tonem marki. Więcej informacji na stronie <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="text-accent hover:underline">sesje zdalne</a>.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Czy oferujecie nagrania w trybie pilnym (ekspresowym)?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Tak. W ramach usługi <a href="/nagranie-ekspresowe/" class="text-accent hover:underline">nagrania ekspresowego</a> realizujemy zlecenia nawet w ciągu kilku godzin - również w weekendy i święta. Usługa jest dostępna dla wybranych lektorów i wiąże się z dodatkową opłatą ekspresową. Sprawdź dostępność i szczegóły na stronie nagrań ekspresowych.
         </div>
       </details>
       <details class="group border border-gray-200 rounded-xl bg-white shadow-sm">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-accent transition-colors">
           Czy Powitania.pl to studio lektorskie czy serwis z życzeniami?
-          <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">
+        <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
           Mimo że nazwa "powitania" może kojarzyć się z życzeniami lub powitaniami, Powitania.pl to profesjonalne studio lektorskie działające od 2001 roku. Specjalizujemy się w nagraniach głosowych z udziałem <%= voiceCount %> profesjonalnych lektorów w 30+ językach. Nasze usługi obejmują spoty reklamowe, zapowiedzi telefoniczne IVR, audiobooki, narracje do filmów i e-learning. Nazwa "powitania" nawiązuje do zapowiedzi i powitań telefonicznych - jednej z naszych flagowych usług.
         </div>
       </details>
     </div>
     <div class="text-center mt-8">
-      <a href="/faq-pl/" class="text-accent hover:text-accent-light font-medium text-sm">Więcej pytań i odpowiedzi &rarr;</a>
+      <a href="/faq-pl/" class="text-accent-dark hover:text-accent font-medium text-sm">Więcej pytań i odpowiedzi &rarr;</a>
     </div>
   </div>
 </section>
@@ -799,12 +801,12 @@
 </script>
 
 <!-- KONTAKT -->
-<section class="py-16" style="background-color:#d7cabd" id="kontakt-homepage">
+<section class="py-16 border-t border-gray-200" id="kontakt-homepage">
   <div class="max-w-5xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-12 items-start">
       <div>
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Napisz do nas</h2>
-        <p class="text-gray-500 mb-6">Odpowiadamy w ciągu 2 godzin w dni robocze.</p>
+        <p class="text-gray-600 mb-6">Odpowiadamy w ciągu 2 godzin w dni robocze.</p>
         <div class="space-y-4 text-sm">
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -816,11 +818,11 @@
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            <span class="text-gray-500">Studio: ul. Fiołkowa 36, 05-532 Solec</span>
+            <span class="text-gray-600">Studio: ul. Fiołkowa 36, 05-532 Solec</span>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span class="text-gray-500">Pn-Pt 08:00-18:00</span>
+            <span class="text-gray-600">Pn-Pt 08:00-18:00</span>
           </div>
         </div>
       </div>
@@ -828,21 +830,21 @@
       <form id="homepage-contact-form" class="space-y-4">
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
-            <label for="hc-name" class="block text-sm text-gray-500 mb-1.5">Imię i nazwisko</label>
+            <label for="hc-name" class="block text-sm text-gray-600 mb-1.5">Imię i nazwisko</label>
             <input type="text" id="hc-name" name="name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors" placeholder="Jan Kowalski">
           </div>
           <div>
-            <label for="hc-email" class="block text-sm text-gray-500 mb-1.5">Email <span class="text-red-400">*</span></label>
+            <label for="hc-email" class="block text-sm text-gray-600 mb-1.5">Email <span class="text-red-400">*</span></label>
             <input type="email" id="hc-email" name="email" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors" placeholder="jan@firma.pl">
           </div>
         </div>
         <div>
-          <label for="hc-message" class="block text-sm text-gray-500 mb-1.5">Wiadomość <span class="text-red-400">*</span></label>
+          <label for="hc-message" class="block text-sm text-gray-600 mb-1.5">Wiadomość <span class="text-red-400">*</span></label>
           <textarea id="hc-message" name="message" required rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none transition-colors resize-none" placeholder="Opisz swój projekt lub zadaj pytanie..."></textarea>
         </div>
         <div class="flex items-start gap-2">
           <input type="checkbox" id="hc-rodo" name="rodo" required class="mt-1 accent-accent">
-          <label for="hc-rodo" class="text-xs text-gray-500">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z <a href="/polityka-prywatnosci/" class="text-accent hover:underline">polityką prywatności</a>. <span class="text-red-400">*</span></label>
+          <label for="hc-rodo" class="text-xs text-gray-600">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z <a href="/polityka-prywatnosci/" class="text-accent hover:underline">polityką prywatności</a>. <span class="text-red-400">*</span></label>
         </div>
         <button type="submit" id="hc-submit" class="w-full bg-accent hover:bg-accent-light text-white font-semibold py-3 rounded-lg transition-colors">Wyślij wiadomość</button>
         <div id="hc-msg" class="hidden text-center text-sm py-3 rounded-lg"></div>
@@ -939,7 +941,7 @@ setInterval(function() { slideReviews(1); }, 8000);
       '</div>' +
       '<div class="p-4">' +
         '<h3 class="text-gray-900 font-semibold text-sm">' + v.title + '</h3>' +
-        (v.slug ? '<a href="/lektorzy/' + v.slug + '/" class="text-xs text-accent hover:text-accent-light mt-1 inline-block">' + v.narrator + '</a>' : '<p class="text-xs text-gray-500 mt-1">' + v.narrator + '</p>') +
+        (v.slug ? '<a href="/lektorzy/' + v.slug + '/" class="text-xs text-accent-dark hover:text-accent mt-1 inline-block">' + v.narrator + '</a>' : '<p class="text-xs text-gray-600 mt-1">' + v.narrator + '</p>') +
       '</div></div>';
   }
 
