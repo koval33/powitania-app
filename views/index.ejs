@@ -94,23 +94,36 @@
   </div>
 </section>
 
-<!-- AKTUALNOŚCI -->
+<!-- AKTUALNOŚCI - karuzela -->
 <% if (typeof posts !== 'undefined' && posts.length > 0) { %>
-<section class="py-16">
+<section class="py-16 bg-stone-100/50 border-y border-gray-200/70">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Aktualności</h2>
-      <p class="text-gray-500">Nowości z naszego studia lektorskiego, porady i artykuły branżowe</p>
+
+    <div class="flex items-end justify-between gap-6 mb-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Aktualności</h2>
+        <p class="text-gray-500">Nowości ze studia lektorskiego, porady i&nbsp;artykuły branżowe</p>
+      </div>
+      <div class="hidden md:flex items-center gap-3 shrink-0">
+        <a href="/aktualnosci-pl/" class="text-accent hover:text-accent-light font-medium text-sm whitespace-nowrap">Wszystkie &rarr;</a>
+        <button type="button" data-news-prev aria-label="Poprzednie" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button type="button" data-news-next aria-label="Następne" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="news-scroll flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 pb-2">
       <% posts.forEach(function(post) { %>
-      <a href="/aktualnosci-pl/<%= post.slug %>/" class="group bg-white rounded-xl border border-gray-200 hover:border-accent overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-        <div class="p-6">
-          <div class="text-xs text-gray-500 mb-3"><%= post.date %></div>
-          <h3 class="font-semibold mb-2 text-gray-900 group-hover:text-accent transition-colors line-clamp-2"><%= post.title %></h3>
-          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3"><%= post.excerpt %></p>
-          <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4">
+      <a href="/aktualnosci-pl/<%= post.slug %>/" class="news-card snap-start shrink-0 w-[290px] md:w-[330px] group bg-white rounded-xl border border-gray-200 hover:border-accent shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+        <div class="h-1 rounded-t-xl bg-accent/70 group-hover:bg-accent transition-colors"></div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="text-xs text-gray-400 mb-3 tracking-wide"><%= post.date.split('-').reverse().join('.') %></div>
+          <h3 class="font-bold text-lg text-gray-900 group-hover:text-accent transition-colors line-clamp-3 mb-3 leading-snug"><%= post.title %></h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-5"><%= post.excerpt %></p>
+          <span class="mt-auto inline-flex items-center gap-1 text-accent text-sm font-medium">
             Czytaj więcej
             <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </span>
@@ -119,11 +132,21 @@
       <% }); %>
     </div>
 
-    <div class="text-center mt-10">
+    <div class="text-center mt-8 md:hidden">
       <a href="/aktualnosci-pl/" class="text-accent hover:text-accent-light font-medium text-sm">Wszystkie aktualności &rarr;</a>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var sc = document.querySelector('.news-scroll');
+  if (!sc) return;
+  function step(){ var c = sc.querySelector('.news-card'); return c ? c.offsetWidth + 20 : 320; }
+  var p = document.querySelector('[data-news-prev]'), n = document.querySelector('[data-news-next]');
+  if (p) p.addEventListener('click', function(){ sc.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (n) n.addEventListener('click', function(){ sc.scrollBy({ left: step(), behavior: 'smooth' }); });
+})();
+</script>
 <% } %>
 
 <!-- NASZE USŁUGI - 2×2 grid -->
@@ -139,7 +162,7 @@
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-56 md:h-64">
-            <img src="/img/sections/kreacja-tekst.webp" alt="Kreacja - Kreator Treści Lektorskich" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="449">
+            <img src="/img/sections/uslugi-kreacja.webp" alt="Kreator Treści Lektorskich - stwórz własny tekst do nagrania lektorskiego" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
         <div class="p-6 pt-3">
@@ -172,7 +195,7 @@
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-56 md:h-64">
-            <img src="/img/sections/spoty-reklamowe.webp" alt="Spoty reklamowe - ludzie oglądający telewizję" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+            <img src="/img/sections/uslugi-spoty-ferenc-tadla.webp" alt="Andrzej Ferenc i Beata Tadla podczas nagrania spotu w studiu lektorskim Powitania.pl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
         <div class="p-6 pt-3">
@@ -205,7 +228,7 @@
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-56 md:h-64">
-            <img src="/img/sections/multimedia.webp" alt="Multimedia i lektor do filmów" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+            <img src="/img/sections/uslugi-multimedia-lektor.webp" alt="Lektor czytający scenariusz przy mikrofonie w studiu lektorskim Powitania.pl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
         <div class="p-6 pt-3">
@@ -238,7 +261,7 @@
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
           <div class="rounded-xl overflow-hidden h-56 md:h-64">
-            <img src="/img/sections/zapowiedzi-telefoniczne.webp" alt="Zapowiedzi telefoniczne - kobieta rozmawiająca przez telefon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="670" height="446">
+            <img src="/img/sections/uslugi-zapowiedzi-ivr.webp" alt="Zapowiedzi i komunikaty telefoniczne IVR - asystent głosowy w telefonie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500">
           </div>
         </div>
         <div class="p-6 pt-3">
@@ -270,53 +293,6 @@
   </div>
 </section>
 
-<!-- POPULARNI LEKTORZY -->
-<section class="py-20" style="background-color:#e7ded3">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popularni lektorzy</h2>
-      <p class="text-gray-500">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-      <% var popularIds = ['jacek-brzostynski', 'malgorzata', 'janusz', 'anita', 'maciej-jablonski']; %>
-      <% var allVoices = typeof voices !== 'undefined' ? voices : []; %>
-      <% popularIds.forEach(function(pid) { %>
-        <% var v = allVoices.find(function(x) { return x.id === pid; }); %>
-        <% if (v) { %>
-        <div class="text-center group">
-          <div class="relative mb-3">
-            <img
-              src="<%= v.photo %>"
-              alt="<%= v.name %>"
-              class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all"
-              loading="lazy"
-            >
-            <% if (v.audio) { %>
-            <button
-              onclick="playPopular(this, '<%= v.audio %>')"
-              class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/3 w-10 h-10 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-              title="Odsłuchaj próbkę"
-            >
-              <svg class="w-4 h-4 ml-0.5 play-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="w-4 h-4 pause-icon hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-            </button>
-            <% } %>
-          </div>
-          <a href="/lektorzy/<%= v.id %>/" class="text-gray-900 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
-          <div class="text-xs text-gray-500 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
-        </div>
-        <% } %>
-      <% }); %>
-    </div>
-
-    <div class="text-center mt-10">
-      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów (<%= voiceCount %>) &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- NASZE OSIĄGNIĘCIA W LICZBACH -->
 <!-- KLIENCI I REALIZACJE - karuzela YouTube -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-4">
@@ -381,6 +357,54 @@
     </div>
   </div>
 </section>
+
+<!-- POPULARNI LEKTORZY -->
+<section class="py-20" style="background-color:#e7ded3">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popularni lektorzy</h2>
+      <p class="text-gray-500">Odsłuchaj próbki i znajdź głos idealny dla Twojego projektu</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+      <% var popularIds = ['jacek-brzostynski', 'malgorzata', 'janusz', 'anita', 'maciej-jablonski']; %>
+      <% var allVoices = typeof voices !== 'undefined' ? voices : []; %>
+      <% popularIds.forEach(function(pid) { %>
+        <% var v = allVoices.find(function(x) { return x.id === pid; }); %>
+        <% if (v) { %>
+        <div class="text-center group">
+          <div class="relative mb-3">
+            <img
+              src="<%= v.photo %>"
+              alt="<%= v.name %>"
+              class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all"
+              loading="lazy"
+            >
+            <% if (v.audio) { %>
+            <button
+              onclick="playPopular(this, '<%= v.audio %>')"
+              class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/3 w-10 h-10 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+              title="Odsłuchaj próbkę"
+            >
+              <svg class="w-4 h-4 ml-0.5 play-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="w-4 h-4 pause-icon hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <% } %>
+          </div>
+          <a href="/lektorzy/<%= v.id %>/" class="text-gray-900 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
+          <div class="text-xs text-gray-500 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
+        </div>
+        <% } %>
+      <% }); %>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/bank-glosow/" class="text-accent hover:text-accent-light font-medium text-sm">Zobacz wszystkich lektorów (<%= voiceCount %>) &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- NASZE OSIĄGNIĘCIA W LICZBACH -->
 
 <!-- OPINIE -->
 <section id="opinie" class="py-20" style="background-color:#dfd4c8">
@@ -884,12 +908,15 @@ setInterval(function() { slideReviews(1); }, 8000);
 // Dynamiczna karuzela YouTube - sprawdza dostępność filmów, buduje slajdy
 (function() {
   var allVideos = [
-    { id: '9lWm6XAbaDg', title: 'Narracja do filmu instruktażowego', narrator: 'Lektor Patryk' },
-    { id: 'mZ8mMfeD870', title: 'Narracja w języku angielskim', narrator: 'Lektorka Alison' },
-    { id: 'cfZ27giVqh8', title: 'Wiktor zachęca do monitoringu stron', narrator: 'Lektor Wiktor' },
-    { id: '6gnEr5UzW2Q', title: 'Narracja do projektu \u201eZiemianie atakują\u201d', narrator: 'Lektor David' },
-    { id: 'XQV-8dbWgII', title: 'Prezentacja firmy z branży przemysłowej', narrator: 'Lektorka Beata' },
-    { id: 'YLdaojG1tQw', title: 'Narracja do filmu serwisu Askberry', narrator: 'Lektor Michał' }
+    { id: 'SS9ebAxTiF8', title: 'Film korporacyjny - Marcopol', narrator: 'Lektor Bill', slug: 'bill' },
+    { id: 'jBbX2XOt4hA', title: 'Historia narodzin Dzbanka - Ceramika Artystyczna', narrator: 'Lektor Andrzej Ferenc', slug: 'andrzej-ferenc' },
+    { id: 'nQsRy6AKyj0', title: 'Reklama TV - Biedronka', narrator: 'Lektorka Lea', slug: 'lea' },
+    { id: '9lWm6XAbaDg', title: 'Narracja do filmu instruktażowego', narrator: 'Lektor Patryk', slug: 'patryk' },
+    { id: 'cfZ27giVqh8', title: 'Wiktor zachęca do monitoringu stron', narrator: 'Lektor Wiktor', slug: 'wiktor' },
+    { id: '6gnEr5UzW2Q', title: 'Narracja do projektu \u201eZiemianie atakują\u201d', narrator: 'Lektor David', slug: 'david' },
+    { id: 'XQV-8dbWgII', title: 'Prezentacja firmy z branży przemysłowej', narrator: 'Lektorka Beata', slug: 'beata' },
+    { id: 'YLdaojG1tQw', title: 'Narracja do filmu serwisu Askberry', narrator: 'Lektor Michał', slug: 'michal' },
+    { id: 'ejCfU8Ucx6A', title: 'Reklama Bosch', narrator: 'Lektor Humberto', slug: 'humberto' }
   ];
 
   var track = document.getElementById('yt-track');
@@ -901,7 +928,6 @@ setInterval(function() { slideReviews(1); }, 8000);
   var PER_SLIDE = 3;
   var currentSlide = 0;
   var totalSlides = 0;
-  var autoTimer;
 
   function makeCard(v) {
     return '<div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md transition-all">' +
@@ -913,7 +939,7 @@ setInterval(function() { slideReviews(1); }, 8000);
       '</div>' +
       '<div class="p-4">' +
         '<h3 class="text-gray-900 font-semibold text-sm">' + v.title + '</h3>' +
-        '<p class="text-xs text-gray-500 mt-1">' + v.narrator + '</p>' +
+        (v.slug ? '<a href="/lektorzy/' + v.slug + '/" class="text-xs text-accent hover:text-accent-light mt-1 inline-block">' + v.narrator + '</a>' : '<p class="text-xs text-gray-500 mt-1">' + v.narrator + '</p>') +
       '</div></div>';
   }
 
@@ -945,9 +971,6 @@ setInterval(function() { slideReviews(1); }, 8000);
       nextBtn.classList.remove('hidden'); nextBtn.classList.add('flex');
     }
     currentSlide = 0;
-    // Auto-advance
-    if (autoTimer) clearInterval(autoTimer);
-    if (totalSlides > 1) autoTimer = setInterval(function() { goToSlide(currentSlide + 1); }, 10000);
   }
 
   function goToSlide(n) {
