@@ -84,10 +84,8 @@
       var header = document.querySelector('header');
       var bar = document.getElementById('filters-bar');
       function setTops() {
-        var sidebar = document.getElementById('filters-sidebar');
         var h = header ? header.offsetHeight : 0;
         if (bar) bar.style.top = h + 'px';
-        if (sidebar) sidebar.style.top = (h + 16) + 'px';
       }
       // Run immediately for the bar, and after DOM is ready for the sidebar
       setTops();
@@ -108,7 +106,7 @@
   <aside class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0 md:self-stretch">
 
     <!-- Filter card (sticky) -->
-    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky top-20">
+    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky bottom-6">
 
     <!-- Search -->
     <div class="relative">
