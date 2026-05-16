@@ -135,7 +135,7 @@
   <aside class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0 md:self-stretch">
 
     <!-- Karta filtrów (sticky) -->
-    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky bottom-6">
+    <div id="filters-sidebar" class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-5 sticky">
 
     <!-- Szukaj -->
     <div class="relative">
@@ -533,9 +533,25 @@
   (function() {
     var header = document.querySelector('header');
     var sidebar = document.getElementById('filters-sidebar');
-    if (!header || !sidebar) return;
-    function setSidebarTop() { /* sidebar: CSS position:sticky bottom-6 - bez JS-owego top */ }
+    if (!sidebar) return;
+    // Karta filtr+kontakt bywa wyzsza niz viewport. Chcemy: przewija sie z
+    // lista lektorow, a gdy jej DOL (zacheta kontaktowa) dojdzie ~24px od dolu
+    // ekranu - zamarza. position:sticky + dynamiczny top:
+    //  - karta miesci sie w viewport -> top = headerH+12 (pin pod headerem)
+    //  - karta wyzsza niz viewport   -> top ujemny = vh - cardH - 24
+    //    (pin tak, ze dol/zacheta zostaje ~24px nad dolem ekranu)
+    function setSidebarTop() {
+      if (!window.matchMedia('(min-width: 768px)').matches) { sidebar.style.top = ''; return; }
+      var headerH = header ? header.offsetHeight : 0;
+      var topFits = headerH + 12;
+      var topTall = window.innerHeight - sidebar.offsetHeight - 24;
+      sidebar.style.top = Math.min(topFits, topTall) + 'px';
+    }
     setSidebarTop();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setSidebarTop);
+    }
+    window.addEventListener('load', setSidebarTop);
     window.addEventListener('resize', setSidebarTop);
   })();
 </script>
