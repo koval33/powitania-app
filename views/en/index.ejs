@@ -22,11 +22,11 @@
   <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
 
   <%# Content - nalozony absolutnie na obraz %>
-  <div class="absolute inset-0 z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-[140px] md:pt-[160px] pb-8">
+  <div class="relative md:absolute md:inset-0 z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-[140px] md:pt-[160px] pb-8">
 
     <%# Title block %>
     <div class="flex justify-center mb-10 md:mb-14">
-      <div class="inline-block bg-black/35 px-6 md:px-10 py-6 md:py-8 text-center">
+      <div class="inline-block bg-black/35 rounded-xl px-6 md:px-10 py-6 md:py-8 text-center">
         <h1 class="text-white font-extralight text-3xl sm:text-4xl md:text-5xl lg:text-[56px] tracking-tight leading-[1.1]" style="font-family: 'Dosis', sans-serif;">
           Voiceover Studio &amp;&nbsp;Services
         </h1>
@@ -37,7 +37,7 @@
     </div>
 
     <%# Widget: find your voice (gender + language + button) %>
-    <form action="/en/voice-bank/" method="get" class="max-w-3xl mx-auto bg-black/35 border border-white/45 rounded-md p-5 md:p-7">
+    <form action="/en/voice-bank/" method="get" class="max-w-3xl mx-auto bg-black/35 border border-white/45 rounded-xl p-5 md:p-7">
       <h2 class="text-white text-center text-lg md:text-xl font-normal mb-5 md:mb-6 leading-snug tracking-wide" style="font-family: 'Dosis', sans-serif;">
         Find your voice in&nbsp;two simple steps or&nbsp;call us <a href="tel:+48605491069" class="font-semibold hover:underline whitespace-nowrap">+48&nbsp;605&nbsp;491&nbsp;069</a>!
       </h2>
@@ -157,39 +157,6 @@
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
-      <!-- 1. Script Creation - NEW -->
-      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
-        <div class="p-1.5">
-          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
-            <a href="/kreator/" aria-hidden="true" tabindex="-1" class="block w-full h-full"><img src="/img/sections/uslugi-kreacja-en.webp" alt="Voiceover Script Creator - create your own voiceover script" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500"></a>
-          </div>
-        </div>
-        <div class="p-6 pt-3">
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Script Creation</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            Don't have a script ready? Use our Voiceover Script Creator. Prepare a professional script for recording in seconds - for spots, IVR announcements, film narration or e-learning.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
-            <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              Create a script from scratch
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              Optimization for your recording duration
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              IVR scripts, spots, narration, e-learning
-            </li>
-          </ul>
-          <a href="/kreator/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
-            Open Voiceover Script Creator
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-      </div>
-
       <!-- 2. Advertising Spots -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
         <div class="p-1.5">
@@ -284,6 +251,39 @@
           </ul>
           <a href="/en/phone-announcements/" aria-label="Learn more about: Phone Announcements" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
             Learn more
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 1. Script Creation - NEW -->
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden group hover:border-accent shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="p-1.5">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio:11/5">
+            <a href="/kreator/" aria-hidden="true" tabindex="-1" class="block w-full h-full"><img src="/img/sections/uslugi-kreacja-en.webp" alt="Voiceover Script Creator - create your own voiceover script" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1100" height="500"></a>
+          </div>
+        </div>
+        <div class="p-6 pt-3">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Script Creation</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Don't have a script ready? Use our Voiceover Script Creator. Prepare a professional script for recording in seconds - for spots, IVR announcements, film narration or e-learning.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1.5 mb-5">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Create a script from scratch
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Optimization for your recording duration
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              IVR scripts, spots, narration, e-learning
+            </li>
+          </ul>
+          <a href="/kreator/" class="inline-flex items-center gap-1.5 text-accent-dark hover:text-accent font-medium text-sm transition-colors">
+            Open Voiceover Script Creator
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
         </div>
