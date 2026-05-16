@@ -22,7 +22,21 @@ app.use((req, res, next) => {
 // Middleware
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '1d',
+  setHeaders: (res, filePath) => {
+    if (/\.(css|js)$/i.test(filePath)) {
+      // CSS/JS są wersjonowane przez ?v=ASSET_VERSION (nowa wartość co deploy),
+      // więc długi immutable cache jest bezpieczny - zero ryzyka stale.
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (/\.(webp|png|jpe?g|gif|svg|ico|avif|woff2?|ttf|otf|mp3|mp4|webm|mov)$/i.test(filePath)) {
+      // Statyczne media (logo, zdjęcia sekcji, tło hero, fonty) zmieniają się
+      // rzadko - 30 dni. Przy podmianie pliku: zmień nazwę pliku.
+      res.setHeader('Cache-Control', 'public, max-age=2592000');
+    }
+    // pozostałe pliki: domyślny maxAge '1d'
+  }
+}));
 
 // EJS
 app.set('view engine', 'ejs');
