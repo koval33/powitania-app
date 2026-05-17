@@ -96,61 +96,6 @@
   </div>
 </section>
 
-<!-- AKTUALNOŚCI - karuzela -->
-<% if (typeof posts !== 'undefined' && posts.length > 0) { %>
-<section class="py-16 border-t border-gray-200">
-  <div class="max-w-6xl mx-auto px-4">
-
-    <div class="flex items-end justify-between gap-6 mb-8">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Aktualności</h2>
-        <p class="text-gray-600">Nowości ze studia lektorskiego, porady i&nbsp;artykuły branżowe</p>
-      </div>
-      <div class="hidden md:flex items-center gap-3 shrink-0">
-        <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm whitespace-nowrap">Wszystkie &rarr;</a>
-        <button type="button" data-news-prev aria-label="Poprzednie" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button type="button" data-news-next aria-label="Następne" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="news-scroll flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 pb-2">
-      <% posts.forEach(function(post) { %>
-      <a href="/aktualnosci-pl/<%= post.slug %>/" class="news-card snap-start shrink-0 w-[290px] md:w-[330px] group bg-white rounded-xl border border-gray-200 hover:border-accent shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
-        <div class="h-1 rounded-t-xl bg-accent/70 group-hover:bg-accent transition-colors"></div>
-        <div class="p-6 flex flex-col flex-1">
-          <div class="text-xs text-gray-600 mb-3 tracking-wide"><%= post.date.split('-').reverse().join('.') %></div>
-          <h3 class="font-bold text-lg text-gray-900 group-hover:text-accent transition-colors line-clamp-3 mb-3 leading-snug"><%= post.title %></h3>
-          <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-5"><%= post.excerpt %></p>
-          <span class="mt-auto inline-flex items-center gap-1 text-accent-dark text-sm font-medium">
-            Czytaj więcej
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </span>
-        </div>
-      </a>
-      <% }); %>
-    </div>
-
-    <div class="text-center mt-8 md:hidden">
-      <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm">Wszystkie aktualności &rarr;</a>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  var sc = document.querySelector('.news-scroll');
-  if (!sc) return;
-  function step(){ var c = sc.querySelector('.news-card'); return c ? c.offsetWidth + 20 : 320; }
-  var p = document.querySelector('[data-news-prev]'), n = document.querySelector('[data-news-next]');
-  if (p) p.addEventListener('click', function(){ sc.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  if (n) n.addEventListener('click', function(){ sc.scrollBy({ left: step(), behavior: 'smooth' }); });
-})();
-</script>
-<% } %>
-
 <!-- NASZE USŁUGI - 2×2 grid -->
 <section class="py-20 border-t border-gray-200">
   <div class="max-w-6xl mx-auto px-4">
@@ -320,9 +265,70 @@
       <!-- Dots -->
       <div id="yt-dots" class="flex justify-center gap-2 mt-6"></div>
     </div>
+  </div>
+</section>
+
+<!-- AKTUALNOŚCI - karuzela -->
+<% if (typeof posts !== 'undefined' && posts.length > 0) { %>
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="flex items-end justify-between gap-6 mb-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Aktualności</h2>
+        <p class="text-gray-600">Nowości ze studia lektorskiego, porady i&nbsp;artykuły branżowe</p>
+      </div>
+      <div class="hidden md:flex items-center gap-3 shrink-0">
+        <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm whitespace-nowrap">Wszystkie &rarr;</a>
+        <button type="button" data-news-prev aria-label="Poprzednie" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button type="button" data-news-next aria-label="Następne" class="w-9 h-9 rounded-full border border-gray-300 text-gray-600 hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="news-scroll flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 pb-2">
+      <% posts.forEach(function(post) { %>
+      <a href="/aktualnosci-pl/<%= post.slug %>/" class="news-card snap-start shrink-0 w-[290px] md:w-[330px] group bg-white rounded-xl border border-gray-200 hover:border-accent shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+        <div class="h-1 rounded-t-xl bg-accent/70 group-hover:bg-accent transition-colors"></div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="text-xs text-gray-600 mb-3 tracking-wide"><%= post.date.split('-').reverse().join('.') %></div>
+          <h3 class="font-bold text-lg text-gray-900 group-hover:text-accent transition-colors line-clamp-3 mb-3 leading-snug"><%= post.title %></h3>
+          <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-5"><%= post.excerpt %></p>
+          <span class="mt-auto inline-flex items-center gap-1 text-accent-dark text-sm font-medium">
+            Czytaj więcej
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </span>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+
+    <div class="text-center mt-8 md:hidden">
+      <a href="/aktualnosci-pl/" class="text-accent-dark hover:text-accent font-medium text-sm">Wszystkie aktualności &rarr;</a>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var sc = document.querySelector('.news-scroll');
+  if (!sc) return;
+  function step(){ var c = sc.querySelector('.news-card'); return c ? c.offsetWidth + 20 : 320; }
+  var p = document.querySelector('[data-news-prev]'), n = document.querySelector('[data-news-next]');
+  if (p) p.addEventListener('click', function(){ sc.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (n) n.addEventListener('click', function(){ sc.scrollBy({ left: step(), behavior: 'smooth' }); });
+})();
+</script>
+<% } %>
+
+<!-- DLACZEGO MY + ZAUFALI NAM -->
+<section class="py-20 border-t border-gray-200">
+  <div class="max-w-6xl mx-auto px-4">
 
     <!-- SEKCJA SEO -->
-    <div class="mt-16 pt-12 border-t border-gray-200">
+    <div>
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Studio lektorskie Powitania.pl - dlaczego właśnie my?</h2>
       <div class="text-gray-600 leading-relaxed space-y-4 text-center">
         <p>Powitania.pl to profesjonalne studio lektorskie działające od 2001 roku. Oferujemy nagrania z udziałem <%= voiceCount %> lektorów w 30+ językach - od spotów reklamowych, przez zapowiedzi telefoniczne IVR, po narracje filmowe i&nbsp;wielojęzyczne audioprzewodniki. Zrealizowaliśmy ponad 11&nbsp;000 nagrań dla klientów takich jak Hyundai, Allegro, DHL, TVN, Volvo, Orange Polska, Ministerstwo Edukacji Narodowej, Play i Asseco.</p>
