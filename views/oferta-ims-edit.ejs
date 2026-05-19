@@ -59,7 +59,7 @@
       </div>
       <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
         <% group.lektorzy.forEach(function(v, vi){ %>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-1.5 md:gap-2 md:items-center px-3 py-2 <%= vi ? 'border-t border-gray-100' : '' %>">
+        <div id="lek-<%= li %>-<%= vi %>" style="scroll-margin-top:90px" class="grid grid-cols-1 md:grid-cols-12 gap-1.5 md:gap-2 md:items-center px-3 py-2 <%= vi ? 'border-t border-gray-100' : '' %>">
           <div class="md:col-span-3 min-w-0">
             <% if (locked) { %>
               <span class="font-semibold text-gray-900 text-sm"><%= v.name %></span>

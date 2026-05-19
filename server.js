@@ -928,7 +928,7 @@ app.post('/oferta-ims/dodaj/', imsAuth, (req, res) => {
   if (!Array.isArray(g.lektorzy)) g.lektorzy = [];
   g.lektorzy.push({ name: 'Nowy lektor', radio: '', gallery: '', note: '', demos: [] });
   saveImsOffer(data);
-  res.redirect('/oferta-ims/edytuj/?saved=1');
+  res.redirect('/oferta-ims/edytuj/?saved=1#lek-' + li + '-' + (g.lektorzy.length - 1));
 });
 // Usuniecie pozycji lektora (operator)
 app.post('/oferta-ims/usun/', imsAuth, (req, res) => {
