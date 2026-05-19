@@ -61,7 +61,7 @@ const fs = require('fs');
 // Akceptacja ginela. Wyrzucono voices.json - panel jest teraz source of truth.
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
-const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'partners.json'];
+const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'partners.json', 'ims-offer.json'];
 if (fs.existsSync(seedDir)) {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
   fs.readdirSync(seedDir).forEach(file => {
@@ -84,6 +84,7 @@ const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
 const partnersPath = path.join(__dirname, 'data', 'partners.json');
 const melodiesPath = path.join(__dirname, 'data', 'melodies.json');
+const imsOfferPath = path.join(__dirname, 'data', 'ims-offer.json');
 function loadVoices(opts = {}) {
   // includeDrafts=true zwraca wszystkich (admin), default tylko approved (publiczne)
   let voices = JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
@@ -97,6 +98,10 @@ function loadReviews() {
 }
 function loadBlogPosts() {
   return JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+}
+function loadImsOffer() {
+  try { return JSON.parse(fs.readFileSync(imsOfferPath, 'utf8')); }
+  catch { return null; }
 }
 function loadPartners() {
   try { return JSON.parse(fs.readFileSync(partnersPath, 'utf8')); }
@@ -782,6 +787,21 @@ app.get('/regulamin-serwisu/', (req, res) => {
       { name: 'Strona główna', url: '/' },
       { name: 'Regulamin', url: '/regulamin-serwisu/' }
     ]
+  });
+});
+
+// Oferta dedykowana dla Klienta IMS - NIEINDEKSOWANA (poufna oferta cenowa, nielinkowana, poza sitemap)
+app.get('/oferta-ims/', (req, res) => {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  res.render('oferta-ims', {
+    title: 'Oferta lektorska dla IMS | powitania.pl',
+    description: 'Dedykowana oferta lektorska dla Klienta IMS.',
+    noindex: true,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Oferta IMS', url: '/oferta-ims/' }
+    ],
+    ims: loadImsOffer()
   });
 });
 
