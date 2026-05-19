@@ -52,7 +52,7 @@
     </div>
 
     <% ims.languages.forEach(function(group, li){ %>
-    <div class="ims-lang mb-8" data-lang="<%= group.lang %>">
+    <div id="lang-<%= li %>" style="scroll-margin-top:90px" class="ims-lang mb-8" data-lang="<%= group.lang %>">
       <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2"><%= group.lang %></h2>
       <div class="hidden md:grid grid-cols-12 gap-2 px-3 pb-1 text-[10px] uppercase tracking-wider text-gray-400">
         <div class="col-span-3">Lektor</div><div class="col-span-2">Radio - krajowe</div><div class="col-span-2">Galeria</div><div class="col-span-2">Notatka</div><div class="col-span-3">Demo mp3</div>
@@ -114,6 +114,7 @@
     <p class="text-xs text-gray-400 mt-10 border-t border-gray-200 pt-6">Panel operatora. Dane: data/ims-offer.json (źródło prawdy, edytowane tutaj). Strona nieindeksowana.</p>
 
     <script>(function(){var s=document.getElementById('imsLangFilter');if(!s)return;var gs=document.querySelectorAll('.ims-lang');s.addEventListener('change',function(){var v=s.value;gs.forEach(function(g){g.style.display=(!v||g.getAttribute('data-lang')===v)?'':'none';});});})();</script>
+    <script>(function(){try{var y=sessionStorage.getItem('imsEditScroll');if(y!==null&&!location.hash){window.scrollTo(0,parseInt(y,10)||0);}sessionStorage.removeItem('imsEditScroll');}catch(e){}document.addEventListener('submit',function(){try{sessionStorage.setItem('imsEditScroll',String(window.scrollY||window.pageYOffset||0));}catch(e){}},true);})();</script>
 
     <% } %>
   </div>

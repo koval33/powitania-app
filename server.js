@@ -906,7 +906,7 @@ app.post('/oferta-ims/demo/', imsAuth, (req, res) => {
     if (!Array.isArray(v.demos)) v.demos = [];
     v.demos[slot] = '/audio/ims/' + finalName + '?v=' + Date.now();
     saveImsOffer(data);
-    res.redirect('/oferta-ims/edytuj/?saved=1');
+    res.redirect('/oferta-ims/edytuj/?saved=1#lek-' + li + '-' + vi);
   });
 });
 // Blokada / odblokowanie (po zablokowaniu edycja wstrzymana, Klient widzi finalna wersje)
@@ -939,7 +939,7 @@ app.post('/oferta-ims/usun/', imsAuth, (req, res) => {
   const g = data.languages[li];
   if (g && Array.isArray(g.lektorzy) && g.lektorzy[vi]) g.lektorzy.splice(vi, 1);
   saveImsOffer(data);
-  res.redirect('/oferta-ims/edytuj/?saved=1');
+  res.redirect('/oferta-ims/edytuj/?saved=1#lang-' + (isNaN(li) ? '' : li));
 });
 
 // Blog / Aktualności - lista postów
