@@ -87,7 +87,9 @@ const reviewsPath = path.join(__dirname, 'data', 'reviews.json');
 const blogPath = path.join(__dirname, 'data', 'blog-posts.json');
 const partnersPath = path.join(__dirname, 'data', 'partners.json');
 const melodiesPath = path.join(__dirname, 'data', 'melodies.json');
-const imsOfferPath = path.join(__dirname, 'data', 'ims-offer.json');
+// IMS_OFFER_PATH pozwala wskazac inny plik (np. tymczasowy do testow E2E),
+// dzieki czemu testy NIGDY nie dotykaja realnych danych operatora.
+const imsOfferPath = process.env.IMS_OFFER_PATH || path.join(__dirname, 'data', 'ims-offer.json');
 function loadVoices(opts = {}) {
   // includeDrafts=true zwraca wszystkich (admin), default tylko approved (publiczne)
   let voices = JSON.parse(fs.readFileSync(voicesPath, 'utf8'));
