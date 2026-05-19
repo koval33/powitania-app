@@ -109,6 +109,15 @@ function loadImsOffer() {
 function saveImsOffer(data) {
   fs.writeFileSync(imsOfferPath, JSON.stringify(data, null, 2) + '\n');
 }
+// Kwota -> kanoniczne "<liczba> EUR" (€/euro/eur -> EUR; sama liczba dostaje EUR;
+// tekst typu "do ustalenia" zostaje bez zmian).
+function imsNormPrice(val) {
+  let s = String(val == null ? '' : val).trim();
+  if (!s) return '';
+  s = s.replace(/\s*(€|euro|eur)/gi, ' EUR').replace(/\s{2,}/g, ' ').trim();
+  if (/\d/.test(s) && !/EUR/.test(s)) s += ' EUR';
+  return s;
+}
 // Katalog na pliki demo mp3 oferty IMS
 const imsAudioDir = path.join(__dirname, 'public', 'audio', 'ims');
 try { fs.mkdirSync(imsAudioDir, { recursive: true }); } catch (e) {}
@@ -873,8 +882,8 @@ app.post('/oferta-ims/zapisz/', imsAuth, (req, res) => {
     const gal = req.body['gallery_' + li + '_' + vi];
     const nt = req.body['note_' + li + '_' + vi];
     if (nm !== undefined && String(nm).trim() !== '') v.name = String(nm).trim();
-    if (r !== undefined) v.radio = String(r).trim();
-    if (gal !== undefined) v.gallery = String(gal).trim();
+    if (r !== undefined) v.radio = imsNormPrice(r);
+    if (gal !== undefined) v.gallery = imsNormPrice(gal);
     if (nt !== undefined) v.note = String(nt).trim();
   }));
   saveImsOffer(data);

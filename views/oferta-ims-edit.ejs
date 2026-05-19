@@ -48,7 +48,7 @@
         <option value="">Wszystkie języki</option>
         <% ims.languages.forEach(function(group){ %><option value="<%= group.lang %>"><%= group.lang %></option><% }); %>
       </select>
-      <% if (!locked) { %><span class="text-xs text-gray-500">Wskazówka: zapisz zmiany tekstowe przed dodaniem/usunięciem pozycji (te akcje przeładowują stronę).</span><% } %>
+      <% if (!locked) { %><span class="text-xs text-gray-500">Wskazówka: zapisz zmiany tekstowe przed dodaniem/usunięciem pozycji (przeładowują stronę). Kwoty: wpisz samą liczbę, „ EUR" dodaje się automatycznie.</span><% } %>
     </div>
 
     <% ims.languages.forEach(function(group, li){ %>
