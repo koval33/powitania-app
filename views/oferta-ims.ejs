@@ -22,8 +22,16 @@
       </div>
     </div>
 
+    <div class="mb-8 flex flex-wrap items-center gap-3">
+      <label for="imsLangFilter" class="text-sm font-medium text-gray-700">Filtr języka:</label>
+      <select id="imsLangFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent">
+        <option value="">Wszystkie języki</option>
+        <% ims.languages.forEach(function(group){ %><option value="<%= group.lang %>"><%= group.lang %></option><% }); %>
+      </select>
+    </div>
+
     <% ims.languages.forEach(function(group){ %>
-    <div class="mb-10">
+    <div class="ims-lang mb-10" data-lang="<%= group.lang %>">
       <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200"><%= group.lang %></h2>
       <div class="space-y-4">
         <% group.lektorzy.forEach(function(v){ %>
@@ -66,7 +74,9 @@
     </div>
     <% }); %>
 
-    <p class="text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">Materiał poufny, przygotowany wyłącznie dla Klienta IMS. Strona nieindeksowana (noindex) i niedostępna z nawigacji serwisu.</p>
+    <p class="text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">Materiał poufny, przygotowany wyłącznie dla Klienta <%= ims.client %>. Strona nieindeksowana (noindex) i niedostępna z nawigacji serwisu.</p>
+
+    <script>(function(){var s=document.getElementById('imsLangFilter');if(!s)return;var gs=document.querySelectorAll('.ims-lang');s.addEventListener('change',function(){var v=s.value;gs.forEach(function(g){g.style.display=(!v||g.getAttribute('data-lang')===v)?'':'none';});});})();</script>
 
     <% } %>
   </div>

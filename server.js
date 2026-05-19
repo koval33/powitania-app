@@ -114,19 +114,26 @@ const imsAudioDir = path.join(__dirname, 'public', 'audio', 'ims');
 try { fs.mkdirSync(imsAudioDir, { recursive: true }); } catch (e) {}
 // Proste logowanie do edycji oferty IMS (Basic Auth)
 const IMS_USER = process.env.IMS_OFFER_USER || 'ims';
-const IMS_PASS = process.env.IMS_OFFER_PASS || 'ofertaims2026';
-function imsAuth(req, res, next) {
-  res.set('X-Robots-Tag', 'noindex, nofollow');
-  const m = (req.headers.authorization || '').match(/^Basic\s+(.+)$/i);
-  if (m) {
-    const idx = Buffer.from(m[1], 'base64').toString('utf8').indexOf(':');
-    const u = idx >= 0 ? Buffer.from(m[1], 'base64').toString('utf8').slice(0, idx) : '';
-    const p = idx >= 0 ? Buffer.from(m[1], 'base64').toString('utf8').slice(idx + 1) : '';
-    if (u === IMS_USER && p === IMS_PASS) return next();
-  }
-  res.set('WWW-Authenticate', 'Basic realm="Oferta IMS"');
-  return res.status(401).send('Wymagane logowanie.');
+const IMS_CLIENT_PASS = process.env.IMS_CLIENT_PASS || 'ofertaims2026';
+const IMS_OPERATOR_PASS = process.env.IMS_OPERATOR_PASS || 'Savanas1Lagunas2';
+function imsBasicAuth(pass, realm) {
+  return function (req, res, next) {
+    res.set('X-Robots-Tag', 'noindex, nofollow');
+    const m = (req.headers.authorization || '').match(/^Basic\s+(.+)$/i);
+    if (m) {
+      const dec = Buffer.from(m[1], 'base64').toString('utf8');
+      const idx = dec.indexOf(':');
+      const u = idx >= 0 ? dec.slice(0, idx) : '';
+      const p = idx >= 0 ? dec.slice(idx + 1) : '';
+      if (u === IMS_USER && p === pass) return next();
+    }
+    res.set('WWW-Authenticate', 'Basic realm="' + realm + '"');
+    return res.status(401).send('Wymagane logowanie.');
+  };
 }
+// Klient: oferta read-only. Operator: panel edycji (inne haslo, inny realm).
+const imsClientAuth = imsBasicAuth(IMS_CLIENT_PASS, 'Oferta IMS');
+const imsAuth = imsBasicAuth(IMS_OPERATOR_PASS, 'Oferta IMS - panel edycji');
 // Upload mp3 demo - tylko .mp3, max 15 MB, nazwa tymczasowa (finalna w handlerze)
 const imsUpload = multer({
   storage: multer.diskStorage({
@@ -830,7 +837,7 @@ app.get('/regulamin-serwisu/', (req, res) => {
 
 // === Oferta dedykowana dla Klienta IMS - NIEINDEKSOWANA (poufna, nielinkowana, poza sitemap) ===
 // Publiczny widok read-only - to widzi Klient
-app.get('/oferta-ims/', (req, res) => {
+app.get('/oferta-ims/', imsClientAuth, (req, res) => {
   res.set('X-Robots-Tag', 'noindex, nofollow');
   res.render('oferta-ims', {
     title: 'Oferta lektorska dla IMS | powitania.pl',
@@ -896,6 +903,30 @@ app.post('/oferta-ims/lock/', imsAuth, (req, res) => {
   const data = loadImsOffer();
   if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
   data.locked = !data.locked;
+  saveImsOffer(data);
+  res.redirect('/oferta-ims/edytuj/?saved=1');
+});
+// Dodanie pustej pozycji lektora do jezyka (operator)
+app.post('/oferta-ims/dodaj/', imsAuth, (req, res) => {
+  const data = loadImsOffer();
+  if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
+  if (data.locked) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Oferta zablokowana'));
+  const li = parseInt(req.body.li, 10);
+  const g = data.languages[li];
+  if (!g) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Zly jezyk'));
+  if (!Array.isArray(g.lektorzy)) g.lektorzy = [];
+  g.lektorzy.push({ name: 'Nowy lektor', radio: '', gallery: '', note: '', demos: [] });
+  saveImsOffer(data);
+  res.redirect('/oferta-ims/edytuj/?saved=1');
+});
+// Usuniecie pozycji lektora (operator)
+app.post('/oferta-ims/usun/', imsAuth, (req, res) => {
+  const data = loadImsOffer();
+  if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
+  if (data.locked) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Oferta zablokowana'));
+  const li = parseInt(req.body.li, 10), vi = parseInt(req.body.vi, 10);
+  const g = data.languages[li];
+  if (g && Array.isArray(g.lektorzy) && g.lektorzy[vi]) g.lektorzy.splice(vi, 1);
   saveImsOffer(data);
   res.redirect('/oferta-ims/edytuj/?saved=1');
 });
