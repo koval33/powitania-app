@@ -61,12 +61,14 @@
         <% group.lektorzy.forEach(function(v, vi){ %>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-1.5 md:gap-2 md:items-center px-3 py-2 <%= vi ? 'border-t border-gray-100' : '' %>">
           <div class="md:col-span-3 min-w-0">
-            <span class="font-semibold text-gray-900 text-sm"><%= v.name %></span>
-            <% if (!locked) { %>
-            <form method="post" action="/oferta-ims/usun/" class="inline ml-2" onsubmit="return confirm('Usunąć tę pozycję lektora?');">
-              <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>">
-              <button type="submit" class="text-[11px] text-red-600 hover:text-red-700 hover:underline">usuń</button>
-            </form>
+            <% if (locked) { %>
+              <span class="font-semibold text-gray-900 text-sm"><%= v.name %></span>
+            <% } else { %>
+              <input form="imsTextForm" type="text" name="name_<%= li %>_<%= vi %>" value="<%= v.name %>" placeholder="Imię / nazwa lektora" class="w-full border border-gray-300 rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-accent">
+              <form method="post" action="/oferta-ims/usun/" class="inline" onsubmit="return confirm('Usunąć tę pozycję lektora?');">
+                <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>">
+                <button type="submit" class="text-[11px] text-red-600 hover:text-red-700 hover:underline inline-block mt-0.5">usuń pozycję</button>
+              </form>
             <% } %>
           </div>
           <div class="md:col-span-2">

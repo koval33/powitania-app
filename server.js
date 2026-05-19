@@ -868,9 +868,11 @@ app.post('/oferta-ims/zapisz/', imsAuth, (req, res) => {
   if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
   if (data.locked) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Oferta zablokowana'));
   data.languages.forEach((g, li) => g.lektorzy.forEach((v, vi) => {
+    const nm = req.body['name_' + li + '_' + vi];
     const r = req.body['radio_' + li + '_' + vi];
     const gal = req.body['gallery_' + li + '_' + vi];
     const nt = req.body['note_' + li + '_' + vi];
+    if (nm !== undefined && String(nm).trim() !== '') v.name = String(nm).trim();
     if (r !== undefined) v.radio = String(r).trim();
     if (gal !== undefined) v.gallery = String(gal).trim();
     if (nt !== undefined) v.note = String(nt).trim();
