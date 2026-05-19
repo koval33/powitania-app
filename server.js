@@ -120,8 +120,9 @@ function imsNormPrice(val) {
   if (/\d/.test(s) && !/EUR/.test(s)) s += ' EUR';
   return s;
 }
-// Katalog na pliki demo mp3 oferty IMS
-const imsAudioDir = path.join(__dirname, 'public', 'audio', 'ims');
+// Katalog na pliki demo mp3 oferty IMS - na wolumenie (data/), zeby przetrwaly deploy.
+// public/ jest efemeryczne (kasowane przy redeploy Railway), data/ to persistent volume.
+const imsAudioDir = process.env.IMS_DEMO_DIR || path.join(__dirname, 'data', 'ims-demos');
 try { fs.mkdirSync(imsAudioDir, { recursive: true }); } catch (e) {}
 // Proste logowanie do edycji oferty IMS (Basic Auth)
 const IMS_USER = process.env.IMS_OFFER_USER || 'ims';
@@ -145,6 +146,21 @@ function imsBasicAuth(pass, realm) {
 // Klient: oferta read-only. Operator: panel edycji (inne haslo, inny realm).
 const imsClientAuth = imsBasicAuth(IMS_CLIENT_PASS, 'Oferta IMS');
 const imsAuth = imsBasicAuth(IMS_OPERATOR_PASS, 'Oferta IMS - panel edycji');
+// Pliki demo: dostep dla Klienta LUB operatora. Realm taki sam jak u Klienta ('Oferta IMS'),
+// zeby przegladarka automatycznie wyslala te same dane logowania co dla /oferta-ims/.
+function imsAnyAuth(req, res, next) {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  const m = (req.headers.authorization || '').match(/^Basic\s+(.+)$/i);
+  if (m) {
+    const dec = Buffer.from(m[1], 'base64').toString('utf8');
+    const idx = dec.indexOf(':');
+    const u = idx >= 0 ? dec.slice(0, idx) : '';
+    const p = idx >= 0 ? dec.slice(idx + 1) : '';
+    if (u === IMS_USER && (p === IMS_CLIENT_PASS || p === IMS_OPERATOR_PASS)) return next();
+  }
+  res.set('WWW-Authenticate', 'Basic realm="Oferta IMS"');
+  return res.status(401).send('Wymagane logowanie.');
+}
 // Upload mp3 demo - tylko .mp3, max 15 MB, nazwa tymczasowa (finalna w handlerze)
 const imsUpload = multer({
   storage: multer.diskStorage({
@@ -861,6 +877,16 @@ app.get('/oferta-ims/', imsClientAuth, (req, res) => {
     ims: loadImsOffer()
   });
 });
+// Serwowanie plikow demo mp3 z wolumenu (data/ims-demos, poza public/).
+// Dostep tylko po logowaniu (Klient lub operator). Sciezka nazwy scisle walidowana.
+app.get('/oferta-ims/demo-plik/:name', imsAnyAuth, (req, res) => {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  const name = path.basename(String(req.params.name || ''));
+  if (!/^ims-\d+-\d+-[01]\.mp3$/.test(name)) return res.status(404).send('Nie znaleziono.');
+  res.sendFile(name, { root: imsAudioDir }, function (err) {
+    if (err && !res.headersSent) res.status(404).send('Nie znaleziono.');
+  });
+});
 // Edycja (logowanie ims / ofertaims2026) - dla pracownika
 app.get('/oferta-ims/edytuj/', imsAuth, (req, res) => {
   res.render('oferta-ims-edit', {
@@ -906,7 +932,7 @@ app.post('/oferta-ims/demo/', imsAuth, (req, res) => {
     const finalName = 'ims-' + li + '-' + vi + '-' + slot + '.mp3';
     fs.renameSync(req.file.path, path.join(imsAudioDir, finalName));
     if (!Array.isArray(v.demos)) v.demos = [];
-    v.demos[slot] = '/audio/ims/' + finalName + '?v=' + Date.now();
+    v.demos[slot] = '/oferta-ims/demo-plik/' + finalName + '?v=' + Date.now();
     saveImsOffer(data);
     res.redirect('/oferta-ims/edytuj/?saved=1#lek-' + li + '-' + vi);
   });
