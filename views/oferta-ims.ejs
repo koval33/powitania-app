@@ -32,41 +32,30 @@
 
     <% ims.languages.forEach(function(group){ %>
     <div class="ims-lang mb-10" data-lang="<%= group.lang %>">
-      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200"><%= group.lang %></h2>
-      <div class="space-y-4">
-        <% group.lektorzy.forEach(function(v){ %>
-        <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-          <div class="grid md:grid-cols-12 gap-4 md:gap-6 items-start">
-
-            <div class="md:col-span-3">
-              <p class="font-bold text-gray-900"><%= v.name %></p>
-              <% if (v.note) { %><p class="text-xs text-gray-500 mt-1 leading-relaxed"><%= v.note %></p><% } %>
-            </div>
-
-            <div class="md:col-span-3">
-              <p class="text-[11px] uppercase tracking-wider text-gray-400 mb-1">Radio - zasięg krajowy</p>
-              <p class="text-lg font-semibold text-gray-900"><%= v.radio %></p>
-            </div>
-
-            <div class="md:col-span-3">
-              <p class="text-[11px] uppercase tracking-wider text-gray-400 mb-1">Galeria handlowa</p>
-              <p class="text-lg font-semibold text-gray-900"><%= v.gallery %></p>
-            </div>
-
-            <div class="md:col-span-3">
-              <p class="text-[11px] uppercase tracking-wider text-gray-400 mb-2">Demo mp3</p>
-              <div class="space-y-2">
-                <% var demos = Array.isArray(v.demos) ? v.demos : []; %>
-                <% for (var i = 0; i < 2; i++) { %>
-                  <% if (demos[i]) { %>
-                    <audio controls preload="none" class="w-full" style="height:38px"><source src="<%= demos[i] %>" type="audio/mpeg"></audio>
-                  <% } else { %>
-                    <div class="text-xs text-gray-400 border border-dashed border-gray-300 rounded-lg px-3 py-2">Demo <%= i + 1 %> - miejsce na plik mp3</div>
-                  <% } %>
-                <% } %>
-              </div>
-            </div>
-
+      <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2"><%= group.lang %></h2>
+      <div class="hidden md:grid grid-cols-12 gap-3 px-3 pb-1 text-[10px] uppercase tracking-wider text-gray-400">
+        <div class="col-span-3">Lektor</div>
+        <div class="col-span-2">Radio - krajowe</div>
+        <div class="col-span-2">Galeria handlowa</div>
+        <div class="col-span-5">Demo mp3</div>
+      </div>
+      <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+        <% group.lektorzy.forEach(function(v, vi){ %>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-3 md:items-center px-3 py-2 text-sm <%= vi ? 'border-t border-gray-100' : '' %>">
+          <div class="md:col-span-3 min-w-0">
+            <span class="font-semibold text-gray-900"><%= v.name %></span>
+            <% if (v.note) { %><span class="block text-[11px] text-gray-400 leading-snug"><%= v.note %></span><% } %>
+          </div>
+          <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Radio:</span><span class="font-semibold text-gray-900"><%= v.radio %></span></div>
+          <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Galeria:</span><span class="font-semibold text-gray-900"><%= v.gallery %></span></div>
+          <div class="md:col-span-5 flex gap-2 items-center">
+            <% var demos = Array.isArray(v.demos) ? v.demos : []; for (var i = 0; i < 2; i++) { %>
+              <% if (demos[i]) { %>
+                <audio controls preload="none" class="w-full min-w-0" style="height:30px"><source src="<%= demos[i] %>" type="audio/mpeg"></audio>
+              <% } else { %>
+                <span class="flex-1 text-center text-[11px] text-gray-300 border border-dashed border-gray-200 rounded px-2 py-1">demo <%= i + 1 %></span>
+              <% } %>
+            <% } %>
           </div>
         </div>
         <% }); %>

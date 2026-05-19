@@ -53,74 +53,45 @@
 
     <% ims.languages.forEach(function(group, li){ %>
     <div class="ims-lang mb-8" data-lang="<%= group.lang %>">
-      <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200"><%= group.lang %></h2>
-      <div class="space-y-4">
+      <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2"><%= group.lang %></h2>
+      <div class="hidden md:grid grid-cols-12 gap-2 px-3 pb-1 text-[10px] uppercase tracking-wider text-gray-400">
+        <div class="col-span-3">Lektor</div><div class="col-span-2">Radio - krajowe</div><div class="col-span-2">Galeria</div><div class="col-span-2">Notatka</div><div class="col-span-3">Demo mp3</div>
+      </div>
+      <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
         <% group.lektorzy.forEach(function(v, vi){ %>
-        <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-          <div class="grid md:grid-cols-12 gap-4 md:gap-5 items-start">
-
-            <div class="md:col-span-3">
-              <p class="font-bold text-gray-900"><%= v.name %></p>
-              <% if (!locked) { %>
-              <form method="post" action="/oferta-ims/usun/" class="mt-1" onsubmit="return confirm('Usunąć tę pozycję lektora?');">
-                <input type="hidden" name="li" value="<%= li %>">
-                <input type="hidden" name="vi" value="<%= vi %>">
-                <button type="submit" class="text-xs text-red-600 hover:text-red-700 hover:underline">Usuń pozycję</button>
-              </form>
-              <% } %>
-            </div>
-
-            <div class="md:col-span-3">
-              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Radio - zasięg krajowy</label>
-              <% if (locked) { %>
-                <p class="text-base font-semibold text-gray-900"><%= v.radio %></p>
-              <% } else { %>
-                <input form="imsTextForm" type="text" name="radio_<%= li %>_<%= vi %>" value="<%= v.radio %>" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent">
-              <% } %>
-            </div>
-
-            <div class="md:col-span-3">
-              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Galeria handlowa</label>
-              <% if (locked) { %>
-                <p class="text-base font-semibold text-gray-900"><%= v.gallery %></p>
-              <% } else { %>
-                <input form="imsTextForm" type="text" name="gallery_<%= li %>_<%= vi %>" value="<%= v.gallery %>" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent">
-              <% } %>
-            </div>
-
-            <div class="md:col-span-3">
-              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Notatka (opcjonalnie)</label>
-              <% if (locked) { %>
-                <p class="text-xs text-gray-500 leading-relaxed"><%= v.note %></p>
-              <% } else { %>
-                <textarea form="imsTextForm" name="note_<%= li %>_<%= vi %>" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-accent"><%= v.note %></textarea>
-              <% } %>
-            </div>
-
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-1.5 md:gap-2 md:items-center px-3 py-2 <%= vi ? 'border-t border-gray-100' : '' %>">
+          <div class="md:col-span-3 min-w-0">
+            <span class="font-semibold text-gray-900 text-sm"><%= v.name %></span>
+            <% if (!locked) { %>
+            <form method="post" action="/oferta-ims/usun/" class="inline ml-2" onsubmit="return confirm('Usunąć tę pozycję lektora?');">
+              <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>">
+              <button type="submit" class="text-[11px] text-red-600 hover:text-red-700 hover:underline">usuń</button>
+            </form>
+            <% } %>
           </div>
-
-          <div class="mt-4 pt-4 border-t border-gray-100 grid sm:grid-cols-2 gap-4">
+          <div class="md:col-span-2">
+            <% if (locked) { %><span class="text-sm font-semibold text-gray-900"><%= v.radio %></span><% } else { %><input form="imsTextForm" type="text" name="radio_<%= li %>_<%= vi %>" value="<%= v.radio %>" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-accent"><% } %>
+          </div>
+          <div class="md:col-span-2">
+            <% if (locked) { %><span class="text-sm font-semibold text-gray-900"><%= v.gallery %></span><% } else { %><input form="imsTextForm" type="text" name="gallery_<%= li %>_<%= vi %>" value="<%= v.gallery %>" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-accent"><% } %>
+          </div>
+          <div class="md:col-span-2">
+            <% if (locked) { %><span class="text-xs text-gray-500"><%= v.note %></span><% } else { %><input form="imsTextForm" type="text" name="note_<%= li %>_<%= vi %>" value="<%= v.note %>" placeholder="notatka" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-accent"><% } %>
+          </div>
+          <div class="md:col-span-3 space-y-1">
             <% var demos = Array.isArray(v.demos) ? v.demos : []; for (var s = 0; s < 2; s++) { %>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-gray-400 mb-1">Demo <%= s + 1 %></p>
-              <% if (demos[s]) { %>
-                <audio controls preload="none" class="w-full mb-2" style="height:36px"><source src="<%= demos[s] %>" type="audio/mpeg"></audio>
-              <% } else { %>
-                <p class="text-xs text-gray-400 mb-2">Brak pliku</p>
-              <% } %>
+            <div class="flex items-center gap-1.5">
+              <% if (demos[s]) { %><audio controls preload="none" class="min-w-0 flex-1" style="height:28px"><source src="<%= demos[s] %>" type="audio/mpeg"></audio><% } else { %><span class="text-[10px] text-gray-300 flex-1">demo <%= s + 1 %>: brak</span><% } %>
               <% if (!locked) { %>
-              <form method="post" action="/oferta-ims/demo/" enctype="multipart/form-data" class="flex items-center gap-2">
-                <input type="hidden" name="li" value="<%= li %>">
-                <input type="hidden" name="vi" value="<%= vi %>">
-                <input type="hidden" name="slot" value="<%= s %>">
-                <input type="file" name="demo" accept="audio/mpeg,.mp3" required class="text-xs">
-                <button type="submit" class="bg-gray-900 hover:bg-gray-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"><%= demos[s] ? 'Zmień' : 'Wgraj' %></button>
+              <form method="post" action="/oferta-ims/demo/" enctype="multipart/form-data" class="flex items-center gap-1">
+                <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>"><input type="hidden" name="slot" value="<%= s %>">
+                <input type="file" name="demo" accept="audio/mpeg,.mp3" required class="text-[10px] w-24">
+                <button type="submit" title="Wgraj/Zmień" class="bg-gray-900 hover:bg-gray-700 text-white text-[10px] font-semibold px-2 py-1 rounded">↑</button>
               </form>
               <% } %>
             </div>
             <% } %>
           </div>
-
         </div>
         <% }); %>
       </div>
