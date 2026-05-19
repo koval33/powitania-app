@@ -44,6 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Data - dynamiczne ładowanie (admin może edytować)
 const fs = require('fs');
+const multer = require('multer');
 
 // Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
 //
@@ -61,7 +62,9 @@ const fs = require('fs');
 // Akceptacja ginela. Wyrzucono voices.json - panel jest teraz source of truth.
 const dataDir = path.join(__dirname, 'data');
 const seedDir = path.join(__dirname, 'data-seed');
-const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'partners.json', 'ims-offer.json'];
+// UWAGA: ims-offer.json NIE jest tu - jest edytowane w runtime (panel oferty IMS),
+// wiec data/ jest zrodlem prawdy (jak voices.json). data-seed/ = tylko bootstrap.
+const alwaysOverwrite = ['blog-posts.json', 'melodies.json', 'partners.json'];
 if (fs.existsSync(seedDir)) {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
   fs.readdirSync(seedDir).forEach(file => {
@@ -103,6 +106,41 @@ function loadImsOffer() {
   try { return JSON.parse(fs.readFileSync(imsOfferPath, 'utf8')); }
   catch { return null; }
 }
+function saveImsOffer(data) {
+  fs.writeFileSync(imsOfferPath, JSON.stringify(data, null, 2) + '\n');
+}
+// Katalog na pliki demo mp3 oferty IMS
+const imsAudioDir = path.join(__dirname, 'public', 'audio', 'ims');
+try { fs.mkdirSync(imsAudioDir, { recursive: true }); } catch (e) {}
+// Proste logowanie do edycji oferty IMS (Basic Auth)
+const IMS_USER = process.env.IMS_OFFER_USER || 'ims';
+const IMS_PASS = process.env.IMS_OFFER_PASS || 'ofertaims2026';
+function imsAuth(req, res, next) {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  const m = (req.headers.authorization || '').match(/^Basic\s+(.+)$/i);
+  if (m) {
+    const idx = Buffer.from(m[1], 'base64').toString('utf8').indexOf(':');
+    const u = idx >= 0 ? Buffer.from(m[1], 'base64').toString('utf8').slice(0, idx) : '';
+    const p = idx >= 0 ? Buffer.from(m[1], 'base64').toString('utf8').slice(idx + 1) : '';
+    if (u === IMS_USER && p === IMS_PASS) return next();
+  }
+  res.set('WWW-Authenticate', 'Basic realm="Oferta IMS"');
+  return res.status(401).send('Wymagane logowanie.');
+}
+// Upload mp3 demo - tylko .mp3, max 15 MB, nazwa tymczasowa (finalna w handlerze)
+const imsUpload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, imsAudioDir); },
+    filename: function (req, file, cb) {
+      cb(null, 'tmp-' + Date.now() + '-' + Math.round(Math.random() * 1e6) + '.mp3');
+    }
+  }),
+  limits: { fileSize: 15 * 1024 * 1024 },
+  fileFilter: function (req, file, cb) {
+    const ok = /audio\/(mpeg|mp3)/i.test(file.mimetype) || /\.mp3$/i.test(file.originalname);
+    cb(ok ? null : new Error('Tylko pliki MP3'), ok);
+  }
+}).single('demo');
 function loadPartners() {
   try { return JSON.parse(fs.readFileSync(partnersPath, 'utf8')); }
   catch { return []; }
@@ -790,7 +828,8 @@ app.get('/regulamin-serwisu/', (req, res) => {
   });
 });
 
-// Oferta dedykowana dla Klienta IMS - NIEINDEKSOWANA (poufna oferta cenowa, nielinkowana, poza sitemap)
+// === Oferta dedykowana dla Klienta IMS - NIEINDEKSOWANA (poufna, nielinkowana, poza sitemap) ===
+// Publiczny widok read-only - to widzi Klient
 app.get('/oferta-ims/', (req, res) => {
   res.set('X-Robots-Tag', 'noindex, nofollow');
   res.render('oferta-ims', {
@@ -803,6 +842,62 @@ app.get('/oferta-ims/', (req, res) => {
     ],
     ims: loadImsOffer()
   });
+});
+// Edycja (logowanie ims / ofertaims2026) - dla pracownika
+app.get('/oferta-ims/edytuj/', imsAuth, (req, res) => {
+  res.render('oferta-ims-edit', {
+    title: 'Edycja oferty IMS',
+    description: '',
+    noindex: true,
+    breadcrumbs: [],
+    ims: loadImsOffer(),
+    saved: req.query.saved === '1',
+    err: req.query.err || ''
+  });
+});
+// Zapis pol tekstowych (stawki / notatki)
+app.post('/oferta-ims/zapisz/', imsAuth, (req, res) => {
+  const data = loadImsOffer();
+  if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
+  if (data.locked) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Oferta zablokowana'));
+  data.languages.forEach((g, li) => g.lektorzy.forEach((v, vi) => {
+    const r = req.body['radio_' + li + '_' + vi];
+    const gal = req.body['gallery_' + li + '_' + vi];
+    const nt = req.body['note_' + li + '_' + vi];
+    if (r !== undefined) v.radio = String(r).trim();
+    if (gal !== undefined) v.gallery = String(gal).trim();
+    if (nt !== undefined) v.note = String(nt).trim();
+  }));
+  saveImsOffer(data);
+  res.redirect('/oferta-ims/edytuj/?saved=1');
+});
+// Upload demo mp3 (slot 0 lub 1) dla danego lektora
+app.post('/oferta-ims/demo/', imsAuth, (req, res) => {
+  imsUpload(req, res, function (e) {
+    if (e) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent(e.message || 'Blad uploadu'));
+    const data = loadImsOffer();
+    if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
+    if (data.locked) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Oferta zablokowana'));
+    const li = parseInt(req.body.li, 10), vi = parseInt(req.body.vi, 10);
+    const slot = req.body.slot === '1' ? 1 : 0;
+    const g = data.languages[li];
+    const v = g && g.lektorzy[vi];
+    if (!v || !req.file) return res.redirect('/oferta-ims/edytuj/?err=' + encodeURIComponent('Zly cel uploadu'));
+    const finalName = 'ims-' + li + '-' + vi + '-' + slot + '.mp3';
+    fs.renameSync(req.file.path, path.join(imsAudioDir, finalName));
+    if (!Array.isArray(v.demos)) v.demos = [];
+    v.demos[slot] = '/audio/ims/' + finalName + '?v=' + Date.now();
+    saveImsOffer(data);
+    res.redirect('/oferta-ims/edytuj/?saved=1');
+  });
+});
+// Blokada / odblokowanie (po zablokowaniu edycja wstrzymana, Klient widzi finalna wersje)
+app.post('/oferta-ims/lock/', imsAuth, (req, res) => {
+  const data = loadImsOffer();
+  if (!data) return res.redirect('/oferta-ims/edytuj/?err=brak-danych');
+  data.locked = !data.locked;
+  saveImsOffer(data);
+  res.redirect('/oferta-ims/edytuj/?saved=1');
 });
 
 // Blog / Aktualności - lista postów

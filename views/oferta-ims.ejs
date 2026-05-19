@@ -13,15 +13,12 @@
       <p class="text-gray-600">Brak danych oferty.</p>
     <% } else { %>
 
-    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+    <div class="grid sm:grid-cols-2 gap-4 mb-10">
       <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
         <p class="text-sm text-gray-700"><strong class="text-gray-900">Licencja.</strong> <%= ims.licenseNote %></p>
       </div>
       <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
         <p class="text-sm text-gray-700"><strong class="text-gray-900">Przedłużenie.</strong> <%= ims.renewalNote %></p>
-      </div>
-      <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
-        <p class="text-xs text-gray-500 leading-relaxed"><%= ims.fxNote %></p>
       </div>
     </div>
 

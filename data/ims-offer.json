@@ -1,93 +1,408 @@
 {
   "client": "IMS",
   "currency": "EUR",
-  "fxNote": "Kwoty oznaczone \"≈\" przeliczono z USD kursem orientacyjnym 1 USD ≈ 0,92 EUR - do potwierdzenia. Wszystkie kwoty można edytować w data-seed/ims-offer.json.",
   "licenseNote": "Wszystkie stawki obejmują licencję na nadawanie na okres do 12 miesięcy.",
   "renewalNote": "Przedłużenie licencji o każdy kolejny rok: 50% stawki.",
   "languages": [
-    { "lang": "Angielski", "lektorzy": [
-      { "name": "(do uzupełnienia)", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "brak danych w pliku źródłowym", "demos": [] }
-    ]},
-    { "lang": "Bośniacki", "lektorzy": [
-      { "name": "Elma", "radio": "≈202 €", "gallery": "≈120 €", "note": "", "demos": [] },
-      { "name": "Adela Gal", "radio": "≈184 €", "gallery": "≈184 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Bułgarski", "lektorzy": [
-      { "name": "Kornelia", "radio": "400–1200 €", "gallery": "200–600 €", "note": "zależnie od liczby stacji / punktów", "demos": [] },
-      { "name": "Nikolay", "radio": "od 50 €", "gallery": "do ustalenia", "note": "wg lektora: radio 50 €; 2 dodatkowe licencje po 140 € (280 €); komplet 3 licencji = 300 €", "demos": [] }
-    ]},
-    { "lang": "Chorwacki", "lektorzy": [
-      { "name": "Goran", "radio": "350 €", "gallery": "250 €", "note": "", "demos": [] },
-      { "name": "Slaven", "radio": "650 €", "gallery": "560 €", "note": "", "demos": [] },
-      { "name": "Edvin R", "radio": "150 €", "gallery": "90 €", "note": "", "demos": [] },
-      { "name": "Doris M", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "podała tylko pakiet 2 licencji: 250 €", "demos": [] }
-    ]},
-    { "lang": "Czeski", "lektorzy": [
-      { "name": "Pavel", "radio": "200 €", "gallery": "150 €", "note": "spot 30 s, licencja radiowa 12 m-cy; szacunkowo wg liczby słów", "demos": [] }
-    ]},
-    { "lang": "Estoński", "lektorzy": [
-      { "name": "Kelly K", "radio": "180 €", "gallery": "130 €", "note": "", "demos": [] },
-      { "name": "Anton L", "radio": "50–80 €", "gallery": "50–80 €", "note": "tylko pełny wykup (radio + galeria łącznie), 20–30 s, zależnie od liczby słów", "demos": [] }
-    ]},
-    { "lang": "Fiński", "lektorzy": [
-      { "name": "Magnus och Eva", "radio": "≈359 €", "gallery": "≈221 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Grecki", "lektorzy": [
-      { "name": "Elina And Yanni", "radio": "≈184 €", "gallery": "≈184 €", "note": "", "demos": [] },
-      { "name": "George Mylonas", "radio": "≈129 €", "gallery": "≈129 €", "note": "", "demos": [] },
-      { "name": "Evridika C", "radio": "≈101 €", "gallery": "≈74 €", "note": "", "demos": [] },
-      { "name": "Evita F", "radio": "≈138 €", "gallery": "≈83 €", "note": "stawka do 100 słów", "demos": [] }
-    ]},
-    { "lang": "Kazachski", "lektorzy": [
-      { "name": "Ainel", "radio": "≈230 €", "gallery": "≈184 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Litewski", "lektorzy": [
-      { "name": "Arminas", "radio": "125 €", "gallery": "125 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Łotewski", "lektorzy": [
-      { "name": "Inguana L", "radio": "50 €", "gallery": "50 €", "note": "", "demos": [] },
-      { "name": "Edgars B", "radio": "250 €", "gallery": "150 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Macedoński", "lektorzy": [
-      { "name": "Nikola", "radio": "100 €", "gallery": "55 €", "note": "cena bez synchronizacji do obrazu", "demos": [] },
-      { "name": "Petar", "radio": "300 €", "gallery": "do ustalenia", "note": "", "demos": [] },
-      { "name": "Jasna N", "radio": "≈92 €", "gallery": "≈60 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Niemiecki", "lektorzy": [
-      { "name": "Sandra", "radio": "460 € (Austria) / 500 € (Niemcy)", "gallery": "400 € (Austria) / 400 € (Niemcy)", "note": "licencja sklepowa = wszystkie sklepy jednej sieci", "demos": [] },
-      { "name": "Joachim", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "podał tylko pakiet obu licencji na Niemcy: ~10 000 zł", "demos": [] },
-      { "name": "Betina HO", "radio": "≈69 €", "gallery": "≈37 €", "note": "", "demos": [] },
-      { "name": "David Bravo", "radio": "≈152 €", "gallery": "≈69 €", "note": "do 100 słów; +≈23 € za każde kolejne 100 słów", "demos": [] },
-      { "name": "Alex John", "radio": "≈138 €", "gallery": "≈138 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Ukraiński", "lektorzy": [
-      { "name": "Vitalij", "radio": "≈27 €", "gallery": "≈27 €", "note": "1200 UAH (1 lektor); 2 lektorów 1600 UAH, 3 — 2000 UAH; bez różnicy radio/galeria — przeliczone z UAH", "demos": [] },
-      { "name": "Vasyl", "radio": "250 €", "gallery": "180 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Słoweński", "lektorzy": [
-      { "name": "Nezadolmo", "radio": "400 €", "gallery": "250 €", "note": "", "demos": [] },
-      { "name": "Pterer Bajonoci", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "pakiet: 2 spoty 20–30 s 100 € + 2 licencje 12-mc 130 € = 230 € (−15% dla nowych klientów: 195,50 €)", "demos": [] }
-    ]},
-    { "lang": "Szwedzki", "lektorzy": [
-      { "name": "Kim", "radio": "520 €", "gallery": "300 € (mała sieć) / 500 € (duża sieć)", "note": "", "demos": [] }
-    ]},
-    { "lang": "Słowacki", "lektorzy": [
-      { "name": "Vladimir2", "radio": "180–250 €", "gallery": "120–180 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Serbski", "lektorzy": [
-      { "name": "Marina M", "radio": "80 €", "gallery": "55 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Węgierski", "lektorzy": [
-      { "name": "Mark", "radio": "200 €", "gallery": "100 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Włoski", "lektorzy": [
-      { "name": "Eros E P", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "podał tylko pakiet 2 nagrań z prawami: 750 €", "demos": [] },
-      { "name": "Voce Vera Diego", "radio": "250 €", "gallery": "750 €", "note": "", "demos": [] }
-    ]},
-    { "lang": "Rumuński", "lektorzy": [
-      { "name": "Andy Robert", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "oczekujemy na wycenę", "demos": [] },
-      { "name": "Marius", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "oczekujemy na wycenę", "demos": [] },
-      { "name": "Ioana", "radio": "do ustalenia", "gallery": "do ustalenia", "note": "oczekujemy na wycenę", "demos": [] }
-    ]}
-  ]
+    {
+      "lang": "Angielski",
+      "lektorzy": [
+        {
+          "name": "(do uzupełnienia)",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "brak danych w pliku źródłowym",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Bośniacki",
+      "lektorzy": [
+        {
+          "name": "Elma",
+          "radio": "202 €",
+          "gallery": "120 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Adela Gal",
+          "radio": "184 €",
+          "gallery": "184 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Bułgarski",
+      "lektorzy": [
+        {
+          "name": "Kornelia",
+          "radio": "400–1200 €",
+          "gallery": "200–600 €",
+          "note": "zależnie od liczby stacji / punktów",
+          "demos": []
+        },
+        {
+          "name": "Nikolay",
+          "radio": "od 50 €",
+          "gallery": "do ustalenia",
+          "note": "wg lektora: radio 50 €; 2 dodatkowe licencje po 140 € (280 €); komplet 3 licencji = 300 €",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Chorwacki",
+      "lektorzy": [
+        {
+          "name": "Goran",
+          "radio": "350 €",
+          "gallery": "250 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Slaven",
+          "radio": "650 €",
+          "gallery": "560 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Edvin R",
+          "radio": "150 €",
+          "gallery": "90 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Doris M",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "podała tylko pakiet 2 licencji: 250 €",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Czeski",
+      "lektorzy": [
+        {
+          "name": "Pavel",
+          "radio": "200 €",
+          "gallery": "150 €",
+          "note": "spot 30 s, licencja radiowa 12 m-cy; szacunkowo wg liczby słów",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Estoński",
+      "lektorzy": [
+        {
+          "name": "Kelly K",
+          "radio": "180 €",
+          "gallery": "130 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Anton L",
+          "radio": "50–80 €",
+          "gallery": "50–80 €",
+          "note": "tylko pełny wykup (radio + galeria łącznie), 20–30 s, zależnie od liczby słów",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Fiński",
+      "lektorzy": [
+        {
+          "name": "Magnus och Eva",
+          "radio": "359 €",
+          "gallery": "221 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Grecki",
+      "lektorzy": [
+        {
+          "name": "Elina And Yanni",
+          "radio": "184 €",
+          "gallery": "184 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "George Mylonas",
+          "radio": "129 €",
+          "gallery": "129 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Evridika C",
+          "radio": "101 €",
+          "gallery": "74 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Evita F",
+          "radio": "138 €",
+          "gallery": "83 €",
+          "note": "stawka do 100 słów",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Kazachski",
+      "lektorzy": [
+        {
+          "name": "Ainel",
+          "radio": "230 €",
+          "gallery": "184 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Litewski",
+      "lektorzy": [
+        {
+          "name": "Arminas",
+          "radio": "125 €",
+          "gallery": "125 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Łotewski",
+      "lektorzy": [
+        {
+          "name": "Inguana L",
+          "radio": "50 €",
+          "gallery": "50 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Edgars B",
+          "radio": "250 €",
+          "gallery": "150 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Macedoński",
+      "lektorzy": [
+        {
+          "name": "Nikola",
+          "radio": "100 €",
+          "gallery": "55 €",
+          "note": "cena bez synchronizacji do obrazu",
+          "demos": []
+        },
+        {
+          "name": "Petar",
+          "radio": "300 €",
+          "gallery": "do ustalenia",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Jasna N",
+          "radio": "92 €",
+          "gallery": "60 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Niemiecki",
+      "lektorzy": [
+        {
+          "name": "Sandra",
+          "radio": "460 € (Austria) / 500 € (Niemcy)",
+          "gallery": "400 € (Austria) / 400 € (Niemcy)",
+          "note": "licencja sklepowa = wszystkie sklepy jednej sieci",
+          "demos": []
+        },
+        {
+          "name": "Joachim",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "podał tylko pakiet obu licencji na Niemcy: ~10 000 zł",
+          "demos": []
+        },
+        {
+          "name": "Betina HO",
+          "radio": "69 €",
+          "gallery": "37 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "David Bravo",
+          "radio": "152 €",
+          "gallery": "69 €",
+          "note": "do 100 słów; +≈23 € za każde kolejne 100 słów",
+          "demos": []
+        },
+        {
+          "name": "Alex John",
+          "radio": "138 €",
+          "gallery": "138 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Ukraiński",
+      "lektorzy": [
+        {
+          "name": "Vitalij",
+          "radio": "27 €",
+          "gallery": "27 €",
+          "note": "1200 UAH (1 lektor); 2 lektorów 1600 UAH, 3 — 2000 UAH; bez różnicy radio/galeria — przeliczone z UAH",
+          "demos": []
+        },
+        {
+          "name": "Vasyl",
+          "radio": "250 €",
+          "gallery": "180 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Słoweński",
+      "lektorzy": [
+        {
+          "name": "Nezadolmo",
+          "radio": "400 €",
+          "gallery": "250 €",
+          "note": "",
+          "demos": []
+        },
+        {
+          "name": "Pterer Bajonoci",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "pakiet: 2 spoty 20–30 s 100 € + 2 licencje 12-mc 130 € = 230 € (−15% dla nowych klientów: 195,50 €)",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Szwedzki",
+      "lektorzy": [
+        {
+          "name": "Kim",
+          "radio": "520 €",
+          "gallery": "300 € (mała sieć) / 500 € (duża sieć)",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Słowacki",
+      "lektorzy": [
+        {
+          "name": "Vladimir2",
+          "radio": "180–250 €",
+          "gallery": "120–180 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Serbski",
+      "lektorzy": [
+        {
+          "name": "Marina M",
+          "radio": "80 €",
+          "gallery": "55 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Węgierski",
+      "lektorzy": [
+        {
+          "name": "Mark",
+          "radio": "200 €",
+          "gallery": "100 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Włoski",
+      "lektorzy": [
+        {
+          "name": "Eros E P",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "podał tylko pakiet 2 nagrań z prawami: 750 €",
+          "demos": []
+        },
+        {
+          "name": "Voce Vera Diego",
+          "radio": "250 €",
+          "gallery": "750 €",
+          "note": "",
+          "demos": []
+        }
+      ]
+    },
+    {
+      "lang": "Rumuński",
+      "lektorzy": [
+        {
+          "name": "Andy Robert",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "oczekujemy na wycenę",
+          "demos": []
+        },
+        {
+          "name": "Marius",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "oczekujemy na wycenę",
+          "demos": []
+        },
+        {
+          "name": "Ioana",
+          "radio": "do ustalenia",
+          "gallery": "do ustalenia",
+          "note": "oczekujemy na wycenę",
+          "demos": []
+        }
+      ]
+    }
+  ],
+  "locked": false
 }
