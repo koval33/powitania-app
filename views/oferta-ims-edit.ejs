@@ -87,7 +87,7 @@
               <% if (!locked) { %>
               <form method="post" action="/oferta-ims/demo/" enctype="multipart/form-data" class="flex items-center gap-1">
                 <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>"><input type="hidden" name="slot" value="<%= s %>">
-                <input type="file" name="demo" accept="audio/mpeg,.mp3" required onchange="this.form.submit()" class="text-[10px] w-40">
+                <input type="file" name="demo" accept="audio/mpeg,.mp3" required onchange="imsUploadDemo(this)" class="text-[10px] w-40">
               </form>
               <% } %>
             </div>
@@ -115,6 +115,22 @@
 
     <script>(function(){var s=document.getElementById('imsLangFilter');if(!s)return;var gs=document.querySelectorAll('.ims-lang');s.addEventListener('change',function(){var v=s.value;gs.forEach(function(g){g.style.display=(!v||g.getAttribute('data-lang')===v)?'':'none';});});})();</script>
     <script>(function(){try{var y=sessionStorage.getItem('imsEditScroll');if(y!==null&&!location.hash){window.scrollTo(0,parseInt(y,10)||0);}sessionStorage.removeItem('imsEditScroll');}catch(e){}document.addEventListener('submit',function(){try{sessionStorage.setItem('imsEditScroll',String(window.scrollY||window.pageYOffset||0));}catch(e){}},true);})();</script>
+    <script>
+    // Wgranie demo: NAJPIERW zapisz pola tekstowe (imie/stawki/notatka) w tle,
+    // DOPIERO POTEM wyslij plik. Inaczej przeladowanie po uploadzie kasowalo
+    // niezapisane imie i stawki (osobne formularze). Pozycja ekranu zachowana.
+    function imsUploadDemo(input){
+      var df=input.form;
+      try{sessionStorage.setItem('imsEditScroll',String(window.scrollY||window.pageYOffset||0));}catch(e){}
+      var tf=document.getElementById('imsTextForm');
+      if(!tf){df.submit();return;}
+      var params=new URLSearchParams();
+      try{new FormData(tf).forEach(function(val,key){params.append(key,val);});}catch(e){df.submit();return;}
+      fetch(tf.getAttribute('action'),{method:'POST',body:params,credentials:'same-origin',redirect:'manual',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
+        .then(function(){df.submit();})
+        .catch(function(){df.submit();});
+    }
+    </script>
 
     <% } %>
   </div>

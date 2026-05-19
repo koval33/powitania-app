@@ -934,7 +934,7 @@ app.post('/oferta-ims/demo/', imsAuth, (req, res) => {
     if (!Array.isArray(v.demos)) v.demos = [];
     v.demos[slot] = '/oferta-ims/demo-plik/' + finalName + '?v=' + Date.now();
     saveImsOffer(data);
-    res.redirect('/oferta-ims/edytuj/?saved=1#lek-' + li + '-' + vi);
+    res.redirect('/oferta-ims/edytuj/?saved=1');
   });
 });
 // Blokada / odblokowanie (po zablokowaniu edycja wstrzymana, Klient widzi finalna wersje)
