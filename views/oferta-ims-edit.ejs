@@ -87,8 +87,7 @@
               <% if (!locked) { %>
               <form method="post" action="/oferta-ims/demo/" enctype="multipart/form-data" class="flex items-center gap-1">
                 <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>"><input type="hidden" name="slot" value="<%= s %>">
-                <input type="file" name="demo" accept="audio/mpeg,.mp3" required onchange="this.form.submit()" class="text-[10px] w-28">
-                <button type="submit" class="bg-gray-900 hover:bg-gray-700 text-white text-[10px] font-semibold px-2 py-1 rounded whitespace-nowrap">Wgraj</button>
+                <input type="file" name="demo" accept="audio/mpeg,.mp3" required onchange="this.form.submit()" class="text-[10px] w-40">
               </form>
               <% } %>
             </div>
