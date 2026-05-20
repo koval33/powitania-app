@@ -120,6 +120,37 @@ function imsNormPrice(val) {
   if (/\d/.test(s) && !/EUR/.test(s)) s += ' EUR';
   return s;
 }
+// Markup dla Klienta IMS: kazda liczbe w stawce zwiekszamy o 50 EUR i zaokraglamy
+// do gornej dziesiatki. Operator panel widzi raw (stawka lektora), Klient widzi markup.
+//
+// Reguly:
+// - "202 EUR" -> "260 EUR" (202+50=252, ceil/10 = 260)
+// - Zakres "400-1200 EUR" -> "450-1250 EUR" (markup obu koncow, zakres zachowany)
+// - "od 50 EUR" -> "od 100 EUR"
+// - "do ustalenia" -> bez zmian (brak cyfr)
+// - Chaos typu "460 EUR (Austria) / 500 EUR (Niemcy)" lub "300 EUR (mala siec) /
+//   500 EUR (duza siec)": wykrywamy "/" + nawiasy => bierzemy MAX z liczb, kontekst
+//   znika, Klient widzi jedna czysta stawke (po markupie). Nigdy nie zanizamy.
+// - Liczby <10 lub >10000 pomijamy (sanity check przeciw przypadkowym cyfrom w opisach).
+function imsMarkupPrice(val) {
+  if (val == null) return '';
+  let s = String(val);
+  // Krok 1: chaos informacyjny (wiele opcji z kontekstem oddzielonych "/") -> max
+  if (s.indexOf('/') !== -1 && s.indexOf('(') !== -1) {
+    const nums = (s.match(/\d+/g) || [])
+      .map(function (n) { return parseInt(n, 10); })
+      .filter(function (n) { return isFinite(n) && n >= 10 && n <= 10000; });
+    if (nums.length) {
+      s = Math.max.apply(null, nums) + ' EUR';
+    }
+  }
+  // Krok 2: markup kazdej liczby w wyniku
+  return s.replace(/\d+/g, function (m) {
+    const n = parseInt(m, 10);
+    if (!isFinite(n) || n < 10 || n > 10000) return m;
+    return String(Math.ceil((n + 50) / 10) * 10);
+  });
+}
 // Katalog na pliki demo mp3 oferty IMS - na wolumenie (data/), zeby przetrwaly deploy.
 // public/ jest efemeryczne (kasowane przy redeploy Railway), data/ to persistent volume.
 const imsAudioDir = process.env.IMS_DEMO_DIR || path.join(__dirname, 'data', 'ims-demos');
@@ -876,7 +907,8 @@ app.get('/oferta-ims/', imsClientAuth, (req, res) => {
       { name: 'Strona główna', url: '/' },
       { name: 'Oferta IMS', url: '/oferta-ims/' }
     ],
-    ims: loadImsOffer()
+    ims: loadImsOffer(),
+    markupPrice: imsMarkupPrice
   });
 });
 // Serwowanie plikow demo mp3 z wolumenu (data/ims-demos, poza public/).
