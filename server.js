@@ -19,6 +19,19 @@ app.use((req, res, next) => {
   next();
 });
 
+// Strip ?srsltid=... query param (dodawany przez Google Ads click) - 301 na czysty URL.
+// Bez tego Google traktuje kazdy unikalny srsltid jako osobna strone = rozmywanie
+// autorytetu + duplicate content signal. Razem z robots.txt Disallow + canonical
+// to trojwarstwowa ochrona przed indeksacja smieci.
+app.use((req, res, next) => {
+  if (req.query.srsltid !== undefined) {
+    const url = new URL(req.originalUrl, `https://${req.headers.host}`);
+    url.searchParams.delete('srsltid');
+    return res.redirect(301, url.pathname + url.search + url.hash);
+  }
+  next();
+});
+
 // Middleware
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
