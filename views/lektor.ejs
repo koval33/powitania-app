@@ -967,7 +967,6 @@ function updateFileLabel(input) {
       if (data.ok) {
         if (window.trackEventEC) trackEventEC('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' }, formData.get('email'), formData.get('phone'));
         else if (window.trackEvent) trackEvent('form_submit_inquiry_premium', { lektor: '<%= lektor.id %>' });
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry_premium', event_label: '<%= lektor.name %>' });
         msg.textContent = data.message || 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.';
         msg.className = 'mt-4 text-center text-accent font-medium';
         form.reset();
@@ -1980,7 +1979,6 @@ function submitModalInquiry() {
     if (res.ok) {
       if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' }, data.email, data.phone);
       else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: LEKTOR_NAME });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
@@ -2073,7 +2071,6 @@ function submitWizardInquiry() {
       var inquirySource = (document.getElementById('wizard-inquiry-form') || {}).dataset?.source || 'wycena_indywidualna';
       if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource }, data.email, data.phone);
       else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource });
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: LEKTOR_NAME });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
@@ -2141,16 +2138,6 @@ function submitOrderRequest(data, msgElId) {
         eventTimeout: 2000
       });
 
-      // gtag() sam nie obsługuje callbacku, ale pushuje do dataLayer równolegle
-      // — tagi zdążą przy eventTimeout/setTimeout 2-2.5s.
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          event_category: 'order',
-          event_label: '<%= lektor.name %>',
-          value: numericPrice
-        });
-      }
-
       // Fallback: gdy GTM niedostępny / eventCallback się nie wykona — nawigacja po 2.5s.
       setTimeout(navigateOnce, 2500);
       return;
@@ -2160,7 +2147,6 @@ function submitOrderRequest(data, msgElId) {
       if (res.ok) {
         // Event dopiero po potwierdzeniu serwera
         if (window.trackEvent) trackEvent(eventName, { lektor: '<%= lektor.id %>', value: numericPrice });
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'order', event_label: '<%= lektor.name %>', value: numericPrice });
         msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
         msgEl.textContent = res.message || 'Zamowienie wyslane. Odpowiemy w ciagu 2 godzin.';
         try { sessionStorage.removeItem('kreatorContext'); } catch(e) {}

@@ -1043,7 +1043,6 @@ setInterval(function() { slideReviews(1); }, 8000);
     .then(function(res) {
       if (res.ok) {
         if (window.trackEvent) trackEvent('form_submit_contact', { source: 'homepage' });
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'homepage' });
         msg.className = 'text-center text-sm py-3 rounded-lg bg-accent/10 border border-accent/30 text-accent';
         msg.textContent = 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.';
         form.reset();
