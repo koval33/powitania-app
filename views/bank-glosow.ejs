@@ -3,12 +3,15 @@
 <!-- HERO + FILTRY -->
 <section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
   <!-- Tytuł -->
-  <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
+  <div class="py-2 md:py-7 max-w-5xl mx-auto px-4 text-center">
+    <h1 class="text-xl md:text-4xl font-bold text-gray-900 mb-1 md:mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
     <% if (typeof genderSegment === 'undefined') { %>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <%/* Mobile: zwiezly stat-chip (oszczedza ~90px powyzej fold). Desktop: pelny paragraf z keywordami. Oba w DOM - SEO mobile-first widzi krotki, desktop dlugi. */%>
+    <p class="md:hidden text-sm text-gray-500"><%= voiceCount %> lektorów &middot; 30+ języków &middot; studio od 2001</p>
+    <p class="hidden md:block text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } else { %>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
+    <p class="md:hidden text-sm text-gray-500"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> &middot; 30+ języków</p>
+    <p class="hidden md:block text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
     <% } %>
   </div>
 </section>
@@ -37,7 +40,7 @@
 <% } %>
 
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
-<div id="filters-bar" class="py-3 pb-4 sticky top-0 z-40 bg-white shadow-md md:hidden">
+<div id="filters-bar" class="py-2 pb-2 sticky top-0 z-40 bg-white shadow-md md:hidden">
   <div class="max-w-7xl mx-auto px-4">
     <style>.filters-ready{opacity:1!important}</style>
     <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
@@ -276,7 +279,8 @@
     </div>
 
     <!-- Licznik -->
-    <p class="text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
+    <%/* Mobile: ukryte (oszczedza wiersz; feedback ilosci jest nizej w "Pokazano X z Y"). #voice-count zostaje w DOM - JS dalej updateuje. */%>
+    <p class="hidden md:block text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
 
     <style>
       /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
@@ -1236,6 +1240,21 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Mobile only: kompaktowe pille w sticky filter bar - probujemy zmiescic w jednej linii.
+   Sidebar (#filters-sidebar) jest md:flex, wiec poniższe reguły go nie dotykaja. */
+@media (max-width: 767px) {
+  #filters-bar .filter-btn,
+  #filters-bar .bank-filter-select,
+  #filters-bar .bank-filter-toggle {
+    height: 34px;
+    font-size: 0.8125rem;
+  }
+  #filters-bar .filter-btn { padding: 0 0.5rem; }
+  #filters-bar .bank-filter-toggle { padding: 0 0.5rem; }
+  #filters-bar .bank-filter-select { padding: 0 1.75rem 0 0.5rem; }
+  #filters-bar .flex.flex-wrap { gap: 0.375rem; }
 }
 </style>
 
