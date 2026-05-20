@@ -933,6 +933,17 @@ app.get('/oferta-ims/demo-plik/:name', imsAnyAuth, (req, res) => {
     if (err && !res.headersSent) res.status(404).send('Nie znaleziono.');
   });
 });
+// Serwowanie probek portfolio (assets/ims-portfolio/). Sa shipowane z git
+// (poza data/ - nie wpada na volume mount). Auth + scisla walidacja nazwy.
+const imsPortfolioDir = path.join(__dirname, 'assets', 'ims-portfolio');
+app.get('/oferta-ims/portfolio-plik/:name', imsAnyAuth, (req, res) => {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  const name = path.basename(String(req.params.name || ''));
+  if (!/^[a-z0-9-]+\.mp3$/.test(name)) return res.status(404).send('Nie znaleziono.');
+  res.sendFile(name, { root: imsPortfolioDir }, function (err) {
+    if (err && !res.headersSent) res.status(404).send('Nie znaleziono.');
+  });
+});
 // Edycja (logowanie ims / ofertaims2026) - dla pracownika
 app.get('/oferta-ims/edytuj/', imsAuth, (req, res) => {
   res.render('oferta-ims-edit', {

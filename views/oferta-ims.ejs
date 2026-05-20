@@ -6,7 +6,6 @@
     <div class="mb-8">
       <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">Oferta poufna</p>
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Oferta lektorska dla <%= ims ? ims.client : 'IMS' %></h1>
-      <p class="text-gray-600 max-w-3xl leading-relaxed">Dedykowane stawki lektorów obcojęzycznych do spotów reklamowych. Dla każdego lektora podajemy dwie stawki: <strong>reklama w stacji radiowej o zasięgu krajowym</strong> oraz <strong>reklama w galerii handlowej</strong> (sklepy sieciowe i centra handlowe).</p>
     </div>
 
     <% if (!ims) { %>
@@ -23,69 +22,238 @@
       }
     %>
 
-    <div class="grid sm:grid-cols-2 gap-4 mb-10">
-      <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
-        <p class="text-sm text-gray-700"><strong class="text-gray-900">Licencja.</strong> <%= ims.licenseNote %></p>
-      </div>
-      <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
-        <p class="text-sm text-gray-700"><strong class="text-gray-900">Przedłużenie.</strong> <%= ims.renewalNote %></p>
-      </div>
+    <!-- TABS -->
+    <div class="ims-tabs flex flex-wrap gap-1 mb-8 border-b border-gray-200">
+      <button type="button" data-tab="produkcja" class="ims-tab-btn ims-tab-active">Produkcja spotów - lektor polski</button>
+      <button type="button" data-tab="obcojezyczni" class="ims-tab-btn">Wersje w językach obcych</button>
     </div>
 
-    <div class="mb-8 flex flex-wrap items-center gap-3">
-      <label for="imsLangFilter" class="text-sm font-medium text-gray-700">Filtr języka:</label>
-      <select id="imsLangFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent">
-        <option value="">Wszystkie języki</option>
-        <% ims.languages.forEach(function(group){ %><option value="<%= group.lang %>"><%= group.lang %></option><% }); %>
-      </select>
-    </div>
+    <!-- TAB 1: PRODUKCJA SPOTOW - LEKTOR POLSKI (domyslna) -->
+    <div id="tab-produkcja" class="ims-tab-content">
+      <div class="max-w-4xl">
 
-    <% ims.languages.forEach(function(group){ %>
-    <div class="ims-lang mb-10" data-lang="<%= group.lang %>">
-      <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2"><%= group.lang %></h2>
-      <div class="hidden md:grid grid-cols-12 gap-3 px-3 pb-1 text-[10px] uppercase tracking-wider text-gray-400">
-        <div class="col-span-3">Lektor</div>
-        <div class="col-span-2">Radio - krajowe</div>
-        <div class="col-span-2">Galeria handlowa</div>
-        <div class="col-span-5">Demo mp3</div>
-      </div>
-      <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
-        <% group.lektorzy.forEach(function(v, vi){ %>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-3 md:items-center px-3 py-2 text-sm <%= vi ? 'border-t border-gray-100' : '' %>">
-          <div class="md:col-span-3 min-w-0">
-            <span class="font-semibold text-gray-900"><%= v.name %></span>
+        <!-- 1. PRODUKCJA SPOTOW -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-2 mb-1">1. Produkcja spotów - lektor polski</h2>
+        <p class="text-sm text-gray-500 mb-4">(stawki dla większości lektorów z <a href="/bank-glosow/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">banku głosów</a> poza lektorami z grupy Znani i Lubiani i pojedynczymi lektorami z wyższej grupy cenowej)</p>
+
+        <p class="text-gray-700 leading-relaxed mb-4">Stawki obejmują nagranie lektorskie, montaż, mastering oraz licencję na okres 12 miesięcy. Pola eksploatacji wyceniane są osobno:</p>
+
+        <p class="font-semibold text-gray-900 mt-4 mb-2">Spot do 30 sekund:</p>
+
+        <div class="space-y-4 text-gray-700 leading-relaxed mb-2">
+          <div>
+            <p class="font-semibold text-gray-900">Spot z jednym lektorem + podkład muzyczny</p>
+            <ul class="list-disc list-inside ml-4 mt-1 space-y-0.5 text-sm">
+              <li>emisja w galerii handlowej: <span class="font-semibold text-gray-900">350 zł netto</span></li>
+              <li>emisja w sieci handlowej: <span class="font-semibold text-gray-900">650 zł netto</span></li>
+              <li>emisja w radiu ogólnopolskim: <span class="font-semibold text-gray-900">950 zł netto</span></li>
+            </ul>
           </div>
-          <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Radio:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.radio, 'radio') %></span></div>
-          <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Galeria:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.gallery, 'gallery') %></span></div>
-          <div class="md:col-span-5 flex gap-3 items-center">
-            <% (Array.isArray(v.demos) ? v.demos : []).filter(Boolean).forEach(function(src){ %>
-            <div class="bp-player flex-1 min-w-0">
-              <div class="player-box flex items-center gap-2 cursor-pointer">
-                <button type="button" class="play-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white flex items-center justify-center transition-colors" data-audio="<%= src %>" title="Odtwórz">
-                  <svg class="play-icon w-3 h-3 text-gray-900 ml-px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <svg class="pause-icon w-3 h-3 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </button>
-                <button type="button" class="stop-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Zatrzymaj">
-                  <svg class="w-2.5 h-2.5 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
-                </button>
-                <div class="audio-time-wrap text-[10px] text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
-                  <span class="audio-time">00:00</span><span class="audio-duration text-gray-400 ml-1">--:--</span>
-                </div>
-                <div class="audio-progress relative flex-1 min-w-0 h-7 cursor-pointer">
-                  <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><path d="<%= imsWave(src) %>" fill="currentColor"/></svg>
-                  <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left:0%;width:1px;background-color:rgba(107,114,128,0.8);transform:translateX(-0.5px);transition:left 100ms linear"></div>
-                </div>
+          <div>
+            <p class="font-semibold text-gray-900">Spot z dwoma lektorami + podkład muzyczny</p>
+            <ul class="list-disc list-inside ml-4 mt-1 space-y-0.5 text-sm">
+              <li>emisja w galerii handlowej: <span class="font-semibold text-gray-900">550 zł netto</span></li>
+              <li>emisja w sieci handlowej: <span class="font-semibold text-gray-900">950 zł netto</span></li>
+              <li>emisja w radiu ogólnopolskim: <span class="font-semibold text-gray-900">1500 zł netto</span></li>
+            </ul>
+          </div>
+          <p class="text-sm">Spot z większą liczbą lektorów (3 i więcej) - każdy kolejny lektor: +60% stawki bazowej dla danego pola eksploatacji.</p>
+        </div>
+
+        <!-- 2. WERSJE W JEZYKACH OBCYCH -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">2. Wersje w językach obcych</h2>
+        <p class="text-gray-700 leading-relaxed mb-2">Ceny przedstawione online w <button type="button" data-tab-link="obcojezyczni" class="text-accent hover:text-accent-dark underline">zakładce obok</button>.</p>
+
+        <!-- 3. DOGRYWKA LEKTORSKA -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">3. Dogrywka lektorska</h2>
+        <p class="text-gray-700 leading-relaxed mb-2">W przypadku potrzeby modyfikacji tekstu spotu (np. zmiana ceny, daty promocji, nazwy produktu) w okresie obowiązywania licencji:</p>
+        <ul class="list-disc list-inside ml-4 text-gray-700 leading-relaxed mb-2 space-y-1">
+          <li>dogrywka tego samego lektora: <span class="font-semibold text-gray-900">50% stawki bazowej</span> za dane pole eksploatacji</li>
+          <li>minimalna stawka dogrywki: <span class="font-semibold text-gray-900">250 zł netto</span></li>
+          <li>realizacja w ciągu 24-48h roboczych</li>
+        </ul>
+
+        <!-- 4. KONCEPCJA KREATYWNA I SCENARIUSZ -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">4. Koncepcja kreatywna i scenariusz</h2>
+        <ul class="list-disc list-inside ml-4 text-gray-700 leading-relaxed mb-2 space-y-1">
+          <li>Opracowanie koncepcji kreatywnej + scenariusz spotu 30s (do 3 propozycji wariantowych, do 2 rund poprawek): <span class="font-semibold text-gray-900">850 zł netto</span></li>
+          <li>Realizacja na podstawie scenariusza dostarczonego przez Klienta: <span class="font-semibold text-gray-900">bez dopłaty</span> (w cenie produkcji)</li>
+        </ul>
+
+        <!-- 5. PRZYGOTOWANIE FORMATOW EMISYJNYCH -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">5. Przygotowanie formatów emisyjnych</h2>
+        <p class="text-gray-700 leading-relaxed mb-2"><span class="font-semibold text-gray-900">bez dopłat</span></p>
+
+        <!-- 6. PRAWA AUTORSKIE I LICENCJE -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">6. Prawa autorskie i licencje</h2>
+        <ul class="list-disc list-inside ml-4 text-gray-700 leading-relaxed mb-2 space-y-1">
+          <li>Stawki obejmują licencję lektora na 12 miesięcy w wybranym polu eksploatacji.</li>
+          <li>Podkład muzyczny pochodzi z biblioteki stockowej z udzieloną sublicencją obejmującą oba pola eksploatacji - bez dodatkowych opłat.</li>
+          <li>Przedłużenie licencji o kolejne 12 miesięcy: <span class="font-semibold text-gray-900">50% stawki bazowej</span>.</li>
+        </ul>
+
+        <!-- 7. HARMONOGRAM REALIZACJI -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">7. Harmonogram realizacji</h2>
+        <div class="space-y-4 mb-2">
+          <div>
+            <p class="font-semibold text-gray-900">Wariant A - produkcja na gotowym scenariuszu Klienta:</p>
+            <ul class="list-disc list-inside ml-4 mt-1 text-gray-700 leading-relaxed text-sm space-y-0.5">
+              <li>Akceptacja briefu / scenariusza: do 24h od otrzymania</li>
+              <li>Potwierdzenie wybranych lektorów: do 24h</li>
+              <li>Nagranie + montaż + mastering: do 2 dni roboczych uzyskania zamówienia</li>
+              <li>Łączny czas realizacji: <span class="font-semibold text-gray-900">do 3 dni roboczych</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900">Wariant B - produkcja z opracowaniem koncepcji kreatywnej po naszej stronie:</p>
+            <ul class="list-disc list-inside ml-4 mt-1 text-gray-700 leading-relaxed text-sm space-y-0.5">
+              <li>Opracowanie koncepcji kreatywnej + scenariusz (3 warianty): do 3 dni roboczych</li>
+              <li>Runda poprawek scenariusza (2 rundy w cenie): 1-2 dni robocze każda</li>
+              <li>Potwierdzenie wybranych lektorów: do 24h</li>
+              <li>Nagranie + montaż + mastering: do 2 dni roboczych uzyskania zamówienia</li>
+              <li>Łączny czas realizacji: <span class="font-semibold text-gray-900">do 7 dni roboczych</span></li>
+            </ul>
+          </div>
+          <p class="text-sm text-gray-700">Tryb ekspresowy (realizacja w 24h, dotyczy etapu nagrania i montażu): <span class="font-semibold text-gray-900">+50% stawki bazowej</span>.</p>
+        </div>
+
+        <!-- 8. ZESPOL I DOSTEPNOSC -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">8. Zespół i dostępność</h2>
+        <p class="text-gray-700 leading-relaxed mb-2">Działamy nieprzerwanie od 2001 roku. Dysponujemy własnym studiem nagraniowym oraz siecią studiów współpracujących w Polsce i za granicą. Zespół projektowy odpowiada na zapytania w godzinach 9:00-17:00 w dni robocze; w sprawach pilnych - również poza tymi godzinami.</p>
+
+        <!-- 9. PORTFOLIO I REFERENCJE -->
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mt-8 mb-2">9. Portfolio i referencje</h2>
+        <p class="text-gray-700 leading-relaxed mb-5">Nasze realizacje obejmują kampanie m.in. dla sieci handlowych, marek FMCG, instytucji publicznych oraz klientów międzynarodowych. Wybrane próbki nagrań są dostępne poniżej. W latach 2016 - 2017 realizowaliśmy również nagrania dla Państwa firmy. Wszystkie nagrania były zrealizowane w języku niemieckim.</p>
+
+        <div class="space-y-3 mb-2">
+          <% [
+            { file: 'halfprice.mp3', label: 'Próbka 1' },
+            { file: 'hyundai.mp3',   label: 'Próbka 2' },
+            { file: 'kaes.mp3',      label: 'Próbka 3' }
+          ].forEach(function(s){ var src='/oferta-ims/portfolio-plik/' + s.file; %>
+          <div class="bp-player border border-gray-200 rounded-xl bg-white p-3">
+            <div class="player-box flex items-center gap-3 cursor-pointer">
+              <button type="button" class="play-btn w-8 h-8 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white flex items-center justify-center transition-colors" data-audio="<%= src %>" title="Odtwórz">
+                <svg class="play-icon w-3.5 h-3.5 text-gray-900 ml-px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-3.5 h-3.5 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <button type="button" class="stop-btn w-8 h-8 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Zatrzymaj">
+                <svg class="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+              </button>
+              <span class="text-sm font-semibold text-gray-700 whitespace-nowrap"><%= s.label %></span>
+              <div class="audio-time-wrap text-[10px] text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
+                <span class="audio-time">00:00</span><span class="audio-duration text-gray-400 ml-1">--:--</span>
+              </div>
+              <div class="audio-progress relative flex-1 min-w-0 h-7 cursor-pointer">
+                <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><path d="<%= imsWave(src) %>" fill="currentColor"/></svg>
+                <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left:0%;width:1px;background-color:rgba(107,114,128,0.8);transform:translateX(-0.5px);transition:left 100ms linear"></div>
               </div>
             </div>
-            <% }); %>
           </div>
+          <% }); %>
         </div>
-        <% }); %>
+
+        <hr class="my-8 border-gray-200">
+
+        <p class="text-sm text-gray-600 leading-relaxed">Wszystkie stawki podane są w kwotach netto (do których należy doliczyć 23% VAT).<br>Oferta ważna 30 dni od daty wysłania.</p>
+
       </div>
     </div>
-    <% }); %>
+
+    <!-- TAB 2: WERSJE W JEZYKACH OBCYCH (istniejaca lista lektorow) -->
+    <div id="tab-obcojezyczni" class="ims-tab-content hidden">
+      <p class="text-gray-600 max-w-3xl leading-relaxed mb-8">Dedykowane stawki lektorów obcojęzycznych do spotów reklamowych. Dla każdego lektora podajemy dwie stawki: <strong>reklama w stacji radiowej o zasięgu krajowym</strong> oraz <strong>reklama w galerii handlowej</strong> (sklepy sieciowe i centra handlowe).</p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-10">
+        <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
+          <p class="text-sm text-gray-700"><strong class="text-gray-900">Licencja.</strong> <%= ims.licenseNote %></p>
+        </div>
+        <div class="bg-stone-100/70 border border-gray-200 rounded-xl p-4">
+          <p class="text-sm text-gray-700"><strong class="text-gray-900">Przedłużenie.</strong> <%= ims.renewalNote %></p>
+        </div>
+      </div>
+
+      <div class="mb-8 flex flex-wrap items-center gap-3">
+        <label for="imsLangFilter" class="text-sm font-medium text-gray-700">Filtr języka:</label>
+        <select id="imsLangFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent">
+          <option value="">Wszystkie języki</option>
+          <% ims.languages.forEach(function(group){ %><option value="<%= group.lang %>"><%= group.lang %></option><% }); %>
+        </select>
+      </div>
+
+      <% ims.languages.forEach(function(group){ %>
+      <div class="ims-lang mb-10" data-lang="<%= group.lang %>">
+        <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2"><%= group.lang %></h2>
+        <div class="hidden md:grid grid-cols-12 gap-3 px-3 pb-1 text-[10px] uppercase tracking-wider text-gray-400">
+          <div class="col-span-3">Lektor</div>
+          <div class="col-span-2">Radio - krajowe</div>
+          <div class="col-span-2">Galeria handlowa</div>
+          <div class="col-span-5">Demo mp3</div>
+        </div>
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+          <% group.lektorzy.forEach(function(v, vi){ %>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-3 md:items-center px-3 py-2 text-sm <%= vi ? 'border-t border-gray-100' : '' %>">
+            <div class="md:col-span-3 min-w-0">
+              <span class="font-semibold text-gray-900"><%= v.name %></span>
+            </div>
+            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Radio:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.radio, 'radio') %></span></div>
+            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Galeria:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.gallery, 'gallery') %></span></div>
+            <div class="md:col-span-5 flex gap-3 items-center">
+              <% (Array.isArray(v.demos) ? v.demos : []).filter(Boolean).forEach(function(src){ %>
+              <div class="bp-player flex-1 min-w-0">
+                <div class="player-box flex items-center gap-2 cursor-pointer">
+                  <button type="button" class="play-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-gray-900 bg-white flex items-center justify-center transition-colors" data-audio="<%= src %>" title="Odtwórz">
+                    <svg class="play-icon w-3 h-3 text-gray-900 ml-px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="pause-icon w-3 h-3 text-gray-900 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  </button>
+                  <button type="button" class="stop-btn w-6 h-6 flex-shrink-0 rounded-full border-2 border-accent bg-white hover:bg-accent/5 flex items-center justify-center transition-colors" title="Zatrzymaj">
+                    <svg class="w-2.5 h-2.5 text-accent" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+                  </button>
+                  <div class="audio-time-wrap text-[10px] text-gray-600 font-mono tabular-nums whitespace-nowrap flex-shrink-0">
+                    <span class="audio-time">00:00</span><span class="audio-duration text-gray-400 ml-1">--:--</span>
+                  </div>
+                  <div class="audio-progress relative flex-1 min-w-0 h-7 cursor-pointer">
+                    <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><path d="<%= imsWave(src) %>" fill="currentColor"/></svg>
+                    <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left:0%;width:1px;background-color:rgba(107,114,128,0.8);transform:translateX(-0.5px);transition:left 100ms linear"></div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+      <% }); %>
+    </div>
 
     <p class="text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">Materiał poufny, przygotowany wyłącznie dla Klienta <%= ims.client %>. Strona nieindeksowana (noindex) i niedostępna z nawigacji serwisu.</p>
+
+    <style>
+    .ims-tab-btn { padding: 0.75rem 1.25rem; margin-bottom: -1px; font-size: 0.875rem; font-weight: 500; color: #6b7280; border-bottom: 2px solid transparent; background: transparent; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+    .ims-tab-btn:hover { color: #111827; }
+    .ims-tab-btn.ims-tab-active { color: #111827; border-bottom-color: #e8734a; font-weight: 600; }
+    @media (min-width: 768px) { .ims-tab-btn { font-size: 1rem; } }
+    </style>
+
+    <script>
+    // Tabs: domyslnie aktywna "produkcja". Przelaczanie zachowuje obie zakladki w DOM
+    // (hidden CSS), wiec bp-player IIFE rejestruje sie dla obu od razu.
+    (function(){
+      var btns = document.querySelectorAll('.ims-tab-btn');
+      var contents = document.querySelectorAll('.ims-tab-content');
+      function show(target){
+        btns.forEach(function(b){ b.classList.toggle('ims-tab-active', b.dataset.tab === target); });
+        contents.forEach(function(c){ c.classList.toggle('hidden', c.id !== 'tab-' + target); });
+        try { window.scrollTo({top:0, behavior:'smooth'}); } catch(e) { window.scrollTo(0,0); }
+      }
+      btns.forEach(function(b){ b.addEventListener('click', function(){ show(this.dataset.tab); }); });
+      // Inline link-do-zakladki ("zakladce obok")
+      document.querySelectorAll('[data-tab-link]').forEach(function(el){
+        el.addEventListener('click', function(e){ e.preventDefault(); show(this.dataset.tabLink); });
+      });
+    })();
+    </script>
 
     <script>(function(){var s=document.getElementById('imsLangFilter');if(!s)return;var gs=document.querySelectorAll('.ims-lang');s.addEventListener('change',function(){var v=s.value;gs.forEach(function(g){g.style.display=(!v||g.getAttribute('data-lang')===v)?'':'none';});});})();</script>
     <script>
