@@ -121,18 +121,23 @@ function imsNormPrice(val) {
   return s;
 }
 // Markup dla Klienta IMS: kazda liczbe w stawce zwiekszamy o 50 EUR i zaokraglamy
-// do gornej dziesiatki. Operator panel widzi raw (stawka lektora), Klient widzi markup.
+// do gornej dziesiatki. Plus floor (cena minimum widziana przez Klienta) -
+// rozny per kanal. Operator panel zawsze widzi raw (stawka lektora).
 //
 // Reguly:
 // - "202 EUR" -> "260 EUR" (202+50=252, ceil/10 = 260)
 // - Zakres "400-1200 EUR" -> "450-1250 EUR" (markup obu koncow, zakres zachowany)
-// - "od 50 EUR" -> "od 100 EUR"
-// - "do ustalenia" -> bez zmian (brak cyfr)
-// - Chaos typu "460 EUR (Austria) / 500 EUR (Niemcy)" lub "300 EUR (mala siec) /
-//   500 EUR (duza siec)": wykrywamy "/" + nawiasy => bierzemy MAX z liczb, kontekst
-//   znika, Klient widzi jedna czysta stawke (po markupie). Nigdy nie zanizamy.
-// - Liczby <10 lub >10000 pomijamy (sanity check przeciw przypadkowym cyfrom w opisach).
-function imsMarkupPrice(val) {
+// - "od 50 EUR" -> "od 100 EUR" -> z floorem 180: "od 180 EUR"
+// - "do ustalenia" -> bez zmian (brak cyfr, floor nie dotyczy)
+// - Chaos typu "460 EUR (Austria) / 500 EUR (Niemcy)": wykrywamy "/" + nawiasy =>
+//   bierzemy MAX z liczb (nigdy nie zanizamy), kontekst znika, Klient widzi jedna
+//   czysta stawke po markupie+floor.
+// - Floor: kazda liczba po markupie clampowana do min(channel). Jesli zakres skleja
+//   sie do tej samej liczby przez floor ("180-180") -> zwijamy do "180".
+// - Liczby <10 lub >10000 pomijamy (sanity check przeciw cyfrom w opisach).
+const IMS_CLIENT_FLOOR = { radio: 180, gallery: 150 };
+
+function imsMarkupPrice(val, channel) {
   if (val == null) return '';
   let s = String(val);
   // Krok 1: chaos informacyjny (wiele opcji z kontekstem oddzielonych "/") -> max
@@ -144,12 +149,19 @@ function imsMarkupPrice(val) {
       s = Math.max.apply(null, nums) + ' EUR';
     }
   }
-  // Krok 2: markup kazdej liczby w wyniku
-  return s.replace(/\d+/g, function (m) {
+  // Krok 2: markup kazdej liczby + clamp do floora (zalezny od channel)
+  const floor = (channel && IMS_CLIENT_FLOOR[channel]) || 0;
+  s = s.replace(/\d+/g, function (m) {
     const n = parseInt(m, 10);
     if (!isFinite(n) || n < 10 || n > 10000) return m;
-    return String(Math.ceil((n + 50) / 10) * 10);
+    const bumped = Math.ceil((n + 50) / 10) * 10;
+    return String(Math.max(bumped, floor));
   });
+  // Krok 3: zakres "X-X" (oba konce zclamowane do tej samej wartosci) -> "X"
+  s = s.replace(/(\d+)[-–](\d+)/g, function (match, a, b) {
+    return a === b ? a : match;
+  });
+  return s;
 }
 // Katalog na pliki demo mp3 oferty IMS - na wolumenie (data/), zeby przetrwaly deploy.
 // public/ jest efemeryczne (kasowane przy redeploy Railway), data/ to persistent volume.
