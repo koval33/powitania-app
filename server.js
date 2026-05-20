@@ -351,6 +351,8 @@ app.use((req, res, next) => {
 
 // 301 Redirects - zachowanie starych URL-ów (20 lat SEO history)
 app.get('/lektor/:slug/', (req, res) => res.redirect(301, '/lektorzy/' + req.params.slug + '/'));
+// Martwy URL z zewnetrznego audytu (100% bounce na 404) - kierujemy na kontakt
+app.get('/dodawanie-lektora/', (req, res) => res.redirect(301, '/kontakt/'));
 
 // Slug cleanup - 301 ze starych slugów z cyframi na czyste
 app.get('/lektorzy/dorota-3/',         (req, res) => res.redirect(301, '/lektorzy/dorota-radio/'));
