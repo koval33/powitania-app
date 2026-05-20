@@ -65,7 +65,7 @@
               <span class="font-semibold text-gray-900 text-sm"><%= v.name %></span>
             <% } else { %>
               <input form="imsTextForm" type="text" name="name_<%= li %>_<%= vi %>" value="<%= v.name %>" placeholder="Imię / nazwa lektora" class="w-full border border-gray-300 rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-accent">
-              <form method="post" action="/oferta-ims/usun/" class="inline" onsubmit="return confirm('Usunąć tę pozycję lektora?');">
+              <form method="post" action="/oferta-ims/usun/" class="inline" onsubmit="return confirm('Usunąć tę pozycję lektora?') &amp;&amp; imsBeforeDodajUsun(this);">
                 <input type="hidden" name="li" value="<%= li %>"><input type="hidden" name="vi" value="<%= vi %>">
                 <button type="submit" class="text-[11px] text-red-600 hover:text-red-700 hover:underline inline-block mt-0.5">usuń pozycję</button>
               </form>
@@ -97,7 +97,7 @@
         <% }); %>
       </div>
       <% if (!locked) { %>
-      <form method="post" action="/oferta-ims/dodaj/" class="mt-3">
+      <form method="post" action="/oferta-ims/dodaj/" class="mt-3" onsubmit="return imsBeforeDodajUsun(this);">
         <input type="hidden" name="li" value="<%= li %>">
         <button type="submit" class="text-sm font-semibold text-accent-dark hover:text-accent border border-dashed border-gray-300 hover:border-accent rounded-lg px-4 py-2 transition-colors">+ Dodaj lektora (<%= group.lang %>)</button>
       </form>
@@ -120,15 +120,27 @@
     // DOPIERO POTEM wyslij plik. Inaczej przeladowanie po uploadzie kasowalo
     // niezapisane imie i stawki (osobne formularze). Pozycja ekranu zachowana.
     function imsUploadDemo(input){
-      var df=input.form;
+      imsSaveTextThenSubmit(input.form);
+    }
+    // Wspolny helper: zapisz #imsTextForm w tle przez fetch, potem programatycznie
+    // wyslij wskazany formularz. Bez tego klik "Dodaj lektora" / "usun pozycje" /
+    // wgranie demo gubilo niezapisane zmiany w polach tekstowych po reloadzie.
+    function imsSaveTextThenSubmit(targetForm){
       try{sessionStorage.setItem('imsEditScroll',String(window.scrollY||window.pageYOffset||0));}catch(e){}
       var tf=document.getElementById('imsTextForm');
-      if(!tf){df.submit();return;}
+      if(!tf){targetForm.submit();return;}
       var params=new URLSearchParams();
-      try{new FormData(tf).forEach(function(val,key){params.append(key,val);});}catch(e){df.submit();return;}
+      try{new FormData(tf).forEach(function(val,key){params.append(key,val);});}catch(e){targetForm.submit();return;}
       fetch(tf.getAttribute('action'),{method:'POST',body:params,credentials:'same-origin',redirect:'manual',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
-        .then(function(){df.submit();})
-        .catch(function(){df.submit();});
+        .then(function(){targetForm.submit();})
+        .catch(function(){targetForm.submit();});
+    }
+    // Onsubmit handler dla form "Dodaj lektora" / "Usun pozycje".
+    // Zwracamy false aby zatrzymac default submit; wlasciwy submit zrobi sie
+    // po fetch-save w imsSaveTextThenSubmit (programatycznie).
+    function imsBeforeDodajUsun(form){
+      imsSaveTextThenSubmit(form);
+      return false;
     }
     </script>
 
