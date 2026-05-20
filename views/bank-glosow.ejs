@@ -45,9 +45,11 @@
     <style>.filters-ready{opacity:1!important}</style>
     <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
       <% if (typeof genderSegment === 'undefined') { %>
+      <%/* "Wszyscy" usuniete z mobile baru zeby calosc zmiescila sie w jednej linii.
+            Domyslnie: zaden pill nie aktywny = wszyscy. Klik M lub K = filtruj.
+            Klik aktywnego M lub K = toggle off = powrot do "wszyscy" (obsluga w JS nizej). */%>
       <div class="flex rounded-lg overflow-hidden border border-gray-200">
-        <button data-filter="gender" data-value="all" class="filter-btn active">Wszyscy</button>
-        <button data-filter="gender" data-value="m" class="filter-btn border-l border-gray-200">Mężczyźni</button>
+        <button data-filter="gender" data-value="m" class="filter-btn">Mężczyźni</button>
         <button data-filter="gender" data-value="f" class="filter-btn border-l border-gray-200">Kobiety</button>
       </div>
       <% } %>
@@ -871,6 +873,16 @@
 
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
+      // Toggle off: re-klik aktywnego gender pila wraca do "wszyscy".
+      // Potrzebne na mobile gdzie nie ma jawnego przycisku "Wszyscy" (oszczedzilismy wiersz).
+      if (this.classList.contains('active') && this.dataset.filter === 'gender' && this.dataset.value !== 'all') {
+        this.classList.remove('active');
+        activeGender = 'all';
+        var sel = document.getElementById('filter-gender-select');
+        if (sel) sel.value = 'all';
+        applyFilters();
+        return;
+      }
       this.parentElement.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
       activeGender = this.dataset.value;
@@ -1137,8 +1149,9 @@
   var origReset = window.resetFilters;
   window.resetFilters = function() {
     origReset();
-    // origReset activates first .filter-btn[data-value="all"] found (mobile bar)
-    // Also activate sidebar Wszyscy button
+    // origReset activates first .filter-btn[data-value="all"] found (po usunieciu
+    // pila "Wszyscy" z mobile baru: ukryty button w #gender-group). Dla pewnosci
+    // dodatkowo aktywujemy state-holder w sidebarze - tu jawnie i czytelnie.
     var sbAll = document.querySelector('#filters-sidebar .filter-btn[data-value="all"]');
     if (sbAll) sbAll.classList.add('active');
     // Reset mobile selects
