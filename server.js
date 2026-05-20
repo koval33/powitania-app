@@ -122,22 +122,25 @@ function imsNormPrice(val) {
 }
 // Markup dla Klienta IMS: kazda liczbe w stawce zwiekszamy o 50 EUR i zaokraglamy
 // do gornej dziesiatki. Plus floor (cena minimum widziana przez Klienta) -
-// rozny per kanal. Operator panel zawsze widzi raw (stawka lektora).
+// rozny per kanal, plus override per jezyk. Operator panel zawsze widzi raw.
 //
 // Reguly:
 // - "202 EUR" -> "260 EUR" (202+50=252, ceil/10 = 260)
-// - Zakres "400-1200 EUR" -> "450-1250 EUR" (markup obu koncow, zakres zachowany)
-// - "od 50 EUR" -> "od 100 EUR" -> z floorem 180: "od 180 EUR"
+// - Zakres "400-1200 EUR" -> "450-1250 EUR" (markup obu koncow)
+// - "od 50 EUR" -> "od 100 EUR" -> z floorem 220: "od 220 EUR"
 // - "do ustalenia" -> bez zmian (brak cyfr, floor nie dotyczy)
 // - Chaos typu "460 EUR (Austria) / 500 EUR (Niemcy)": wykrywamy "/" + nawiasy =>
 //   bierzemy MAX z liczb (nigdy nie zanizamy), kontekst znika, Klient widzi jedna
 //   czysta stawke po markupie+floor.
-// - Floor: kazda liczba po markupie clampowana do min(channel). Jesli zakres skleja
-//   sie do tej samej liczby przez floor ("180-180") -> zwijamy do "180".
+// - Floor: kazda liczba po markupie clampowana do min(channel, lang). Zakres
+//   sklejony do "X-X" -> zwijamy do "X".
 // - Liczby <10 lub >10000 pomijamy (sanity check przeciw cyfrom w opisach).
-const IMS_CLIENT_FLOOR = { radio: 180, gallery: 150 };
+const IMS_CLIENT_FLOOR_DEFAULT = { radio: 220, gallery: 180 };
+const IMS_CLIENT_FLOOR_BY_LANG = {
+  'Niemiecki': { radio: 250, gallery: 200 }
+};
 
-function imsMarkupPrice(val, channel) {
+function imsMarkupPrice(val, channel, lang) {
   if (val == null) return '';
   let s = String(val);
   // Krok 1: chaos informacyjny (wiele opcji z kontekstem oddzielonych "/") -> max
@@ -149,8 +152,9 @@ function imsMarkupPrice(val, channel) {
       s = Math.max.apply(null, nums) + ' EUR';
     }
   }
-  // Krok 2: markup kazdej liczby + clamp do floora (zalezny od channel)
-  const floor = (channel && IMS_CLIENT_FLOOR[channel]) || 0;
+  // Krok 2: markup kazdej liczby + clamp do floora (channel + opcjonalnie override per lang)
+  const floors = (lang && IMS_CLIENT_FLOOR_BY_LANG[lang]) || IMS_CLIENT_FLOOR_DEFAULT;
+  const floor = (channel && floors[channel]) || 0;
   s = s.replace(/\d+/g, function (m) {
     const n = parseInt(m, 10);
     if (!isFinite(n) || n < 10 || n > 10000) return m;

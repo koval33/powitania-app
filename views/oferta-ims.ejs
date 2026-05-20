@@ -196,8 +196,8 @@
             <div class="md:col-span-3 min-w-0">
               <span class="font-semibold text-gray-900"><%= v.name %></span>
             </div>
-            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Radio:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.radio, 'radio') %></span></div>
-            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Galeria:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.gallery, 'gallery') %></span></div>
+            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Radio:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.radio, 'radio', group.lang) %></span></div>
+            <div class="md:col-span-2"><span class="md:hidden text-[10px] uppercase tracking-wider text-gray-400 mr-1">Galeria:</span><span class="font-semibold text-gray-900"><%= markupPrice(v.gallery, 'gallery', group.lang) %></span></div>
             <div class="md:col-span-5 flex gap-3 items-center">
               <% (Array.isArray(v.demos) ? v.demos : []).filter(Boolean).forEach(function(src){ %>
               <div class="bp-player flex-1 min-w-0">
