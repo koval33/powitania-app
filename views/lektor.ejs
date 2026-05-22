@@ -9,6 +9,22 @@
 @media (min-width: 640px) {
   .order-fields-3col { grid-template-columns: 1fr 1fr 1fr; }
 }
+/* Strzalka ::after na panelach wyceny - sygnal clickability (Clarity audit).
+   Znika po wybraniu (active state) bo .svc-btn dostaje .border-accent. */
+.svc-btn::after {
+  content: '\2192'; /* prawa strzalka -> */
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  color: #ea580c;
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.55;
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+}
+.svc-btn:hover::after { opacity: 1; transform: translateX(2px); }
+.svc-btn.border-accent::after { opacity: 0; } /* po wybraniu strzalka znika */
 </style>
 
 <section class="py-10 md:py-16 bg-stone-100/80">
@@ -189,19 +205,19 @@
                 <option value="film">Narracja</option>
               </select>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="ivr" onclick="pickService(this)">
+                <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="wizard-service-select" data-value="ivr" onclick="pickService(this)">
                   <span class="block text-sm font-semibold text-gray-800 leading-tight">Zapowiedź tel.</span>
                   <span class="block text-xs text-gray-400 mt-1">IVR / centrala</span>
                 </button>
-                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="social" onclick="pickService(this)">
+                <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="wizard-service-select" data-value="social" onclick="pickService(this)">
                   <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
                   <span class="block text-xs text-gray-400 mt-1">online / digital</span>
                 </button>
-                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="spot" onclick="pickService(this)">
+                <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="wizard-service-select" data-value="spot" onclick="pickService(this)">
                   <span class="block text-sm font-semibold text-gray-800 leading-tight">Spot reklamowy</span>
                   <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
                 </button>
-                <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="wizard-service-select" data-value="film" onclick="pickService(this)">
+                <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="wizard-service-select" data-value="film" onclick="pickService(this)">
                   <span class="block text-sm font-semibold text-gray-800 leading-tight">Narracja</span>
                   <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
                 </button>
@@ -291,7 +307,7 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
           Wyceń nagranie - <%= lektor.name %>
         </h2>
-        <p class="text-sm text-gray-500 mb-4">Wybierz typ nagrania - cena wyliczy się automatycznie.</p>
+        <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Kliknij typ nagrania</strong> <span class="text-accent" aria-hidden="true">↓</span> cena wyliczy się od razu.</p>
 
         <!-- Wybór typu nagrania - nad formularzem -->
         <select id="modal-service-select" class="hidden">
@@ -302,19 +318,19 @@
           <option value="film">Narracja</option>
         </select>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
+          <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
             <span class="block text-sm font-semibold text-gray-800 leading-tight">Zapowiedź tel.</span>
             <span class="block text-xs text-gray-400 mt-1">IVR / centrala</span>
           </button>
-          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
+          <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
             <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
             <span class="block text-xs text-gray-400 mt-1">online / digital</span>
           </button>
-          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="spot" onclick="pickService(this)">
+          <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="spot" onclick="pickService(this)">
             <span class="block text-sm font-semibold text-gray-800 leading-tight">Spot reklamowy</span>
             <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
           </button>
-          <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
+          <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
             <span class="block text-sm font-semibold text-gray-800 leading-tight">Narracja</span>
             <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
           </button>

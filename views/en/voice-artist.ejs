@@ -265,7 +265,7 @@
             <h2 class="text-2xl font-bold text-gray-900 mb-1">
               Get a quote - <%= lektor.name %>
             </h2>
-            <p class="text-sm text-gray-500 mb-4">Select the recording type - the price will be calculated automatically.</p>
+            <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Click the recording type</strong> <span class="text-accent" aria-hidden="true">↓</span> the price will be calculated instantly.</p>
 
             <!-- Hidden service select -->
             <select id="modal-service-select" class="hidden">
@@ -278,19 +278,19 @@
 
             <!-- 4 tile buttons -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
+              <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="ivr" onclick="pickService(this)">
                 <span class="block text-sm font-semibold text-gray-800 leading-tight">Phone Ann.</span>
                 <span class="block text-xs text-gray-400 mt-1">IVR / phone system</span>
               </button>
-              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
+              <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="social" onclick="pickService(this)">
                 <span class="block text-sm font-semibold text-gray-800 leading-tight">Social Media</span>
                 <span class="block text-xs text-gray-400 mt-1">online / digital</span>
               </button>
-              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="radio" onclick="pickService(this)">
+              <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="radio" onclick="pickService(this)">
                 <span class="block text-sm font-semibold text-gray-800 leading-tight">Ad Spot</span>
                 <span class="block text-xs text-gray-400 mt-1">radio / TV</span>
               </button>
-              <button type="button" class="svc-btn border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent/50 hover:bg-accent/5" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
+              <button type="button" class="svc-btn relative border-2 border-gray-200 rounded-xl px-4 py-4 text-left transition-all hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 hover:shadow-md" data-select="modal-service-select" data-value="film" onclick="pickService(this)">
                 <span class="block text-sm font-semibold text-gray-800 leading-tight">Narration</span>
                 <span class="block text-xs text-gray-400 mt-1">film / e-learning</span>
               </button>
@@ -907,6 +907,21 @@
 @media (min-width: 640px) {
   .order-fields-3col { grid-template-columns: 1fr 1fr 1fr; }
 }
+/* Clickability arrow on quote tiles (PL parity, Clarity audit). */
+.svc-btn::after {
+  content: '\2192';
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  color: #ea580c;
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.55;
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+}
+.svc-btn:hover::after { opacity: 1; transform: translateX(2px); }
+.svc-btn.border-accent::after { opacity: 0; }
 </style>
 
 <script>
