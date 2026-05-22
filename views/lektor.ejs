@@ -10,16 +10,18 @@
   .order-fields-3col { grid-template-columns: 1fr 1fr 1fr; }
 }
 /* Strzalka ::after na panelach wyceny - sygnal clickability (Clarity audit).
-   Znika po wybraniu (active state) bo .svc-btn dostaje .border-accent. */
+   Znika po wybraniu (active state) bo .svc-btn dostaje .border-accent.
+   Glyph \2794 zachowany (Heavy Wide-Headed) bo ma naturalna grubosc,
+   ale bez bold font-weight i mniejszy rozmiar - "pomiedzy" thin a heavy. */
 .svc-btn::after {
-  content: '\2192'; /* prawa strzalka -> */
+  content: '\2794';
   position: absolute;
-  top: 0.65rem;
+  top: 0.6rem;
   right: 0.75rem;
   color: #ea580c;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1;
-  opacity: 0.55;
+  opacity: 0.8;
   transition: opacity .2s, transform .2s;
   pointer-events: none;
 }
@@ -307,7 +309,7 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
           Wyceń nagranie - <%= lektor.name %>
         </h2>
-        <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Kliknij typ nagrania</strong> <span class="text-accent" aria-hidden="true">↓</span> cena wyliczy się od razu.</p>
+        <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Kliknij typ nagrania</strong> <span class="text-accent font-semibold text-lg align-middle" aria-hidden="true">↓</span> cena wyliczy się od razu.</p>
 
         <!-- Wybór typu nagrania - nad formularzem -->
         <select id="modal-service-select" class="hidden">
