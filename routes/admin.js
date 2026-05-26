@@ -204,7 +204,8 @@ router.post('/zapisz/', upload.fields([
     const samples = [];
     const filesToDelete = []; // pliki ktore trzeba skasowac z dysku po zapisie
 
-    // 1. Istniejace probki
+    // 1. Istniejace probki (z obsluga reorder przez pos field)
+    const existingItems = [];
     if (existingVoice && Array.isArray(existingVoice.samples)) {
       existingVoice.samples.forEach((s, i) => {
         const removeFlag = b[`existing_sample_remove_${i}`];
@@ -215,9 +216,16 @@ router.post('/zapisz/', upload.fields([
         }
         const newName = (b[`existing_sample_name_${i}`] || s.name || '').trim();
         const url = b[`existing_sample_url_${i}`] || s.url;
-        samples.push({ name: newName || `Probka ${i + 1}`, url });
+        // Reorder: pos field z formularza (default = oryginalny indeks i, gdy user nie ruszal)
+        const posRaw = b[`existing_sample_pos_${i}`];
+        const pos = posRaw !== undefined && posRaw !== '' && !isNaN(parseInt(posRaw, 10)) ? parseInt(posRaw, 10) : i;
+        existingItems.push({ pos, sample: { name: newName || `Probka ${i + 1}`, url } });
       });
     }
+    // Sortuj po pos (zachowuje oryginalna kolejnosc jesli nikt nie ruszal strzalek;
+    // odzwierciedla nowa kolejnosc gdy user kliknal moveSample(↑/↓) w panelu)
+    existingItems.sort((a, b) => a.pos - b.pos);
+    existingItems.forEach(x => samples.push(x.sample));
 
     // 2. Nowe pliki
     const newFiles = (req.files && (req.files['new_sample_file[]'] || req.files['new_sample_file'])) || [];

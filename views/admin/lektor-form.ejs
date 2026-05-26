@@ -133,6 +133,11 @@
             <div class="sample-row flex items-center gap-2 bg-dark-800 border border-white/10 rounded-lg p-2" data-index="<%= i %>">
               <input type="hidden" name="existing_sample_url_<%= i %>" value="<%= s.url %>">
               <input type="hidden" name="existing_sample_remove_<%= i %>" value="0" class="remove-flag">
+              <input type="hidden" name="existing_sample_pos_<%= i %>" value="<%= i %>" class="pos-input">
+              <div class="flex flex-col gap-0.5">
+                <button type="button" onclick="moveSample(this,-1)" title="Przesun w gore" class="text-sm text-gray-400 hover:text-accent leading-none px-1.5 py-0.5 rounded border border-white/10 hover:border-accent/40">&#9650;</button>
+                <button type="button" onclick="moveSample(this,1)" title="Przesun w dol" class="text-sm text-gray-400 hover:text-accent leading-none px-1.5 py-0.5 rounded border border-white/10 hover:border-accent/40">&#9660;</button>
+              </div>
               <input type="text" name="existing_sample_name_<%= i %>" value="<%= s.name || '' %>" placeholder="Nazwa probki" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
               <audio controls src="<%= s.url %>" class="h-8"></audio>
               <button type="button" onclick="markSampleRemove(this)" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">Usun</button>
@@ -180,6 +185,22 @@
           var clone = tpl.content.cloneNode(true);
           document.getElementById('new-samples').appendChild(clone);
         });
+
+        // Reorder probek: swap DOM + swap pos input values. Server sortuje po pos.
+        function moveSample(btn, dir) {
+          var row = btn.closest('.sample-row');
+          var container = row.parentElement;
+          var sibling = dir === -1 ? row.previousElementSibling : row.nextElementSibling;
+          if (!sibling || !sibling.classList.contains('sample-row')) return;
+          var rowPos = row.querySelector('.pos-input');
+          var sibPos = sibling.querySelector('.pos-input');
+          if (!rowPos || !sibPos) return;
+          var tmp = rowPos.value;
+          rowPos.value = sibPos.value;
+          sibPos.value = tmp;
+          if (dir === -1) container.insertBefore(row, sibling);
+          else container.insertBefore(sibling, row);
+        }
       </script>
 
       <!-- Realizacja + Grupa cenowa -->
