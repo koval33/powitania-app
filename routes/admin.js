@@ -179,6 +179,17 @@ router.post('/zapisz/', upload.fields([
     // Process audio (glowna probka)
     const existingVoice = isEdit ? voices.find(v => v.id === slug) : null;
     let audioPath = existingVoice ? existingVoice.audio : null;
+    // Checkbox "Usun glowna probke" - kasuje plik z dysku i ustawia audio na null.
+    // Pomijane jesli user jednoczesnie wgrywa nowy plik (ponizej i tak nadpiszemy).
+    if (b.audio_remove === '1' && !(req.files && req.files.audio && req.files.audio[0])) {
+      if (audioPath) {
+        try {
+          const diskPath = path.join(__dirname, '..', 'public', audioPath);
+          if (fs.existsSync(diskPath)) fs.unlinkSync(diskPath);
+        } catch (e) { console.warn('[admin] audio delete skipped:', e.message); }
+      }
+      audioPath = null;
+    }
     if (req.files && req.files.audio && req.files.audio[0]) {
       const tmpFile = req.files.audio[0].path;
       const ext = path.extname(req.files.audio[0].originalname).toLowerCase() || '.mp3';
