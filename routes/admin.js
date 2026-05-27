@@ -89,6 +89,55 @@ router.get('/export/', (req, res) => {
   res.send(fs.readFileSync(DATA_PATH, 'utf8'));
 });
 
+// --- Migracja: audio: field -> samples[] (jednorazowo na prod, idempotentne) ---
+// Przed migracja zrzuca backup do voices.json.bak-pre-audio-merge.
+// Po migracji: kazdy lektor ma tylko samples[], audio: pole znika z JSON.
+// Bezpieczne do wielokrotnego uruchamiania (sprawdza voice.audio przed dzialaniem).
+router.get('/migrate-audio/', (req, res) => {
+  try {
+    const voices = loadVoices();
+    const backupPath = DATA_PATH + '.bak-pre-audio-merge';
+    if (!fs.existsSync(backupPath)) {
+      fs.writeFileSync(backupPath, JSON.stringify(voices, null, 2), 'utf8');
+    }
+    let migrated = 0, alreadyInSamples = 0, noAudio = 0, becameFirst = 0, emptyCleaned = 0;
+    voices.forEach(v => {
+      if (!v.audio) {
+        // Pole istnieje ale null/"" (drafty bez nagrania) - usun zeby schema byla czysta
+        if (v.audio === null || v.audio === '') { delete v.audio; emptyCleaned++; }
+        else noAudio++;
+        return;
+      }
+      v.samples = Array.isArray(v.samples) ? v.samples : [];
+      const dup = v.samples.some(s => s.url === v.audio);
+      if (dup) {
+        alreadyInSamples++;
+      } else if (v.samples.length === 0) {
+        v.samples.push({ name: 'Demo główne', url: v.audio });
+        becameFirst++;
+      } else {
+        v.samples.push({ name: 'Demo główne', url: v.audio });
+        migrated++;
+      }
+      delete v.audio;
+    });
+    saveVoices(voices);
+    res.set('Content-Type', 'text/plain; charset=utf-8');
+    res.send(
+      'Migration done.\n' +
+      'Backup: ' + backupPath + '\n' +
+      'Migrated (audio appended to samples): ' + migrated + '\n' +
+      'Already in samples (only audio field dropped): ' + alreadyInSamples + '\n' +
+      'Empty samples (audio became samples[0]): ' + becameFirst + '\n' +
+      'Empty audio cleaned (null/empty string drafts): ' + emptyCleaned + '\n' +
+      'No audio field (untouched): ' + noAudio + '\n' +
+      'Total lektorow: ' + voices.length
+    );
+  } catch (e) {
+    res.status(500).send('Migration FAILED: ' + e.message + '\n' + e.stack);
+  }
+});
+
 // --- Lista lektorów ---
 router.get('/', (req, res) => {
   let voices = loadVoices();
@@ -142,9 +191,8 @@ router.get('/edytuj/:id/', (req, res) => {
 // --- Zapis (dodaj / edytuj) ---
 router.post('/zapisz/', upload.fields([
   { name: 'photo', maxCount: 1 },
-  { name: 'audio', maxCount: 1 },
-  { name: 'new_sample_file[]', maxCount: 10 },
-  { name: 'new_sample_file', maxCount: 10 }
+  { name: 'new_sample_file[]', maxCount: 5 },
+  { name: 'new_sample_file', maxCount: 5 }
 ]), async (req, res) => {
   try {
     const voices = loadVoices();
@@ -176,27 +224,11 @@ router.post('/zapisz/', upload.fields([
       photoPath = `/img/lektorzy/${slug}.webp`;
     }
 
-    // Process audio (glowna probka)
+    // audio: field zostal zlikwidowany w refaktorze - wszystkie probki sa w samples[].
+    // Stara logika audioPath zachowana jako null zeby dedup samples vs audioPath
+    // (linia ~213) dalej dzialal poprawnie - kazdy s.url jest != null.
     const existingVoice = isEdit ? voices.find(v => v.id === slug) : null;
-    let audioPath = existingVoice ? existingVoice.audio : null;
-    // Checkbox "Usun glowna probke" - kasuje plik z dysku i ustawia audio na null.
-    // Pomijane jesli user jednoczesnie wgrywa nowy plik (ponizej i tak nadpiszemy).
-    if (b.audio_remove === '1' && !(req.files && req.files.audio && req.files.audio[0])) {
-      if (audioPath) {
-        try {
-          const diskPath = path.join(__dirname, '..', 'public', audioPath);
-          if (fs.existsSync(diskPath)) fs.unlinkSync(diskPath);
-        } catch (e) { console.warn('[admin] audio delete skipped:', e.message); }
-      }
-      audioPath = null;
-    }
-    if (req.files && req.files.audio && req.files.audio[0]) {
-      const tmpFile = req.files.audio[0].path;
-      const ext = path.extname(req.files.audio[0].originalname).toLowerCase() || '.mp3';
-      const outFile = path.join(AUDIO_DIR, `${slug}${ext}`);
-      fs.renameSync(tmpFile, outFile);
-      audioPath = `/audio/lektorzy/${slug}${ext}`;
-    }
+    const audioPath = null;
 
     // Process samples (dodatkowe probki) - obsluga 3 przypadkow:
     // 1. Istniejace - rename (existing_sample_name_N) lub remove (existing_sample_remove_N=1)
@@ -321,8 +353,7 @@ router.post('/zapisz/', upload.fields([
       contactEmail: (b.contactEmail || '').trim() || null,
       contactPhone: (b.contactPhone || '').trim() || null,
       photo: photoPath,
-      audio: audioPath,
-      samples: samples.length > 0 ? samples : null,
+      samples: samples.length > 0 ? samples.slice(0, 5) : null,
       turnaround: b.turnaround || null,
       famous: b.famous === 'on',
       native: b.native === 'on',

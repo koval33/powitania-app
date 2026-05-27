@@ -439,10 +439,10 @@
 
           <!-- Player + przyciski - na desktop: display:contents (niewidoczny wrapper), na mobile: wiersz -->
           <%
-            var firstSample = (v.samples && v.samples.length > 0)
+            var sampleToPlay = (v.samples && v.samples.length > 0)
               ? v.samples.filter(function(s) { return s.url && !s.url.includes('youtu'); })[0]
               : null;
-            var sampleToPlay = firstSample || { name: 'Próbka', url: v.audio };
+            if (!sampleToPlay) sampleToPlay = { name: 'Próbka', url: '' };
           %>
           <div class="vc-player-wrap">
             <div class="player-box vc-player-row cursor-pointer">

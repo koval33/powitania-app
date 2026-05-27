@@ -104,27 +104,10 @@
         <input type="file" name="photo" accept="image/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
       </div>
 
-      <!-- Audio (legacy single, glowna probka) -->
+      <!-- Probki audio (samples[]) - jedyne pole audio od czasu refactor audio->samples -->
       <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1.5">Glowna probka glosu (MP3/WAV)</label>
-        <p class="text-xs text-gray-500 mb-2">Pojedynczy plik widoczny na karcie lektora w banku glosow. Dodatkowe probki dodaj nizej.</p>
-        <% if (voice && voice.audio) { %>
-          <div class="flex items-center gap-3 mb-2">
-            <audio controls src="<%= voice.audio %>" class="h-8"></audio>
-            <span class="text-xs text-gray-500">Aktualna glowna probka.</span>
-            <label class="inline-flex items-center gap-1.5 ml-auto text-xs text-red-400 cursor-pointer hover:text-red-300">
-              <input type="checkbox" name="audio_remove" value="1" class="w-3.5 h-3.5 rounded border-red-400/40 bg-dark-800 text-red-500 focus:ring-red-500">
-              Usun glowna probke (po zapisie)
-            </label>
-          </div>
-        <% } %>
-        <input type="file" name="audio" accept="audio/*" class="w-full bg-dark-800 border border-white/10 text-gray-400 rounded-lg px-4 py-3 focus:border-accent focus:outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
-      </div>
-
-      <!-- Dodatkowe probki (samples[]) -->
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1.5">Dodatkowe probki audio</label>
-        <p class="text-xs text-gray-500 mb-2">Lista probek pokazywana na profilu lektora (max 10). Mozesz zmienic nazwy istniejacych albo dodac nowe.</p>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Probki audio</label>
+        <p class="text-xs text-gray-500 mb-2">Maksymalnie 5 probek. Pierwsza pokazuje sie na karcie lektora w banku glosow; wszystkie pokazuja sie na profilu w kolejnosci. Strzalkami &#9650;/&#9660; ustawisz kolejnosc.</p>
 
         <!-- Istniejace probki (mozna nadac inna nazwe lub usunac) -->
         <% var existingSamples = (voice && Array.isArray(voice.samples)) ? voice.samples : []; %>

@@ -75,26 +75,15 @@
           <% } %>
         </div>
 
-        <!-- PRÓBKI GŁOSOWE - od razu w kolumnie -->
+        <!-- AUDIO SAMPLES - order from admin panel (after ↑↓ reorder). -->
         <%
           var allAudio = [];
-          var seenUrls = {};
-          var samples = lektor.samples || [];
-          if (lektor.audio) {
-            allAudio.push({ name: (samples[0] && samples[0].name) || 'Main sample', url: lektor.audio });
-            seenUrls[lektor.audio] = true;
-            if (samples.length > 0 && samples[0].url) seenUrls[samples[0].url] = true;
-          }
-          samples.forEach(function(s) {
+          var videoSamples = [];
+          (lektor.samples || []).forEach(function(s) {
             if (!s.url) return;
             var isVideo = s.url.includes('youtu') || s.url.includes('vimeo');
-            if (!isVideo && !seenUrls[s.url]) {
-              allAudio.push(s);
-              seenUrls[s.url] = true;
-            }
-          });
-          var videoSamples = (lektor.samples || []).filter(function(s) {
-            return s.url && (s.url.includes('youtu') || s.url.includes('vimeo'));
+            if (isVideo) videoSamples.push(s);
+            else allAudio.push(s);
           });
         %>
 

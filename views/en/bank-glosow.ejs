@@ -350,10 +350,10 @@
     <div id="voices-grid" class="grid grid-cols-1 gap-3">
       <% voices.forEach(function(v, idx) { %>
       <%
-        var firstSample = (v.samples && v.samples.length > 0)
+        var sampleToPlay = (v.samples && v.samples.length > 0)
           ? v.samples.filter(function(s) { return s.url && !s.url.includes('youtu'); })[0]
           : null;
-        var sampleToPlay = firstSample || { name: 'Sample', url: v.audio };
+        if (!sampleToPlay) sampleToPlay = { name: 'Sample', url: '' };
         var profileUrl = v.profileUrl ? v.profileUrl.replace('/lektorzy/', '/en/voice-artists/') : '';
       %>
       <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
