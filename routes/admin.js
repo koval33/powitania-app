@@ -349,9 +349,6 @@ router.post('/zapisz/', upload.fields([
       }
     }
 
-    // Auto-fix: jesli audioPath jest pusty, ustaw na pierwsza probke
-    if (!audioPath && samples.length > 0) audioPath = samples[0].url;
-
     // Parse languages
     const languages = (b.languages || '').split(',').map(l => l.trim()).filter(l => l);
 
