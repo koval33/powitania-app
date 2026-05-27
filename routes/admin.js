@@ -89,6 +89,68 @@ router.get('/export/', (req, res) => {
   res.send(fs.readFileSync(DATA_PATH, 'utf8'));
 });
 
+// --- Cleanup duplikatow "Demo glowne" po file size (side-effect migracji audio->samples) ---
+// Niektore lektory mialy plik audio: skopiowany z migracji WP - dwa rozne URL-e wskazuja
+// na bit-identyczne pliki audio. Po migracji "Demo glowne" sample to czesto duplikat
+// innego sample. Endpoint sprawdza: dla kazdego sample o nazwie "Demo glowne", jesli na
+// dysku ma identyczny file size jak inny sample tego lektora -> uznajemy za duplikat.
+// Dry-run: zwraca tylko liste do usuniecia. ?confirm=1 -> usuwa.
+router.get('/cleanup-duplicate-demo/', (req, res) => {
+  try {
+    const confirm = req.query.confirm === '1';
+    const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+    const voices = loadVoices();
+    const candidates = [];
+    voices.forEach(v => {
+      if (!Array.isArray(v.samples) || v.samples.length < 2) return;
+      const demoIdx = v.samples.findIndex(s => s && s.name === 'Demo główne');
+      if (demoIdx === -1) return;
+      const demo = v.samples[demoIdx];
+      if (!demo.url || demo.url.includes('youtu') || demo.url.includes('vimeo')) return;
+      const demoFs = path.join(PUBLIC_DIR, demo.url.split('?')[0]);
+      if (!fs.existsSync(demoFs)) return;
+      const demoSize = fs.statSync(demoFs).size;
+      // Czy inny sample (nie ten Demo glowne) ma identyczny size?
+      const otherDup = v.samples.find((s, i) => {
+        if (i === demoIdx) return false;
+        if (!s || !s.url || s.url.includes('youtu') || s.url.includes('vimeo')) return false;
+        const p = path.join(PUBLIC_DIR, s.url.split('?')[0]);
+        if (!fs.existsSync(p)) return false;
+        return fs.statSync(p).size === demoSize;
+      });
+      if (otherDup) {
+        candidates.push({ id: v.id, name: v.name, demoUrl: demo.url, dupUrl: otherDup.url, size: demoSize });
+      }
+    });
+
+    if (confirm && candidates.length > 0) {
+      const backupPath = DATA_PATH + '.bak-pre-demo-cleanup';
+      if (!fs.existsSync(backupPath)) {
+        fs.writeFileSync(backupPath, JSON.stringify(voices, null, 2), 'utf8');
+      }
+      candidates.forEach(c => {
+        const v = voices.find(x => x.id === c.id);
+        if (!v) return;
+        v.samples = v.samples.filter(s => !(s.name === 'Demo główne' && s.url === c.demoUrl));
+        // Plik fizyczny zostaje - moze byc shared albo user moze go potrzebowac. Tylko czyscimy JSON.
+      });
+      saveVoices(voices);
+    }
+
+    res.set('Content-Type', 'text/plain; charset=utf-8');
+    let out = (confirm ? 'CLEANUP DONE' : 'DRY-RUN (add ?confirm=1 to actually remove)') + '\n';
+    out += 'Kandydaci do usuniecia "Demo glowne": ' + candidates.length + '\n\n';
+    candidates.forEach(c => {
+      out += '  ' + c.id + ' (' + c.name + ')\n';
+      out += '    remove: ' + c.demoUrl + '\n';
+      out += '    dup-of: ' + c.dupUrl + '  [' + c.size + ' bytes]\n';
+    });
+    res.send(out);
+  } catch (e) {
+    res.status(500).send('Cleanup FAILED: ' + e.message + '\n' + e.stack);
+  }
+});
+
 // --- Migracja: audio: field -> samples[] (jednorazowo na prod, idempotentne) ---
 // Przed migracja zrzuca backup do voices.json.bak-pre-audio-merge.
 // Po migracji: kazdy lektor ma tylko samples[], audio: pole znika z JSON.
