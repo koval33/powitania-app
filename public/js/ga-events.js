@@ -68,13 +68,20 @@
   };
 
   // --- Audio play ---
+  // UWAGA: brak optional chaining (?.) - powodowal SyntaxError w starszych
+  // browserach (Safari < 13.1, stary Android WebView) i wywalal CALY plik
+  // ga-events.js, przez co wszystkie eventy GA4 padaly. ES5-only.
   document.addEventListener('click', function(e) {
     var btn = e.target.closest('.play-btn');
     if (btn) {
       var card = btn.closest('.voice-card, .sample-row, [data-lektor]');
       var lektorName = '';
       if (card) {
-        lektorName = card.getAttribute('data-lektor') || card.querySelector('.lektor-name, h3, h2')?.textContent?.trim() || '';
+        lektorName = card.getAttribute('data-lektor') || '';
+        if (!lektorName) {
+          var nameEl = card.querySelector('.lektor-name, h3, h2');
+          if (nameEl && nameEl.textContent) lektorName = nameEl.textContent.trim();
+        }
       }
       trackEvent('audio_play', { lektor_name: lektorName });
     }
@@ -84,7 +91,8 @@
   document.addEventListener('click', function(e) {
     var card = e.target.closest('.voice-card[data-url]');
     if (card && !e.target.closest('.play-btn') && !e.target.closest('a[download]')) {
-      var name = card.querySelector('.lektor-name, h3')?.textContent?.trim() || '';
+      var nameEl = card.querySelector('.lektor-name, h3');
+      var name = (nameEl && nameEl.textContent) ? nameEl.textContent.trim() : '';
       trackEvent('lektor_card_click', { lektor_name: name, url: card.dataset.url });
     }
   });

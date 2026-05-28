@@ -2075,7 +2075,7 @@ function submitWizardInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
-      var inquirySource = (document.getElementById('wizard-inquiry-form') || {}).dataset?.source || 'wycena_indywidualna';
+      var inquirySource = (function(){ var f = document.getElementById('wizard-inquiry-form'); return (f && f.dataset && f.dataset.source) || 'wycena_indywidualna'; })();
       if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource }, data.email, data.phone);
       else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
