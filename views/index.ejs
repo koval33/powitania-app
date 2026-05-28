@@ -379,18 +379,28 @@
       <% var allVoices = typeof voices !== 'undefined' ? voices : []; %>
       <% popularIds.forEach(function(pid) { %>
         <% var v = allVoices.find(function(x) { return x.id === pid; }); %>
-        <% if (v) { %>
+        <% if (v) {
+          // Po refaktorze audio:->samples bierzemy pierwszy non-YT sample
+          var primaryAudio = '';
+          if (v.samples && v.samples.length) {
+            for (var i = 0; i < v.samples.length; i++) {
+              var s = v.samples[i];
+              if (s && s.url && !/youtu|vimeo/.test(s.url)) { primaryAudio = s.url; break; }
+            }
+          }
+        %>
         <div class="text-center group">
-          <div class="relative mb-3">
+          <a href="/lektorzy/<%= v.id %>/" class="block relative mb-3" title="Profil: <%= v.name %>">
             <img
               src="<%= v.photo %>"
               alt="<%= v.name %>"
               class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto object-cover border-2 border-gray-200 group-hover:border-accent transition-all"
               loading="lazy"
             >
-            <% if (v.audio) { %>
+            <% if (primaryAudio) { %>
             <button
-              onclick="playPopular(this, '<%= v.audio %>')"
+              type="button"
+              onclick="event.preventDefault(); event.stopPropagation(); playPopular(this, '<%= primaryAudio %>')"
               class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/3 w-10 h-10 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
               title="Odsłuchaj próbkę"
             >
@@ -398,7 +408,7 @@
               <svg class="w-4 h-4 pause-icon hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
             <% } %>
-          </div>
+          </a>
           <a href="/lektorzy/<%= v.id %>/" class="text-gray-900 font-semibold text-sm hover:text-accent transition-colors"><%= v.name %></a>
           <div class="text-xs text-gray-600 mt-0.5"><%= v.gender === 'm' ? 'Lektor' : 'Lektorka' %></div>
         </div>

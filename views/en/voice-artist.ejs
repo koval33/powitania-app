@@ -22,10 +22,10 @@
         </div>
         <div class="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
           <% if (lektor.famous) { %>
-            <span class="bg-yellow-50 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300">Celebrity</span>
+            <a href="/en/voice-bank/?famous=1" class="bg-yellow-50 text-yellow-700 hover:bg-yellow-100 hover:text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300 transition-colors" title="See all Celebrity voice artists">Celebrity</a>
           <% } %>
           <% if (lektor.native) { %>
-            <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-300">Native speaker</span>
+            <a href="/en/voice-bank/?native=1" class="bg-blue-50 text-blue-700 hover:bg-blue-100 hover:text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-300 transition-colors" title="See all Native speakers">Native speaker</a>
           <% } %>
           <span class="bg-gray-50 text-gray-500 text-xs font-medium px-3 py-1 rounded-full border border-gray-200">
             <%= lektor.gender === 'm' ? 'Male' : 'Female' %>
