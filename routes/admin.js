@@ -82,6 +82,103 @@ function requireAuth(req, res, next) {
 
 router.use(requireAuth);
 
+// --- Inquiries log (backup leadow gdyby EmailLabs/CRM zawiodly) ---
+// HTML widok: /admin/inquiries/ - tabelka z filtrem po mail_status.
+// CSV export: /admin/inquiries/?format=csv (z bieźącym filtrem).
+router.get('/inquiries/', (req, res) => {
+  const { readInquiries } = require('../lib/inquiry-logger');
+  const all = readInquiries().reverse(); // newest first
+  const status = req.query.status;
+  const type = req.query.type;
+  const limit = parseInt(req.query.limit, 10) || 200;
+
+  let filtered = all;
+  if (status) filtered = filtered.filter(r => r.mail_status === status);
+  if (type) filtered = filtered.filter(r => r.type === type);
+  filtered = filtered.slice(0, limit);
+
+  if (req.query.format === 'csv') {
+    const cols = ['ts', 'type', 'name', 'email', 'phone', 'lektorName', 'serviceType', 'mail_status', 'mail_error'];
+    let csv = cols.join(',') + '\n';
+    filtered.forEach(r => {
+      const row = cols.map(c => {
+        const v = c === 'ts' || c === 'type' || c === 'mail_status' || c === 'mail_error'
+          ? (r[c] || '')
+          : (r.data ? (r.data[c] || '') : '');
+        return '"' + String(v).replace(/"/g, '""') + '"';
+      }).join(',');
+      csv += row + '\n';
+    });
+    res.set('Content-Type', 'text/csv; charset=utf-8');
+    res.set('Content-Disposition', `attachment; filename="inquiries-${new Date().toISOString().slice(0,10)}.csv"`);
+    return res.send(csv);
+  }
+
+  const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const counts = {
+    total: all.length,
+    sent: all.filter(r => r.mail_status === 'sent').length,
+    failed: all.filter(r => r.mail_status === 'failed').length,
+    dev_silenced: all.filter(r => r.mail_status === 'dev_mode_silenced').length
+  };
+  const link = (s) => `?status=${s}${type ? '&type=' + type : ''}`;
+
+  res.send(`<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>Inquiries log</title>
+<style>
+  body{font:14px system-ui,-apple-system,sans-serif;margin:0;background:#0f172a;color:#e2e8f0;padding:20px}
+  h1{margin:0 0 8px;font-size:24px}
+  h1 small{color:#94a3b8;font-size:14px;font-weight:normal}
+  .summary{margin:16px 0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .summary div{background:#1e293b;padding:14px;border-radius:8px;text-align:center}
+  .summary .n{font-size:28px;font-weight:700;display:block;line-height:1}
+  .summary .l{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;display:block}
+  .filters{margin:0 0 16px;display:flex;gap:8px;flex-wrap:wrap}
+  .filters a{color:#cbd5e1;text-decoration:none;padding:6px 12px;border:1px solid #334155;border-radius:6px;background:#1e293b;font-size:13px}
+  .filters a.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
+  .filters a:hover{border-color:#60a5fa}
+  table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:8px;overflow:hidden;font-size:13px}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #334155;vertical-align:top}
+  th{background:#0f172a;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:#94a3b8}
+  tr:last-child td{border-bottom:none}
+  .status-sent{color:#10b981;font-weight:600}
+  .status-dev_mode_silenced{color:#f59e0b;font-weight:700;background:#451a03;padding:2px 6px;border-radius:4px}
+  .status-failed{color:#ef4444;font-weight:700;background:#450a0a;padding:2px 6px;border-radius:4px}
+  small{color:#64748b}
+  .empty{text-align:center;padding:40px;color:#64748b}
+</style></head><body>
+<h1>Inquiries log <small>(${filtered.length} z ${all.length})</small></h1>
+<div class="summary">
+  <div><span class="n">${counts.total}</span><span class="l">Total</span></div>
+  <div><span class="n status-sent">${counts.sent}</span><span class="l">Wyslane</span></div>
+  <div><span class="n status-failed">${counts.failed}</span><span class="l">Failed</span></div>
+  <div><span class="n status-dev_mode_silenced">${counts.dev_silenced}</span><span class="l">Dev silenced (UTRACONE!)</span></div>
+</div>
+<div class="filters">
+  <a href="?" ${!status && !type ? 'class="active"' : ''}>Wszystkie</a>
+  <a href="${link('failed')}" ${status === 'failed' ? 'class="active"' : ''}>Failed</a>
+  <a href="${link('dev_mode_silenced')}" ${status === 'dev_mode_silenced' ? 'class="active"' : ''}>Dev silenced</a>
+  <a href="${link('sent')}" ${status === 'sent' ? 'class="active"' : ''}>Wyslane</a>
+  <a href="?format=csv${status ? '&status=' + status : ''}">&#x2B07; CSV</a>
+</div>
+${filtered.length === 0 ? '<div class="empty">Brak wpisow w logu (jeszcze zadne zapytanie nie zostalo zarejestrowane lub filtr nie pasuje).</div>' : `<table>
+  <thead><tr><th>Data</th><th>Typ</th><th>Imie</th><th>Email</th><th>Telefon</th><th>Lektor</th><th>Status</th><th>Error</th></tr></thead>
+  <tbody>
+    ${filtered.map(r => `<tr>
+      <td><small>${esc((r.ts || '').replace('T', ' ').slice(0, 19))}</small></td>
+      <td>${esc(r.type)}</td>
+      <td>${esc(r.data && r.data.name)}</td>
+      <td>${esc(r.data && r.data.email)}</td>
+      <td>${esc(r.data && r.data.phone)}</td>
+      <td>${esc(r.data && r.data.lektorName)}</td>
+      <td><span class="status-${esc(r.mail_status)}">${esc(r.mail_status)}</span></td>
+      <td><small>${esc(r.mail_error)}</small></td>
+    </tr>`).join('')}
+  </tbody>
+</table>`}
+</body></html>`);
+});
+
 // --- Export voices.json (do synchronizacji local <- prod) ---
 router.get('/export/', (req, res) => {
   res.set('Content-Type', 'application/json; charset=utf-8');

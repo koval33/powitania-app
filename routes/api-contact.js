@@ -5,6 +5,16 @@ const path = require('path');
 const { sendMail } = require('../lib/mailer');
 const { validateNIP, validateZipCode, validatePhone } = require('../lib/validate');
 const { sendOrderToCRM } = require('../lib/crm-webhook');
+const { logInquiry } = require('../lib/inquiry-logger');
+
+// Helper - klasyfikuje wynik sendMail i loguje do data/inquiries-log.jsonl.
+// mail_status: 'sent' | 'dev_mode_silenced' (brak EmailLabs ENV) | 'failed' (exception).
+function logWithStatus(type, data, mailResults, error) {
+  let mailStatus = 'sent';
+  if (error) mailStatus = 'failed';
+  else if (Array.isArray(mailResults) && mailResults.some(r => r && r.dev)) mailStatus = 'dev_mode_silenced';
+  logInquiry({ type, data, mail_status: mailStatus, mail_error: error ? String(error.message || error) : null });
+}
 
 // Multer config for inquiry attachments (max 10MB)
 const upload = multer({
@@ -36,9 +46,10 @@ router.post('/order', async (req, res) => {
 
   const address = [street, zipCode, city].filter(Boolean).join(', ');
 
+  const mailResults = [];
   try {
     // Mail do biura
-    await sendMail({
+    mailResults.push(await sendMail({
       subject: `${isExpress ? '⚡ [EKSPRES] ' : '[Zamówienie] '}${firmName} - ${serviceType || 'nagranie'}${lektorName ? ' - ' + lektorName : ''}`,
       replyTo: email,
       html: `
@@ -60,10 +71,10 @@ router.post('/order', async (req, res) => {
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
         <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
-    });
+    }));
 
     // Potwierdzenie do klienta
-    await sendMail({
+    mailResults.push(await sendMail({
       to: email,
       subject: isEN ? 'Order confirmation - Powitania' : 'Potwierdzenie zamówienia - Powitania',
       html: isEN ? `
@@ -85,8 +96,9 @@ router.post('/order', async (req, res) => {
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
-    });
+    }));
 
+    logWithStatus('order', { firmName, name, email, phone, lektorName, lektorId, serviceType, industry, totalPrice, isExpress, notes }, mailResults, null);
     res.json({ ok: true, message: isEN ? 'Order sent. We will respond within 2 hours.' : 'Zamówienie wysłane. Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking - after response)
@@ -94,6 +106,7 @@ router.post('/order', async (req, res) => {
       .catch(err => console.error('[CRM] order webhook error:', err));
   } catch (err) {
     console.error('[contact] Order error:', err);
+    logWithStatus('order', { firmName, name, email, phone, lektorName, lektorId, serviceType, industry, totalPrice, isExpress, notes }, mailResults, err);
     res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
@@ -109,9 +122,10 @@ router.post('/inquiry', async (req, res) => {
   const phoneCheck = validatePhone(phone);
   if (!phoneCheck.ok) return res.status(400).json({ ok: false, error: phoneCheck.error });
 
+  const mailResults = [];
   try {
     // Mail do biura
-    await sendMail({
+    mailResults.push(await sendMail({
       subject: `[Zapytanie] ${name || 'Klient'} - ${serviceType || 'wycena'}`,
       replyTo: email,
       html: `
@@ -128,10 +142,10 @@ router.post('/inquiry', async (req, res) => {
         ${generatedText ? `<h3>Tekst z kreatora:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
         <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
-    });
+    }));
 
     // Potwierdzenie do klienta
-    await sendMail({
+    mailResults.push(await sendMail({
       to: email,
       subject: isEN ? 'Inquiry confirmation - Powitania' : 'Potwierdzenie zapytania - Powitania',
       html: isEN ? `
@@ -153,8 +167,9 @@ router.post('/inquiry', async (req, res) => {
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
-    });
+    }));
 
+    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description }, mailResults, null);
     res.json({ ok: true, message: isEN ? 'Thank you! We will respond within 2 hours.' : 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking - after response)
@@ -162,6 +177,7 @@ router.post('/inquiry', async (req, res) => {
       .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Inquiry error:', err);
+    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description }, mailResults, err);
     res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
@@ -174,9 +190,10 @@ router.post('/save-text', async (req, res) => {
     return res.status(400).json({ ok: false, error: 'Podaj email.' });
   }
 
+  const mailResults = [];
   try {
     // Email do klienta
-    await sendMail({
+    mailResults.push(await sendMail({
       to: email,
       subject: 'Twój tekst z powitania.pl',
       html: `
@@ -189,15 +206,16 @@ router.post('/save-text', async (req, res) => {
         </p>
         <p style="color:#999;font-size:12px;margin-top:32px">powitania.pl - Profesjonalne nagrania lektorskie</p>
       `
-    });
+    }));
 
     // Notyfikacja do biura
-    await sendMail({
+    mailResults.push(await sendMail({
       subject: `[Lead] Zapisany tekst - ${email}`,
       replyTo: email,
       html: `<p>Klient ${esc(email)} zapisał tekst (${esc(serviceType || '-')}).</p><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>`
-    });
+    }));
 
+    logWithStatus('save-text', { email, serviceType }, mailResults, null);
     res.json({ ok: true, message: 'Tekst wysłany na podany adres email.' });
 
     // Send to CRM (non-blocking - after response)
@@ -205,6 +223,7 @@ router.post('/save-text', async (req, res) => {
       .catch(err => console.error('[CRM] save-text webhook error:', err));
   } catch (err) {
     console.error('[contact] Save-text error:', err);
+    logWithStatus('save-text', { email, serviceType }, mailResults, err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania.' });
   }
 });
@@ -218,6 +237,7 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
     return res.status(400).json({ ok: false, error: isEN ? 'Please describe your project and provide your email.' : 'Uzupełnij opis projektu i email.' });
   }
 
+  const mailResults = [];
   try {
     const mailOptions = {
       subject: `[Zapytanie premium] ${lektorName || 'Lektor'} - wycena indywidualna`,
@@ -245,10 +265,10 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
     }
 
     // Mail do biura
-    await sendMail(mailOptions);
+    mailResults.push(await sendMail(mailOptions));
 
     // Potwierdzenie do klienta
-    await sendMail({
+    mailResults.push(await sendMail({
       to: email,
       subject: isEN ? 'Inquiry confirmation - Powitania' : 'Potwierdzenie zapytania - Powitania',
       html: isEN ? `
@@ -264,8 +284,9 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>Zespół Powitania</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">powitania.pl - tel. +48 605 491 069 - biuro@powitania.pl</p>
       `
-    });
+    }));
 
+    logWithStatus('inquiry-premium', { email, lektorName, lektorId, description, hasAttachment: !!req.file }, mailResults, null);
     res.json({ ok: true, message: isEN ? 'Thank you! We will respond as soon as possible.' : 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
 
     // Send to CRM (non-blocking - after response)
@@ -273,6 +294,7 @@ router.post('/inquiry-premium', upload.single('attachment'), async (req, res) =>
       .catch(err => console.error('[CRM] premium inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Premium inquiry error:', err);
+    logWithStatus('inquiry-premium', { email, lektorName, lektorId, description, hasAttachment: !!req.file }, mailResults, err);
     res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
@@ -300,9 +322,10 @@ router.post('/partner-inquiry', async (req, res) => {
   const isPartnerMode = partner && partner.orderMode === 'partner' && partner.partnerEmail;
   const recipientEmail = isPartnerMode ? partner.partnerEmail : undefined; // undefined = default (biuro@)
 
+  const mailResults = [];
   try {
     // Mail do biura (lub do partnera)
-    await sendMail({
+    mailResults.push(await sendMail({
       to: recipientEmail,
       subject: `[Partner: ${esc(partnerName)}] Zapytanie - ${esc(voiceName || 'wycena')}`,
       replyTo: email,
@@ -319,10 +342,10 @@ router.post('/partner-inquiry', async (req, res) => {
         ${message ? `<h3>Wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(message)}</p>` : ''}
         <p style="color:#999;font-size:12px">Wysłano ze strony partnera na powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
-    });
+    }));
 
     // Potwierdzenie do klienta
-    await sendMail({
+    mailResults.push(await sendMail({
       to: email,
       subject: 'Potwierdzenie zapytania - ' + esc(partnerName),
       html: `
@@ -333,8 +356,9 @@ router.post('/partner-inquiry', async (req, res) => {
         <p style="margin-top:32px">Pozdrawiamy,<br><strong>${esc(partnerName)}</strong></p>
         <p style="color:#999;font-size:12px;margin-top:16px">Powered by powitania.pl</p>
       `
-    });
+    }));
 
+    logWithStatus('partner-inquiry', { name, company, email, phone, voiceName, partnerId, partnerName, message }, mailResults, null);
     res.json({ ok: true, message: 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking - after response)
@@ -342,6 +366,7 @@ router.post('/partner-inquiry', async (req, res) => {
       .catch(err => console.error('[CRM] partner inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Partner inquiry error:', err);
+    logWithStatus('partner-inquiry', { name, company, email, phone, voiceName, partnerId, partnerName, message }, mailResults, err);
     res.status(500).json({ ok: false, error: 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });
