@@ -9,24 +9,12 @@
 @media (min-width: 640px) {
   .order-fields-3col { grid-template-columns: 1fr 1fr 1fr; }
 }
-/* Strzalka ::after na panelach wyceny - sygnal clickability (Clarity audit).
-   Znika po wybraniu (active state) bo .svc-btn dostaje .border-accent.
-   Glyph \2794 zachowany (Heavy Wide-Headed) bo ma naturalna grubosc,
-   ale bez bold font-weight i mniejszy rozmiar - "pomiedzy" thin a heavy. */
-.svc-btn::after {
-  content: '\2794';
-  position: absolute;
-  top: 0.6rem;
-  right: 0.75rem;
-  color: #ea580c;
-  font-size: 1.1rem;
-  line-height: 1;
-  opacity: 0.8;
-  transition: opacity .2s, transform .2s;
-  pointer-events: none;
+/* Kafelki wyboru typu nagrania: lekka wypuklosc (convex) jako sygnal clickability,
+   zamiast pomaranczowej strzalki (sugerowala proces "w prawo"). Inset highlight u gory
+   + delikatny drop shadow = efekt uniesienia; hover (shadow-md + translate) poglebia. */
+.svc-btn {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(0,0,0,0.06), 0 2px 5px rgba(0,0,0,0.05);
 }
-.svc-btn:hover::after { opacity: 1; transform: translateX(2px); }
-.svc-btn.border-accent::after { opacity: 0; } /* po wybraniu strzalka znika */
 </style>
 
 <section class="py-10 md:py-16 bg-stone-100/80">
