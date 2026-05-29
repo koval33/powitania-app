@@ -1447,7 +1447,13 @@ function renderPricing(result, wordCount, targetEl) {
 
   html += '</div>';
   targetEl.innerHTML = html;
+  var wasHidden = targetEl.classList.contains('hidden');
   targetEl.classList.remove('hidden');
+  // Po pierwszym odkryciu ceny - delikatnie przewin ja w pole widzenia.
+  // Clarity audit: cena wyliczala sie pod foldem (zwlaszcza mobile), user nie widzial efektu wklejenia tekstu.
+  if (wasHidden) {
+    try { targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+  }
 
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);

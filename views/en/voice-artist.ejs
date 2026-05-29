@@ -1513,7 +1513,13 @@ function renderPricing(result, wordCount, targetEl) {
 
   html += '</div>';
   targetEl.innerHTML = html;
+  var wasHidden = targetEl.classList.contains('hidden');
   targetEl.classList.remove('hidden');
+  // After first price reveal - gently scroll it into view.
+  // Clarity audit: price rendered below the fold (esp. mobile), user did not see the effect of pasting text.
+  if (wasHidden) {
+    try { targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+  }
 
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
