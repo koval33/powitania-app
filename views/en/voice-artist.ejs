@@ -234,7 +234,7 @@
                   Order Recording
                 </button>
                 <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← back</button></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← Back</button></p>
               </div>
 
               <!-- Formularz PROSTY (kontakt - widoczny przy wycenie indywidualnej) -->
@@ -261,7 +261,7 @@
                   Send Inquiry
                 </button>
                 <div id="wizard-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← back</button></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← Back</button></p>
               </div>
 
             </div>
@@ -370,7 +370,7 @@
                       Order Recording
                     </button>
                     <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
-                    <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← back</button></p>
+                    <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← Back</button></p>
                   </div>
                 </div>
 
@@ -399,7 +399,7 @@
                       Send Inquiry
                     </button>
                     <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
-                    <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← back</button></p>
+                    <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← Back</button></p>
                   </div>
                 </div>
 
@@ -1542,15 +1542,7 @@ function renderPricing(result, wordCount, targetEl) {
   if (wasHidden) {
     var _qId = targetEl.id === 'wizard-pricing' ? 'wizard-questions' : 'modal-questions';
     var _qEl = document.getElementById(_qId);
-    var _anchor = (_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl;
-    setTimeout(function() {
-      try {
-        var _hdr = document.querySelector('header');
-        var _off = (_hdr ? _hdr.offsetHeight : 80) + 24; // sticky header + margin so the label is not hidden behind it
-        var top = _anchor.getBoundingClientRect().top + window.scrollY - _off;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      } catch (e) {}
-    }, 60);
+    scrollCalcTop((_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl);
   }
 
   // Store base price for recalc (including bilingual)
@@ -1568,6 +1560,19 @@ function renderPricing(result, wordCount, targetEl) {
 
 // Remembered choice from the decision gate (false | 'order' | 'inquiry')
 var wizardChoiceMade = false;
+
+// Scrolls an element so its top sits just below the sticky header (dynamic offset).
+// Used for: questions/price block after picking a type, and the top of the form after picking a path.
+function scrollCalcTop(el) {
+  if (!el) return;
+  setTimeout(function() {
+    try {
+      var hdr = document.querySelector('header');
+      var off = (hdr ? hdr.offsetHeight : 80) + 24;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
+    } catch (e) {}
+  }, 70);
+}
 
 // After price is calculated (when NOT a custom quote): show gate or keep the user's chosen path.
 // Called by renderPricing on every recalc, so it must not revert the user's choice.
@@ -1593,8 +1598,7 @@ function revealWizardStep() {
 function chooseWizardOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'wizard', lektor: '<%= lektor.id %>' });
   toggleWizardForms(false);
-  var btn = document.getElementById('wiz-submit-btn');
-  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
+  scrollCalcTop(document.getElementById('wizard-order-form'));
 }
 function chooseWizardInquiry() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'wizard', lektor: '<%= lektor.id %>' });
@@ -2096,8 +2100,7 @@ function revealModalStep() {
 function chooseModalOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'inline', lektor: '<%= lektor.id %>' });
   showModalOrder();
-  var btn = document.getElementById('mod-submit-btn');
-  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
+  scrollCalcTop(document.getElementById('modal-order-cta'));
 }
 function chooseModalInquiry() {
   var inq = document.getElementById('modal-inquiry-form');
@@ -2128,7 +2131,7 @@ function showModalInquiry() {
   if (orderForm) orderForm.classList.add('hidden');
   if (inquiryForm) {
     inquiryForm.classList.remove('hidden');
-    inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    scrollCalcTop(inquiryForm);
   }
 }
 
@@ -2579,7 +2582,7 @@ function showWizardInquiry(source) {
   if (inquiryForm) {
     inquiryForm.dataset.source = source || 'zapytaj_o_szczegoly';
     inquiryForm.classList.remove('hidden');
-    inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    scrollCalcTop(inquiryForm);
   }
 }
 
