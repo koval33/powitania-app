@@ -267,7 +267,7 @@
                   Zamów nagranie
                 </button>
                 <div id="wizard-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3">Masz pytania? <button type="button" onclick="toggleWizardForms(true, 'zapytaj_o_szczegoly')" class="text-accent hover:text-accent-light font-medium">Zapytaj o szczegóły</button> lub zadzwoń: <a href="tel:+48605491069" class="text-accent hover:text-accent-light font-medium">605 491 069</a></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← wróć</button></p>
               </div>
 
               <!-- Formularz ZAPYTANIA (widoczny gdy klik "Zapytaj o szczegóły") -->
@@ -294,7 +294,7 @@
                 </div>
                 <button id="wiz-inq-submit-btn" type="button" onclick="submitWizardInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">Wyślij zapytanie</button>
                 <div id="wizard-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="toggleWizardForms(false)" class="text-accent hover:text-accent-light font-medium">← Wróć do zamówienia</button></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToWizardChoice()" class="text-accent hover:text-accent-light font-medium">← wróć</button></p>
               </div>
 
             </div>
@@ -402,7 +402,7 @@
                   Zamów nagranie
                 </button>
                 <div id="modal-order-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3">Masz pytania? <button type="button" onclick="showModalInquiry()" class="text-accent hover:text-accent-light font-medium">Zapytaj o szczegóły</button> lub zadzwoń: <a href="tel:+48605491069" class="text-accent hover:text-accent-light font-medium">605 491 069</a></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← wróć</button></p>
               </div>
             </div>
 
@@ -431,7 +431,7 @@
                 </div>
                 <button id="mod-inq-submit-btn" type="button" onclick="submitModalInquiry()" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors mt-4">Wyślij zapytanie</button>
                 <div id="modal-inquiry-msg" class="hidden text-center text-sm mt-2"></div>
-                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="showModalOrder()" class="text-accent hover:text-accent-light font-medium">← Wróć do zamówienia</button></p>
+                <p class="text-center text-sm text-gray-500 mt-3"><button type="button" onclick="backToModalChoice()" class="text-accent hover:text-accent-light font-medium">← wróć</button></p>
               </div>
             </div>
 
@@ -1521,6 +1521,19 @@ function chooseWizardInquiry() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'wizard', lektor: '<%= lektor.id %>' });
   toggleWizardForms(true, 'waham_sie');
 }
+// Powrot z formularza do bramki "Jak chcesz kontynuowac?" (reset wyboru).
+function backToWizardChoice() {
+  wizardChoiceMade = false;
+  var order = document.getElementById('wizard-order-form');
+  var inquiry = document.getElementById('wizard-inquiry-form');
+  var choice = document.getElementById('wizard-choice');
+  if (order) order.classList.add('hidden');
+  if (inquiry) inquiry.classList.add('hidden');
+  if (choice) {
+    choice.classList.remove('hidden');
+    choice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
 
 function toggleWizardForms(isCustomQuote, source) {
   var orderForm = document.getElementById('wizard-order-form');
@@ -2028,6 +2041,19 @@ function chooseModalInquiry() {
   if (inq) inq.dataset.source = 'waham_sie';
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'inline', lektor: '<%= lektor.id %>' });
   showModalInquiry();
+}
+// Powrot z formularza do bramki "Jak chcesz kontynuowac?" (reset wyboru).
+function backToModalChoice() {
+  modalChoiceMade = false;
+  var order = document.getElementById('modal-order-cta');
+  var inquiry = document.getElementById('modal-inquiry-form');
+  var choice = document.getElementById('modal-choice');
+  if (order) order.classList.add('hidden');
+  if (inquiry) inquiry.classList.add('hidden');
+  if (choice) {
+    choice.classList.remove('hidden');
+    choice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 function showModalInquiry() {
