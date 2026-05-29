@@ -1537,10 +1537,20 @@ function renderPricing(result, wordCount, targetEl) {
   targetEl.innerHTML = html;
   var wasHidden = targetEl.classList.contains('hidden');
   targetEl.classList.remove('hidden');
-  // After first price reveal - gently scroll it into view.
-  // Clarity audit: price rendered below the fold (esp. mobile), user did not see the effect of pasting text.
+  // On first reveal: scroll to the QUESTIONS block (choice services: duration / medium+reach)
+  // so the user sees the options; if there are none (IVR/film) scroll to the price. Sticky-header offset.
   if (wasHidden) {
-    try { targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+    var _qId = targetEl.id === 'wizard-pricing' ? 'wizard-questions' : 'modal-questions';
+    var _qEl = document.getElementById(_qId);
+    var _anchor = (_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl;
+    setTimeout(function() {
+      try {
+        var _hdr = document.querySelector('header');
+        var _off = (_hdr ? _hdr.offsetHeight : 80) + 24; // sticky header + margin so the label is not hidden behind it
+        var top = _anchor.getBoundingClientRect().top + window.scrollY - _off;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (e) {}
+    }, 60);
   }
 
   // Store base price for recalc (including bilingual)
@@ -1583,6 +1593,8 @@ function revealWizardStep() {
 function chooseWizardOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'wizard', lektor: '<%= lektor.id %>' });
   toggleWizardForms(false);
+  var btn = document.getElementById('wiz-submit-btn');
+  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
 }
 function chooseWizardInquiry() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'wizard', lektor: '<%= lektor.id %>' });
@@ -2084,6 +2096,8 @@ function revealModalStep() {
 function chooseModalOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'inline', lektor: '<%= lektor.id %>' });
   showModalOrder();
+  var btn = document.getElementById('mod-submit-btn');
+  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
 }
 function chooseModalInquiry() {
   var inq = document.getElementById('modal-inquiry-form');

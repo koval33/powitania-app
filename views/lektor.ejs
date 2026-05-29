@@ -1470,10 +1470,20 @@ function renderPricing(result, wordCount, targetEl) {
   targetEl.innerHTML = html;
   var wasHidden = targetEl.classList.contains('hidden');
   targetEl.classList.remove('hidden');
-  // Po pierwszym odkryciu ceny - delikatnie przewin ja w pole widzenia.
-  // Clarity audit: cena wyliczala sie pod foldem (zwlaszcza mobile), user nie widzial efektu wklejenia tekstu.
+  // Po pierwszym odkryciu: pokaz od gory blok PYTAN (choice: "Czas trwania", "Wybierz medium")
+  // zeby user widzial opcje do wyboru; gdy pytan nie ma (IVR/film) - sama cene. Offset na sticky header.
   if (wasHidden) {
-    try { targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+    var _qId = targetEl.id === 'wizard-pricing' ? 'wizard-questions' : 'modal-questions';
+    var _qEl = document.getElementById(_qId);
+    var _anchor = (_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl;
+    setTimeout(function() {
+      try {
+        var _hdr = document.querySelector('header');
+        var _off = (_hdr ? _hdr.offsetHeight : 80) + 24; // sticky header + margines, zeby label nie chowal sie za naglowkiem
+        var top = _anchor.getBoundingClientRect().top + window.scrollY - _off;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (e) {}
+    }, 60);
   }
 
   // Store base price for recalc (including bilingual)
@@ -1516,6 +1526,8 @@ function revealWizardStep() {
 function chooseWizardOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'wizard', lektor: '<%= lektor.id %>' });
   toggleWizardForms(false);
+  var btn = document.getElementById('wiz-submit-btn');
+  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
 }
 function chooseWizardInquiry() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'wizard', lektor: '<%= lektor.id %>' });
@@ -2035,6 +2047,8 @@ function revealModalStep() {
 function chooseModalOrder() {
   if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'inline', lektor: '<%= lektor.id %>' });
   showModalOrder();
+  var btn = document.getElementById('mod-submit-btn');
+  if (btn) setTimeout(function() { try { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }, 70);
 }
 function chooseModalInquiry() {
   var inq = document.getElementById('modal-inquiry-form');
