@@ -456,15 +456,12 @@
             <!-- CTA: premium (hidePrice) → inquiry form on profile; others → Get quote (calculator) -->
             <div class="vc-cta flex-shrink-0 flex items-center justify-center">
               <% if (v.hidePrice) { %>
-                <a href="<%= profileUrl %>#zapytanie" onclick="event.stopPropagation()" class="cta-inquiry inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                <a href="<%= profileUrl %>#zapytanie" onclick="event.stopPropagation()" class="cta-inquiry inline-flex items-center justify-center bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                   Request a quote
                 </a>
               <% } else { %>
-                <a href="<%= profileUrl %>#wycena" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center gap-1.5 bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75v-1.5m-7.5 1.5v-1.5m3.75 1.5v-1.5m-3.75-3.75h7.5M8.25 21h7.5A2.25 2.25 0 0018 18.75V5.25A2.25 2.25 0 0015.75 3h-7.5A2.25 2.25 0 006 5.25v13.5A2.25 2.25 0 008.25 21z"/></svg>
+                <a href="<%= profileUrl %>#wycena" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                   Price recording
-                  <svg class="w-3.5 h-3.5 -mr-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </a>
               <% } %>
             </div>
