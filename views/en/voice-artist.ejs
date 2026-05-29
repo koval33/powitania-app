@@ -1542,7 +1542,8 @@ function renderPricing(result, wordCount, targetEl) {
   if (wasHidden) {
     var _qId = targetEl.id === 'wizard-pricing' ? 'wizard-questions' : 'modal-questions';
     var _qEl = document.getElementById(_qId);
-    scrollCalcTop((_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl);
+    // margin 8 (smaller than for forms): tucks the "no text" link behind the header and leaves more room for the gate/CTA
+    scrollCalcTop((_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl, 8);
   }
 
   // Store base price for recalc (including bilingual)
@@ -1563,12 +1564,12 @@ var wizardChoiceMade = false;
 
 // Scrolls an element so its top sits just below the sticky header (dynamic offset).
 // Used for: questions/price block after picking a type, and the top of the form after picking a path.
-function scrollCalcTop(el) {
+function scrollCalcTop(el, margin) {
   if (!el) return;
   setTimeout(function() {
     try {
       var hdr = document.querySelector('header');
-      var off = (hdr ? hdr.offsetHeight : 80) + 24;
+      var off = (hdr ? hdr.offsetHeight : 80) + (margin == null ? 24 : margin);
       window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
     } catch (e) {}
   }, 70);

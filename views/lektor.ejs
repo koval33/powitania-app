@@ -1475,7 +1475,8 @@ function renderPricing(result, wordCount, targetEl) {
   if (wasHidden) {
     var _qId = targetEl.id === 'wizard-pricing' ? 'wizard-questions' : 'modal-questions';
     var _qEl = document.getElementById(_qId);
-    scrollCalcTop((_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl);
+    // margin 8 (mniejszy niz dla formularzy): chowa link "Nie mam tekstu" za headerem i daje wiecej miejsca na gate/CTA
+    scrollCalcTop((_qEl && _qEl.innerHTML.trim()) ? _qEl : targetEl, 8);
   }
 
   // Store base price for recalc (including bilingual)
@@ -1496,12 +1497,12 @@ var wizardChoiceMade = false;
 
 // Przewija element tak, by jego gora byla tuz pod sticky headerem (offset liczony dynamicznie).
 // Uzywane do: blok pytan/cena po wyborze typu, oraz gora formularza po wyborze sciezki.
-function scrollCalcTop(el) {
+function scrollCalcTop(el, margin) {
   if (!el) return;
   setTimeout(function() {
     try {
       var hdr = document.querySelector('header');
-      var off = (hdr ? hdr.offsetHeight : 80) + 24;
+      var off = (hdr ? hdr.offsetHeight : 80) + (margin == null ? 24 : margin);
       window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
     } catch (e) {}
   }, 70);
