@@ -2330,6 +2330,7 @@ function submitOrderRequest(data, msgElId) {
         event: eventName,
         lektor: '<%= lektor.id %>',
         value: numericPrice,
+        enhanced_conversion_data: (window.ecData ? window.ecData(data.email, data.phone) : undefined),
         eventCallback: navigateOnce,
         eventTimeout: 2000
       });
