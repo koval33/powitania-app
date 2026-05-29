@@ -221,6 +221,15 @@
             <!-- CTA + formularz zamówienia - pojawi się dopiero po wycenie -->
             <div id="wizard-cta" class="hidden mt-5">
 
+              <!-- Bramka decyzji: Zamawiam vs Waham się (pojawia się po wyliczeniu ceny) -->
+              <div id="wizard-choice" class="hidden border-t border-gray-200 pt-4">
+                <p class="text-gray-900 font-medium text-center mb-3">Jak chcesz kontynuować?</p>
+                <div class="grid grid-cols-2 gap-3">
+                  <button type="button" onclick="chooseWizardOrder()" class="bg-accent hover:bg-accent-light text-white px-4 py-3 rounded-lg font-semibold transition-colors">Zamawiam</button>
+                  <button type="button" onclick="chooseWizardInquiry()" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 hover:border-gray-400 px-4 py-3 rounded-lg font-semibold transition-colors">Waham się</button>
+                </div>
+              </div>
+
               <!-- Formularz PEŁNY (zamówienie - widoczny gdy jest cena) -->
               <div id="wizard-order-form" class="border-t border-gray-200 pt-4">
                 <h4 class="text-gray-900 font-bold mb-4 flex items-center gap-2">
@@ -343,6 +352,17 @@
 
             <!-- Wycena inline -->
             <div id="modal-pricing" class="hidden"></div>
+
+            <!-- Bramka decyzji: Zamawiam vs Waham się (pojawia się po wyliczeniu ceny) -->
+            <div id="modal-choice" class="hidden mt-4">
+              <div class="border-t border-gray-200 pt-4">
+                <p class="text-gray-900 font-medium text-center mb-3">Jak chcesz kontynuować?</p>
+                <div class="grid grid-cols-2 gap-3">
+                  <button type="button" onclick="chooseModalOrder()" class="bg-accent hover:bg-accent-light text-white px-4 py-3 rounded-lg font-semibold transition-colors">Zamawiam</button>
+                  <button type="button" onclick="chooseModalInquiry()" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 hover:border-gray-400 px-4 py-3 rounded-lg font-semibold transition-colors">Waham się</button>
+                </div>
+              </div>
+            </div>
 
             <!-- Formularz zamówienia po wycenie -->
             <div id="modal-order-cta" class="hidden mt-4">
@@ -1458,8 +1478,9 @@ function renderPricing(result, wordCount, targetEl) {
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
 
-  // Przełączanie formularzy: pełny (zamówienie) vs prosty (zapytanie o wycenę)
-  toggleWizardForms(result.needsCustomQuote);
+  // Przełączanie formularzy: custom quote -> zapytanie; inaczej -> bramka decyzji (Zamawiam / Waham się)
+  if (result.needsCustomQuote) { toggleWizardForms(true); }
+  else { revealWizardStep(); }
 
   // Aktualizuj tekst przycisków zamówienia (Zamów i zapłać / Zamów nagranie)
   if (!result.needsCustomQuote) {
@@ -1467,13 +1488,49 @@ function renderPricing(result, wordCount, targetEl) {
   }
 }
 
+// Pamiec wyboru z bramki decyzji (null | 'order' | 'inquiry')
+var wizardChoiceMade = false;
+
+// Po wyliczeniu ceny (gdy NIE jest custom quote): pokaz bramke lub utrzymaj wybrana sciezke.
+// Wolane z renderPricing przy kazdym przeliczeniu, wiec nie moze cofac wyboru usera.
+function revealWizardStep() {
+  var choice = document.getElementById('wizard-choice');
+  var order = document.getElementById('wizard-order-form');
+  var inquiry = document.getElementById('wizard-inquiry-form');
+  if (wizardChoiceMade === 'order') {
+    if (choice) choice.classList.add('hidden');
+    if (inquiry) inquiry.classList.add('hidden');
+    if (order) order.classList.remove('hidden');
+  } else if (wizardChoiceMade === 'inquiry') {
+    if (choice) choice.classList.add('hidden');
+    if (order) order.classList.add('hidden');
+    if (inquiry) inquiry.classList.remove('hidden');
+  } else {
+    if (order) order.classList.add('hidden');
+    if (inquiry) inquiry.classList.add('hidden');
+    if (choice) choice.classList.remove('hidden');
+  }
+}
+
+function chooseWizardOrder() {
+  if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'wizard', lektor: '<%= lektor.id %>' });
+  toggleWizardForms(false);
+}
+function chooseWizardInquiry() {
+  if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'wizard', lektor: '<%= lektor.id %>' });
+  toggleWizardForms(true, 'waham_sie');
+}
+
 function toggleWizardForms(isCustomQuote, source) {
   var orderForm = document.getElementById('wizard-order-form');
   var inquiryForm = document.getElementById('wizard-inquiry-form');
+  var choice = document.getElementById('wizard-choice');
   if (!orderForm || !inquiryForm) return;
+  if (choice) choice.classList.add('hidden');
   if (isCustomQuote) {
-    // Zapamietaj zrodlo (auto z kreatora vs manualny klik 'Zapytaj o szczegoly')
-    // — odczytane potem w submitWizardInquiry przy trackEvent.
+    wizardChoiceMade = 'inquiry';
+    // Zapamietaj zrodlo (auto z kreatora / 'Zapytaj o szczegoly' / 'Waham sie')
+    // odczytane potem w submitWizardInquiry przy trackEvent.
     inquiryForm.dataset.source = source || 'wycena_indywidualna';
     orderForm.classList.add('hidden');
     inquiryForm.classList.remove('hidden');
@@ -1482,6 +1539,7 @@ function toggleWizardForms(isCustomQuote, source) {
       window.scrollTo({ top: top, behavior: 'smooth' });
     }, 50);
   } else {
+    wizardChoiceMade = 'order';
     orderForm.classList.remove('hidden');
     inquiryForm.classList.add('hidden');
   }
@@ -1685,7 +1743,7 @@ function modalCalculate() {
     renderPricing(result, wordCount, pricingEl);
   }
 
-  ctaEl.classList.remove('hidden');
+  revealModalStep();
 
 }
 
@@ -1725,7 +1783,7 @@ function modalCalculate() {
       renderPricing(result, wordCount, pricingEl);
     }
 
-    ctaEl.classList.remove('hidden');
+    revealModalStep();
   }
 
   if (sel) sel.addEventListener('change', function() {
@@ -1937,7 +1995,44 @@ function submitModalOrder() {
   submitOrderRequest(data, 'modal-order-msg');
 }
 
+// Pamiec wyboru z bramki decyzji (false | 'order' | 'inquiry')
+var modalChoiceMade = false;
+
+// Po wyliczeniu ceny: pokaz bramke lub utrzymaj wybrana sciezke (nie cofa wyboru usera przy edycji tekstu).
+function revealModalStep() {
+  var choice = document.getElementById('modal-choice');
+  var order = document.getElementById('modal-order-cta');
+  var inquiry = document.getElementById('modal-inquiry-form');
+  if (modalChoiceMade === 'order') {
+    if (choice) choice.classList.add('hidden');
+    if (inquiry) inquiry.classList.add('hidden');
+    if (order) order.classList.remove('hidden');
+  } else if (modalChoiceMade === 'inquiry') {
+    if (choice) choice.classList.add('hidden');
+    if (order) order.classList.add('hidden');
+    if (inquiry) inquiry.classList.remove('hidden');
+  } else {
+    if (order) order.classList.add('hidden');
+    if (inquiry) inquiry.classList.add('hidden');
+    if (choice) choice.classList.remove('hidden');
+  }
+}
+
+function chooseModalOrder() {
+  if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'zamawiam', context: 'inline', lektor: '<%= lektor.id %>' });
+  showModalOrder();
+}
+function chooseModalInquiry() {
+  var inq = document.getElementById('modal-inquiry-form');
+  if (inq) inq.dataset.source = 'waham_sie';
+  if (window.trackEvent) trackEvent('wycena_decyzja', { choice: 'waham_sie', context: 'inline', lektor: '<%= lektor.id %>' });
+  showModalInquiry();
+}
+
 function showModalInquiry() {
+  modalChoiceMade = 'inquiry';
+  var choice = document.getElementById('modal-choice');
+  if (choice) choice.classList.add('hidden');
   var orderForm = document.getElementById('modal-order-cta');
   var inquiryForm = document.getElementById('modal-inquiry-form');
   if (orderForm) orderForm.classList.add('hidden');
@@ -1951,6 +2046,9 @@ function showModalInquiry() {
 }
 
 function showModalOrder() {
+  modalChoiceMade = 'order';
+  var choice = document.getElementById('modal-choice');
+  if (choice) choice.classList.add('hidden');
   var orderForm = document.getElementById('modal-order-cta');
   var inquiryForm = document.getElementById('modal-inquiry-form');
   if (inquiryForm) inquiryForm.classList.add('hidden');
@@ -1990,8 +2088,9 @@ function submitModalInquiry() {
   .then(function(res) {
     msgEl.classList.remove('hidden');
     if (res.ok) {
-      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' }, data.email, data.phone);
-      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: 'modal' });
+      var _modInqSrc = (function(){ var f = document.getElementById('modal-inquiry-form'); return (f && f.dataset && f.dataset.source) || 'modal'; })();
+      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: _modInqSrc }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: _modInqSrc });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
