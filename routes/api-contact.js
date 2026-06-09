@@ -371,6 +371,46 @@ router.post('/partner-inquiry', async (req, res) => {
   }
 });
 
+// Formularz kontaktowy ze strony głównej (homepage) - POST /api/contact
+// Payload z front: { name, email, message, source }
+router.post('/', async (req, res) => {
+  const { name, email, message, source, lang } = req.body;
+  const isEN = lang === 'en';
+
+  if (!email) {
+    return res.status(400).json({ ok: false, error: isEN ? 'Please provide your email address.' : 'Podaj adres email.' });
+  }
+
+  const mailResults = [];
+  try {
+    mailResults.push(await sendMail({
+      subject: `[Kontakt] ${name || 'Wiadomość ze strony'}${source ? ' (' + source + ')' : ''}`,
+      replyTo: email,
+      html: `
+        <h2>Nowa wiadomość z formularza kontaktowego</h2>
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Imię:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name || '-')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Email:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(email)}</td></tr>
+          ${source ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Źródło:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(source)}</td></tr>` : ''}
+        </table>
+        ${message ? `<h3>Wiadomość:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(message)}</p>` : ''}
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
+      `
+    }));
+
+    logWithStatus('contact', { name, email, message, source }, mailResults, null);
+    res.json({ ok: true, message: isEN ? 'Thank you! We will respond as soon as possible.' : 'Dziękujemy! Odpowiemy najszybciej jak to możliwe.' });
+
+    // Send to CRM (non-blocking - after response)
+    sendOrderToCRM({ name, email, notes: message, status: 'Prospect', source: 'powitania.pl (homepage kontakt)' })
+      .catch(err => console.error('[CRM] homepage contact webhook error:', err));
+  } catch (err) {
+    console.error('[contact] Homepage contact error:', err);
+    logWithStatus('contact', { name, email, message, source }, mailResults, err);
+    res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
+  }
+});
+
 function esc(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }

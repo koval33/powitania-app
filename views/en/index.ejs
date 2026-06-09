@@ -1040,7 +1040,8 @@ setInterval(function() { slideReviews(1); }, 8000);
       name: document.getElementById('hc-name').value,
       email: document.getElementById('hc-email').value,
       message: document.getElementById('hc-message').value,
-      source: 'homepage'
+      source: 'homepage',
+      lang: 'en'
     };
 
     fetch('/api/contact', {
