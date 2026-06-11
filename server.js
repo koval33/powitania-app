@@ -32,6 +32,28 @@ app.use((req, res, next) => {
   next();
 });
 
+// Zachowanie query string (gclid, utm_*, fbclid) przy KAŻDYM przekierowaniu wewnętrznym.
+// Bez tego res.redirect(301, '/nowy-adres/') gubi parametry -> psuje atrybucję konwersji Google Ads
+// (kliknięcie traci gclid, algorytm nie uczy się z konwersji). Obejmuje trailing slash i wszystkie
+// 301 ze starych URL-ów. Parametry doklejane tylko gdy cel ich jeszcze nie ma (!url.includes('?')).
+// MUSI być PO srsltid-strip wyżej: tamten redirect celowo usuwa parametr, patch doklejałby go
+// z powrotem (pętla 301 przy URL z samym ?srsltid).
+app.use((req, res, next) => {
+  const nativeRedirect = res.redirect.bind(res);
+  res.redirect = (statusOrUrl, maybeUrl) => {
+    let status = 302;
+    let url = statusOrUrl;
+    if (typeof statusOrUrl === 'number') { status = statusOrUrl; url = maybeUrl; }
+    const qPos = req.originalUrl.indexOf('?');
+    const incomingQs = qPos !== -1 ? req.originalUrl.slice(qPos) : '';
+    if (incomingQs && typeof url === 'string' && !url.includes('?')) {
+      url += incomingQs;
+    }
+    return nativeRedirect(status, url);
+  };
+  next();
+});
+
 // Middleware
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
