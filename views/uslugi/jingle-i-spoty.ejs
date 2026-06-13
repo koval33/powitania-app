@@ -1,0 +1,412 @@
+<%- include('../partials/head') %>
+
+<!-- Hero -->
+<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Produkcja jingli reklamowych</h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+      Komponujemy, aranżujemy i nagrywamy jingle oraz śpiewane spoty reklamowe na zamówienie - do radia, telewizji i social media, na czołówki podcastów i oprawę firmowych wydarzeń. Chwytliwa melodia, profesjonalny wokal i mastering gotowy do emisji.
+    </p>
+    <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="#realizacje" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+        Posłuchaj realizacji
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </a>
+      <a href="/kontakt/" class="inline-flex items-center justify-center border border-gray-300 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors">Zamów bezpłatną wycenę</a>
+    </div>
+  </div>
+</section>
+
+<!-- Posłuchaj realizacji -->
+<section id="realizacje" class="py-16 border-b border-gray-200 scroll-mt-24">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Posłuchaj naszych realizacji</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Każdy jingiel powstaje od zera - od pomysłu na melodię i tekst, przez kompozycję i aranżację, po nagranie wokalu i mix. Poniżej przykłady z różnych branż i zastosowań. Większość udostępniamy w dwóch wariantach aranżacyjnych, bo na etapie kreacji proponujemy kilka kierunków do wyboru.</p>
+
+    <% var jingles = [
+      {name:'Auto Nova', cat:'Motoryzacja - salon samochodowy', badge:'Spot', f:'auto-nova'},
+      {name:'BlueWay Travel', cat:'Turystyka - biuro podróży', badge:'Spot', f:'blueway-travel'},
+      {name:'Niepoważny Podcast Golfowy', cat:'Czołówka i przebitka do podcastu', badge:'Podcast', f:'podcast-golfowy'},
+      {name:'Click Market', cat:'E-commerce - sklep internetowy', badge:'Spot', f:'click-market'},
+      {name:'Sobienie Królewskie', cat:'Oprawa i promocja obiektu / event', badge:'Event', f:'sobienie-promo'},
+      {name:'Dom Fix', cat:'Dom i remonty - usługi', badge:'Spot', f:'dom-fix'},
+      {name:'Złoty Piec', cat:'Gastronomia - piekarnia', badge:'Spot', f:'zloty-piec'},
+      {name:'Mocc Mleko', cat:'Spożywczy - FMCG / nabiał', badge:'Spot', f:'mocc-mleko'}
+    ]; %>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% jingles.forEach(function(j) { %>
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:border-accent/40 transition-all">
+          <div class="relative">
+            <img src="/img/spoty/<%= j.f %>.webp" alt="<%= j.name %> - <%= j.cat %>" loading="lazy" width="800" height="534" class="w-full aspect-[3/2] object-cover">
+            <span class="absolute top-3 right-3 text-[0.65rem] uppercase tracking-wide font-semibold text-white bg-black/55 px-2 py-0.5 rounded backdrop-blur-sm"><%= j.badge %></span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 leading-snug mb-0.5"><%= j.name %></h3>
+            <p class="text-xs text-gray-500 mb-4"><%= j.cat %></p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-1.mp3')" aria-label="Posłuchaj - <%= j.name %>, wersja 1" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
+              <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <span>Wersja 1</span>
+            </button>
+            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-2.mp3')" aria-label="Posłuchaj - <%= j.name %>, wersja 2" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
+              <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <span>Wersja 2</span>
+            </button>
+          </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Powyższe nagrania to realizacje studyjne prezentujące zakres naszych możliwości. Pełne portfolio realizacji dla konkretnych marek udostępniamy na życzenie po podpisaniu NDA.</p>
+  </div>
+</section>
+
+<!-- Co produkujemy -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Co produkujemy</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Pełna produkcja muzyczna do reklamy i komunikacji marki - od krótkiego, wpadającego w ucho jingla po rozbudowany spot śpiewany z aranżacją orkiestrową.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Jingle reklamowe</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Krótka, chwytliwa melodia z nazwą marki lub hasłem - od kilkusekundowego sygnału po pełny jingiel radiowy. Buduje rozpoznawalność i zostaje w głowie odbiorcy na długo po emisji.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Śpiewane spoty reklamowe</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Pełny spot z warstwą wokalną - melodia, tekst reklamowy i wokal w jednym. Sprawdza się tam, gdzie zwykła narracja lektorska nie wystarcza, a marka chce wyróżnić się emocją i rytmem.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Czołówki i przebitki do podcastów</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Intro, outro i krótkie przebitki (stingi) spinające odcinki podcastu. Spójna oprawa dźwiękowa, która profesjonalizuje audycję i buduje rozpoznawalność programu od pierwszych sekund.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Oprawa muzyczna eventów</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Muzyka i piosenki na eventy firmowe, gale, targi i wyjazdy integracyjne - od hymnu firmowego, przez podkład pod prezentację, po utwór okolicznościowy z personalizowanym tekstem.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Audio branding i sound logo</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Dźwiękowa tożsamość marki - sygnał dźwiękowy (sound logo) i spójny system audio, który rozpoznasz w spocie, na infolinii i w aplikacji. Konsekwentne brzmienie marki we wszystkich kanałach.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Muzyka i piosenki na zamówienie</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Kompozycja na konkretny brief - utwory okolicznościowe, podkłady pod film korporacyjny, piosenki na jubileusz firmy. Tekst i melodia pisane pod Twój cel, bez gotowców z bibliotek stockowych.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gdzie się sprawdzą -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Gdzie sprawdza się jingiel i spot śpiewany</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Produkcja muzyczna działa wszędzie tam, gdzie liczy się emocja, rozpoznawalność i to, by przekaz został zapamiętany.</p>
+
+    <div class="grid md:grid-cols-2 gap-x-14">
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Reklama radiowa</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Jingiel radiowy to klasyka, która wciąż działa. W radiu liczy się dźwięk - chwytliwa melodia przebija się przez tło i buduje skojarzenie z marką już po kilku emisjach. Dostarczamy wersje 15s, 30s i 60s.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Spoty telewizyjne</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Warstwa muzyczna i wokalna pod spot TV - od podkładu budującego emocję po pełny śpiewany refren synchronizowany z obrazem. Mastering w jakości emisyjnej dla stacji ogólnopolskich i regionalnych.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Social media i digital</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Krótkie, rytmiczne formy pod YouTube, Meta, TikTok i Spotify ads. Dźwięk z hookiem w pierwszych sekundach zatrzymuje scroll i zwiększa zapamiętywalność reklamy w kanałach, gdzie konkurencja o uwagę jest największa.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Podcasty</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Czołówka, outro i przebitki, które nadają audycji profesjonalny charakter. Spójna oprawa dźwiękowa buduje markę podcastu i sprawia, że słuchacz rozpoznaje program po pierwszych nutach.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Eventy firmowe, gale i targi</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Hymn firmowy, intro otwierające galę, podkład pod prezentację na targach czy utwór na wyjazd integracyjny. Muzyka, która buduje atmosferę wydarzenia i zostaje z uczestnikami na dłużej.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Audio branding marki</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Sound logo i system dźwiękowy spójny we wszystkich punktach styku - reklama, infolinia, aplikacja, ekspozycja w punkcie sprzedaży. Dźwięk staje się rozpoznawalnym elementem tożsamości marki.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Jak powstaje jingiel -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Jak powstaje jingiel</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Prowadzimy projekt od pomysłu po gotowy plik do emisji. Na kluczowych etapach pokazujemy propozycje do akceptacji, żebyś miał wpływ na efekt końcowy.</p>
+
+    <ol class="space-y-5">
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">1</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Brief i koncepcja</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Poznajemy markę, cel kampanii, grupę docelową i kanał emisji. Ustalamy charakter muzyki, długość i to, czy jingiel ma być śpiewany, czy instrumentalny.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">2</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Tekst i kreacja</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Piszemy tekst reklamowy pod melodię (lub adaptujemy Twój), proponujemy hasło i hook. Tekst musi być chwytliwy i mieścić się w rytmie - to inny warsztat niż copy do spotu lektorskiego.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">3</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Kompozycja i aranżacja</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Komponujemy melodię i przygotowujemy aranżację. Zwykle pokazujemy kilka kierunków do wyboru - inny nastrój, tempo czy instrumentarium - zanim wejdziemy do studia.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">4</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Nagranie wokalu</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Nagrywamy wokal z dobranym wykonawcą lub wykonawczynią - solo, duet albo chórki. Możesz uczestniczyć w sesji zdalnie i zgłaszać uwagi na żywo.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">5</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Mix i mastering</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Łączymy wszystkie warstwy, czyścimy, balansujemy i masterujemy do poziomu emisyjnego. Efekt brzmi tak samo dobrze w radiu, w telewizji i w telefonie.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-bold flex items-center justify-center">6</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Wersje i dostawa</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Dostarczamy komplet wersji - różne długości (15s / 30s / 60s), wariant instrumentalny do podkładu i pliki w wymaganych formatach (WAV, MP3). Wszystko z uregulowaną licencją.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Dlaczego my -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Dlaczego my</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Działamy od 2001 roku, a produkcja muzyczna była z nami od początku - realizowaliśmy m.in. powitania muzyczne oparte na znanych przebojach Shakiry, Golec Orkiestry czy Andrzeja Piasecznego. Kompozytorzy, wokaliści i lektorzy pracują u nas pod jednym dachem, więc cały jingiel powstaje w jednym miejscu.</p>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Wszystko w jednym studiu</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Kompozycja, tekst, wokal, lektor i mastering bez podzlecania na zewnątrz. Krótsza droga od pomysłu do gotowego pliku i jeden zespół odpowiedzialny za całość.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Muzyka pisana na zamówienie</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Bez gotowców z bibliotek stockowych. Melodia i tekst powstają pod Twoją markę, więc jingiel jest wyłącznie Twój i nie pojawi się w reklamie konkurencji.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Uregulowane prawa i licencja</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Przekazujemy jasne warunki licencji na pola eksploatacji, których potrzebujesz. Bez niespodzianek po stronie praw autorskich do muzyki i wokalu.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Sesje zdalne</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Możesz być przy nagraniu wokalu online i wpływać na efekt w czasie rzeczywistym. Mniej podejść, szybsza akceptacja. Zobacz, jak wyglądają <a href="/sesje-zdalne-nagrania-lektorskie-online/" class="text-accent hover:underline">sesje zdalne</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wycena -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Wycena</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">Każdy jingiel jest inny, dlatego wycena jest indywidualna. Przygotowujemy ją bezpłatnie, zwykle w ciągu 24 godzin od briefu.</p>
+    <p class="text-gray-600 leading-relaxed mb-8">Na koszt wpływają przede wszystkim długość i forma (krótki sygnał czy pełny spot śpiewany), złożoność aranżacji i obsada wokalna, liczba wersji oraz pola eksploatacji i zasięg emisji. Napisz krótko, czego potrzebujesz, a odeślemy konkretną propozycję.</p>
+    <a href="/kontakt/" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold transition-colors">Zamów bezpłatną wycenę</a>
+  </div>
+</section>
+
+<!-- Powiązane usługi -->
+<section class="py-14 border-b border-gray-200">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Szukasz czegoś innego?</h2>
+    <p class="text-gray-600 leading-relaxed">Jeśli potrzebujesz reklamy z lektorem (głos mówiony, bez śpiewu), zajrzyj na stronę <a href="/nagrania-lektorskie/glos-do-reklamy/" class="text-accent hover:underline">głos do reklamy</a>. Chcesz najpierw zrozumieć cały proces produkcji spotu od strony kreacji, lektora, muzyki i montażu? Przeczytaj przewodnik <a href="/aktualnosci-pl/produkcja-spotu-reklamowego/" class="text-accent hover:underline">produkcja spotu reklamowego krok po kroku</a>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 bg-stone-100/60">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Najczęściej zadawane pytania</h2>
+    <p class="text-gray-600 text-center mb-10">Najczęstsze pytania o produkcję jingli i śpiewanych spotów reklamowych.</p>
+
+    <div class="space-y-3">
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Czym różni się jingiel od spotu z lektorem?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Jingiel to forma muzyczna - melodia, aranżacja i zwykle śpiewany tekst lub hasło. Spot z lektorem opiera się na głosie mówionym i ewentualnym podkładzie. Jingiel buduje rozpoznawalność przez melodię, którą odbiorca zapamiętuje i nuci; spot lektorski stawia na klarowny, perswazyjny przekaz słowny. Jeśli potrzebujesz wyłącznie głosu mówionego, zobacz <a href="/nagrania-lektorskie/glos-do-reklamy/" class="text-accent hover:underline">głos do reklamy</a>.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile kosztuje produkcja jingla?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Cena jest ustalana indywidualnie, bo każdy jingiel powstaje od zera. Wpływ na nią mają długość i forma (krótki sygnał vs pełny śpiewany spot), złożoność aranżacji, obsada wokalna, liczba wersji oraz pola eksploatacji i czas licencji. Wycenę przygotowujemy bezpłatnie, zwykle w 24 godziny od briefu - <a href="/kontakt/" class="text-accent hover:underline">napisz do nas</a> z krótkim opisem projektu.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Komponujecie muzykę na zamówienie czy korzystacie z gotowców?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Komponujemy na zamówienie. Melodia, aranżacja i tekst powstają pod konkretną markę i brief, bez gotowych podkładów z bibliotek stockowych. Dzięki temu jingiel jest wyłącznie Twój i nie pojawi się w reklamie innej firmy.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Jak wygląda kwestia praw autorskich i licencji?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Przed startem ustalamy pola eksploatacji (radio, TV, internet, wewnętrzne) i czas trwania licencji. Warunki przekazujemy na piśmie w wycenie, więc dokładnie wiesz, gdzie i jak długo możesz emitować jingiel. Licencję można później rozszerzyć lub przedłużyć.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Ile trwa produkcja jingla?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Zależy od złożoności, ale standardowa produkcja zamyka się zwykle w kilku dniach roboczych - od briefu, przez propozycje kompozycji do akceptacji, po nagranie wokalu i mastering. Przy pilnych kampaniach ustalamy przyspieszony tryb realizacji.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Robicie czołówki i przebitki do podcastów?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Tak. Produkujemy intro, outro i krótkie przebitki (stingi) spinające odcinki. Dbamy o spójne brzmienie całej oprawy, żeby słuchacz rozpoznawał podcast po pierwszych sekundach. Przykład znajdziesz w sekcji <a href="#realizacje" class="text-accent hover:underline">realizacji</a> powyżej.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Zrobicie hymn firmowy lub muzykę na event?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Tak. Komponujemy hymny firmowe, utwory okolicznościowe i oprawę muzyczną na gale, targi oraz wyjazdy integracyjne - z personalizowanym tekstem dopasowanym do okazji i wartości firmy.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>W jakich wersjach i formatach dostajemy jingiel?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Standardowo dostarczamy różne długości (np. 15s, 30s, 60s), wariant instrumentalny do podkładu pod lektora oraz pliki w formatach WAV i MP3 gotowe do emisji. Dodatkowe wersje ustalamy na etapie briefu.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/produkcja-jingli-reklamowych/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Czym różni się jingiel od spotu z lektorem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jingiel to forma muzyczna - melodia, aranżacja i zwykle śpiewany tekst lub hasło. Spot z lektorem opiera się na głosie mówionym i ewentualnym podkładzie. Jingiel buduje rozpoznawalność przez melodię, którą odbiorca zapamiętuje i nuci; spot lektorski stawia na klarowny, perswazyjny przekaz słowny."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje produkcja jingla?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena jest ustalana indywidualnie, bo każdy jingiel powstaje od zera. Wpływ na nią mają długość i forma (krótki sygnał vs pełny śpiewany spot), złożoność aranżacji, obsada wokalna, liczba wersji oraz pola eksploatacji i czas licencji. Wycenę przygotowujemy bezpłatnie, zwykle w 24 godziny od briefu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Komponujecie muzykę na zamówienie czy korzystacie z gotowców?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Komponujemy na zamówienie. Melodia, aranżacja i tekst powstają pod konkretną markę i brief, bez gotowych podkładów z bibliotek stockowych. Dzięki temu jingiel jest wyłącznie Twój i nie pojawi się w reklamie innej firmy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak wygląda kwestia praw autorskich i licencji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Przed startem ustalamy pola eksploatacji (radio, TV, internet, wewnętrzne) i czas trwania licencji. Warunki przekazujemy na piśmie w wycenie, więc dokładnie wiesz, gdzie i jak długo możesz emitować jingiel. Licencję można później rozszerzyć lub przedłużyć."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile trwa produkcja jingla?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zależy od złożoności, ale standardowa produkcja zamyka się zwykle w kilku dniach roboczych - od briefu, przez propozycje kompozycji do akceptacji, po nagranie wokalu i mastering. Przy pilnych kampaniach ustalamy przyspieszony tryb realizacji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Robicie czołówki i przebitki do podcastów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Produkujemy intro, outro i krótkie przebitki (stingi) spinające odcinki. Dbamy o spójne brzmienie całej oprawy, żeby słuchacz rozpoznawał podcast po pierwszych sekundach."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zrobicie hymn firmowy lub muzykę na event?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Komponujemy hymny firmowe, utwory okolicznościowe i oprawę muzyczną na gale, targi oraz wyjazdy integracyjne - z personalizowanym tekstem dopasowanym do okazji i wartości firmy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich wersjach i formatach dostajemy jingiel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardowo dostarczamy różne długości (np. 15s, 30s, 60s), wariant instrumentalny do podkładu pod lektora oraz pliki w formatach WAV i MP3 gotowe do emisji. Dodatkowe wersje ustalamy na etapie briefu."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function() {
+  var currentAudio = null;
+  var currentBtn = null;
+  function setBtnState(btn, playing) {
+    if (!btn) return;
+    var play = btn.querySelector('.play-icon');
+    var pause = btn.querySelector('.pause-icon');
+    if (playing) { if (play) play.classList.add('hidden'); if (pause) pause.classList.remove('hidden'); }
+    else { if (play) play.classList.remove('hidden'); if (pause) pause.classList.add('hidden'); }
+  }
+  window.playSample = function(btn, url) {
+    if (currentAudio && currentBtn === btn) {
+      if (currentAudio.paused) { currentAudio.play(); setBtnState(btn, true); }
+      else { currentAudio.pause(); setBtnState(btn, false); }
+      return;
+    }
+    if (currentAudio) { currentAudio.pause(); setBtnState(currentBtn, false); }
+    currentAudio = new Audio(url);
+    currentBtn = btn;
+    currentAudio.play();
+    setBtnState(btn, true);
+    currentAudio.onended = function() { setBtnState(btn, false); currentAudio = null; currentBtn = null; };
+  };
+})();
+</script>
+
+<%- include('../partials/foot') %>

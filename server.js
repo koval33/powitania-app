@@ -760,6 +760,27 @@ app.get('/nagrania-lektorskie/', (req, res) => {
 });
 
 // Service subpages
+app.get('/produkcja-jingli-reklamowych/', (req, res) => {
+  res.render('uslugi/jingle-i-spoty', {
+    title: 'Produkcja jingli reklamowych i spotów śpiewanych | Powitania.pl',
+    description: 'Produkcja jingli i śpiewanych spotów reklamowych na zamówienie: radio, TV, social media, podcasty, eventy. Kompozycja, wokal i mastering. Bezpłatna wycena.',
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Jingle i spoty', url: '/produkcja-jingli-reklamowych/' }
+    ],
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Produkcja jingli reklamowych i śpiewanych spotów',
+      'description': 'Produkcja muzyczna do reklamy na zamówienie: jingle, śpiewane spoty reklamowe (radio, TV, social media), czołówki i przebitki do podcastów, oprawa muzyczna eventów oraz audio branding. Kompozycja, aranżacja, wokal i mastering.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'PL',
+      'url': 'https://www.powitania.pl/produkcja-jingli-reklamowych/',
+      'serviceType': 'Produkcja jingli i muzyki reklamowej'
+    }
+  });
+});
+
 app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
     title: 'Głos do reklamy | Spoty radiowe, TV, social media | Powitania.pl',
@@ -1201,6 +1222,7 @@ app.get('/p/:slug/', (req, res) => {
 });
 
 // Legacy partner iframe routes → redirect to bank-glosow
+app.get('/bank/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/glosy-zenskie/', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/bank/natives/', (req, res) => res.redirect(301, '/bank-glosow/'));
@@ -1640,6 +1662,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/bank-glosow/meskie/', priority: '0.8', changefreq: 'weekly' },
     { url: '/bank-glosow/zenskie/', priority: '0.8', changefreq: 'weekly' },
     { url: '/nagrania-lektorskie/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/produkcja-jingli-reklamowych/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/glos-do-reklamy/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/', priority: '0.8', changefreq: 'monthly' },
