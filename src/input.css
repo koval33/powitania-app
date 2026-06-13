@@ -5,10 +5,11 @@
 @layer base {
   /* Eliminacja "sierot" - pojedynczego slowa zawinietego do ostatniej linii.
      Progresywne: przegladarki bez wsparcia ignoruja (brak regresji). */
-  p {
-    text-wrap: pretty;
-  }
-  h1, h2, h3, h4 {
+  /* balance rozklada linie rowno -> brak krotkiej, osieroconej ostatniej linii.
+     Lepsze wsparcie niz pretty (Firefox 121+, Safari 17.5+, Chrome) i skuteczniejsze
+     na 2-3 wyrazowe sieroty. Przegladarki ograniczaja balance do krotkich blokow
+     (dlugie akapity = zwykle zawijanie, bez regresji). */
+  p, h1, h2, h3, h4, li, figcaption, blockquote {
     text-wrap: balance;
   }
 }
