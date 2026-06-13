@@ -15,23 +15,25 @@
 
 /* Przyciski play - dopracowany, wypelniony styl zamiast surowego konturu.
    Reguly niewarstwowe (poza @layer) -> nadpisuja inline'owe utility Tailwinda
-   (bg-white, border-gray-900, text-gray-900) bez edycji kazdego przycisku. */
-.play-btn {
+   (bg-white, border-gray-900, text-gray-900) bez edycji kazdego przycisku.
+   Lapie wszystkie warianty *play-btn (play-btn, ivr-play-btn, sample-play-btn)
+   z wyjatkiem melody-play-btn (ma wlasny, subtelny styl + ikone w kolorze akcentu). */
+[class*="play-btn"]:not(.melody-play-btn) {
   background-color: #0d9488;
   border-color: transparent;
   color: #fff;
   box-shadow: 0 2px 6px rgba(13, 148, 136, 0.25);
   transition: background-color .15s ease, transform .15s ease, box-shadow .15s ease;
 }
-.play-btn:hover {
+[class*="play-btn"]:not(.melody-play-btn):hover {
   background-color: #0f766e;
   transform: scale(1.06);
   box-shadow: 0 5px 14px rgba(13, 148, 136, 0.35);
 }
-.play-btn:active {
+[class*="play-btn"]:not(.melody-play-btn):active {
   transform: scale(0.97);
 }
-.play-btn .play-icon,
-.play-btn .pause-icon {
+[class*="play-btn"]:not(.melody-play-btn) .play-icon,
+[class*="play-btn"]:not(.melody-play-btn) .pause-icon {
   color: #fff;
 }
