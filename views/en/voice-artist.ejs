@@ -2335,7 +2335,7 @@ function submitOrderRequest(data, msgElId) {
         eventTimeout: 2000
       });
 
-      // Fallback: gdy GTM niedostępny / eventCallback się nie wykona — nawigacja po 2.5s.
+      // Fallback: gdy GTM niedostępny / eventCallback się nie wykona - nawigacja po 2.5s.
       setTimeout(navigateOnce, 2500);
       return;
     }
@@ -2742,11 +2742,11 @@ if (_offersEn.length > 0) {
   };
 }
 
-// FAQ schema EN — lustro PL, ale z angielskim tekstem (audyt SEO 23.04.2026, thin content)
+// FAQ schema EN - lustro PL, ale z angielskim tekstem (audyt SEO 23.04.2026, thin content)
 var _faqItemsEn = [];
 var _faqDisplayNameEn = lektor.name.replace(/\s+\d+$/, '').trim();
 var _faqTurnaroundSchemaEn = lektor.turnaround || (lektor.hidePrice ? '4 business days' : null);
-// Lokalne mapy (duplikat tych w UI — schema budowany w osobnym scope EJS)
+// Lokalne mapy (duplikat tych w UI - schema budowany w osobnym scope EJS)
 var _faqLangMapEn = {
   'polski': 'Polish', 'angielski': 'English', 'niemiecki': 'German', 'hiszpański': 'Spanish',
   'francuski': 'French', 'włoski': 'Italian', 'rosyjski': 'Russian', 'ukraiński': 'Ukrainian',

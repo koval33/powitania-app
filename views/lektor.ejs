@@ -2290,7 +2290,7 @@ function submitOrderRequest(data, msgElId) {
         eventTimeout: 2000
       });
 
-      // Fallback: gdy GTM niedostępny / eventCallback się nie wykona — nawigacja po 2.5s.
+      // Fallback: gdy GTM niedostępny / eventCallback się nie wykona - nawigacja po 2.5s.
       setTimeout(navigateOnce, 2500);
       return;
     }
