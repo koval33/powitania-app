@@ -117,8 +117,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var lastY = window.pageYOffset || 0;
   var kreatorVisible = false;
   var hiddenByScroll = false;
+  var heroVisible = false;
   function apply() {
-    if (kreatorVisible || hiddenByScroll) {
+    if (kreatorVisible || hiddenByScroll || heroVisible) {
       bar.style.transform = 'translateY(110%)';
     } else {
       bar.style.transform = 'translateY(0)';
@@ -147,6 +148,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }, { threshold: 0.15 });
     io.observe(kreator);
+  }
+  // Pasek pojawia sie dopiero PO przewinieciu za hero (hero ma wlasne CTA).
+  // Hero ma 2 CTA wiec na gorze nie dublujemy paska. Dotyczy page-hero podstron + hero glownej.
+  var heroEl = document.querySelector('[data-page-hero]') || document.querySelector('section.hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    heroVisible = true; apply();
+    var ioHero = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ heroVisible = e.isIntersecting; apply(); });
+    }, { threshold: 0 });
+    ioHero.observe(heroEl);
   }
 })();
 </script>
