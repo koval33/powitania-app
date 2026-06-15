@@ -118,8 +118,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var kreatorVisible = false;
   var hiddenByScroll = false;
   var heroVisible = false;
+  var hasHero = false;
   function apply() {
-    if (kreatorVisible || hiddenByScroll || heroVisible) {
+    // Strony z hero: pasek persistent PO hero (ignoruje scroll-down-hide), schowany na hero.
+    // Strony bez hero: stara logika scroll-aware (chowa przy scrollu w dol).
+    if (kreatorVisible || heroVisible || (!hasHero && hiddenByScroll)) {
       bar.style.transform = 'translateY(110%)';
     } else {
       bar.style.transform = 'translateY(0)';
@@ -136,6 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       hiddenByScroll = false;
     }
     lastY = y;
+    updateHero();
     apply();
   }, { passive: true });
   // Hide when kreator is visible on screen
@@ -149,16 +153,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0.15 });
     io.observe(kreator);
   }
-  // Pasek pojawia sie dopiero PO przewinieciu za hero (hero ma wlasne CTA).
-  // Hero ma 2 CTA wiec na gorze nie dublujemy paska. Dotyczy page-hero podstron + hero glownej.
+  // Pasek pojawia sie dopiero PO przewinieciu za hero (hero ma wlasne CTA - nie dublujemy na gorze).
+  // Widocznosc hero liczona ze scrolla (getBoundingClientRect) - pewniejsze niz IntersectionObserver.
   var heroEl = document.querySelector('[data-page-hero]') || document.querySelector('section.hero');
-  if (heroEl && 'IntersectionObserver' in window) {
-    heroVisible = true; apply();
-    var ioHero = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ heroVisible = e.isIntersecting; apply(); });
-    }, { threshold: 0 });
-    ioHero.observe(heroEl);
+  hasHero = !!heroEl;
+  function updateHero() {
+    if (heroEl) heroVisible = heroEl.getBoundingClientRect().bottom > 0;
   }
+  updateHero();
+  apply();
+  window.addEventListener('resize', function(){ updateHero(); apply(); }, { passive: true });
 })();
 </script>
 <% } %>
