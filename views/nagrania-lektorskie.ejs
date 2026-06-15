@@ -1,10 +1,39 @@
 <%- include('partials/head') %>
 
-<!-- Hero -->
-<section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Nagrania lektorskie do reklam, filmów, IVR i&nbsp;audiobooków</h1>
-    <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Profesjonalne nagrania lektorskie od&nbsp;2001 roku. <%= voiceCount %> lektorów w&nbsp;30+ językach. Spoty reklamowe, filmy korporacyjne, zapowiedzi telefoniczne, audiobooki i&nbsp;e-learning - realizacja w&nbsp;24-48h.</p>
+<!-- Hero (ciemny pasek; zdjecie full-bleed po lewej przechodzi w szarosc, napisy po prawej) -->
+<section class="relative overflow-hidden bg-[#2e333d] border-b border-white/10">
+  <!-- Zdjecie studia: po lewej (desktop), tlo (mobile) -->
+  <div class="hero-photo hero-photo-left">
+    <img src="/img/studio-bg-1920.bw-backup.webp"
+         srcset="/img/studio-bg-960.bw-backup.webp 960w, /img/studio-bg-1920.bw-backup.webp 1920w"
+         sizes="100vw"
+         alt="Studio nagrań lektorskich Powitania.pl - lektor przy mikrofonie"
+         width="1920" height="980" loading="eager"
+         class="w-full h-full object-cover" style="object-position: 50% 8%;">
+    <div class="hero-fade hero-fade-left"></div>
+    <span class="hidden lg:inline-flex absolute bottom-6 left-6 items-center gap-2 bg-gray-900/70 text-white text-[0.7rem] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+      <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>REC
+    </span>
+  </div>
+
+  <!-- Tresc po prawej, nad ciemnym -->
+  <div class="relative z-10 min-h-[380px] md:min-h-[420px] flex items-center pt-20 md:pt-24 pb-6">
+    <div class="ml-auto w-full lg:w-[44%] lg:mr-[2%] px-6 md:px-10 lg:px-6">
+      <nav class="text-sm text-gray-400 mb-3 flex items-center gap-1.5" aria-label="Okruszki">
+        <a href="/" class="hover:text-accent-light transition-colors">Strona główna</a>
+        <span class="text-gray-600">›</span>
+        <span class="text-accent-light font-medium">Nagrania lektorskie</span>
+      </nav>
+      <h1 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-white leading-[1.12] mb-2.5">Nagrania lektorskie do reklam, filmów, IVR i&nbsp;audiobooków</h1>
+      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">Profesjonalne nagrania lektorskie od&nbsp;2001 roku. <%= voiceCount %> lektorów w&nbsp;30+ językach. Spoty reklamowe, filmy korporacyjne, zapowiedzi telefoniczne, audiobooki i&nbsp;e-learning - realizacja w&nbsp;24-48h.</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/bank-glosow/" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors">Posłuchaj głosów</a>
+        <a href="tel:+48605491069" class="border border-white/30 hover:border-white/60 text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          Zadzwoń: 605 491 069
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 

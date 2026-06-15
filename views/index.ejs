@@ -18,8 +18,9 @@
        loading="eager"
        fetchpriority="high">
 
-  <%# Overlay - pokrywa dokładnie obraz (na desktop sekcja == wysokość obrazu) %>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
+  <%# Overlay - pokrywa dokładnie obraz (na desktop sekcja == wysokość obrazu).
+      Charcoalowy scrim (jak na hero podstron) - ciemniejsza, nastrojowa twarz lektora. %>
+  <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(20,23,28,0.55) 0%, rgba(20,23,28,0.40) 35%, rgba(20,23,28,0.42) 70%, rgba(20,23,28,0.55) 100%);"></div>
 
   <%# Content - nałożony absolutnie na obraz, pt-[140px/160px] (header + oddech) %>
   <div class="relative md:absolute md:inset-0 z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-28 md:pt-[160px] pb-8">

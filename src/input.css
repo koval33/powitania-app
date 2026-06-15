@@ -38,3 +38,33 @@
 [class*="play-btn"]:not(.melody-play-btn) .pause-icon {
   color: #fff;
 }
+
+/* Hero "split": zdjecie full-bleed po prawej, przechodzi gradientowo w ciemne tlo (#1a1d23).
+   Mobile: zdjecie na calej szerokosci + jednolite przyciemnienie pod tekstem.
+   Desktop (>=1024px): zdjecie po prawej (62%), przejscie z ciemnego (lewo) w przezroczyste (prawo). */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+}
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(20, 23, 28, 0.5) 0%, rgba(20, 23, 28, 0.15) 16%, rgba(20, 23, 28, 0) 32%),
+    rgba(46, 51, 61, 0.45);
+}
+@media (min-width: 1024px) {
+  /* zdjecie na cala szerokosc: lektorzy po lewej, rack ze sprzetem przy prawej krawedzi.
+     scrim "dolina" - ciemno w srodkowo-prawej (pod tekstem), jasniej na obu krawedziach
+     (lewo = lektorzy, prawa krawedz = rack). + top scrim pod menu. */
+  .hero-fade {
+    background:
+      /* miekki narozny cien w lewym dolnym rogu - przygasza lektorke (kawalek glowy zostaje widoczny), bez plamy/szwu */
+      radial-gradient(ellipse 46% 90% at left bottom, rgba(20, 23, 28, 0.9) 0%, rgba(20, 23, 28, 0.55) 38%, rgba(20, 23, 28, 0.12) 60%, rgba(20, 23, 28, 0) 74%),
+      /* top scrim pod menu */
+      linear-gradient(to bottom, rgba(20, 23, 28, 0.55) 0%, rgba(20, 23, 28, 0.12) 18%, rgba(20, 23, 28, 0) 32%),
+      /* dolina pod tekstem (przesunieta w prawo, blizej prawej krawedzi) */
+      linear-gradient(to right, rgba(20, 23, 28, 0) 0%, rgba(20, 23, 28, 0) 30%, rgba(20, 23, 28, 0.55) 46%, rgba(20, 23, 28, 0.86) 60%, rgba(20, 23, 28, 0.86) 96%, rgba(20, 23, 28, 0.5) 100%);
+  }
+}
+

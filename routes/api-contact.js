@@ -112,7 +112,7 @@ router.post('/order', async (req, res) => {
 });
 
 // "Zapytaj o wycenę" - lekki formularz
-router.post('/inquiry', async (req, res) => {
+router.post('/inquiry', upload.single('attachment'), async (req, res) => {
   const { name, email, phone, description, generatedText, serviceType, industry, lektorName, lang } = req.body;
   const isEN = lang === 'en';
 
@@ -125,7 +125,7 @@ router.post('/inquiry', async (req, res) => {
   const mailResults = [];
   try {
     // Mail do biura
-    mailResults.push(await sendMail({
+    const officeMail = {
       subject: `[Zapytanie] ${name || 'Klient'} - ${serviceType || 'wycena'}`,
       replyTo: email,
       html: `
@@ -140,9 +140,18 @@ router.post('/inquiry', async (req, res) => {
         </table>
         ${description ? `<h3>Opis projektu:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(description)}</p>` : ''}
         ${generatedText ? `<h3>Tekst z kreatora:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
+        ${req.file ? `<p style="color:#666;font-size:13px">📎 Załącznik: ${esc(req.file.originalname)} (${Math.round(req.file.size / 1024)} KB)</p>` : ''}
         <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
-    }));
+    };
+    // Dołącz plik jeśli przesłany
+    if (req.file) {
+      officeMail.attachments = [{
+        filename: req.file.originalname,
+        content: req.file.buffer
+      }];
+    }
+    mailResults.push(await sendMail(officeMail));
 
     // Potwierdzenie do klienta
     mailResults.push(await sendMail({
@@ -169,7 +178,7 @@ router.post('/inquiry', async (req, res) => {
       `
     }));
 
-    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description }, mailResults, null);
+    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description, hasAttachment: !!req.file }, mailResults, null);
     res.json({ ok: true, message: isEN ? 'Thank you! We will respond within 2 hours.' : 'Dziękujemy! Odpowiemy w ciągu 2 godzin.' });
 
     // Send to CRM (non-blocking - after response)
@@ -177,7 +186,7 @@ router.post('/inquiry', async (req, res) => {
       .catch(err => console.error('[CRM] inquiry webhook error:', err));
   } catch (err) {
     console.error('[contact] Inquiry error:', err);
-    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description }, mailResults, err);
+    logWithStatus('inquiry', { name, email, phone, lektorName, serviceType, industry, description, hasAttachment: !!req.file }, mailResults, err);
     res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please try again.' : 'Błąd wysyłania. Spróbuj ponownie.' });
   }
 });

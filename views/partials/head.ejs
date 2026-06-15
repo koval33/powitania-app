@@ -325,8 +325,8 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
     ? hreflangEN.replace('https://www.powitania.pl', '')
     : '/en/';
 %>
-<% if (currentPath === '/') { %>
-<%# Homepage: nowy transparent->slate-800 header (Claude Design package) %>
+<% if (currentPath === '/' || currentPath === '/nagrania-lektorskie/') { %>
+<%# Homepage + (test v2) nagrania-lektorskie: transparent->slate-800 header (menu na obrazie) %>
 <header id="siteHeader" class="site-header fixed top-0 inset-x-0 z-50">
   <div class="w-full px-3 md:px-5 lg:px-6">
     <div class="header-row flex items-center justify-between">

@@ -16,7 +16,7 @@
       <!-- Formularz -->
       <div class="bg-white rounded-2xl border border-gray-200 shadow-md p-8">
         <h2 class="text-xl font-bold text-gray-900 mb-6">Wyślij wiadomość</h2>
-        <form id="contact-form" class="space-y-4">
+        <form id="contact-form" class="space-y-4" enctype="multipart/form-data">
           <div>
             <label class="block text-gray-900 font-semibold mb-2 text-sm">Imię i nazwisko *</label>
             <input type="text" name="name" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="Jan Kowalski">
@@ -31,7 +31,15 @@
           </div>
           <div>
             <label class="block text-gray-900 font-semibold mb-2 text-sm">Wiadomość *</label>
-            <textarea name="description" rows="5" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y" placeholder="W czym możemy pomóc?"></textarea>
+            <textarea name="description" rows="5" required class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none resize-y" placeholder="W czym możemy pomóc? Wklej tekst do wyceny lub dołącz plik poniżej."></textarea>
+          </div>
+          <div>
+            <label class="block text-gray-500 text-sm mb-2">Załącznik <span class="text-gray-400">(opcjonalnie)</span></label>
+            <label class="flex items-center gap-3 cursor-pointer border border-dashed border-gray-300 rounded-lg px-4 py-3 hover:border-gray-400 hover:bg-gray-50 transition-colors">
+              <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+              <span class="text-gray-400 text-sm truncate file-label">Dołącz plik (PDF, DOC, MP3, WAV, ZIP)</span>
+              <input type="file" name="attachment" class="hidden" accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.mp3,.wav,.zip" onchange="updateContactFileLabel(this)">
+            </label>
           </div>
           <button type="submit" id="contact-submit" class="bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold w-full transition-colors">
             Wyślij wiadomość
@@ -100,6 +108,20 @@
   }
 })();
 
+// Labelka załącznika
+function updateContactFileLabel(input) {
+  var label = input.closest('label').querySelector('.file-label');
+  if (input.files.length > 0) {
+    label.textContent = input.files[0].name;
+    label.classList.remove('text-gray-400');
+    label.classList.add('text-gray-900');
+  } else {
+    label.textContent = 'Dołącz plik (PDF, DOC, MP3, WAV, ZIP)';
+    label.classList.add('text-gray-400');
+    label.classList.remove('text-gray-900');
+  }
+}
+
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var btn = document.getElementById('contact-submit');
@@ -122,24 +144,24 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   btn.textContent = 'Wysyłanie...';
   msg.classList.add('hidden');
 
+  // FormData (multipart) - obsluguje opcjonalny zalacznik
   var fd = new FormData(e.target);
-  var data = {};
-  fd.forEach(function(v, k) { data[k] = v; });
 
   fetch('/api/contact/inquiry', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
+    body: fd
   })
   .then(function(r) { return r.json(); })
   .then(function(res) {
     msg.classList.remove('hidden');
     if (res.ok) {
-      if (window.trackEventEC) trackEventEC('form_submit_contact', { source: 'kontakt' }, data.email, data.phone);
+      if (window.trackEventEC) trackEventEC('form_submit_contact', { source: 'kontakt' }, fd.get('email'), fd.get('phone'));
       else if (window.trackEvent) trackEvent('form_submit_contact', { source: 'kontakt' });
       msg.className = 'mt-4 text-center text-sm text-green-400';
       msg.textContent = res.message || 'Dziękujemy! Odpowiemy w ciągu 2 godzin.';
       e.target.reset();
+      var fileEl = e.target.querySelector('input[name="attachment"]');
+      if (fileEl) updateContactFileLabel(fileEl);
     } else {
       msg.className = 'mt-4 text-center text-sm text-red-400';
       msg.textContent = res.error || 'Błąd wysyłania.';
