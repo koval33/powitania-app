@@ -632,6 +632,7 @@ app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
     title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
     description: `Bank głosów lektorskich Powitania.pl - ${res.locals.voiceCount} profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.`,
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Bank głosów', url: '/bank-glosow/' }
@@ -647,7 +648,8 @@ app.get('/bank-glosow/meskie/', (req, res) => {
     description: 'Bank głosów męskich. 143 profesjonalnych lektorów - dokumentalny, reklamowy, narracyjny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'm'),
     genderSegment: 'm',
-    pageH1: 'Głosy męskie do nagrań'
+    pageH1: 'Głosy męskie do nagrań',
+    pageHeroTransparent: true
   });
 });
 app.get('/bank-glosow/zenskie/', (req, res) => {
@@ -656,7 +658,8 @@ app.get('/bank-glosow/zenskie/', (req, res) => {
     description: 'Bank głosów żeńskich. 91 profesjonalnych lektorek - ciepły, elegancki, dynamiczny. Odsłuchaj próbki i zamów nagranie. Studio powitania.pl od 2001 roku.',
     voices: loadVoices().filter(v => v.gender === 'f'),
     genderSegment: 'f',
-    pageH1: 'Głosy żeńskie do nagrań'
+    pageH1: 'Głosy żeńskie do nagrań',
+    pageHeroTransparent: true
   });
 });
 app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/meskie/'));
@@ -701,6 +704,7 @@ app.get('/cennik-nagran-lektorskich/', (req, res) => {
   res.render('cennik', {
     title: 'Cennik nagrań lektorskich od 300 zł | Powitania.pl',
     description: `Cennik nagrań lektorskich Powitania.pl: lektor reklamowy od 300 zł, narracja 340 zł/A4, IVR 380 zł. ${res.locals.voiceCount} lektorów, 24-48h, native speakers od 600 zł.`,
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Cennik nagrań lektorskich', url: '/cennik-nagran-lektorskich/' }
@@ -723,6 +727,7 @@ app.get('/kontakt/', (req, res) => {
   res.render('kontakt', {
     title: 'Kontakt | powitania.pl',
     description: 'Skontaktuj się ze Studiem Lektorskim Powitania.pl. Nagrania lektorskie w 24-48h, ponad 200 lektorów, 30+ języków. Odpowiadamy w ciągu 2 godzin.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Kontakt', url: '/kontakt/' }
@@ -736,6 +741,7 @@ app.get('/opinie/', (req, res) => {
   res.render('opinie', {
     title: 'Opinie Klientów | powitania.pl',
     description: 'Opinie Klientów Studia Lektorskiego Powitania.pl. Ponad ' + reviews.length + ' opinii od firm i agencji z całej Polski o jakości nagrań, tempie realizacji i współpracy.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Opinie', url: '/opinie/' }
@@ -752,6 +758,7 @@ app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
     title: `Nagrania lektorskie - reklamy, IVR, filmy, audiobooki | 24-48h`,
     description: `Profesjonalne nagrania lektorskie od 2001 r. ${res.locals.voiceCount} lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.`,
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' }
@@ -764,6 +771,7 @@ app.get('/produkcja-jingli-reklamowych/', (req, res) => {
   res.render('uslugi/jingle-i-spoty', {
     title: 'Produkcja jingli reklamowych i spotów śpiewanych | Powitania.pl',
     description: 'Jingle i śpiewane spoty reklamowe na zamówienie: radio, TV, social media, podcasty, eventy. Szybko, w przystępnej cenie, pod Twój brief. Bezpłatna wycena.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Jingle i spoty', url: '/produkcja-jingli-reklamowych/' }
@@ -785,6 +793,7 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
     title: 'Głos do reklamy | Spoty radiowe, TV, social media | Powitania.pl',
     description: 'Przyciągnij uwagę słuchaczy - wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -808,6 +817,7 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
   res.render('uslugi/lektor-do-filmow', {
     title: 'Profesjonalny lektor do filmów | Powitania.pl',
     description: 'Profesjonalny lektor do filmów - naturalny głos, wysoka jakość nagrań, szybka realizacja. Idealny wybór do filmów promocyjnych, instruktażowych dokumentalnych.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -831,6 +841,7 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
     title: 'Zapowiedzi telefoniczne i nagrania do centrali IVR | 24-48h',
     description: `Profesjonalne zapowiedzi telefoniczne i nagrania do central telefonicznych (Slican, Platan, VoIP, Asterisk, 3CX). Lektor na infolinię, IVR, komunikaty powitalne. ${res.locals.voiceCount} lektorów, 24-48h.`,
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -854,6 +865,7 @@ app.get('/nagrania-lektorskie/audioprzewodniki/', (req, res) => {
   res.render('uslugi/audioprzewodniki', {
     title: 'Audioprzewodniki z lektorem | muzea, QR, aplikacje | Powitania.pl',
     description: 'Profesjonalne nagrania do audioprzewodników: muzea, parki, szlaki. Lektorzy PL + native, integracja z QR/aplikacjami. Wycena w 24h.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagrania lektorskie', url: '/nagrania-lektorskie/' },
@@ -866,6 +878,7 @@ app.get('/sesje-zdalne-nagrania-lektorskie-online/', (req, res) => {
   res.render('uslugi/sesje-zdalne', {
     title: 'Zdalne sesje nagraniowe z lektorem - kontrola live | Powitania.pl',
     description: 'Weź udział w sesji nagraniowej zdalnie. Kontroluj proces nagrania w czasie rzeczywistym przez internet.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Sesje zdalne', url: '/sesje-zdalne-nagrania-lektorskie-online/' }
@@ -901,6 +914,7 @@ app.get('/nagranie-ekspresowe/', (req, res) => {
   res.render('nagranie-ekspresowe', {
     title: 'Nagranie ekspresowe | powitania.pl',
     description: 'Potrzebujesz nagrania lektorskiego jeszcze dziś? Zamów do 14:00, otrzymaj do 18:00. Dyżurujący lektorzy dostępni każdego dnia roboczego.',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Nagranie ekspresowe', url: '/nagranie-ekspresowe/' }

@@ -1,20 +1,13 @@
 <%- include('partials/head') %>
 
-<!-- HERO + FILTRY -->
-<section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
-  <!-- Tytuł -->
-  <div class="py-2 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-xl md:text-4xl font-bold text-gray-900 mb-1 md:mb-4 leading-tight"><%= typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów' %></h1>
-    <% if (typeof genderSegment === 'undefined') { %>
-    <%/* Mobile: zwiezly stat-chip (oszczedza ~90px powyzej fold). Desktop: pelny paragraf z keywordami. Oba w DOM - SEO mobile-first widzi krotki, desktop dlugi. */%>
-    <p class="md:hidden text-sm text-gray-500"><%= voiceCount %> lektorów &middot; 30+ języków &middot; studio od 2001</p>
-    <p class="hidden md:block text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV.<br>Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
-    <% } else { %>
-    <p class="md:hidden text-sm text-gray-500"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> &middot; 30+ języków</p>
-    <p class="hidden md:block text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voices.length %> profesjonalnych <%= genderSegment === 'm' ? 'lektorów' : 'lektorek' %> - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do swojego projektu.</p>
-    <% } %>
-  </div>
-</section>
+<%# Hero podstrony - partial page-hero (menu na obrazie), bez CTA. Flaga pageHeroTransparent w route. %>
+<%- include('partials/page-hero', {
+  heroH1: (typeof pageH1 !== 'undefined' ? pageH1 : 'Bank głosów'),
+  heroSub: (typeof genderSegment === 'undefined'
+    ? voiceCount + ' profesjonalnych lektorów w&nbsp;30+ językach - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do&nbsp;swojego projektu.'
+    : voices.length + ' profesjonalnych ' + (genderSegment === 'm' ? 'lektorów' : 'lektorek') + ' - doświadczeni aktorzy głosowi, prezenterzy radiowi i&nbsp;głosy znanych stacji TV. Odsłuchaj próbki i&nbsp;znajdź idealny głos do&nbsp;swojego projektu.'),
+  heroCta: 'none'
+}) %>
 
 <% if (typeof genderSegment !== 'undefined') { %>
 <!-- SEO TEKST - unikalna treść dla stron segmentowych -->
@@ -134,7 +127,7 @@
 </div>
 
 <!-- GŁÓWNY LAYOUT: sidebar + treść -->
-<div class="max-w-7xl mx-auto px-4 mt-6 pb-16 flex gap-6 items-start">
+<div id="glosy" class="max-w-7xl mx-auto px-4 mt-6 pb-16 flex gap-6 items-start scroll-mt-28">
 
   <!-- LEWY PANEL FILTRÓW (desktop) -->
   <aside class="hidden md:flex flex-col gap-5 w-52 flex-shrink-0 md:self-stretch">

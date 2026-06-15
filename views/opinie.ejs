@@ -1,16 +1,19 @@
 <%- include('partials/head') %>
 
+<%# Hero podstrony - partial page-hero (menu na obrazie). CTA "Dodaj opinię" w hero (-> #dodaj-opinie). Flaga pageHeroTransparent w route. %>
+<%- include('partials/page-hero', {
+  heroH1: 'Opinie naszych Klientów',
+  heroSub: 'Zebraliśmy ponad ' + reviews.length + ' opinii od&nbsp;Klientów z&nbsp;całej Polski. Oto, co&nbsp;o nas mówią.',
+  heroCtaHtml: `
+    <a href="#dodaj-opinie" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+      Dodaj opinię
+    </a>
+  `
+}) %>
+
 <section class="py-16 md:py-24">
   <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">Opinie naszych Klientów</h1>
-    <p class="text-gray-500 text-center mb-6 max-w-2xl mx-auto">Zebraliśmy ponad <strong class="text-gray-900"><%= reviews.length %> opinii</strong> od Klientów z całej Polski. Oto, co o nas mówią.</p>
-
-    <div class="text-center mb-6">
-      <a href="#dodaj-opinie" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-        Dodaj opinię
-      </a>
-    </div>
 
     <!-- Średnia ocena -->
     <div class="flex items-center justify-center gap-2 mb-12">
@@ -67,7 +70,7 @@
     <% } %>
 
     <!-- Formularz dodawania opinii -->
-    <div class="mt-16 bg-stone-100/80 rounded-2xl border border-gray-200 p-8" id="dodaj-opinie">
+    <div class="mt-16 bg-stone-100/80 rounded-2xl border border-gray-200 p-8 scroll-mt-28" id="dodaj-opinie">
       <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Dodaj swoją opinię</h2>
       <p class="text-gray-500 text-center mb-8">Współpracowałeś z nami? Podziel się swoim doświadczeniem.</p>
 

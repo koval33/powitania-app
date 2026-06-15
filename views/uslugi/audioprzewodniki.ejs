@@ -1,21 +1,11 @@
 <%- include('../partials/head') %>
 
-<!-- Hero -->
-<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent transition-colors">Strona główna</a>
-      <span class="mx-2 text-gray-300">›</span>
-      <a href="/nagrania-lektorskie/" class="hover:text-accent transition-colors">Nagrania lektorskie</a>
-      <span class="mx-2 text-gray-300">›</span>
-      <span class="text-gray-700">Audioprzewodniki</span>
-    </nav>
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Audioprzewodniki dla muzeów, parków i&nbsp;atrakcji turystycznych</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Tworzymy profesjonalne, wielojęzyczne nagrania do audioprzewodników. Wybieramy lektorów z&nbsp;naszego banku - polskich do wersji PL i&nbsp;native-speakerów do wersji obcojęzycznych. Od muzealnych kolekcji po parki tematyczne i&nbsp;szlaki turystyczne. Cyfrowe przewodniki dla aplikacji mobilnych, kodów QR, urządzeń przenośnych i&nbsp;systemów stacjonarnych.
-    </p>
-  </div>
-</section>
+<%# Hero podstrony - partial page-hero (menu na obrazie). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Audioprzewodniki dla muzeów, parków i&nbsp;atrakcji turystycznych',
+  heroSub: 'Profesjonalne, wielojęzyczne nagrania do&nbsp;audioprzewodników - muzea, parki tematyczne, szlaki turystyczne. Lektorzy PL i&nbsp;native speakerzy, integracja z&nbsp;aplikacjami, kodami QR i&nbsp;urządzeniami przenośnymi.',
+  heroCta: 'wycena'
+}) %>
 
 <!-- Próbki audio - multimedia content dla Senuto / SEO -->
 <section class="py-12 md:py-16 border-b border-gray-200">

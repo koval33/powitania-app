@@ -1,15 +1,11 @@
 <%- include('partials/head') %>
 
-<!-- HERO -->
-<section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Cennik nagrań lektorskich</h1>
-    <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Cennik Powitania.pl - przejrzyste stawki bez ukrytych dopłat. Lektor reklamowy od 300&nbsp;zł, narracja od 340&nbsp;zł/A4, IVR od 380&nbsp;zł netto. Współpracujemy z&nbsp;<%= voiceCount %> lektorami w&nbsp;30+ językach, realizacja 24-48h. Wycena online w&nbsp;30 minut.
-    </p>
-    <p class="text-xs text-gray-400 mt-5">Bez ukrytych kosztów · Faktura VAT · Odpowiadamy w ciągu 2 godzin</p>
-  </div>
-</section>
+<%# Hero podstrony - partial page-hero (menu na obrazie). Flaga pageHeroTransparent w route. %>
+<%- include('partials/page-hero', {
+  heroH1: 'Cennik nagrań lektorskich',
+  heroSub: 'Przejrzyste stawki bez ukrytych dopłat. Lektor reklamowy od&nbsp;300 zł, narracja od&nbsp;340 zł/A4, IVR od&nbsp;380 zł netto. ' + voiceCount + ' lektorów w&nbsp;30+ językach, realizacja 24-48h.',
+  heroCta: 'wycena'
+}) %>
 
 <!-- CENNIK -->
 <section class="py-10">
