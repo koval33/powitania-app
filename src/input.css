@@ -49,9 +49,9 @@
 .hero-fade {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(20, 23, 28, 0.5) 0%, rgba(20, 23, 28, 0.15) 16%, rgba(20, 23, 28, 0) 32%),
-    rgba(46, 51, 61, 0.45);
+  /* Mobile/tablet (<1024px): mocniejszy jednolity scrim - brak "doliny" jak na desktop,
+     wiec tekst musi byc czytelny nad jasnymi fragmentami zdjecia (okno/sciana). */
+  background: linear-gradient(to bottom, rgba(20, 23, 28, 0.70) 0%, rgba(20, 23, 28, 0.50) 24%, rgba(20, 23, 28, 0.52) 56%, rgba(20, 23, 28, 0.66) 100%);
 }
 @media (min-width: 1024px) {
   /* zdjecie na cala szerokosc: lektorzy po lewej, rack ze sprzetem przy prawej krawedzi.
