@@ -20,9 +20,9 @@
   </div>
 
   <div class="relative z-10 min-h-[380px] md:min-h-[420px] flex items-center pt-20 md:pt-24 pb-6">
-    <div class="ml-auto w-full lg:w-[44%] lg:mr-[2%] px-6 md:px-10 lg:px-6">
+    <div class="ml-auto w-full lg:w-[44%] lg:mr-[2%] px-6 md:px-10 lg:px-6" style="text-shadow: 0 1px 5px rgba(0,0,0,0.55);">
       <% if (typeof breadcrumbs !== 'undefined' && breadcrumbs && breadcrumbs.length) { %>
-      <nav class="text-sm text-gray-400 mb-3 flex items-center flex-wrap gap-1.5" aria-label="Okruszki">
+      <nav class="text-sm text-gray-300 mb-3 hidden md:flex items-center flex-wrap gap-1.5" aria-label="Okruszki">
         <% breadcrumbs.forEach(function(c, i) { %>
           <% if (i < breadcrumbs.length - 1) { %>
             <a href="<%= c.url %>" class="hover:text-accent-light transition-colors"><%= c.name %></a>
@@ -34,7 +34,7 @@
       </nav>
       <% } %>
       <h1 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-white leading-[1.12] mb-2.5"><%- heroH1 %></h1>
-      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4"><%- heroSub %></p>
+      <p class="text-base md:text-lg text-gray-100 leading-relaxed mb-4"><%- heroSub %></p>
       <% if (typeof heroCtaHtml !== 'undefined' && heroCtaHtml) { %>
       <%# Wlasne przyciski CTA (np. jingle: Posluchaj realizacji + Zamow wycene + Zadzwon) %>
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3"><%- heroCtaHtml %></div>
