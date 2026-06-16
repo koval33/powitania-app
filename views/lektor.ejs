@@ -39,7 +39,7 @@
         </div>
         <div class="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
           <% if (lektor.famous) { %>
-            <a href="/bank-glosow/?famous=1" class="bg-yellow-50 text-yellow-700 hover:bg-yellow-100 hover:text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300 transition-colors" title="Zobacz wszystkich lektorów z grupy Znani i Lubiani">Znani i lubiani</a>
+            <a href="/bank-glosow/?famous=1" class="badge-white text-xs font-semibold px-3 py-1 rounded-full border transition-colors" title="Zobacz wszystkich lektorów z grupy Znani i Lubiani">Znani i lubiani</a>
           <% } %>
           <% if (lektor.native) { %>
             <a href="/bank-glosow/?native=1" class="bg-blue-50 text-blue-700 hover:bg-blue-100 hover:text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-300 transition-colors" title="Zobacz wszystkich Native speakerów">Native speaker</a>
@@ -53,7 +53,7 @@
         </div>
 
         <% if (!lektor.hidePrice && lektor.prices) { %>
-        <div class="mt-5 space-y-1.5 text-xs text-gray-500">
+        <div class="mt-5 space-y-2 text-sm text-gray-300">
           <% if (lektor.prices.ivr_100) { %>
           <div class="flex justify-between"><span>Zapowiedź tel.</span><span class="font-semibold text-gray-800">od <%= lektor.prices.ivr_100 %> zł</span></div>
           <% } %>
@@ -88,7 +88,7 @@
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3"><%= lektor.name %></h1>
 
         <% if (lektor.description) { %>
-          <p class="text-gray-500 leading-relaxed mb-4"><%= lektor.description %></p>
+          <p class="text-gray-300 leading-relaxed mb-4"><%= lektor.description %></p>
         <% } %>
         <% if (lektor.studioNote) { %>
           <p class="text-sm text-gray-400 italic mb-4"><%= lektor.studioNote %></p>
@@ -167,7 +167,7 @@
 
         <!-- INTELIGENTNY WIZARD WYCENY (widoczny gdy kontekst z kreatora) -->
         <div id="pricing-wizard" class="mt-6 hidden">
-          <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/30 p-6">
+          <div class="form-light bg-white shadow-sm rounded-2xl border-2 border-accent/30 p-6">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-2.5 flex-wrap">
                 <svg class="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -304,11 +304,11 @@
         <!-- INLINE: Wyceń nagranie (zaraz po CTA, wyrównane do lewej z resztą) -->
         <% if (!lektor.hidePrice) { %>
         <div id="wycena" class="mt-6 scroll-mt-[10rem]">
-          <div class="bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
+          <div class="form-light bg-white shadow-sm rounded-2xl border-2 border-accent/20 p-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-1">
           Wyceń nagranie - <%= lektor.name %>
         </h2>
-        <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Kliknij typ nagrania</strong> <span class="text-accent font-semibold text-lg align-middle" aria-hidden="true">↓</span> cena wyliczy się od razu.</p>
+        <p class="text-base text-gray-900 mb-4"><strong class="font-semibold">Kliknij typ nagrania</strong> <svg class="inline-block w-5 h-5 align-middle mx-1 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,2.5 5,19.5 9.3,15.3 12,21 14.2,20 11.5,14.3 16.8,14.3"/></svg> cena wyliczy się od razu.</p>
 
         <!-- Wybór typu nagrania - nad formularzem -->
         <select id="modal-service-select" class="hidden">
@@ -499,7 +499,7 @@
     <!-- FORMULARZ ZAPYTANIA (dla lektorów z hidePrice) -->
     <% if (lektor.hidePrice) { %>
     <div class="mt-12 scroll-mt-[8rem]" id="zapytanie">
-      <div class="max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border border-gray-200 p-8">
+      <div class="form-light max-w-2xl mx-auto bg-white shadow-sm rounded-2xl border border-gray-200 p-8">
         <div class="flex items-center gap-4 mb-6">
           <% if (lektor.photo) { %>
             <img src="<%= lektor.photo %>" alt="<%= lektor.name %>" class="w-14 h-14 rounded-full object-cover border-2 border-gray-200 flex-shrink-0">
@@ -554,8 +554,9 @@
     </div>
     <% } %>
 
-    <!-- FAQ -->
-    <div class="mt-16">
+    <!-- FAQ - bialy pas na cala szerokosc (wyjatek od ciemnego motywu, jak w bank-glosow) -->
+    <div class="mt-16 faq-light">
+      <div class="faq-inner max-w-5xl mx-auto px-4">
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Najczęściej zadawane pytania</h2>
       <div class="space-y-3 max-w-3xl">
 
@@ -609,6 +610,7 @@
         </details>
         <% } %>
 
+      </div>
       </div>
     </div>
 
@@ -1372,11 +1374,11 @@ function getQuestionLabel(serviceType) {
 function renderPricing(result, wordCount, targetEl) {
   if (!result) { targetEl.innerHTML = ''; targetEl.classList.add('hidden'); return; }
 
-  var html = '<div class="bg-green-50/50 border border-green-200 rounded-xl p-4 mt-4">';
+  var html = '<div class="price-summary-light border rounded-xl p-4 mt-4">';
 
   if (result.needsCustomQuote) {
     html += '<div class="text-center">' +
-      '<p class="text-yellow-400 text-sm font-medium">Wycena indywidualna</p>' +
+      '<p class="text-yellow-600 text-sm font-medium">Wycena indywidualna</p>' +
       '<p class="text-gray-500 text-xs mt-1">Skontaktuj się, aby uzyskać dokładną wycenę.</p>' +
     '</div>';
   } else if (result.basePrice) {
@@ -1455,9 +1457,9 @@ function renderPricing(result, wordCount, targetEl) {
 
     // Suma
     var brutto = Math.round(totalBase * 1.23 * 100) / 100;
-    html += '<div class="border-t border-green-200 mt-3 pt-3 flex items-center justify-between">' +
+    html += '<div class="border-t border-gray-200 mt-3 pt-3 flex items-center justify-between">' +
       '<span class="text-gray-900 font-bold">Łącznie:</span>' +
-      '<div class="text-right"><span id="pricing-total" class="text-2xl font-bold text-green-700">' + totalBase + ' zł netto</span>' +
+      '<div class="text-right"><span id="pricing-total" class="text-2xl font-bold text-accent">' + totalBase + ' zł netto</span>' +
       '<div id="pricing-brutto" class="text-sm text-gray-500">' + brutto.toFixed(2) + ' zł brutto (z VAT 23%)</div></div>' +
     '</div>';
 

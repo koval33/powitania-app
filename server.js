@@ -633,6 +633,7 @@ app.get('/bank-glosow/', (req, res) => {
     title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
     description: `Bank głosów lektorskich Powitania.pl - ${res.locals.voiceCount} profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.`,
     pageHeroTransparent: true,
+    mainClass: 'bank-dark',
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Bank głosów', url: '/bank-glosow/' }
@@ -649,7 +650,8 @@ app.get('/bank-glosow/meskie/', (req, res) => {
     voices: loadVoices().filter(v => v.gender === 'm'),
     genderSegment: 'm',
     pageH1: 'Głosy męskie do nagrań',
-    pageHeroTransparent: true
+    pageHeroTransparent: true,
+    mainClass: 'bank-dark'
   });
 });
 app.get('/bank-glosow/zenskie/', (req, res) => {
@@ -659,7 +661,8 @@ app.get('/bank-glosow/zenskie/', (req, res) => {
     voices: loadVoices().filter(v => v.gender === 'f'),
     genderSegment: 'f',
     pageH1: 'Głosy żeńskie do nagrań',
-    pageHeroTransparent: true
+    pageHeroTransparent: true,
+    mainClass: 'bank-dark'
   });
 });
 app.get('/bank/glosy-meskie/', (req, res) => res.redirect(301, '/bank-glosow/meskie/'));
@@ -685,6 +688,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
     title: lektor.seoTitle || (lektor.name + ' - Lektor | powitania.pl'),
     description: lektor.seoDescription || lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
+    mainClass: 'lektor-dark',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'Bank głosów', url: '/bank-glosow/' },

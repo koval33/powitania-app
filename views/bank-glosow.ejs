@@ -276,7 +276,7 @@
 
     <!-- Licznik -->
     <%/* Mobile: ukryte (oszczedza wiersz; feedback ilosci jest nizej w "Pokazano X z Y"). #voice-count zostaje w DOM - JS dalej updateuje. */%>
-    <p class="hidden md:block text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
+    <p id="voice-count-line" class="hidden md:block text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
 
     <style>
       /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
@@ -293,11 +293,25 @@
       .vc-photo {
         grid-column: 1; grid-row: 1 / -1;
         width: 140px !important;
-        height: 140px !important;
-        align-self: start !important;
+        height: auto !important;
+        align-self: stretch !important;
         border-radius: 0 !important;
+        position: relative !important;
       }
-      .vc-photo img { width: 100% !important; height: 100% !important; }
+      /* img pozycjonowany absolutnie - wypelnia kafel, NIE narzuca wlasnej (intrinsic) wysokosci.
+         Dzieki temu wysokosc karty wyznacza tresc, a nie proporcje zdjecia (portret vs kwadrat). */
+      .vc-photo img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; display: block !important; object-fit: cover !important; }
+
+      /* Waveform (SoundCloud-style): slupki szare = nieodtworzone, akcent = odtworzone.
+         --wave-accent steruje kolorem zagranej czesci (zmiana w 1 miejscu, np. na pomaranczowy). */
+      .audio-progress { --wave-accent: #199dff; }
+      .wave-svg { overflow: visible; }
+      .wave-top-base { fill: #c2c8d2; }
+      .wave-bot-base { fill: #c2c8d2; opacity: 0.42; }
+      .wave-played { transition: clip-path 100ms linear; }
+      .wave-top-played { fill: var(--wave-accent); }
+      .wave-bot-played { fill: var(--wave-accent); opacity: 0.42; }
+      .player-box:hover .wave-top-base { fill: #b4bbc7; }
       .vc-player-wrap { display: contents; }
       .vc-player-row { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding-top: 16px; }
       .vc-info { grid-column: 2; grid-row: 2; min-width: 0; align-self: end; padding-bottom: 16px; }
@@ -369,6 +383,9 @@
           align-self: center;
         }
         .vc-cta > a, .vc-cta > button { flex: 1; min-height: 44px; }
+        /* Premium (tylko "Zapytaj" - jedyne dziecko): nie rozciagaj na full width,
+           ma byc tej samej szerokosci co jeden z dwoch przyciskow zwyklych lektorow (polowa - polowa gapa) */
+        .vc-cta > :only-child { flex: 0 0 calc(50% - 4px) !important; }
 
         /* Mobile - zaokraglone zdjecie (avatar-style w male karcie) */
         .vc-photo { border-radius: 0.5rem !important; }
@@ -423,8 +440,6 @@
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
                     <span><%= v.turnaround %></span>
                   <% } %>
-                <% } else if (v.hidePrice) { %>
-                  <span class="text-yellow-600">wycena indywidualna</span>
                 <% } %>
               </div>
             </div>
@@ -454,30 +469,42 @@
                 <span class="audio-time">00:00</span>
                 <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
-              <%# Waveform - continuous path (spektrum dzwiekowe) - symetryczne gora/dol %>
+              <%# Waveform w stylu SoundCloud: dyskretne slupki + przygaszone odbicie pod linia.
+                  Dwie warstwy slupkow (szara = nieodtworzone, akcent = odtworzone) - warstwa
+                  akcentu odslaniana od lewej przez clip-path (JS). Kazda warstwa to JEDEN <path>
+                  (rect-y jako subpath) zeby nie mnozyc tysiecy elementow DOM przy ~236 kartach. %>
               <%
                 var _hashStr = function(s){var h=0;for(var i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return Math.abs(h);};
                 var _seedRnd = function(seed, i){var x=Math.sin(seed*9999+i*1.37)*10000;return x-Math.floor(x);};
                 var _seed = _hashStr(v.id || v.name);
-                var _waveBars = 80;
-                var _midY = 18; // pol wysokosci viewBox (36/2)
-                var _topPts = [];
-                var _botPts = [];
+                var _waveBars = 150;
+                var _baseY = 23;     // linia bazowa (gora wieksza, dol = odbicie)
+                var _topMax = 21;    // max wysokosc slupka nad linia
+                var _botMax = 12;    // max wysokosc odbicia pod linia
+                var _barW = 0.55;    // szerokosc slupka w jednostce slotu (slot = 1) - reszta to odstep
+                var _gap = (1 - _barW) / 2;
+                var _topD = '', _botD = '';
                 for(var _i=0; _i<_waveBars; _i++) {
-                  var _h = 4 + Math.round(_seedRnd(_seed, _i) * 26);
-                  var _x = (_i * 100 / (_waveBars - 1)).toFixed(2);
-                  _topPts.push(_x + ',' + (_midY - _h/2).toFixed(2));
-                  _botPts.push(_x + ',' + (_midY + _h/2).toFixed(2));
+                  var _r1 = _seedRnd(_seed, _i);
+                  var _r2 = _seedRnd(_seed, _i*3.13 + 7);
+                  var _env = 0.55 + 0.45 * Math.sin(_i*0.20 + _seed*0.7); // organiczna obwiednia (ciche/glosne fragmenty)
+                  var _amp = Math.min(1, (0.4*_r1 + 0.6*_r2) * _env + 0.08);
+                  var _topH = +(2 + _amp*(_topMax-2)).toFixed(2);
+                  var _botH = +(Math.min(_botMax, _topH*0.5 + 1)).toFixed(2);
+                  var _x = +(_i + _gap).toFixed(3);
+                  _topD += 'M' + _x + ' ' + (_baseY - _topH).toFixed(2) + 'h' + _barW + 'v' + _topH + 'h-' + _barW + 'z';
+                  _botD += 'M' + _x + ' ' + _baseY + 'h' + _barW + 'v' + _botH + 'h-' + _barW + 'z';
                 }
-                // Path: M start L top points L bottom (reversed) Z
-                var _pathD = 'M ' + _topPts[0] + ' L ' + _topPts.join(' L ') + ' L ' + _botPts.reverse().join(' L ') + ' Z';
               %>
               <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer">
-                <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="<%= _pathD %>" fill="currentColor"/>
+                <svg class="wave-svg absolute inset-0 w-full h-full" viewBox="0 0 <%= _waveBars %> 36" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="wave-top-base" d="<%= _topD %>"/>
+                  <path class="wave-bot-base" d="<%= _botD %>"/>
+                  <g class="wave-played" style="clip-path: inset(0 100% 0 0);">
+                    <path class="wave-top-played" d="<%= _topD %>"/>
+                    <path class="wave-bot-played" d="<%= _botD %>"/>
+                  </g>
                 </svg>
-                <%# Cienka pionowa kreska - progress indicator (2px wide, centered via translateX) %>
-                <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left: 0%; width: 1px; background-color: rgba(107,114,128,0.8); transform: translateX(-0.5px); transition: left 100ms linear;"></div>
               </div>
               <%# Download MP3 - stara ikonka (strzalka w dol, gray) %>
               <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Pobierz próbkę MP3" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
@@ -677,7 +704,7 @@
     currentBtn.querySelector('.pause-icon').classList.add('hidden');
     var oldRow = currentBtn.closest('.player-box');
     if (oldRow) {
-      oldRow.querySelector('.audio-bar').style.left = '0%';
+      setWavePlayed(oldRow, 0);
       oldRow.querySelector('.audio-time').textContent = '00:00';
     }
   }
@@ -696,7 +723,7 @@
       var row = currentBtn.closest('.player-box');
       if (!row) return;
       var pct = (el.currentTime / el.duration) * 100;
-      row.querySelector('.audio-bar').style.left = pct + '%';
+      if (isFinite(pct)) setWavePlayed(row, pct);
       row.querySelector('.audio-time').textContent = formatTime(el.currentTime);
     });
     el.addEventListener('loadedmetadata', function() {
@@ -799,6 +826,13 @@
     });
     // Nawigacja do profilu przez <a> na zdjęciu i nazwisku - brak JS click handler
   });
+
+  // Odslania zagrana (akcentowa) warstwe fali od lewej: pct 0-100.
+  function setWavePlayed(row, pct) {
+    if (!row) return;
+    var wp = row.querySelector('.wave-played');
+    if (wp) wp.style.clipPath = 'inset(0 ' + (100 - Math.max(0, Math.min(100, pct))) + '% 0 0)';
+  }
 
   function formatTime(s) {
     var m = Math.floor(s / 60);

@@ -20,16 +20,16 @@
    Lapie wszystkie warianty *play-btn (play-btn, ivr-play-btn, sample-play-btn)
    z wyjatkiem melody-play-btn (ma wlasny, subtelny styl + ikone w kolorze akcentu). */
 [class*="play-btn"]:not(.melody-play-btn) {
-  background-color: #0d9488;
+  background-color: #199dff;
   border-color: transparent;
   color: #fff;
-  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.25);
+  box-shadow: 0 2px 6px rgba(25, 157, 255, 0.25);
   transition: background-color .15s ease, transform .15s ease, box-shadow .15s ease;
 }
 [class*="play-btn"]:not(.melody-play-btn):hover {
-  background-color: #0f766e;
+  background-color: #0c7cd5;
   transform: scale(1.06);
-  box-shadow: 0 5px 14px rgba(13, 148, 136, 0.35);
+  box-shadow: 0 5px 14px rgba(25, 157, 255, 0.35);
 }
 [class*="play-btn"]:not(.melody-play-btn):active {
   transform: scale(0.97);
@@ -80,3 +80,194 @@
   }
 }
 
+
+/* ===== Dark theme - TYLKO bank-glosow (main.bank-dark). Stara ciemna tonacja WP (szary charcoal),
+   niebieski akcent. Karty lektorow biale. Tlo #2e333d = jak hero -> plynne przejscie, jasniejsze niz czarne. ===== */
+main.bank-dark { background-color: #2e333d; }
+/* Karta lekko odstaje od tla: SAM cien (bez krawedzi - krawedz robila jasna kreske na flush-zdjeciu).
+   Biala karta i tak odcina sie od ciemnego tla, cien dodaje glebi. */
+main.bank-dark .voice-card {
+  border-width: 0 !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.38) !important;
+}
+
+/* Sekcje SEO (segmentowe + dolne) - jasny tekst; hero ma wlasny styl */
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .text-gray-900 { color: #f3f4f6 !important; }
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .text-gray-700,
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .text-gray-600 { color: #c2c7cf !important; }
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .border-gray-200,
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .border-gray-100 { border-color: #3a3f4a !important; }
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) a { color: #5cb8ff !important; }
+main.bank-dark .prose { background-color: #272c34 !important; border-color: #3a3f4a !important; }
+
+/* Licznik lektorow */
+main.bank-dark #voice-count-line { color: #aab0ba !important; }
+main.bank-dark #voice-count-line #voice-count { color: #f3f4f6 !important; }
+
+/* Panel filtrow (desktop) + mobilny pasek */
+main.bank-dark #filters-sidebar { background-color: #272c34 !important; border-color: #3a3f4a !important; }
+main.bank-dark #filters-bar { background-color: #272c34 !important; box-shadow: 0 2px 12px rgba(0,0,0,0.4) !important; }
+main.bank-dark #filters-sidebar label,
+main.bank-dark #filters-sidebar h3,
+main.bank-dark #filters-sidebar p,
+main.bank-dark #filters-sidebar span,
+main.bank-dark #filters-sidebar .text-gray-900,
+main.bank-dark #filters-sidebar .text-gray-700 { color: #e5e7eb !important; }
+main.bank-dark #filters-sidebar .text-gray-500 { color: #aab0ba !important; }
+main.bank-dark #filters-sidebar .border-gray-100,
+main.bank-dark #filters-sidebar .border-t { border-color: #3a3f4a !important; }
+main.bank-dark #filters-sidebar a { color: #5cb8ff !important; }
+
+/* Inputy / selecty */
+main.bank-dark .bank-filter-select,
+main.bank-dark #filters-sidebar input[type="text"],
+main.bank-dark #filters-bar input[type="text"],
+main.bank-dark #filters-bar select {
+  background-color: #1f2329 !important;
+  border-color: #3a3f4a !important;
+  color: #e5e7eb !important;
+}
+main.bank-dark input::placeholder { color: #7b818c !important; }
+
+/* "Pokaz wiecej" */
+main.bank-dark #load-more-btn { background-color: #272c34 !important; border-color: #3a3f4a !important; color: #e5e7eb !important; }
+
+/* Przejscie hero -> bank: zostaje delikatna kreska (border-b border-white/10 z hero) - user wolal ja niz fade */
+
+/* Toggle filtrow - ciemne zamiast bialych, active = niebieski */
+main.bank-dark .bank-filter-toggle,
+main.bank-dark .filter-btn {
+  background-color: #1f2329 !important;
+  border-color: #3a3f4a !important;
+  color: #aab0ba !important;
+}
+main.bank-dark .bank-filter-toggle:hover,
+main.bank-dark .filter-btn:hover { color: #fff !important; border-color: #5b626d !important; }
+main.bank-dark .bank-filter-toggle.active,
+main.bank-dark .filter-btn.active {
+  color: #199dff !important; border-color: #199dff !important;
+  background-color: rgba(25,157,255,0.12) !important;
+}
+main.bank-dark #filters-bar .border-gray-200 { border-color: #3a3f4a !important; }
+
+/* Zdjecie lektora flush: konczy sie dokladnie tam gdzie panel (gora, lewa, dol).
+   Desktop: pelna wysokosc grida (grid-row 1/-1). Mobile: pelna wysokosc wiersza ze zdjeciem
+   (player/CTA sa full-width pod spodem, wiec dalej nie siegnie). */
+/* Zdjecie: STALA wysokosc (uniform na wszystkich kartach) + flush gora/lewa, bez ramki.
+   Desktop zostaje 140x140 z base (top-aligned). Na nielicznych wyzszych kartach maly odstep u dolu. */
+main.bank-dark .vc-photo { border-radius: 0 !important; }
+@media (max-width: 767px) {
+  main.bank-dark .vc-photo {
+    width: 88px !important; height: 88px !important;
+    margin: -10px 4px 0 -10px !important;
+  }
+}
+
+/* Sekcje FAQ + "Nie mozesz" (bg-stone) ZOSTAJA JASNE jak w reszcie serwisu (czarne FAQ wygladalo zle).
+   Solidne jasne tlo (zamiast polprzezroczystego stone na ciemnym), biale accordeony + ciemny tekst (z oryginalu). */
+main.bank-dark section[class*="bg-stone"] { background-color: #f4f4f2 !important; }
+/* text-gray-500 w POZOSTALYCH (ciemnych) sekcjach - jasny */
+main.bank-dark section:not([data-page-hero]):not([class*="bg-stone"]) .text-gray-500 { color: #aab0ba !important; }
+
+/* ===== Dark theme - KARTA LEKTORA (main.lektor-dark) v3.
+   Model: CIEMNE karty + ciemny canvas (domyslnie). JASNE tylko tam gdzie user prosil:
+   formularze (.form-light) biale, playery (.sample-row) jasnoszare, FAQ (.faq-light) bialy pas,
+   podsumowanie cen (.price-summary-light) jasny box bez zieleni.
+   Reszta (kontakt, "Zobacz tez", video, podobni) - CIEMNA. Naglowek siteHeader - ciemnieje na scroll. ===== */
+main.lektor-dark { background-color: #2e333d; padding-top: 88px; overflow-x: clip; }
+@media (min-width: 768px) { main.lektor-dark { padding-top: 96px; } }
+main.lektor-dark > section[class*="bg-stone"] { background-color: transparent !important; }
+
+/* Domyslnie CIEMNE powierzchnie + JASNY tekst */
+main.lektor-dark .bg-white { background-color: #272c34 !important; }
+main.lektor-dark .bg-gray-50 { background-color: #1f2329 !important; }
+main.lektor-dark .bg-gray-100 { background-color: #2b313a !important; }
+main.lektor-dark .text-gray-900 { color: #f3f4f6 !important; }
+main.lektor-dark .text-gray-800 { color: #e5e7eb !important; }
+main.lektor-dark .text-gray-700 { color: #d4d8df !important; }
+main.lektor-dark .text-gray-600 { color: #c2c7cf !important; }
+main.lektor-dark .text-gray-500 { color: #c3c9d2 !important; }
+main.lektor-dark .text-gray-400 { color: #aab0ba !important; }
+main.lektor-dark .border-gray-100,
+main.lektor-dark .border-gray-200,
+main.lektor-dark .border-gray-300 { border-color: #3a3f4a !important; }
+main.lektor-dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #3a3f4a !important; }
+/* Inputy poza formularzami - ciemne (w .form-light nadpisane na jasne nizej) */
+main.lektor-dark input[type="text"], main.lektor-dark input[type="email"],
+main.lektor-dark input[type="tel"], main.lektor-dark textarea {
+  background-color: #1f2329 !important; border-color: #3a3f4a !important; color: #e5e7eb !important;
+}
+main.lektor-dark input::placeholder, main.lektor-dark textarea::placeholder { color: #7b818c !important; }
+main.lektor-dark input[type="radio"], main.lektor-dark input[type="checkbox"] { accent-color: #199dff !important; }
+main.lektor-dark .shadow-sm { box-shadow: 0 4px 16px rgba(0,0,0,0.28) !important; }
+main.lektor-dark .shadow-md { box-shadow: 0 6px 22px rgba(0,0,0,0.36) !important; }
+
+/* ===== Playery (probki audio) - CIEMNE, ale ciut JASNIEJSZE od tla (raised card) +
+   wyrazniejszy obwod, zeby nie zlewaly sie z ciemnym canvasem. ===== */
+main.lektor-dark .sample-row {
+  background-color: #373d49 !important;   /* lekko jasniejsze niz canvas #2e333d */
+  border-color: #4c5462 !important;       /* widoczna krawedz */
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 4px 14px rgba(0,0,0,0.3) !important;
+}
+/* Przycisk play: niebieski ring + niebieska ikona */
+main.lektor-dark .sample-play-btn { border-color: #199dff !important; background-color: #2b313c !important; }
+main.lektor-dark .sample-play-btn .play-icon,
+main.lektor-dark .sample-play-btn .pause-icon { color: #199dff !important; }
+
+/* ===== Badge "Znani i lubiani" w profilu lektora - bialy (zamiast zoltego z poprzedniego layoutu) ===== */
+main.lektor-dark .badge-white { background-color: #ffffff !important; color: #374151 !important; border-color: #e5e7eb !important; }
+main.lektor-dark .badge-white:hover { background-color: #f3f4f6 !important; color: #1f2937 !important; }
+
+/* ===== Formularze zamowienia/zapytania (.form-light) - BIALE + ciemny tekst + jasne inputy ===== */
+main.lektor-dark .form-light { background-color: #ffffff !important; border-color: #e5e7eb !important; }
+main.lektor-dark .form-light .bg-white { background-color: #ffffff !important; }
+main.lektor-dark .form-light .bg-gray-50 { background-color: #eef1f4 !important; }
+main.lektor-dark .form-light .bg-gray-100 { background-color: #e6e9ed !important; }
+main.lektor-dark .form-light .text-gray-900 { color: #1f2937 !important; }
+main.lektor-dark .form-light .text-gray-800,
+main.lektor-dark .form-light .text-gray-700 { color: #374151 !important; }
+main.lektor-dark .form-light .text-gray-600 { color: #4b5563 !important; }
+main.lektor-dark .form-light .text-gray-500 { color: #6b7280 !important; }
+main.lektor-dark .form-light .text-gray-400 { color: #9ca3af !important; }
+main.lektor-dark .form-light .border-gray-100,
+main.lektor-dark .form-light .border-gray-200,
+main.lektor-dark .form-light .border-gray-300 { border-color: #e2e5e9 !important; }
+main.lektor-dark .form-light .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #e2e5e9 !important; }
+main.lektor-dark .form-light input[type="text"],
+main.lektor-dark .form-light input[type="email"],
+main.lektor-dark .form-light input[type="tel"],
+main.lektor-dark .form-light textarea {
+  background-color: #ffffff !important; border-color: #d1d5db !important; color: #1f2937 !important;
+}
+main.lektor-dark .form-light input::placeholder,
+main.lektor-dark .form-light textarea::placeholder { color: #9ca3af !important; }
+/* Czytelniejsze (wieksze) czcionki w formularzu wyceny - drobny tekst byl za maly */
+main.lektor-dark .form-light .text-xs { font-size: 0.8125rem !important; line-height: 1.15rem !important; }
+main.lektor-dark .form-light .text-sm { font-size: 0.9375rem !important; line-height: 1.4rem !important; }
+/* Etykiety drugorzedne ciemniejsze (wyrazniejsze na bialym) */
+main.lektor-dark .form-light .text-gray-500 { color: #586273 !important; }
+
+/* ===== FAQ: bialy pas na CALA SZEROKOSC (full-bleed), tresc wycentrowana inner-wrapperem ===== */
+main.lektor-dark .faq-light {
+  background-color: #ffffff !important;
+  width: 100vw; position: relative; left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  padding-top: 2.75rem; padding-bottom: 3.25rem;
+  border-radius: 0 !important;
+}
+main.lektor-dark .faq-light .bg-white { background-color: #f6f6f5 !important; }
+main.lektor-dark .faq-light .text-gray-900 { color: #1f2937 !important; }
+main.lektor-dark .faq-light .text-gray-600 { color: #4b5563 !important; }
+main.lektor-dark .faq-light .text-gray-400 { color: #9ca3af !important; }
+main.lektor-dark .faq-light .border-gray-200 { border-color: #e7e7e4 !important; }
+main.lektor-dark .faq-light a { color: #199dff !important; }
+main.lektor-dark .faq-light .shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important; }
+
+/* ===== Podsumowanie cen - jasny box, bez zieleni (wewnatrz bialego formularza) ===== */
+main.lektor-dark .price-summary-light { background-color: #f4f6f8 !important; border-color: #dfe3e8 !important; }
+main.lektor-dark .price-summary-light .text-gray-900 { color: #1f2937 !important; }
+main.lektor-dark .price-summary-light .text-gray-600 { color: #4b5563 !important; }
+main.lektor-dark .price-summary-light .text-gray-500 { color: #6b7280 !important; }
+main.lektor-dark .price-summary-light .bg-gray-50 { background-color: #ffffff !important; }
+main.lektor-dark .price-summary-light .bg-gray-100 { background-color: #eceef1 !important; }
+main.lektor-dark .price-summary-light .border-gray-200 { border-color: #dfe3e8 !important; }
