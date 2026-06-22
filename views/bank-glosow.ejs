@@ -372,7 +372,7 @@
           padding: 10px 12px !important;
         }
         /* Wiekszy Play button - tap-target 40x40 */
-        .player-box .play-btn { width: 40px !important; height: 40px !important; }
+        .player-box .play-btn { width: 44px !important; height: 44px !important; }
 
         /* STREFA 3 - akcje: dwa CTA side-by-side, pełna szerokość */
         .vc-cta {
@@ -469,40 +469,21 @@
                 <span class="audio-time">00:00</span>
                 <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
-              <%# Waveform w stylu SoundCloud: dyskretne slupki + przygaszone odbicie pod linia.
-                  Dwie warstwy slupkow (szara = nieodtworzone, akcent = odtworzone) - warstwa
-                  akcentu odslaniana od lewej przez clip-path (JS). Kazda warstwa to JEDEN <path>
-                  (rect-y jako subpath) zeby nie mnozyc tysiecy elementow DOM przy ~236 kartach. %>
+              <%# Waveform SoundCloud-style. WYDAJNOSC: sciezki <path d> NIE sa renderowane
+                  server-side (przy 236 kartach to bylo ~4 MB HTML). Emitujemy tylko seed
+                  (data-wave-seed); slupki rysuje JS (buildWave) gdy karta wejdzie w ekran
+                  (IntersectionObserver). Algorytm 1:1 z dawnym server-side. viewBox width = 150 (_waveBars). %>
               <%
                 var _hashStr = function(s){var h=0;for(var i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return Math.abs(h);};
-                var _seedRnd = function(seed, i){var x=Math.sin(seed*9999+i*1.37)*10000;return x-Math.floor(x);};
                 var _seed = _hashStr(v.id || v.name);
-                var _waveBars = 150;
-                var _baseY = 23;     // linia bazowa (gora wieksza, dol = odbicie)
-                var _topMax = 21;    // max wysokosc slupka nad linia
-                var _botMax = 12;    // max wysokosc odbicia pod linia
-                var _barW = 0.55;    // szerokosc slupka w jednostce slotu (slot = 1) - reszta to odstep
-                var _gap = (1 - _barW) / 2;
-                var _topD = '', _botD = '';
-                for(var _i=0; _i<_waveBars; _i++) {
-                  var _r1 = _seedRnd(_seed, _i);
-                  var _r2 = _seedRnd(_seed, _i*3.13 + 7);
-                  var _env = 0.55 + 0.45 * Math.sin(_i*0.20 + _seed*0.7); // organiczna obwiednia (ciche/glosne fragmenty)
-                  var _amp = Math.min(1, (0.4*_r1 + 0.6*_r2) * _env + 0.08);
-                  var _topH = +(2 + _amp*(_topMax-2)).toFixed(2);
-                  var _botH = +(Math.min(_botMax, _topH*0.5 + 1)).toFixed(2);
-                  var _x = +(_i + _gap).toFixed(3);
-                  _topD += 'M' + _x + ' ' + (_baseY - _topH).toFixed(2) + 'h' + _barW + 'v' + _topH + 'h-' + _barW + 'z';
-                  _botD += 'M' + _x + ' ' + _baseY + 'h' + _barW + 'v' + _botH + 'h-' + _barW + 'z';
-                }
               %>
-              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer">
-                <svg class="wave-svg absolute inset-0 w-full h-full" viewBox="0 0 <%= _waveBars %> 36" preserveAspectRatio="none" aria-hidden="true">
-                  <path class="wave-top-base" d="<%= _topD %>"/>
-                  <path class="wave-bot-base" d="<%= _botD %>"/>
+              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer" data-wave-seed="<%= _seed %>">
+                <svg class="wave-svg absolute inset-0 w-full h-full" viewBox="0 0 150 36" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="wave-top-base"/>
+                  <path class="wave-bot-base"/>
                   <g class="wave-played" style="clip-path: inset(0 100% 0 0);">
-                    <path class="wave-top-played" d="<%= _topD %>"/>
-                    <path class="wave-bot-played" d="<%= _botD %>"/>
+                    <path class="wave-top-played"/>
+                    <path class="wave-bot-played"/>
                   </g>
                 </svg>
               </div>
@@ -696,6 +677,51 @@
   var allCards = Array.from(document.querySelectorAll('.voice-card'));
   var filteredCards = allCards.slice();
   var shownCount = PAGE_SIZE;
+
+  // --- Lazy waveform: rysuj slupki dopiero gdy karta wejdzie w ekran (oszczedza ~4 MB HTML).
+  // Algorytm 1:1 z dawnym server-side; viewBox 0 0 150 36. ---
+  function buildWavePaths(seed) {
+    var WB = 150, baseY = 23, topMax = 21, botMax = 12, barW = 0.55, gap = (1 - barW) / 2;
+    function rnd(s, i) { var x = Math.sin(s * 9999 + i * 1.37) * 10000; return x - Math.floor(x); }
+    var topD = '', botD = '';
+    for (var i = 0; i < WB; i++) {
+      var r1 = rnd(seed, i), r2 = rnd(seed, i * 3.13 + 7);
+      var env = 0.55 + 0.45 * Math.sin(i * 0.20 + seed * 0.7);
+      var amp = Math.min(1, (0.4 * r1 + 0.6 * r2) * env + 0.08);
+      var topH = +(2 + amp * (topMax - 2)).toFixed(2);
+      var botH = +(Math.min(botMax, topH * 0.5 + 1)).toFixed(2);
+      var x = +(i + gap).toFixed(3);
+      topD += 'M' + x + ' ' + (baseY - topH).toFixed(2) + 'h' + barW + 'v' + topH + 'h-' + barW + 'z';
+      botD += 'M' + x + ' ' + baseY + 'h' + barW + 'v' + botH + 'h-' + barW + 'z';
+    }
+    return { topD: topD, botD: botD };
+  }
+  function renderWave(prog) {
+    if (!prog || prog.dataset.waveDone) return;
+    var seed = parseInt(prog.dataset.waveSeed, 10);
+    if (isNaN(seed)) return;
+    var w = buildWavePaths(seed);
+    var tb = prog.querySelector('.wave-top-base'), bb = prog.querySelector('.wave-bot-base');
+    var tp = prog.querySelector('.wave-top-played'), bp = prog.querySelector('.wave-bot-played');
+    if (tb) tb.setAttribute('d', w.topD);
+    if (bb) bb.setAttribute('d', w.botD);
+    if (tp) tp.setAttribute('d', w.topD);
+    if (bp) bp.setAttribute('d', w.botD);
+    prog.dataset.waveDone = '1';
+  }
+  (function initLazyWaves() {
+    var progs = document.querySelectorAll('.audio-progress[data-wave-seed]');
+    if (!('IntersectionObserver' in window)) { progs.forEach(renderWave); return; } // fallback: rysuj wszystkie
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { renderWave(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '300px 0px' });
+    progs.forEach(function (p) {
+      io.observe(p);
+      // Bezpiecznik: jesli user tapnie zanim IO zdazy, dorysuj falę natychmiast.
+      var box = p.closest('.player-box');
+      if (box) box.addEventListener('pointerdown', function () { renderWave(p); }, { once: true, capture: true });
+    });
+  })();
 
   // --- Audio player ---
   function resetCurrentBtn() {
