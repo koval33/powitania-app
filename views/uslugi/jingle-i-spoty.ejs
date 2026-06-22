@@ -17,17 +17,17 @@
 <section id="realizacje" class="py-16 border-b border-gray-200 scroll-mt-24">
   <div class="max-w-5xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Posłuchaj naszych realizacji</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Każdy jingiel tworzymy pod konkretny brief - od pomysłu na melodię i hasło po gotowy, dopasowany utwór. Poniżej przykłady z różnych branż i zastosowań. Większość pokazujemy w dwóch wariantach, bo na etapie tworzenia proponujemy kilka kierunków do wyboru.</p>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Każdy jingiel tworzymy pod konkretny brief - od pomysłu na melodię i hasło po gotowy, dopasowany utwór. Poniżej realne wdrożenia dla klientów oraz koncepty demo z różnych branż i zastosowań. Większość pokazujemy w dwóch wariantach, bo na etapie tworzenia proponujemy kilka kierunków do wyboru.</p>
 
     <% var jingles = [
-      {name:'Auto Nova', cat:'Motoryzacja - salon samochodowy', badge:'Spot', f:'auto-nova'},
-      {name:'BlueWay Travel', cat:'Turystyka - biuro podróży', badge:'Spot', f:'blueway-travel'},
-      {name:'Niepoważny Podcast Golfowy', cat:'Czołówka i przebitka do podcastu', badge:'Podcast', f:'podcast-golfowy'},
-      {name:'Click Market', cat:'E-commerce - sklep internetowy', badge:'Spot', f:'click-market'},
-      {name:'Sobienie Królewskie', cat:'Oprawa i promocja obiektu / event', badge:'Event', f:'sobienie-promo'},
-      {name:'Dom Fix', cat:'Dom i remonty - usługi', badge:'Spot', f:'dom-fix'},
-      {name:'Złoty Piec', cat:'Gastronomia - pizzeria', badge:'Spot', f:'zloty-piec'},
-      {name:'Mocc Mleko', cat:'Spożywczy - FMCG / nabiał', badge:'Spot', f:'mocc-mleko'}
+      {name:'Niepoważny Podcast Golfowy', cat:'Czołówka i przebitka do podcastu', f:'podcast-golfowy', real:true},
+      {name:'Sobienie Królewskie', cat:'Udźwiękowienie reklamy pola golfowego', f:'sobienie-promo', real:true},
+      {name:'Auto Nova', cat:'Motoryzacja - salon samochodowy', f:'auto-nova'},
+      {name:'BlueWay Travel', cat:'Turystyka - biuro podróży', f:'blueway-travel'},
+      {name:'Click Market', cat:'E-commerce - sklep internetowy', f:'click-market'},
+      {name:'Dom Fix', cat:'Dom i remonty - usługi', f:'dom-fix'},
+      {name:'Złoty Piec', cat:'Gastronomia - pizzeria', f:'zloty-piec'},
+      {name:'Mocc Mleko', cat:'Spożywczy - FMCG / nabiał', f:'mocc-mleko'}
     ]; %>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,7 +35,7 @@
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:border-accent/40 transition-all">
           <div class="relative">
             <img src="/img/spoty/<%= j.f %>.webp" alt="<%= j.name %> - <%= j.cat %>" loading="lazy" width="800" height="534" class="w-full aspect-[3/2] object-cover">
-            <span class="absolute top-3 right-3 text-[0.65rem] uppercase tracking-wide font-semibold text-white bg-black/55 px-2 py-0.5 rounded backdrop-blur-sm"><%= j.badge %></span>
+            <span class="absolute top-3 right-3 text-[0.65rem] uppercase tracking-wide font-semibold text-white <%= j.real ? 'bg-accent' : 'bg-black/55' %> px-2 py-0.5 rounded backdrop-blur-sm"><%= j.real ? 'Realizacja klienta' : 'Demo' %></span>
           </div>
           <div class="p-5">
             <h3 class="font-bold text-gray-900 leading-snug mb-0.5"><%= j.name %></h3>
@@ -57,7 +57,7 @@
       <% }); %>
     </div>
 
-    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Powyższe nagrania to realizacje studyjne prezentujące zakres naszych możliwości. Pełne portfolio realizacji dla konkretnych marek udostępniamy na życzenie po podpisaniu NDA.</p>
+    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Oznaczone „Realizacja klienta" to faktyczne wdrożenia - czołówka „Niepoważnego Podcastu Golfowego" oraz udźwiękowienie reklamy pola golfowego Sobienie Królewskie. Pozostałe to koncepty demo (marki przykładowe) pokazujące zakres możliwości. Pełne portfolio dla konkretnych marek udostępniamy po podpisaniu NDA.</p>
   </div>
 </section>
 
@@ -208,6 +208,29 @@
         <p class="text-sm text-gray-600 leading-relaxed">Nie czekasz na zespół muzyków ani studyjną sesję - gotowy jingiel dostajesz w krótkim czasie. A jeśli potrzebujesz żywego głosu, lektora u nas zawsze nagrywa człowiek: zobacz <a href="/nagrania-lektorskie/glos-do-reklamy/" class="text-accent hover:underline">głos do reklamy</a>.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Prawa i licencje -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Prawa i licencje do emisji</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Zanim zaczniemy, ustalamy na piśmie zakres wykorzystania gotowego utworu - żeby po odbiorze nie było żadnych niejasności, gdzie i jak długo możesz go emitować.</p>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Pola eksploatacji i czas</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">W wycenie określamy kanały (radio, TV, internet, social media, użytek wewnętrzny) i okres wykorzystania. Dokładnie wiesz, gdzie i jak długo możesz emitować utwór.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Tworzone na Twoje zlecenie</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">To nie gotowiec ze stockowej biblioteki dostępny dla wszystkich - utwór powstaje pod Twój brief i markę. Na życzenie ustalimy wyłączność, żeby nie trafił do nikogo innego.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Te same zasady przy produkcji z AI</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Muzykę tworzymy z wykorzystaniem AI uzupełnionej naszą obróbką, ale zakres wykorzystania ustalamy tak samo jasno i na piśmie jak przy klasycznej produkcji.</p>
+      </div>
+    </div>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mt-8">Masz szczególne wymagania - wyłączność w branży, dłuższy okres emisji albo konkretne rynki? Powiedz na etapie briefu, a dopasujemy warunki w wycenie.</p>
   </div>
 </section>
 
