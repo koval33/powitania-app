@@ -34,7 +34,7 @@
 <% } %>
 
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
-<div id="filters-bar" class="py-2 pb-2 sticky top-0 z-40 bg-white shadow-md md:hidden">
+<div id="filters-bar" class="py-2 pb-2 bg-white md:hidden sticky z-40">
   <div class="max-w-7xl mx-auto px-4">
     <style>.filters-ready{opacity:1!important}</style>
     <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
@@ -109,21 +109,9 @@
   </div>
   <script>
     document.getElementById('filters-wrap').classList.add('filters-ready');
-    (function() {
-      var header = document.querySelector('header');
-      var bar = document.getElementById('filters-bar');
-      function setTops() {
-        var h = header ? header.offsetHeight : 0;
-        if (bar) bar.style.top = h + 'px';
-      }
-      setTops();
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setTops);
-      } else {
-        setTops();
-      }
-      window.addEventListener('resize', setTops);
-    })();
+    // Pasek pinuje sie pod naglowkiem na top:56px (= wysokosc naglowka w stanie scrolled,
+    // .site-header.scrolled .header-row w head.ejs). Naglowek przy scrollu zawsze jest 56px,
+    // wiec pasek siada rowno pod nim, bez szpary. Stala zamiast czytania animowanej wysokosci.
   </script>
 </div>
 
@@ -279,6 +267,16 @@
     <p id="voice-count-line" class="hidden md:block text-sm text-gray-500 mb-4">Znaleziono: <span id="voice-count" class="text-gray-900 font-semibold"><%= voices.length %></span> lektorów</p>
 
     <style>
+      /* Mobilny pasek filtrow: sticky, pinuje sie ROWNO pod naglowkiem (top ustawiany w JS na
+         biezaca wysokosc naglowka - naglowek kurczy sie przy scrollu, wczesniej byl gap=karta
+         przeswitywala). Tlo jak naglowek (scrolled) = wyglada jak jego przedluzenie, nie "lata". */
+      #filters-bar { top: 56px; }
+      main.bank-dark #filters-bar {
+        background-color: rgba(55,65,81,0.97) !important;
+        -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        box-shadow: 0 6px 14px -8px rgba(0,0,0,0.5) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+      }
       /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
       /* Photo flush z karta (bez paddingu/border-radius), pozostale strefy maja swoj padding */
       .vc-inner {
