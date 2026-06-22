@@ -775,7 +775,7 @@ app.get('/nagrania-lektorskie/', (req, res) => {
 app.get('/produkcja-jingli-reklamowych/', (req, res) => {
   res.render('uslugi/jingle-i-spoty', {
     title: 'Produkcja jingli reklamowych i spotów śpiewanych | Powitania.pl',
-    description: 'Jingle i śpiewane spoty reklamowe na zamówienie: radio, TV, social media, podcasty, eventy. Szybko, w przystępnej cenie, pod Twój brief. Bezpłatna wycena.',
+    description: 'Jingle i śpiewane spoty reklamowe: radio, TV, social media, podcasty, eventy. Profesjonalna produkcja pod Twój brief, prawa do emisji. Bezpłatna wycena.',
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -785,7 +785,7 @@ app.get('/produkcja-jingli-reklamowych/', (req, res) => {
       '@context': 'https://schema.org',
       '@type': 'Service',
       'name': 'Produkcja jingli reklamowych i śpiewanych spotów',
-      'description': 'Produkcja muzyczna do reklamy na zamówienie: jingle, śpiewane spoty reklamowe (radio, TV, social media), czołówki i przebitki do podcastów, oprawa muzyczna eventów oraz audio branding. Tworzone z wykorzystaniem generatywnej AI uzupełnionej obróbką dźwięku.',
+      'description': 'Profesjonalna produkcja muzyczna do reklamy na zamówienie: jingle, śpiewane spoty reklamowe (radio, TV, social media), czołówki i przebitki do podcastów, oprawa muzyczna eventów oraz audio branding. Kontrola kreatywna, selekcja, obróbka i mastering, jasne prawa do emisji.',
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
       'url': 'https://www.powitania.pl/produkcja-jingli-reklamowych/',
