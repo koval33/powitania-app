@@ -845,7 +845,7 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
 app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
     title: 'Zapowiedzi telefoniczne i nagrania do centrali IVR | 24-48h',
-    description: `Profesjonalne zapowiedzi telefoniczne i nagrania do central telefonicznych (Slican, Platan, VoIP, Asterisk, 3CX). Lektor na infolinię, IVR, komunikaty powitalne. ${res.locals.voiceCount} lektorów, 24-48h.`,
+    description: `Zapowiedzi telefoniczne i nagrania IVR na centralę (Slican, Platan, VoIP). ${res.locals.voiceCount} lektorów, realizacja 24-48h, od 380 zł netto. Gotowe szablony i wycena.`,
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -861,7 +861,8 @@ app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'PL',
       'url': 'https://www.powitania.pl/nagrania-lektorskie/zapowiedzi-telefoniczne/',
-      'serviceType': 'Zapowiedzi telefoniczne IVR'
+      'serviceType': 'Zapowiedzi telefoniczne IVR',
+      'offers': { '@type': 'Offer', 'price': '380', 'priceCurrency': 'PLN', 'url': 'https://www.powitania.pl/nagrania-lektorskie/zapowiedzi-telefoniczne/' }
     }
   });
 });
@@ -1354,7 +1355,7 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
 app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   res.render('en/phone-announcements', {
     title: 'Phone announcements & IVR recordings for PBX | 24-48h',
-    description: `Professional phone announcements and voiceover recordings for PBX systems (Slican, Platan, VoIP, Asterisk, 3CX). Voice for hotlines, IVR menus, welcome messages. ${res.locals.voiceCount} voice artists, 24-48h.`,
+    description: `Phone announcements and IVR voiceover for your PBX (Slican, Platan, VoIP). ${res.locals.voiceCount} voice artists, 24-48h delivery, ready-made script templates.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
@@ -1369,7 +1370,8 @@ app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
       'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
       'areaServed': 'Worldwide',
       'url': 'https://www.powitania.pl/en/voiceover-services/phone-announcements/',
-      'serviceType': 'IVR Phone Announcements'
+      'serviceType': 'IVR Phone Announcements',
+      'offers': { '@type': 'Offer', 'price': '380', 'priceCurrency': 'PLN', 'url': 'https://www.powitania.pl/en/voiceover-services/phone-announcements/' }
     }
   });
 });
