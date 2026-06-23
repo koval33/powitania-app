@@ -22,9 +22,9 @@
     <% var jingles = [
       {name:'Niepoważny Podcast Golfowy', cat:'Czołówka i przebitka do podcastu', f:'podcast-golfowy', real:true},
       {name:'Sobienie Królewskie', cat:'Udźwiękowienie reklamy pola golfowego', f:'sobienie-promo', real:true},
-      {name:'Auto Nova', cat:'Motoryzacja - salon samochodowy', f:'auto-nova'},
-      {name:'BlueWay Travel', cat:'Turystyka - biuro podróży', f:'blueway-travel'},
-      {name:'Click Market', cat:'E-commerce - sklep internetowy', f:'click-market'},
+      {name:'Auto Nova', cat:'Motoryzacja - salon samochodowy', f:'auto-nova', img:'auto_nova_2.jpg'},
+      {name:'BlueWay Travel', cat:'Turystyka - biuro podróży', f:'blueway-travel', img:'blue_way_travel_2.jpg'},
+      {name:'Click Market', cat:'E-commerce - sklep internetowy', f:'click-market', img:'click_market_2.jpg'},
       {name:'Dom Fix', cat:'Dom i remonty - usługi', f:'dom-fix'},
       {name:'Złoty Piec', cat:'Gastronomia - pizzeria', f:'zloty-piec'},
       {name:'Mocc Mleko', cat:'Spożywczy - FMCG / nabiał', f:'mocc-mleko'}
@@ -34,7 +34,7 @@
       <% jingles.forEach(function(j) { %>
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:border-accent/40 transition-all">
           <div class="relative">
-            <img src="/img/spoty/<%= j.f %>.webp" alt="<%= j.name %> - <%= j.cat %>" loading="lazy" width="800" height="534" class="w-full aspect-[3/2] object-cover">
+            <img src="/img/spoty/<%= j.img ? j.img : (j.f + '.webp') %>" alt="<%= j.name %> - <%= j.cat %>" loading="lazy" width="800" height="534" class="w-full aspect-[3/2] object-cover">
             <span class="absolute top-3 right-3 text-[0.65rem] uppercase tracking-wide font-semibold text-white <%= j.real ? 'bg-accent' : 'bg-black/55' %> px-2 py-0.5 rounded backdrop-blur-sm"><%= j.real ? 'Realizacja klienta' : 'Demo' %></span>
           </div>
           <div class="p-5">
