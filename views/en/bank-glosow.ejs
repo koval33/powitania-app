@@ -244,6 +244,15 @@
         box-shadow: 0 6px 14px -8px rgba(0,0,0,0.5) !important;
         border-bottom: 1px solid rgba(255,255,255,0.06) !important;
       }
+      /* Waveform (SoundCloud-style, mirror PL): szare slupki = nieodtworzone, akcent = odtworzone */
+      .audio-progress { --wave-accent: #199dff; }
+      .wave-svg { overflow: visible; }
+      .wave-top-base { fill: #c2c8d2; }
+      .wave-bot-base { fill: #c2c8d2; opacity: 0.42; }
+      .wave-played { transition: clip-path 100ms linear; }
+      .wave-top-played { fill: var(--wave-accent); }
+      .wave-bot-played { fill: var(--wave-accent); opacity: 0.42; }
+      .player-box:hover .wave-top-base { fill: #b4bbc7; }
       /* Desktop: player wrap is display:contents - player and buttons are direct flex children */
       .vc-player-wrap { display: contents; }
       /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
@@ -418,28 +427,21 @@
                 <span class="audio-time">00:00</span>
                 <span class="audio-duration text-gray-400 ml-1">--:--</span>
               </div>
-              <%# Waveform - continuous path (spektrum) %>
+              <%# Waveform SoundCloud-style (mirror PL). Sciezki rysuje JS gdy karta wejdzie w ekran
+                  (IntersectionObserver) - emitujemy tylko data-wave-seed, zero <path d> server-side. %>
               <%
                 var _hashStr = function(s){var h=0;for(var i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return Math.abs(h);};
-                var _seedRnd = function(seed, i){var x=Math.sin(seed*9999+i*1.37)*10000;return x-Math.floor(x);};
                 var _seed = _hashStr(v.id || v.name);
-                var _waveBars = 80;
-                var _midY = 18;
-                var _topPts = [];
-                var _botPts = [];
-                for(var _i=0; _i<_waveBars; _i++) {
-                  var _h = 4 + Math.round(_seedRnd(_seed, _i) * 26);
-                  var _x = (_i * 100 / (_waveBars - 1)).toFixed(2);
-                  _topPts.push(_x + ',' + (_midY - _h/2).toFixed(2));
-                  _botPts.push(_x + ',' + (_midY + _h/2).toFixed(2));
-                }
-                var _pathD = 'M ' + _topPts[0] + ' L ' + _topPts.join(' L ') + ' L ' + _botPts.reverse().join(' L ') + ' Z';
               %>
-              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer">
-                <svg class="absolute inset-0 w-full h-full text-gray-300" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="<%= _pathD %>" fill="currentColor"/>
+              <div class="audio-progress relative flex-1 min-w-0 h-9 cursor-pointer" data-wave-seed="<%= _seed %>">
+                <svg class="wave-svg absolute inset-0 w-full h-full" viewBox="0 0 150 36" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="wave-top-base"/>
+                  <path class="wave-bot-base"/>
+                  <g class="wave-played" style="clip-path: inset(0 100% 0 0);">
+                    <path class="wave-top-played"/>
+                    <path class="wave-bot-played"/>
+                  </g>
                 </svg>
-                <div class="audio-bar absolute top-0 h-full pointer-events-none" style="left: 0%; width: 1px; background-color: rgba(107,114,128,0.8); transform: translateX(-0.5px); transition: left 100ms linear;"></div>
               </div>
               <%# Download MP3 - stara ikonka (strzalka w dol, gray) %>
               <a href="<%= sampleToPlay.url %>" download onclick="event.stopPropagation()" title="Download MP3 sample" class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors">
@@ -600,6 +602,54 @@
   var filteredCards = allCards.slice();
   var shownCount = PAGE_SIZE;
 
+  // --- Lazy waveform (mirror PL): rysuj slupki dopiero gdy karta wejdzie w ekran (oszczedza HTML). ---
+  function buildWavePaths(seed) {
+    var WB = 150, baseY = 23, topMax = 21, botMax = 12, barW = 0.55, gap = (1 - barW) / 2;
+    function rnd(s, i) { var x = Math.sin(s * 9999 + i * 1.37) * 10000; return x - Math.floor(x); }
+    var topD = '', botD = '';
+    for (var i = 0; i < WB; i++) {
+      var r1 = rnd(seed, i), r2 = rnd(seed, i * 3.13 + 7);
+      var env = 0.55 + 0.45 * Math.sin(i * 0.20 + seed * 0.7);
+      var amp = Math.min(1, (0.4 * r1 + 0.6 * r2) * env + 0.08);
+      var topH = +(2 + amp * (topMax - 2)).toFixed(2);
+      var botH = +(Math.min(botMax, topH * 0.5 + 1)).toFixed(2);
+      var x = +(i + gap).toFixed(3);
+      topD += 'M' + x + ' ' + (baseY - topH).toFixed(2) + 'h' + barW + 'v' + topH + 'h-' + barW + 'z';
+      botD += 'M' + x + ' ' + baseY + 'h' + barW + 'v' + botH + 'h-' + barW + 'z';
+    }
+    return { topD: topD, botD: botD };
+  }
+  function renderWave(prog) {
+    if (!prog || prog.dataset.waveDone) return;
+    var seed = parseInt(prog.dataset.waveSeed, 10);
+    if (isNaN(seed)) return;
+    var w = buildWavePaths(seed);
+    var tb = prog.querySelector('.wave-top-base'), bb = prog.querySelector('.wave-bot-base');
+    var tp = prog.querySelector('.wave-top-played'), bp = prog.querySelector('.wave-bot-played');
+    if (tb) tb.setAttribute('d', w.topD);
+    if (bb) bb.setAttribute('d', w.botD);
+    if (tp) tp.setAttribute('d', w.topD);
+    if (bp) bp.setAttribute('d', w.botD);
+    prog.dataset.waveDone = '1';
+  }
+  function setWavePlayed(card, pct) {
+    if (!card) return;
+    var wp = card.querySelector('.wave-played');
+    if (wp) wp.style.clipPath = 'inset(0 ' + (100 - Math.max(0, Math.min(100, pct))) + '% 0 0)';
+  }
+  (function initLazyWaves() {
+    var progs = document.querySelectorAll('.audio-progress[data-wave-seed]');
+    if (!('IntersectionObserver' in window)) { progs.forEach(renderWave); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { renderWave(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '300px 0px' });
+    progs.forEach(function (p) {
+      io.observe(p);
+      var box = p.closest('.player-box');
+      if (box) box.addEventListener('pointerdown', function () { renderWave(p); }, { once: true, capture: true });
+    });
+  })();
+
   // --- Audio player ---
   function resetCurrentBtn() {
     if (!currentBtn) return;
@@ -607,7 +657,7 @@
     currentBtn.querySelector('.pause-icon').classList.add('hidden');
     var oldCard = currentBtn.closest('.voice-card');
     if (oldCard) {
-      oldCard.querySelector('.audio-bar').style.left = '0%';
+      setWavePlayed(oldCard, 0);
       oldCard.querySelector('.audio-time').textContent = '00:00';
     }
   }
@@ -626,7 +676,7 @@
       var card = currentBtn.closest('.voice-card');
       if (!card) return;
       var pct = (el.currentTime / el.duration) * 100;
-      card.querySelector('.audio-bar').style.left = pct + '%';
+      if (isFinite(pct)) setWavePlayed(card, pct);
       card.querySelector('.audio-time').textContent = formatTime(el.currentTime);
     });
     el.addEventListener('loadedmetadata', function() {
