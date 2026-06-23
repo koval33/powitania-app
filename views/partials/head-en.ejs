@@ -304,8 +304,8 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
     ? hreflangPL.replace('https://www.powitania.pl', '')
     : '/';
 %>
-<% if (currentPath === '/en/') { %>
-<%# Homepage EN: transparent->slate-800 header (mirror PL) %>
+<% if (currentPath === '/en/' || (typeof pageHeroTransparent !== 'undefined' && pageHeroTransparent)) { %>
+<%# Homepage EN + podstrony z pageHeroTransparent: transparent->slate-800 header (mirror PL) %>
 <header id="siteHeader" class="site-header fixed top-0 inset-x-0 z-50">
   <div class="w-full px-3 md:px-5 lg:px-6">
     <div class="header-row flex items-center justify-between">
@@ -462,4 +462,4 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
 <% } %>
 <% } %>
 
-<main>
+<main<% if (typeof mainClass !== 'undefined' && mainClass) { %> class="<%= mainClass %>"<% } %>>

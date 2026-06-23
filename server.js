@@ -1613,6 +1613,8 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
     title: finalTitle,
     description: finalDesc,
     ogImage: lektor.photo ? ('https://www.powitania.pl' + lektor.photo) : undefined,
+    mainClass: 'lektor-dark',
+    pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voice Bank', url: '/en/voice-bank/' },
