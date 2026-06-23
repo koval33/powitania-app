@@ -1266,6 +1266,8 @@ app.get('/en/voice-bank/', (req, res) => {
   res.render('en/bank-glosow', {
     title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
     description: `Voice bank Powitania.pl - ${res.locals.voiceCount} professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.`,
+    pageHeroTransparent: true,
+    mainClass: 'bank-dark',
     voices: voicesEur
   });
 });

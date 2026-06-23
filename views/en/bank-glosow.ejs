@@ -1,15 +1,15 @@
 <%- include('../partials/head-en') %>
 
-<!-- HERO -->
-<section class="bg-gradient-to-br from-stone-100 via-white to-stone-100">
-  <div class="py-5 md:py-7 max-w-5xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Voice Bank</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"><%= voiceCount %> professional voice actors in 30+ languages - experienced voice actors, radio presenters, and voices of renowned TV stations. Use the filters, listen to samples, and find the perfect voice for your project.</p>
-  </div>
-</section>
+<%# Hero - partial page-hero (menu na obrazie), mirror PL bank-glosow. Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Voice Bank',
+  heroSub: voiceCount + ' professional voice actors in&nbsp;30+ languages - experienced voice actors, radio presenters, and&nbsp;voices of&nbsp;renowned TV stations. Listen to&nbsp;samples and&nbsp;find the perfect voice for your project.',
+  heroCta: 'none',
+  heroCompact: true
+}) %>
 
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
-<div id="filters-bar" class="py-3 pb-4 sticky top-0 z-40 bg-white shadow-md md:hidden">
+<div id="filters-bar" class="py-3 pb-4 bg-white md:hidden sticky z-40">
   <div class="max-w-7xl mx-auto px-4">
     <style>.filters-ready{opacity:1!important}</style>
     <div class="flex flex-wrap items-center gap-2" style="opacity:0;transition:opacity .1s" id="filters-wrap">
@@ -80,22 +80,8 @@
   </div>
   <script>
     document.getElementById('filters-wrap').classList.add('filters-ready');
-    (function() {
-      var header = document.querySelector('header');
-      var bar = document.getElementById('filters-bar');
-      function setTops() {
-        var h = header ? header.offsetHeight : 0;
-        if (bar) bar.style.top = h + 'px';
-      }
-      // Run immediately for the bar, and after DOM is ready for the sidebar
-      setTops();
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setTops);
-      } else {
-        setTops();
-      }
-      window.addEventListener('resize', setTops);
-    })();
+    // Pasek filtrow pinuje sie pod naglowkiem na top:56px (= wysokosc naglowka scrolled);
+    // stala zamiast czytania animowanej wysokosci (mirror PL - fix szpary przez ktora przeswitywala karta).
   </script>
 </div>
 
@@ -249,6 +235,15 @@
 
     <!-- SIATKA LEKTORÓW -->
     <style>
+      /* Mobilny pasek filtrow: sticky, pinuje sie ROWNO pod naglowkiem (top:56 = naglowek scrolled),
+         tlo jak naglowek -> wyglada jak jego przedluzenie, nie "lata" (mirror PL). */
+      #filters-bar { top: 56px; }
+      main.bank-dark #filters-bar {
+        background-color: rgba(55,65,81,0.97) !important;
+        -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        box-shadow: 0 6px 14px -8px rgba(0,0,0,0.5) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+      }
       /* Desktop: player wrap is display:contents - player and buttons are direct flex children */
       .vc-player-wrap { display: contents; }
       /* Desktop: grid 3-col 2-row [photo | content (player on top, meta below) | CTA] */
@@ -265,11 +260,12 @@
       .vc-photo {
         grid-column: 1; grid-row: 1 / -1;
         width: 140px !important;
-        height: 140px !important;
-        align-self: start !important;
+        height: auto !important;
+        align-self: stretch !important;
         border-radius: 0 !important;
+        position: relative !important;
       }
-      .vc-photo img { width: 100% !important; height: 100% !important; }
+      .vc-photo img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; display: block !important; object-fit: cover !important; }
       .vc-player-wrap { display: contents; }
       .vc-player-row { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding-top: 16px; }
       .vc-info { grid-column: 2; grid-row: 2; min-width: 0; align-self: end; padding-bottom: 16px; }
@@ -330,7 +326,7 @@
           padding: 10px 12px !important;
         }
         /* Bigger Play button - 40x40 tap-target */
-        .player-box .play-btn { width: 40px !important; height: 40px !important; }
+        .player-box .play-btn { width: 44px !important; height: 44px !important; }
 
         /* ZONE 3 - actions: single CTA full-width */
         .vc-cta {
@@ -399,8 +395,6 @@
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
                     <span><%= v.turnaround %></span>
                   <% } %>
-                <% } else if (v.hidePrice) { %>
-                  <span class="text-yellow-600">custom pricing</span>
                 <% } %>
               </div>
             </div>
