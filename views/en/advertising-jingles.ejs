@@ -1,0 +1,431 @@
+<%- include('../partials/head-en') %>
+
+<%# Hero - partial page-hero (mirror PL). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Advertising jingle production',
+  heroSub: 'We create jingles and&nbsp;sung advertising spots to&nbsp;order - for radio, TV and&nbsp;social media, for podcast intros and&nbsp;company events. Professional audio production to&nbsp;your brief: creative control, variant selection, editing and&nbsp;mastering, plus clear broadcast rights. Finished files in&nbsp;a short time.',
+  heroCtaHtml: `
+    <a href="/en/contact/#contact-form" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors">Get a free quote</a>
+    <a href="tel:+48605491069" class="border border-white/30 hover:border-white/60 text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors inline-flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+      Call: +48 605 491 069
+    </a>
+  `
+}) %>
+
+<!-- Listen to our work -->
+<section id="work" class="py-16 border-b border-gray-200 scroll-mt-24">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Listen to our work</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Every jingle is built to a specific brief - from the melody and hook idea to a finished, tailored track. Below are real client projects and demo concepts from different industries and use cases. Most are shown in two variants, because during production we propose several directions to choose from.</p>
+
+    <% var jingles = [
+      {name:'Niepoważny Podcast Golfowy', cat:'Podcast intro & sting', f:'podcast-golfowy', real:true},
+      {name:'Sobienie Królewskie', cat:'Golf course ad sound design', f:'sobienie-promo', real:true},
+      {name:'Auto Nova', cat:'Automotive - car dealership', f:'auto-nova', img:'auto_nova_2.jpg'},
+      {name:'BlueWay Travel', cat:'Tourism - travel agency', f:'blueway-travel', img:'blue_way_travel_2.jpg'},
+      {name:'Click Market', cat:'E-commerce - online store', f:'click-market', img:'click_market_2.jpg'},
+      {name:'Dom Fix', cat:'Home & renovation - services', f:'dom-fix'},
+      {name:'Złoty Piec', cat:'Food - pizzeria', f:'zloty-piec'},
+      {name:'Mocc Mleko', cat:'FMCG - dairy', f:'mocc-mleko'}
+    ]; %>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% jingles.forEach(function(j) { %>
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:border-accent/40 transition-all">
+          <div class="relative">
+            <img src="/img/spoty/<%= j.img ? j.img : (j.f + '.webp') %>" alt="<%= j.name %> - <%= j.cat %>" loading="lazy" width="800" height="534" class="w-full aspect-[3/2] object-cover">
+            <span class="absolute top-3 right-3 text-[0.65rem] uppercase tracking-wide font-semibold text-white <%= j.real ? 'bg-accent' : 'bg-black/55' %> px-2 py-0.5 rounded backdrop-blur-sm"><%= j.real ? 'Client project' : 'Demo' %></span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 leading-snug mb-0.5"><%= j.name %></h3>
+            <p class="text-xs text-gray-500 mb-4"><%= j.cat %></p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-1.mp3')" aria-label="Listen - <%= j.name %>, version 1" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
+              <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <span>Version 1</span>
+            </button>
+            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-2.mp3')" aria-label="Listen - <%= j.name %>, version 2" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
+              <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <span>Version 2</span>
+            </button>
+          </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Items marked "Client project" are actual deliveries - the intro for the "Niepoważny Podcast Golfowy" golf podcast and the ad sound design for the Sobienie Królewskie golf course. The rest are demo concepts (example brands) showing the range of what we do. The full portfolio for specific brands is available after signing an NDA.</p>
+  </div>
+</section>
+
+<!-- What we produce -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">What we produce</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Full music production for advertising and brand communication - from a short, catchy jingle to an elaborate sung advertising spot.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Advertising jingles</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A short, catchy melody with the brand name or slogan - from a few-second signature to a full radio jingle. It builds recognition and stays in the listener's head long after the broadcast.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Sung advertising spots</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A full spot with a vocal layer - melody, ad copy and vocals in one. It works where plain voice-over narration isn't enough and a brand wants to stand out with emotion and rhythm.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Podcast intros & stings</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Intro, outro and short stings tying episodes together. A consistent sound that makes the show feel professional and recognisable from the first seconds.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Event music</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Music and songs for company events, galas, trade fairs and team trips - from a company anthem, through a presentation backing track, to a special-occasion song with personalised lyrics.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Audio branding & sound logo</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A sonic identity for your brand - a sound logo and a consistent audio system you'll recognise in a spot, on the hotline and in the app. A coherent brand sound across every channel.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-bold text-gray-900 mb-2">Custom music & songs</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Created to a specific brief - special-occasion tracks, backing music for a corporate film, anniversary songs. Made for your goal and brand, not pulled from a stock library.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Where they work -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Where jingles and sung spots work best</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Music production works anywhere emotion, recognition and being remembered matter.</p>
+
+    <div class="grid md:grid-cols-2 gap-x-14">
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Radio advertising</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">The radio jingle is a classic that still works. On radio, sound is everything - a catchy melody cuts through the background and builds brand association after just a few plays. We deliver 15s, 30s and 60s versions.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">TV spots</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A music and vocal layer for a TV spot - from an emotion-building bed to a full sung chorus synced to the picture. Broadcast-quality mastering for national and regional stations.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Social media & digital</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Short, rhythmic formats for YouTube, Meta, TikTok and Spotify ads. A hook in the first seconds stops the scroll and boosts ad recall in the channels where competition for attention is fiercest.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Podcasts</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Intro, outro and stings that give a show a professional feel. A consistent sound builds the podcast's brand so listeners recognise the programme from the first notes.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Company events, galas & trade fairs</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A company anthem, an opening intro for a gala, backing music for a trade-fair presentation or a track for a team trip. Music that sets the mood and stays with attendees.</p>
+      </div>
+      <div class="py-5 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-1.5">Brand audio branding</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">A sound logo and an audio system consistent across every touchpoint - advertising, hotline, app, in-store. Sound becomes a recognisable part of the brand identity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How a jingle is made -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">How a jingle is made</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">We combine generative AI with our own selection and audio editing - so you get a finished, tailored track faster and cheaper than in classic production. At the key stages we show variants to choose from, so you shape the final result.</p>
+
+    <ol class="space-y-5">
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">01</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Brief & concept</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">We learn your brand, campaign goal, target audience and broadcast channel. We agree on the character of the music, the length, and whether the jingle should be sung or instrumental.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">02</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Copy & creative</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">We write ad copy to fit the melody (or adapt yours) and propose a slogan and hook. The lyrics have to be catchy and fit the rhythm - a different craft from copy for a voice-over spot.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">03</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Generating variants</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">With AI we prepare several directions to choose from - different mood, tempo, sound or voice character. You pick the one that fits your brand best.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">04</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Vocals & sound</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">We choose the voice character and timbre and the instrumentation to fit your brief. The vocal and music layers are produced digitally, and we refine the details and brand consistency.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">05</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Editing & mastering</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">We clean, balance and master the chosen track to broadcast level. The result sounds just as good on radio, on TV and on a phone.</p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="flex-shrink-0 w-10 md:w-12 text-3xl md:text-4xl font-bold text-gray-900 leading-none tabular-nums">06</span>
+        <div>
+          <h3 class="font-semibold text-gray-900">Versions & delivery</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">We deliver a full set of versions - different lengths (15s / 30s / 60s), an instrumental variant for backing, and files in the required formats (WAV, MP3). All with clearly agreed usage terms.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Why us -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Why us</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">We've been working since 2001 and we know sound production - we bring that experience to jingles too. Jingles are our new service: we create them using AI, complemented by our own selection and editing, to deliver a finished, tailored track quickly.</p>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">From brief to finished file</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">We run the whole thing in-house - concept, copy, variant generation, editing and mastering. One team owns the result, with no outsourcing.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Made to your brief</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">We don't send a ready-made track from a stock library - the piece is built for your brand and campaign goal, in several variants to choose from.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Clear usage terms</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">We agree in writing where and how long you can broadcast the track (radio, TV, online, internal). Got specific scope requirements - tell us at the brief stage and we'll tailor the offer.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Fast, with no session costs</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">No waiting for a band or a studio session - you get the finished jingle in a short time. And if you need a live voice, our voice-over is always performed by a human: see <a href="/en/voiceover-services/voice-for-advertising/" class="text-accent hover:underline">voice for advertising</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rights and licensing -->
+<section class="py-16 border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Rights and broadcast licensing</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">Before we start, we agree in writing the scope of use for the finished track - so after delivery there's no ambiguity about where and how long you can broadcast it.</p>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Fields of use & duration</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">In the quote we define the channels (radio, TV, online, social media, internal use) and the usage period. You know exactly where and how long you can broadcast the track.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Made to your order</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">It's not a ready-made track from a stock library available to everyone - the piece is built for your brief and brand. On request we'll arrange exclusivity so it doesn't go to anyone else.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <h3 class="font-semibold text-gray-900 mb-1">Same terms with AI production</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">We create the music using AI complemented by our editing, but we agree the scope of use just as clearly and in writing as in classic production.</p>
+      </div>
+    </div>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mt-8">Got specific requirements - industry exclusivity, a longer broadcast period or specific markets? Tell us at the brief stage and we'll tailor the terms in the quote.</p>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="py-16 bg-stone-100/60 border-b border-gray-200">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Pricing</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">Every jingle is different, so pricing is individual. We prepare it free of charge, usually within 24 hours of the brief.</p>
+    <p class="text-gray-600 leading-relaxed mb-8">Cost depends mainly on length and form (a short signature vs a full sung spot), the complexity of the track, the number of versions, and the fields of use and broadcast reach. Tell us briefly what you need and we'll send back a concrete proposal.</p>
+    <a href="/en/contact/#contact-form" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold transition-colors">Get a free quote</a>
+  </div>
+</section>
+
+<!-- Related services -->
+<section class="py-14 border-b border-gray-200">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Looking for something else?</h2>
+    <p class="text-gray-600 leading-relaxed">If you need an ad with a voice-over (spoken voice, no singing), see <a href="/en/voiceover-services/voice-for-advertising/" class="text-accent hover:underline">voice for advertising</a>. Want to browse our voices first? Visit the <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 bg-stone-100/60">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">Frequently asked questions</h2>
+    <p class="text-gray-600 text-center mb-10">Common questions about jingle and sung advertising spot production.</p>
+
+    <div class="space-y-3">
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>What's the difference between a jingle and a voice-over spot?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">A jingle is a musical form - a melody and usually a sung slogan; we create it using AI complemented by our editing. A voice-over spot is based on a real human voice - our <a href="/en/voiceover-services/voice-for-advertising/" class="text-accent hover:underline">voice recordings</a> are always performed by a real voice artist, with no AI. A jingle builds recognition through a melody the listener remembers; a voice-over spot focuses on a clear, persuasive spoken message.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>How much does jingle production cost?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Pricing is set individually. It depends on length and form (a short signature vs a full sung spot), the complexity of the track, the number of versions, and the fields of use and usage period. We prepare the quote free of charge, usually within 24 hours of the brief - <a href="/en/contact/" class="text-accent hover:underline">contact us</a> with a short project description.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Do you create jingles with AI?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes, and we're upfront about it. We create jingles and advertising music using generative AI, complemented by our own variant selection and audio editing. It's not a ready-made track from a stock library - the piece is built to your brief. It's a deliberate choice: you get a tailored jingle faster and cheaper than in classic production with a band in the studio. Important: this applies to music only - our <a href="/en/voiceover-services/" class="text-accent hover:underline">voice recordings</a> are always performed by real voice artists.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>How do rights and licensing work?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Before we start, we agree the fields of use (radio, TV, online, internal) and the period you can use the track. We provide the terms in writing in the quote, so you know exactly where and how long you can broadcast the jingle. Got specific scope or exclusivity requirements - tell us at the brief stage and we'll tailor the offer.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>How long does jingle production take?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Usually a few business days - from brief, through variants to choose from, to editing and mastering. Because we don't wait for a session with a band, short forms are often ready even faster. For urgent campaigns we arrange an express turnaround.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Do you make podcast intros and stings?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes. We produce intros, outros and short stings tying episodes together. We keep the whole package consistent so listeners recognise the podcast from the first seconds. You'll find an example in the <a href="#work" class="text-accent hover:underline">work</a> section above.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>Can you make a company anthem or event music?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes. We create company anthems, special-occasion tracks and music for galas, trade fairs and team trips - with personalised lyrics tailored to the occasion and the company's values.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+          <span>What versions and formats do we get?</span>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">As standard we deliver different lengths (e.g. 15s, 30s, 60s), an instrumental variant for backing under a voice-over, and files in WAV and MP3 ready for broadcast. Additional versions are agreed at the brief stage.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/en/advertising-jingles/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between a jingle and a voice-over spot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A jingle is a musical form - a melody and usually a sung slogan; we create it using AI complemented by our editing. A voice-over spot is based on a real human voice - our voice recordings are always performed by a real voice artist, with no AI. A jingle builds recognition through a melody the listener remembers; a voice-over spot focuses on a clear, persuasive spoken message."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does jingle production cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing is set individually. It depends on length and form (a short signature vs a full sung spot), the complexity of the track, the number of versions, and the fields of use and usage period. We prepare the quote free of charge, usually within 24 hours of the brief."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you create jingles with AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and we're upfront about it. We create jingles and advertising music using generative AI, complemented by our own variant selection and audio editing. It's not a ready-made track from a stock library - the piece is built to your brief. It's a deliberate choice: you get a tailored jingle faster and cheaper than in classic production with a band in the studio. This applies to music only - our voice recordings are always performed by real voice artists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do rights and licensing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Before we start, we agree the fields of use (radio, TV, online, internal) and the period you can use the track. We provide the terms in writing in the quote, so you know exactly where and how long you can broadcast the jingle. Got specific scope or exclusivity requirements - tell us at the brief stage and we'll tailor the offer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does jingle production take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually a few business days - from brief, through variants to choose from, to editing and mastering. Because we don't wait for a session with a band, short forms are often ready even faster. For urgent campaigns we arrange an express turnaround."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you make podcast intros and stings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We produce intros, outros and short stings tying episodes together. We keep the whole package consistent so listeners recognise the podcast from the first seconds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you make a company anthem or event music?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We create company anthems, special-occasion tracks and music for galas, trade fairs and team trips - with personalised lyrics tailored to the occasion and the company's values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What versions and formats do we get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As standard we deliver different lengths (e.g. 15s, 30s, 60s), an instrumental variant for backing under a voice-over, and files in WAV and MP3 ready for broadcast. Additional versions are agreed at the brief stage."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function() {
+  var currentAudio = null;
+  var currentBtn = null;
+  function setBtnState(btn, playing) {
+    if (!btn) return;
+    var play = btn.querySelector('.play-icon');
+    var pause = btn.querySelector('.pause-icon');
+    if (playing) { if (play) play.classList.add('hidden'); if (pause) pause.classList.remove('hidden'); }
+    else { if (play) play.classList.remove('hidden'); if (pause) pause.classList.add('hidden'); }
+  }
+  window.playSample = function(btn, url) {
+    if (currentAudio && currentBtn === btn) {
+      if (currentAudio.paused) { currentAudio.play(); setBtnState(btn, true); }
+      else { currentAudio.pause(); setBtnState(btn, false); }
+      return;
+    }
+    if (currentAudio) { currentAudio.pause(); setBtnState(currentBtn, false); }
+    currentAudio = new Audio(url);
+    currentBtn = btn;
+    currentAudio.play();
+    setBtnState(btn, true);
+    currentAudio.onended = function() { setBtnState(btn, false); currentAudio = null; currentBtn = null; };
+  };
+})();
+</script>
+
+<%- include('../partials/foot-en') %>

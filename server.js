@@ -337,6 +337,7 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/': '/en/voiceover-services/film-voiceover/',
     '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
     '/nagrania-lektorskie/audioprzewodniki/': '/en/voiceover-services/audio-guides/',
+    '/produkcja-jingli-reklamowych/': '/en/advertising-jingles/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/kreator/': '/en/kreator/',
@@ -1397,6 +1398,28 @@ app.get('/en/voiceover-services/audio-guides/', (req, res) => {
   });
 });
 
+app.get('/en/advertising-jingles/', (req, res) => {
+  res.render('en/advertising-jingles', {
+    pageHeroTransparent: true,
+    title: 'Advertising Jingle Production | Sung Spots & Audio Branding | Powitania.pl',
+    description: 'Custom advertising jingles and sung spots for radio, TV, social media and podcasts. Professional audio production with clear broadcast rights. Free quote.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Advertising jingles', url: '/en/advertising-jingles/' }
+    ],
+    serviceSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': 'Advertising jingle and music production',
+      'description': 'Professional music production for advertising: jingles, sung advertising spots (radio, TV, social media), podcast intros and stings, event music, audio branding. Creative control, selection, editing and mastering, clear broadcast rights.',
+      'provider': { '@type': 'Organization', 'name': 'Powitania.pl', 'url': 'https://www.powitania.pl' },
+      'areaServed': 'Worldwide',
+      'url': 'https://www.powitania.pl/en/advertising-jingles/',
+      'serviceType': 'Advertising jingle production'
+    }
+  });
+});
+
 app.get('/en/remote-sessions/', (req, res) => {
   res.render('en/remote-sessions', {
     pageHeroTransparent: true,
@@ -1720,6 +1743,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/voiceover-services/film-voiceover/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/phone-announcements/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/audio-guides/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/advertising-jingles/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/remote-sessions/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/express-recording/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/kreator/', priority: '0.6', changefreq: 'monthly' },
