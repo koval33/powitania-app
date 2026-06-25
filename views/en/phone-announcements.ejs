@@ -1,22 +1,11 @@
 <%- include('../partials/head-en') %>
 
-<!-- Hero -->
-<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <a href="/en/" class="hover:text-accent transition-colors">Home</a>
-      <span class="mx-2 text-gray-300">›</span>
-      <a href="/en/voiceover-services/" class="hover:text-accent transition-colors">Voiceover Services</a>
-      <span class="mx-2 text-gray-300">›</span>
-      <span class="text-gray-700">Phone Announcements</span>
-    </nav>
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Phone announcements and recordings for IVR systems</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Phone announcements and voiceover recordings for PBX systems - from a single welcome message to a full IVR tree. We work with Slican, Platan, Asterisk, 3CX and all popular VoIP centrals. <%= voiceCount %>&nbsp;voice artists, delivery in 24-48h, ready file in the required format (WAV, MP3, GSM).
-    </p>
-    <p class="text-accent font-bold text-xl mt-4">from EUR 90 net</p>
-  </div>
-</section>
+<%# Hero - partial page-hero (mirror PL). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Phone announcements and recordings for IVR systems',
+  heroSub: 'Phone announcements and&nbsp;voiceover recordings for PBX systems - from a&nbsp;single welcome message to&nbsp;a full IVR tree. We work with Slican, Platan, Asterisk, 3CX and&nbsp;all popular VoIP centrals. ' + voiceCount + '&nbsp;voice artists, delivery in&nbsp;24-48h. From EUR&nbsp;90 net.',
+  heroCtaHtml: `<a href="/en/contact/#contact-form" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors">Get a free quote</a>`
+}) %>
 
 <!-- AIO-targeted: "what is IVR" -->
 <section class="py-8 bg-white border-b border-gray-200">

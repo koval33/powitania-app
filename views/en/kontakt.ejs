@@ -1,12 +1,11 @@
 <%- include('../partials/head-en') %>
 
-<!-- HERO -->
-<section class="py-12 md:py-16">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Dosis', sans-serif;">Contact</h1>
-    <p class="text-lg text-gray-500">Have questions? Write to us - we respond within 2 hours</p>
-  </div>
-</section>
+<%# Hero - partial page-hero (mirror PL). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Contact',
+  heroSub: 'Have questions? Write to&nbsp;us - we respond within 2&nbsp;hours.',
+  heroCta: 'none'
+}) %>
 
 <section class="py-12">
   <div class="max-w-4xl mx-auto px-4">

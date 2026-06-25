@@ -1,15 +1,11 @@
 <%- include('../partials/head-en') %>
 
-<!-- HERO -->
-<section class="py-8 md:py-10 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Voiceover and voice services pricing</h1>
-    <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-      Powitania.pl pricing - transparent rates with no hidden fees. Radio ad voiceover from EUR&nbsp;70, narration from EUR&nbsp;80/page, IVR from EUR&nbsp;90 net. We work with <%= voiceCount %>&nbsp;voice artists across 30+ languages, delivery in 24-48h. Online quote within 30 minutes.
-    </p>
-    <p class="text-xs text-gray-400 mt-5">No hidden costs · VAT invoice · We respond within 2 hours</p>
-  </div>
-</section>
+<%# Hero - partial page-hero (mirror PL). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Voiceover and voice services pricing',
+  heroSub: 'Transparent rates with no&nbsp;hidden fees. Radio ad voiceover from EUR&nbsp;70, narration from EUR&nbsp;80/page, IVR from EUR&nbsp;90 net. ' + voiceCount + '&nbsp;voice artists across 30+ languages, delivery in&nbsp;24-48h. Online quote within 30&nbsp;minutes.',
+  heroCtaHtml: `<a href="/en/contact/#contact-form" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors">Get a free quote</a>`
+}) %>
 
 <!-- PRICING -->
 <section class="py-10">

@@ -1274,6 +1274,7 @@ app.get('/en/voice-bank/', (req, res) => {
 
 app.get('/en/pricing/', (req, res) => {
   res.render('en/cennik', {
+    pageHeroTransparent: true,
     title: 'Voiceover & Voice Services Pricing from EUR 70 | Powitania.pl',
     description: `Voiceover recording pricing: radio ad from EUR 70, narration from EUR 80/page, IVR from EUR 90, audiobook from EUR 15/page. ${res.locals.voiceCount} voice artists, 24-48h delivery.`
   });
@@ -1281,6 +1282,7 @@ app.get('/en/pricing/', (req, res) => {
 
 app.get('/en/contact/', (req, res) => {
   res.render('en/kontakt', {
+    pageHeroTransparent: true,
     title: 'Contact | Powitania.pl',
     description: 'Contact Powitania.pl Voiceover Studio. Professional voice recordings in 24-48h, 200+ voice artists, 30+ languages. We reply within 2 hours on weekdays.'
   });
@@ -1299,6 +1301,7 @@ app.get('/en/privacy-policy/', (req, res) => {
 
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
+    pageHeroTransparent: true,
     title: `Voice-Over Recordings - Ads, IVR, Films, Audiobooks | 24-48h`,
     description: `Professional voice-over recordings since 2001. ${res.locals.voiceCount} voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.`,
     breadcrumbs: [
@@ -1310,6 +1313,7 @@ app.get('/en/voiceover-services/', (req, res) => {
 
 app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
   res.render('en/voice-for-advertising', {
+    pageHeroTransparent: true,
     title: 'Voice for Advertising | Radio, TV & social media spots | Powitania.pl',
     description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media - professional voiceover recordings that sell.',
     breadcrumbs: [
@@ -1333,6 +1337,7 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
 
 app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
   res.render('en/film-voiceover', {
+    pageHeroTransparent: true,
     title: 'Professional Film Voiceover | Narration & Audio-Video | Powitania.pl',
     description: 'Professional film voiceover - narration for corporate, instructional, e-learning and promotional videos. Audio-video editing included.',
     breadcrumbs: [
@@ -1356,6 +1361,7 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
 
 app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   res.render('en/phone-announcements', {
+    pageHeroTransparent: true,
     title: 'Phone announcements & IVR recordings for PBX | 24-48h',
     description: `Phone announcements and IVR voiceover for your PBX (Slican, Platan, VoIP). ${res.locals.voiceCount} voice artists, 24-48h delivery, ready-made script templates.`,
     breadcrumbs: [
@@ -1380,6 +1386,7 @@ app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
 
 app.get('/en/voiceover-services/audio-guides/', (req, res) => {
   res.render('en/audio-guides', {
+    pageHeroTransparent: true,
     title: 'Audio guides voiceover | museums, QR, apps | Powitania.pl',
     description: 'Professional voiceover recordings for audio guides: museums, parks, trails. Polish + native voice artists, integration with QR/apps. Quote within 24h.',
     breadcrumbs: [
@@ -1392,6 +1399,7 @@ app.get('/en/voiceover-services/audio-guides/', (req, res) => {
 
 app.get('/en/remote-sessions/', (req, res) => {
   res.render('en/remote-sessions', {
+    pageHeroTransparent: true,
     title: 'Remote Recording Sessions | Online Voiceover | Powitania.pl',
     description: 'Join a voiceover recording session remotely. Full real-time control over the process from anywhere in the world.',
     breadcrumbs: [

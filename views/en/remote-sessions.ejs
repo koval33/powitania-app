@@ -1,12 +1,11 @@
 <%- include('../partials/head-en') %>
 
-<!-- Hero -->
-<section class="py-10 md:py-14 bg-gradient-to-br from-stone-100 via-white to-stone-100 border-b border-gray-200">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Online Voiceover Recordings</h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Remote recording sessions with full control over the process - without leaving your office or home.</p>
-  </div>
-</section>
+<%# Hero - partial page-hero (mirror PL). Flaga pageHeroTransparent w route. %>
+<%- include('../partials/page-hero', {
+  heroH1: 'Online Voiceover Recordings',
+  heroSub: 'Remote recording sessions with full control over the process - without leaving your office or&nbsp;home.',
+  heroCtaHtml: `<a href="/en/contact/#contact-form" class="bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold text-center transition-colors">Get a free quote</a>`
+}) %>
 
 <section class="py-16">
   <div class="max-w-6xl mx-auto px-4">
