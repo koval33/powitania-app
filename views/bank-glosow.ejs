@@ -397,6 +397,7 @@
       <% voices.forEach(function(v, idx) { %>
       <div class="voice-card bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-accent/30 shadow-sm hover:shadow-md transition-shadow<%= idx >= 20 ? ' hidden' : '' %>"
            data-id="<%= v.id %>"
+           data-lektor="<%= v.id %>"
            data-url="<%= v.profileUrl %>"
            data-gender="<%= v.gender %>"
            data-age="<%= v.age %>"
@@ -501,7 +502,7 @@
                 <a href="<%= v.profileUrl %>#wycena" onclick="event.stopPropagation()" class="cta-pricing inline-flex items-center justify-center bg-accent hover:bg-accent-light text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap">
                   Wyceń nagranie
                 </a>
-                <button type="button" class="cta-inquiry inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium px-4 py-2.5 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.name %>">
+                <button type="button" class="cta-inquiry inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium px-4 py-2.5 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors whitespace-nowrap" onclick="event.stopPropagation(); openInquiryModal('<%= v.name.replace(/'/g, "\\'") %>')" data-lektor="<%= v.id %>">
                   Zapytaj
                 </button>
               <% } %>
