@@ -109,6 +109,28 @@
     }
   });
 
+  // --- Kliknięcia CTA: Zapytaj / Wyceń nagranie (mikro-konwersje intencji) ---
+  // UWAGA: faza CAPTURE (3. arg = true). Przyciski CTA na kartach maja
+  // onclick="event.stopPropagation()" (zeby klik nie odpalal nawigacji karty),
+  // co ubija delegowany listener w fazie bubble. Capture lapie klik zanim
+  // stopPropagation zatrzyma propagacje. Zweryfikowane: bubble nie odpala, capture tak.
+  document.addEventListener('click', function(e) {
+    var inq = e.target.closest('.cta-inquiry');
+    if (inq) {
+      trackEvent('cta_inquiry_click', { lektor: _ctaLektor(inq) });
+      return;
+    }
+    var prc = e.target.closest('.cta-pricing');
+    if (prc) {
+      trackEvent('cta_pricing_click', { lektor: _ctaLektor(prc) });
+    }
+  }, true);
+  function _ctaLektor(el) {
+    if (el.getAttribute('data-lektor')) return el.getAttribute('data-lektor');
+    var card = el.closest('.voice-card, [data-lektor]');
+    return (card && card.getAttribute('data-lektor')) || '';
+  }
+
   // --- Lektor profile view (na stronie /lektorzy/*) ---
   if (window.location.pathname.indexOf('/lektorzy/') === 0) {
     var slug = window.location.pathname.split('/lektorzy/')[1];
