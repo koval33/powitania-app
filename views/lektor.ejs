@@ -288,6 +288,10 @@
                     </div>
                   </div>
                   <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Telefon (opcjonalnie)</label>
+                    <input type="tel" id="wiz-inq-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="501 234 567">
+                  </div>
+                  <div>
                     <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
                     <textarea id="wiz-inq-message" rows="3" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm resize-y" placeholder="Opisz swój projekt..."></textarea>
                   </div>
@@ -423,6 +427,10 @@
                       <label class="block text-gray-900 text-sm font-medium mb-1">Imię i nazwisko</label>
                       <input type="text" id="mod-inq-name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="Jan Kowalski">
                     </div>
+                  </div>
+                  <div>
+                    <label class="block text-gray-900 text-sm font-medium mb-1">Telefon (opcjonalnie)</label>
+                    <input type="tel" id="mod-inq-phone" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none text-sm" placeholder="501 234 567">
                   </div>
                   <div>
                     <label class="block text-gray-900 text-sm font-medium mb-1">Wiadomość</label>
@@ -2109,6 +2117,7 @@ function submitModalInquiry() {
   var data = {
     email: email,
     name: document.getElementById('mod-inq-name').value.trim(),
+    phone: document.getElementById('mod-inq-phone').value.trim(),
     lektorName: LEKTOR_NAME,
     lektorId: LEKTOR_ID,
     serviceType: document.getElementById('modal-service-select').value,
@@ -2130,8 +2139,9 @@ function submitModalInquiry() {
     msgEl.classList.remove('hidden');
     if (res.ok) {
       var _modInqSrc = (function(){ var f = document.getElementById('modal-inquiry-form'); return (f && f.dataset && f.dataset.source) || 'modal'; })();
-      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: _modInqSrc }, data.email, data.phone);
-      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: _modInqSrc });
+      var _modInqEvent = LEKTOR_HIDE_PRICE ? 'form_submit_inquiry_premium' : 'form_submit_inquiry';
+      if (window.trackEventEC) trackEventEC(_modInqEvent, { lektor: LEKTOR_ID, source: _modInqSrc }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent(_modInqEvent, { lektor: LEKTOR_ID, source: _modInqSrc });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
@@ -2201,6 +2211,7 @@ function submitWizardInquiry() {
   var data = {
     email: email,
     name: document.getElementById('wiz-inq-name').value.trim(),
+    phone: document.getElementById('wiz-inq-phone').value.trim(),
     lektorName: LEKTOR_NAME,
     lektorId: LEKTOR_ID,
     serviceType: ctx.serviceType || '',
@@ -2222,8 +2233,9 @@ function submitWizardInquiry() {
     msgEl.classList.remove('hidden');
     if (res.ok) {
       var inquirySource = (function(){ var f = document.getElementById('wizard-inquiry-form'); return (f && f.dataset && f.dataset.source) || 'wycena_indywidualna'; })();
-      if (window.trackEventEC) trackEventEC('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource }, data.email, data.phone);
-      else if (window.trackEvent) trackEvent('form_submit_inquiry', { lektor: LEKTOR_ID, source: inquirySource });
+      var inqEvent = LEKTOR_HIDE_PRICE ? 'form_submit_inquiry_premium' : 'form_submit_inquiry';
+      if (window.trackEventEC) trackEventEC(inqEvent, { lektor: LEKTOR_ID, source: inquirySource }, data.email, data.phone);
+      else if (window.trackEvent) trackEvent(inqEvent, { lektor: LEKTOR_ID, source: inquirySource });
       msgEl.className = 'text-center text-sm mt-2 text-emerald-500';
       msgEl.textContent = res.message || 'Dziękujemy! Odpowiemy z wyceną w ciągu 2 godzin.';
       btn.disabled = false;
