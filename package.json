@@ -9,6 +9,7 @@
     "build:css": "npx tailwindcss -i src/input.css -o public/css/tailwind.css --minify",
     "pull-prod": "node scripts/pull-from-prod.js",
     "check-sync": "node scripts/check-prod-sync.js",
+    "report:kreator": "node scripts/kreator-daily-report.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
