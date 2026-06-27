@@ -614,6 +614,7 @@ app.use('/api/voices', require('./routes/api-voices'));
 app.use('/admin/lektorzy', require('./routes/admin'));
 app.use('/admin/opinie', require('./routes/admin-opinie'));
 app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
+app.use('/admin/kreator', require('./routes/admin-kreator'));
 
 // Page routes
 app.get('/', (req, res) => {

@@ -7,11 +7,70 @@
  *
  * If no date is given, it reports on yesterday's data.
  *
+ * ZRODLO DANYCH:
+ *   Logi kreatora powstaja na PRODUKCJI. Lokalnie katalog logow jest pusty,
+ *   dlatego skrypt domyslnie probuje pobrac logi z prod endpointu
+ *   /admin/kreator/export/ (basic auth admin:PROD_ADMIN_PASSWORD) - tak samo
+ *   jak scripts/pull-from-prod.js pobiera voices.json.
+ *
+ *   - PROD_ADMIN_PASSWORD ustawione  -> pobiera z produkcji (+ cache lokalnie).
+ *   - brak hasla / flaga --local     -> czyta tylko lokalne logi.
+ *   - gdy pobranie z prod sie nie uda -> fallback na lokalne logi.
+ *
  * Output: human-readable summary printed to stdout.
  */
 
+const fs = require('fs');
 const path = require('path');
-const { readLog } = require('../lib/kreator-logger');
+const { readLog, LOG_DIR } = require('../lib/kreator-logger');
+
+const PROD_URL = process.env.PROD_URL || 'https://www.powitania.pl';
+const USE_LOCAL = process.argv.includes('--local');
+
+/**
+ * Pobiera logi dnia z produkcji i cache'uje je lokalnie (do LOG_DIR).
+ * Zwraca tablice wpisow albo null gdy sie nie udalo / brak hasla.
+ */
+async function fetchFromProd(dateStr) {
+  const password = process.env.PROD_ADMIN_PASSWORD;
+  if (!password || USE_LOCAL) return null;
+
+  const authHeader = 'Basic ' + Buffer.from('admin:' + password).toString('base64');
+  const url = PROD_URL + '/admin/kreator/export/?date=' + dateStr;
+
+  try {
+    const r = await fetch(url, { headers: { Authorization: authHeader } });
+    if (!r.ok) {
+      console.error('[prod] Nie udalo sie pobrac logow (HTTP ' + r.status + ') - uzywam lokalnych.');
+      return null;
+    }
+    const data = await r.json();
+    const entries = Array.isArray(data.entries) ? data.entries : [];
+
+    // Cache lokalnie (jsonl) - przyszle uruchomienia --local maja dane.
+    try {
+      if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
+      const cacheFile = path.join(LOG_DIR, dateStr + '.jsonl');
+      fs.writeFileSync(cacheFile, entries.map(function(e) { return JSON.stringify(e); }).join('\n') + (entries.length ? '\n' : ''), 'utf8');
+    } catch (e) {
+      console.error('[prod] Nie udalo sie zapisac cache logow:', e.message);
+    }
+
+    return entries;
+  } catch (e) {
+    console.error('[prod] Blad pobierania z produkcji (' + e.message + ') - uzywam lokalnych.');
+    return null;
+  }
+}
+
+/**
+ * Zwraca wpisy dla danego dnia: z produkcji (gdy dostepne) albo lokalne.
+ */
+async function getEntries(dateStr) {
+  const prod = await fetchFromProd(dateStr);
+  if (prod !== null) return prod;
+  return readLog(dateStr);
+}
 
 // ── Helpers ────────────────────────────────────────────────────────────
 
@@ -51,8 +110,8 @@ function groupBy(entries, key) {
 
 // ── Main report ────────────────────────────────────────────────────────
 
-function generateReport(dateStr) {
-  var entries = readLog(dateStr);
+function generateReport(dateStr, entries) {
+  if (!entries) entries = readLog(dateStr);
 
   var lines = [];
   lines.push('═══════════════════════════════════════════════════════');
@@ -239,18 +298,30 @@ function generateReport(dateStr) {
 
 // ── CLI ────────────────────────────────────────────────────────────────
 
-var dateArg = process.argv[2];
+// Pierwszy argument w formacie daty (pomijamy flagi typu --local).
+var dateArg = process.argv.slice(2).find(function(a) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(a);
+});
+
 if (!dateArg) {
+  // Czy podano cos co mialo byc data, ale ma zly format?
+  var badDate = process.argv.slice(2).find(function(a) { return a.indexOf('-') !== -1 && a[0] !== '-'; });
+  if (badDate) {
+    console.error('Usage: node scripts/kreator-daily-report.js [YYYY-MM-DD] [--local]');
+    process.exit(1);
+  }
   // Default: yesterday
   var d = new Date();
   d.setDate(d.getDate() - 1);
   dateArg = d.toISOString().slice(0, 10);
 }
 
-// Validate date format
-if (!/^\d{4}-\d{2}-\d{2}$/.test(dateArg)) {
-  console.error('Usage: node scripts/kreator-daily-report.js [YYYY-MM-DD]');
-  process.exit(1);
-}
-
-console.log(generateReport(dateArg));
+(async function() {
+  try {
+    var entries = await getEntries(dateArg);
+    console.log(generateReport(dateArg, entries));
+  } catch (e) {
+    console.error('Blad generowania raportu:', e.message);
+    process.exit(1);
+  }
+})();
