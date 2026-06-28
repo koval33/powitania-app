@@ -22,6 +22,7 @@
     <% var jingles = [
       {name:'Niepoważny Podcast Golfowy', cat:'Podcast intro & sting', f:'podcast-golfowy', real:true},
       {name:'Sobienie Królewskie', cat:'Golf course ad sound design', f:'sobienie-promo', real:true},
+      {name:'Ruphert and Rico', cat:'Pre-show announcement', f:'rupert-rico', img:'rupert_rico.webp', real:true, single:true},
       {name:'Auto Nova', cat:'Automotive - car dealership', f:'auto-nova', img:'auto_nova_2.jpg'},
       {name:'BlueWay Travel', cat:'Tourism - travel agency', f:'blueway-travel', img:'blue_way_travel_2.jpg'},
       {name:'Click Market', cat:'E-commerce - online store', f:'click-market', img:'click_market_2.jpg'},
@@ -41,23 +42,25 @@
             <h3 class="font-bold text-gray-900 leading-snug mb-0.5"><%= j.name %></h3>
             <p class="text-xs text-gray-500 mb-4"><%= j.cat %></p>
           <div class="flex flex-wrap gap-2">
-            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-1.mp3')" aria-label="Listen - <%= j.name %>, version 1" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
+            <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-1.mp3')" aria-label="Listen - <%= j.name %><%= j.single ? '' : ', version 1' %>" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
               <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-              <span>Version 1</span>
+              <span><%= j.single ? 'Listen' : 'Version 1' %></span>
             </button>
+            <% if (!j.single) { %>
             <button type="button" onclick="playSample(this, '/audio/spoty/<%= j.f %>-2.mp3')" aria-label="Listen - <%= j.name %>, version 2" class="play-btn inline-flex items-center gap-1.5 rounded-full border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 text-sm font-medium px-3 py-1.5 transition-colors">
               <svg class="play-icon w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               <svg class="pause-icon w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
               <span>Version 2</span>
             </button>
+            <% } %>
           </div>
           </div>
         </div>
       <% }); %>
     </div>
 
-    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Items marked "Client project" are actual deliveries - the intro for the "Niepoważny Podcast Golfowy" golf podcast and the ad sound design for the Sobienie Królewskie golf course. The rest are demo concepts (example brands) showing the range of what we do. The full portfolio for specific brands is available after signing an NDA.</p>
+    <p class="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">Items marked "Client project" are actual deliveries - the intro for the "Niepoważny Podcast Golfowy" golf podcast, the ad sound design for the Sobienie Królewskie golf course and the "Ruphert and Rico" announcement. The rest are demo concepts (example brands) showing the range of what we do. The full portfolio for specific brands is available after signing an NDA.</p>
   </div>
 </section>
 
