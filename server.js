@@ -19,6 +19,23 @@ app.use((req, res, next) => {
   next();
 });
 
+// Blokada indeksacji środowisk NIE-produkcyjnych (staging/preview).
+// Indeksowalny jest WYŁĄCZNIE www.powitania.pl. Wszystko inne - dev.powitania.pl
+// oraz dowolny host *.up.railway.app - dostaje X-Robots-Tag: noindex na KAŻDEJ
+// odpowiedzi (też pliki statyczne/robots.txt, bo middleware jest przed express.static).
+// BEZPIECZEŃSTWO: warunek z definicji nie może trafić w www.powitania.pl, a powitania.pl
+// i prod-railway są 301-owane wyżej, więc prod nigdy nie zostanie oznaczony noindex.
+// Świadomie NIE blokujemy czołgania (robots Disallow) na dev - Google musi wejść i
+// zobaczyć noindex, żeby USUNĄĆ już zaindeksowane dev-URL-e. Disallow dodać dopiero po deindeksacji.
+app.use((req, res, next) => {
+  const hostname = (req.headers.host || '').split(':')[0].toLowerCase();
+  const isNonProd = hostname.startsWith('dev.') || hostname.endsWith('.up.railway.app');
+  if (isNonProd) {
+    res.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+  next();
+});
+
 // Strip ?srsltid=... query param (dodawany przez Google Ads click) - 301 na czysty URL.
 // Bez tego Google traktuje kazdy unikalny srsltid jako osobna strone = rozmywanie
 // autorytetu + duplicate content signal. Razem z robots.txt Disallow + canonical
