@@ -604,7 +604,7 @@ app.get('/api/health/kreator', async (req, res) => {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 10,
         messages: [{ role: 'user', content: 'Odpowiedz jednym słowem: OK' }]
       })
@@ -613,7 +613,7 @@ app.get('/api/health/kreator', async (req, res) => {
     const ms = Date.now() - start;
 
     if (response.ok && data.content && data.content[0]) {
-      res.json({ ok: true, ms, model: 'claude-sonnet-4-20250514' });
+      res.json({ ok: true, ms, model: 'claude-sonnet-4-6' });
     } else {
       console.error('[health] Kreator API error:', data);
       res.status(500).json({ ok: false, error: data.error?.message || 'API error', ms });
