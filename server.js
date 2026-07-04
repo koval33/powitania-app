@@ -703,6 +703,12 @@ app.get('/lektorzy/:slug/', (req, res) => {
     .filter(v => v.id !== lektor.id && v.gender === lektor.gender && v.photo)
     .sort(() => Math.random() - 0.5)
     .slice(0, 5);
+  // Mini-opinie do paska zaufania przy wycenie: zaakceptowane, z nazwą firmy, krótkie.
+  const miniReviews = loadReviews()
+    .filter(r => r.approved && r.company && r.company.trim() && r.text && r.text.length >= 30 && r.text.length <= 160)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8)
+    .map(r => ({ text: r.text, company: r.company.trim() }));
   res.render('lektor', {
     title: lektor.seoTitle || (lektor.name + ' - Lektor | powitania.pl'),
     description: lektor.seoDescription || lektor.description || ('Profil lektora ' + lektor.name + '. Odsłuchaj próbki głosowe i zamów nagranie.'),
@@ -717,7 +723,8 @@ app.get('/lektorzy/:slug/', (req, res) => {
     lektor: lektor,
     similar: similar,
     isExpress: req.query.express === '1',
-    melodies: loadMelodies()
+    melodies: loadMelodies(),
+    miniReviews: miniReviews
   });
 });
 

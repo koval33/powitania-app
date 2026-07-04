@@ -412,6 +412,15 @@
                 </div>
 
               </div>
+
+              <!-- Trust strip: rating + review count (quotes are Polish, so EN shows numbers only) -->
+              <div class="mt-5 pt-4" style="border-top:1px solid #e5e7eb">
+                <div style="display:flex;align-items:center;gap:6px;justify-content:center">
+                  <span style="color:#f59e0b;font-size:15px;letter-spacing:1px" aria-hidden="true">★★★★★</span>
+                  <span style="font-weight:700;color:#111827;font-size:14px">5.0</span>
+                  <span style="color:#6b7280;font-size:13px">· <%= reviewCount %> client reviews</span>
+                </div>
+              </div>
             </div>
           </div>
         </div><!-- /#wycena -->
@@ -525,6 +534,15 @@
           </div>
 
           <div id="inquiry-msg" class="mt-4 text-center hidden"></div>
+
+          <!-- Trust strip: rating + review count -->
+          <div class="mt-5 pt-4" style="border-top:1px solid #e5e7eb">
+            <div style="display:flex;align-items:center;gap:6px;justify-content:center">
+              <span style="color:#f59e0b;font-size:15px;letter-spacing:1px" aria-hidden="true">★★★★★</span>
+              <span style="font-weight:700;color:#111827;font-size:14px">5.0</span>
+              <span style="color:#6b7280;font-size:13px">· <%= reviewCount %> client reviews</span>
+            </div>
+          </div>
         </form>
       </div>
     </div>
