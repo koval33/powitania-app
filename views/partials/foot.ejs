@@ -215,6 +215,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   #cb-close:hover{color:#111827}
   #cb-msg{font-size:13px;margin:8px 0 0;display:none}
   #cb-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+  #cb-pill-wrap{position:relative;display:inline-block}
+  #cb-min{position:absolute;top:-9px;right:-6px;width:22px;height:22px;border-radius:50%;background:#111827;color:#cbd5e1;border:1.5px solid rgba(255,255,255,.85);cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+  #cb-min:hover{color:#fff}
+  #cb-dot{display:none;width:46px;height:46px;border-radius:50%;background:#111827;color:#fff;border:1.5px solid rgba(255,255,255,.55);cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.28);align-items:center;justify-content:center;margin-left:auto}
+  #cb-dot:hover{background:#273142}
+  #cb-widget.cb-mini #cb-pill-wrap{display:none}
+  #cb-widget.cb-mini #cb-dot{display:flex}
 </style>
 <div id="cb-widget">
   <div id="cb-panel" role="dialog" aria-label="Zamów rozmowę">
@@ -227,9 +234,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button id="cb-send" type="button">Zamów rozmowę</button>
     <p id="cb-msg"></p>
   </div>
-  <button id="cb-pill" type="button" aria-haspopup="dialog">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-    <span>Oddzwonimy w 30 minut</span>
+  <div id="cb-pill-wrap">
+    <button id="cb-pill" type="button" aria-haspopup="dialog">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+      <span>Oddzwonimy w 30 minut</span>
+    </button>
+    <button id="cb-min" type="button" aria-label="Zwiń" title="Zwiń">&times;</button>
+  </div>
+  <button id="cb-dot" type="button" aria-label="Zamów rozmowę" title="Zamów rozmowę">
+    <svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
   </button>
 </div>
 <script>
@@ -262,6 +275,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var delay = Math.max(0, SHOW_AFTER_MS - (Date.now() - t0));
   setTimeout(function(){ w.classList.add('cb-show'); }, delay);
+
+  // Zwiniety stan (kropka) - pamietany przez sesje
+  try { if (sessionStorage.getItem('cbMin')) w.classList.add('cb-mini'); } catch(e) {}
+  document.getElementById('cb-min').addEventListener('click', function(){
+    w.classList.add('cb-mini');
+    panel.classList.remove('cb-open');
+    try { sessionStorage.setItem('cbMin', '1'); } catch(e) {}
+  });
+  document.getElementById('cb-dot').addEventListener('click', function(){
+    w.classList.remove('cb-mini');
+    try { sessionStorage.removeItem('cbMin'); } catch(e) {}
+    panel.classList.add('cb-open');
+    document.getElementById('cb-phone').focus();
+  });
 
   document.getElementById('cb-pill').addEventListener('click', function(){
     panel.classList.toggle('cb-open');
