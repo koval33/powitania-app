@@ -420,6 +420,58 @@ router.post('/', async (req, res) => {
   }
 });
 
+// "Oddzwonimy w 30 minut" - callback widget (desktop, floating).
+// Honeypot: pole 'website' wypelniaja tylko boty -> udajemy sukces, nic nie wysylamy.
+// Rate limit: prosty in-memory na IP (5/h) - wystarczajacy dla pojedynczej instancji Railway.
+const cbHits = new Map();
+router.post('/callback', async (req, res) => {
+  const { phone, name, page, website, lang } = req.body;
+  const isEN = lang === 'en';
+
+  if (website) return res.json({ ok: true, message: 'OK' }); // honeypot
+
+  const ip = req.headers['x-forwarded-for'] || req.ip || '?';
+  const now = Date.now();
+  const hits = (cbHits.get(ip) || []).filter(t => now - t < 3600e3);
+  if (hits.length >= 5) {
+    return res.status(429).json({ ok: false, error: isEN ? 'Too many requests. Please call us directly.' : 'Zbyt wiele zgłoszeń. Zadzwoń do nas bezpośrednio.' });
+  }
+  cbHits.set(ip, [...hits, now]);
+
+  const phoneCheck = validatePhone(phone);
+  if (!phone || !phoneCheck.ok) {
+    return res.status(400).json({ ok: false, error: isEN ? 'Please provide a valid phone number.' : 'Podaj poprawny numer telefonu.' });
+  }
+
+  const mailResults = [];
+  try {
+    mailResults.push(await sendMail({
+      subject: `[ODDZWOŃ w 30 min] ${phone}${name ? ' - ' + name : ''}`,
+      html: `
+        <h2>Prośba o oddzwonienie (widget callback)</h2>
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefon:</td><td style="padding:8px;border-bottom:1px solid #eee;font-size:18px"><a href="tel:${esc(phone)}">${esc(phone)}</a></td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Imię:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(name || '-')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Strona:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(page || '-')}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Język:</td><td style="padding:8px;border-bottom:1px solid #eee">${isEN ? 'EN' : 'PL'}</td></tr>
+        </table>
+        <p style="color:#c00;font-weight:bold">Obietnica na stronie: oddzwonimy w ciągu 30 minut.</p>
+        <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
+      `
+    }));
+
+    logWithStatus('callback', { phone, name, page }, mailResults, null);
+    res.json({ ok: true, message: isEN ? 'Thank you! We will call you back shortly.' : 'Dziękujemy! Wkrótce oddzwonimy.' });
+
+    sendOrderToCRM({ name: name || '', phone, notes: `Prośba o oddzwonienie (30 min). Strona: ${page || '-'}`, status: 'Prospect', source: 'powitania.pl (callback widget)' })
+      .catch(err => console.error('[CRM] callback webhook error:', err));
+  } catch (err) {
+    console.error('[contact] Callback error:', err);
+    logWithStatus('callback', { phone, name, page }, mailResults, err);
+    res.status(500).json({ ok: false, error: isEN ? 'An error occurred. Please call us directly.' : 'Błąd wysyłania. Zadzwoń do nas bezpośrednio.' });
+  }
+});
+
 function esc(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }

@@ -122,6 +122,120 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </script>
 
+<% if (currentPath !== '/en/contact/') { %>
+<!-- Callback widget: "We'll call you back in 30 minutes" (desktop only, appears after ~30 s of session) -->
+<style>
+  #cb-widget{display:none;position:fixed;right:24px;bottom:24px;z-index:45;font-family:inherit}
+  @media (min-width:768px){#cb-widget.cb-show{display:block}}
+  #cb-pill{display:flex;align-items:center;gap:8px;background:#199dff;color:#fff;border:none;cursor:pointer;padding:12px 18px;border-radius:9999px;font-weight:600;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:background .15s}
+  #cb-pill:hover{background:#3faaff}
+  #cb-panel{display:none;position:absolute;right:0;bottom:56px;width:300px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:18px}
+  #cb-panel.cb-open{display:block}
+  #cb-panel h4{margin:0 0 4px;font-size:16px;font-weight:700;color:#111827}
+  #cb-panel .cb-sub{margin:0 0 12px;font-size:12.5px;color:#6b7280}
+  #cb-panel input[type=tel],#cb-panel input[type=text]{width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:14px;margin-bottom:8px;color:#111827}
+  #cb-panel input:focus{outline:none;border-color:#199dff}
+  #cb-send{width:100%;background:#199dff;color:#fff;border:none;cursor:pointer;padding:10px;border-radius:8px;font-weight:600;font-size:14px;transition:background .15s}
+  #cb-send:hover{background:#3faaff}
+  #cb-send:disabled{opacity:.6;cursor:default}
+  #cb-close{position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;color:#9ca3af;font-size:18px;line-height:1;padding:2px}
+  #cb-close:hover{color:#111827}
+  #cb-msg{font-size:13px;margin:8px 0 0;display:none}
+  #cb-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+</style>
+<div id="cb-widget">
+  <div id="cb-panel" role="dialog" aria-label="Request a call">
+    <button id="cb-close" type="button" aria-label="Close">&times;</button>
+    <h4>Leave your number</h4>
+    <p class="cb-sub" id="cb-promise">We'll call you back within 30 minutes.</p>
+    <input type="text" id="cb-name" placeholder="Name (optional)" autocomplete="name">
+    <input type="tel" id="cb-phone" placeholder="Your phone number" autocomplete="tel" required>
+    <input type="text" id="cb-hp" name="website" tabindex="-1" autocomplete="off">
+    <button id="cb-send" type="button">Request a call</button>
+    <p id="cb-msg"></p>
+  </div>
+  <button id="cb-pill" type="button" aria-haspopup="dialog">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+    <span>We'll call you back in 30 min</span>
+  </button>
+</div>
+<script>
+(function(){
+  var SHOW_AFTER_MS = 30000;
+  try {
+    if (sessionStorage.getItem('cbDone')) return;
+    var t0 = parseInt(sessionStorage.getItem('cbT0') || '0', 10);
+    if (!t0) { t0 = Date.now(); sessionStorage.setItem('cbT0', String(t0)); }
+  } catch(e) { var t0 = Date.now(); }
+
+  var w = document.getElementById('cb-widget');
+  var panel = document.getElementById('cb-panel');
+  if (!w) return;
+
+  // Promise depends on office hours (Mon-Fri 8-18, Poland time)
+  function inWorkHours() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Warsaw', hour: 'numeric', weekday: 'short', hour12: false }).formatToParts(new Date());
+      var h = 0, wd = '';
+      parts.forEach(function(p){ if (p.type === 'hour') h = parseInt(p.value, 10); if (p.type === 'weekday') wd = p.value; });
+      var weekend = wd === 'Sat' || wd === 'Sun';
+      return !weekend && h >= 8 && h < 18;
+    } catch(e) { return true; }
+  }
+  if (!inWorkHours()) {
+    document.getElementById('cb-promise').textContent = 'We\'ll call you back on the next business day after 8:00 CET.';
+    document.querySelector('#cb-pill span').textContent = 'Request a call';
+  }
+
+  var delay = Math.max(0, SHOW_AFTER_MS - (Date.now() - t0));
+  setTimeout(function(){ w.classList.add('cb-show'); }, delay);
+
+  document.getElementById('cb-pill').addEventListener('click', function(){
+    panel.classList.toggle('cb-open');
+    if (panel.classList.contains('cb-open')) document.getElementById('cb-phone').focus();
+  });
+  document.getElementById('cb-close').addEventListener('click', function(){ panel.classList.remove('cb-open'); });
+
+  document.getElementById('cb-send').addEventListener('click', function(){
+    var btn = this;
+    var phone = document.getElementById('cb-phone').value.trim();
+    var msg = document.getElementById('cb-msg');
+    if (!phone) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = 'Please provide your phone number.'; return; }
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch('/api/contact/callback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        phone: phone,
+        name: document.getElementById('cb-name').value.trim(),
+        page: location.pathname,
+        website: document.getElementById('cb-hp').value,
+        lang: 'en'
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      msg.style.display = 'block';
+      if (res.ok) {
+        if (window.trackEvent) trackEvent('callback_request', { page: location.pathname });
+        msg.style.color = '#059669'; msg.textContent = res.message || 'Thank you! We will call you back shortly.';
+        btn.textContent = 'Sent ✓';
+        try { sessionStorage.setItem('cbDone', '1'); } catch(e) {}
+        setTimeout(function(){ w.classList.remove('cb-show'); }, 4000);
+      } else {
+        msg.style.color = '#dc2626'; msg.textContent = res.error || 'An error occurred. Please call us directly.';
+        btn.disabled = false; btn.textContent = 'Request a call';
+      }
+    })
+    .catch(function(){
+      msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = 'Connection error. Call us: +48 605 491 069.';
+      btn.disabled = false; btn.textContent = 'Request a call';
+    });
+  });
+})();
+</script>
+<% } %>
+
 <script src="/js/ga-events.js?v=<%= typeof assetVersion !== 'undefined' ? assetVersion : '' %>" defer></script>
 </body>
 </html>
