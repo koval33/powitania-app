@@ -313,7 +313,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .then(function(res){
       msg.style.display = 'block';
       if (res.ok) {
-        if (window.trackEvent) trackEvent('callback_request', { page: location.pathname });
+        if (window.trackEventEC) trackEventEC('callback_request', { page: location.pathname }, null, phone);
+        else if (window.trackEvent) trackEvent('callback_request', { page: location.pathname });
         msg.style.color = '#059669'; msg.textContent = res.message || 'Dziękujemy! Wkrótce oddzwonimy.';
         btn.textContent = 'Wysłano ✓';
         try { sessionStorage.setItem('cbDone', '1'); } catch(e) {}
