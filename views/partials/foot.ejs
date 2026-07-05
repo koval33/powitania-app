@@ -196,7 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <% if (currentPath !== '/kontakt/') { %>
-<!-- Callback widget: "Oddzwonimy w 30 minut" (desktop only, pojawia sie po ~30 s sesji) -->
+<!-- Callback widget: "Oddzwonimy w 15 minut" (desktop only, pojawia sie po ~30 s sesji) -->
 <style>
   #cb-widget{display:none;position:fixed;right:24px;bottom:24px;z-index:45;font-family:inherit}
   @media (min-width:768px){#cb-widget.cb-show{display:block}}
@@ -227,7 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="cb-panel" role="dialog" aria-label="Zamów rozmowę">
     <button id="cb-close" type="button" aria-label="Zamknij">&times;</button>
     <h4>Zostaw numer</h4>
-    <p class="cb-sub" id="cb-promise">Oddzwonimy w ciągu 30 minut.</p>
+    <p class="cb-sub" id="cb-promise">Oddzwonimy w ciągu 15 minut.</p>
     <input type="text" id="cb-name" placeholder="Imię (opcjonalnie)" autocomplete="name">
     <input type="tel" id="cb-phone" placeholder="Twój numer telefonu" autocomplete="tel" required>
     <input type="text" id="cb-hp" name="website" tabindex="-1" autocomplete="off">
