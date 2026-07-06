@@ -200,7 +200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <style>
   #cb-widget{display:none;position:fixed;right:24px;bottom:24px;z-index:45;font-family:inherit}
   @media (min-width:768px){#cb-widget.cb-show{display:block}}
-  #cb-panel{display:none;position:absolute;right:0;bottom:104px;width:300px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:18px}
+  #cb-panel{display:none;position:absolute;right:0;bottom:62px;width:300px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:18px}
   #cb-panel.cb-open{display:block}
   #cb-panel h4{margin:0 0 4px;font-size:16px;font-weight:700;color:#111827}
   #cb-panel .cb-sub{margin:0 0 12px;font-size:12.5px;color:#6b7280}
@@ -213,15 +213,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   #cb-close:hover{color:#111827}
   #cb-msg{font-size:13px;margin:8px 0 0;display:none}
   #cb-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
-  #cb-launcher{display:flex;flex-direction:column;align-items:center;gap:8px}
-  #cb-fab-wrap{position:relative;line-height:0}
-  #cb-fab{width:60px;height:60px;border-radius:50%;background:#d85a30;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:background .15s;padding:0}
+  #cb-fab{width:52px;height:52px;border-radius:50%;background:#d85a30;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 16px rgba(0,0,0,.3);transition:background .15s;padding:0;margin-left:auto}
   #cb-fab:hover{background:#e8734a}
-  #cb-fab svg{width:26px;height:26px}
-  #cb-min{position:absolute;top:-3px;right:-3px;width:22px;height:22px;border-radius:50%;background:#111827;color:#cbd5e1;border:1.5px solid #fff;cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
-  #cb-min:hover{color:#fff}
-  #cb-fab-label{background:rgba(17,24,39,.85);color:#fff;font-size:12px;font-weight:600;padding:4px 11px;border-radius:9999px;white-space:nowrap;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-  #cb-widget.cb-mini #cb-fab-label,#cb-widget.cb-mini #cb-min{display:none}
+  #cb-fab svg{width:23px;height:23px}
 </style>
 <div id="cb-widget">
   <div id="cb-panel" role="dialog" aria-label="Zamów rozmowę">
@@ -234,15 +228,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button id="cb-send" type="button">Zamów rozmowę</button>
     <p id="cb-msg"></p>
   </div>
-  <div id="cb-launcher">
-    <div id="cb-fab-wrap">
-      <button id="cb-fab" type="button" aria-haspopup="dialog" aria-label="Zamów rozmowę">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-      </button>
-      <button id="cb-min" type="button" aria-label="Zwiń" title="Zwiń">&times;</button>
-    </div>
-    <span id="cb-fab-label">Zamów rozmowę</span>
-  </div>
+  <button id="cb-fab" type="button" aria-haspopup="dialog" aria-label="Zamów rozmowę" title="Zamów rozmowę">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+  </button>
 </div>
 <script>
 (function(){
@@ -274,22 +262,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var delay = Math.max(0, SHOW_AFTER_MS - (Date.now() - t0));
   setTimeout(function(){ w.classList.add('cb-show'); }, delay);
 
-  // Zwiniety stan (samo kolko, bez podpisu) - pamietany przez sesje
-  try { if (sessionStorage.getItem('cbMin')) w.classList.add('cb-mini'); } catch(e) {}
-  function togglePanel(){
-    if (panel.classList.contains('cb-open')) { panel.classList.remove('cb-open'); return; }
-    w.classList.remove('cb-mini');
-    try { sessionStorage.removeItem('cbMin'); } catch(e) {}
-    panel.classList.add('cb-open');
-    document.getElementById('cb-phone').focus();
-  }
-  document.getElementById('cb-fab').addEventListener('click', togglePanel);
-  document.getElementById('cb-fab-label').addEventListener('click', togglePanel);
-  document.getElementById('cb-min').addEventListener('click', function(e){
-    e.stopPropagation();
-    w.classList.add('cb-mini');
-    panel.classList.remove('cb-open');
-    try { sessionStorage.setItem('cbMin', '1'); } catch(e) {}
+  // Kolko = jedyny stan spoczynkowy; klik otwiera/zamyka formularz, x w formularzu wraca do kolka.
+  document.getElementById('cb-fab').addEventListener('click', function(){
+    panel.classList.toggle('cb-open');
+    if (panel.classList.contains('cb-open')) document.getElementById('cb-phone').focus();
   });
   document.getElementById('cb-close').addEventListener('click', function(){ panel.classList.remove('cb-open'); });
 
