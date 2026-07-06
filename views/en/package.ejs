@@ -26,7 +26,7 @@
         </div>
 
         <div id="choose-voice">
-          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Choose your voice talent (<%= orderVoices.length %> voices)</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Choose your voice talent</h2>
           <p class="text-gray-600 text-sm mb-4">All voice talents available in this package. Listen to the samples, click "Select" and proceed to the order. Full profiles in our <a href="/en/voice-bank/" target="_blank" rel="noopener" class="text-accent hover:underline">voice bank</a>.</p>
           <div class="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100 max-h-[30rem] overflow-y-auto">
             <% orderVoices.forEach(function(s) { %>
@@ -73,7 +73,7 @@
                 <%= f.q %>
                 <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
               </summary>
-              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed"><%= f.a %></div>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed"><%- f.a %></div>
             </details>
             <% }); %>
           </div>
