@@ -437,6 +437,7 @@
       '</button>';
     }
     html += '</div>';
+    html += '<p class="mt-6 text-sm text-gray-500">Prefer a ready-made set with a fixed price? See our <a href="/en/packages/" class="text-accent hover:underline font-medium">voice-over packages</a>.</p>';
     html += '<div class="mt-8"><button data-action="goTo" data-value="welcome" class="kreator-btn-secondary">Back</button></div>';
     return html;
   }

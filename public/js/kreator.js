@@ -438,6 +438,7 @@
       '</button>';
     }
     html += '</div>';
+    html += '<p class="mt-6 text-sm text-gray-500">Wolisz gotowy zestaw ze stałą ceną? Zobacz <a href="/pakiety/" class="text-accent hover:underline font-medium">pakiety nagrań z cenami</a>.</p>';
     html += '<div class="mt-8"><button data-action="goTo" data-value="welcome" class="kreator-btn-secondary">Wstecz</button></div>';
     return html;
   }

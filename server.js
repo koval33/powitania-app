@@ -97,6 +97,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Data - dynamiczne ładowanie (admin może edytować)
 const fs = require('fs');
 const multer = require('multer');
+const Pakiety = require('./lib/pakiety');
 
 // Inicjalizacja plików danych z seedów (Railway volume montuje pusty katalog)
 //
@@ -355,6 +356,17 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
     '/nagrania-lektorskie/audioprzewodniki/': '/en/voiceover-services/audio-guides/',
     '/produkcja-jingli-reklamowych/': '/en/advertising-jingles/',
+    '/pakiety/': '/en/packages/',
+    '/pakiety/zapowiedzi-telefoniczne-start/': '/en/packages/phone-announcements-start/',
+    '/pakiety/zapowiedzi-telefoniczne-pro/': '/en/packages/phone-announcements-pro/',
+    '/pakiety/zapowiedzi-telefoniczne-pl-en/': '/en/packages/phone-announcements-pl-en/',
+    '/pakiety/zapowiedzi-telefoniczne-max-pl-en/': '/en/packages/phone-announcements-max-pl-en/',
+    '/pakiety/spot-radiowy-30s-stacja-lokalna/': '/en/packages/radio-spot-30s-local/',
+    '/pakiety/spot-radiowy-30s-ogolnopolski/': '/en/packages/radio-spot-30s-national/',
+    '/pakiety/spot-do-kampanii-internetowej/': '/en/packages/online-campaign-spot/',
+    '/pakiety/narracja-do-filmu-1-strona/': '/en/packages/film-narration-1-page/',
+    '/pakiety/narracja-do-filmu-2-strony/': '/en/packages/film-narration-2-pages/',
+    '/pakiety/dogrywka-aktualizacja-nagrania-24h/': '/en/packages/recording-update-24h/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/kreator/': '/en/kreator/',
@@ -817,6 +829,44 @@ app.get('/produkcja-jingli-reklamowych/', (req, res) => {
       'url': 'https://www.powitania.pl/produkcja-jingli-reklamowych/',
       'serviceType': 'Produkcja jingli i muzyki reklamowej'
     }
+  });
+});
+
+// Pakiety nagrań (Sklep v2) - indeks + strony produktowe. Dane: lib/pakiety.js (brief 06.07.2026).
+app.get('/pakiety/', (req, res) => {
+  res.render('pakiety', {
+    title: 'Pakiety nagrań lektorskich z cenami | Powitania.pl',
+    description: 'Gotowe pakiety nagrań w stałych cenach: zapowiedzi telefoniczne IVR od 380 zł, spoty radiowe od 300 zł, narracje do filmów od 450 zł netto. Zamówienie i płatność online, faktura VAT.',
+    pageHeroTransparent: true,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Pakiety nagrań', url: '/pakiety/' }
+    ],
+    pakiety: Pakiety.getAll()
+  });
+});
+
+app.get('/pakiety/:slug/', (req, res) => {
+  const pakiet = Pakiety.getBySlug(req.params.slug);
+  if (!pakiet) {
+    return res.status(404).render('placeholder', {
+      title: '404 | powitania.pl',
+      description: 'Nie znaleziono pakietu',
+      heading: 'Nie znaleziono pakietu',
+      message: 'Pakiet o podanym adresie nie istnieje. <a href="/pakiety/" class="text-accent hover:underline">Zobacz wszystkie pakiety nagrań</a>.'
+    });
+  }
+  res.render('pakiet', {
+    title: pakiet.title,
+    description: pakiet.metaDescription,
+    pageHeroTransparent: true,
+    breadcrumbs: [
+      { name: 'Strona główna', url: '/' },
+      { name: 'Pakiety nagrań', url: '/pakiety/' },
+      { name: pakiet.name, url: '/pakiety/' + pakiet.id + '/' }
+    ],
+    pakiet: pakiet,
+    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3)
   });
 });
 
@@ -1445,6 +1495,44 @@ app.get('/en/advertising-jingles/', (req, res) => {
   });
 });
 
+// Voice-over packages (Shop v2) - EN mirror of /pakiety/. Data: lib/pakiety.js.
+app.get('/en/packages/', (req, res) => {
+  res.render('en/packages', {
+    title: 'Voice-over packages with prices | Powitania.pl',
+    description: 'Fixed-price voice-over packages: IVR phone announcements from PLN 380, radio spots from PLN 300, film narration from PLN 450 net. Online ordering and payment, VAT invoice.',
+    pageHeroTransparent: true,
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Packages', url: '/en/packages/' }
+    ],
+    pakiety: Pakiety.getAll()
+  });
+});
+
+app.get('/en/packages/:slug/', (req, res) => {
+  const pakiet = Pakiety.getBySlugEn(req.params.slug);
+  if (!pakiet) {
+    return res.status(404).render('placeholder', {
+      title: '404 | powitania.pl',
+      description: 'Package not found',
+      heading: 'Package not found',
+      message: 'This package does not exist. <a href="/en/packages/" class="text-accent hover:underline">See all recording packages</a>.'
+    });
+  }
+  res.render('en/package', {
+    title: pakiet.titleEn,
+    description: pakiet.metaDescriptionEn,
+    pageHeroTransparent: true,
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'Packages', url: '/en/packages/' },
+      { name: pakiet.nameEn, url: '/en/packages/' + pakiet.slugEn + '/' }
+    ],
+    pakiet: pakiet,
+    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3)
+  });
+});
+
 app.get('/en/remote-sessions/', (req, res) => {
   res.render('en/remote-sessions', {
     pageHeroTransparent: true,
@@ -1777,6 +1865,14 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },
     { url: '/en/privacy-policy/', priority: '0.3', changefreq: 'yearly' },
   ];
+
+  // Pakiety nagran (Sklep v2): indeks + 10 stron produktowych, PL i EN
+  staticPages.push({ url: '/pakiety/', priority: '0.8', changefreq: 'weekly' });
+  staticPages.push({ url: '/en/packages/', priority: '0.7', changefreq: 'weekly' });
+  Pakiety.getAll().forEach(p => {
+    staticPages.push({ url: '/pakiety/' + p.id + '/', priority: '0.7', changefreq: 'monthly' });
+    staticPages.push({ url: '/en/packages/' + p.slugEn + '/', priority: '0.6', changefreq: 'monthly' });
+  });
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';

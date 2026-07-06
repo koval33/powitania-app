@@ -1,0 +1,52 @@
+<%- include('../partials/head-en') %>
+
+<%- include('../partials/page-hero', {
+  heroH1: 'Voice-over packages with&nbsp;prices',
+  heroSub: 'Fixed-price recording packages: phone announcements, radio and&nbsp;online spots, film narration. Standard-group voices, online ordering and&nbsp;payment, VAT invoice. Non-standard project? Individual quote within 2&nbsp;hours.',
+  heroCta: 'none'
+}) %>
+
+<%
+  var groups = [
+    { id: 'phone', title: 'Phone announcements (IVR)', desc: 'PBX messages: greetings, menus, after-hours announcements. Four sizes - from starter to a bilingual full set.', cat: 'ivr' },
+    { id: 'spots', title: 'Advertising spots', desc: 'Voice-over spot recordings with a 12-month broadcast licence: local radio, nationwide radio and online campaigns.', cat: 'spot' },
+    { id: 'narration', title: 'Film and presentation narration', desc: 'Voice for corporate films, presentations and e-learning, billed per standard page of script.', cat: 'narracja' },
+    { id: 'update', title: 'Recording updates', desc: 'For returning clients: content changes to an existing recording with the same voice talent.', cat: 'dogrywka' }
+  ];
+%>
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <% groups.forEach(function(g) { var items = pakiety.filter(function(p){ return p.category === g.cat; }); if (!items.length) return; %>
+    <div id="<%= g.id %>" class="mb-14 scroll-mt-28">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2"><%= g.title %></h2>
+      <p class="text-gray-600 mb-6 max-w-3xl"><%= g.desc %></p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-<%= Math.min(items.length, 4) %> gap-5">
+        <% items.forEach(function(p) { %>
+        <a href="/en/packages/<%= p.slugEn %>/" class="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col">
+          <img src="/img/pakiety/<%= p.id %>.webp" alt="<%= p.nameEn %>" width="800" height="800" class="w-16 h-16 rounded-xl mb-4" loading="lazy">
+          <h3 class="font-bold text-gray-900 leading-snug mb-2 group-hover:text-accent transition-colors"><%= p.nameEn %></h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1"><%= p.shortEn %></p>
+          <div>
+            <span class="text-2xl font-bold text-gray-900">PLN <%= p.netto %></span>
+            <span class="text-gray-500 text-sm"> net</span>
+            <p class="text-xs text-gray-500">PLN <%= p.brutto %> gross (incl. 23% VAT)</p>
+          </div>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-accent font-semibold text-sm">View package
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"/></svg>
+          </span>
+        </a>
+        <% }); %>
+      </div>
+    </div>
+    <% }); %>
+
+    <div class="bg-stone-50 border border-gray-200 rounded-2xl p-6 md:p-8 text-center">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Project outside the packages?</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-5">Premium and celebrity voices, multi-spot campaigns, audiobooks, longer scripts and non-standard licences are quoted individually. We reply within 2 business hours.</p>
+      <a href="/en/contact/#contact-form" class="inline-block bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold transition-colors">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/foot-en') %>

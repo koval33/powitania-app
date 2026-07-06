@@ -1,0 +1,52 @@
+<%- include('partials/head') %>
+
+<%- include('partials/page-hero', {
+  heroH1: 'Pakiety nagrań lektorskich z&nbsp;cenami',
+  heroSub: 'Gotowe pakiety w&nbsp;stałych cenach: zapowiedzi telefoniczne, spoty radiowe i&nbsp;internetowe, narracje do&nbsp;filmów. Głosy z&nbsp;grupy standardowej, zamówienie i&nbsp;płatność online, faktura VAT. Nietypowy projekt? Wycena indywidualna w&nbsp;2&nbsp;godziny.',
+  heroCta: 'none'
+}) %>
+
+<%
+  var groups = [
+    { id: 'zapowiedzi', title: 'Zapowiedzi telefoniczne (IVR)', desc: 'Komunikaty na centralę telefoniczną: powitania, menu, wiadomości poza godzinami. Cztery rozmiary - od startowego po dwujęzyczny komplet.', cat: 'ivr' },
+    { id: 'spoty', title: 'Spoty reklamowe', desc: 'Nagrania lektorskie spotów z licencją emisyjną na 12 miesięcy: radio lokalne, ogólnopolskie i kampanie internetowe.', cat: 'spot' },
+    { id: 'narracje', title: 'Narracje do filmów i prezentacji', desc: 'Głos do filmu korporacyjnego, prezentacji lub e-learningu, rozliczany za stronę znormalizowaną tekstu.', cat: 'narracja' },
+    { id: 'dogrywka', title: 'Aktualizacje nagrań', desc: 'Dla wracających klientów: zmiana treści istniejącego nagrania z tym samym lektorem.', cat: 'dogrywka' }
+  ];
+%>
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <% groups.forEach(function(g) { var items = pakiety.filter(function(p){ return p.category === g.cat; }); if (!items.length) return; %>
+    <div id="<%= g.id %>" class="mb-14 scroll-mt-28">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2"><%= g.title %></h2>
+      <p class="text-gray-600 mb-6 max-w-3xl"><%= g.desc %></p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-<%= Math.min(items.length, 4) %> gap-5">
+        <% items.forEach(function(p) { %>
+        <a href="/pakiety/<%= p.id %>/" class="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col">
+          <img src="/img/pakiety/<%= p.id %>.webp" alt="<%= p.name %>" width="800" height="800" class="w-16 h-16 rounded-xl mb-4" loading="lazy">
+          <h3 class="font-bold text-gray-900 leading-snug mb-2 group-hover:text-accent transition-colors"><%= p.name %></h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1"><%= p.short %></p>
+          <div>
+            <span class="text-2xl font-bold text-gray-900"><%= p.netto %> zł</span>
+            <span class="text-gray-500 text-sm"> netto</span>
+            <p class="text-xs text-gray-500"><%= p.brutto.replace('.', ',') %> zł brutto</p>
+          </div>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-accent font-semibold text-sm">Zobacz pakiet
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"/></svg>
+          </span>
+        </a>
+        <% }); %>
+      </div>
+    </div>
+    <% }); %>
+
+    <div class="bg-stone-50 border border-gray-200 rounded-2xl p-6 md:p-8 text-center">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Projekt nie mieści się w pakiecie?</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-5">Głosy premium i znane z nazwiska, kampanie wielospotowe, audiobooki, dłuższe teksty i nietypowe licencje wyceniamy indywidualnie. Odpowiadamy w ciągu 2 godzin w dni robocze.</p>
+      <a href="/kontakt/#formularz" class="inline-block bg-accent hover:bg-accent-light text-white px-7 py-3 rounded-lg font-semibold transition-colors">Wypełnij formularz wyceny</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/foot') %>

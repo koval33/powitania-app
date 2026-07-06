@@ -1,0 +1,256 @@
+<%- include('../partials/head-en') %>
+
+<%- include('../partials/page-hero', {
+  heroH1: pakiet.h1En,
+  heroSub: pakiet.shortEn + ' Price: <strong>PLN ' + pakiet.netto + ' net</strong> (PLN ' + pakiet.brutto + ' gross). Online ordering and payment.',
+  heroCta: 'none',
+  heroCompact: true
+}) %>
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+
+      <div class="lg:col-span-2 space-y-10">
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">What the package includes</h2>
+          <ul class="space-y-2.5">
+            <% pakiet.scopeEn.forEach(function(s) { %>
+            <li class="flex items-start gap-2.5 text-gray-700">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span><%= s %></span>
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <% if (samples && samples.length) { %>
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Listen to voices from this group</h2>
+          <p class="text-gray-600 text-sm mb-4">Sample voice talents from the standard group used for this package. Browse the full selection in our <a href="/en/voice-bank/" class="text-accent hover:underline">voice bank</a>.</p>
+          <div class="space-y-3">
+            <% samples.forEach(function(s) { %>
+            <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3" data-lektor="<%= s.id %>">
+              <button type="button" onclick="playSample(this, '<%= s.sampleUrl %>')" aria-label="Listen - <%= s.name %>" class="play-btn w-10 h-10 flex-shrink-0 inline-flex items-center justify-center rounded-full bg-accent hover:bg-accent-light text-white transition-colors">
+                <svg class="play-icon w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <div class="min-w-0">
+                <a href="/en/voice-artists/<%= s.id %>/" class="font-semibold text-gray-900 hover:text-accent transition-colors"><%= s.name %></a>
+                <p class="text-xs text-gray-500 truncate"><%= s.sampleName %></p>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <% } %>
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">What the package does not include</h2>
+          <ul class="space-y-2.5">
+            <% pakiet.notIncludedEn.forEach(function(s) { %>
+            <li class="flex items-start gap-2.5 text-gray-600">
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span><%= s %></span>
+            </li>
+            <% }); %>
+          </ul>
+          <p class="text-gray-600 mt-4 text-sm">Need something beyond the package? <a href="/en/contact/#contact-form" class="text-accent hover:underline font-medium">Request a quote</a> - we reply within 2 business hours.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
+          <div class="space-y-3">
+            <% pakiet.faqEn.forEach(function(f) { %>
+            <details class="group bg-white border border-gray-200 rounded-xl">
+              <summary class="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-gray-900">
+                <%= f.q %>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed"><%= f.a %></div>
+            </details>
+            <% }); %>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500"><a href="/en/packages/" class="text-accent hover:underline">&larr; All recording packages</a></p>
+      </div>
+
+      <div class="lg:sticky lg:top-24">
+        <div class="bg-white border-2 border-accent/25 rounded-2xl shadow-sm p-6">
+          <img src="/img/pakiety/<%= pakiet.id %>.webp" alt="<%= pakiet.nameEn %> - voice-over package" width="800" height="800" class="w-24 h-24 rounded-xl mb-4" loading="lazy">
+          <h2 class="text-lg font-bold text-gray-900 leading-snug mb-1"><%= pakiet.nameEn %></h2>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-gray-900">PLN <%= pakiet.netto %></span>
+            <span class="text-gray-500 text-sm"> net</span>
+            <p class="text-sm text-gray-500">PLN <%= pakiet.brutto %> gross (incl. 23% VAT)</p>
+          </div>
+
+          <button type="button" id="pk-open" onclick="document.getElementById('pk-form').classList.toggle('hidden')" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order</button>
+
+          <form id="pk-form" class="hidden mt-5 space-y-3" onsubmit="return false;">
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">Company name *</label>
+              <input type="text" id="pk-firm" required class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">Full name *</label>
+              <input type="text" id="pk-name" required class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">Email *</label>
+              <input type="email" id="pk-email" required class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">Phone</label>
+              <input type="tel" id="pk-phone" class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">VAT ID (for the invoice)</label>
+              <input type="text" id="pk-nip" class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-gray-900 text-sm font-medium mb-1">Preferred voice / notes</label>
+              <textarea id="pk-notes" rows="2" placeholder="e.g. a voice from the bank, industry, deadline" class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none resize-y"></textarea>
+            </div>
+            <button type="button" id="pk-pay" onclick="pkSubmit()" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order and pay (PLN <%= pakiet.brutto %>)</button>
+            <p id="pk-msg" class="hidden text-center text-sm"></p>
+            <p class="text-xs text-gray-400 text-center">Online payment via Przelewy24. VAT invoice sent by email.</p>
+          </form>
+
+          <ul class="mt-5 space-y-1.5 text-xs text-gray-500">
+            <li class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Voice-over studio since 2001</li>
+            <li class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>5.0 based on <%= reviewCount %> client reviews</li>
+            <li class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>VAT invoice, Przelewy24 payment</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": <%- JSON.stringify(pakiet.nameEn) %>,
+  "description": <%- JSON.stringify(pakiet.shortEn) %>,
+  "image": "https://www.powitania.pl/img/pakiety/<%= pakiet.id %>.webp",
+  "brand": { "@type": "Brand", "name": "Powitania.pl" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.powitania.pl/en/packages/<%= pakiet.slugEn %>/",
+    "price": "<%= pakiet.brutto %>",
+    "priceCurrency": "PLN",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Powitania.pl" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.powitania.pl/en/packages/<%= pakiet.slugEn %>/#faq",
+  "mainEntity": [
+    <% pakiet.faqEn.forEach(function(f, i) { %>
+    {
+      "@type": "Question",
+      "name": <%- JSON.stringify(f.q) %>,
+      "acceptedAnswer": { "@type": "Answer", "text": <%- JSON.stringify(f.a) %> }
+    }<%= i < pakiet.faqEn.length - 1 ? ',' : '' %>
+    <% }); %>
+  ]
+}
+</script>
+
+<script>
+(function() {
+  var current = null;
+  var currentBtn = null;
+  window.playSample = function(btn, url) {
+    if (currentBtn === btn && current) {
+      current.pause(); current = null;
+      btn.querySelector('.play-icon').classList.remove('hidden');
+      btn.querySelector('.pause-icon').classList.add('hidden');
+      currentBtn = null; return;
+    }
+    if (current) {
+      current.pause();
+      if (currentBtn) {
+        currentBtn.querySelector('.play-icon').classList.remove('hidden');
+        currentBtn.querySelector('.pause-icon').classList.add('hidden');
+      }
+    }
+    current = new Audio(url); currentBtn = btn;
+    btn.querySelector('.play-icon').classList.add('hidden');
+    btn.querySelector('.pause-icon').classList.remove('hidden');
+    current.play();
+    current.onended = function() {
+      btn.querySelector('.play-icon').classList.remove('hidden');
+      btn.querySelector('.pause-icon').classList.add('hidden');
+      current = null; currentBtn = null;
+    };
+  };
+})();
+
+function pkSubmit() {
+  var msg = document.getElementById('pk-msg');
+  var btn = document.getElementById('pk-pay');
+  var firmName = document.getElementById('pk-firm').value.trim();
+  var name = document.getElementById('pk-name').value.trim();
+  var email = document.getElementById('pk-email').value.trim();
+  if (!firmName || !name || !email) {
+    msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
+    msg.textContent = 'Please fill in the required fields: company name, full name, email.';
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'Processing...';
+  var payload = {
+    firmName: firmName,
+    name: name,
+    email: email,
+    phone: document.getElementById('pk-phone').value.trim(),
+    nip: document.getElementById('pk-nip').value.trim(),
+    serviceType: 'Pakiet: <%= pakiet.name %> [EN]',
+    notes: document.getElementById('pk-notes').value.trim(),
+    totalPrice: '<%= pakiet.netto %>',
+    lang: 'en'
+  };
+  fetch('/api/payment/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(res) {
+    if (res.ok && res.redirectUrl) {
+      var navigated = false;
+      var navigateOnce = function() { if (!navigated) { navigated = true; window.location.href = res.redirectUrl; } };
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'form_submit_payment',
+        pakiet: '<%= pakiet.id %>',
+        value: <%= pakiet.netto %>,
+        enhanced_conversion_data: (window.ecData ? window.ecData(payload.email, payload.phone) : undefined),
+        eventCallback: navigateOnce,
+        eventTimeout: 2000
+      });
+      setTimeout(navigateOnce, 2500);
+    } else {
+      msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
+      msg.textContent = res.error || 'An error occurred. Please try again or email biuro@powitania.pl';
+      btn.disabled = false; btn.textContent = 'Order and pay (PLN <%= pakiet.brutto %>)';
+    }
+  })
+  .catch(function() {
+    msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
+    msg.textContent = 'Connection error. Please try again or call +48 605 491 069.';
+    btn.disabled = false; btn.textContent = 'Order and pay (PLN <%= pakiet.brutto %>)';
+  });
+}
+</script>
+
+<%- include('../partials/foot-en') %>
