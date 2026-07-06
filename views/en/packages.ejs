@@ -8,10 +8,9 @@
 
 <%
   var groups = [
-    { id: 'phone', title: 'Phone announcements (IVR)', desc: 'PBX messages: greetings, menus, after-hours announcements. Four sizes - from starter to a bilingual full set.', cat: 'ivr' },
-    { id: 'spots', title: 'Advertising spots', desc: 'Voice-over spot recordings with a 12-month broadcast licence: local radio, nationwide radio and online campaigns.', cat: 'spot' },
-    { id: 'narration', title: 'Film and presentation narration', desc: 'Voice for corporate films, presentations and e-learning, billed per standard page of script.', cat: 'narracja' },
-    { id: 'update', title: 'Recording updates', desc: 'For returning clients: content changes to an existing recording with the same voice talent.', cat: 'dogrywka' }
+    { id: 'phone', title: 'Phone announcements (IVR)', desc: 'PBX messages: greetings, menus, after-hours announcements. Four sizes - from starter to a bilingual full set.', cat: 'ivr', cols: 'lg:grid-cols-4' },
+    { id: 'spots', title: 'Advertising spots', desc: 'Voice-over spot recordings with a 12-month broadcast licence: local radio, nationwide radio and online campaigns.', cat: 'spot', cols: 'lg:grid-cols-3' },
+    { id: 'narration', title: 'Film and presentation narration', desc: 'Voice for corporate films, presentations and e-learning, billed per standard page of script.', cat: 'narracja', cols: 'lg:grid-cols-3' }
   ];
 %>
 
@@ -21,7 +20,7 @@
     <div id="<%= g.id %>" class="mb-14 scroll-mt-28">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2"><%= g.title %></h2>
       <p class="text-gray-600 mb-6 max-w-3xl"><%= g.desc %></p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-<%= Math.min(items.length, 4) %> gap-5">
+      <div class="grid sm:grid-cols-2 <%= g.cols %> gap-5">
         <% items.forEach(function(p) { %>
         <a href="/en/packages/<%= p.slugEn %>/" class="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col">
           <img src="/img/pakiety/<%= p.id %>-foto.webp" alt="<%= p.nameEn %>" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">

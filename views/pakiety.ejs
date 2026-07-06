@@ -8,10 +8,9 @@
 
 <%
   var groups = [
-    { id: 'zapowiedzi', title: 'Zapowiedzi telefoniczne (IVR)', desc: 'Komunikaty na centralę telefoniczną: powitania, menu, wiadomości poza godzinami. Cztery rozmiary - od startowego po dwujęzyczny komplet.', cat: 'ivr' },
-    { id: 'spoty', title: 'Spoty reklamowe', desc: 'Nagrania lektorskie spotów z licencją emisyjną na 12 miesięcy: radio lokalne, ogólnopolskie i kampanie internetowe.', cat: 'spot' },
-    { id: 'narracje', title: 'Narracje do filmów i prezentacji', desc: 'Głos do filmu korporacyjnego, prezentacji lub e-learningu, rozliczany za stronę znormalizowaną tekstu.', cat: 'narracja' },
-    { id: 'dogrywka', title: 'Aktualizacje nagrań', desc: 'Dla wracających klientów: zmiana treści istniejącego nagrania z tym samym lektorem.', cat: 'dogrywka' }
+    { id: 'zapowiedzi', title: 'Zapowiedzi telefoniczne (IVR)', desc: 'Komunikaty na centralę telefoniczną: powitania, menu, wiadomości poza godzinami. Cztery rozmiary - od startowego po dwujęzyczny komplet.', cat: 'ivr', cols: 'lg:grid-cols-4' },
+    { id: 'spoty', title: 'Spoty reklamowe', desc: 'Nagrania lektorskie spotów z licencją emisyjną na 12 miesięcy: radio lokalne, ogólnopolskie i kampanie internetowe.', cat: 'spot', cols: 'lg:grid-cols-3' },
+    { id: 'narracje', title: 'Narracje do filmów i prezentacji', desc: 'Głos do filmu korporacyjnego, prezentacji lub e-learningu, rozliczany za stronę znormalizowaną tekstu.', cat: 'narracja', cols: 'lg:grid-cols-3' }
   ];
 %>
 
@@ -21,7 +20,7 @@
     <div id="<%= g.id %>" class="mb-14 scroll-mt-28">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2"><%= g.title %></h2>
       <p class="text-gray-600 mb-6 max-w-3xl"><%= g.desc %></p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-<%= Math.min(items.length, 4) %> gap-5">
+      <div class="grid sm:grid-cols-2 <%= g.cols %> gap-5">
         <% items.forEach(function(p) { %>
         <a href="/pakiety/<%= p.id %>/" class="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col">
           <img src="/img/pakiety/<%= p.id %>-foto.webp" alt="<%= p.name %>" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">

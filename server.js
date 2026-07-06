@@ -366,7 +366,6 @@ app.use((req, res, next) => {
     '/pakiety/spot-do-kampanii-internetowej/': '/en/packages/online-campaign-spot/',
     '/pakiety/narracja-do-filmu-1-strona/': '/en/packages/film-narration-1-page/',
     '/pakiety/narracja-do-filmu-2-strony/': '/en/packages/film-narration-2-pages/',
-    '/pakiety/dogrywka-aktualizacja-nagrania-24h/': '/en/packages/recording-update-24h/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/kreator/': '/en/kreator/',
@@ -866,7 +865,6 @@ app.get('/pakiety/:slug/', (req, res) => {
       { name: pakiet.name, url: '/pakiety/' + pakiet.id + '/' }
     ],
     pakiet: pakiet,
-    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3),
     orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
   });
 });
@@ -1530,7 +1528,6 @@ app.get('/en/packages/:slug/', (req, res) => {
       { name: pakiet.nameEn, url: '/en/packages/' + pakiet.slugEn + '/' }
     ],
     pakiet: pakiet,
-    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3),
     orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
   });
 });

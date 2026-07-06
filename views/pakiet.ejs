@@ -26,26 +26,31 @@
           </ul>
         </div>
 
-        <% if (samples && samples.length) { %>
-        <div>
-          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Posłuchaj głosów z tej grupy</h2>
-          <p class="text-gray-600 text-sm mb-4">Przykładowi lektorzy z grupy standardowej, z której realizujemy ten pakiet. Pełny wybór znajdziesz w <a href="/bank-glosow/" class="text-accent hover:underline">banku głosów</a>.</p>
-          <div class="space-y-3">
-            <% samples.forEach(function(s) { %>
-            <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3" data-lektor="<%= s.id %>">
+        <div id="wybor-lektora">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Wybierz lektora (<%= orderVoices.length %> głosów)</h2>
+          <p class="text-gray-600 text-sm mb-4">Wszyscy lektorzy dostępni w tym pakiecie. Odsłuchaj próbki, kliknij „Wybierz" i przejdź do zamówienia. Pełne profile znajdziesz w <a href="/bank-glosow/" target="_blank" rel="noopener" class="text-accent hover:underline">banku głosów</a>.</p>
+          <div class="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100 max-h-[30rem] overflow-y-auto">
+            <% orderVoices.forEach(function(s) { %>
+            <div class="flex items-center gap-3 px-4 py-3" data-lektor="<%= s.id %>">
+              <% if (s.sampleUrl) { %>
               <button type="button" onclick="playSample(this, '<%= s.sampleUrl %>')" aria-label="Posłuchaj - <%= s.name %>" class="play-btn w-10 h-10 flex-shrink-0 inline-flex items-center justify-center rounded-full bg-accent hover:bg-accent-light text-white transition-colors">
                 <svg class="play-icon w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="pause-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
               </button>
-              <div class="min-w-0">
-                <a href="<%= s.profileUrl %>" class="font-semibold text-gray-900 hover:text-accent transition-colors"><%= s.name %></a>
+              <% } else { %>
+              <span class="w-10 h-10 flex-shrink-0 inline-flex items-center justify-center rounded-full bg-gray-100 text-gray-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m0-3.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+              </span>
+              <% } %>
+              <div class="min-w-0 flex-1">
+                <a href="<%= s.profileUrl %>" target="_blank" rel="noopener" class="font-semibold text-gray-900 hover:text-accent transition-colors"><%= s.name %></a>
                 <p class="text-xs text-gray-500 truncate"><%= s.sampleName %></p>
               </div>
+              <button type="button" data-id="<%= s.id %>" data-name="<%= s.name %>" onclick="pkPick(this)" class="pk-pick flex-shrink-0 border border-gray-300 hover:border-accent text-gray-700 hover:text-accent text-sm font-medium px-4 py-1.5 rounded-lg transition-colors">Wybierz</button>
             </div>
             <% }); %>
           </div>
         </div>
-        <% } %>
 
         <div>
           <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">Czego pakiet nie obejmuje</h2>
@@ -79,7 +84,7 @@
       </div>
 
       <!-- Prawa kolumna: karta zamówienia -->
-      <div class="lg:sticky lg:top-24">
+      <div class="lg:sticky lg:top-24" id="pk-card">
         <div class="bg-white border-2 border-accent/25 rounded-2xl shadow-sm p-6">
           <img src="/img/pakiety/<%= pakiet.id %>-foto.webp" alt="<%= pakiet.name %> - pakiet nagrania lektorskiego" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">
           <h2 class="text-lg font-bold text-gray-900 leading-snug mb-1"><%= pakiet.name %></h2>
@@ -112,15 +117,9 @@
               <label class="block text-gray-900 text-sm font-medium mb-1">NIP (do faktury)</label>
               <input type="text" id="pk-nip" class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:border-accent focus:outline-none">
             </div>
-            <div>
-              <label class="block text-gray-900 text-sm font-medium mb-1">Wybierz lektora *</label>
-              <select id="pk-voice" required class="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 bg-white focus:border-accent focus:outline-none">
-                <option value="">- wybierz lektora -</option>
-                <% orderVoices.forEach(function(v) { %>
-                <option value="<%= v.id %>"><%= v.name %></option>
-                <% }); %>
-              </select>
-              <p class="text-xs text-gray-400 mt-1">Próbki głosów znajdziesz w <a href="/bank-glosow/" target="_blank" rel="noopener" class="text-accent hover:underline">banku głosów</a>.</p>
+            <div class="bg-stone-50 border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm">
+              <span class="text-gray-500">Lektor:</span> <span id="pk-chosen" class="font-semibold text-gray-900">nie wybrano</span>
+              <a href="#wybor-lektora" class="block text-xs text-accent hover:underline mt-0.5">wybierz z listy i odsłuchaj</a>
             </div>
             <button type="button" id="pk-pay" onclick="pkSubmit()" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Zamów i zapłać (<%= pakiet.brutto.replace('.', ',') %> zł)</button>
             <p id="pk-msg" class="hidden text-center text-sm"></p>
@@ -205,6 +204,21 @@
   };
 })();
 
+// Wybor lektora z listy (zasila zamowienie)
+var pkVoice = null;
+function pkPick(btn) {
+  pkVoice = { id: btn.getAttribute('data-id'), name: btn.getAttribute('data-name') };
+  document.querySelectorAll('.pk-pick').forEach(function(b) {
+    b.classList.remove('bg-accent', 'text-white', 'border-accent');
+    b.textContent = 'Wybierz';
+  });
+  btn.classList.add('bg-accent', 'text-white', 'border-accent');
+  btn.textContent = 'Wybrano';
+  document.getElementById('pk-chosen').textContent = pkVoice.name;
+  document.getElementById('pk-form').classList.remove('hidden');
+  document.getElementById('pk-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 // Zamowienie pakietu -> istniejacy flow "Zamow i zaplac" (P24)
 function pkSubmit() {
   var msg = document.getElementById('pk-msg');
@@ -212,15 +226,14 @@ function pkSubmit() {
   var firmName = document.getElementById('pk-firm').value.trim();
   var name = document.getElementById('pk-name').value.trim();
   var email = document.getElementById('pk-email').value.trim();
-  var voiceSel = document.getElementById('pk-voice');
+  if (!pkVoice) {
+    msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
+    msg.textContent = 'Najpierw wybierz lektora z listy i odsłuchaj próbki.';
+    return;
+  }
   if (!firmName || !name || !email) {
     msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
     msg.textContent = 'Uzupełnij wymagane pola: nazwa firmy, imię i nazwisko, email.';
-    return;
-  }
-  if (!voiceSel.value) {
-    msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
-    msg.textContent = 'Wybierz lektora z listy.';
     return;
   }
   btn.disabled = true; btn.textContent = 'Przetwarzanie...';
@@ -231,8 +244,8 @@ function pkSubmit() {
     phone: document.getElementById('pk-phone').value.trim(),
     nip: document.getElementById('pk-nip').value.trim(),
     serviceType: 'Pakiet: <%= pakiet.name %>',
-    lektorName: voiceSel.options[voiceSel.selectedIndex].text,
-    lektorId: voiceSel.value,
+    lektorName: pkVoice.name,
+    lektorId: pkVoice.id,
     totalPrice: '<%= pakiet.netto %>'
   };
   fetch('/api/payment/register', {
