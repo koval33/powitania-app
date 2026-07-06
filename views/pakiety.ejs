@@ -2,7 +2,7 @@
 
 <%- include('partials/page-hero', {
   heroH1: 'Pakiety nagrań lektorskich z&nbsp;cenami',
-  heroSub: 'Gotowe pakiety w&nbsp;stałych cenach: zapowiedzi telefoniczne, spoty radiowe i&nbsp;internetowe, narracje do&nbsp;filmów. Głosy z&nbsp;grupy standardowej, zamówienie i&nbsp;płatność online, faktura VAT. Nietypowy projekt? Wycena indywidualna w&nbsp;2&nbsp;godziny.',
+  heroSub: 'Gotowe pakiety w&nbsp;stałych cenach: zapowiedzi telefoniczne, spoty radiowe i&nbsp;internetowe, narracje do&nbsp;filmów. Głosy z&nbsp;grupy standardowej, zamówienie i&nbsp;płatność online, faktura&nbsp;VAT.',
   heroCta: 'none'
 }) %>
 
@@ -24,7 +24,7 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-<%= Math.min(items.length, 4) %> gap-5">
         <% items.forEach(function(p) { %>
         <a href="/pakiety/<%= p.id %>/" class="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col">
-          <img src="/img/pakiety/<%= p.id %>.webp" alt="<%= p.name %>" width="800" height="800" class="w-16 h-16 rounded-xl mb-4" loading="lazy">
+          <img src="/img/pakiety/<%= p.id %>-foto.webp" alt="<%= p.name %>" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">
           <h3 class="font-bold text-gray-900 leading-snug mb-2 group-hover:text-accent transition-colors"><%= p.name %></h3>
           <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1"><%= p.short %></p>
           <div>

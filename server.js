@@ -866,7 +866,8 @@ app.get('/pakiety/:slug/', (req, res) => {
       { name: pakiet.name, url: '/pakiety/' + pakiet.id + '/' }
     ],
     pakiet: pakiet,
-    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3)
+    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3),
+    orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
   });
 });
 
@@ -1529,7 +1530,8 @@ app.get('/en/packages/:slug/', (req, res) => {
       { name: pakiet.nameEn, url: '/en/packages/' + pakiet.slugEn + '/' }
     ],
     pakiet: pakiet,
-    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3)
+    samples: Pakiety.pickSamples(loadVoices(), pakiet.category, 3),
+    orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
   });
 });
 
