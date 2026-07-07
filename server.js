@@ -834,7 +834,7 @@ app.get('/produkcja-jingli-reklamowych/', (req, res) => {
 // Pakiety nagrań (Sklep v2) - indeks + strony produktowe. Dane: lib/pakiety.js (brief 06.07.2026).
 app.get('/sklep/', (req, res) => {
   res.render('pakiety', {
-    title: 'Pakiety nagrań lektorskich z cenami | Powitania.pl',
+    title: 'Pakiety nagrań lektorskich w stałych cenach | Powitania.pl',
     description: 'Gotowe pakiety nagrań w stałych cenach: zapowiedzi telefoniczne IVR od 380 zł, spoty radiowe od 300 zł, narracje do filmów od 450 zł netto. Zamówienie i płatność online, faktura VAT.',
     pageHeroTransparent: true,
     breadcrumbs: [
