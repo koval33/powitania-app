@@ -46,7 +46,7 @@ Powitania.pl is also available in English for international clients:
 - [Voiceover Script Creator (EN)](https://www.powitania.pl/en/kreator/): Tool to prepare a professional voiceover script in minutes - ad spot, IVR, narration, social media. Choose type, describe your need, get text variants tailored to timing
 - [Voice Artist Profiles (EN)](https://www.powitania.pl/en/voice-artists/{slug}/): Individual voice artist profile pages with audio samples, pricing, and order forms - 232 profiles available
 - [Voiceover Services (EN)](https://www.powitania.pl/en/voiceover-services/): Full range of voiceover services - commercials, IVR, audiobooks, film, e-learning
-- [Voice-over Packages (EN)](https://www.powitania.pl/en/packages/): Fixed-price recording packages with online ordering and payment: IVR phone announcements (from EUR 95 net), radio and online spots (from EUR 75 net), film narration (from EUR 110 net); payment processed in PLN, VAT invoice
+- [Voice-over Packages (EN)](https://www.powitania.pl/en/packages/): Fixed-price recording packages with online ordering and payment: IVR phone announcements (from PLN 380 net), radio and online spots (from PLN 300 net), film narration (from PLN 450 net), VAT invoice
 - [Voice for Advertising (EN)](https://www.powitania.pl/en/voiceover-services/voice-for-advertising/): Professional voiceover for radio, TV, and online ads
 - [Film Voiceover (EN)](https://www.powitania.pl/en/voiceover-services/film-voiceover/): Voiceover for corporate, promotional, instructional, and documentary films
 - [Phone Announcements (EN)](https://www.powitania.pl/en/voiceover-services/phone-announcements/): Professional IVR announcements, phone greetings, PBX messages
