@@ -319,11 +319,11 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         <span class="brand-tagline nav-link text-[0.6rem] md:text-[0.7rem] font-bold tracking-[0.2em] uppercase pl-[2.4rem] md:pl-[3.2rem] -mt-1">Create content. Give it a&nbsp;voice.</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-        <a href="/en/voice-bank/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Voice Bank</a>
+      <nav class="hidden md:flex items-center gap-4 xl:gap-8">
+        <a href="/en/voice-bank/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Voice Bank</a>
 
         <div class="nav-item-has-sub relative">
-          <a href="/en/voiceover-services/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+          <a href="/en/voiceover-services/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
             Voiceover Services
             <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -340,10 +340,11 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
           </div>
         </div>
 
-        <a href="/en/advertising-jingles/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Jingles</a>
-        <a href="/en/pricing/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Pricing</a>
-        <a href="/en/news/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">News</a>
-        <a href="/en/contact/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Contact</a>
+        <a href="/en/advertising-jingles/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Jingles</a>
+        <a href="/en/packages/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Shop</a>
+        <a href="/en/pricing/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Pricing</a>
+        <a href="/en/news/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">News</a>
+        <a href="/en/contact/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Contact</a>
 
         <a href="<%= _altPl %>" class="lang-pill inline-flex items-center gap-1.5 border rounded-full px-3 py-1 text-xs font-semibold tracking-wider" rel="alternate" hreflang="pl">
           PL
@@ -374,6 +375,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
           </div>
         </details>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/advertising-jingles/">Jingles</a>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/packages/">Shop</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/pricing/">Pricing</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/news/">News</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/en/contact/">Contact</a>
@@ -426,6 +428,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         </div>
       </div>
       <a href="/en/advertising-jingles/" class="hover:text-accent transition-colors <%= currentPath === '/en/advertising-jingles/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Jingles</a>
+      <a href="/en/packages/" class="hover:text-accent transition-colors <%= currentPath.indexOf('/en/packages/') === 0 ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Shop</a>
       <a href="/en/pricing/" class="hover:text-accent transition-colors <%= currentPath === '/en/pricing/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Pricing</a>
       <a href="/en/news/" class="hover:text-accent transition-colors <%= currentPath.startsWith('/en/news') ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">News</a>
       <a href="/en/contact/" class="hover:text-accent transition-colors <%= currentPath === '/en/contact/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Contact</a>
@@ -457,6 +460,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
       </div>
     </details>
     <a href="/en/advertising-jingles/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Jingles</a>
+    <a href="/en/packages/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Shop</a>
     <a href="/en/pricing/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Pricing</a>
     <a href="/en/news/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">News</a>
     <a href="/en/contact/" class="block py-3 text-gray-600 hover:text-accent border-b border-gray-100">Contact</a>

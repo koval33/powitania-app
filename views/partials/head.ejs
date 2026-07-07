@@ -340,11 +340,11 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         <span class="brand-tagline nav-link text-[0.6rem] md:text-[0.7rem] font-bold tracking-[0.2em] uppercase pl-[2.4rem] md:pl-[3.2rem] -mt-1">Tutaj tekst zamienia się w&nbsp;dźwięk</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-        <a href="/bank-glosow/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Bank głosów</a>
+      <nav class="hidden md:flex items-center gap-4 xl:gap-8">
+        <a href="/bank-glosow/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Bank głosów</a>
 
         <div class="nav-item-has-sub relative">
-          <a href="/nagrania-lektorskie/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
+          <a href="/nagrania-lektorskie/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase inline-flex items-center gap-1.5">
             Nagrania lektorskie
             <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -361,10 +361,11 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
           </div>
         </div>
 
-        <a href="/produkcja-jingli-reklamowych/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Jingle i spoty</a>
-        <a href="/cennik-nagran-lektorskich/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Cennik</a>
-        <a href="/opinie/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Opinie</a>
-        <a href="/kontakt/" class="nav-link text-base lg:text-lg font-medium tracking-wide uppercase">Kontakt</a>
+        <a href="/produkcja-jingli-reklamowych/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Jingle i spoty</a>
+        <a href="/pakiety/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Sklep</a>
+        <a href="/cennik-nagran-lektorskich/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Cennik</a>
+        <a href="/opinie/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Opinie</a>
+        <a href="/kontakt/" class="nav-link text-base xl:text-lg font-medium tracking-wide uppercase">Kontakt</a>
 
         <a href="<%= _altEn %>" class="lang-pill inline-flex items-center gap-1.5 border rounded-full px-3 py-1 text-xs font-semibold tracking-wider" rel="alternate" hreflang="en">
           EN
@@ -395,6 +396,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
           </div>
         </details>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/produkcja-jingli-reklamowych/">Jingle i spoty</a>
+        <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/pakiety/">Sklep</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/cennik-nagran-lektorskich/">Cennik</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/opinie/">Opinie</a>
         <a class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded" href="/kontakt/">Kontakt</a>
@@ -448,6 +450,7 @@ select.field-select{-webkit-appearance:none;appearance:none;background-image:url
         </div>
       </div>
       <a href="/produkcja-jingli-reklamowych/" class="hover:text-accent transition-colors <%= currentPath === '/produkcja-jingli-reklamowych/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Jingle i spoty</a>
+      <a href="/pakiety/" class="hover:text-accent transition-colors <%= currentPath.indexOf('/pakiety/') === 0 ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Sklep</a>
       <a href="/cennik-nagran-lektorskich/" class="hover:text-accent transition-colors <%= currentPath === '/cennik/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Cennik</a>
       <a href="/opinie/" class="hover:text-accent transition-colors <%= currentPath === '/opinie/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Opinie</a>
       <a href="/kontakt/" class="hover:text-accent transition-colors <%= currentPath === '/kontakt/' ? 'text-gray-900 font-semibold' : 'text-gray-600' %>">Kontakt</a>
