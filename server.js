@@ -356,16 +356,16 @@ app.use((req, res, next) => {
     '/nagrania-lektorskie/zapowiedzi-telefoniczne/': '/en/voiceover-services/phone-announcements/',
     '/nagrania-lektorskie/audioprzewodniki/': '/en/voiceover-services/audio-guides/',
     '/produkcja-jingli-reklamowych/': '/en/advertising-jingles/',
-    '/pakiety/': '/en/packages/',
-    '/pakiety/zapowiedzi-telefoniczne-start/': '/en/packages/phone-announcements-start/',
-    '/pakiety/zapowiedzi-telefoniczne-pro/': '/en/packages/phone-announcements-pro/',
-    '/pakiety/zapowiedzi-telefoniczne-pl-en/': '/en/packages/phone-announcements-pl-en/',
-    '/pakiety/zapowiedzi-telefoniczne-max-pl-en/': '/en/packages/phone-announcements-max-pl-en/',
-    '/pakiety/spot-radiowy-30s-stacja-lokalna/': '/en/packages/radio-spot-30s-local/',
-    '/pakiety/spot-radiowy-30s-ogolnopolski/': '/en/packages/radio-spot-30s-national/',
-    '/pakiety/spot-do-kampanii-internetowej/': '/en/packages/online-campaign-spot/',
-    '/pakiety/narracja-do-filmu-1-strona/': '/en/packages/film-narration-1-page/',
-    '/pakiety/narracja-do-filmu-2-strony/': '/en/packages/film-narration-2-pages/',
+    '/sklep/': '/en/packages/',
+    '/sklep/zapowiedzi-telefoniczne-start/': '/en/packages/phone-announcements-start/',
+    '/sklep/zapowiedzi-telefoniczne-pro/': '/en/packages/phone-announcements-pro/',
+    '/sklep/zapowiedzi-telefoniczne-pl-en/': '/en/packages/phone-announcements-pl-en/',
+    '/sklep/zapowiedzi-telefoniczne-max-pl-en/': '/en/packages/phone-announcements-max-pl-en/',
+    '/sklep/spot-radiowy-30s-stacja-lokalna/': '/en/packages/radio-spot-30s-local/',
+    '/sklep/spot-radiowy-30s-ogolnopolski/': '/en/packages/radio-spot-30s-national/',
+    '/sklep/spot-do-kampanii-internetowej/': '/en/packages/online-campaign-spot/',
+    '/sklep/narracja-do-filmu-1-strona/': '/en/packages/film-narration-1-page/',
+    '/sklep/narracja-do-filmu-2-strony/': '/en/packages/film-narration-2-pages/',
     '/sesje-zdalne-nagrania-lektorskie-online/': '/en/remote-sessions/',
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/kreator/': '/en/kreator/',
@@ -832,27 +832,27 @@ app.get('/produkcja-jingli-reklamowych/', (req, res) => {
 });
 
 // Pakiety nagrań (Sklep v2) - indeks + strony produktowe. Dane: lib/pakiety.js (brief 06.07.2026).
-app.get('/pakiety/', (req, res) => {
+app.get('/sklep/', (req, res) => {
   res.render('pakiety', {
     title: 'Pakiety nagrań lektorskich z cenami | Powitania.pl',
     description: 'Gotowe pakiety nagrań w stałych cenach: zapowiedzi telefoniczne IVR od 380 zł, spoty radiowe od 300 zł, narracje do filmów od 450 zł netto. Zamówienie i płatność online, faktura VAT.',
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
-      { name: 'Pakiety nagrań', url: '/pakiety/' }
+      { name: 'Pakiety nagrań', url: '/sklep/' }
     ],
     pakiety: Pakiety.getAll()
   });
 });
 
-app.get('/pakiety/:slug/', (req, res) => {
+app.get('/sklep/:slug/', (req, res) => {
   const pakiet = Pakiety.getBySlug(req.params.slug);
   if (!pakiet) {
     return res.status(404).render('placeholder', {
       title: '404 | powitania.pl',
       description: 'Nie znaleziono pakietu',
       heading: 'Nie znaleziono pakietu',
-      message: 'Pakiet o podanym adresie nie istnieje. <a href="/pakiety/" class="text-accent hover:underline">Zobacz wszystkie pakiety nagrań</a>.'
+      message: 'Pakiet o podanym adresie nie istnieje. <a href="/sklep/" class="text-accent hover:underline">Zobacz wszystkie pakiety nagrań</a>.'
     });
   }
   res.render('pakiet', {
@@ -861,8 +861,8 @@ app.get('/pakiety/:slug/', (req, res) => {
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
-      { name: 'Pakiety nagrań', url: '/pakiety/' },
-      { name: pakiet.name, url: '/pakiety/' + pakiet.id + '/' }
+      { name: 'Pakiety nagrań', url: '/sklep/' },
+      { name: pakiet.name, url: '/sklep/' + pakiet.id + '/' }
     ],
     pakiet: pakiet,
     orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
@@ -1494,7 +1494,7 @@ app.get('/en/advertising-jingles/', (req, res) => {
   });
 });
 
-// Voice-over packages (Shop v2) - EN mirror of /pakiety/. Data: lib/pakiety.js.
+// Voice-over packages (Shop v2) - EN mirror of /sklep/. Data: lib/pakiety.js.
 app.get('/en/packages/', (req, res) => {
   res.render('en/packages', {
     title: 'Voice-over packages with prices | Powitania.pl',
@@ -1866,10 +1866,10 @@ app.get('/sitemap.xml', (req, res) => {
   ];
 
   // Pakiety nagran (Sklep v2): indeks + 10 stron produktowych, PL i EN
-  staticPages.push({ url: '/pakiety/', priority: '0.8', changefreq: 'weekly' });
+  staticPages.push({ url: '/sklep/', priority: '0.8', changefreq: 'weekly' });
   staticPages.push({ url: '/en/packages/', priority: '0.7', changefreq: 'weekly' });
   Pakiety.getAll().forEach(p => {
-    staticPages.push({ url: '/pakiety/' + p.id + '/', priority: '0.7', changefreq: 'monthly' });
+    staticPages.push({ url: '/sklep/' + p.id + '/', priority: '0.7', changefreq: 'monthly' });
     staticPages.push({ url: '/en/packages/' + p.slugEn + '/', priority: '0.6', changefreq: 'monthly' });
   });
 
@@ -1905,7 +1905,7 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 // Google Merchant Center - feed produktowy pakietow nagran (Sklep v2), RSS 2.0 + namespace g:.
-// Generowany z Pakiety.getAll() - to samo zrodlo danych co /pakiety/*, wiec cena/tresc nie moze
+// Generowany z Pakiety.getAll() - to samo zrodlo danych co /sklep/*, wiec cena/tresc nie moze
 // rozjechac sie ze strona (Google porownuje g:price z cena widoczna na landing page i odrzuca
 // przy rozjezdzie). Tylko PL - EN pokazuje ceny w EUR przy platnosci w PLN, co jest niezgodne
 // z Merchant (price mismatch), wersje EN dodamy po ujednoliceniu waluty.
@@ -1918,7 +1918,7 @@ app.get('/merchant-feed.xml', (req, res) => {
   xml += '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n';
   xml += '<channel>\n';
   xml += `  <title>Powitania.pl - pakiety nagrań lektorskich</title>\n`;
-  xml += `  <link>${baseUrl}/pakiety/</link>\n`;
+  xml += `  <link>${baseUrl}/sklep/</link>\n`;
   xml += `  <description>Gotowe pakiety nagrań lektorskich w stałych cenach - zapowiedzi telefoniczne, spoty reklamowe, narracje.</description>\n`;
 
   Pakiety.getAll().forEach(p => {
@@ -1926,7 +1926,7 @@ app.get('/merchant-feed.xml', (req, res) => {
     xml += `    <g:id>${escapeXml(p.id)}</g:id>\n`;
     xml += `    <g:title>${escapeXml(p.feedTitle)}</g:title>\n`;
     xml += `    <g:description>${escapeXml(p.short)}</g:description>\n`;
-    xml += `    <g:link>${baseUrl}/pakiety/${p.id}/</g:link>\n`;
+    xml += `    <g:link>${baseUrl}/sklep/${p.id}/</g:link>\n`;
     xml += `    <g:image_link>${baseUrl}/img/pakiety/${p.id}.webp</g:image_link>\n`;
     xml += `    <g:availability>in_stock</g:availability>\n`;
     xml += `    <g:price>${p.brutto} PLN</g:price>\n`;

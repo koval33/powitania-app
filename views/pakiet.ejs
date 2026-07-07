@@ -80,7 +80,7 @@
           </div>
         </div>
 
-        <p class="text-sm text-gray-500"><a href="/pakiety/" class="text-accent hover:underline">&larr; Wszystkie pakiety nagrań</a></p>
+        <p class="text-sm text-gray-500"><a href="/sklep/" class="text-accent hover:underline">&larr; Wszystkie pakiety nagrań</a></p>
       </div>
 
       <!-- Prawa kolumna: karta zamówienia -->
@@ -148,7 +148,7 @@
   "brand": { "@type": "Brand", "name": "Powitania.pl" },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.powitania.pl/pakiety/<%= pakiet.id %>/",
+    "url": "https://www.powitania.pl/sklep/<%= pakiet.id %>/",
     "price": "<%= pakiet.brutto %>",
     "priceCurrency": "PLN",
     "availability": "https://schema.org/InStock",
@@ -160,7 +160,7 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://www.powitania.pl/pakiety/<%= pakiet.id %>/#faq",
+  "@id": "https://www.powitania.pl/sklep/<%= pakiet.id %>/#faq",
   "mainEntity": [
     <% pakiet.faq.forEach(function(f, i) { %>
     {
