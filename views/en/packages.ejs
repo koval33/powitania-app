@@ -14,6 +14,40 @@
   ];
 %>
 
+<!-- Intro + category tiles -->
+<section class="py-12 md:py-16 border-b border-gray-200 bg-stone-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">How the shop works</h2>
+      <p class="text-gray-600 leading-relaxed">We sell standardised voice-over packages at fixed prices. You order in three steps: pick the recording type and package size, listen to samples and choose your voice talent, then pay online - we deliver within the package turnaround. No quotes, no email ping-pong - from browsing to ordering in minutes.</p>
+    </div>
+    <%
+      var catTiles = [
+        { anchor: '#phone', title: 'Phone announcements', img: 'zapowiedzi-telefoniczne-start-foto', cat: 'ivr' },
+        { anchor: '#spots', title: 'Advertising spots', img: 'spot-radiowy-30s-stacja-lokalna-foto', cat: 'spot' },
+        { anchor: '#narration', title: 'Film narration', img: 'narracja-do-filmu-1-strona-foto', cat: 'narracja' }
+      ];
+    %>
+    <div class="grid sm:grid-cols-3 gap-5 mt-8">
+      <% catTiles.forEach(function(t) {
+        var items = pakiety.filter(function(p){ return p.category === t.cat; });
+        var fromPrice = Math.min.apply(null, items.map(function(p){ return p.netto; }));
+      %>
+      <a href="<%= t.anchor %>" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-accent/40 hover:shadow-md transition-all hover:-translate-y-0.5">
+        <img src="/img/pakiety/<%= t.img %>.webp" alt="<%= t.title %> - voice-over packages" width="800" height="800" class="w-full h-40 object-cover" loading="lazy">
+        <div class="p-5">
+          <h3 class="font-bold text-gray-900 group-hover:text-accent transition-colors"><%= t.title %></h3>
+          <p class="text-sm text-gray-500 mt-1"><%= items.length %> <%= items.length === 1 ? 'package' : 'packages' %> · from PLN <%= fromPrice %> net</p>
+          <span class="mt-3 inline-flex items-center gap-1.5 text-accent font-semibold text-sm">See the packages
+            <svg class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/></svg>
+          </span>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
 <section class="py-12 md:py-16">
   <div class="max-w-6xl mx-auto px-4">
     <% groups.forEach(function(g) { var items = pakiety.filter(function(p){ return p.category === g.cat; }); if (!items.length) return; %>
