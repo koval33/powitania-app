@@ -2,7 +2,7 @@
 
 <%- include('../partials/page-hero', {
   heroH1: pakiet.h1En,
-  heroSub: pakiet.shortEn + ' Price: <strong>PLN ' + pakiet.netto + ' net</strong> (PLN ' + pakiet.brutto + ' gross). Online ordering and payment.',
+  heroSub: pakiet.shortEn + ' Price: <strong>EUR ' + pakiet.eur + ' net</strong>. Online ordering, payment processed in PLN (PLN ' + pakiet.brutto + ' incl. 23% VAT).',
   heroCta: 'none',
   heroCompact: true
 }) %>
@@ -87,9 +87,9 @@
           <img src="/img/pakiety/<%= pakiet.id %>-foto.webp" alt="<%= pakiet.nameEn %> - voice-over package" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">
           <h2 class="text-lg font-bold text-gray-900 leading-snug mb-1"><%= pakiet.nameEn %></h2>
           <div class="mb-4">
-            <span class="text-3xl font-bold text-gray-900">PLN <%= pakiet.netto %></span>
+            <span class="text-3xl font-bold text-gray-900">EUR <%= pakiet.eur %></span>
             <span class="text-gray-500 text-sm"> net</span>
-            <p class="text-sm text-gray-500">PLN <%= pakiet.brutto %> gross (incl. 23% VAT)</p>
+            <p class="text-sm text-gray-500">Payment in PLN: <%= pakiet.brutto %> PLN gross (incl. 23% VAT)</p>
           </div>
 
           <button type="button" id="pk-open" onclick="document.getElementById('pk-form').classList.toggle('hidden')" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order</button>
@@ -119,7 +119,7 @@
               <span class="text-gray-500">Voice talent:</span> <span id="pk-chosen" class="font-semibold text-gray-900">not selected</span>
               <a href="#choose-voice" class="block text-xs text-accent hover:underline mt-0.5">choose from the list and listen</a>
             </div>
-            <button type="button" id="pk-pay" onclick="pkSubmit()" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order and pay (PLN <%= pakiet.brutto %>)</button>
+            <button type="button" id="pk-pay" onclick="pkSubmit()" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order and pay (EUR <%= pakiet.eur %> net)</button>
             <p id="pk-msg" class="hidden text-center text-sm"></p>
             <p class="text-xs text-gray-400 text-center">Online payment via Przelewy24. VAT invoice sent by email.</p>
           </form>
@@ -147,8 +147,8 @@
   "offers": {
     "@type": "Offer",
     "url": "https://www.powitania.pl/en/packages/<%= pakiet.slugEn %>/",
-    "price": "<%= pakiet.brutto %>",
-    "priceCurrency": "PLN",
+    "price": "<%= pakiet.eur %>.00",
+    "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock",
     "seller": { "@type": "Organization", "name": "Powitania.pl" }
   }
@@ -267,13 +267,13 @@ function pkSubmit() {
     } else {
       msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
       msg.textContent = res.error || 'An error occurred. Please try again or email biuro@powitania.pl';
-      btn.disabled = false; btn.textContent = 'Order and pay (PLN <%= pakiet.brutto %>)';
+      btn.disabled = false; btn.textContent = 'Order and pay (EUR <%= pakiet.eur %> net)';
     }
   })
   .catch(function() {
     msg.classList.remove('hidden'); msg.className = 'text-center text-sm text-red-500';
     msg.textContent = 'Connection error. Please try again or call +48 605 491 069.';
-    btn.disabled = false; btn.textContent = 'Order and pay (PLN <%= pakiet.brutto %>)';
+    btn.disabled = false; btn.textContent = 'Order and pay (EUR <%= pakiet.eur %> net)';
   });
 }
 </script>
