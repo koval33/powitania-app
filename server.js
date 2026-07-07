@@ -1904,6 +1904,45 @@ app.get('/sitemap.xml', (req, res) => {
   res.send(xml);
 });
 
+// Google Merchant Center - feed produktowy pakietow nagran (Sklep v2), RSS 2.0 + namespace g:.
+// Generowany z Pakiety.getAll() - to samo zrodlo danych co /pakiety/*, wiec cena/tresc nie moze
+// rozjechac sie ze strona (Google porownuje g:price z cena widoczna na landing page i odrzuca
+// przy rozjezdzie). Tylko PL - EN pokazuje ceny w EUR przy platnosci w PLN, co jest niezgodne
+// z Merchant (price mismatch), wersje EN dodamy po ujednoliceniu waluty.
+const escapeXml = (str) => String(str).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+app.get('/merchant-feed.xml', (req, res) => {
+  const baseUrl = 'https://www.powitania.pl';
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n';
+  xml += '<channel>\n';
+  xml += `  <title>Powitania.pl - pakiety nagrań lektorskich</title>\n`;
+  xml += `  <link>${baseUrl}/pakiety/</link>\n`;
+  xml += `  <description>Gotowe pakiety nagrań lektorskich w stałych cenach - zapowiedzi telefoniczne, spoty reklamowe, narracje.</description>\n`;
+
+  Pakiety.getAll().forEach(p => {
+    xml += '  <item>\n';
+    xml += `    <g:id>${escapeXml(p.id)}</g:id>\n`;
+    xml += `    <g:title>${escapeXml(p.feedTitle)}</g:title>\n`;
+    xml += `    <g:description>${escapeXml(p.short)}</g:description>\n`;
+    xml += `    <g:link>${baseUrl}/pakiety/${p.id}/</g:link>\n`;
+    xml += `    <g:image_link>${baseUrl}/img/pakiety/${p.id}.webp</g:image_link>\n`;
+    xml += `    <g:availability>in_stock</g:availability>\n`;
+    xml += `    <g:price>${p.brutto} PLN</g:price>\n`;
+    xml += `    <g:brand>Powitania.pl</g:brand>\n`;
+    xml += `    <g:condition>new</g:condition>\n`;
+    xml += `    <g:identifier_exists>no</g:identifier_exists>\n`;
+    xml += `    <g:google_product_category>Media &gt; Music &amp; Sound Recordings</g:google_product_category>\n`;
+    xml += '  </item>\n';
+  });
+
+  xml += '</channel>\n</rss>';
+
+  res.set('Content-Type', 'application/xml');
+  res.send(xml);
+});
+
 // 301 Redirects - stare WordPress root-level profile lektorów (np. /marcin/ → /lektorzy/marcin/)
 // Dynamiczne sprawdzanie - jeśli slug istnieje w voices.json, przekieruj do /lektorzy/:slug/
 app.get('/:slug/', (req, res, next) => {
