@@ -96,8 +96,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 <% } %>
 
-<% if (currentPath !== '/' && currentPath.indexOf('/lektorzy/') === -1 && currentPath.indexOf('/bank-glosow/') === -1) { %>
-<!-- Sticky mobile CTA bar - NIE pokazujemy na homepage (numer telefonu juz jest w widget hero) -->
+<% if (currentPath !== '/' && currentPath.indexOf('/lektorzy/') === -1 && currentPath.indexOf('/bank-glosow/') === -1 && currentPath.indexOf('/sklep/') === -1) { %>
+<!-- Sticky mobile CTA bar - NIE pokazujemy na homepage (numer telefonu juz jest w widget hero),
+     ani na stronach z wlasnym flow zamowienia (/lektorzy/, /bank-glosow/, /sklep/) -->
 <div id="mobile-cta-bar" class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-gray-200 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] px-4 py-2 transition-transform duration-200 ease-out" style="transform:translateY(0)">
   <div class="flex gap-3">
     <a href="tel:+48605491069" class="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold py-2 rounded-lg transition-colors text-sm">
