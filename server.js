@@ -1225,6 +1225,46 @@ app.get('/aktualnosci-pl/strona/:page/', (req, res) => {
 });
 
 // Blog - pojedynczy post
+// RSS 2.0 dla bloga. Autodiscovery przez <link rel="alternate"> w head.ejs.
+// Po co: czytniki RSS + strumien tresci dla crawlerow (uzupelnia IndexNow w planie GEO).
+// MUSI byc przed routem /aktualnosci-pl/:slug/ - Express (non-strict) lapie tez wersje
+// bez trailing slash, wiec :slug przechwycilby "rss.xml". Najnowsze wpisy pierwsze,
+// pomijamy noindex (spojnie z sitemap). escapeXml zdefiniowany nizej, ale wolany dopiero
+// w request-time, wiec kolejnosc rejestracji route'ow nie ma znaczenia.
+app.get('/aktualnosci-pl/rss.xml', (req, res) => {
+  const baseUrl = 'https://www.powitania.pl';
+  const posts = loadBlogPosts().filter(p => !p.noindex).slice(0, 30);
+  const feedUrl = `${baseUrl}/aktualnosci-pl/rss.xml`;
+  const rfc822 = (d) => new Date(d + 'T00:00:00Z').toUTCString();
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n';
+  xml += '<channel>\n';
+  xml += `  <title>Powitania.pl - Aktualności</title>\n`;
+  xml += `  <link>${baseUrl}/aktualnosci-pl/</link>\n`;
+  xml += `  <description>Artykuły o nagraniach lektorskich, produkcji spotów, IVR i głosie w reklamie.</description>\n`;
+  xml += `  <language>pl-pl</language>\n`;
+  xml += `  <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />\n`;
+  if (posts.length) xml += `  <lastBuildDate>${rfc822(posts[0].date)}</lastBuildDate>\n`;
+
+  posts.forEach(p => {
+    const link = `${baseUrl}/aktualnosci-pl/${p.slug}/`;
+    xml += '  <item>\n';
+    xml += `    <title>${escapeXml(p.title)}</title>\n`;
+    xml += `    <link>${link}</link>\n`;
+    xml += `    <guid isPermaLink="true">${link}</guid>\n`;
+    xml += `    <pubDate>${rfc822(p.date)}</pubDate>\n`;
+    if (p.category) xml += `    <category>${escapeXml(p.category)}</category>\n`;
+    xml += `    <description>${escapeXml(p.excerpt || '')}</description>\n`;
+    xml += '  </item>\n';
+  });
+
+  xml += '</channel>\n</rss>';
+
+  res.set('Content-Type', 'application/rss+xml; charset=utf-8');
+  res.send(xml);
+});
+
 app.get('/aktualnosci-pl/:slug/', (req, res) => {
   const posts = loadBlogPosts();
   const idx = posts.findIndex(p => p.slug === req.params.slug);
