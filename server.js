@@ -1955,6 +1955,14 @@ app.get('/sitemap.xml', (req, res) => {
 // z Merchant (price mismatch), wersje EN dodamy po ujednoliceniu waluty.
 const escapeXml = (str) => String(str).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 
+// Wlasna taksonomia (g:product_type) per kategoria pakietu - dla Google to najsilniejszy
+// sygnal dopasowania, mocniejszy niz g:google_product_category.
+const FEED_PRODUCT_TYPE = {
+  ivr: 'Nagrania lektorskie > Zapowiedzi telefoniczne IVR',
+  spot: 'Nagrania lektorskie > Spoty reklamowe',
+  narracja: 'Nagrania lektorskie > Narracje i lektorstwo'
+};
+
 app.get('/merchant-feed.xml', (req, res) => {
   const baseUrl = 'https://www.powitania.pl';
 
@@ -1977,7 +1985,10 @@ app.get('/merchant-feed.xml', (req, res) => {
     xml += `    <g:brand>Powitania.pl</g:brand>\n`;
     xml += `    <g:condition>new</g:condition>\n`;
     xml += `    <g:identifier_exists>no</g:identifier_exists>\n`;
-    xml += `    <g:google_product_category>Media &gt; Music &amp; Sound Recordings</g:google_product_category>\n`;
+    xml += `    <g:google_product_category>${escapeXml('Business & Industrial > Advertising & Marketing')}</g:google_product_category>\n`;
+    if (FEED_PRODUCT_TYPE[p.category]) {
+      xml += `    <g:product_type>${escapeXml(FEED_PRODUCT_TYPE[p.category])}</g:product_type>\n`;
+    }
     xml += '  </item>\n';
   });
 
