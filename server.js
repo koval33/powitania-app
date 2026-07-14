@@ -1806,6 +1806,10 @@ app.get('/en/voice-artists/:slug/', (req, res) => {
       { name: lektor.name, url: '/en/voice-artists/' + lektor.id + '/' }
     ],
     lektor: lektorEn,
+    // Oryginalne ceny PLN (nieprzeliczone) - EUR sluzy TYLKO do wyswietlania, a platnosc
+    // w P24 idzie zawsze w PLN netto. Bez tego kreator wysylal liczbe EUR jako kwote PLN
+    // (np. 110 zamiast 450) i zanizal platnosc ~4x.
+    pricesPln: lektor.prices || {},
     similar: similar,
     isExpress: req.query.express === '1',
     melodies: loadMelodies(),

@@ -1166,18 +1166,35 @@ function updateFileLabel(input) {
 var LEKTOR_NAME = '<%= lektor.name.replace(/'/g, "\\'") %>';
 var LEKTOR_ID = '<%= lektor.id %>';
 var LEKTOR_PRICES = <%- JSON.stringify(lektor.prices || {}) %>;
+// Ceny w PLN (nieprzeliczone) - do ROZLICZENIA. EUR sluzy tylko do wyswietlania,
+// P24 pobiera zawsze w PLN netto. Total PLN liczymy rownolegle do totalu EUR.
+var LEKTOR_PRICES_PLN = <%- JSON.stringify(typeof pricesPln !== 'undefined' ? pricesPln : {}) %>;
 var LEKTOR_HIDE_PRICE = <%= lektor.hidePrice ? 'true' : 'false' %>;
 var IS_EXPRESS = <%= typeof isExpress !== 'undefined' && isExpress ? 'true' : 'false' %>;
 var MELODIES = <%- JSON.stringify(typeof melodies !== 'undefined' ? melodies : []) %>;
+var EUR_RATE = <%= typeof eurRate !== 'undefined' ? eurRate : 4.20 %>;
+
+// PLN -> EUR (do wyswietlania). Ta sama regula co plnToEur() w server.js:
+// kurs 4.20, zaokraglenie ZAWSZE w gore do pelnych 5 EUR (nie zanizamy ceny).
+function plnToEurDisplay(pln) {
+  if (typeof pln !== 'number') return pln;
+  return Math.ceil((pln / EUR_RATE) / 5) * 5;
+}
 
 // LEKTOR_PRICES sa juz w EUR (przekonwertowane server-side przez plnToEur w server.js).
 // NIE konwertuj ponownie - to powodowalo podwojna konwersje (PLN -> EUR -> ~EUR/4.2).
 
-// Express mode: prices +50% rounded to nearest 5 EUR
+// Express mode: +50%. EUR zaokraglamy do 5 (jak dotad), a PLN do 10 - identycznie
+// jak na stronie PL (views/lektor.ejs), zeby kwota pobrana byla taka sama jak na PL.
 if (IS_EXPRESS) {
   for (var key in LEKTOR_PRICES) {
     if (typeof LEKTOR_PRICES[key] === 'number') {
       LEKTOR_PRICES[key] = Math.round(LEKTOR_PRICES[key] * 1.5 / 5) * 5;
+    }
+  }
+  for (var keyPln in LEKTOR_PRICES_PLN) {
+    if (typeof LEKTOR_PRICES_PLN[keyPln] === 'number') {
+      LEKTOR_PRICES_PLN[keyPln] = Math.round(LEKTOR_PRICES_PLN[keyPln] * 1.5 / 10) * 10;
     }
   }
 }
@@ -1359,7 +1376,8 @@ function calculatePrice(serviceType, wordCount, options) {
   var cfg = PRICING_MAP[serviceType];
   if (!cfg) return null;
 
-  var result = { basePrice: null, label: '', addons: [], note: cfg.note || null, needsCustomQuote: false };
+  // basePrice/price = EUR (wyswietlanie), *Pln = PLN (rozliczenie w P24).
+  var result = { basePrice: null, basePricePln: null, label: '', addons: [], note: cfg.note || null, needsCustomQuote: false };
 
   if (cfg.method === 'wordcount') {
     // IVR - cena z tieru wg liczby slow
@@ -1369,6 +1387,7 @@ function calculatePrice(serviceType, wordCount, options) {
         var price = LEKTOR_PRICES[tier.field];
         if (price && price !== 'wycena') {
           result.basePrice = parseInt(price);
+          result.basePricePln = parseInt(LEKTOR_PRICES_PLN[tier.field]) || null;
           result.label = tier.label;
         } else {
           result.needsCustomQuote = true;
@@ -1382,6 +1401,7 @@ function calculatePrice(serviceType, wordCount, options) {
       var bilingualPrice = LEKTOR_PRICES['ivr_bilingual'];
       if (bilingualPrice) {
         result.bilingualPrice = parseInt(bilingualPrice);
+        result.bilingualPricePln = parseInt(LEKTOR_PRICES_PLN['ivr_bilingual']) || null;
       }
     }
   } else if (cfg.method === 'choice') {
@@ -1390,6 +1410,7 @@ function calculatePrice(serviceType, wordCount, options) {
       var choicePrice = LEKTOR_PRICES[options.choiceField];
       if (choicePrice) {
         result.basePrice = parseInt(choicePrice);
+        result.basePricePln = parseInt(LEKTOR_PRICES_PLN[options.choiceField]) || null;
         var chosenOpt = cfg.options.find(function(o) { return o.field === options.choiceField; });
         result.label = chosenOpt ? chosenOpt.label : '';
       } else {
@@ -1405,6 +1426,7 @@ function calculatePrice(serviceType, wordCount, options) {
         var pagePrice = LEKTOR_PRICES[pageTier.field];
         if (pagePrice && pagePrice !== 'wycena') {
           result.basePrice = parseInt(pagePrice);
+          result.basePricePln = parseInt(LEKTOR_PRICES_PLN[pageTier.field]) || null;
           result.label = pageTier.label + ' (~' + pages.toFixed(1) + ' p.)';
         } else {
           result.needsCustomQuote = true;
@@ -1420,10 +1442,20 @@ function calculatePrice(serviceType, wordCount, options) {
     cfg.addons.forEach(function(addon) {
       if (addon.condition && !addon.condition(wordCount)) return;
       if (addon.hideOnHidePrice && LEKTOR_HIDE_PRICE) return;
-      // Stala cena (addon.price) lub cena per lektor (LEKTOR_PRICES)
-      var addonPrice = addon.price || (LEKTOR_PRICES[addon.field] ? parseInt(LEKTOR_PRICES[addon.field]) : null);
-      if (addonPrice) {
-        result.addons.push({ field: addon.field, label: addon.label, price: parseInt(addonPrice), tooltip: addon.tooltip || null, hasMelodySelector: addon.hasMelodySelector || false });
+      // Dwa zrodla ceny addonu:
+      // 1) addon.price - stala kwota w PLN (te same liczby co na stronie PL, np. 50/150/200),
+      //    wiec do wyswietlenia trzeba ja realnie przeliczyc na EUR.
+      // 2) LEKTOR_PRICES[field] - cena lektora, JUZ w EUR; PLN bierzemy z LEKTOR_PRICES_PLN.
+      var addonEur = null, addonPln = null;
+      if (addon.price) {
+        addonPln = parseInt(addon.price);
+        addonEur = plnToEurDisplay(addonPln);
+      } else if (LEKTOR_PRICES[addon.field]) {
+        addonEur = parseInt(LEKTOR_PRICES[addon.field]);
+        addonPln = parseInt(LEKTOR_PRICES_PLN[addon.field]) || null;
+      }
+      if (addonEur) {
+        result.addons.push({ field: addon.field, label: addon.label, price: addonEur, pricePln: addonPln, tooltip: addon.tooltip || null, hasMelodySelector: addon.hasMelodySelector || false });
       }
     });
   }
@@ -1514,7 +1546,7 @@ function renderPricing(result, wordCount, targetEl) {
         var melodyCheckId = addon.hasMelodySelector ? 'melody-addon-check' : '';
         html += '<label class="flex items-center justify-between gap-3 cursor-pointer">' +
           '<span class="flex items-center gap-2">' +
-            '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" data-label="' + addon.label + '"' +
+            '<input type="checkbox" class="addon-checkbox accent-emerald-600" data-price="' + addon.price + '" data-price-pln="' + (addon.pricePln || 0) + '" data-label="' + addon.label + '"' +
             (melodyCheckId ? ' id="' + melodyCheckId + '"' : '') +
             ' onchange="recalcTotal();' + (addon.hasMelodySelector ? 'toggleMelodySelector(this)' : '') + '">' +
             '<span class="text-gray-600 text-sm">' + addon.label + '</span>' +
@@ -1580,6 +1612,8 @@ function renderPricing(result, wordCount, targetEl) {
 
   // Store base price for recalc (including bilingual)
   targetEl.dataset.basePrice = (result.basePrice || 0) + (result.bilingualPrice || 0);
+  // Blizniacza baza w PLN - z niej liczymy kwote realnie pobierana przez P24.
+  targetEl.dataset.basePricePln = (result.basePricePln || 0) + (result.bilingualPricePln || 0);
 
   // Przełączanie formularzy: custom quote -> zapytanie; inaczej -> bramka decyzji (Order now / Still deciding)
   if (result.needsCustomQuote) { toggleWizardForms(true); }
@@ -1771,17 +1805,43 @@ document.addEventListener('ended', function(e) {
   }
 }, true);
 
+// Kwota netto w PLN faktycznie pobierana przez P24 (EUR jest tylko na ekranie).
+// Ustawiana przez recalcTotal(), czytana przy wysylce zamowienia.
+var CURRENT_TOTAL_PLN = 0;
+
+// Liczy kwote netto w PLN prosto z DOM (baza + zaznaczone dodatki). Uzywane przy wysylce -
+// nie polegamy na tym, czy recalcTotal() zdazyl sie wykonac.
+function getTotalPln() {
+  var containers = ['wizard-pricing', 'modal-pricing'];
+  var sum = 0;
+  for (var i = 0; i < containers.length; i++) {
+    var el = document.getElementById(containers[i]);
+    if (el && el.dataset.basePricePln) { sum = parseInt(el.dataset.basePricePln) || 0; break; }
+  }
+  document.querySelectorAll('.addon-checkbox:checked').forEach(function(cb) {
+    sum += parseInt(cb.dataset.pricePln) || 0;
+  });
+  return sum;
+}
+
 function recalcTotal() {
   // Szukaj basePrice w widocznym kontenerze wyceny
   var containers = ['wizard-pricing', 'modal-pricing'];
   var total = 0;
+  var totalPln = 0;
   for (var i = 0; i < containers.length; i++) {
     var el = document.getElementById(containers[i]);
-    if (el && el.dataset.basePrice) { total = parseInt(el.dataset.basePrice) || 0; break; }
+    if (el && el.dataset.basePrice) {
+      total = parseInt(el.dataset.basePrice) || 0;
+      totalPln = parseInt(el.dataset.basePricePln) || 0;
+      break;
+    }
   }
   document.querySelectorAll('.addon-checkbox:checked').forEach(function(cb) {
     total += parseInt(cb.dataset.price) || 0;
+    totalPln += parseInt(cb.dataset.pricePln) || 0;
   });
+  CURRENT_TOTAL_PLN = totalPln;
   var totalEl = document.getElementById('pricing-total');
   if (totalEl) totalEl.textContent = total + ' EUR net';
   // Przelicz brutto (VAT 23%) od pełnej kwoty netto (baza + addony)
@@ -2095,10 +2155,11 @@ function submitModalOrder() {
     generatedText: document.getElementById('modal-text-input').value.trim()
   };
   // Dodaj cene
-  var pricingEl = document.getElementById('modal-pricing');
-  if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
-  var totalEl = document.getElementById('pricing-total');
-  if (totalEl) data.totalPrice = totalEl.textContent;
+  // UWAGA: totalPrice MUSI byc w PLN netto - backend (/api/payment/register) traktuje te
+  // wartosc jako kwote netto w PLN i przekazuje do P24 (currency: PLN). Wyswietlany total
+  // jest w EUR i wyslanie go tutaj zanizalo platnosc ~4x (np. 110 zamiast 450).
+  var totalPlnModal = getTotalPln();
+  if (totalPlnModal > 0) data.totalPrice = String(totalPlnModal);
   if (IS_EXPRESS) data.isExpress = true;
   var addonsInfo = collectAddonsInfo();
   data.selectedAddons = addonsInfo.selectedAddons;
@@ -2248,10 +2309,9 @@ function submitWizardOrder() {
     serviceType: ctx.serviceType || '',
     generatedText: ctx.text || ''
   };
-  var pricingEl = document.getElementById('wizard-pricing');
-  if (pricingEl && pricingEl.dataset.basePrice) data.totalPrice = pricingEl.dataset.basePrice;
-  var totalEl = document.getElementById('pricing-total');
-  if (totalEl) data.totalPrice = totalEl.textContent;
+  // totalPrice w PLN netto - patrz komentarz przy wysylce z modala.
+  var totalPlnWizard = getTotalPln();
+  if (totalPlnWizard > 0) data.totalPrice = String(totalPlnWizard);
   if (IS_EXPRESS) data.isExpress = true;
   var addonsInfo = collectAddonsInfo();
   data.selectedAddons = addonsInfo.selectedAddons;
