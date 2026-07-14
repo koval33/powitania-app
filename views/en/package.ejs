@@ -2,7 +2,7 @@
 
 <%- include('../partials/page-hero', {
   heroH1: pakiet.h1En,
-  heroSub: pakiet.shortEn + ' Price: <strong>PLN ' + pakiet.netto + ' net</strong> (PLN ' + pakiet.brutto + ' gross, incl. 23% VAT). Online ordering and payment.',
+  heroSub: pakiet.shortEn + ' Price: <strong>EUR ' + pakiet.eur + ' net</strong>. Online ordering; payment is processed in PLN (PLN ' + pakiet.brutto + ' gross, incl. 23% VAT).',
   heroCta: 'none',
   heroCompact: true
 }) %>
@@ -87,9 +87,9 @@
           <img src="/img/pakiety/<%= pakiet.id %>-foto.webp" alt="<%= pakiet.nameEn %> - voice-over package" width="800" height="800" class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy">
           <h2 class="text-lg font-bold text-gray-900 leading-snug mb-1"><%= pakiet.nameEn %></h2>
           <div class="mb-4">
-            <span class="text-3xl font-bold text-gray-900">PLN <%= pakiet.netto %></span>
+            <span class="text-3xl font-bold text-gray-900">EUR <%= pakiet.eur %></span>
             <span class="text-gray-500 text-sm"> net</span>
-            <p class="text-sm text-gray-500">PLN <%= pakiet.brutto %> gross (incl. 23% VAT)</p>
+            <p class="text-sm text-gray-500">Charged in PLN: <strong><%= pakiet.brutto %> PLN</strong> gross (incl. 23% VAT). EUR amount is indicative, converted at <%= eurRate.toFixed(2) %> PLN/EUR.</p>
           </div>
 
           <button type="button" id="pk-open" onclick="document.getElementById('pk-form').classList.toggle('hidden')" class="w-full bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Order now</button>

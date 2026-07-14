@@ -1538,13 +1538,14 @@ app.get('/en/advertising-jingles/', (req, res) => {
 app.get('/en/packages/', (req, res) => {
   res.render('en/packages', {
     title: 'Voice-over packages with prices | Powitania.pl',
-    description: 'Fixed-price voice-over packages: IVR phone announcements from PLN 380, radio spots from PLN 300, film narration from PLN 450 net. Online ordering and payment, VAT invoice.',
+    description: 'Fixed-price voice-over packages: IVR phone announcements from EUR 95, radio spots from EUR 75, film narration from EUR 110 net. Online ordering, payment processed in PLN, VAT invoice.',
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Packages', url: '/en/packages/' }
     ],
-    pakiety: Pakiety.getAll()
+    pakiety: Pakiety.getAll(),
+    eurRate: EUR_RATE
   });
 });
 
@@ -1568,7 +1569,8 @@ app.get('/en/packages/:slug/', (req, res) => {
       { name: pakiet.nameEn, url: '/en/packages/' + pakiet.slugEn + '/' }
     ],
     pakiet: pakiet,
-    orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet)
+    orderVoices: Pakiety.getOrderVoices(loadVoices(), pakiet),
+    eurRate: EUR_RATE
   });
 });
 
