@@ -919,7 +919,7 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
 
 app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
-    title: 'Zapowiedzi telefoniczne i nagrania do centrali IVR | 24-48h',
+    title: 'Zapowiedzi telefoniczne - nagrania do central IVR od 380 zł',
     description: `Zapowiedzi telefoniczne i nagrania IVR na centralę (Slican, Platan, VoIP). ${res.locals.voiceCount} lektorów, realizacja 24-48h, od 380 zł netto. Gotowe szablony i wycena.`,
     pageHeroTransparent: true,
     breadcrumbs: [
@@ -1477,7 +1477,7 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
 app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   res.render('en/phone-announcements', {
     pageHeroTransparent: true,
-    title: 'Phone announcements & IVR recordings for PBX | 24-48h',
+    title: 'Phone announcements - IVR recordings for PBX from EUR 90',
     description: `Phone announcements and IVR voiceover for your PBX (Slican, Platan, VoIP). ${res.locals.voiceCount} voice artists, 24-48h delivery, ready-made script templates.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
