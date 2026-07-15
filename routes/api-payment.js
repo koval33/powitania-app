@@ -34,6 +34,28 @@ function stripDiacritics(str) {
 }
 
 /**
+ * Wiersze tabeli z atrybucja zrodla (do maila do biura). Zwraca puste, gdy
+ * brak jakichkolwiek danych atrybucji. src = req.body (register) lub order (notify).
+ */
+function attribRowsHtml(src) {
+  const fields = [
+    ['\u0179r\u00f3d\u0142o', src.utm_source],
+    ['Medium', src.utm_medium],
+    ['Kampania', src.utm_campaign],
+    ['S\u0142owo kluczowe', src.utm_term],
+    ['Tre\u015b\u0107 reklamy', src.utm_content],
+    ['gclid (Google Ads)', src.gclid],
+    ['fbclid (Meta)', src.fbclid],
+    ['GA client_id', src.gaClientId]
+  ].filter(([, v]) => v);
+  if (!fields.length) return '';
+  const rows = fields.map(([label, v]) =>
+    `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">${label}:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(v)}</td></tr>`
+  ).join('');
+  return `<tr><td colspan="2" style="padding:14px 8px 4px;font-weight:bold;color:#2563eb">\ud83d\udcca \u0179r\u00f3d\u0142o (atrybucja)</td></tr>${rows}`;
+}
+
+/**
  * Zapis zamówienia do pliku JSON
  */
 function saveOrder(sessionId, data) {
@@ -153,6 +175,7 @@ router.post('/register', async (req, res) => {
           ${lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(lektorName)}${lektorId ? ' (' + esc(lektorId) + ')' : ''}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Kwota:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#d97706;font-weight:bold">${amountBrutto} zł brutto (${priceNetto} zł netto)</td></tr>
           ${selectedAddons && selectedAddons.length > 0 ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Usługi dodatkowe:</td><td style="padding:8px;border-bottom:1px solid #eee">${selectedAddons.map(a => esc(a)).join(', ')}${selectedMelody ? ' <strong>(melodia: ' + esc(selectedMelody) + ')</strong>' : ''}</td></tr>` : ''}
+          ${attribRowsHtml(req.body)}
         </table>
         ${notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(notes)}</p>` : ''}
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
@@ -301,6 +324,7 @@ router.post('/notify', async (req, res) => {
           ${order.lektorName ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Lektor:</td><td style="padding:8px;border-bottom:1px solid #eee">${esc(order.lektorName)}${order.lektorId ? ' (' + esc(order.lektorId) + ')' : ''}</td></tr>` : ''}
           <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Kwota:</td><td style="padding:8px;border-bottom:1px solid #eee;color:#10b981;font-weight:bold">${order.amountBrutto} PLN brutto (${order.priceNetto} zł netto)</td></tr>
           ${order.selectedAddons && order.selectedAddons.length > 0 ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Usługi dodatkowe:</td><td style="padding:8px;border-bottom:1px solid #eee">${order.selectedAddons.map(a => esc(a)).join(', ')}${order.selectedMelody ? ' <strong>(melodia: ' + esc(order.selectedMelody) + ')</strong>' : ''}</td></tr>` : ''}
+          ${attribRowsHtml(order)}
         </table>
         ${order.notes ? `<h3>Uwagi:</h3><p style="background:#f5f5f5;padding:16px;border-radius:8px">${esc(order.notes)}</p>` : ''}
         ${order.generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(order.generatedText)}</pre>` : ''}
