@@ -2329,6 +2329,8 @@ function submitWizardInquiry() {
 }
 
 function submitOrderRequest(data, msgElId) {
+  // Atrybucja zrodla (gclid/utm/fbclid/gaClientId z cookie pow_attrib)
+  if (window.powAttribData) Object.assign(data, window.powAttribData());
   var msgEl = document.getElementById(msgElId);
   if (msgEl) { msgEl.classList.add('hidden'); }
 

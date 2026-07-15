@@ -7,6 +7,7 @@ const { validateNIP, validateZipCode, validatePhone } = require('../lib/validate
 const p24 = require('../lib/p24');
 const { sendMail } = require('../lib/mailer');
 const { sendOrderToCRM } = require('../lib/crm-webhook');
+const { logInquiry } = require('../lib/inquiry-logger');
 
 const ORDERS_DIR = path.join(__dirname, '..', 'data', 'orders');
 
@@ -157,7 +158,20 @@ router.post('/register', async (req, res) => {
         ${generatedText ? `<h3>Tekst do nagrania:</h3><pre style="background:#f5f5f5;padding:16px;border-radius:8px;white-space:pre-wrap">${esc(generatedText)}</pre>` : ''}
         <p style="color:#999;font-size:12px">Wysłano z powitania.pl - ${new Date().toLocaleString('pl-PL')}</p>
       `
-    }).catch(err => console.error('[Payment] Office email error:', err));
+    })
+      .then(() => logInquiry({
+        type: 'order_payment',
+        data: { firmName, name, email, phone, lektor: lektorName || lektorId || null, serviceType: serviceType || null, value: amountBrutto, sessionId, source: 'payment_online' },
+        mail_status: 'sent', mail_error: null
+      }))
+      .catch(err => {
+        console.error('[Payment] Office email error:', err);
+        logInquiry({
+          type: 'order_payment',
+          data: { firmName, name, email, phone, lektor: lektorName || lektorId || null, serviceType: serviceType || null, value: amountBrutto, sessionId, source: 'payment_online' },
+          mail_status: 'failed', mail_error: String(err.message || err)
+        });
+      });
 
     // Potwierdzenie do klienta
     sendMail({
@@ -337,7 +351,9 @@ router.get('/return', (req, res) => {
   const order = sessionId ? loadOrder(sessionId) : null;
 
   if (order && order.status === 'paid') {
-    return res.redirect('/zamowienie-oplacone/');
+    // sid przekazujemy dalej - strona potwierdzenia potrzebuje orderId + kwoty netto
+    // do eventu GA4 purchase.
+    return res.redirect('/zamowienie-oplacone/?sid=' + encodeURIComponent(sessionId));
   }
 
   // Płatność jeszcze nieprzetworzona lub anulowana - pokaż stronę oczekiwania

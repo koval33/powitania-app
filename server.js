@@ -1295,10 +1295,28 @@ app.get('/aktualnosci-pl/:slug/', (req, res) => {
 
 // Potwierdzenie płatności online
 app.get('/zamowienie-oplacone/', (req, res) => {
+  // Wczytaj zamowienie po sid (z /api/payment/return) - potrzebne do eventu GA4 purchase.
+  // Walidacja formatu sid chroni przed path traversal (sid = pow_<ts>_<hex>).
+  let purchase = null;
+  const sid = req.query.sid;
+  if (sid && /^pow_\d+_[a-f0-9]+$/.test(sid)) {
+    try {
+      const order = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'orders', sid + '.json'), 'utf8'));
+      if (order && order.status === 'paid') {
+        purchase = {
+          transaction_id: order.orderId || sid, // orderId z P24 (stabilny); fallback sid
+          value: order.priceNetto,              // wartosc NETTO (nie brutto)
+          currency: 'PLN',
+          sessionId: sid
+        };
+      }
+    } catch (e) { /* brak pliku / uszkodzony - pomijamy event, strona i tak sie renderuje */ }
+  }
   res.render('payment-success', {
     title: 'Zamówienie opłacone | powitania.pl',
     description: '',
-    paid: true
+    paid: true,
+    purchase
   });
 });
 
@@ -1307,7 +1325,8 @@ app.get('/zamowienie-przyjete/', (req, res) => {
   res.render('payment-success', {
     title: 'Zamówienie przyjęte | powitania.pl',
     description: '',
-    paid: false
+    paid: false,
+    purchase: null
   });
 });
 

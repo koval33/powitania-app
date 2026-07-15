@@ -2387,6 +2387,8 @@ function submitWizardInquiry() {
 
 function submitOrderRequest(data, msgElId) {
   data.lang = 'en';
+  // Order-source attribution (gclid/utm/fbclid/gaClientId from pow_attrib cookie)
+  if (window.powAttribData) Object.assign(data, window.powAttribData());
   var msgEl = document.getElementById(msgElId);
   if (msgEl) { msgEl.classList.add('hidden'); }
 

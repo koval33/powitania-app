@@ -30,4 +30,24 @@
   </div>
 </div>
 
+<% if (typeof purchase !== 'undefined' && purchase) { %>
+<script>
+// GA4 purchase - jeden raz per zamowienie. Dedup po sessionId (sessionStorage),
+// zeby odswiezenie strony nie liczylo zakupu dwa razy. Wartosc NETTO, transaction_id = orderId P24.
+(function () {
+  var sid = <%- JSON.stringify(purchase.sessionId) %>;
+  var key = 'pow_purchase_' + sid;
+  try { if (sessionStorage.getItem(key)) return; } catch (e) {}
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'purchase',
+    transaction_id: <%- JSON.stringify(String(purchase.transaction_id)) %>,
+    value: <%= Number(purchase.value) %>,
+    currency: 'PLN'
+  });
+  try { sessionStorage.setItem(key, '1'); } catch (e) {}
+})();
+</script>
+<% } %>
+
 <%- include('partials/foot') %>

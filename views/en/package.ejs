@@ -244,6 +244,8 @@ function pkSubmit() {
     totalPrice: '<%= pakiet.netto %>',
     lang: 'en'
   };
+  // Order-source attribution (gclid/utm/fbclid/gaClientId from pow_attrib cookie)
+  if (window.powAttribData) Object.assign(payload, window.powAttribData());
   fetch('/api/payment/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

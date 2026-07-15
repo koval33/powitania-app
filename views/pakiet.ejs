@@ -248,6 +248,8 @@ function pkSubmit() {
     lektorId: pkVoice.id,
     totalPrice: '<%= pakiet.netto %>'
   };
+  // Atrybucja zrodla (gclid/utm/fbclid/gaClientId z cookie pow_attrib)
+  if (window.powAttribData) Object.assign(payload, window.powAttribData());
   fetch('/api/payment/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
