@@ -895,8 +895,8 @@ app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
 
 app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
   res.render('uslugi/lektor-do-filmow', {
-    title: 'Profesjonalny lektor do filmów | Powitania.pl',
-    description: 'Profesjonalny lektor do filmów - naturalny głos, wysoka jakość nagrań, szybka realizacja. Idealny wybór do filmów promocyjnych, instruktażowych dokumentalnych.',
+    title: 'Profesjonalny lektor do filmów - próbki głosów, wycena w 2 h',
+    description: 'Posłuchaj próbek głosów do filmów: dokument, film korporacyjny, promo. Lektorzy znani z telewizji. Narracja od 340 zł/A4, realizacja 24-48 h, darmowa próbka.',
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -1472,8 +1472,8 @@ app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
 app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
   res.render('en/film-voiceover', {
     pageHeroTransparent: true,
-    title: 'Professional Film Voiceover | Narration & Audio-Video | Powitania.pl',
-    description: 'Professional film voiceover - narration for corporate, instructional, e-learning and promotional videos. Audio-video editing included.',
+    title: 'Film voice-over - hear voice samples, quote in 2 h | Powitania',
+    description: 'Hear film voice-over samples: documentary, corporate, promo. Voices known from TV. Narration from 340 PLN/A4, 24-48 h delivery, free sample for your script.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
