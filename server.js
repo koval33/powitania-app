@@ -1884,10 +1884,22 @@ app.get('/en/*', (req, res) => {
 });
 
 // Sitemap.xml - dynamiczny
+// Stala data ostatniej realnej zmiany tresci stron statycznych/uslugowych.
+// BUMPOWAC RECZNIE przy istotnej zmianie tresci tych stron. Bez tego sitemap
+// stemplowal "dzis" na kazdym odczycie -> Google/Bing ucza sie ignorowac lastmod
+// calej domeny i wolniej odswiezaja realnie zmienione strony.
+const SITEMAP_STATIC_LASTMOD = '2026-07-07';
+
 app.get('/sitemap.xml', (req, res) => {
   const voices = loadVoices();
   const baseUrl = 'https://www.powitania.pl';
-  const today = new Date().toISOString().split('T')[0];
+
+  // lastmod profili lektorow: mtime pliku voices.json (zmienia sie tylko przy edycji
+  // w panelu, nie przy kazdym deployu - to persistent volume), a per-lektor v.updatedAt
+  // jesli kiedys pojawi sie w danych. Jedna wspolna, stabilna data > "dzis".
+  let voicesLastmod = SITEMAP_STATIC_LASTMOD;
+  try { voicesLastmod = fs.statSync(voicesPath).mtime.toISOString().split('T')[0]; } catch (e) {}
+  const voiceDate = (v) => (v.updatedAt ? String(v.updatedAt).split('T')[0] : voicesLastmod);
 
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -1942,12 +1954,13 @@ app.get('/sitemap.xml', (req, res) => {
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
   staticPages.forEach(p => {
-    xml += `  <url>\n    <loc>${baseUrl}${p.url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${baseUrl}${p.url}</loc>\n    <lastmod>${SITEMAP_STATIC_LASTMOD}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
   });
 
   voices.forEach(v => {
-    xml += `  <url>\n    <loc>${baseUrl}/lektorzy/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n`;
-    xml += `  <url>\n    <loc>${baseUrl}/en/voice-artists/${v.id}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
+    const lm = voiceDate(v);
+    xml += `  <url>\n    <loc>${baseUrl}/lektorzy/${v.id}/</loc>\n    <lastmod>${lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${baseUrl}/en/voice-artists/${v.id}/</loc>\n    <lastmod>${lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
   });
 
   // Blog posts
