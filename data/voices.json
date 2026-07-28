@@ -410,11 +410,11 @@
     "photo": "/img/lektorzy/daniel.webp",
     "samples": [
       {
-        "name": "Probka 1",
+        "name": "Spot reklamowy",
         "url": "/audio/lektorzy/daniel-2.mp3"
       },
       {
-        "name": "Probka 2",
+        "name": "Powitanie podczas gali",
         "url": "/audio/lektorzy/daniel-3.mp3"
       }
     ],
@@ -4080,15 +4080,27 @@
       "polski"
     ],
     "description": "Dyplomowana aktorka, która zrealizowała wiele projektów dubbingowych. Nagrywa audiobooki, słuchowiska oraz spoty reklamowe.",
+    "descriptionEn": "Certified actress who has completed many dubbing projects. Records audiobooks, audio dramas and advertising spots.",
+    "realName": null,
+    "contactEmail": null,
+    "contactPhone": null,
     "photo": "/img/lektorzy/kim-2.webp",
     "samples": [
       {
-        "name": "Nagranie lektorskie",
-        "url": "/audio/samples/Kim_2_1.mp3"
+        "name": "Fragment audiobooka",
+        "url": "/audio/samples/Kim_2_2.mp3"
       },
       {
-        "name": "Nagranie lektorskie",
-        "url": "/audio/samples/Kim_2_2.mp3"
+        "name": "Spot reklamowy",
+        "url": "/audio/lektorzy/kim-dubbing-2.mp3"
+      },
+      {
+        "name": "Zapowiedź telefoniczna",
+        "url": "/audio/lektorzy/kim-dubbing-3.mp3"
+      },
+      {
+        "name": "Nagranie w jęz. angielskim",
+        "url": "/audio/lektorzy/kim-dubbing-4.mp3"
       }
     ],
     "turnaround": "24h",
@@ -4103,15 +4115,14 @@
     ],
     "priceGroup": "Niższa grupa cenowa",
     "hidePrice": false,
-    "profileUrl": "/lektorzy/kim-dubbing/",
     "prices": {
       "ivr_100": 390,
       "ivr_200": 550,
       "ivr_200plus": "wycena",
       "ivr_guarantee_100": 160,
       "ivr_guarantee_100plus": 260,
-      "ivr_bilingual": 150,
       "ivr_melody": 150,
+      "ivr_bilingual": 150,
       "spot_radio_local": 300,
       "spot_radio_national": 900,
       "spot_tv_local": 600,
@@ -4121,20 +4132,15 @@
       "narration_1page": 340,
       "narration_2pages": 450,
       "narration_3pages": 550,
-      "narration_3plus": "wycena",
-      "narration_under50pages": "wycena",
-      "narration_over50pages": 60
+      "narration_3plus": "wycena"
     },
-    "descriptionEn": "Certified actress who has completed many dubbing projects. Records audiobooks, audio dramas and advertising spots.",
+    "profileUrl": "/lektorzy/kim-dubbing/",
     "seoTitle": "Kim - aktorka, dubbing i audiobooki | powitania.pl",
     "seoDescription": "Kim - 20-30 lat, dyplomowana aktorka, wiele projektów dubbingowych. IVR, reklama, audiobook. Próbka + wycena w 24h. powitania.pl od 2001 roku.",
     "seoTitleEn": "Kim 2 - dubbing specialist Polish voice | powitania.pl",
     "seoDescriptionEn": "Kim 2 - Polish dubbing specialist, 20-30. Expressive, versatile for dubbing, narration, IVR. Quote in 48h. powitania.pl since 2001.",
     "order": 630,
-    "approved": true,
-    "realName": null,
-    "contactEmail": null,
-    "contactPhone": null
+    "approved": true
   },
   {
     "id": "jarek",
