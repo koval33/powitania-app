@@ -648,7 +648,7 @@ app.use('/admin/kreator', require('./routes/admin-kreator'));
 app.get('/', (req, res) => {
   const voiceCount = res.locals.voiceCount;
   res.render('index', {
-    title: `Studio Lektorskie i Usługi Lektorskie od 2001 - ${voiceCount} lektorów`,
+    title: `Studio Lektorskie i Usługi Lektorskie - posłuchaj ${voiceCount} głosów`,
     description: `Profesjonalne studio lektorskie i kompleksowe usługi lektorskie od 2001 roku. ${voiceCount} lektorów, nagrania do reklam, filmów, IVR, audiobooków. Wycena w 30 minut.`,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' }
@@ -660,8 +660,8 @@ app.get('/', (req, res) => {
 
 app.get('/bank-glosow/', (req, res) => {
   res.render('bank-glosow', {
-    title: 'Bank głosów lektorskich | Powitania.pl – Studio Lektorskie',
-    description: `Bank głosów lektorskich Powitania.pl - ${res.locals.voiceCount} profesjonalnych lektorów w 30+ językach. Odsłuchaj próbek, filtruj po języku, płci i stylu. Studio od 2001 r.`,
+    title: `Bank Głosów Lektorskich - posłuchaj ${res.locals.voiceCount} głosów online`,
+    description: `${res.locals.voiceCount} lektorów w 30+ językach - posłuchaj próbek za darmo, filtruj po płci, barwie i języku. Wycena w 30 minut, realizacja 24-48 h. Studio od 2001 r.`,
     pageHeroTransparent: true,
     mainClass: 'bank-dark',
     breadcrumbs: [
@@ -871,8 +871,8 @@ app.get('/sklep/:slug/', (req, res) => {
 
 app.get('/nagrania-lektorskie/glos-do-reklamy/', (req, res) => {
   res.render('uslugi/glos-do-reklamy', {
-    title: 'Głos do reklamy | Spoty radiowe, TV, social media | Powitania.pl',
-    description: 'Przyciągnij uwagę słuchaczy - wybierz głos do reklamy, który sprzedaje. Profesjonalny lektor do reklamy, różne barwy głosu i ekspresja dopasowana do Twojej marki.',
+    title: 'Głos do reklamy - posłuchaj próbek, spot od 300 zł | 24-48 h',
+    description: 'Posłuchaj próbek głosów do reklamy: spoty radiowe, TV, online. Znani lektorzy z telewizji, spot od 300 zł, realizacja 24-48 h. Wybierz głos, który sprzedaje.',
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -919,8 +919,8 @@ app.get('/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', (req, res) => {
 
 app.get('/nagrania-lektorskie/zapowiedzi-telefoniczne/', (req, res) => {
   res.render('uslugi/zapowiedzi-telefoniczne', {
-    title: 'Zapowiedzi telefoniczne - nagrania do central IVR od 380 zł',
-    description: `Zapowiedzi telefoniczne i nagrania IVR na centralę (Slican, Platan, VoIP). ${res.locals.voiceCount} lektorów, realizacja 24-48h, od 380 zł netto. Gotowe szablony i wycena.`,
+    title: 'Zapowiedzi telefoniczne od 380 zł - posłuchaj przykładów IVR',
+    description: `Posłuchaj przykładów zapowiedzi telefonicznych i nagrań IVR na centralę (Slican, Platan, VoIP). ${res.locals.voiceCount} lektorów, 24-48 h, od 380 zł netto. Gotowe szablony.`,
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -1387,7 +1387,7 @@ app.get('/bank/*/page/*', (req, res) => res.redirect(301, '/bank-glosow/'));
 app.get('/en/', (req, res) => {
   const voiceCount = res.locals.voiceCount;
   res.render('en/index', {
-    title: `Voice-Over Services & Studio since 2001 - ${voiceCount} talents`,
+    title: `Voice-Over Services & Studio - Listen to ${voiceCount} Voices`,
     description: `Professional voiceover studio offering complete voice-over services since 2001. ${voiceCount} voice talents for ads, films, IVR, audiobooks. Quote in 30 minutes.`,
     voices: loadVoices(),
     posts: loadBlogPosts().slice(0, 6)
@@ -1398,8 +1398,8 @@ app.get('/en/voice-bank/', (req, res) => {
   // Konwersja prices PLN -> EUR per voice (template uzywa juz-EUR wartosci, bez wlasnej konwersji)
   const voicesEur = loadVoices().map(v => ({ ...v, prices: convertPricesToEur(v.prices) }));
   res.render('en/bank-glosow', {
-    title: 'Voice Bank | Professional Voice Artists | Powitania.pl',
-    description: `Voice bank Powitania.pl - ${res.locals.voiceCount} professional voice artists in 30+ languages. Listen to samples, filter by language, gender, and style. Voiceover studio since 2001.`,
+    title: `Voice Bank - Listen to ${res.locals.voiceCount} Professional Voices Online`,
+    description: `${res.locals.voiceCount} voice artists in 30+ languages - listen to free samples, filter by gender, tone and language. Quote in 30 minutes, 24-48 h delivery. Studio since 2001.`,
     pageHeroTransparent: true,
     mainClass: 'bank-dark',
     voices: voicesEur
@@ -1448,8 +1448,8 @@ app.get('/en/voiceover-services/', (req, res) => {
 app.get('/en/voiceover-services/voice-for-advertising/', (req, res) => {
   res.render('en/voice-for-advertising', {
     pageHeroTransparent: true,
-    title: 'Voice for Advertising | Radio, TV & social media spots | Powitania.pl',
-    description: 'Hire recognisable voice artists for your advertising spots. Radio, TV, social media - professional voiceover recordings that sell.',
+    title: 'Voice for Advertising - Hear Samples | Radio, TV, Online',
+    description: 'Listen to voice samples for advertising: radio, TV and online spots. Recognisable voice artists, 24-48 h delivery. Pick a voice that sells.',
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
@@ -1496,8 +1496,8 @@ app.get('/en/voiceover-services/film-voiceover/', (req, res) => {
 app.get('/en/voiceover-services/phone-announcements/', (req, res) => {
   res.render('en/phone-announcements', {
     pageHeroTransparent: true,
-    title: 'Phone announcements - IVR recordings for PBX from EUR 90',
-    description: `Phone announcements and IVR voiceover for your PBX (Slican, Platan, VoIP). ${res.locals.voiceCount} voice artists, 24-48h delivery, ready-made script templates.`,
+    title: 'Phone Announcements from EUR 90 - Listen to IVR Samples',
+    description: `Listen to sample phone announcements and IVR recordings for your PBX (Slican, Platan, VoIP). ${res.locals.voiceCount} voice artists, 24-48 h delivery, ready-made script templates.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' },
@@ -1888,7 +1888,7 @@ app.get('/en/*', (req, res) => {
 // BUMPOWAC RECZNIE przy istotnej zmianie tresci tych stron. Bez tego sitemap
 // stemplowal "dzis" na kazdym odczycie -> Google/Bing ucza sie ignorowac lastmod
 // calej domeny i wolniej odswiezaja realnie zmienione strony.
-const SITEMAP_STATIC_LASTMOD = '2026-07-07';
+const SITEMAP_STATIC_LASTMOD = '2026-08-03';
 
 app.get('/sitemap.xml', (req, res) => {
   const voices = loadVoices();
