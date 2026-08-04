@@ -446,6 +446,35 @@ router.post('/zapisz/', upload.fields([
       }
     }
 
+    // 3. Realizacje wideo (YouTube/Vimeo) - zapisywane jako zwykle samples z URL-em
+    // zewnetrznym. Front sam wykrywa youtu/vimeo i renderuje miniature wideo.
+    // Osobne pola od plikow, wiec indeksy name<->url zawsze sie zgadzaja.
+    // multipart (multer) zostawia klucz doslownie "new_video_url[]", a urlencoded
+    // z extended:true parsuje go na "new_video_url" - czytamy obie formy.
+    const asArray = (x) => (Array.isArray(x) ? x : (x ? [x] : []));
+    const pickField = (base) => {
+      const withBrackets = asArray(b[base + '[]']);
+      return withBrackets.length ? withBrackets : asArray(b[base]);
+    };
+    const videoUrls = pickField('new_video_url');
+    const videoNames = pickField('new_video_name');
+    // Walidacja po RZECZYWISTYM hoscie (nie po wystapieniu nazwy w stringu) - inaczej
+    // "https://obcy.pl/?x=youtube.com/" przeszloby jako "wideo".
+    const VIDEO_HOSTS = new Set(['youtu.be', 'youtube.com', 'm.youtube.com', 'vimeo.com', 'player.vimeo.com']);
+    const isVideoUrl = (u) => {
+      try {
+        const parsed = new URL(u);
+        if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return false;
+        return VIDEO_HOSTS.has(parsed.hostname.replace(/^www\./i, '').toLowerCase());
+      } catch (e) { return false; }
+    };
+    videoUrls.forEach((rawUrl, i) => {
+      const url = String(rawUrl || '').trim();
+      if (!url || !isVideoUrl(url)) return;
+      const name = (videoNames[i] || '').trim() || 'Realizacja wideo';
+      samples.push({ name, url });
+    });
+
     // Parse languages
     const languages = (b.languages || '').split(',').map(l => l.trim()).filter(l => l);
 

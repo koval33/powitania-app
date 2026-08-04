@@ -122,7 +122,12 @@
                 <button type="button" onclick="moveSample(this,1)" title="Przesun w dol" class="text-sm text-gray-400 hover:text-accent leading-none px-1.5 py-0.5 rounded border border-white/10 hover:border-accent/40">&#9660;</button>
               </div>
               <input type="text" name="existing_sample_name_<%= i %>" value="<%= s.name || '' %>" placeholder="Nazwa probki" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
-              <audio controls src="<%= s.url %>" class="h-8"></audio>
+              <% var isVideoSample = /youtu|vimeo/i.test(s.url || ''); %>
+              <% if (isVideoSample) { %>
+                <a href="<%= s.url %>" target="_blank" rel="noopener" class="text-xs text-accent hover:underline px-2 py-1.5 rounded border border-accent/20 whitespace-nowrap">&#9654; Wideo (YouTube)</a>
+              <% } else { %>
+                <audio controls src="<%= s.url %>" class="h-8"></audio>
+              <% } %>
               <button type="button" onclick="markSampleRemove(this)" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">Usun</button>
             </div>
           <% }); %>
@@ -137,6 +142,27 @@
           <div class="sample-row flex items-center gap-2 bg-dark-800 border border-accent/20 rounded-lg p-2">
             <input type="text" name="new_sample_name[]" placeholder="Nazwa (np. Spot reklamowy)" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
             <input type="file" name="new_sample_file[]" accept="audio/*" required class="text-xs text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-accent file:text-white hover:file:bg-accent-light file:cursor-pointer">
+            <button type="button" onclick="this.parentElement.remove()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">&times;</button>
+          </div>
+        </template>
+      </div>
+
+      <!-- Realizacje wideo (YouTube / Vimeo) - zapisywane jako zwykle samples z URL-em zewnetrznym.
+           Osobne pola od plikow audio, zeby indeksy nie rozjechaly sie z uploadem (multer zbiera
+           tylko realnie wyslane pliki). Front (lektor.ejs / voice-artist.ejs) sam wykrywa youtu/vimeo
+           i renderuje miniature wideo zamiast odtwarzacza audio. -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1.5">Realizacje wideo (YouTube / Vimeo)</label>
+        <p class="text-xs text-gray-500 mb-2">Wklej pelny link do filmu (np. https://www.youtube.com/watch?v=... albo https://youtu.be/...). Realizacja pokaze sie na profilu lektora jako miniatura wideo. Istniejace realizacje edytujesz/usuwasz w sekcji "Probki audio" powyzej.</p>
+
+        <div id="new-videos" class="space-y-2 mb-3"></div>
+
+        <button type="button" id="add-video-btn" class="text-xs text-accent border border-accent/30 hover:border-accent/60 px-3 py-1.5 rounded">+ Dodaj realizacje wideo</button>
+
+        <template id="new-video-tpl">
+          <div class="video-row flex items-center gap-2 bg-dark-800 border border-accent/20 rounded-lg p-2">
+            <input type="text" name="new_video_name[]" placeholder="Nazwa (np. Spot reklamowy)" class="flex-1 bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
+            <input type="url" name="new_video_url[]" placeholder="https://www.youtube.com/watch?v=..." required class="flex-[2] bg-dark-700 border border-white/10 text-white text-sm rounded px-3 py-2 focus:border-accent focus:outline-none">
             <button type="button" onclick="this.parentElement.remove()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1.5 rounded border border-red-500/20 hover:border-red-500/40">&times;</button>
           </div>
         </template>
@@ -167,6 +193,12 @@
           var tpl = document.getElementById('new-sample-tpl');
           var clone = tpl.content.cloneNode(true);
           document.getElementById('new-samples').appendChild(clone);
+        });
+
+        document.getElementById('add-video-btn').addEventListener('click', function() {
+          var tpl = document.getElementById('new-video-tpl');
+          var clone = tpl.content.cloneNode(true);
+          document.getElementById('new-videos').appendChild(clone);
         });
 
         // Reorder probek: swap DOM + swap pos input values. Server sortuje po pos.
