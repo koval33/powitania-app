@@ -55,8 +55,19 @@ router.get('/uslugi', (req, res) => {
 });
 
 router.get('/lektor/:kto', (req, res) => {
-  const v = pricing.findVoice(req.params.kto);
-  if (!v) return res.status(404).json({ ok: false, error: `Nie znalazłem lektora: ${req.params.kto}` });
+  const found = pricing.findCandidates(req.params.kto);
+  if (found.length === 0) {
+    return res.status(404).json({ ok: false, error: `Nie znalazłem lektora: ${req.params.kto}` });
+  }
+  if (found.length > 1) {
+    return res.status(409).json({
+      ok: false,
+      error: `"${req.params.kto}" pasuje do ${found.length} lektorów`,
+      kandydaci: found.map(v => ({ lektor: v.name, profil: v.profileUrl || '',
+                                   ceny_ukryte: Boolean(v.hidePrice) }))
+    });
+  }
+  const v = found[0];
   res.json({
     ok: true,
     lektor: v.name,
