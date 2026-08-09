@@ -637,6 +637,9 @@ app.get('/api/health/kreator', async (req, res) => {
 
 // Public API
 app.use('/api/voices', require('./routes/api-voices'));
+// Stawki dla automatyzacji (tylko odczyt, Bearer DRAFT_API_TOKEN).
+// Serwis z tego nie korzysta - kalkulator na stronie działa niezależnie.
+app.use('/api/stawki', require('./routes/api-stawki'));
 
 // Admin
 app.use('/admin/lektorzy', require('./routes/admin'));
