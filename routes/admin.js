@@ -90,19 +90,21 @@ router.get('/inquiries/', (req, res) => {
   const all = readInquiries().reverse(); // newest first
   const status = req.query.status;
   const type = req.query.type;
+  const crm = req.query.crm;
   const limit = parseInt(req.query.limit, 10) || 200;
 
   let filtered = all;
   if (status) filtered = filtered.filter(r => r.mail_status === status);
   if (type) filtered = filtered.filter(r => r.type === type);
+  if (crm) filtered = filtered.filter(r => r.crm_status === crm);
   filtered = filtered.slice(0, limit);
 
   if (req.query.format === 'csv') {
-    const cols = ['ts', 'type', 'name', 'email', 'phone', 'lektorName', 'serviceType', 'mail_status', 'mail_error'];
+    const cols = ['ts', 'type', 'name', 'email', 'phone', 'lektorName', 'serviceType', 'mail_status', 'mail_error', 'crm_status', 'crm_error', 'deal_id'];
     let csv = cols.join(',') + '\n';
     filtered.forEach(r => {
       const row = cols.map(c => {
-        const v = c === 'ts' || c === 'type' || c === 'mail_status' || c === 'mail_error'
+        const v = ['ts', 'type', 'mail_status', 'mail_error', 'crm_status', 'crm_error'].includes(c)
           ? (r[c] || '')
           : (r.data ? (r.data[c] || '') : '');
         return '"' + String(v).replace(/"/g, '""') + '"';
@@ -115,11 +117,17 @@ router.get('/inquiries/', (req, res) => {
   }
 
   const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  // Wpisy type:'crm' to slad po wysylce do CRM, nie osobny lead - liczymy je osobno,
+  // zeby nie zawyzaly licznika leadow.
+  const leads = all.filter(r => r.type !== 'crm');
+  const crmRows = all.filter(r => r.type === 'crm');
   const counts = {
-    total: all.length,
-    sent: all.filter(r => r.mail_status === 'sent').length,
-    failed: all.filter(r => r.mail_status === 'failed').length,
-    dev_silenced: all.filter(r => r.mail_status === 'dev_mode_silenced').length
+    total: leads.length,
+    sent: leads.filter(r => r.mail_status === 'sent').length,
+    failed: leads.filter(r => r.mail_status === 'failed').length,
+    dev_silenced: leads.filter(r => r.mail_status === 'dev_mode_silenced').length,
+    crm_ok: crmRows.filter(r => r.crm_status === 'sent').length,
+    crm_failed: crmRows.filter(r => r.crm_status && r.crm_status !== 'sent').length
   };
   const link = (s) => `?status=${s}${type ? '&type=' + type : ''}`;
 
@@ -153,12 +161,16 @@ router.get('/inquiries/', (req, res) => {
   <div><span class="n status-sent">${counts.sent}</span><span class="l">Wyslane</span></div>
   <div><span class="n status-failed">${counts.failed}</span><span class="l">Failed</span></div>
   <div><span class="n status-dev_mode_silenced">${counts.dev_silenced}</span><span class="l">Dev silenced (UTRACONE!)</span></div>
+  <div><span class="n status-sent">${counts.crm_ok}</span><span class="l">CRM OK</span></div>
+  <div><span class="n status-failed">${counts.crm_failed}</span><span class="l">CRM blad</span></div>
 </div>
 <div class="filters">
   <a href="?" ${!status && !type ? 'class="active"' : ''}>Wszystkie</a>
   <a href="${link('failed')}" ${status === 'failed' ? 'class="active"' : ''}>Failed</a>
   <a href="${link('dev_mode_silenced')}" ${status === 'dev_mode_silenced' ? 'class="active"' : ''}>Dev silenced</a>
   <a href="${link('sent')}" ${status === 'sent' ? 'class="active"' : ''}>Wyslane</a>
+  <a href="?crm=failed" ${crm === 'failed' ? 'class="active"' : ''}>CRM blad</a>
+  <a href="?type=crm" ${type === 'crm' ? 'class="active"' : ''}>Wysylki do CRM</a>
   <a href="?format=csv${status ? '&status=' + status : ''}">&#x2B07; CSV</a>
 </div>
 ${filtered.length === 0 ? '<div class="empty">Brak wpisow w logu (jeszcze zadne zapytanie nie zostalo zarejestrowane lub filtr nie pasuje).</div>' : `<table>
@@ -171,12 +183,26 @@ ${filtered.length === 0 ? '<div class="empty">Brak wpisow w logu (jeszcze zadne 
       <td>${esc(r.data && r.data.email)}</td>
       <td>${esc(r.data && r.data.phone)}</td>
       <td>${esc(r.data && r.data.lektorName)}</td>
-      <td><span class="status-${esc(r.mail_status)}">${esc(r.mail_status)}</span></td>
-      <td><small>${esc(r.mail_error)}</small></td>
+      <td><span class="status-${esc(r.mail_status || r.crm_status)}">${esc(r.mail_status || r.crm_status)}</span>${r.data && r.data.deal_id ? ' <small>#' + esc(r.data.deal_id) + '</small>' : ''}</td>
+      <td><small>${esc(r.mail_error || r.crm_error)}</small></td>
     </tr>`).join('')}
   </tbody>
 </table>`}
 </body></html>`);
+});
+
+// --- Test lacznosci z CRM ---
+// pingCRM() istnialo w lib/crm-webhook.js, ale nie bylo nigdzie wpiete, wiec nie
+// dalo sie sprawdzic CRM inaczej niz przez logi Railway. Teraz: /admin/lektorzy/crm-ping/
+router.get('/crm-ping/', async (req, res) => {
+  const { pingCRM } = require('../lib/crm-webhook');
+  const started = Date.now();
+  try {
+    const result = await pingCRM();
+    res.json({ ok: Boolean(result && result.ok), ms: Date.now() - started, odpowiedz: result });
+  } catch (err) {
+    res.status(502).json({ ok: false, ms: Date.now() - started, error: String((err && err.message) || err) });
+  }
 });
 
 // --- Export voices.json (do synchronizacji local <- prod) ---
