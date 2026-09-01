@@ -801,8 +801,8 @@ app.get('/opinie/', (req, res) => {
 
 app.get('/nagrania-lektorskie/', (req, res) => {
   res.render('nagrania-lektorskie', {
-    title: `Nagrania lektorskie - reklamy, IVR, filmy, audiobooki | 24-48h`,
-    description: `Profesjonalne nagrania lektorskie od 2001 r. ${res.locals.voiceCount} lektorów w 30+ językach. Spoty reklamowe, filmy, IVR, audiobooki. Realizacja w 48h. Wycena gratis.`,
+    title: `Zamów nagranie lektorskie online - realizacja w 24-48 h`,
+    description: `Gdzie zamówić nagranie lektorskie? Wybierz głos z ${res.locals.voiceCount} lektorów, prześlij tekst, odbierz plik w 24-48 h. Agencje, marki, 30+ języków. Bezpłatna wycena.`,
     pageHeroTransparent: true,
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
@@ -1439,8 +1439,8 @@ app.get('/en/privacy-policy/', (req, res) => {
 app.get('/en/voiceover-services/', (req, res) => {
   res.render('en/voiceover-services', {
     pageHeroTransparent: true,
-    title: `Voice-Over Recordings - Ads, IVR, Films, Audiobooks | 24-48h`,
-    description: `Professional voice-over recordings since 2001. ${res.locals.voiceCount} voice artists in 30+ languages. Commercials, films, IVR, audiobooks. 48h turnaround. Free quote.`,
+    title: `Order a Voice-Over Recording Online - 24-48 h Turnaround`,
+    description: `Where to order a voice-over recording? Pick a voice from ${res.locals.voiceCount} artists, send your script, get the file in 24-48 h. Agencies, brands, 30+ languages. Free quote.`,
     breadcrumbs: [
       { name: 'Home', url: '/en/' },
       { name: 'Voiceover Services', url: '/en/voiceover-services/' }
@@ -1891,7 +1891,7 @@ app.get('/en/*', (req, res) => {
 // BUMPOWAC RECZNIE przy istotnej zmianie tresci tych stron. Bez tego sitemap
 // stemplowal "dzis" na kazdym odczycie -> Google/Bing ucza sie ignorowac lastmod
 // calej domeny i wolniej odswiezaja realnie zmienione strony.
-const SITEMAP_STATIC_LASTMOD = '2026-08-03';
+const SITEMAP_STATIC_LASTMOD = '2026-09-01';
 
 app.get('/sitemap.xml', (req, res) => {
   const voices = loadVoices();
