@@ -370,7 +370,8 @@ app.use((req, res, next) => {
     '/nagranie-ekspresowe/': '/en/express-recording/',
     '/kreator/': '/en/kreator/',
     '/aktualnosci-pl/': '/en/news/',
-    '/polityka-prywatnosci/': '/en/privacy-policy/'
+    '/polityka-prywatnosci/': '/en/privacy-policy/',
+    '/o-firmie/': '/en/about-us/'
   };
   var path = req.path;
   if (path.startsWith('/en/')) {
@@ -1037,6 +1038,17 @@ app.get('/o-firmie/', (req, res) => {
     breadcrumbs: [
       { name: 'Strona główna', url: '/' },
       { name: 'O firmie', url: '/o-firmie/' }
+    ]
+  });
+});
+
+app.get('/en/about-us/', (req, res) => {
+  res.render('en/about-us', {
+    title: 'About Us | Powitania.pl',
+    description: 'OPTIMUM Paweł Kowalski - Powitania.pl voiceover studio, operating since 2001. 200+ voice artists, 30+ languages, work for agencies, TV and premium brands.',
+    breadcrumbs: [
+      { name: 'Home', url: '/en/' },
+      { name: 'About Us', url: '/en/about-us/' }
     ]
   });
 });
@@ -1858,8 +1870,7 @@ app.get('/en/voice-for-advertising/', (req, res) => res.redirect(301, '/en/voice
 app.get('/en/professional-voiceover-for-films/', (req, res) => res.redirect(301, '/en/voiceover-services/film-voiceover/'));
 
 // 301 Redirects - GSC audit 2026-05-10: legacy WP-plugin EN URL-e (296 imp/90d, 5 clicks recovery)
-// /en/about-us/ + /en/reviews/ → cross-language /o-firmie/ (brak EN about page; 119 imp/90d, top problem)
-app.get('/en/about-us/', (req, res) => res.redirect(301, '/o-firmie/'));
+// /en/reviews/ → cross-language /o-firmie/ (brak EN reviews page). /en/about-us/ ma od 2026-09 wlasna strone.
 app.get('/en/reviews/', (req, res) => res.redirect(301, '/o-firmie/'));
 // Stare paths z poprzedniego WP themu /en/portfo-en/* → /en/voiceover-services/*
 app.get('/en/portfo-en/radio-advertising/', (req, res) => res.redirect(301, '/en/voiceover-services/voice-for-advertising/'));
@@ -1941,6 +1952,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/kreator/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/about-us/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },
     { url: '/en/privacy-policy/', priority: '0.3', changefreq: 'yearly' },
   ];
