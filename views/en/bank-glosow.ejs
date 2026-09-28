@@ -13,22 +13,6 @@
   <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8">
     <h2 class="text-xl font-bold text-gray-900 mb-3">What is a voice bank?</h2>
     <p class="text-gray-600 leading-relaxed mb-4">A voice bank is a catalogue of voice-over artists with audio samples, used to order a voice for a specific recording: a commercial, film, phone announcement, e-learning module or audiobook. Instead of running a casting session, the client listens to samples online, compares voices and commissions the chosen artist. The final audio file is recorded in a studio and is broadcast-ready without further processing.</p>
-    <p class="text-gray-900 font-semibold mb-2">The Powitania.pl voice bank in numbers:</p>
-    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
-      <li class="mb-2"><strong><%= voiceCount %> voice artists</strong> - actors, radio presenters and TV station voices</li>
-      <li class="mb-2"><strong>30+ languages</strong>, including native speakers</li>
-      <li class="mb-2">operating <strong>since 2001</strong>, over 11,000 completed recordings</li>
-      <li class="mb-2">standard turnaround: <strong>24-48 h</strong></li>
-      <li class="mb-2">voice-over recording <strong>from EUR&nbsp;70 net</strong></li>
-      <li>free custom sample (casting with your script) on request</li>
-    </ul>
-
-    <h2 class="text-xl font-bold text-gray-900 mb-3 mt-6">How to choose a voice artist from the voice bank?</h2>
-    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
-      <li class="mb-2"><strong>Filter the base</strong> - gender, voice age, language, price group or the "Famous voices" filter.</li>
-      <li class="mb-2"><strong>Listen to samples</strong> - every profile has demo recordings; on request we prepare a free sample with your script.</li>
-      <li><strong>Get a quote and order</strong> - the calculator on the artist's profile shows the price once you paste your script; standard turnaround is 24-48 h.</li>
-    </ol>
   </div>
 </section>
 
@@ -537,6 +521,28 @@
     window.addEventListener('resize', setSidebarTop);
   })();
 </script>
+
+<!-- Numbers + steps: below the listing so voice cards stay reachable on mobile. -->
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">The Powitania.pl voice bank in numbers</h2>
+    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong><%= voiceCount %> voice artists</strong> - actors, radio presenters and TV station voices</li>
+      <li class="mb-2"><strong>30+ languages</strong>, including native speakers</li>
+      <li class="mb-2">operating <strong>since 2001</strong>, over 11,000 completed recordings</li>
+      <li class="mb-2">standard turnaround: <strong>24-48 h</strong></li>
+      <li class="mb-2">voice-over recording <strong>from EUR&nbsp;70 net</strong></li>
+      <li>free custom sample (casting with your script) on request</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-6">How to choose a voice artist from the voice bank?</h2>
+    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong>Filter the base</strong> - gender, voice age, language, price group or the "Famous voices" filter.</li>
+      <li class="mb-2"><strong>Listen to samples</strong> - every profile has demo recordings; on request we prepare a free sample with your script.</li>
+      <li><strong>Get a quote and order</strong> - the calculator on the artist's profile shows the price once you paste your script; standard turnaround is 24-48 h.</li>
+    </ol>
+  </div>
+</section>
 
 <!-- Dodatkowy opis -->
 <section class="py-12 border-t border-gray-200">

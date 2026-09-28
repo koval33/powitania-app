@@ -39,22 +39,6 @@
   <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8">
     <h2 class="text-xl font-bold text-gray-900 mb-3">Czym jest bank głosów?</h2>
     <p class="text-gray-600 leading-relaxed mb-4">Bank głosów to katalog lektorów z&nbsp;próbkami audio, w&nbsp;którym zamawia się głos do&nbsp;konkretnego nagrania: reklamy, filmu, zapowiedzi telefonicznej, e-learningu czy audiobooka. Zamiast organizować casting, klient odsłuchuje próbki online, porównuje głosy i&nbsp;zleca nagranie wybranemu lektorowi. Gotowy plik audio powstaje w&nbsp;studiu i&nbsp;nadaje się do&nbsp;emisji bez dodatkowej obróbki.</p>
-    <p class="text-gray-900 font-semibold mb-2">Bank głosów Powitania.pl w&nbsp;liczbach:</p>
-    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
-      <li class="mb-2"><strong><%= voiceCount %> lektorów</strong> - aktorzy, prezenterzy radiowi i&nbsp;głosy stacji TV</li>
-      <li class="mb-2"><strong>30+ języków</strong>, w&nbsp;tym native speakerzy</li>
-      <li class="mb-2"><strong>od 2001 roku</strong>, ponad 11&nbsp;000 zrealizowanych nagrań</li>
-      <li class="mb-2">realizacja standardowego nagrania: <strong>24-48 h</strong></li>
-      <li class="mb-2">nagranie lektorskie <strong>od 300&nbsp;zł netto</strong></li>
-      <li>bezpłatna dedykowana próbka (casting z&nbsp;Twoim tekstem) na życzenie</li>
-    </ul>
-
-    <h2 class="text-xl font-bold text-gray-900 mb-3 mt-6">Jak wybrać lektora z&nbsp;banku głosów?</h2>
-    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
-      <li class="mb-2"><strong>Przefiltruj bazę</strong> - płeć, wiek głosu, język, grupa cenowa lub filtr "Znani i&nbsp;lubiani".</li>
-      <li class="mb-2"><strong>Odsłuchaj próbki</strong> - każdy profil ma nagrania demo; na życzenie przygotujemy bezpłatną próbkę z&nbsp;Twoim tekstem.</li>
-      <li><strong>Wyceń i&nbsp;zamów</strong> - kalkulator na profilu lektora poda cenę po wklejeniu tekstu; standardowa realizacja trwa 24-48 h.</li>
-    </ol>
   </div>
 </section>
 <% } %>
@@ -584,6 +568,30 @@
     window.addEventListener('resize', setSidebarTop);
   })();
 </script>
+
+<% if (typeof genderSegment === 'undefined') { %>
+<!-- Liczby + kroki: pod listingiem, zeby nie spychac kart lektorow na mobile. -->
+<section class="py-12 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Bank głosów Powitania.pl w&nbsp;liczbach</h2>
+    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong><%= voiceCount %> lektorów</strong> - aktorzy, prezenterzy radiowi i&nbsp;głosy stacji TV</li>
+      <li class="mb-2"><strong>30+ języków</strong>, w&nbsp;tym native speakerzy</li>
+      <li class="mb-2"><strong>od 2001 roku</strong>, ponad 11&nbsp;000 zrealizowanych nagrań</li>
+      <li class="mb-2">realizacja standardowego nagrania: <strong>24-48 h</strong></li>
+      <li class="mb-2">nagranie lektorskie <strong>od 300&nbsp;zł netto</strong></li>
+      <li>bezpłatna dedykowana próbka (casting z&nbsp;Twoim tekstem) na życzenie</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-6">Jak wybrać lektora z&nbsp;banku głosów?</h2>
+    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong>Przefiltruj bazę</strong> - płeć, wiek głosu, język, grupa cenowa lub filtr "Znani i&nbsp;lubiani".</li>
+      <li class="mb-2"><strong>Odsłuchaj próbki</strong> - każdy profil ma nagrania demo; na życzenie przygotujemy bezpłatną próbkę z&nbsp;Twoim tekstem.</li>
+      <li><strong>Wyceń i&nbsp;zamów</strong> - kalkulator na profilu lektora poda cenę po wklejeniu tekstu; standardowa realizacja trwa 24-48 h.</li>
+    </ol>
+  </div>
+</section>
+<% } %>
 
 <!-- Dodatkowy opis -->
 <section class="py-12 border-t border-gray-200">
