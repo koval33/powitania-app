@@ -8,6 +8,30 @@
   heroCompact: true
 }) %>
 
+<!-- Definitional layer: self-contained description of the service (citation candidate in search results). -->
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">What is a voice bank?</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">A voice bank is a catalogue of voice-over artists with audio samples, used to order a voice for a specific recording: a commercial, film, phone announcement, e-learning module or audiobook. Instead of running a casting session, the client listens to samples online, compares voices and commissions the chosen artist. The final audio file is recorded in a studio and is broadcast-ready without further processing.</p>
+    <p class="text-gray-900 font-semibold mb-2">The Powitania.pl voice bank in numbers:</p>
+    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong><%= voiceCount %> voice artists</strong> - actors, radio presenters and TV station voices</li>
+      <li class="mb-2"><strong>30+ languages</strong>, including native speakers</li>
+      <li class="mb-2">operating <strong>since 2001</strong>, over 11,000 completed recordings</li>
+      <li class="mb-2">standard turnaround: <strong>24-48 h</strong></li>
+      <li class="mb-2">voice-over recording <strong>from EUR&nbsp;70 net</strong></li>
+      <li>free custom sample (casting with your script) on request</li>
+    </ul>
+
+    <h2 class="text-xl font-bold text-gray-900 mb-3 mt-6">How to choose a voice artist from the voice bank?</h2>
+    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong>Filter the base</strong> - gender, voice age, language, price group or the "Famous voices" filter.</li>
+      <li class="mb-2"><strong>Listen to samples</strong> - every profile has demo recordings; on request we prepare a free sample with your script.</li>
+      <li><strong>Get a quote and order</strong> - the calculator on the artist's profile shows the price once you paste your script; standard turnaround is 24-48 h.</li>
+    </ol>
+  </div>
+</section>
+
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
 <div id="filters-bar" class="py-3 pb-4 bg-white md:hidden sticky z-40">
   <div class="max-w-7xl mx-auto px-4">
@@ -580,6 +604,21 @@
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes. Every voiceover sample in our bank is available as an MP3 download. Convenient for advertising agencies and production houses - pick 1-3 options, download the samples, and forward them to the end client for approval. Once the final voice is approved, you come back to us and order the full recording.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 cursor-pointer flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900 text-base m-0">What is a voice bank?</h3>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">A voice bank is an online catalogue of voice-over artists with audio samples. It lets you listen to and compare voices, then order a professional recording from the artist you choose without running a casting session. The Powitania.pl voice bank has been running since 2001 and covers <%= voiceCount %> voice artists recording in over 30 languages.</div>
+      </details>
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 cursor-pointer flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900 text-base m-0">How much does a voice-over from the voice bank cost?</h3>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">The price depends on the length of the script and the fields of exploitation. A short recording (for example a phone announcement or a radio spot) starts from EUR&nbsp;70 net. The <a href="/en/pricing/" class="text-accent hover:underline">calculator</a> on every artist profile prices your script automatically, and an emailed quote arrives within about 30 minutes on working days.</div>
       </details>
     </div>
   </div>
@@ -1160,7 +1199,9 @@
     { "@type": "Question", "name": "What is the difference between Polish voice actors and native speakers?", "acceptedAnswer": { "@type": "Answer", "text": "The bank includes over 150 native Polish voice actors: actors, presenters, and dubbing artists. Foreign-language native speakers cover export and multilingual projects. Native rates are usually about 2x higher than Polish ones." } },
     { "@type": "Question", "name": "Is every voice actor available immediately?", "acceptedAnswer": { "@type": "Answer", "text": "Most are. Standard voiceover delivery is 24-48h after script approval and voice selection. A few of the most in-demand voices may have a 2-5 business day queue." } },
     { "@type": "Question", "name": "Can I order a casting demo with my own text?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you want certainty before a full order, we can record a demo dedicated to your project: a fragment of your specific text performed by the chosen voice actor. Contact us with your project description and we will quote it individually." } },
-    { "@type": "Question", "name": "Can I download a voice actor's sample to send to my client?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every voiceover sample in our bank is available as an MP3 download. Pick 1-3 options, download the samples, and forward them to the end client for approval." } }
+    { "@type": "Question", "name": "Can I download a voice actor's sample to send to my client?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every voiceover sample in our bank is available as an MP3 download. Pick 1-3 options, download the samples, and forward them to the end client for approval." } },
+    { "@type": "Question", "name": "What is a voice bank?", "acceptedAnswer": { "@type": "Answer", "text": "A voice bank is an online catalogue of voice-over artists with audio samples. It lets you listen to and compare voices, then order a professional recording from the artist you choose without running a casting session. The Powitania.pl voice bank has been running since 2001 and covers <%= voiceCount %> voice artists recording in over 30 languages." } },
+    { "@type": "Question", "name": "How much does a voice-over from the voice bank cost?", "acceptedAnswer": { "@type": "Answer", "text": "The price depends on the length of the script and the fields of exploitation. A short recording (for example a phone announcement or a radio spot) starts from EUR 70 net. The calculator on every artist profile prices your script automatically, and an emailed quote arrives within about 30 minutes on working days." } }
   ]
 }
 </script>

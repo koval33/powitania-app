@@ -33,6 +33,32 @@
 </section>
 <% } %>
 
+<% if (typeof genderSegment === 'undefined') { %>
+<!-- Warstwa definicyjna: samowystarczalny opis uslugi (kandydat do cytowania w wynikach wyszukiwania). -->
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Czym jest bank głosów?</h2>
+    <p class="text-gray-600 leading-relaxed mb-4">Bank głosów to katalog lektorów z&nbsp;próbkami audio, w&nbsp;którym zamawia się głos do&nbsp;konkretnego nagrania: reklamy, filmu, zapowiedzi telefonicznej, e-learningu czy audiobooka. Zamiast organizować casting, klient odsłuchuje próbki online, porównuje głosy i&nbsp;zleca nagranie wybranemu lektorowi. Gotowy plik audio powstaje w&nbsp;studiu i&nbsp;nadaje się do&nbsp;emisji bez dodatkowej obróbki.</p>
+    <p class="text-gray-900 font-semibold mb-2">Bank głosów Powitania.pl w&nbsp;liczbach:</p>
+    <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong><%= voiceCount %> lektorów</strong> - aktorzy, prezenterzy radiowi i&nbsp;głosy stacji TV</li>
+      <li class="mb-2"><strong>30+ języków</strong>, w&nbsp;tym native speakerzy</li>
+      <li class="mb-2"><strong>od 2001 roku</strong>, ponad 11&nbsp;000 zrealizowanych nagrań</li>
+      <li class="mb-2">realizacja standardowego nagrania: <strong>24-48 h</strong></li>
+      <li class="mb-2">nagranie lektorskie <strong>od 300&nbsp;zł netto</strong></li>
+      <li>bezpłatna dedykowana próbka (casting z&nbsp;Twoim tekstem) na życzenie</li>
+    </ul>
+
+    <h2 class="text-xl font-bold text-gray-900 mb-3 mt-6">Jak wybrać lektora z&nbsp;banku głosów?</h2>
+    <ol class="list-decimal pl-4 text-gray-600 leading-relaxed mb-0">
+      <li class="mb-2"><strong>Przefiltruj bazę</strong> - płeć, wiek głosu, język, grupa cenowa lub filtr "Znani i&nbsp;lubiani".</li>
+      <li class="mb-2"><strong>Odsłuchaj próbki</strong> - każdy profil ma nagrania demo; na życzenie przygotujemy bezpłatną próbkę z&nbsp;Twoim tekstem.</li>
+      <li><strong>Wyceń i&nbsp;zamów</strong> - kalkulator na profilu lektora poda cenę po wklejeniu tekstu; standardowa realizacja trwa 24-48 h.</li>
+    </ol>
+  </div>
+</section>
+<% } %>
+
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
 <div id="filters-bar" class="py-2 pb-2 bg-white md:hidden sticky z-40">
   <div class="max-w-7xl mx-auto px-4">
@@ -654,6 +680,21 @@
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Internetowy bank głosów Powitania.pl pokazuje <%= voiceCount %> lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - <a href="/kontakt/" class="text-accent hover:underline">napisz do nas</a> z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia.</div>
+      </details>
+
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 cursor-pointer flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900 text-base m-0">Co to jest bank głosów?</h3>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Bank głosów to internetowy katalog lektorów z&nbsp;próbkami audio. Pozwala odsłuchać i&nbsp;porównać głosy, a&nbsp;następnie zamówić profesjonalne nagranie u&nbsp;wybranego lektora bez organizowania castingu. Bank głosów Powitania.pl działa od&nbsp;2001 roku i&nbsp;obejmuje <%= voiceCount %> lektorów nagrywających w&nbsp;ponad 30 językach.</div>
+      </details>
+      <details class="bg-white rounded-xl border border-gray-200 shadow-sm group">
+        <summary class="px-5 py-4 cursor-pointer flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900 text-base m-0">Ile kosztuje nagranie lektora z banku głosów?</h3>
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Cena zależy od&nbsp;długości tekstu i&nbsp;pól eksploatacji. Krótkie nagranie (np. zapowiedź telefoniczna lub spot reklamowy) zaczyna się od&nbsp;300&nbsp;zł netto. <a href="/cennik-nagran-lektorskich/" class="text-accent hover:underline">Kalkulator</a> na profilu każdego lektora wycenia tekst automatycznie, a&nbsp;wycena mailowa przychodzi w&nbsp;ciągu ok. 30 minut w&nbsp;dni robocze.</div>
       </details>
     </div>
   </div>
@@ -1500,6 +1541,22 @@ document.getElementById('qi-form').addEventListener('submit', function(e) {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Internetowy bank głosów Powitania.pl pokazuje <%= voiceCount %> lektorów aktualnie aktywnych. Jeśli żaden nie pasuje - napisz do nas z opisem projektu, postaramy się znaleźć rozwiązanie (np. specyficzne dialekty, dziecięce głosy, niszowe języki). Otwarci jesteśmy na nietypowe zlecenia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co to jest bank głosów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank głosów to internetowy katalog lektorów z próbkami audio. Pozwala odsłuchać i porównać głosy, a następnie zamówić profesjonalne nagranie u wybranego lektora bez organizowania castingu. Bank głosów Powitania.pl działa od 2001 roku i obejmuje <%= voiceCount %> lektorów nagrywających w ponad 30 językach."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje nagranie lektora z banku głosów?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena zależy od długości tekstu i pól eksploatacji. Krótkie nagranie (np. zapowiedź telefoniczna lub spot reklamowy) zaczyna się od 300 zł netto. Kalkulator na profilu każdego lektora wycenia tekst automatycznie, a wycena mailowa przychodzi w ciągu ok. 30 minut w dni robocze."
       }
     }
   ]

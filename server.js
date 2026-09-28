@@ -1917,7 +1917,7 @@ app.get('/sitemap.xml', (req, res) => {
 
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
-    { url: '/bank-glosow/', priority: '0.9', changefreq: 'weekly' },
+    { url: '/bank-glosow/', lastmod: '2026-09-28', priority: '0.9', changefreq: 'weekly' },
     { url: '/bank-glosow/meskie/', priority: '0.8', changefreq: 'weekly' },
     { url: '/bank-glosow/zenskie/', priority: '0.8', changefreq: 'weekly' },
     { url: '/nagrania-lektorskie/', priority: '0.8', changefreq: 'monthly' },
@@ -1940,7 +1940,7 @@ app.get('/sitemap.xml', (req, res) => {
     // /bank/* routes now redirect to /bank-glosow/ - removed from sitemap
     // English version
     { url: '/en/', priority: '0.8', changefreq: 'weekly' },
-    { url: '/en/voice-bank/', priority: '0.7', changefreq: 'weekly' },
+    { url: '/en/voice-bank/', lastmod: '2026-09-28', priority: '0.7', changefreq: 'weekly' },
     { url: '/en/voiceover-services/', priority: '0.7', changefreq: 'monthly' },
     { url: '/en/voiceover-services/voice-for-advertising/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/film-voiceover/', priority: '0.6', changefreq: 'monthly' },
@@ -1969,7 +1969,9 @@ app.get('/sitemap.xml', (req, res) => {
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
   staticPages.forEach(p => {
-    xml += `  <url>\n    <loc>${baseUrl}${p.url}</loc>\n    <lastmod>${SITEMAP_STATIC_LASTMOD}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
+    // p.lastmod pozwala odswiezyc date POJEDYNCZEJ strony; bez tego bump stalej
+    // stemplowalby wszystkie strony statyczne data zmiany jednej z nich.
+    xml += `  <url>\n    <loc>${baseUrl}${p.url}</loc>\n    <lastmod>${p.lastmod || SITEMAP_STATIC_LASTMOD}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
   });
 
   voices.forEach(v => {
