@@ -33,15 +33,7 @@
 </section>
 <% } %>
 
-<% if (typeof genderSegment === 'undefined') { %>
-<!-- Warstwa definicyjna: samowystarczalny opis uslugi (kandydat do cytowania w wynikach wyszukiwania). -->
-<section class="max-w-5xl mx-auto px-4 py-8">
-  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 md:p-8 prose prose-gray max-w-none">
-    <h2 class="text-xl font-bold text-gray-900 mb-3">Czym jest bank głosów?</h2>
-    <p class="text-gray-600 leading-relaxed mb-4">Bank głosów to katalog lektorów z&nbsp;próbkami audio, w&nbsp;którym zamawia się głos do&nbsp;konkretnego nagrania: reklamy, filmu, zapowiedzi telefonicznej, e-learningu czy audiobooka. Zamiast organizować casting, klient odsłuchuje próbki online, porównuje głosy i&nbsp;zleca nagranie wybranemu lektorowi. Gotowy plik audio powstaje w&nbsp;studiu i&nbsp;nadaje się do&nbsp;emisji bez dodatkowej obróbki.</p>
-  </div>
-</section>
-<% } %>
+
 
 <!-- MOBILE FILTERS BAR (hidden on desktop) -->
 <div id="filters-bar" class="py-2 pb-2 bg-white md:hidden sticky z-40">
@@ -570,9 +562,13 @@
 </script>
 
 <% if (typeof genderSegment === 'undefined') { %>
-<!-- Liczby + kroki: pod listingiem, zeby nie spychac kart lektorow na mobile. -->
+<!-- O banku glosow: definicja + liczby + kroki. Pod listingiem, zeby karty lektorow
+     byly widoczne od razu (blok nad lista spychal pierwsza karte na 907 px na mobile). -->
 <section class="py-12 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Czym jest bank głosów?</h2>
+    <p class="text-gray-600 leading-relaxed mb-6">Bank głosów to katalog lektorów z&nbsp;próbkami audio, w&nbsp;którym zamawia się głos do&nbsp;konkretnego nagrania: reklamy, filmu, zapowiedzi telefonicznej, e-learningu czy audiobooka. Zamiast organizować casting, klient odsłuchuje próbki online, porównuje głosy i&nbsp;zleca nagranie wybranemu lektorowi. Gotowy plik audio powstaje w&nbsp;studiu i&nbsp;nadaje się do&nbsp;emisji bez dodatkowej obróbki.</p>
+
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Bank głosów Powitania.pl w&nbsp;liczbach</h2>
     <ul class="list-disc pl-4 text-gray-600 leading-relaxed mb-0">
       <li class="mb-2"><strong><%= voiceCount %> lektorów</strong> - aktorzy, prezenterzy radiowi i&nbsp;głosy stacji TV</li>
