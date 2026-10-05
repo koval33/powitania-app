@@ -1309,31 +1309,31 @@
     "contactPhone": null
   },
   {
-    "id": "tomasz-kulpa",
-    "name": "Tomasz Kulpa",
+    "id": "tomasz-3",
+    "name": "Tomasz 3",
     "gender": "m",
     "age": "50 lat +",
     "languages": [
       "polski"
     ],
     "description": "Lektor i copywriter z Gdańska. Niski, dźwięczny głos o dobrej dykcji i wyraźnym wyczuciu rytmu słowa. Na co dzień pisze teksty reklamowe, dzięki czemu czyta je ze zrozumieniem konstrukcji i akcentów, które mają wybrzmieć. Nagrywa spoty reklamowe oraz fragmenty audiobooków, zarówno w studiu, jak i we własnym studiu domowym. Sprawdza się tam, gdzie liczy się spokojna, wiarygodna narracja i ciepła barwa męskiego głosu.",
-    "descriptionEn": "Voice-over artist and copywriter from Gdansk. Deep, resonant voice with excellent diction and strong sense of word rhythm. Creates advertising copy daily, bringing understanding of construction and accents to every read. Records commercial spots and audiobook excerpts in professional studio and home studio. Excels where calm, credible narration and warm male voice quality are essential.",
+    "descriptionEn": "Voice-over artist and copywriter from Gdansk. Deep, resonant voice with excellent diction and strong rhythmic sense. Specializes in writing and narrating commercials with full understanding of ad structure and emphasis. Records commercial spots and audiobook excerpts in professional and home studio settings. Ideal for projects requiring calm, credible narration and warm male vocal tone.",
     "realName": "Tomasz Kulpa",
     "contactEmail": "info@promodomo.pl",
     "contactPhone": "690 509 355",
-    "photo": "/img/lektorzy/tomasz-kulpa.webp",
+    "photo": "/img/lektorzy/tomasz-3.webp",
     "samples": [
       {
         "name": "Spot reklamowy - kawa",
-        "url": "/audio/lektorzy/tomasz-kulpa-2.mp3"
+        "url": "/audio/lektorzy/tomasz-3-2.mp3"
       },
       {
         "name": "Spot reklamowy",
-        "url": "/audio/lektorzy/tomasz-kulpa-3.mp3"
+        "url": "/audio/lektorzy/tomasz-3-3.mp3"
       },
       {
         "name": "Fragment audiobooka",
-        "url": "/audio/lektorzy/tomasz-kulpa-4.mp3"
+        "url": "/audio/lektorzy/tomasz-3-4.mp3"
       }
     ],
     "turnaround": "48h",
@@ -1366,14 +1366,14 @@
       "narration_3plus": "wycena",
       "ivr_200plus": "wycena"
     },
-    "profileUrl": "/lektorzy/tomasz-kulpa/",
-    "seoTitle": "Tomasz Kulpa - lektor i copywriter | powitania.pl",
-    "seoDescription": "Tomasz Kulpa - lektor z Gdańska. Niski, dźwięczny głos. Spoty reklamowe, audiobooki. Próbka + wycena w 48h na powitania.pl",
-    "seoTitleEn": "Tomasz Kulpa - voice-over artist | powitania.pl",
-    "seoDescriptionEn": "Tomasz Kulpa - professional voice-over from Gdansk. Deep voice, excellent diction. Commercials, audiobooks. powitania.pl since 2001.",
+    "profileUrl": "/lektorzy/tomasz-3/",
+    "seoTitle": "Tomasz 3 - Lektor i copywriter z Gdańska | powitania.pl",
+    "seoDescription": "Tomasz 3 - profesjonalny lektor z niskim, dźwięcznym głosem. Spoty reklamowe, audiobooki. Próbka + wycena w 48h na powitania.pl",
+    "seoTitleEn": "Tomasz 3 - Professional Voice-Over Artist | powitania.pl",
+    "seoDescriptionEn": "Tomasz 3 - professional voice-over with deep resonant tone. Commercial spots, audiobooks. Sample + quote in 48h. powitania.pl since 2001",
     "order": 210,
     "approved": true,
-    "createdAt": "2026-10-05T14:38:17.216Z"
+    "createdAt": "2026-10-05T14:54:10.932Z"
   },
   {
     "id": "kim-dubbing",
