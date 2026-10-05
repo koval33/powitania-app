@@ -1354,7 +1354,7 @@
       "ivr_guarantee_100plus": 280,
       "ivr_melody": 120,
       "ivr_bilingual": 150,
-      "spot_radio_local": 850,
+      "spot_radio_local": 300,
       "spot_radio_national": 1500,
       "spot_tv_local": 800,
       "spot_tv_national": 2400,
