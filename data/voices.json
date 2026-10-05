@@ -1360,9 +1360,9 @@
       "spot_tv_national": 2400,
       "spot_social_1min": 1100,
       "spot_social_2min": 1500,
-      "narration_1page": 850,
-      "narration_2pages": 1200,
-      "narration_3pages": 1600,
+      "narration_1page": 520,
+      "narration_2pages": 620,
+      "narration_3pages": 720,
       "narration_3plus": "wycena",
       "ivr_200plus": "wycena"
     },
