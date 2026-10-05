@@ -65,7 +65,7 @@
   "headline": <%- JSON.stringify(post.title) %>,
   "description": <%- JSON.stringify(post.excerpt) %>,
   "datePublished": "<%= post.date %>",
-  "dateModified": "<%= post.date %>",
+  "dateModified": "<%= post.updated || post.date %>",
   "image": "https://www.powitania.pl<%= post.image || '/img/og-powitania-dark-v2.jpg' %>",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.powitania.pl/aktualnosci-pl/<%= post.slug %>/" },
   "inLanguage": "pl-PL",

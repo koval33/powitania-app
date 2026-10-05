@@ -1280,6 +1280,11 @@ app.get('/aktualnosci-pl/rss.xml', (req, res) => {
   res.send(xml);
 });
 
+// Konsolidacja klastra cenowego (05.10.2026): stary wpis o cenie glosu scalony
+// z nowszym i obszerniejszym. MUSI byc przed routem :slug, inaczej :slug go przechwyci.
+app.get('/aktualnosci-pl/ile-kosztuje-glos-lektora/', (req, res) =>
+  res.redirect(301, '/aktualnosci-pl/ile-kosztuje-nagranie-lektorskie/'));
+
 app.get('/aktualnosci-pl/:slug/', (req, res) => {
   const posts = loadBlogPosts();
   const idx = posts.findIndex(p => p.slug === req.params.slug);
@@ -1726,6 +1731,9 @@ app.get('/en/news/page/:page/', (req, res) => {
   });
 });
 
+app.get('/en/news/how-much-does-voiceover-cost/', (req, res) =>
+  res.redirect(301, '/en/news/voiceover-pricing-2026/'));
+
 app.get('/en/news/:slug/', (req, res) => {
   const posts = loadEnBlogPosts();
   const reqSlug = req.params.slug;
@@ -1923,13 +1931,13 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/nagrania-lektorskie/', priority: '0.8', changefreq: 'monthly' },
     { url: '/produkcja-jingli-reklamowych/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/glos-do-reklamy/', priority: '0.8', changefreq: 'monthly' },
-    { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', priority: '0.8', changefreq: 'monthly' },
+    { url: '/nagrania-lektorskie/profesjonalny-lektor-do-filmow/', lastmod: '2026-10-05', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/zapowiedzi-telefoniczne/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagrania-lektorskie/audioprzewodniki/', priority: '0.8', changefreq: 'monthly' },
     { url: '/sesje-zdalne-nagrania-lektorskie-online/', priority: '0.8', changefreq: 'monthly' },
     { url: '/nagranie-ekspresowe/', priority: '0.7', changefreq: 'monthly' },
     { url: '/kreator/', priority: '0.7', changefreq: 'monthly' },
-    { url: '/cennik-nagran-lektorskich/', priority: '0.7', changefreq: 'monthly' },
+    { url: '/cennik-nagran-lektorskich/', lastmod: '2026-10-05', priority: '0.7', changefreq: 'monthly' },
     { url: '/kontakt/', priority: '0.7', changefreq: 'monthly' },
     { url: '/opinie/', priority: '0.7', changefreq: 'monthly' },
     { url: '/faq-pl/', priority: '0.6', changefreq: 'monthly' },
@@ -1943,14 +1951,14 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/en/voice-bank/', lastmod: '2026-09-28', priority: '0.7', changefreq: 'weekly' },
     { url: '/en/voiceover-services/', priority: '0.7', changefreq: 'monthly' },
     { url: '/en/voiceover-services/voice-for-advertising/', priority: '0.6', changefreq: 'monthly' },
-    { url: '/en/voiceover-services/film-voiceover/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/voiceover-services/film-voiceover/', lastmod: '2026-10-05', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/phone-announcements/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/voiceover-services/audio-guides/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/advertising-jingles/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/remote-sessions/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/express-recording/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/kreator/', priority: '0.6', changefreq: 'monthly' },
-    { url: '/en/pricing/', priority: '0.6', changefreq: 'monthly' },
+    { url: '/en/pricing/', lastmod: '2026-10-05', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/contact/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/about-us/', priority: '0.6', changefreq: 'monthly' },
     { url: '/en/news/', priority: '0.5', changefreq: 'weekly' },
@@ -1985,11 +1993,12 @@ app.get('/sitemap.xml', (req, res) => {
   blogPosts.forEach(p => {
     // Pomijamy posty z noindex - sitemap + noindex to sprzeczny sygnał dla Google
     if (p.noindex) return;
-    xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
+    // p.updated: data realnej aktualizacji tresci; bez niej lastmod = data publikacji
+    xml += `  <url>\n    <loc>${baseUrl}/aktualnosci-pl/${p.slug}/</loc>\n    <lastmod>${p.updated || p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.4</priority>\n  </url>\n`;
     // EN blog posts (only those with full English translation) - URL używa slugEn (z fallback do slug)
     if (p.titleEn && p.contentEn) {
       const enSlug = p.slugEn || p.slug;
-      xml += `  <url>\n    <loc>${baseUrl}/en/news/${enSlug}/</loc>\n    <lastmod>${p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
+      xml += `  <url>\n    <loc>${baseUrl}/en/news/${enSlug}/</loc>\n    <lastmod>${p.updated || p.date}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n`;
     }
   });
 
