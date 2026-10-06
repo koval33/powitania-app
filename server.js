@@ -74,6 +74,35 @@ app.use((req, res, next) => {
 // Middleware
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
+// llms.txt generowany z szablonu (views/llms.ejs), nie plik statyczny.
+// Powod: liczby w nim (lektorzy, jezyki, opinie, lata dzialalnosci) starzaly sie
+// po cichu - 232 lektorow przy faktycznych 238, 24 lata w 2026 roku, 147 opinii
+// przy 151. Trasa MUSI byc przed express.static, inaczej plik z public/ wygrywa.
+app.get('/llms.txt', (req, res) => {
+  const voices = loadVoices();
+  const langs = new Set();
+  voices.forEach(v => (v.languages || []).forEach(l => langs.add(String(l).toLowerCase().trim())));
+  const years = new Date().getFullYear() - 2001;
+  // polska odmiana: 22-24 "lata", 25 "lat" (wyjatek 12-14)
+  const last = years % 10, lastTwo = years % 100;
+  const yearsWord = (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) ? 'lata' : 'lat';
+
+  // reviewCount liczymy tutaj, a nie z res.locals: ta trasa jest zarejestrowana
+  // przed middleware ustawiajacym res.locals, wiec tamte zmienne jeszcze nie istnieja.
+  const reviews = loadReviews().filter(r => r.approved).length;
+
+  res.type('text/plain; charset=utf-8');
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.render('llms', {
+    reviewCount: reviews,
+    voiceCount: voices.length,
+    langCount: langs.size,
+    nativeCount: voices.filter(v => v.native).length,
+    famousCount: voices.filter(v => v.famous).length,
+    yearsLabel: years + ' ' + yearsWord
+  });
+});
+
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '1d',
   setHeaders: (res, filePath) => {
