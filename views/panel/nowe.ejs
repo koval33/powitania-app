@@ -51,12 +51,11 @@
           <h2 class="text-lg font-bold text-gray-900">Pozycje</h2>
           <div class="flex flex-wrap gap-2">
             <button type="button" data-dodaj="spot" class="inline-block bg-accent hover:bg-accent-light text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ Spot reklamowy</button>
-            <button type="button" data-dodaj="wersja_pochodna" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ Wersja pochodna</button>
-            <button type="button" data-dodaj="dogrywka" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ Dogrywka</button>
+            <button type="button" data-dodaj="dogrywka" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ Dogrywka do wcześniejszego Zamówienia</button>
           </div>
         </div>
         <div id="pozycje" class="space-y-4"></div>
-        <p id="pozycje-puste" class="bg-white border border-gray-200 border-dashed rounded-xl p-6 text-gray-600 text-sm leading-relaxed">Zacznij od spotu reklamowego. Wersje pochodne (skrót, inne zakończenie) i dogrywki odnoszą się do spotu z tego zamówienia.</p>
+        <p id="pozycje-puste" class="bg-white border border-gray-200 border-dashed rounded-xl p-6 text-gray-600 text-sm leading-relaxed">Zacznij od spotu reklamowego. Wersje pochodne (skrót, inne zakończenie) i dogrywki dodasz przyciskiem przy konkretnym spocie.</p>
       </div>
 
       <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6">
@@ -82,7 +81,7 @@
 </section>
 
 <template id="szablon-pozycji">
-  <div class="pozycja bg-white border border-gray-200 rounded-xl p-4 md:p-6" data-typ="">
+  <div class="pozycja bg-white border border-gray-200 rounded-xl p-4 md:p-6" data-typ="" data-rodzic="">
     <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
       <h3 class="font-semibold text-gray-900"><span class="poz-nr"></span>. <span class="poz-typ"></span></h3>
       <div class="flex items-center gap-3">
@@ -91,10 +90,6 @@
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="pole-bazowa hidden">
-        <label class="block text-sm font-semibold text-gray-700 mb-1">Dotyczy spotu</label>
-        <select name="bazowa_id" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none"></select>
-      </div>
       <div class="pole-kwota-bazowa hidden">
         <label class="block text-sm font-semibold text-gray-700 mb-1">Stawka tamtej wersji (netto)</label>
         <input type="number" name="kwota_bazowa" min="1" step="1" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="z poprzedniego Zamówienia">
@@ -141,6 +136,10 @@
         <label class="block text-sm font-semibold text-gray-700 mb-1">Terytorium</label>
         <input type="text" name="terytorium" value="Polska" maxlength="80" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
       </div>
+      <div class="md:col-span-3">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Tekst do nagrania <span class="text-gray-500 font-normal">(opcjonalnie, ale z nim Optimum od razu widzi, czy to wersja pochodna, czy nowy spot)</span></label>
+        <textarea name="tekst" rows="3" maxlength="4000" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="wklej tekst spotu albo tej wersji; jeśli tekst jest w załączniku, napisz to w uwagach"></textarea>
+      </div>
       <div class="md:col-span-2">
         <label class="block text-sm font-semibold text-gray-700 mb-1">Uwagi do pozycji <span class="text-gray-500 font-normal">(opcjonalnie)</span></label>
         <input type="text" name="uwagi" maxlength="300" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="np. tekst w załączniku, ton energiczny">
@@ -148,6 +147,11 @@
     </div>
     <div class="poz-komunikaty text-sm text-amber-800 mt-3 leading-relaxed"></div>
     <p class="poz-zrodlo text-xs text-gray-500 mt-2"></p>
+    <div class="podrzedne space-y-3 mt-4 ml-4 border-l-2 border-accent/20 pl-4 hidden"></div>
+    <div class="poz-akcje hidden flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100">
+      <button type="button" data-dodaj-do="wersja_pochodna" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-3 py-1.5 rounded-lg font-semibold text-xs transition-colors">+ Wersja pochodna tego spotu</button>
+      <button type="button" data-dodaj-do="dogrywka" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-3 py-1.5 rounded-lg font-semibold text-xs transition-colors">+ Dogrywka do tego spotu</button>
+    </div>
   </div>
 </template>
 

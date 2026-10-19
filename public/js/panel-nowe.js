@@ -1,10 +1,15 @@
 /**
  * Formularz nowego zamowienia w panelu klienta.
  *
- * Pozycje sa dodawane dynamicznie z <template>, wycena podgladowa liczy sie
- * w przegladarce przez PanelPricing (ten sam kod, co po stronie serwera),
- * a wysylka idzie JSON-em na POST /panel/zamowienia/. Serwer i CRM licza
- * kwote jeszcze raz - to, co widac tutaj, jest podgladem.
+ * Pozycje sa dodawane dynamicznie z <template>. Spot reklamowy jest karta
+ * nadrzedna; wersje pochodne i dogrywki dodaje sie przyciskiem PRZY SPOCIE
+ * i siedza w jego karcie (zagniezdzone), wiec "do ktorego spotu" wynika
+ * z miejsca, a nie z selecta. Dogrywka do wczesniejszego Zamowienia jest
+ * osobna karta z kwota tamtej wersji.
+ *
+ * Wycena podgladowa liczy sie w przegladarce przez PanelPricing (ten sam
+ * kod, co po stronie serwera), a wysylka idzie JSON-em na POST
+ * /panel/zamowienia/. Serwer i CRM licza kwote jeszcze raz.
  */
 (function () {
   'use strict';
@@ -23,9 +28,13 @@
   var elBlokady = document.getElementById('blokady');
   var elBlad = document.getElementById('blad');
   var NAZWY_TYPOW = { spot: 'Spot reklamowy', wersja_pochodna: 'Wersja pochodna', dogrywka: 'Dogrywka' };
+  // Pola, ktore pozycja podrzedna dziedziczy po swoim spocie (nie ma ich w karcie).
+  var DZIEDZICZONE = ['lektor_id', 'pole', 'licencja', 'terytorium', 'okres'];
   var wysylka = false;
 
-  function el(rodzic, sel) { return rodzic.querySelector(sel); }
+  // Pola karty szukamy po ':scope >', zeby karta spotu nie trafila w pola
+  // swoich pozycji podrzednych (sa w tym samym poddrzewie).
+  function el(row, sel) { return row.querySelector(':scope > ' + sel) || row.querySelector(':scope > :not(.podrzedne) ' + sel); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function opcja(select, wartosc, tekst, grupa) {
     var o = document.createElement('option');
@@ -34,7 +43,6 @@
     return o;
   }
 
-  // Kwota sesji zdalnej z cennika (domyslnie 150)
   var kwSesja = document.querySelector('[data-kwota="sesja_zdalna"]');
   if (kwSesja) kwSesja.textContent = PP.zl(typeof cennik.sesja_zdalna === 'number' ? cennik.sesja_zdalna : 150);
 
@@ -67,32 +75,15 @@
     if (poprzednia && Array.prototype.some.call(select.options, function (o) { return o.value === poprzednia; })) select.value = poprzednia;
   }
 
+  /** Wszystkie karty w kolejnosci dokumentu: spot, jego pozycje podrzedne, kolejny spot... */
   function wiersze() { return Array.prototype.slice.call(kontener.querySelectorAll('.pozycja')); }
+  function rodzic(row) { var r = row.parentElement && row.parentElement.closest('.pozycja'); return r || null; }
 
-  /** Select "dotyczy spotu": spoty z tego zamowienia + (dla dogrywki) opcja "z wczesniejszego zamowienia". */
-  function odswiezBazowe() {
-    var w = wiersze();
-    w.forEach(function (row, idx) {
-      var typ = row.getAttribute('data-typ');
-      if (typ === 'spot') return;
-      var sel = el(row, '[name="bazowa_id"]');
-      var poprzednia = sel.value;
-      sel.innerHTML = '';
-      w.forEach(function (inny, j) {
-        if (j === idx) return;
-        var tInny = inny.getAttribute('data-typ');
-        if (tInny !== 'spot' && !(typ === 'dogrywka' && tInny === 'wersja_pochodna')) return;
-        var lek = lektorPoId[el(inny, '[name="lektor_id"]').value];
-        opcja(sel, 'p' + (j + 1), 'Pozycja ' + (j + 1) + ': ' + NAZWY_TYPOW[tInny] + ', ' + (lek ? lek.nazwa : ''));
-      });
-      if (typ === 'dogrywka') opcja(sel, 'poprzednie', 'wersja z wcześniejszego Zamówienia (podaj stawkę)');
-      if (!sel.options.length) opcja(sel, '', 'brak spotu w zamówieniu - dodaj go najpierw');
-      if (poprzednia && Array.prototype.some.call(sel.options, function (o) { return o.value === poprzednia; })) sel.value = poprzednia;
-      el(row, '.pole-kwota-bazowa').classList.toggle('hidden', !(typ === 'dogrywka' && sel.value === 'poprzednie'));
-    });
-  }
-
-  function dodajPozycje(typ) {
+  /**
+   * @param {string} typ spot | wersja_pochodna | dogrywka
+   * @param {Element|null} nadrzedna karta spotu, pod ktora wchodzi wersja/dogrywka
+   */
+  function dodajPozycje(typ, nadrzedna) {
     var frag = szablon.content.cloneNode(true);
     var row = frag.querySelector('.pozycja');
     row.setAttribute('data-typ', typ);
@@ -100,48 +91,90 @@
     wypelnijLektorow(el(row, '[name="lektor_id"]'));
     wypelnijPola(el(row, '[name="pole"]'));
     wypelnijDlugosci(el(row, '[name="dlugosc"]'), el(row, '[name="pole"]').value);
-    if (typ !== 'spot') el(row, '.pole-bazowa').classList.remove('hidden');
-    if (typ === 'wersja_pochodna') el(row, '.pole-opis-wersji').classList.remove('hidden');
 
-    // Wersja/dogrywka dziedziczy lektora i pole z ostatniego spotu - tak
-    // najczesciej wyglada zamowienie i tak jest tanio (50%).
-    var ostatniSpot = wiersze().filter(function (r) { return r.getAttribute('data-typ') === 'spot'; }).pop();
-    if (typ !== 'spot' && ostatniSpot) {
-      el(row, '[name="lektor_id"]').value = el(ostatniSpot, '[name="lektor_id"]').value;
-      el(row, '[name="pole"]').value = el(ostatniSpot, '[name="pole"]').value;
-      wypelnijDlugosci(el(row, '[name="dlugosc"]'), el(row, '[name="pole"]').value);
-      el(row, '[name="dlugosc"]').value = el(ostatniSpot, '[name="dlugosc"]').value;
+    if (typ === 'spot') {
+      el(row, '.poz-akcje').classList.remove('hidden');
+      el(row, '.poz-akcje').querySelectorAll('[data-dodaj-do]').forEach(function (btn) {
+        btn.addEventListener('click', function () { dodajPozycje(this.getAttribute('data-dodaj-do'), row); });
+      });
+    } else {
+      // Pozycja podrzedna: lzejsza karta, bez wlasnych pozycji podrzednych
+      // i bez przyciskow spotu; dziedziczy lektora/pole/dlugosc po spocie -
+      // tak najczesciej wyglada zamowienie i tak jest tanio (50%).
+      row.classList.remove('bg-white');
+      row.classList.add('bg-gray-50');
+      el(row, '.podrzedne').remove();
+      el(row, '.poz-akcje').remove();
+      if (nadrzedna) {
+        // Wersja pochodna z definicji (zal. 5) ma tego samego lektora, to samo
+        // pole i licencje co spot - te pola nie sa edytowane, tylko dziedziczone
+        // (zbierzPozycje bierze je ze spotu). Zostaje dlugosc (moze byc krotsza),
+        // udzwiekowienie i opis.
+        DZIEDZICZONE.forEach(function (n) { el(row, '[name="' + n + '"]').parentElement.classList.add('hidden'); });
+        wypelnijDlugosci(el(row, '[name="dlugosc"]'), el(nadrzedna, '[name="pole"]').value);
+        el(row, '[name="dlugosc"]').value = el(nadrzedna, '[name="dlugosc"]').value;
+        el(row, '[name="udzwiekowienie"]').value = el(nadrzedna, '[name="udzwiekowienie"]').value;
+        if (typ === 'dogrywka') el(row, '[name="dlugosc"]').parentElement.classList.add('hidden');
+      } else if (typ === 'dogrywka') {
+        el(row, '.pole-kwota-bazowa').classList.remove('hidden');
+      }
+      if (typ === 'wersja_pochodna') el(row, '.pole-opis-wersji').classList.remove('hidden');
     }
 
     el(row, '[name="pole"]').addEventListener('change', function () {
       wypelnijDlugosci(el(row, '[name="dlugosc"]'), this.value, true);
+      var pole = this.value;
+      if (typ === 'spot') {
+        el(row, '.podrzedne').querySelectorAll('.pozycja').forEach(function (dz) {
+          wypelnijDlugosci(el(dz, '[name="dlugosc"]'), pole, true);
+        });
+      }
       przelicz();
     });
-    el(row, '.poz-usun').addEventListener('click', function () { row.remove(); przelicz(); });
+    el(row, '.poz-usun').addEventListener('click', function () {
+      var nad = rodzic(row);
+      row.remove();
+      if (nad) pokazPodrzedne(nad);
+      przelicz();
+    });
     row.addEventListener('input', przelicz);
     row.addEventListener('change', przelicz);
-    kontener.appendChild(frag);
+
+    if (nadrzedna) {
+      el(nadrzedna, '.podrzedne').appendChild(frag);
+      pokazPodrzedne(nadrzedna);
+    } else {
+      kontener.appendChild(frag);
+    }
     przelicz();
+    el(row, '[name="lektor_id"]').focus();
+  }
+
+  function pokazPodrzedne(spot) {
+    var p = el(spot, '.podrzedne');
+    p.classList.toggle('hidden', !p.querySelector('.pozycja'));
   }
 
   function zbierzPozycje() {
-    return wiersze().map(function (row, i) {
+    var w = wiersze();
+    return w.map(function (row, i) {
       var typ = row.getAttribute('data-typ');
-      var lek = lektorPoId[el(row, '[name="lektor_id"]').value] || {};
-      var pole = el(row, '[name="pole"]').value, dl = el(row, '[name="dlugosc"]').value;
+      var nad = rodzic(row);
+      var zrodloPol = nad || row;   // pozycja podrzedna dziedziczy lektora, pole, licencje... po spocie
+      var lek = lektorPoId[el(zrodloPol, '[name="lektor_id"]').value] || {};
+      var pole = el(zrodloPol, '[name="pole"]').value;
+      var dl = (nad && typ === 'dogrywka') ? el(nad, '[name="dlugosc"]').value : el(row, '[name="dlugosc"]').value;
       var poz = {
         id: 'p' + (i + 1), typ: typ, lektor_id: lek.id, pole: pole, dlugosc: dl,
         udzwiekowienie: el(row, '[name="udzwiekowienie"]').value,
-        okres: el(row, '[name="okres"]').value,
-        licencja: el(row, '[name="licencja"]').value,
-        terytorium: el(row, '[name="terytorium"]').value.trim() || 'Polska',
-        uwagi: el(row, '[name="uwagi"]').value.trim()
+        okres: el(zrodloPol, '[name="okres"]').value,
+        licencja: el(zrodloPol, '[name="licencja"]').value,
+        terytorium: el(zrodloPol, '[name="terytorium"]').value.trim() || 'Polska',
+        uwagi: el(row, '[name="uwagi"]').value.trim(),
+        tekst: el(row, '[name="tekst"]').value.trim()
       };
-      if (typ !== 'spot') {
-        var baz = el(row, '[name="bazowa_id"]').value;
-        if (/^p\d+$/.test(baz)) poz.bazowa_id = baz;
-        if (typ === 'dogrywka' && baz === 'poprzednie') poz.kwota_bazowa = Number(el(row, '[name="kwota_bazowa"]').value) || 0;
-      }
+      if (nad) poz.bazowa_id = 'p' + (w.indexOf(nad) + 1);
+      else if (typ === 'dogrywka') poz.kwota_bazowa = Number(el(row, '[name="kwota_bazowa"]').value) || 0;
       if (typ === 'wersja_pochodna') poz.opis_wersji = el(row, '[name="opis_wersji"]').value.trim();
       // Dane do podgladu - serwer i tak dopisze je sam z voices.json.
       if (!lek.z_umowy) {
@@ -156,8 +189,12 @@
   function przelicz() {
     var w = wiersze();
     puste.classList.toggle('hidden', w.length > 0);
-    w.forEach(function (row, i) { el(row, '.poz-nr').textContent = i + 1; });
-    odswiezBazowe();
+    w.forEach(function (row, i) {
+      el(row, '.poz-nr').textContent = i + 1;
+      var nad = rodzic(row);
+      var typ = row.getAttribute('data-typ');
+      el(row, '.poz-typ').textContent = NAZWY_TYPOW[typ] + (nad ? ' do spotu ' + (w.indexOf(nad) + 1) : (typ === 'dogrywka' ? ' do wcześniejszego Zamówienia' : ''));
+    });
     elBlad.classList.add('hidden');
     if (!w.length) {
       elPodsumowanie.innerHTML = '<p class="text-gray-500">Dodaj pozycje, żeby zobaczyć wycenę.</p>';
@@ -182,9 +219,7 @@
       el(row, '.poz-kwota').textContent = PP.zl(p.kwota_netto) + (p.kwota_udzwiekowienia ? ' + ' + PP.zl(p.kwota_udzwiekowienia) : '');
       el(row, '.poz-komunikaty').innerHTML = p.komunikaty.map(function (k) { return '<p>' + esc(k) + '</p>'; }).join('');
       var zr = { umowa: 'stawka z umowy ramowej', profil: 'stawka z profilu lektora na powitania.pl', poprzednie_zamowienie: 'stawka z wcześniejszego Zamówienia', optimum: 'kwota ustalona przez Optimum', wycena: 'kwotę ustali Optimum przy akceptacji' }[p.zrodlo_stawki] || '';
-      el(row, '.poz-zrodlo').textContent = zr + (p.przeklasyfikowano ? ' (pozycja liczona jako spot)' : '');
-      if (p.typ !== row.getAttribute('data-typ')) el(row, '.poz-typ').textContent = NAZWY_TYPOW[row.getAttribute('data-typ')] + ' liczona jako ' + NAZWY_TYPOW[p.typ].toLowerCase();
-      else el(row, '.poz-typ').textContent = NAZWY_TYPOW[p.typ];
+      el(row, '.poz-zrodlo').textContent = zr + (p.przeklasyfikowano ? ' (pozycja liczona jako osobny spot)' : '');
     });
 
     var html = '';
@@ -262,7 +297,7 @@
   }
 
   document.querySelectorAll('[data-dodaj]').forEach(function (btn) {
-    btn.addEventListener('click', function () { dodajPozycje(this.getAttribute('data-dodaj')); });
+    btn.addEventListener('click', function () { dodajPozycje(this.getAttribute('data-dodaj'), null); });
   });
   form.querySelectorAll('button[type="submit"]').forEach(function (btn) {
     btn.addEventListener('click', function (ev) { ev.preventDefault(); wyslij(this.getAttribute('data-wyslij') === '1'); });
@@ -272,5 +307,5 @@
   form.sesja_zdalna.addEventListener('change', przelicz);
 
   // Nie zaczynaj od pustej strony - pierwszy spot jest zawsze.
-  dodajPozycje('spot');
+  dodajPozycje('spot', null);
 })();

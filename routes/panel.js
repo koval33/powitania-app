@@ -137,6 +137,10 @@ function przygotujPozycje(surowe, lektorzy) {
     }
     if (poz.typ === 'wersja_pochodna') poz.opis_wersji = tekst(p.opis_wersji, 200);
     if (tekst(p.uwagi, 300)) poz.uwagi = tekst(p.uwagi, 300);
+    // Tekst do nagrania: zachowujemy akapity (Optimum czyta go, zeby ocenic,
+    // czy "wersja pochodna" jest nia naprawde), tylko limit i normalizacja konca linii.
+    const skrypt = String(p.tekst == null ? '' : p.tekst).replace(/\r\n?/g, '\n').trim().slice(0, 4000);
+    if (skrypt) poz.tekst = skrypt;
     if (!l.z_umowy) {
       poz.cena_ukryta = l.cena_ukryta;
       const sp = l.stawki_profilu[pole + '|' + dlugosc];
