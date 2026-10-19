@@ -28,7 +28,7 @@
             <input type="datetime-local" id="termin_sesji" name="termin_sesji" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
           </div>
           <div>
-            <label for="data_emisji" class="block text-sm font-semibold text-gray-700 mb-1">Planowana pierwsza emisja <span class="text-gray-500 font-normal">(opcjonalnie)</span></label>
+            <label for="data_emisji" class="block text-sm font-semibold text-gray-700 mb-1">Data pierwszej emisji <span class="text-gray-500 font-normal">(od niej liczy się licencja; można uzupełnić później)</span></label>
             <input type="date" id="data_emisji" name="data_emisji" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
           </div>
           <div>
@@ -106,6 +106,10 @@
         <label class="block text-sm font-semibold text-gray-700 mb-1">Długość</label>
         <select name="dlugosc" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none"></select>
       </div>
+      <div class="md:col-span-3">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Tytuł spotu <span class="text-gray-500 font-normal">(nazwa materiału, trafi do metryczki dźwięku; opcjonalnie)</span></label>
+        <input type="text" name="nazwa" maxlength="200" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="np. Wyprzedaż 2026 UEFA 30 sek. HMP">
+      </div>
       <div class="pole-opis-wersji hidden md:col-span-3">
         <label class="block text-sm font-semibold text-gray-700 mb-1">Czym różni się ta wersja</label>
         <input type="text" name="opis_wersji" maxlength="200" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="np. skrót do 15 s, inne zakończenie z nową ofertą">
@@ -135,6 +139,14 @@
       <div>
         <label class="block text-sm font-semibold text-gray-700 mb-1">Terytorium</label>
         <input type="text" name="terytorium" value="Polska" maxlength="80" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:border-accent focus:outline-none">
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Scenariusz <span class="text-gray-500 font-normal">(autorzy tekstu, do metryczki; opcjonalnie)</span></label>
+        <input type="text" name="scenariusz" maxlength="300" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="np. Adam Zyskowski, Dawid Szypulski">
+      </div>
+      <div class="pole-muzyka hidden">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Muzyka powierzona <span class="text-gray-500 font-normal">(tytuł i kompozytor)</span></label>
+        <input type="text" name="muzyka" maxlength="300" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-accent focus:outline-none" placeholder="np. UEFA Champions League Anthem, Tony Britten">
       </div>
       <div class="md:col-span-3">
         <label class="block text-sm font-semibold text-gray-700 mb-1">Tekst do nagrania <span class="text-gray-500 font-normal">(opcjonalnie, ale z nim Optimum od razu widzi, czy to wersja pochodna, czy nowy spot)</span></label>

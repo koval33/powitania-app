@@ -42,6 +42,9 @@ const KOMUNIKATY_OK = {
   usuniete: 'Szkic usunięty.',
   wycofane: 'Zamówienie wycofane. Optimum dostało wiadomość.',
   odrzucone: 'Przekazaliśmy Optimum, że nie potwierdzasz tej wersji dokumentu. Odezwiemy się mailem.',
+  dane: 'Dane emisyjne zapisane.',
+  skopiowane: 'Pozycje skopiowane do nowego szkicu. Sprawdź je i wyślij do akceptacji.',
+  anulowane: 'Zamówienie anulowane. Optimum dostało wiadomość; jeśli były dostarczone nagrania, rozliczymy je zgodnie z cennikiem.',
 };
 
 // --- Pomocnicze -----------------------------------------------------------
@@ -139,6 +142,11 @@ function przygotujPozycje(surowe, lektorzy) {
       if (poz.typ === 'dogrywka' && !poz.bazowa_id && kb > 0 && kb < 1000000) poz.kwota_bazowa = Math.round(kb);
     }
     if (poz.typ === 'wersja_pochodna') poz.opis_wersji = tekst(p.opis_wersji, 200);
+    // Dane do metryczki dzwieku (PROMPT-panel-metryczki.md): tytul spotu, autorzy
+    // scenariusza, muzyka powierzona. Opcjonalne przy skladaniu, uzupelniane do dostarczenia.
+    if (tekst(p.nazwa, 200)) poz.nazwa = tekst(p.nazwa, 200);
+    if (tekst(p.scenariusz, 300)) poz.scenariusz = tekst(p.scenariusz, 300);
+    if (poz.udzwiekowienie === 'powierzona' && tekst(p.muzyka, 300)) poz.muzyka = tekst(p.muzyka, 300);
     if (tekst(p.uwagi, 300)) poz.uwagi = tekst(p.uwagi, 300);
     // Tekst do nagrania: zachowujemy akapity (Optimum czyta go, zeby ocenic,
     // czy "wersja pochodna" jest nia naprawde), tylko limit i normalizacja konca linii.
@@ -166,7 +174,21 @@ function widok(res, nazwa, dane) {
     STATUSY, PP,
     zl: PP.zl,
     data: formatujDate,
+    okresLicencji,
   }, dane || {}));
+}
+
+/** '2026-11-02', '12' -> '02.11.2026-02.11.2027' (jak w CRM panel_realizacja.okres_licencji). */
+function okresLicencji(dataEmisji, okres) {
+  const m = String(dataEmisji || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return '';
+  const od = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+  const n = String(okres || '12') === '24' ? 24 : 12;
+  const do_ = new Date(Date.UTC(od.getUTCFullYear(), od.getUTCMonth() + n, 1));
+  const ostatni = new Date(Date.UTC(do_.getUTCFullYear(), do_.getUTCMonth() + 1, 0)).getUTCDate();
+  do_.setUTCDate(Math.min(od.getUTCDate(), ostatni));
+  const f = d => `${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${d.getUTCFullYear()}`;
+  return `${f(od)}-${f(do_)}`;
 }
 
 function formatujDate(iso, zCzasem) {
@@ -313,12 +335,15 @@ router.get('/cennik/', a(async (req, res) => {
 }));
 
 router.get('/zamowienia/nowe/', a(async (req, res) => {
-  const odp = await crm.cennik(req.panel);
+  const [odp, pod] = await Promise.all([
+    crm.cennik(req.panel),
+    crm.podpowiedzi(req.panel).catch(() => ({ klienci_koncowi: {} })),   // podpowiedz, nie warunek
+  ]);
   const dane = (odp.cennik && odp.cennik.dane) || {};
   widok(res, 'nowe', {
     title: 'Nowe zamówienie | Panel zamówień',
     cennik: odp.cennik,
-    konfiguracja: { cennik: dane, lektorzy: listaLektorow(dane) },
+    konfiguracja: { cennik: dane, lektorzy: listaLektorow(dane), podpowiedzi: pod.klienci_koncowi || {} },
   });
 }));
 
@@ -392,12 +417,47 @@ router.post('/zamowienia/:id(\\d+)/potwierdz/', a(async (req, res) => {
 }));
 
 router.post('/zamowienia/:id(\\d+)/anuluj/', a(async (req, res) => {
-  const komentarz = String((req.body && req.body.komentarz) || '').replace(/\r\n?/g, '\n').trim().slice(0, 2000);
-  const odp = await crm.anuluj(req.panel, req.params.id, komentarz, ipKlienta(req));
+  const b = req.body || {};
+  const komentarz = String(b.komentarz || '').replace(/\r\n?/g, '\n').trim().slice(0, 2000);
+  const odp = await crm.anuluj(req.panel, req.params.id, komentarz, ipKlienta(req), b.potwierdzam_skutek === 'tak');
   if (odp.usuniete) return res.redirect('/panel/?ok=usuniete');
-  const st = (odp.zamowienie && odp.zamowienie.status) === 'odrzucone' ? 'odrzucone' : 'wycofane';
+  const status = odp.zamowienie && odp.zamowienie.status;
+  const st = status === 'odrzucone' ? 'odrzucone' : (b.w_realizacji === 'tak' ? 'anulowane' : 'wycofane');
   res.redirect(`/panel/zamowienia/${req.params.id}/?ok=${st}`);
 }));
+
+router.post('/zamowienia/:id(\\d+)/kopiuj/', a(async (req, res) => {
+  const odp = await crm.kopiuj(req.panel, req.params.id, ipKlienta(req));
+  res.redirect(`/panel/zamowienia/${encodeURIComponent(odp.zamowienie.id)}/?ok=skopiowane`);
+}));
+
+// Dane do metryczek: data pierwszej emisji + tytul/scenariusz/muzyka per pozycja.
+// Formularz zwykly (POST z pol scenariusz_p1 itd.); CRM pilnuje, co jeszcze wolno zmienic.
+router.post('/zamowienia/:id(\\d+)/dane-emisyjne/', a(async (req, res) => {
+  const b = req.body || {};
+  const dane = { pozycje: {} };
+  if ('data_emisji' in b) dane.data_emisji = tekst(b.data_emisji, 10);
+  for (const k of Object.keys(b)) {
+    const m = k.match(/^(nazwa|scenariusz|muzyka)_(p\d{1,2})$/);
+    if (m) (dane.pozycje[m[2]] = dane.pozycje[m[2]] || {})[m[1]] = tekst(b[k], 300);
+  }
+  await crm.daneEmisyjne(req.panel, req.params.id, dane, ipKlienta(req));
+  res.redirect(`/panel/zamowienia/${req.params.id}/?ok=dane#realizacja`);
+}));
+
+async function przekazMetryczke(req, res, podpisana) {
+  const resp = await crm.metryczkaPdf(req.panel, req.params.id, req.params.mid, podpisana, ipKlienta(req));
+  if (!resp.ok) {
+    let msg = 'Metryczka jest niedostępna.';
+    try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; } catch (e) { /* nie-JSON */ }
+    throw new crm.BladCRM(msg, resp.status >= 500 ? 502 : resp.status);
+  }
+  res.set('Content-Type', 'application/pdf');
+  res.set('Content-Disposition', resp.headers.get('content-disposition') || `inline; filename="metryczka-${req.params.mid}${podpisana ? '-podpisana' : ''}.pdf"`);
+  res.send(Buffer.from(await resp.arrayBuffer()));
+}
+router.get('/zamowienia/:id(\\d+)/metryczki/:mid(\\d+).pdf', a((req, res) => przekazMetryczke(req, res, false)));
+router.get('/zamowienia/:id(\\d+)/metryczki/:mid(\\d+)/podpisana.pdf', a((req, res) => przekazMetryczke(req, res, true)));
 
 async function przekazPdf(req, res, podpisany) {
   const resp = await (podpisany ? crm.pdfPodpisany : crm.pdf)(req.panel, req.params.id, ipKlienta(req));

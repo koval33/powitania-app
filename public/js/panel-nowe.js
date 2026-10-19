@@ -17,6 +17,7 @@
   var konf = JSON.parse(document.getElementById('panel-konfiguracja').textContent);
   var cennik = konf.cennik || {};
   var lektorzy = konf.lektorzy || [];
+  var podpowiedzi = konf.podpowiedzi || {};   // klient koncowy -> {scenariusz} z poprzednich zamowien
   var lektorPoId = {};
   lektorzy.forEach(function (l) { lektorPoId[l.id] = l; });
 
@@ -114,7 +115,13 @@
         wypelnijDlugosci(el(row, '[name="dlugosc"]'), el(nadrzedna, '[name="pole"]').value);
         el(row, '[name="dlugosc"]').value = el(nadrzedna, '[name="dlugosc"]').value;
         el(row, '[name="udzwiekowienie"]').value = el(nadrzedna, '[name="udzwiekowienie"]').value;
-        if (typ === 'dogrywka') el(row, '[name="dlugosc"]').parentElement.classList.add('hidden');
+        el(row, '[name="scenariusz"]').value = el(nadrzedna, '[name="scenariusz"]').value;
+        el(row, '[name="muzyka"]').value = el(nadrzedna, '[name="muzyka"]').value;
+        if (typ === 'dogrywka') {
+          // Dogrywka nie ma wlasnej metryczki - pola metryczkowe zostaja przy wersji
+          el(row, '[name="dlugosc"]').parentElement.classList.add('hidden');
+          ['nazwa', 'scenariusz', 'muzyka'].forEach(function (n) { el(row, '[name="' + n + '"]').parentElement.classList.add('hidden'); });
+        }
       } else if (typ === 'dogrywka') {
         el(row, '.pole-kwota-bazowa').classList.remove('hidden');
       }
@@ -131,6 +138,12 @@
       }
       przelicz();
     });
+    // Muzyka powierzona: pole tytul/kompozytor tylko gdy udzwiekowienie = powierzona
+    var udzSel = el(row, '[name="udzwiekowienie"]');
+    function pokazMuzyke() { el(row, '.pole-muzyka').classList.toggle('hidden', udzSel.value !== 'powierzona' || typ === 'dogrywka'); }
+    udzSel.addEventListener('change', pokazMuzyke);
+    pokazMuzyke();
+    if (typ === 'spot' && !el(row, '[name="scenariusz"]').value) podpowiedzScenariusz(row);
     el(row, '.poz-usun').addEventListener('click', function () {
       var nad = rodzic(row);
       row.remove();
@@ -148,6 +161,13 @@
     }
     przelicz();
     el(row, '[name="lektor_id"]').focus();
+  }
+
+  /** Scenariusz z poprzedniego zamowienia dla tego klienta koncowego - tylko w puste pole. */
+  function podpowiedzScenariusz(row) {
+    var kk = form.klient_koncowy.value.trim();
+    var pod = podpowiedzi[kk];
+    if (pod && pod.scenariusz && !el(row, '[name="scenariusz"]').value) el(row, '[name="scenariusz"]').value = pod.scenariusz;
   }
 
   function pokazPodrzedne(spot) {
@@ -171,7 +191,10 @@
         licencja: el(zrodloPol, '[name="licencja"]').value,
         terytorium: el(zrodloPol, '[name="terytorium"]').value.trim() || 'Polska',
         uwagi: el(row, '[name="uwagi"]').value.trim(),
-        tekst: el(row, '[name="tekst"]').value.trim()
+        tekst: el(row, '[name="tekst"]').value.trim(),
+        nazwa: el(row, '[name="nazwa"]').value.trim(),
+        scenariusz: el(row, '[name="scenariusz"]').value.trim(),
+        muzyka: el(row, '[name="muzyka"]').value.trim()
       };
       if (nad) poz.bazowa_id = 'p' + (w.indexOf(nad) + 1);
       else if (typ === 'dogrywka') poz.kwota_bazowa = Number(el(row, '[name="kwota_bazowa"]').value) || 0;
@@ -303,6 +326,9 @@
     btn.addEventListener('click', function (ev) { ev.preventDefault(); wyslij(this.getAttribute('data-wyslij') === '1'); });
   });
   form.addEventListener('submit', function (ev) { ev.preventDefault(); });
+  form.klient_koncowy.addEventListener('change', function () {
+    wiersze().forEach(function (row) { if (row.getAttribute('data-typ') === 'spot') podpowiedzScenariusz(row); });
+  });
   form.tryb_realizacji.addEventListener('change', przelicz);
   form.sesja_zdalna.addEventListener('change', przelicz);
 
