@@ -235,6 +235,16 @@ function wymagajSesji(req, res, next) {
 
 // --- Logowanie -------------------------------------------------------------
 
+// Bez sekretu sesji nie da sie zalogowac - lepiej powiedziec to PRZED
+// wyslaniem maila, niz spalic jednorazowy magic link na bledzie 500.
+router.use('/login', (req, res, next) => {
+  const blad = sesja.bladKonfiguracji();
+  if (!blad) return next();
+  console.error('[panel] konfiguracja:', blad);
+  res.status(503);
+  return widok(res, 'komunikat', { naglowek: 'Panel chwilowo niedostępny', tresc: 'Logowanie jest wyłączone do czasu dokończenia konfiguracji. Spróbuj później albo napisz na biuro@powitania.pl.', link: '/', linkTekst: 'Strona główna' });
+});
+
 router.get('/login/', (req, res) => {
   if (req.panel) return res.redirect(bezpiecznyNext(req.query.next));
   widok(res, 'login', { title: 'Logowanie do panelu zamówień | powitania.pl', next: bezpiecznyNext(req.query.next), blad: null });
