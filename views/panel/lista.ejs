@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+
+<section class="py-8 md:py-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Zamówienia</h1>
+      <a href="/panel/zamowienia/nowe/" class="inline-block bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors">Nowe zamówienie</a>
+    </div>
+
+    <% if (ok) { %>
+    <div class="bg-green-50 border border-green-200 text-green-800 rounded-lg px-4 py-3 text-sm mb-6"><%= ok %></div>
+    <% } %>
+
+    <% if (!zamowienia.length) { %>
+    <div class="bg-white border border-gray-200 rounded-xl p-6 text-gray-600 leading-relaxed">
+      Nie ma jeszcze żadnych zamówień. Pierwsze złożysz w minutę: wybierz lektora, pole eksploatacji i długość, a kwota policzy się z cennika z Twojej umowy.
+    </div>
+    <% } else { %>
+    <div class="space-y-3">
+      <% zamowienia.forEach(function (z) { var s = STATUSY[z.status] || { etykieta: z.status, klasa: 'bg-gray-200 text-gray-800' }; %>
+      <a href="/panel/zamowienia/<%= z.id %>/" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-accent transition-colors">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="font-semibold text-gray-900">Zamówienie <%= z.numer || ('#' + z.id) %></span>
+            <span class="text-xs rounded-full px-2.5 py-0.5 font-semibold <%= s.klasa %>"><%= s.etykieta %></span>
+            <% if (z.wersja > 1) { %><span class="text-xs text-gray-500">wersja <%= z.wersja %></span><% } %>
+          </div>
+          <span class="font-semibold text-gray-900"><%= z.wymaga_wyceny ? 'wycena indywidualna' : (z.suma_netto !== null ? zl(z.suma_netto) + ' netto' : '') %></span>
+        </div>
+        <div class="text-sm text-gray-600 mt-2 flex flex-wrap gap-x-4 gap-y-1">
+          <span><%= z.klient_koncowy %> / <%= z.projekt %></span>
+          <span>złożone <%= data(z.created_at) %></span>
+          <% if (z.termin_realizacji) { %><span>termin <%= data(z.termin_realizacji) %></span><% } %>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

@@ -1,0 +1,138 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<% var w = z.wycena || {}; var TRYBY = { standard: 'standardowy', ekspres: 'ekspres (ten sam dzień)', weekend: 'weekend / dzień wolny' }; var UDZ = { brak: '', powierzona: 'muzyka powierzona lub stock', kreatywne: 'kreatywne' }; %>
+
+<section class="py-8 md:py-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <a href="/panel/" class="text-sm text-gray-500 hover:text-accent">&larr; Wszystkie zamówienia</a>
+
+    <div class="flex flex-wrap items-center gap-3 mt-3 mb-6">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Zamówienie <%= z.numer || ('#' + z.id) %></h1>
+      <span class="text-xs rounded-full px-2.5 py-0.5 font-semibold <%= status.klasa %>"><%= status.etykieta %></span>
+      <span class="text-sm text-gray-500">wersja <%= z.wersja %></span>
+    </div>
+
+    <% if (ok) { %>
+    <div class="bg-green-50 border border-green-200 text-green-800 rounded-lg px-4 py-3 text-sm mb-6"><%= ok %></div>
+    <% } %>
+
+    <% if (z.komentarz_optimum && ['skorygowane', 'odrzucone', 'do_potwierdzenia'].indexOf(z.status) >= 0) { %>
+    <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-lg px-4 py-3 text-sm mb-6 leading-relaxed">
+      <strong>Komentarz Optimum:</strong> <%= z.komentarz_optimum %>
+    </div>
+    <% } %>
+
+    <%# --- Akcje zalezne od stanu --- %>
+    <% if (z.status === 'szkic' || z.status === 'skorygowane') { %>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
+      <p class="text-gray-700 leading-relaxed mb-4"><%= z.status === 'szkic' ? 'To jest szkic. Gdy zakres się zgadza, wyślij go do akceptacji Optimum.' : 'Optimum skorygowało zamówienie. Jeśli nowa wersja Ci odpowiada, wyślij ją ponownie do akceptacji. Jeśli nie, napisz do nas albo złóż nowe zamówienie.' %></p>
+      <form method="post" action="/panel/zamowienia/<%= z.id %>/wyslij/">
+        <button type="submit" class="inline-block bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors"><%= z.status === 'szkic' ? 'Wyślij do akceptacji' : 'Wyślij ponownie do akceptacji' %></button>
+      </form>
+    </div>
+    <% } else if (z.status === 'do_akceptacji') { %>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-6 text-gray-700 leading-relaxed">Zamówienie czeka na akceptację Optimum. Dostaniesz e-mail, gdy dokument będzie gotowy do potwierdzenia albo gdy zaproponujemy korektę.</div>
+    <% } else if (z.status === 'do_potwierdzenia') { %>
+    <div class="bg-white border border-accent/20 rounded-xl p-4 md:p-6 mb-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Potwierdź treść Zamówienia</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">Optimum przygotowało dokument Zamówienia w układzie załącznika nr 1 do umowy ramowej. Przejrzyj go, a potem potwierdź jego treść. Potwierdzenie uruchamia realizację; dokument trafia następnie do podpisu obu stron.</p>
+      <a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors mb-4">Otwórz dokument PDF</a>
+      <form method="post" action="/panel/zamowienia/<%= z.id %>/potwierdz/" class="space-y-4">
+        <label class="flex items-start gap-3 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" name="zgoda" value="tak" required class="mt-1 h-4 w-4 accent-accent">
+          <span>Zapoznałem się z treścią dokumentu Zamówienia <%= z.numer %> (wersja <%= z.wersja %>) i potwierdzam ją w imieniu Zamawiającego. Zapisujemy czas, adres e-mail i adres IP potwierdzenia oraz skrót SHA-256 dokumentu.</span>
+        </label>
+        <button type="submit" class="inline-block bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Potwierdzam Zamówienie</button>
+      </form>
+    </div>
+    <% } else if (z.status === 'potwierdzone') { %>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6 mb-6 text-green-800 leading-relaxed">
+      <p class="mb-3">Treść potwierdzona <%= data(z.potwierdzono_at, true) %> UTC. Realizacja ruszyła, a dokument czeka na podpis obu stron. Podpisany egzemplarz pojawi się tutaj.</p>
+      <a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-green-200 hover:border-accent text-green-800 px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Dokument PDF</a>
+      <% if (z.pdf_sha256) { %><p class="text-xs text-green-700 mt-3 font-mono break-all">SHA-256: <%= z.pdf_sha256 %></p><% } %>
+    </div>
+    <% } else if (z.status === 'podpisane') { %>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6 mb-6 text-green-800 leading-relaxed">
+      <p class="mb-3">Zamówienie podpisane przez obie strony<% if (z.podpisano_at) { %> (<%= data(z.podpisano_at, true) %> UTC<%= z.podpis_rodzaj === 'odreczny' ? ', podpis odręczny' : ', podpis kwalifikowany' %>)<% } %>.</p>
+      <div class="flex flex-wrap gap-3">
+        <% if (z.ma_podpisany_pdf) { %><a href="/panel/zamowienia/<%= z.id %>/dokument-podpisany.pdf" target="_blank" rel="noopener" class="inline-block bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Pobierz podpisane Zamówienie</a><% } %>
+        <% if (z.ma_pdf) { %><a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-green-200 hover:border-accent text-green-800 px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Wersja potwierdzona w panelu</a><% } %>
+      </div>
+    </div>
+    <% } else if (z.status === 'odrzucone' || z.status === 'anulowane') { %>
+    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 md:p-6 mb-6 text-gray-700 leading-relaxed">To zamówienie jest <%= z.status %>. Jeśli potrzebujesz nagrań w zmienionym zakresie, złóż nowe zamówienie.</div>
+    <% } %>
+
+    <%# --- Naglowek zamowienia --- %>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
+      <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div><dt class="text-gray-500">Klient końcowy</dt><dd class="font-semibold text-gray-900"><%= z.klient_koncowy %></dd></div>
+        <div><dt class="text-gray-500">Projekt</dt><dd class="font-semibold text-gray-900"><%= z.projekt %></dd></div>
+        <div><dt class="text-gray-500">Termin realizacji</dt><dd class="font-semibold text-gray-900"><%= data(z.termin_realizacji) || 'nie podano' %></dd></div>
+        <div><dt class="text-gray-500">Termin sesji</dt><dd class="font-semibold text-gray-900"><%= data(z.termin_sesji, true) || 'do ustalenia' %></dd></div>
+        <div><dt class="text-gray-500">Data pierwszej emisji</dt><dd class="font-semibold text-gray-900"><%= data(z.data_emisji) || 'nie podano' %></dd></div>
+        <div><dt class="text-gray-500">Tryb realizacji</dt><dd class="font-semibold text-gray-900"><%= TRYBY[z.tryb_realizacji] || z.tryb_realizacji %><%= z.sesja_zdalna ? ', sesja zdalna' : '' %></dd></div>
+      </dl>
+      <% if (z.uwagi_klienta) { %><p class="text-sm text-gray-700 mt-4 leading-relaxed"><span class="text-gray-500">Uwagi:</span> <%= z.uwagi_klienta %></p><% } %>
+    </div>
+
+    <%# --- Pozycje --- %>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Pozycje</h2>
+      <div class="divide-y divide-gray-200">
+        <% pozycje.forEach(function (p, i) { %>
+        <div class="py-3 flex flex-wrap items-start justify-between gap-2">
+          <div class="flex-1">
+            <p class="font-semibold text-gray-900"><%= i + 1 %>. <%= PP.opisPozycji(p) %></p>
+            <p class="text-sm text-gray-600">
+              <%= p.lektor_nazwa || p.lektor_id %><% if (p.opis_wersji) { %>, <%= p.opis_wersji %><% } %><% if (p.bazowa_id) { %>, do pozycji <%= String(p.bazowa_id).replace(/^p/, '') %><% } %><% if (p.kwota_bazowa) { %>, do wersji z wcześniejszego zamówienia (<%= zl(p.kwota_bazowa) %>)<% } %><% if (p.udzwiekowienie && p.udzwiekowienie !== 'brak') { %>, udźwiękowienie <%= UDZ[p.udzwiekowienie] || p.udzwiekowienie %> (<%= zl(p.kwota_udzwiekowienia) %>)<% } %><% if (p.okres === '24') { %>, licencja 24 miesiące<% } %><% if (p.licencja === 'niewylaczna') { %>, licencja niewyłączna<% } %><% if (p.terytorium && p.terytorium.toLowerCase() !== 'polska') { %>, terytorium: <%= p.terytorium %><% } %>
+            </p>
+            <% (p.komunikaty || []).forEach(function (k) { %><p class="text-xs text-amber-800 mt-1 leading-relaxed"><%= k %></p><% }); %>
+            <% if (p.uwagi) { %><p class="text-xs text-gray-500 mt-1">Uwagi: <%= p.uwagi %></p><% } %>
+          </div>
+          <div class="text-right whitespace-nowrap">
+            <span class="font-semibold text-gray-900"><%= zl(p.kwota_netto) %></span>
+            <% if (p.zrodlo_stawki === 'optimum' || p.kwota_reczna) { %><p class="text-xs text-gray-500">kwota ustalona przez Optimum</p><% } else if (p.zrodlo_stawki === 'profil') { %><p class="text-xs text-gray-500">stawka z profilu</p><% } else if (p.zrodlo_stawki === 'umowa') { %><p class="text-xs text-gray-500">stawka z umowy</p><% } else if (p.zrodlo_stawki === 'poprzednie_zamowienie') { %><p class="text-xs text-gray-500">wg wcześniejszego Zamówienia</p><% } %>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+      <div class="border-t border-gray-200 mt-3 pt-3 text-sm space-y-1">
+        <% if (w.suma_udzwiekowien) { %><div class="flex justify-between text-gray-700"><span>Udźwiękowienie (<%= (w.podsumowanie || {}).udzwiekowienia %> wersji)</span><span><%= zl(w.suma_udzwiekowien) %></span></div><% } %>
+        <% (w.doplaty || []).forEach(function (d) { %><div class="flex justify-between text-gray-700"><span><%= d.nazwa %></span><span><%= zl(d.kwota) %></span></div><% }); %>
+        <div class="flex justify-between font-bold text-gray-900 text-base pt-2"><span>Razem netto</span><span><%= z.wymaga_wyceny ? 'wycena indywidualna' : zl(z.suma_netto) %></span></div>
+        <% if (!z.wymaga_wyceny && z.suma_netto !== null) { %>
+        <div class="flex justify-between text-gray-700"><span>VAT 23%</span><span><%= zl(z.vat) %></span></div>
+        <div class="flex justify-between text-gray-700"><span>Razem brutto</span><span><%= zl(z.suma_brutto) %></span></div>
+        <% } %>
+      </div>
+      <% if (w.blokady && w.blokady.length) { %>
+      <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-lg px-4 py-3 text-sm mt-4 leading-relaxed"><%- w.blokady.map(function (b) { return '<p>' + b.replace(/</g, '&lt;') + '</p>'; }).join('') %></div>
+      <% } %>
+    </div>
+
+    <%# --- Historia wersji --- %>
+    <% if (z.historia && z.historia.length > 1) { %>
+    <details class="bg-white border border-gray-200 rounded-xl p-4 md:p-6">
+      <summary class="font-semibold text-gray-900 cursor-pointer">Historia wersji (<%= z.historia.length %>)</summary>
+      <div class="divide-y divide-gray-200 mt-3 text-sm">
+        <% z.historia.forEach(function (h) { var hs = STATUSY[h.status] || { etykieta: h.status }; %>
+        <div class="py-3">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="font-semibold text-gray-900">Wersja <%= h.wersja %></span>
+            <span class="text-gray-500"><%= data(h.created_at, true) %></span>
+            <span class="text-gray-500"><%= hs.etykieta %></span>
+            <span class="ml-auto font-semibold text-gray-900"><%= h.suma_netto === null ? 'wycena indywidualna' : zl(h.suma_netto) %></span>
+          </div>
+          <% if (h.komentarz) { %><p class="text-gray-700 mt-1 leading-relaxed"><%= h.komentarz %></p><% } %>
+          <p class="text-xs text-gray-500 mt-1"><%= (h.pozycje || []).length %> pozycji, <%= String(h.autor || '').indexOf('uzytkownik:') === 0 ? 'zmiana po stronie Zamawiającego' : 'zmiana po stronie Optimum' %></p>
+        </div>
+        <% }); %>
+      </div>
+    </details>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

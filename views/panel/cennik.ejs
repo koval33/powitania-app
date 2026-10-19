@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<% var d = (cennik && cennik.dane) || {}; var lekt = d.lektorzy || {}; var udz = d.udzwiekowienie || {}; %>
+
+<section class="py-8 md:py-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Cennik z umowy ramowej</h1>
+    <p class="text-gray-600 mb-8 leading-relaxed">
+      <%= cennik.nazwa || ('Cennik wersja ' + cennik.wersja) %><% if (cennik.obowiazuje_od) { %>, obowiązuje od <%= data(cennik.obowiazuje_od) %><% } %>.
+      Kwoty netto w <%= d.waluta || 'PLN' %>, do każdej doliczamy VAT <%= d.vat_proc != null ? d.vat_proc : 23 %>%. Stawka za spot obejmuje nagranie, jedną sesję z poprawkami z winy studia i licencję wyłączną na 12 miesięcy na wskazanym polu eksploatacji w Polsce.
+    </p>
+
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Stawki lektorów z umowy</h2>
+    <% Object.keys(lekt).forEach(function (id) { var l = lekt[id]; var st = l.stawki || {}; %>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-4">
+      <h3 class="font-semibold text-gray-900 mb-3"><%= l.nazwa || id %></h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead>
+            <tr class="text-xs uppercase tracking-wide text-gray-500 border-b border-gray-200">
+              <th class="py-2 pr-4 font-semibold">Pole eksploatacji</th>
+              <th class="py-2 pr-4 font-semibold">Długość</th>
+              <th class="py-2 font-semibold text-right">Stawka netto</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% Object.keys(PP.POLA).forEach(function (pole) { (PP.DLUGOSCI[pole] || []).forEach(function (dl) { var kw = (st[pole] || {})[dl]; if (typeof kw !== 'number') return; %>
+            <tr>
+              <td class="py-2 pr-4 text-gray-700"><%= PP.POLA[pole] %></td>
+              <td class="py-2 pr-4 text-gray-700 whitespace-nowrap"><%= parseInt(dl, 10) < 60 ? 'do ' + dl + ' s' : 'do ' + Math.floor(parseInt(dl, 10) / 60) + ' min' %></td>
+              <td class="py-2 text-right font-semibold text-gray-900 whitespace-nowrap"><%= zl(kw) %></td>
+            </tr>
+            <% }); }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% }); %>
+    <p class="text-sm text-gray-500 mb-8 leading-relaxed">Pozostali lektorzy z banku głosów powitania.pl: stawka z profilu lektora na stronie. Lektorzy z ceną ukrytą (znani i lubiani): wycena indywidualna, kwotę wpisuje Optimum przy akceptacji.</p>
+
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Reguły wyceny</h2>
+    <div class="bg-white border border-gray-200 rounded-xl p-4 md:p-6">
+      <dl class="divide-y divide-gray-200 text-sm">
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Wersja pochodna</dt><dd class="text-gray-700 leading-relaxed md:col-span-2"><%= d.wersja_pochodna_proc != null ? d.wersja_pochodna_proc : 50 %>% stawki spotu bazowego. Tylko ten sam lektor, to samo pole eksploatacji i długość nie większa niż spot bazowy (skrót, inne zakończenie). Inaczej jest to osobny spot i tak go liczymy, z komunikatem w formularzu.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Dogrywka</dt><dd class="text-gray-700 leading-relaxed md:col-span-2"><%= d.dogrywka_proc != null ? d.dogrywka_proc : 50 %>% stawki wersji, której dotyczy. Różne czytania tej samej wersji podczas sesji są w cenie.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Udźwiękowienie</dt><dd class="text-gray-700 leading-relaxed md:col-span-2">Za każdą dostarczoną wersję: <%= zl(udz.powierzona != null ? udz.powierzona : 150) %> z muzyką powierzoną przez Zamawiającego lub stockową, <%= zl(udz.kreatywne != null ? udz.kreatywne : 300) %> za udźwiękowienie kreatywne.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Sesja zdalna</dt><dd class="text-gray-700 leading-relaxed md:col-span-2"><%= zl(d.sesja_zdalna != null ? d.sesja_zdalna : 150) %> raz za zamówienie, gdy Zamawiający uczestniczy w nagraniu zdalnie.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Ekspres i weekend</dt><dd class="text-gray-700 leading-relaxed md:col-span-2">Realizacja tego samego dnia: +<%= d.ekspres_proc != null ? d.ekspres_proc : 50 %>% stawek. Praca w weekend lub dzień wolny: +<%= d.weekend_proc != null ? d.weekend_proc : 50 %>% stawek. Dopłata liczona od spotów, wersji i dogrywek, nie od udźwiękowienia i sesji.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Przedłużenie licencji</dt><dd class="text-gray-700 leading-relaxed md:col-span-2">Kolejne 12 miesięcy: +<%= d.przedluzenie_licencji_proc != null ? d.przedluzenie_licencji_proc : 50 %>% stawki pozycji. W formularzu wybierasz okres 12 albo 24 miesiące.</dd></div>
+        <div class="py-3 md:grid md:grid-cols-3 gap-4"><dt class="font-semibold text-gray-900">Terytorium</dt><dd class="text-gray-700 leading-relaxed md:col-span-2">Stawki dotyczą Polski. Emisja poza Polską wymaga wyceny indywidualnej: pozycję można dodać, ale wysyłka wymaga komentarza w uwagach.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

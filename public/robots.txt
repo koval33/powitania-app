@@ -2,6 +2,7 @@ User-Agent: *
 Disallow: /*skip_header=*
 Disallow: /*?srsltid=
 Disallow: /admin/
+Disallow: /panel/
 Disallow: /api/
 
 User-agent: Googlebot

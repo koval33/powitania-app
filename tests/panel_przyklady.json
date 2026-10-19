@@ -1,0 +1,398 @@
+{
+  "_komentarz": "Przyklady wyceny czytane przez tests/test_panel_wycena.py (CRM) i przez test JS w powitania-app. Jedna lista, dwa silniki - jesli sie rozjada, testy to pokaza.",
+  "cennik_white_bits": {
+    "waluta": "PLN",
+    "lektorzy": {
+      "janusz": {
+        "nazwa": "Janusz German",
+        "stawki": {
+          "tv_internet": {
+            "15": 2500,
+            "30": 2800
+          },
+          "radio_ogolnopolskie": {
+            "30": 1400
+          },
+          "internet": {
+            "60": 1100,
+            "120": 1400
+          }
+        }
+      }
+    },
+    "wersja_pochodna_proc": 50,
+    "dogrywka_proc": 50,
+    "udzwiekowienie": {
+      "powierzona": 150,
+      "kreatywne": 300
+    },
+    "sesja_zdalna": 150,
+    "ekspres_proc": 50,
+    "weekend_proc": 50,
+    "przedluzenie_licencji_proc": 50,
+    "vat_proc": 23
+  },
+  "przyklady": [
+    {
+      "nazwa": "kryterium odbioru 2: radio 30s + skrot 15s + inne zakonczenie + 3x udzwiekowienie powierzone",
+      "zamowienie": {
+        "tryb_realizacji": "standard",
+        "sesja_zdalna": false,
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "udzwiekowienie": "powierzona"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "opis_wersji": "skrot do 15 s",
+            "udzwiekowienie": "powierzona"
+          },
+          {
+            "id": "p3",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "opis_wersji": "inne zakonczenie",
+            "udzwiekowienie": "powierzona"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          700,
+          700
+        ],
+        "typy": [
+          "spot",
+          "wersja_pochodna",
+          "wersja_pochodna"
+        ],
+        "suma_udzwiekowien": 450,
+        "suma_netto": 3250,
+        "vat": 748,
+        "suma_brutto": 3998,
+        "podsumowanie": {
+          "spoty": 1,
+          "wersje": 2,
+          "dogrywki": 0,
+          "udzwiekowienia": 3
+        }
+      }
+    },
+    {
+      "nazwa": "kryterium odbioru 3: wersja pochodna z innym lektorem staje sie spotem",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "marcin",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "stawka_profilu": 900
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          900
+        ],
+        "typy": [
+          "spot",
+          "spot"
+        ],
+        "przeklasyfikowano": [
+          false,
+          true
+        ],
+        "zrodla": [
+          "umowa",
+          "profil"
+        ],
+        "suma_netto": 2300
+      }
+    },
+    {
+      "nazwa": "kryterium odbioru 4: lektor z ukryta cena - pozycja bez kwoty, zamowienie bez sumy",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "wiktor-zborowski",
+            "pole": "tv_internet",
+            "dlugosc": "30",
+            "cena_ukryta": true
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          null
+        ],
+        "wymaga_wyceny": true,
+        "suma_netto": null
+      }
+    },
+    {
+      "nazwa": "wersja pochodna dluzsza od bazowej staje sie spotem (TV 15s -> 30s)",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "15"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "30"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          2500,
+          2800
+        ],
+        "typy": [
+          "spot",
+          "spot"
+        ],
+        "przeklasyfikowano": [
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "nazwa": "wersja pochodna na innym polu staje sie spotem (radio -> internet)",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "internet",
+            "dlugosc": "60"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          1100
+        ],
+        "typy": [
+          "spot",
+          "spot"
+        ]
+      }
+    },
+    {
+      "nazwa": "ekspres: +50% od spotow i wersji, NIE od udzwiekowienia i sesji",
+      "zamowienie": {
+        "tryb_realizacji": "ekspres",
+        "sesja_zdalna": true,
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "udzwiekowienie": "kreatywne"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          700
+        ],
+        "suma_stawek": 2100,
+        "suma_udzwiekowien": 300,
+        "doplaty": {
+          "sesja_zdalna": 150,
+          "ekspres": 1050
+        },
+        "suma_netto": 3600
+      }
+    },
+    {
+      "nazwa": "dogrywka do spotu z tego zamowienia: 50% stawki spotu",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "30"
+          },
+          {
+            "id": "p2",
+            "typ": "dogrywka",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "30"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          2800,
+          1400
+        ],
+        "suma_netto": 4200
+      }
+    },
+    {
+      "nazwa": "dogrywka do spotu z wczesniejszego zamowienia: 50% podanej kwoty bazowej",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "dogrywka",
+            "kwota_bazowa": 1400,
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          700
+        ],
+        "zrodla": [
+          "poprzednie_zamowienie"
+        ],
+        "suma_netto": 700
+      }
+    },
+    {
+      "nazwa": "przedluzenie licencji o 12 miesiecy: +50% stawki pozycji",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "okres": "24"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          2100
+        ],
+        "suma_netto": 2100
+      }
+    },
+    {
+      "nazwa": "licencja wylaczna nie blokuje (jest norma); terytorium poza Polska blokuje wysylke",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "licencja": "wylaczna"
+          },
+          {
+            "id": "p2",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "terytorium": "Niemcy"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          1400
+        ],
+        "liczba_blokad": 1,
+        "licencje": [
+          "wylaczna",
+          "wylaczna"
+        ]
+      }
+    },
+    {
+      "nazwa": "lektor spoza cennika: stawka z profilu powitania.pl",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "tomasz-3",
+            "pole": "internet",
+            "dlugosc": "120",
+            "stawka_profilu": 1500
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1500
+        ],
+        "zrodla": [
+          "profil"
+        ],
+        "suma_netto": 1500
+      }
+    }
+  ]
+}

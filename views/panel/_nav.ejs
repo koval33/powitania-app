@@ -1,0 +1,17 @@
+<%# Pasek panelu: nazwa klienta, zakladki, zalogowany uzytkownik, wylogowanie %>
+<div class="bg-gray-50 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3 text-sm">
+    <span class="font-semibold text-gray-900">Panel zamówień<% if (panel && panel.klient) { %> <span class="text-gray-500 font-normal">/ <%= panel.klient %></span><% } %></span>
+    <% if (panel) { %>
+    <nav class="flex flex-wrap items-center gap-3">
+      <a href="/panel/" class="<%= currentPath === '/panel/' ? 'text-accent font-semibold' : 'text-gray-700 hover:text-accent' %>">Zamówienia</a>
+      <a href="/panel/zamowienia/nowe/" class="<%= currentPath.indexOf('/panel/zamowienia/nowe') === 0 ? 'text-accent font-semibold' : 'text-gray-700 hover:text-accent' %>">Nowe zamówienie</a>
+      <a href="/panel/cennik/" class="<%= currentPath.indexOf('/panel/cennik') === 0 ? 'text-accent font-semibold' : 'text-gray-700 hover:text-accent' %>">Cennik</a>
+    </nav>
+    <form method="post" action="/panel/wyloguj/" class="ml-auto flex items-center gap-3">
+      <span class="text-gray-500 hidden md:block"><%= panel.email %></span>
+      <button type="submit" class="text-gray-700 hover:text-accent underline">Wyloguj</button>
+    </form>
+    <% } %>
+  </div>
+</div>

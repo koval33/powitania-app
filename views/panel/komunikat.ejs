@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+
+<section class="py-12 md:py-16">
+  <div class="max-w-md mx-auto px-4 text-center">
+    <h1 class="text-2xl font-bold text-gray-900 mb-4"><%= naglowek %></h1>
+    <p class="text-gray-700 leading-relaxed"><%= tresc %></p>
+    <% if (typeof dopisek !== 'undefined' && dopisek) { %>
+    <p class="text-sm text-gray-500 mt-4 leading-relaxed"><%= dopisek %></p>
+    <% } %>
+    <% if (typeof link !== 'undefined' && link) { %>
+    <a href="<%= link %>" class="inline-block mt-8 bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors"><%= linkTekst %></a>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

@@ -677,6 +677,10 @@ app.use('/admin/opinie', require('./routes/admin-opinie'));
 app.use('/admin/partnerzy', require('./routes/admin-partnerzy'));
 app.use('/admin/kreator', require('./routes/admin-kreator'));
 
+// Panel klienta (zamowienia nagran po cenniku z umowy ramowej). Front tutaj,
+// dane i dokumenty w CRM - patrz routes/panel.js. Wszystko noindex + no-store.
+app.use('/panel', require('./routes/panel'));
+
 // Page routes
 app.get('/', (req, res) => {
   const voiceCount = res.locals.voiceCount;
