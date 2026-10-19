@@ -271,3 +271,50 @@ main.lektor-dark .price-summary-light .text-gray-500 { color: #6b7280 !important
 main.lektor-dark .price-summary-light .bg-gray-50 { background-color: #ffffff !important; }
 main.lektor-dark .price-summary-light .bg-gray-100 { background-color: #eceef1 !important; }
 main.lektor-dark .price-summary-light .border-gray-200 { border-color: #dfe3e8 !important; }
+
+/* ===== Dark theme - PANEL KLIENTA (main.panel-dark). Ta sama tonacja co bank/karta lektora:
+   ciemny canvas #2e333d, ciemne karty #272c34, jasny tekst. Formularze (input/select/textarea)
+   ZOSTAJA JASNE - klient wpisuje tam teksty spotow, czytelnosc wazniejsza niz spojnosc. ===== */
+main.panel-dark { background-color: #2e333d; }
+main.panel-dark .bg-white { background-color: #272c34 !important; }
+main.panel-dark .bg-gray-50 { background-color: #1f2329 !important; }
+main.panel-dark .bg-gray-100 { background-color: #2b313a !important; }
+main.panel-dark .text-gray-900 { color: #f3f4f6 !important; }
+main.panel-dark .text-gray-800 { color: #e5e7eb !important; }
+main.panel-dark .text-gray-700 { color: #d4d8df !important; }
+main.panel-dark .text-gray-600 { color: #c2c7cf !important; }
+main.panel-dark .text-gray-500 { color: #b3b9c3 !important; }
+main.panel-dark .text-gray-400 { color: #aab0ba !important; }
+main.panel-dark .border-gray-100,
+main.panel-dark .border-gray-200,
+main.panel-dark .border-gray-300 { border-color: #3a3f4a !important; }
+main.panel-dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #3a3f4a !important; }
+main.panel-dark .border-dashed { border-color: #4a505c !important; }
+main.panel-dark .hover\:text-accent:hover { color: #5cb8ff !important; }
+main.panel-dark .hover\:border-accent:hover { border-color: #199dff !important; }
+/* Formularze jasne (jak .form-light na karcie lektora) */
+main.panel-dark input[type="text"], main.panel-dark input[type="email"], main.panel-dark input[type="number"],
+main.panel-dark input[type="date"], main.panel-dark input[type="datetime-local"],
+main.panel-dark select, main.panel-dark textarea {
+  background-color: #ffffff !important; border-color: #3a3f4a !important; color: #111827 !important;
+}
+main.panel-dark input::placeholder, main.panel-dark textarea::placeholder { color: #9ca3af !important; }
+/* Komunikaty (zielone/bursztynowe/czerwone) zostaja jasne - czytelne odznaki na ciemnym tle */
+main.panel-dark .bg-green-50, main.panel-dark .bg-amber-50, main.panel-dark .bg-red-50 { color: inherit; }
+main.panel-dark .bg-green-50 .text-green-800, main.panel-dark .text-green-800 { color: #166534 !important; }
+main.panel-dark .bg-amber-50 .text-amber-900 { color: #78350f !important; }
+main.panel-dark .bg-green-50 .text-green-700 { color: #15803d !important; }
+/* Odznaki stanu na ciemnej karcie */
+main.panel-dark .bg-gray-200 { background-color: #3a3f4a !important; }
+main.panel-dark .bg-gray-200.text-gray-800 { color: #e5e7eb !important; }
+/* Tekst w jasnych boksach komunikatow nie moze dostac jasnego koloru */
+main.panel-dark .bg-green-50 { background-color: #ecfdf5 !important; }
+main.panel-dark .bg-amber-50 { background-color: #fffbeb !important; }
+main.panel-dark .bg-red-50 { background-color: #fef2f2 !important; }
+main.panel-dark .bg-red-50.text-red-700, main.panel-dark .bg-red-50 .text-red-700 { color: #b91c1c !important; }
+main.panel-dark .bg-amber-50.text-amber-900, main.panel-dark .bg-amber-50.text-amber-800,
+main.panel-dark .bg-amber-50 .text-amber-800 { color: #78350f !important; }
+main.panel-dark .bg-green-50.text-green-800 { color: #166534 !important; }
+/* Pasek nawigacji panelu (bg-gray-50 poza <main>? nie - jest w main) */
+main.panel-dark .panel-nav { background-color: #272c34 !important; border-color: #3a3f4a !important; }
+

@@ -39,6 +39,9 @@ const KOMUNIKATY_OK = {
   utworzone: 'Zamówienie zapisane jako szkic. Możesz je wysłać do akceptacji, gdy będzie gotowe.',
   wyslane: 'Zamówienie wysłane do akceptacji. Optimum odezwie się mailem.',
   potwierdzone: 'Treść Zamówienia potwierdzona. Dokument trafia do podpisu obu stron, a my ruszamy z realizacją.',
+  usuniete: 'Szkic usunięty.',
+  wycofane: 'Zamówienie wycofane. Optimum dostało wiadomość.',
+  odrzucone: 'Przekazaliśmy Optimum, że nie potwierdzasz tej wersji dokumentu. Odezwiemy się mailem.',
 };
 
 // --- Pomocnicze -----------------------------------------------------------
@@ -159,6 +162,7 @@ function widok(res, nazwa, dane) {
     title: 'Panel zamówień | powitania.pl',
     description: '',
     noindex: true,
+    mainClass: 'panel-dark',
     STATUSY, PP,
     zl: PP.zl,
     data: formatujDate,
@@ -385,6 +389,14 @@ router.post('/zamowienia/:id(\\d+)/potwierdz/', a(async (req, res) => {
   }
   await crm.potwierdz(req.panel, req.params.id, ipKlienta(req));
   res.redirect(`/panel/zamowienia/${req.params.id}/?ok=potwierdzone`);
+}));
+
+router.post('/zamowienia/:id(\\d+)/anuluj/', a(async (req, res) => {
+  const komentarz = String((req.body && req.body.komentarz) || '').replace(/\r\n?/g, '\n').trim().slice(0, 2000);
+  const odp = await crm.anuluj(req.panel, req.params.id, komentarz, ipKlienta(req));
+  if (odp.usuniete) return res.redirect('/panel/?ok=usuniete');
+  const st = (odp.zamowienie && odp.zamowienie.status) === 'odrzucone' ? 'odrzucone' : 'wycofane';
+  res.redirect(`/panel/zamowienia/${req.params.id}/?ok=${st}`);
 }));
 
 async function przekazPdf(req, res, podpisany) {
