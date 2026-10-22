@@ -624,6 +624,24 @@ app.get('/api/yt-check', async (req, res) => {
 });
 
 // Health check - kreator (testuje połączenie z Anthropic API)
+// Test polaczenia z Przelewy24 (GET /testAccess po stronie P24) - bez skutkow ubocznych,
+// w przeciwienstwie do /api/payment/register, ktore wysyla maile i webhook do CRM.
+// Uzycie: /api/health/p24?key=HEALTH_SECRET (po rotacji kluczy P24, 22.10.2026).
+app.get('/api/health/p24', async (req, res) => {
+  const secret = process.env.HEALTH_SECRET;
+  if (secret && req.query.key !== secret) {
+    return res.status(403).json({ ok: false, error: 'Unauthorized' });
+  }
+  try {
+    const start = Date.now();
+    const wynik = await require('./lib/p24').testConnection();
+    res.json({ ok: true, ms: Date.now() - start, sandbox: process.env.P24_SANDBOX === 'true', p24: wynik && wynik.data !== undefined ? wynik.data : true });
+  } catch (err) {
+    console.error('[health] P24 error:', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 app.get('/api/health/kreator', async (req, res) => {
   const secret = process.env.HEALTH_SECRET;
   if (secret && req.query.key !== secret) {
