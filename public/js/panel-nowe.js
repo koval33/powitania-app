@@ -31,6 +31,8 @@
   var NAZWY_TYPOW = { spot: 'Spot reklamowy', wersja_pochodna: 'Wersja pochodna', dogrywka: 'Dogrywka' };
   // Pola, ktore pozycja podrzedna dziedziczy po swoim spocie (nie ma ich w karcie).
   var DZIEDZICZONE = ['lektor_id', 'pole', 'licencja', 'terytorium', 'okres'];
+  // Radio ma 15 i 30 s; typowy spot radiowy to 30 s, wiec on jest domyslny (TV zostaje jak byla).
+  var DOMYSLNA_DLUGOSC = { radio_ogolnopolskie: '30' };
   var wysylka = false;
 
   // Pola karty szukamy po ':scope >', zeby karta spotu nie trafila w pola
@@ -68,12 +70,18 @@
 
   function wypelnijDlugosci(select, pole, zachowaj) {
     var poprzednia = zachowaj ? select.value : null;
+    var tenSamWybor = select.getAttribute('data-pole') === pole;
+    select.setAttribute('data-pole', pole);
     select.innerHTML = '';
     (PP.DLUGOSCI[pole] || []).forEach(function (dl) {
       var n = parseInt(dl, 10);
       opcja(select, dl, n < 60 ? 'do ' + n + ' s' : 'do ' + Math.floor(n / 60) + ' min');
     });
-    if (poprzednia && Array.prototype.some.call(select.options, function (o) { return o.value === poprzednia; })) select.value = poprzednia;
+    var istnieje = function (v) { return Array.prototype.some.call(select.options, function (o) { return o.value === v; }); };
+    // Zmiana pola na takie, ktore ma domyslna dlugosc (radio -> 30 s), wygrywa z poprzednim
+    // wyborem: "15 s" z telewizji nie powinno sie przeniesc na radio.
+    if (poprzednia && istnieje(poprzednia) && (tenSamWybor || !DOMYSLNA_DLUGOSC[pole])) select.value = poprzednia;
+    else if (DOMYSLNA_DLUGOSC[pole] && istnieje(DOMYSLNA_DLUGOSC[pole])) select.value = DOMYSLNA_DLUGOSC[pole];
   }
 
   /** Wszystkie karty w kolejnosci dokumentu: spot, jego pozycje podrzedne, kolejny spot... */

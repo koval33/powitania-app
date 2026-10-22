@@ -92,10 +92,11 @@ function listaLektorow(cennikDane) {
   for (const v of loadVoices()) {
     if (zUmowy[v.id]) continue;
     const stawki = {};
-    for (const klucz of Object.keys(PP.POLE_PROFILU)) {
-      const pole = PP.POLE_PROFILU[klucz];
-      const kw = (v.prices || {})[pole];
-      if (typeof kw === 'number' && kw > 0) stawki[klucz] = kw;
+    for (const pole of Object.keys(PP.DLUGOSCI)) {
+      for (const dl of PP.DLUGOSCI[pole]) {
+        const kw = PP.stawkaZProfilu(v.prices, pole, dl);   // radio 15 s liczone z 30 s, jak w CRM
+        if (kw !== null) stawki[pole + '|' + dl] = kw;
+      }
     }
     wynik.push({ id: v.id, nazwa: v.name, z_umowy: false, cena_ukryta: Boolean(v.hidePrice), stawki_profilu: stawki });
   }

@@ -23,15 +23,21 @@
   };
   var DLUGOSCI = {
     tv_internet: ['15', '30'],
-    radio_ogolnopolskie: ['30'],
+    radio_ogolnopolskie: ['15', '30'],   // 15 s od 22.10.2026 (samodzielny spot, nie skrot)
     internet: ['60', '120']
   };
   var POLE_PROFILU = {
     'tv_internet|15': 'spot_tv_national',
     'tv_internet|30': 'spot_tv_national',
+    'radio_ogolnopolskie|15': 'spot_radio_national_15',
     'radio_ogolnopolskie|30': 'spot_radio_national',
     'internet|60': 'spot_social_1min',
     'internet|120': 'spot_social_2min'
+  };
+  // Profil ma jedna stawke radiowa (30 s): radio 15 s = 75% w gore do pelnych 50 zl,
+  // chyba ze profil ma wlasna (jak STAWKA_POCHODNA_PROFILU w panel_wycena.py).
+  var STAWKA_POCHODNA_PROFILU = {
+    'radio_ogolnopolskie|15': ['spot_radio_national', 75, 50]
   };
   var TYPY = ['spot', 'wersja_pochodna', 'dogrywka'];
   var UDZWIEKOWIENIA = ['brak', 'powierzona', 'kreatywne'];
@@ -63,6 +69,19 @@
       } else if (k in p) p[k] = cennik[k];
     });
     return p;
+  }
+
+  /** Stawka lektora spoza cennika klienta z jego profilu (prices z voices.json) albo null. */
+  function stawkaZProfilu(prices, pole, dlugosc) {
+    prices = prices || {};
+    var k = pole + '|' + String(dlugosc || '');
+    var wlasna = POLE_PROFILU[k] ? prices[POLE_PROFILU[k]] : undefined;
+    if (typeof wlasna === 'number' && wlasna > 0) return Math.round(wlasna);
+    var poch = STAWKA_POCHODNA_PROFILU[k];
+    if (poch && typeof prices[poch[0]] === 'number' && prices[poch[0]] > 0) {
+      return Math.ceil(prices[poch[0]] * poch[1] / 100 / poch[2]) * poch[2];
+    }
+    return null;
   }
 
   function stawkaBazowa(cennik, poz) {
@@ -208,6 +227,6 @@
 
   return { POLA: POLA, DLUGOSCI: DLUGOSCI, POLE_PROFILU: POLE_PROFILU, TYPY: TYPY,
            UDZWIEKOWIENIA: UDZWIEKOWIENIA, TRYBY: TRYBY, DOMYSLNE: DOMYSLNE,
-           BladWyceny: BladWyceny, policz: policz, stawkaBazowa: stawkaBazowa,
+           BladWyceny: BladWyceny, policz: policz, stawkaBazowa: stawkaBazowa, stawkaZProfilu: stawkaZProfilu,
            opisPozycji: opisPozycji, zl: zl };
 }));

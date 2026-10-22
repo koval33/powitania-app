@@ -11,6 +11,7 @@
             "30": 2800
           },
           "radio_ogolnopolskie": {
+            "15": 1050,
             "30": 1400
           },
           "internet": {
@@ -393,6 +394,126 @@
         ],
         "suma_netto": 1500
       }
+    },
+    {
+      "nazwa": "radio 15 s (PROMPT-panel-radio-15): spot 30 s + osobny spot 15 s + skrot 15 s pierwszego + 3x udzwiekowienie powierzone",
+      "zamowienie": {
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "udzwiekowienie": "powierzona"
+          },
+          {
+            "id": "p2",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "15",
+            "udzwiekowienie": "powierzona"
+          },
+          {
+            "id": "p3",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "15",
+            "opis_wersji": "skrot do 15 s",
+            "udzwiekowienie": "powierzona"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400,
+          1050,
+          700
+        ],
+        "typy": [
+          "spot",
+          "spot",
+          "wersja_pochodna"
+        ],
+        "przeklasyfikowano": [
+          false,
+          false,
+          false
+        ],
+        "suma_udzwiekowien": 450,
+        "suma_netto": 3600
+      }
     }
-  ]
+  ],
+  "stawki_profilu": {
+    "_komentarz": "Lektor spoza cennika klienta: stawka z profilu powitania.pl; radio 15 s = 75% radia 30 s w gore do 50 zl, chyba ze profil ma wlasna.",
+    "przypadki": [
+      {
+        "profil": {
+          "spot_radio_national": 1400
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "15",
+        "oczekiwana": 1050
+      },
+      {
+        "profil": {
+          "spot_radio_national": 1500
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "15",
+        "oczekiwana": 1150
+      },
+      {
+        "profil": {
+          "spot_radio_national": 1200
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "15",
+        "oczekiwana": 900
+      },
+      {
+        "profil": {
+          "spot_radio_national": 1500,
+          "spot_radio_national_15": 1000
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "15",
+        "oczekiwana": 1000
+      },
+      {
+        "profil": {
+          "spot_radio_national": 1500
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "30",
+        "oczekiwana": 1500
+      },
+      {
+        "profil": {
+          "spot_social_1min": 1100
+        },
+        "pole": "internet",
+        "dlugosc": "60",
+        "oczekiwana": 1100
+      },
+      {
+        "profil": {
+          "spot_radio_national": "wycena"
+        },
+        "pole": "radio_ogolnopolskie",
+        "dlugosc": "15",
+        "oczekiwana": null
+      },
+      {
+        "profil": {},
+        "pole": "tv_internet",
+        "dlugosc": "15",
+        "oczekiwana": null
+      }
+    ]
+  }
 }

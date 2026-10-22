@@ -48,9 +48,19 @@ for (const prz of dane.przyklady) {
   }
 }
 // bledy walidacji musza byc BladWyceny, nie TypeError
+// stawki profilu (lektor spoza cennika) - te same przypadki co tests/test_panel_wycena.py
+for (const c of ((dane.stawki_profilu || {}).przypadki || [])) {
+  try {
+    assert.strictEqual(PP.stawkaZProfilu(c.profil, c.pole, c.dlugosc), c.oczekiwana);
+    ok++;
+  } catch (e) {
+    bledy++;
+    console.log('  BLAD stawka profilu ' + JSON.stringify(c) + '\n       ' + e.message);
+  }
+}
 assert.throws(() => PP.policz(cennik, { pozycje: [] }), PP.BladWyceny);
 assert.throws(() => PP.policz(cennik, { pozycje: [{ typ: 'spot', lektor_id: 'janusz', pole: 'kino', dlugosc: '30' }] }), PP.BladWyceny);
 assert.strictEqual(PP.zl(3250), '3 250 zł');
 assert.strictEqual(PP.zl(null), 'wycena indywidualna');
-console.log(`\n${ok} przykladow OK, ${bledy} bledow (zrodlo: ${path.relative(process.cwd(), plik)})`);
+console.log(`\n${ok} przykladow i stawek OK, ${bledy} bledow (zrodlo: ${path.relative(process.cwd(), plik)})`);
 process.exit(bledy ? 1 : 0);
