@@ -201,6 +201,13 @@ function formatujDate(iso, zCzasem) {
 }
 
 function obsluzBlad(req, res, e) {
+  // Konto wylaczone albo usuniete w CRM: ciasteczko jest jeszcze wazne, ale CRM
+  // odmawia. Wylogowujemy, zamiast pokazywac ramke panelu z "Brak dostepu".
+  if (e && e.kod === 'sesja_niewazna') {
+    sesja.wyczysc(res);
+    if (chceJson(req)) return res.status(401).json({ ok: false, error: 'Sesja wygasła. Zaloguj się ponownie.', redirect: '/panel/login/' });
+    return res.redirect('/panel/login/');
+  }
   let status = 500, msg = 'Coś poszło nie tak. Spróbuj ponownie za chwilę.';
   if (e instanceof crm.BladCRM || e instanceof BladFormularza || e.name === 'BladWyceny') {
     status = e.status && e.status < 500 ? e.status : 502;
@@ -448,9 +455,9 @@ router.post('/zamowienia/:id(\\d+)/dane-emisyjne/', a(async (req, res) => {
 async function przekazMetryczke(req, res, podpisana) {
   const resp = await crm.metryczkaPdf(req.panel, req.params.id, req.params.mid, podpisana, ipKlienta(req));
   if (!resp.ok) {
-    let msg = 'Metryczka jest niedostępna.';
-    try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; } catch (e) { /* nie-JSON */ }
-    throw new crm.BladCRM(msg, resp.status >= 500 ? 502 : resp.status);
+    let msg = 'Metryczka jest niedostępna.', kod = null;
+    try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; if (d && d.kod) kod = d.kod; } catch (e) { /* nie-JSON */ }
+    throw new crm.BladCRM(msg, resp.status >= 500 ? 502 : resp.status, kod);
   }
   res.set('Content-Type', 'application/pdf');
   res.set('Content-Disposition', resp.headers.get('content-disposition') || `inline; filename="metryczka-${req.params.mid}${podpisana ? '-podpisana' : ''}.pdf"`);
@@ -462,9 +469,9 @@ router.get('/zamowienia/:id(\\d+)/metryczki/:mid(\\d+)/podpisana.pdf', a((req, r
 async function przekazPdf(req, res) {
   const resp = await crm.pdf(req.panel, req.params.id, ipKlienta(req));
   if (!resp.ok) {
-    let msg = 'Dokument jest niedostępny.';
-    try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; } catch (e) { /* nie-JSON */ }
-    throw new crm.BladCRM(msg, resp.status >= 500 ? 502 : resp.status);
+    let msg = 'Dokument jest niedostępny.', kod = null;
+    try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; if (d && d.kod) kod = d.kod; } catch (e) { /* nie-JSON */ }
+    throw new crm.BladCRM(msg, resp.status >= 500 ? 502 : resp.status, kod);
   }
   const buf = Buffer.from(await resp.arrayBuffer());
   res.set('Content-Type', 'application/pdf');
