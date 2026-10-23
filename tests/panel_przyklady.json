@@ -509,6 +509,41 @@
         },
         "suma_netto": 6750
       }
+    },
+    {
+      "nazwa": "zaokraglanie polowek w gore jak w panelu (zam. 2026/6): radio 15 s + wersja pochodna, obie 24 mies., udzwiekowienie kreatywne, sesja",
+      "zamowienie": {
+        "sesja_zdalna": true,
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "15",
+            "okres": "24",
+            "udzwiekowienie": "kreatywne"
+          },
+          {
+            "id": "p2",
+            "typ": "wersja_pochodna",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "15",
+            "okres": "24",
+            "udzwiekowienie": "kreatywne"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1575,
+          788
+        ],
+        "suma_udzwiekowien": 600,
+        "suma_netto": 3113
+      }
     }
   ],
   "stawki_profilu": {
