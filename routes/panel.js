@@ -29,8 +29,7 @@ const STATUSY = {
   do_akceptacji: { etykieta: 'Czeka na akceptację Optimum', klasa: 'bg-yellow-100 text-yellow-800' },
   skorygowane: { etykieta: 'Skorygowane przez Optimum', klasa: 'bg-amber-50 text-amber-800 border border-amber-200' },
   do_potwierdzenia: { etykieta: 'Czeka na Twoje potwierdzenie', klasa: 'bg-accent/5 text-accent-dark border border-accent/20' },
-  potwierdzone: { etykieta: 'Potwierdzone, czeka na podpis', klasa: 'bg-green-100 text-green-800' },
-  podpisane: { etykieta: 'Podpisane', klasa: 'bg-green-100 text-green-800' },
+  potwierdzone: { etykieta: 'Potwierdzone, w realizacji', klasa: 'bg-green-100 text-green-800' },
   odrzucone: { etykieta: 'Odrzucone', klasa: 'bg-red-50 text-red-700 border border-red-200' },
   anulowane: { etykieta: 'Anulowane', klasa: 'bg-gray-200 text-gray-800' },
 };
@@ -38,7 +37,7 @@ const STATUSY = {
 const KOMUNIKATY_OK = {
   utworzone: 'Zamówienie zapisane jako szkic. Możesz je wysłać do akceptacji, gdy będzie gotowe.',
   wyslane: 'Zamówienie wysłane do akceptacji. Optimum odezwie się mailem.',
-  potwierdzone: 'Treść Zamówienia potwierdzona. Dokument trafia do podpisu obu stron, a my ruszamy z realizacją.',
+  potwierdzone: 'Zamówienie potwierdzone. Ruszamy z realizacją.',
   usuniete: 'Szkic usunięty.',
   wycofane: 'Zamówienie wycofane. Optimum dostało wiadomość.',
   odrzucone: 'Przekazaliśmy Optimum, że nie potwierdzasz tej wersji dokumentu. Odezwiemy się mailem.',
@@ -460,8 +459,8 @@ async function przekazMetryczke(req, res, podpisana) {
 router.get('/zamowienia/:id(\\d+)/metryczki/:mid(\\d+).pdf', a((req, res) => przekazMetryczke(req, res, false)));
 router.get('/zamowienia/:id(\\d+)/metryczki/:mid(\\d+)/podpisana.pdf', a((req, res) => przekazMetryczke(req, res, true)));
 
-async function przekazPdf(req, res, podpisany) {
-  const resp = await (podpisany ? crm.pdfPodpisany : crm.pdf)(req.panel, req.params.id, ipKlienta(req));
+async function przekazPdf(req, res) {
+  const resp = await crm.pdf(req.panel, req.params.id, ipKlienta(req));
   if (!resp.ok) {
     let msg = 'Dokument jest niedostępny.';
     try { const d = JSON.parse(await resp.text()); if (d && d.error) msg = d.error; } catch (e) { /* nie-JSON */ }
@@ -469,11 +468,10 @@ async function przekazPdf(req, res, podpisany) {
   }
   const buf = Buffer.from(await resp.arrayBuffer());
   res.set('Content-Type', 'application/pdf');
-  res.set('Content-Disposition', resp.headers.get('content-disposition') || `inline; filename="zamowienie-${req.params.id}${podpisany ? '-podpisane' : ''}.pdf"`);
+  res.set('Content-Disposition', resp.headers.get('content-disposition') || `inline; filename="zamowienie-${req.params.id}.pdf"`);
   res.send(buf);
 }
-router.get('/zamowienia/:id(\\d+)/dokument.pdf', a((req, res) => przekazPdf(req, res, false)));
-router.get('/zamowienia/:id(\\d+)/dokument-podpisany.pdf', a((req, res) => przekazPdf(req, res, true)));
+router.get('/zamowienia/:id(\\d+)/dokument.pdf', a((req, res) => przekazPdf(req, res)));
 
 router.use((req, res) => {
   res.status(404);

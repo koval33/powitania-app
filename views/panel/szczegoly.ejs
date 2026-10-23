@@ -45,7 +45,7 @@
     <% } else if (z.status === 'do_potwierdzenia') { %>
     <div class="bg-white border border-accent/20 rounded-xl p-4 md:p-6 mb-6">
       <h2 class="text-lg font-bold text-gray-900 mb-2">Potwierdź treść Zamówienia</h2>
-      <p class="text-gray-700 leading-relaxed mb-4">Optimum przygotowało dokument Zamówienia w układzie załącznika nr 1 do umowy ramowej. Przejrzyj go, a potem potwierdź jego treść. Potwierdzenie uruchamia realizację; dokument trafia następnie do podpisu obu stron.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Optimum przygotowało dokument Zamówienia w układzie załącznika nr 1 do umowy ramowej. Przejrzyj go, a potem potwierdź jego treść. Potwierdzenie w panelu zawiera Zamówienie (licencja wyłączna wynika z umowy ramowej, podpis nie jest potrzebny) i uruchamia realizację.</p>
       <a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-gray-300 hover:border-accent text-gray-900 px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors mb-4">Otwórz dokument PDF</a>
       <form method="post" action="/panel/zamowienia/<%= z.id %>/potwierdz/" class="space-y-4">
         <label class="flex items-start gap-3 text-sm text-gray-700 cursor-pointer">
@@ -64,17 +64,9 @@
     </div>
     <% } else if (z.status === 'potwierdzone') { %>
     <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6 mb-6 text-green-800 leading-relaxed">
-      <p class="mb-3">Treść potwierdzona <%= data(z.potwierdzono_at, true) %> UTC. Realizacja ruszyła, a dokument czeka na podpis obu stron. Podpisany egzemplarz pojawi się tutaj.</p>
+      <p class="mb-3">Zamówienie potwierdzone <%= data(z.potwierdzono_at, true) %> UTC. Realizacja ruszyła; poniżej znajdziesz dane do metryczek dźwięku.</p>
       <a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-green-200 hover:border-accent text-green-800 px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Dokument PDF</a>
       <% if (z.pdf_sha256) { %><p class="text-xs text-green-700 mt-3 font-mono break-all">SHA-256: <%= z.pdf_sha256 %></p><% } %>
-    </div>
-    <% } else if (z.status === 'podpisane') { %>
-    <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6 mb-6 text-green-800 leading-relaxed">
-      <p class="mb-3">Zamówienie podpisane przez obie strony<% if (z.podpisano_at) { %> (<%= data(z.podpisano_at, true) %> UTC<%= z.podpis_rodzaj === 'odreczny' ? ', podpis odręczny' : ', podpis kwalifikowany' %>)<% } %>.</p>
-      <div class="flex flex-wrap gap-3">
-        <% if (z.ma_podpisany_pdf) { %><a href="/panel/zamowienia/<%= z.id %>/dokument-podpisany.pdf" target="_blank" rel="noopener" class="inline-block bg-accent hover:bg-accent-light text-white px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Pobierz podpisane Zamówienie</a><% } %>
-        <% if (z.ma_pdf) { %><a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-green-200 hover:border-accent text-green-800 px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Wersja potwierdzona w panelu</a><% } %>
-      </div>
     </div>
     <% } else if (z.status === 'odrzucone' || z.status === 'anulowane') { %>
     <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
@@ -86,7 +78,7 @@
     <% } %>
 
     <%# --- Realizacja i metryczki (po potwierdzeniu) --- %>
-    <% var wRealizacji = (z.status === 'potwierdzone' || z.status === 'podpisane'); var metryczki = z.metryczki || []; var skutek = z.skutek_anulowania || null; %>
+    <% var wRealizacji = (z.status === 'potwierdzone'); var metryczki = z.metryczki || []; var skutek = z.skutek_anulowania || null; %>
     <% if (wRealizacji) { var metryczkiPoz = {}; metryczki.forEach(function (m) { (metryczkiPoz[m.pozycja_id] = metryczkiPoz[m.pozycja_id] || []).push(m); }); var emisyjne = pozycje.filter(function (p) { return p.typ === 'spot' || p.typ === 'wersja_pochodna'; }); %>
     <div id="realizacja" class="bg-white border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
       <h2 class="text-lg font-bold text-gray-900 mb-2">Realizacja i metryczki dźwięku</h2>

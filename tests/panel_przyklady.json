@@ -226,7 +226,7 @@
       }
     },
     {
-      "nazwa": "ekspres: +50% od spotow i wersji, NIE od udzwiekowienia i sesji",
+      "nazwa": "ekspres: +50% wartosci calego zamowienia (stawki + udzwiekowienie + sesja zdalna), bez samej doplaty",
       "zamowienie": {
         "tryb_realizacji": "ekspres",
         "sesja_zdalna": true,
@@ -258,9 +258,9 @@
         "suma_udzwiekowien": 300,
         "doplaty": {
           "sesja_zdalna": 150,
-          "ekspres": 1050
+          "ekspres": 1275
         },
-        "suma_netto": 3600
+        "suma_netto": 3825
       }
     },
     {
@@ -445,6 +445,69 @@
         ],
         "suma_udzwiekowien": 450,
         "suma_netto": 3600
+      }
+    },
+    {
+      "nazwa": "kontrolny z poprawek umowy 23.10: radio 30 s + udzwiekowienie powierzone + sesja zdalna, ekspres -> doplata 850, suma 2 550",
+      "zamowienie": {
+        "tryb_realizacji": "ekspres",
+        "sesja_zdalna": true,
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "radio_ogolnopolskie",
+            "dlugosc": "30",
+            "udzwiekowienie": "powierzona"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          1400
+        ],
+        "suma_udzwiekowien": 150,
+        "doplaty": {
+          "sesja_zdalna": 150,
+          "ekspres": 850
+        },
+        "suma_netto": 2550
+      }
+    },
+    {
+      "nazwa": "weekend liczy sie tak samo jak ekspres (od calej wartosci zamowienia)",
+      "zamowienie": {
+        "tryb_realizacji": "weekend",
+        "pozycje": [
+          {
+            "id": "p1",
+            "typ": "spot",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "30",
+            "udzwiekowienie": "kreatywne"
+          },
+          {
+            "id": "p2",
+            "typ": "dogrywka",
+            "bazowa_id": "p1",
+            "lektor_id": "janusz",
+            "pole": "tv_internet",
+            "dlugosc": "30"
+          }
+        ]
+      },
+      "oczekiwane": {
+        "kwoty": [
+          2800,
+          1400
+        ],
+        "suma_udzwiekowien": 300,
+        "doplaty": {
+          "weekend": 2250
+        },
+        "suma_netto": 6750
       }
     }
   ],

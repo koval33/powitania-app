@@ -195,8 +195,11 @@
 
     var doplaty = [];
     if (zamowienie.sesja_zdalna) doplaty.push({ kod: 'sesja_zdalna', nazwa: 'Sesja zdalna z udziałem Zamawiającego', kwota: Math.round(p.sesja_zdalna) });
-    if (tryb === 'ekspres') doplaty.push({ kod: 'ekspres', nazwa: 'Realizacja ekspresowa (ten sam dzień), +50% stawek', kwota: proc(sumaStawek, p.ekspres_proc) });
-    else if (tryb === 'weekend') doplaty.push({ kod: 'weekend', nazwa: 'Praca w weekend lub dzień wolny, +50% stawek', kwota: proc(sumaStawek, p.weekend_proc) });
+    // Ekspres/weekend: +50% wartosci calego zamowienia (stawki + udzwiekowienie + sesja zdalna),
+    // bez samej doplaty - zal. 5 po poprawkach umowy z 23.10.2026 (jak panel_wycena.py).
+    var podstawaTrybu = sumaStawek + sumaUdz + doplaty.reduce(function (s, d) { return s + d.kwota; }, 0);
+    if (tryb === 'ekspres') doplaty.push({ kod: 'ekspres', nazwa: 'Realizacja ekspresowa (ten sam dzień), +50% wartości zamówienia', kwota: proc(podstawaTrybu, p.ekspres_proc) });
+    else if (tryb === 'weekend') doplaty.push({ kod: 'weekend', nazwa: 'Praca w weekend lub dzień wolny, +50% wartości zamówienia', kwota: proc(podstawaTrybu, p.weekend_proc) });
 
     var sumaDoplat = doplaty.reduce(function (s, d) { return s + d.kwota; }, 0);
     var sumaNetto = sumaStawek + sumaUdz + sumaDoplat;
