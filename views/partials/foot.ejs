@@ -196,7 +196,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </script>
 
-<% if (currentPath !== '/kontakt/') { %>
+<%# Widget "Zamow rozmowe" - nie na /kontakt/ i nie w panelu klienta (tam klient z umowa ramowa) %>
+<% if (currentPath !== '/kontakt/' && !String(currentPath || '').startsWith('/panel')) { %>
 <!-- Callback widget: "Oddzwonimy w 15 minut" (desktop only, pojawia sie po ~30 s sesji) -->
 <style>
   #cb-widget{display:none;position:fixed;right:24px;bottom:24px;z-index:45;font-family:inherit}
