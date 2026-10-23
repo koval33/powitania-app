@@ -50,8 +50,9 @@
       <form method="post" action="/panel/zamowienia/<%= z.id %>/potwierdz/" class="space-y-4">
         <label class="flex items-start gap-3 text-sm text-gray-700 cursor-pointer">
           <input type="checkbox" name="zgoda" value="tak" required class="mt-1 h-4 w-4 accent-accent">
-          <span>Zapoznałem się z treścią dokumentu Zamówienia <%= z.numer %> (wersja <%= z.wersja %>) i potwierdzam ją w imieniu Zamawiającego. Zapisujemy czas, adres e-mail i adres IP potwierdzenia oraz skrót SHA-256 dokumentu.</span>
+          <span>Potwierdzam treść Zamówienia nr <%= z.numer %> (wersja <%= z.wersja %>) w imieniu Zamawiającego.</span>
         </label>
+        <p class="text-xs text-gray-500 leading-relaxed">Potwierdzenie w panelu jest zawarciem Zamówienia w formie dokumentowej, zgodnie z umową ramową. Obie strony otrzymają e-mail z datą potwierdzenia i odnośnikiem do dokumentu.</p>
         <button type="submit" class="inline-block bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-lg font-semibold transition-colors">Potwierdzam Zamówienie</button>
       </form>
       <details class="mt-6 border-t border-gray-200 pt-4">
@@ -66,7 +67,7 @@
     <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6 mb-6 text-green-800 leading-relaxed">
       <p class="mb-3">Zamówienie potwierdzone <%= data(z.potwierdzono_at, true) %> UTC. Realizacja ruszyła; poniżej znajdziesz dane do metryczek dźwięku.</p>
       <a href="/panel/zamowienia/<%= z.id %>/dokument.pdf" target="_blank" rel="noopener" class="inline-block border border-green-200 hover:border-accent text-green-800 px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Dokument PDF</a>
-      <% if (z.pdf_sha256) { %><p class="text-xs text-green-700 mt-3 font-mono break-all">SHA-256: <%= z.pdf_sha256 %></p><% } %>
+
     </div>
     <% } else if (z.status === 'odrzucone' || z.status === 'anulowane') { %>
     <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 md:p-6 mb-6">
